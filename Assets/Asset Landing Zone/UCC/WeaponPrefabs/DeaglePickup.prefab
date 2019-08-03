@@ -1,0 +1,1718 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &296700443313417740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8589647803883866425}
+  - component: {fileID: 2608080876963943545}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Weapon - Integral
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8589647803883866425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296700443313417740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0486, z: 0.0726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3922394591510660020}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2608080876963943545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296700443313417740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.1350416, z: 0.27629745}
+  m_Center: {x: 7.1892015e-10, y: -4.5430944e-11, z: 0.028129976}
+--- !u!1 &1152262705517468347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8669859663430866820}
+  m_Layer: 0
+  m_Name: Flashpoint Glock Heavy
+  m_TagString: Offset - FirePoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8669859663430866820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152262705517468347}
+  m_LocalRotation: {x: 0.7071068, y: 0.0000000013170891, z: -0.0000000013170889, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.002335, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3922394591510660192}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!135 &-59490903344230895
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922394591511158676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &941950259334324884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922394591511158676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf325443b720c3944b75efe31f6b380f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BaseName: Slide Action
+  m_WeaponProfiles:
+  - m_ProfileName: Glock
+    m_ProfileRoot: {fileID: 3922394591511158326}
+    m_WeaponType: 0
+    m_AnimatorID: 2
+    m_CoreParts:
+    - m_PartName: Standard Core
+      m_Part:
+        m_Part: {fileID: 3922394591511154786}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 1
+      m_ScopeCam: {fileID: 0}
+    - m_PartName: Burst Core
+      m_Part:
+        m_Part: {fileID: 3922394591511154812}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 1
+      m_ScopeCam: {fileID: 0}
+    - m_PartName: Heavy Core
+      m_Part:
+        m_Part: {fileID: 3922394591511154752}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 1
+      m_ScopeCam: {fileID: 0}
+    m_ForeParts: []
+    m_RearParts:
+    - m_PartName: No Stock
+      m_Part:
+        m_Part: {fileID: 0}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 0
+    - m_PartName: Folding Stock
+      m_Part:
+        m_Part: {fileID: 3922394591511154900}
+        m_SubParts:
+        - Folding Stock Arm.000
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 0
+    - m_PartName: Folding Stock
+      m_Part:
+        m_Part: {fileID: 3922394591511154900}
+        m_SubParts:
+        - Folding Stock Arm.004
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 0
+    m_AmmoSets:
+    - m_SetName: Glock Mags
+      m_AmmoParts:
+      - m_PartName: Standard Mag
+        m_Part:
+          m_Part: {fileID: 3922394591511154882}
+          m_SubParts: []
+          m_allowSightAttach: 0
+          m_allowScopeAttach: 0
+          m_allowBarrelAttach: 0
+          m_allowUnderBarrelAttach: 0
+          m_allowSideAttach: 0
+          m_allowPistolSightAttach: 0
+          m_allowPistolUnderBarrelAttach: 0
+        m_MaxAmmo: 17
+        m_ClipOffset: {fileID: 0}
+        m_ClipParent: {fileID: 0}
+        m_Projectile: {fileID: 0}
+        m_ProjectileParent: {fileID: 0}
+      - m_PartName: Extended Mag
+        m_Part:
+          m_Part: {fileID: 3922394591511154894}
+          m_SubParts: []
+          m_allowSightAttach: 0
+          m_allowScopeAttach: 0
+          m_allowBarrelAttach: 0
+          m_allowUnderBarrelAttach: 0
+          m_allowSideAttach: 0
+          m_allowPistolSightAttach: 0
+          m_allowPistolUnderBarrelAttach: 0
+        m_MaxAmmo: 33
+        m_ClipOffset: {fileID: 0}
+        m_ClipParent: {fileID: 0}
+        m_Projectile: {fileID: 0}
+        m_ProjectileParent: {fileID: 0}
+    m_AccessoryParts:
+    - m_PartName: Standard
+      m_Part:
+        m_Part: {fileID: 0}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 0
+    - m_PartName: Sight Rail
+      m_Part:
+        m_Part: {fileID: 3922394591511158690}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 1
+        m_allowPistolUnderBarrelAttach: 1
+  - m_ProfileName: Deagle
+    m_ProfileRoot: {fileID: 3922394591511158544}
+    m_WeaponType: 0
+    m_AnimatorID: 2
+    m_CoreParts:
+    - m_PartName: Standard Core
+      m_Part:
+        m_Part: {fileID: 0}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 1
+      m_ScopeCam: {fileID: 0}
+    m_ForeParts:
+    - m_PartName: Standard
+      m_Part:
+        m_Part: {fileID: 3922394591511154852}
+        m_SubParts: []
+        m_allowSightAttach: 0
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 0
+        m_allowPistolUnderBarrelAttach: 0
+      m_FirePointOffset: {fileID: 4435010801696527654}
+      m_MuzzleFlashOffset: {fileID: 4435010801696527654}
+    m_RearParts: []
+    m_AmmoSets:
+    - m_SetName: Deagle Mag
+      m_AmmoParts:
+      - m_PartName: Standard Mag
+        m_Part:
+          m_Part: {fileID: 3922394591511154892}
+          m_SubParts: []
+          m_allowSightAttach: 0
+          m_allowScopeAttach: 0
+          m_allowBarrelAttach: 0
+          m_allowUnderBarrelAttach: 0
+          m_allowSideAttach: 0
+          m_allowPistolSightAttach: 0
+          m_allowPistolUnderBarrelAttach: 0
+        m_MaxAmmo: 7
+        m_ClipOffset: {fileID: 0}
+        m_ClipParent: {fileID: 0}
+        m_Projectile: {fileID: 0}
+        m_ProjectileParent: {fileID: 0}
+      - m_PartName: Extended Mag
+        m_Part:
+          m_Part: {fileID: 0}
+          m_SubParts: []
+          m_allowSightAttach: 0
+          m_allowScopeAttach: 0
+          m_allowBarrelAttach: 0
+          m_allowUnderBarrelAttach: 0
+          m_allowSideAttach: 0
+          m_allowPistolSightAttach: 0
+          m_allowPistolUnderBarrelAttach: 0
+        m_MaxAmmo: 12
+        m_ClipOffset: {fileID: 0}
+        m_ClipParent: {fileID: 0}
+        m_Projectile: {fileID: 0}
+        m_ProjectileParent: {fileID: 0}
+    m_AccessoryParts:
+    - m_PartName: Standard
+      m_Part:
+        m_Part: {fileID: 0}
+        m_SubParts: []
+        m_allowSightAttach: 1
+        m_allowScopeAttach: 0
+        m_allowBarrelAttach: 0
+        m_allowUnderBarrelAttach: 0
+        m_allowSideAttach: 0
+        m_allowPistolSightAttach: 1
+        m_allowPistolUnderBarrelAttach: 1
+--- !u!114 &5992450994474807226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922394591511158676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e704e820a055af41b5a98fa3a79f767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TriggerEnableDelay: 4
+  m_PickupOnTriggerEnter: 1
+  m_RotationSpeed: {x: 0, y: 0, z: 0}
+  m_PickupAudioClipSet:
+    m_Delay: 0
+    m_AudioClips:
+    - {fileID: 8300000, guid: dd2a7c92100b2814d893cfcc88f39c9e, type: 3}
+  m_PickupMessageText: PICKED UP DESERT EAGLE
+  m_PickupMessageIcon: {fileID: 0}
+  m_ItemPickupSet: []
+  m_ItemTypeCounts:
+  - m_ItemType: {fileID: -3960382162399091859, guid: da9a97946d8378d4ca465cee7db08f1d,
+      type: 2}
+    m_Count: 1
+  - m_ItemType: {fileID: 8399629277727554691, guid: da9a97946d8378d4ca465cee7db08f1d,
+      type: 2}
+    m_Count: 35
+  m_AlwaysPickup: 0
+--- !u!114 &7031958721626368789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922394591511158676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50108065c9a7e0048968dcaf2217d9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Weapon: {fileID: 3922394591511158676}
+  m_ProfileConfig: 1
+  m_CoreConfig: 0
+  m_ForeConfig: 0
+  m_RearConfig: 0
+  m_AmmoConfig: 0
+  m_AccessoryConfig: 0
+--- !u!1 &5965317871614617197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7465111731237764844}
+  m_Layer: 0
+  m_Name: Flashpoint Glock
+  m_TagString: Offset - FirePoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7465111731237764844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965317871614617197}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.001637, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3922394591510659670}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &7026435707361080217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4435010801696527654}
+  m_Layer: 0
+  m_Name: Flashpoint Deagle Standard
+  m_TagString: Offset - FirePoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4435010801696527654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026435707361080217}
+  m_LocalRotation: {x: 0.7071068, y: 0.0000000013170891, z: -0.0000000013170889, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: -0.002513, z: 0.000141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3922394591510660272}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1001 &3922394591511058674
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_Name
+      value: DeaglePickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 100320, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100320, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100322, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100322, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100524, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100524, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100496, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100494, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100438, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100400, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100414, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100412, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300110, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300174, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400540, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400540, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400540, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013300013948484465, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100536, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100540, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100512, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100518, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100516, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100520, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100502, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100450, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100416, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100062, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100060, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100344, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100334, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100260, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100210, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100202, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100206, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: -640493139009231044, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: -1289141096505936210, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 3162136948719389861, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100544, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100538, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100498, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100504, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100418, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100422, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100420, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100390, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100392, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100370, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100090, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100088, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100094, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100052, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100326, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100294, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100286, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100266, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100228, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100216, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100222, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100220, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100186, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100164, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100114, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100118, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100116, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100098, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100096, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100104, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678291415239346615, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300152, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300182, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100546, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100376, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100080, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100070, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100074, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100072, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100076, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100472, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100242, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100242, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100066, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100068, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100132, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100174, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100188, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100190, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100204, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100234, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100258, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100290, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100332, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100332, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100398, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100402, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100406, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100408, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100430, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100432, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100440, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100442, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100468, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100488, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100492, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100510, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400276, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400446, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400446, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400446, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100336, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100336, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100182, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100180, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100404, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100410, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100372, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100380, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100380, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100342, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100342, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100340, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100340, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100388, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100058, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100240, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100378, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100362, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100360, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100238, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100238, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100330, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100236, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100300, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100328, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100126, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100120, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100268, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100122, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100350, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100298, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100352, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100124, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100368, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100314, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100316, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100244, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100250, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100254, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100200, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400108, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100306, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100304, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100308, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100312, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100302, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100358, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100032, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100452, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - ConfigBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 100448, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100464, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100466, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100474, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100476, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100486, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100490, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 400242, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100482, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100128, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100264, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100278, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100426, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100446, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100484, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100508, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300178, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100396, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 100346, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100232, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300116, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100384, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100348, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100274, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100272, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300100, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100162, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100160, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100146, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100150, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100148, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100154, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100152, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100158, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100156, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 100324, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 100424, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 400122, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 400124, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400352, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 400350, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 400298, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300224, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100086, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100056, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100292, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100282, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100218, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100110, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100310, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 100130, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100212, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300202, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100460, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: 100462, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    - target: {fileID: -7472488071702503222, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Integral
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c, type: 3}
+--- !u!1 &3922394591511158676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3922394591510660020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400198, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511158544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100322, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100438, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3922394591510660272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400450, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100414, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511158326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100036, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3922394591510659670 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400036, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100530, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3922394591510660192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400530, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100390, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100494, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100496, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100400, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511154894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100412, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3922394591511158690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100176, guid: 660ed9980a645fd4f9a9ecd2c68b9d8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3922394591511058674}
+  m_PrefabAsset: {fileID: 0}

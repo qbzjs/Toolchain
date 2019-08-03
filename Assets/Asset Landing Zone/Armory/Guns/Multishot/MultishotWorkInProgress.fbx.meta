@@ -1,0 +1,1377 @@
+fileFormatVersion: 2
+guid: 18640807839f24b43b6a34c99d8d16b0
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 25 Mag
+    100002: 36 Mag
+    100004: AR20 Multishot
+    100006: ARSightGun
+    100008: BottomRail
+    100010: Camera
+    100012: Camera.001
+    100014: EjectionPort
+    100016: Lamp
+    100018: Lamp.001
+    100020: //RootNode
+    100022: RailScrews
+    100024: SideRail_L
+    100026: SideRail_R
+    100028: Sights_Front_Folding_Iron_Sight_Circle.003
+    100030: Sights_Front_Folding_Iron_Sight_Sights_Circle.002
+    100032: TopRail
+    100034: TopRail.001
+    100036: TopRail_MeshPart0
+    100038: TopRail_MeshPart1
+    100040: Trigger
+    100042: Trigger Guard
+    100044: Camera.002
+    100046: Lamp.002
+    100048: Sights_Front_Folding_Iron_Sight_Circle.000
+    100050: Sights_Front_Folding_Iron_Sight_Sights_Circle.000
+    100052: Standard Stock
+    100054: Battery.001
+    100056: Body
+    100058: Caliber Adjuster
+    100060: Dust Cover
+    100062: Foregrip
+    100064: Grip
+    100066: Mag_15
+    100068: Mag_30
+    100070: Mag_45
+    100072: Rail_Bottom
+    100074: Rail_Cover_Extra_Long
+    100076: Rail_Cover_Side_L
+    100078: Rail_Cover_Side_R
+    100080: Rail_Side
+    100082: Rail_Top
+    100084: Rail_Top_MeshPart0
+    100086: Rail_Top_MeshPart1
+    100088: Rear Mag Release
+    100090: Rear_Sight_Down
+    100092: Rear_Sight_Up
+    100094: Sight_Rear
+    100096: Sights_Front
+    100098: Sights_Front_Down
+    100100: Sights_Front_Up
+    100102: Mag_20
+    100104: Mag_40
+    100106: Battery
+    100108: MultiMagLarge
+    100110: MultiMagSmall
+    100112: BatteryCompartment
+    100114: Rail_Cover_Top
+    100116: GlockMag Adapter
+    100118: Mag_10
+    100120: Mag_15.002
+    100122: Mag_30.001
+    100124: Mag_30.002
+    100126: Mag_50_Drum
+    100128: Mag_75 Drum
+    100130: Barrel Long
+    100132: Barrel Mid
+    100134: Barrel Short
+    100136: Body Classic
+    100138: Body Futuristic
+    100140: Caliber Adjuster.001
+    100142: Dust Cover.001
+    100144: Frame Future Long
+    100146: Frame Future Mid
+    100148: Frame Future Short
+    100150: Frame Wood Long
+    100152: Frame Wood Mid
+    100154: Frame Wood Short
+    100156: Loading Chamber
+    100158: Mag Release
+    100160: Rail Bottom
+    100162: Rail Bottom.001
+    100164: Rail Bottom.002
+    100166: Rail_Top_Long
+    100168: Rail_Top_Long_MeshPart0
+    100170: Rail_Top_Long_MeshPart1
+    100172: Rail_Top_Mid
+    100174: Rail_Top_Short
+    100176: Sights_Front.001
+    100178: Sights_Front.002
+    100180: Sights_Front_Up.001
+    100182: Sights_Front_Up.002
+    100184: Multimag
+    100186: Mag_25 Drum
+    100188: Mag_5
+    100190: Mag_15_g43
+    100192: Mag_30_AK
+    100194: Mag_33
+    100196: Body Classic.001
+    100198: Rail System_Long
+    100200: Rail System_Long_MeshPart0
+    100202: Rail System_Long_MeshPart1
+    100204: Rail System_Long_MeshPart2
+    100206: Rail_System_Mid
+    100208: Rail_System_Mid_MeshPart0
+    100210: Rail_System_Mid_MeshPart1
+    100212: Rail_System_Short
+    100214: Mag_60
+    100216: Mag_15_Shotgun
+    100218: Mag_6
+    100220: Mag_15_Rifle
+    100222: Mag_24
+    100224: Mag_12
+    100226: Barrel Long Longshot
+    100228: Barrel Long Multishot
+    100230: Barrel Long Nailgun
+    100232: Barrel Long Plasma Rifle
+    100234: Barrel Mid Longshot
+    100236: Barrel Mid Multishot
+    100238: Barrel Mid Nailgun
+    100240: Barrel Mid Plasma Rifle
+    100242: Barrel Short Longshot
+    100244: Barrel Short Multishot
+    100246: Barrel Short Nailgun
+    100248: Barrel Short Plasma Rifle
+    100250: Canister_R.000
+    100252: Container Compartment
+    100254: Control Nozzle Charge.000
+    100256: Control Nozzle Charge.001
+    100258: Control Nozzle Charge.002
+    100260: Control Nozzle Spray.000
+    100262: Control Nozzle Spray.001
+    100264: Control Nozzle Spray.002
+    100266: Control Nozzle Stream.000
+    100268: Control Nozzle Stream.001
+    100270: Control Nozzle Stream.002
+    100272: Emitter
+    100274: Emitter.001
+    100276: Emitter.002
+    100278: Frame Long
+    100280: Frame Mid
+    100282: Frame Short
+    100284: Mag_InjectorNails
+    100286: Magloader
+    100288: Pressurizer
+    100290: Pressurizer.001
+    100292: Pressurizer.002
+    100294: Mag_12_Saiga
+    100296: Mag_6_Saiga
+    100298: MultiMag
+    100300: Barrel Assembly Standard
+    100302: Barrel Short Multical
+    100304: Barrel Standard Caseless
+    100306: Base
+    100308: Battery.004
+    100310: Battery.005
+    100312: Blast Coil 123.002
+    100314: Blast Coil Cannon.002
+    100316: Blast Coil Plasma
+    100318: Blast Coil Standard
+    100320: Caladjuster
+    100322: Canister
+    100324: Compartment Energy
+    100326: Compartment Physical
+    100328: Compartment Pressure
+    100330: Control Nozzle Charge
+    100332: Control Nozzle Spray
+    100334: Control Nozzle Stream
+    100336: Integral
+    100338: Integral.001
+    100340: Integral.004
+    100342: Loader_MultiAmmo
+    100344: Loader_SingleAmmo
+    100346: Longshot Rail
+    100348: Mag_Helical_Caseless
+    100350: Mag_Large_Multi
+    100352: Mag_Small_Multi
+    100354: Magloader.001
+    100356: Pressure Chamber Standard
+    100358: Pressurizer.004
+    100360: PressurizerTube
+    100362: Sight Short
+    100364: Sight Short.001
+    100366: Sight Short.002
+    100368: Sightrail
+    100370: Trigger.001
+    100372: Nailgun Pressurizer
+    100374: Fore Barrel Assembly Standard
+    100376: Fore Blast Coil Standard
+    100378: Fore Pressure Chamber Standard
+    100380: Compartment Energy.001
+    100382: Compartment Physical.001
+    100384: Compartment Pressure.001
+    100386: Barrel Long Caseless
+    100388: Barrel Long Multical
+    100390: Barrel Standard Multical
+    100392: BarrelLongshot Rail
+    100394: BarrelLongshot Rail.001
+    100396: Blast Coil 123 Long
+    100398: Blast Coil 123 Standard
+    100400: Blast Coil Cannon Long
+    100402: Blast Coil Cannon Standard
+    100404: Blast Coil Plasma Standard
+    100406: Blast Coil Plasma Standard.001
+    100408: Caladjuster.001
+    100410: Fore Barrel Assembly Long
+    100412: Fore Blast Coil Long
+    100414: Fore Pressure Chamber Long
+    100416: Integral.002
+    100418: Integral.003
+    100420: Integral.005
+    100422: Integral.006
+    100424: Pressurizer Liquid Long
+    100426: Pressurizer Liquid Standard
+    100428: Pressurizer Nailgun Standard
+    100430: Pressurizer Nailgun Standard.001
+    100432: PressurizerTube.001
+    100434: Sight Short.003
+    100436: Sight Short.004
+    100438: Sight Short.005
+    100440: Barrel Longshot Rail
+    100442: Barrel Longshot Rail Extended
+    100444: Pressurizer Nailgun Long
+    100446: Blast Coil Plasma Long
+    100448: Barrel Standard
+    100450: Base AUG
+    100452: Base Multishot
+    100454: ChargingHandle
+    100456: Control Nozzle
+    100458: Control Nozzle.001
+    100460: ForeGrip
+    100462: Furniture Classic
+    100464: Furniture Modern
+    100466: Mag_20_AUGStanag
+    100468: Mag_30_AUG
+    100470: Mag_30_AUGStanag
+    100472: Mag_42_AUG
+    100474: Rails Basic
+    100476: Sight Classic
+    100478: Sight_Front_Hinge
+    100480: Sight_Rear_Hinge
+    100482: Sight_Traditonal
+    100484: Bolt
+    400000: 25 Mag
+    400002: 36 Mag
+    400004: AR20 Multishot
+    400006: ARSightGun
+    400008: BottomRail
+    400010: Camera
+    400012: Camera.001
+    400014: EjectionPort
+    400016: Lamp
+    400018: Lamp.001
+    400020: //RootNode
+    400022: RailScrews
+    400024: SideRail_L
+    400026: SideRail_R
+    400028: Sights_Front_Folding_Iron_Sight_Circle.003
+    400030: Sights_Front_Folding_Iron_Sight_Sights_Circle.002
+    400032: TopRail
+    400034: TopRail.001
+    400036: TopRail_MeshPart0
+    400038: TopRail_MeshPart1
+    400040: Trigger
+    400042: Trigger Guard
+    400044: Camera.002
+    400046: Lamp.002
+    400048: Sights_Front_Folding_Iron_Sight_Circle.000
+    400050: Sights_Front_Folding_Iron_Sight_Sights_Circle.000
+    400052: Standard Stock
+    400054: Battery.001
+    400056: Body
+    400058: Caliber Adjuster
+    400060: Dust Cover
+    400062: Foregrip
+    400064: Grip
+    400066: Mag_15
+    400068: Mag_30
+    400070: Mag_45
+    400072: Rail_Bottom
+    400074: Rail_Cover_Extra_Long
+    400076: Rail_Cover_Side_L
+    400078: Rail_Cover_Side_R
+    400080: Rail_Side
+    400082: Rail_Top
+    400084: Rail_Top_MeshPart0
+    400086: Rail_Top_MeshPart1
+    400088: Rear Mag Release
+    400090: Rear_Sight_Down
+    400092: Rear_Sight_Up
+    400094: Sight_Rear
+    400096: Sights_Front
+    400098: Sights_Front_Down
+    400100: Sights_Front_Up
+    400102: Mag_20
+    400104: Mag_40
+    400106: Battery
+    400108: MultiMagLarge
+    400110: MultiMagSmall
+    400112: BatteryCompartment
+    400114: Rail_Cover_Top
+    400116: GlockMag Adapter
+    400118: Mag_10
+    400120: Mag_15.002
+    400122: Mag_30.001
+    400124: Mag_30.002
+    400126: Mag_50_Drum
+    400128: Mag_75 Drum
+    400130: Barrel Long
+    400132: Barrel Mid
+    400134: Barrel Short
+    400136: Body Classic
+    400138: Body Futuristic
+    400140: Caliber Adjuster.001
+    400142: Dust Cover.001
+    400144: Frame Future Long
+    400146: Frame Future Mid
+    400148: Frame Future Short
+    400150: Frame Wood Long
+    400152: Frame Wood Mid
+    400154: Frame Wood Short
+    400156: Loading Chamber
+    400158: Mag Release
+    400160: Rail Bottom
+    400162: Rail Bottom.001
+    400164: Rail Bottom.002
+    400166: Rail_Top_Long
+    400168: Rail_Top_Long_MeshPart0
+    400170: Rail_Top_Long_MeshPart1
+    400172: Rail_Top_Mid
+    400174: Rail_Top_Short
+    400176: Sights_Front.001
+    400178: Sights_Front.002
+    400180: Sights_Front_Up.001
+    400182: Sights_Front_Up.002
+    400184: Multimag
+    400186: Mag_25 Drum
+    400188: Mag_5
+    400190: Mag_15_g43
+    400192: Mag_30_AK
+    400194: Mag_33
+    400196: Body Classic.001
+    400198: Rail System_Long
+    400200: Rail System_Long_MeshPart0
+    400202: Rail System_Long_MeshPart1
+    400204: Rail System_Long_MeshPart2
+    400206: Rail_System_Mid
+    400208: Rail_System_Mid_MeshPart0
+    400210: Rail_System_Mid_MeshPart1
+    400212: Rail_System_Short
+    400214: Mag_60
+    400216: Mag_15_Shotgun
+    400218: Mag_6
+    400220: Mag_15_Rifle
+    400222: Mag_24
+    400224: Mag_12
+    400226: Barrel Long Longshot
+    400228: Barrel Long Multishot
+    400230: Barrel Long Nailgun
+    400232: Barrel Long Plasma Rifle
+    400234: Barrel Mid Longshot
+    400236: Barrel Mid Multishot
+    400238: Barrel Mid Nailgun
+    400240: Barrel Mid Plasma Rifle
+    400242: Barrel Short Longshot
+    400244: Barrel Short Multishot
+    400246: Barrel Short Nailgun
+    400248: Barrel Short Plasma Rifle
+    400250: Canister_R.000
+    400252: Container Compartment
+    400254: Control Nozzle Charge.000
+    400256: Control Nozzle Charge.001
+    400258: Control Nozzle Charge.002
+    400260: Control Nozzle Spray.000
+    400262: Control Nozzle Spray.001
+    400264: Control Nozzle Spray.002
+    400266: Control Nozzle Stream.000
+    400268: Control Nozzle Stream.001
+    400270: Control Nozzle Stream.002
+    400272: Emitter
+    400274: Emitter.001
+    400276: Emitter.002
+    400278: Frame Long
+    400280: Frame Mid
+    400282: Frame Short
+    400284: Mag_InjectorNails
+    400286: Magloader
+    400288: Pressurizer
+    400290: Pressurizer.001
+    400292: Pressurizer.002
+    400294: Mag_12_Saiga
+    400296: Mag_6_Saiga
+    400298: MultiMag
+    400300: Barrel Assembly Standard
+    400302: Barrel Short Multical
+    400304: Barrel Standard Caseless
+    400306: Base
+    400308: Battery.004
+    400310: Battery.005
+    400312: Blast Coil 123.002
+    400314: Blast Coil Cannon.002
+    400316: Blast Coil Plasma
+    400318: Blast Coil Standard
+    400320: Caladjuster
+    400322: Canister
+    400324: Compartment Energy
+    400326: Compartment Physical
+    400328: Compartment Pressure
+    400330: Control Nozzle Charge
+    400332: Control Nozzle Spray
+    400334: Control Nozzle Stream
+    400336: Integral
+    400338: Integral.001
+    400340: Integral.004
+    400342: Loader_MultiAmmo
+    400344: Loader_SingleAmmo
+    400346: Longshot Rail
+    400348: Mag_Helical_Caseless
+    400350: Mag_Large_Multi
+    400352: Mag_Small_Multi
+    400354: Magloader.001
+    400356: Pressure Chamber Standard
+    400358: Pressurizer.004
+    400360: PressurizerTube
+    400362: Sight Short
+    400364: Sight Short.001
+    400366: Sight Short.002
+    400368: Sightrail
+    400370: Trigger.001
+    400372: Nailgun Pressurizer
+    400374: Fore Barrel Assembly Standard
+    400376: Fore Blast Coil Standard
+    400378: Fore Pressure Chamber Standard
+    400380: Compartment Energy.001
+    400382: Compartment Physical.001
+    400384: Compartment Pressure.001
+    400386: Barrel Long Caseless
+    400388: Barrel Long Multical
+    400390: Barrel Standard Multical
+    400392: BarrelLongshot Rail
+    400394: BarrelLongshot Rail.001
+    400396: Blast Coil 123 Long
+    400398: Blast Coil 123 Standard
+    400400: Blast Coil Cannon Long
+    400402: Blast Coil Cannon Standard
+    400404: Blast Coil Plasma Standard
+    400406: Blast Coil Plasma Standard.001
+    400408: Caladjuster.001
+    400410: Fore Barrel Assembly Long
+    400412: Fore Blast Coil Long
+    400414: Fore Pressure Chamber Long
+    400416: Integral.002
+    400418: Integral.003
+    400420: Integral.005
+    400422: Integral.006
+    400424: Pressurizer Liquid Long
+    400426: Pressurizer Liquid Standard
+    400428: Pressurizer Nailgun Standard
+    400430: Pressurizer Nailgun Standard.001
+    400432: PressurizerTube.001
+    400434: Sight Short.003
+    400436: Sight Short.004
+    400438: Sight Short.005
+    400440: Barrel Longshot Rail
+    400442: Barrel Longshot Rail Extended
+    400444: Pressurizer Nailgun Long
+    400446: Blast Coil Plasma Long
+    400448: Barrel Standard
+    400450: Base AUG
+    400452: Base Multishot
+    400454: ChargingHandle
+    400456: Control Nozzle
+    400458: Control Nozzle.001
+    400460: ForeGrip
+    400462: Furniture Classic
+    400464: Furniture Modern
+    400466: Mag_20_AUGStanag
+    400468: Mag_30_AUG
+    400470: Mag_30_AUGStanag
+    400472: Mag_42_AUG
+    400474: Rails Basic
+    400476: Sight Classic
+    400478: Sight_Front_Hinge
+    400480: Sight_Rear_Hinge
+    400482: Sight_Traditonal
+    400484: Bolt
+    2300000: 25 Mag
+    2300002: 36 Mag
+    2300004: AR20 Multishot
+    2300006: ARSightGun
+    2300008: BottomRail
+    2300010: EjectionPort
+    2300012: RailScrews
+    2300014: SideRail_L
+    2300016: SideRail_R
+    2300018: Sights_Front_Folding_Iron_Sight_Circle.003
+    2300020: Sights_Front_Folding_Iron_Sight_Sights_Circle.002
+    2300022: TopRail.001
+    2300024: TopRail_MeshPart0
+    2300026: TopRail_MeshPart1
+    2300028: Trigger
+    2300030: Trigger Guard
+    2300032: Sights_Front_Folding_Iron_Sight_Circle.000
+    2300034: Sights_Front_Folding_Iron_Sight_Sights_Circle.000
+    2300036: Standard Stock
+    2300038: Battery.001
+    2300040: Body
+    2300042: Caliber Adjuster
+    2300044: Dust Cover
+    2300046: Foregrip
+    2300048: Grip
+    2300050: Mag_15
+    2300052: Mag_30
+    2300054: Mag_45
+    2300056: Rail_Bottom
+    2300058: Rail_Cover_Extra_Long
+    2300060: Rail_Cover_Side_L
+    2300062: Rail_Cover_Side_R
+    2300064: Rail_Side
+    2300066: Rail_Top_MeshPart0
+    2300068: Rail_Top_MeshPart1
+    2300070: Rear Mag Release
+    2300072: Rear_Sight_Down
+    2300074: Rear_Sight_Up
+    2300076: Sight_Rear
+    2300078: Sights_Front
+    2300080: Sights_Front_Down
+    2300082: Sights_Front_Up
+    2300084: Mag_20
+    2300086: Mag_40
+    2300088: Battery
+    2300090: MultiMagLarge
+    2300092: MultiMagSmall
+    2300094: BatteryCompartment
+    2300096: Rail_Cover_Top
+    2300098: GlockMag Adapter
+    2300100: Mag_10
+    2300102: Mag_15.002
+    2300104: Mag_30.001
+    2300106: Mag_30.002
+    2300108: Mag_50_Drum
+    2300110: Mag_75 Drum
+    2300112: //RootNode
+    2300114: Barrel Long
+    2300116: Barrel Mid
+    2300118: Barrel Short
+    2300120: Body Classic
+    2300122: Body Futuristic
+    2300124: Caliber Adjuster.001
+    2300126: Dust Cover.001
+    2300128: Frame Future Long
+    2300130: Frame Future Mid
+    2300132: Frame Future Short
+    2300134: Frame Wood Long
+    2300136: Frame Wood Mid
+    2300138: Frame Wood Short
+    2300140: Loading Chamber
+    2300142: Mag Release
+    2300144: Rail Bottom
+    2300146: Rail Bottom.001
+    2300148: Rail Bottom.002
+    2300150: Rail_Top_Long_MeshPart0
+    2300152: Rail_Top_Long_MeshPart1
+    2300154: Rail_Top_Mid
+    2300156: Rail_Top_Short
+    2300158: Sights_Front.001
+    2300160: Sights_Front.002
+    2300162: Sights_Front_Up.001
+    2300164: Sights_Front_Up.002
+    2300166: Multimag
+    2300168: Mag_25 Drum
+    2300170: Mag_5
+    2300172: Mag_15_g43
+    2300174: Mag_30_AK
+    2300176: Mag_33
+    2300178: Body Classic.001
+    2300180: Rail System_Long_MeshPart0
+    2300182: Rail System_Long_MeshPart1
+    2300184: Rail System_Long_MeshPart2
+    2300186: Rail_System_Mid_MeshPart0
+    2300188: Rail_System_Mid_MeshPart1
+    2300190: Rail_System_Short
+    2300192: Mag_60
+    2300194: Mag_15_Shotgun
+    2300196: Mag_6
+    2300198: Mag_15_Rifle
+    2300200: Mag_24
+    2300202: Mag_12
+    2300204: Barrel Long Longshot
+    2300206: Barrel Long Multishot
+    2300208: Barrel Long Nailgun
+    2300210: Barrel Long Plasma Rifle
+    2300212: Barrel Mid Longshot
+    2300214: Barrel Mid Multishot
+    2300216: Barrel Mid Nailgun
+    2300218: Barrel Mid Plasma Rifle
+    2300220: Barrel Short Longshot
+    2300222: Barrel Short Multishot
+    2300224: Barrel Short Nailgun
+    2300226: Barrel Short Plasma Rifle
+    2300228: Canister_R.000
+    2300230: Container Compartment
+    2300232: Control Nozzle Charge.000
+    2300234: Control Nozzle Charge.001
+    2300236: Control Nozzle Charge.002
+    2300238: Control Nozzle Spray.000
+    2300240: Control Nozzle Spray.001
+    2300242: Control Nozzle Spray.002
+    2300244: Control Nozzle Stream.000
+    2300246: Control Nozzle Stream.001
+    2300248: Control Nozzle Stream.002
+    2300250: Emitter
+    2300252: Emitter.001
+    2300254: Emitter.002
+    2300256: Frame Long
+    2300258: Frame Mid
+    2300260: Frame Short
+    2300262: Mag_InjectorNails
+    2300264: Magloader
+    2300266: Pressurizer
+    2300268: Pressurizer.001
+    2300270: Pressurizer.002
+    2300272: Mag_12_Saiga
+    2300274: Mag_6_Saiga
+    2300276: MultiMag
+    2300278: Barrel Assembly Standard
+    2300280: Barrel Short Multical
+    2300282: Barrel Standard Caseless
+    2300284: Base
+    2300286: Battery.004
+    2300288: Battery.005
+    2300290: Blast Coil 123.002
+    2300292: Blast Coil Cannon.002
+    2300294: Blast Coil Plasma
+    2300296: Blast Coil Standard
+    2300298: Caladjuster
+    2300300: Canister
+    2300302: Compartment Energy
+    2300304: Compartment Physical
+    2300306: Compartment Pressure
+    2300308: Control Nozzle Charge
+    2300310: Control Nozzle Spray
+    2300312: Control Nozzle Stream
+    2300314: Integral
+    2300316: Integral.001
+    2300318: Integral.004
+    2300320: Loader_MultiAmmo
+    2300322: Loader_SingleAmmo
+    2300324: Longshot Rail
+    2300326: Mag_Helical_Caseless
+    2300328: Mag_Large_Multi
+    2300330: Mag_Small_Multi
+    2300332: Magloader.001
+    2300334: Pressure Chamber Standard
+    2300336: Pressurizer.004
+    2300338: PressurizerTube
+    2300340: Sight Short
+    2300342: Sight Short.001
+    2300344: Sight Short.002
+    2300346: Sightrail
+    2300348: Trigger.001
+    2300350: Nailgun Pressurizer
+    2300352: Fore Barrel Assembly Standard
+    2300354: Fore Blast Coil Standard
+    2300356: Fore Pressure Chamber Standard
+    2300358: Compartment Energy.001
+    2300360: Compartment Physical.001
+    2300362: Compartment Pressure.001
+    2300364: Barrel Long Caseless
+    2300366: Barrel Long Multical
+    2300368: Barrel Standard Multical
+    2300370: BarrelLongshot Rail
+    2300372: BarrelLongshot Rail.001
+    2300374: Blast Coil 123 Long
+    2300376: Blast Coil 123 Standard
+    2300378: Blast Coil Cannon Long
+    2300380: Blast Coil Cannon Standard
+    2300382: Blast Coil Plasma Standard
+    2300384: Blast Coil Plasma Standard.001
+    2300386: Caladjuster.001
+    2300388: Fore Barrel Assembly Long
+    2300390: Fore Blast Coil Long
+    2300392: Fore Pressure Chamber Long
+    2300394: Integral.002
+    2300396: Integral.003
+    2300398: Integral.005
+    2300400: Integral.006
+    2300402: Pressurizer Liquid Long
+    2300404: Pressurizer Liquid Standard
+    2300406: Pressurizer Nailgun Standard
+    2300408: Pressurizer Nailgun Standard.001
+    2300410: PressurizerTube.001
+    2300412: Sight Short.003
+    2300414: Sight Short.004
+    2300416: Sight Short.005
+    2300418: Barrel Longshot Rail
+    2300420: Barrel Longshot Rail Extended
+    2300422: Pressurizer Nailgun Long
+    2300424: Blast Coil Plasma Long
+    2300426: Barrel Standard
+    2300428: ChargingHandle
+    2300430: Control Nozzle
+    2300432: Control Nozzle.001
+    2300434: ForeGrip
+    2300436: Furniture Classic
+    2300438: Furniture Modern
+    2300440: Mag_20_AUGStanag
+    2300442: Mag_30_AUG
+    2300444: Mag_30_AUGStanag
+    2300446: Mag_42_AUG
+    2300448: Rails Basic
+    2300450: Sight Classic
+    2300452: Sight_Front_Hinge
+    2300454: Sight_Rear_Hinge
+    2300456: Sight_Traditonal
+    2300458: Bolt
+    3300000: 25 Mag
+    3300002: 36 Mag
+    3300004: AR20 Multishot
+    3300006: ARSightGun
+    3300008: BottomRail
+    3300010: EjectionPort
+    3300012: RailScrews
+    3300014: SideRail_L
+    3300016: SideRail_R
+    3300018: Sights_Front_Folding_Iron_Sight_Circle.003
+    3300020: Sights_Front_Folding_Iron_Sight_Sights_Circle.002
+    3300022: TopRail.001
+    3300024: TopRail_MeshPart0
+    3300026: TopRail_MeshPart1
+    3300028: Trigger
+    3300030: Trigger Guard
+    3300032: Sights_Front_Folding_Iron_Sight_Circle.000
+    3300034: Sights_Front_Folding_Iron_Sight_Sights_Circle.000
+    3300036: Standard Stock
+    3300038: Battery.001
+    3300040: Body
+    3300042: Caliber Adjuster
+    3300044: Dust Cover
+    3300046: Foregrip
+    3300048: Grip
+    3300050: Mag_15
+    3300052: Mag_30
+    3300054: Mag_45
+    3300056: Rail_Bottom
+    3300058: Rail_Cover_Extra_Long
+    3300060: Rail_Cover_Side_L
+    3300062: Rail_Cover_Side_R
+    3300064: Rail_Side
+    3300066: Rail_Top_MeshPart0
+    3300068: Rail_Top_MeshPart1
+    3300070: Rear Mag Release
+    3300072: Rear_Sight_Down
+    3300074: Rear_Sight_Up
+    3300076: Sight_Rear
+    3300078: Sights_Front
+    3300080: Sights_Front_Down
+    3300082: Sights_Front_Up
+    3300084: Mag_20
+    3300086: Mag_40
+    3300088: Battery
+    3300090: MultiMagLarge
+    3300092: MultiMagSmall
+    3300094: BatteryCompartment
+    3300096: Rail_Cover_Top
+    3300098: GlockMag Adapter
+    3300100: Mag_10
+    3300102: Mag_15.002
+    3300104: Mag_30.001
+    3300106: Mag_30.002
+    3300108: Mag_50_Drum
+    3300110: Mag_75 Drum
+    3300112: //RootNode
+    3300114: Barrel Long
+    3300116: Barrel Mid
+    3300118: Barrel Short
+    3300120: Body Classic
+    3300122: Body Futuristic
+    3300124: Caliber Adjuster.001
+    3300126: Dust Cover.001
+    3300128: Frame Future Long
+    3300130: Frame Future Mid
+    3300132: Frame Future Short
+    3300134: Frame Wood Long
+    3300136: Frame Wood Mid
+    3300138: Frame Wood Short
+    3300140: Loading Chamber
+    3300142: Mag Release
+    3300144: Rail Bottom
+    3300146: Rail Bottom.001
+    3300148: Rail Bottom.002
+    3300150: Rail_Top_Long_MeshPart0
+    3300152: Rail_Top_Long_MeshPart1
+    3300154: Rail_Top_Mid
+    3300156: Rail_Top_Short
+    3300158: Sights_Front.001
+    3300160: Sights_Front.002
+    3300162: Sights_Front_Up.001
+    3300164: Sights_Front_Up.002
+    3300166: Multimag
+    3300168: Mag_25 Drum
+    3300170: Mag_5
+    3300172: Mag_15_g43
+    3300174: Mag_30_AK
+    3300176: Mag_33
+    3300178: Body Classic.001
+    3300180: Rail System_Long_MeshPart0
+    3300182: Rail System_Long_MeshPart1
+    3300184: Rail System_Long_MeshPart2
+    3300186: Rail_System_Mid_MeshPart0
+    3300188: Rail_System_Mid_MeshPart1
+    3300190: Rail_System_Short
+    3300192: Mag_60
+    3300194: Mag_15_Shotgun
+    3300196: Mag_6
+    3300198: Mag_15_Rifle
+    3300200: Mag_24
+    3300202: Mag_12
+    3300204: Barrel Long Longshot
+    3300206: Barrel Long Multishot
+    3300208: Barrel Long Nailgun
+    3300210: Barrel Long Plasma Rifle
+    3300212: Barrel Mid Longshot
+    3300214: Barrel Mid Multishot
+    3300216: Barrel Mid Nailgun
+    3300218: Barrel Mid Plasma Rifle
+    3300220: Barrel Short Longshot
+    3300222: Barrel Short Multishot
+    3300224: Barrel Short Nailgun
+    3300226: Barrel Short Plasma Rifle
+    3300228: Canister_R.000
+    3300230: Container Compartment
+    3300232: Control Nozzle Charge.000
+    3300234: Control Nozzle Charge.001
+    3300236: Control Nozzle Charge.002
+    3300238: Control Nozzle Spray.000
+    3300240: Control Nozzle Spray.001
+    3300242: Control Nozzle Spray.002
+    3300244: Control Nozzle Stream.000
+    3300246: Control Nozzle Stream.001
+    3300248: Control Nozzle Stream.002
+    3300250: Emitter
+    3300252: Emitter.001
+    3300254: Emitter.002
+    3300256: Frame Long
+    3300258: Frame Mid
+    3300260: Frame Short
+    3300262: Mag_InjectorNails
+    3300264: Magloader
+    3300266: Pressurizer
+    3300268: Pressurizer.001
+    3300270: Pressurizer.002
+    3300272: Mag_12_Saiga
+    3300274: Mag_6_Saiga
+    3300276: MultiMag
+    3300278: Barrel Assembly Standard
+    3300280: Barrel Short Multical
+    3300282: Barrel Standard Caseless
+    3300284: Base
+    3300286: Battery.004
+    3300288: Battery.005
+    3300290: Blast Coil 123.002
+    3300292: Blast Coil Cannon.002
+    3300294: Blast Coil Plasma
+    3300296: Blast Coil Standard
+    3300298: Caladjuster
+    3300300: Canister
+    3300302: Compartment Energy
+    3300304: Compartment Physical
+    3300306: Compartment Pressure
+    3300308: Control Nozzle Charge
+    3300310: Control Nozzle Spray
+    3300312: Control Nozzle Stream
+    3300314: Integral
+    3300316: Integral.001
+    3300318: Integral.004
+    3300320: Loader_MultiAmmo
+    3300322: Loader_SingleAmmo
+    3300324: Longshot Rail
+    3300326: Mag_Helical_Caseless
+    3300328: Mag_Large_Multi
+    3300330: Mag_Small_Multi
+    3300332: Magloader.001
+    3300334: Pressure Chamber Standard
+    3300336: Pressurizer.004
+    3300338: PressurizerTube
+    3300340: Sight Short
+    3300342: Sight Short.001
+    3300344: Sight Short.002
+    3300346: Sightrail
+    3300348: Trigger.001
+    3300350: Nailgun Pressurizer
+    3300352: Fore Barrel Assembly Standard
+    3300354: Fore Blast Coil Standard
+    3300356: Fore Pressure Chamber Standard
+    3300358: Compartment Energy.001
+    3300360: Compartment Physical.001
+    3300362: Compartment Pressure.001
+    3300364: Barrel Long Caseless
+    3300366: Barrel Long Multical
+    3300368: Barrel Standard Multical
+    3300370: BarrelLongshot Rail
+    3300372: BarrelLongshot Rail.001
+    3300374: Blast Coil 123 Long
+    3300376: Blast Coil 123 Standard
+    3300378: Blast Coil Cannon Long
+    3300380: Blast Coil Cannon Standard
+    3300382: Blast Coil Plasma Standard
+    3300384: Blast Coil Plasma Standard.001
+    3300386: Caladjuster.001
+    3300388: Fore Barrel Assembly Long
+    3300390: Fore Blast Coil Long
+    3300392: Fore Pressure Chamber Long
+    3300394: Integral.002
+    3300396: Integral.003
+    3300398: Integral.005
+    3300400: Integral.006
+    3300402: Pressurizer Liquid Long
+    3300404: Pressurizer Liquid Standard
+    3300406: Pressurizer Nailgun Standard
+    3300408: Pressurizer Nailgun Standard.001
+    3300410: PressurizerTube.001
+    3300412: Sight Short.003
+    3300414: Sight Short.004
+    3300416: Sight Short.005
+    3300418: Barrel Longshot Rail
+    3300420: Barrel Longshot Rail Extended
+    3300422: Pressurizer Nailgun Long
+    3300424: Blast Coil Plasma Long
+    3300426: Barrel Standard
+    3300428: ChargingHandle
+    3300430: Control Nozzle
+    3300432: Control Nozzle.001
+    3300434: ForeGrip
+    3300436: Furniture Classic
+    3300438: Furniture Modern
+    3300440: Mag_20_AUGStanag
+    3300442: Mag_30_AUG
+    3300444: Mag_30_AUGStanag
+    3300446: Mag_42_AUG
+    3300448: Rails Basic
+    3300450: Sight Classic
+    3300452: Sight_Front_Hinge
+    3300454: Sight_Rear_Hinge
+    3300456: Sight_Traditonal
+    3300458: Bolt
+    4300000: EjectionPort
+    4300002: Sights_Front_Folding_Iron_Sight_Circle.003
+    4300004: Sights_Front_Folding_Iron_Sight_Sights_Circle.002
+    4300006: ARSightGun
+    4300008: TopRail.001
+    4300010: RailScrews
+    4300012: SideRail_R
+    4300014: SideRail_L
+    4300016: BottomRail
+    4300018: TopRail_MeshPart0
+    4300020: TopRail_MeshPart1
+    4300022: AR20 Multishot
+    4300024: 25 Mag
+    4300026: Trigger Guard
+    4300028: Trigger
+    4300030: 36 Mag
+    4300032: Standard Stock
+    4300034: Sights_Front_Folding_Iron_Sight_Sights_Circle.000
+    4300036: Sights_Front_Folding_Iron_Sight_Circle.000
+    4300038: Body
+    4300040: Rail_Cover_Side_L
+    4300042: Rail_Cover_Side_R
+    4300044: Rail_Cover_Extra_Long
+    4300046: Rail_Bottom
+    4300048: Rail_Top_MeshPart0
+    4300050: Rail_Top_MeshPart1
+    4300052: Sight_Rear
+    4300054: Rear_Sight_Down
+    4300056: Rear_Sight_Up
+    4300058: Sights_Front
+    4300060: Sights_Front_Down
+    4300062: Sights_Front_Up
+    4300064: Rail_Side
+    4300066: Dust Cover
+    4300068: Grip
+    4300070: Foregrip
+    4300072: Caliber Adjuster
+    4300074: Rear Mag Release
+    4300076: Mag_45
+    4300078: Mag_30
+    4300080: Mag_15
+    4300082: Battery.001
+    4300084: Mag_40
+    4300086: Mag_20
+    4300088: Battery
+    4300090: MultiMagLarge
+    4300092: MultiMagSmall
+    4300094: Rail_Cover_Top
+    4300096: BatteryCompartment
+    4300098: GlockMag Adapter
+    4300100: Mag_15.002
+    4300102: Mag_30.002
+    4300104: Mag_50_Drum
+    4300106: Mag_75 Drum
+    4300108: Mag_30.001
+    4300110: Mag_10
+    4300112: Barrel Short
+    4300114: Frame Future Short
+    4300116: Frame Wood Short
+    4300118: Rail Bottom.002
+    4300120: Rail_Top_Short
+    4300122: Sights_Front.002
+    4300124: Sights_Front_Up.002
+    4300126: Barrel Mid
+    4300128: Frame Wood Mid
+    4300130: Rail Bottom.001
+    4300132: Frame Future Mid
+    4300134: Rail_Top_Mid
+    4300136: Sights_Front.001
+    4300138: Sights_Front_Up.001
+    4300140: Body Classic
+    4300142: Dust Cover.001
+    4300144: Caliber Adjuster.001
+    4300146: Loading Chamber
+    4300148: Mag Release
+    4300150: Barrel Long
+    4300152: Frame Wood Long
+    4300154: Rail Bottom
+    4300156: Frame Future Long
+    4300158: Rail_Top_Long_MeshPart0
+    4300160: Rail_Top_Long_MeshPart1
+    4300162: Body Futuristic
+    4300164: Multimag
+    4300166: Mag_5
+    4300168: Mag_25 Drum
+    4300170: Mag_33
+    4300172: Mag_30_AK
+    4300174: Mag_15_g43
+    4300176: Body Classic.001
+    4300178: Rail_System_Short
+    4300180: Rail_System_Mid_MeshPart0
+    4300182: Rail_System_Mid_MeshPart1
+    4300184: Rail System_Long_MeshPart0
+    4300186: Rail System_Long_MeshPart1
+    4300188: Rail System_Long_MeshPart2
+    4300190: Mag_60
+    4300192: Mag_6
+    4300194: Mag_15_Shotgun
+    4300196: Mag_15_Rifle
+    4300198: Mag_24
+    4300200: Mag_12
+    4300202: Frame Short
+    4300204: Barrel Short Longshot
+    4300206: Emitter
+    4300208: Barrel Short Plasma Rifle
+    4300210: Control Nozzle Charge.001
+    4300212: Control Nozzle Spray.000
+    4300214: Control Nozzle Stream.002
+    4300216: Barrel Short Nailgun
+    4300218: Pressurizer
+    4300220: Barrel Short Multishot
+    4300222: Frame Mid
+    4300224: Barrel Mid Plasma Rifle
+    4300226: Control Nozzle Stream.000
+    4300228: Control Nozzle Spray.001
+    4300230: Control Nozzle Charge.000
+    4300232: Barrel Mid Longshot
+    4300234: Barrel Mid Nailgun
+    4300236: Pressurizer.001
+    4300238: Barrel Mid Multishot
+    4300240: Emitter.001
+    4300242: Container Compartment
+    4300244: Canister_R.000
+    4300246: Magloader
+    4300248: Mag_InjectorNails
+    4300250: Frame Long
+    4300252: Barrel Long Longshot
+    4300254: Barrel Long Plasma Rifle
+    4300256: Control Nozzle Charge.002
+    4300258: Control Nozzle Spray.002
+    4300260: Control Nozzle Stream.001
+    4300262: Barrel Long Nailgun
+    4300264: Pressurizer.002
+    4300266: Emitter.002
+    4300268: Barrel Long Multishot
+    4300270: Mag_6_Saiga
+    4300272: Mag_12_Saiga
+    4300274: MultiMag
+    4300276: Barrel Assembly Standard
+    4300278: Barrel Short Multical
+    4300280: Caladjuster
+    4300282: Integral.001
+    4300284: Sight Short.002
+    4300286: Barrel Standard Caseless
+    4300288: Base
+    4300290: Trigger.001
+    4300292: Sightrail
+    4300294: Loader_SingleAmmo
+    4300296: Compartment Physical
+    4300298: Mag_Helical_Caseless
+    4300300: Compartment Energy
+    4300302: Battery.004
+    4300304: Battery.005
+    4300306: Compartment Pressure
+    4300308: Canister
+    4300310: Blast Coil Standard
+    4300312: Integral.004
+    4300314: Sight Short
+    4300316: Blast Coil Cannon.002
+    4300318: Blast Coil 123.002
+    4300320: Blast Coil Plasma
+    4300322: Pressurizer.004
+    4300324: Pressure Chamber Standard
+    4300326: Integral
+    4300328: Sight Short.001
+    4300330: Control Nozzle Stream
+    4300332: Control Nozzle Charge
+    4300334: Control Nozzle Spray
+    4300336: PressurizerTube
+    4300338: Longshot Rail
+    4300340: Loader_MultiAmmo
+    4300342: Magloader.001
+    4300344: Mag_Large_Multi
+    4300346: Mag_Small_Multi
+    4300348: Nailgun Pressurizer
+    4300350: Fore Barrel Assembly Standard
+    4300352: Fore Blast Coil Standard
+    4300354: Fore Pressure Chamber Standard
+    4300356: Compartment Physical.001
+    4300358: Compartment Energy.001
+    4300360: Compartment Pressure.001
+    4300362: Fore Pressure Chamber Long
+    4300364: Integral.006
+    4300366: PressurizerTube.001
+    4300368: Sight Short.005
+    4300370: Pressurizer Liquid Long
+    4300372: Fore Blast Coil Long
+    4300374: Integral.005
+    4300376: Sight Short.004
+    4300378: Blast Coil Cannon Long
+    4300380: Blast Coil 123 Long
+    4300382: Fore Barrel Assembly Long
+    4300384: Integral.003
+    4300386: Integral.002
+    4300388: Sight Short.003
+    4300390: Barrel Long Caseless
+    4300392: Barrel Long Multical
+    4300394: Caladjuster.001
+    4300396: BarrelLongshot Rail.001
+    4300398: Barrel Standard Multical
+    4300400: BarrelLongshot Rail
+    4300402: Blast Coil Plasma Standard.001
+    4300404: Blast Coil Cannon Standard
+    4300406: Blast Coil 123 Standard
+    4300408: Blast Coil Plasma Standard
+    4300410: Pressurizer Nailgun Standard.001
+    4300412: Pressurizer Liquid Standard
+    4300414: Pressurizer Nailgun Standard
+    4300416: Barrel Longshot Rail Extended
+    4300418: Barrel Longshot Rail
+    4300420: Pressurizer Nailgun Long
+    4300422: Blast Coil Plasma Long
+    4300424: Mag_30_AUG
+    4300426: Furniture Classic
+    4300428: ForeGrip
+    4300430: Rails Basic
+    4300432: Sight Classic
+    4300434: Furniture Modern
+    4300436: Sight_Traditonal
+    4300438: Sight_Front_Hinge
+    4300440: Sight_Rear_Hinge
+    4300442: Barrel Standard
+    4300444: Mag_42_AUG
+    4300446: ChargingHandle
+    4300448: Mag_30_AUGStanag
+    4300450: Mag_20_AUGStanag
+    4300452: Control Nozzle.001
+    4300454: Control Nozzle
+    4300456: Bolt
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02___Default
+    second: {fileID: 2100000, guid: 0cb9a31bff636884784f036f5827d817, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07___Default
+    second: {fileID: 2100000, guid: 16e426b8c3791c94cae54fb712e3d4bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory
+    second: {fileID: 2100000, guid: 22d01c957fd38d14cba03ba00f4583f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory2
+    second: {fileID: 2100000, guid: fdc9e1dcb35e4624884900a3148cb99b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BaseTex
+    second: {fileID: 2100000, guid: cce04b55a32c1d1468a36e1d65987746, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 833ea50b0907d8443a36ba5f2b879c11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Conductor
+    second: {fileID: 2100000, guid: 3df8a201d5a41b2489ebe33cd91a1975, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: ec1d8361e5c1d094a97eca1dbe0d848b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 491fdae450e582f4cbaa2f8e1ac877ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 3cf6530918b656249b4d6511950fe3ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lens
+    second: {fileID: 2100000, guid: fe29598a829040641aea992444c72202, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine
+    second: {fileID: 2100000, guid: 4edbe04a577f1644d8ea6901cf156b12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine.001
+    second: {fileID: 2100000, guid: 092f5d33186b4a143b19351065b1e378, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.000
+    second: {fileID: 2100000, guid: e2f59f2179117b645a6cd84462bb5e0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: b296def5428f0d94a86376dc6cffcde9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pistol_DoubleTubes.000
+    second: {fileID: 2100000, guid: 059714bb910f8d245911cec5e8a77cee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pistol_TubeGlass.007
+    second: {fileID: 2100000, guid: 6a51de52fb9b19f44bd2a5ed957ba695, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 77422da4b365e244e8ee54bf05a3367a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rail Metal
+    second: {fileID: 2100000, guid: 3214fdce0096d9842946b263d0252954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 87e8d37554c86d04b9240fd85046ce44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_085028177.000
+    second: {fileID: 2100000, guid: c92d11b6a1f8c1b44864596eba4ca18e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_085028177.002
+    second: {fileID: 2100000, guid: 8a4112a97b780bc4ebf14a67bf9cfb30, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

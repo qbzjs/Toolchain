@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: 21b48fd610e51784295bb55d6882f06d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bowstring
+    100002: //RootNode
+    100004: Rails
+    100006: Recurve
+    100008: Arrow Basic
+    100010: Arrow Canister
+    100012: Arrow Hemorrhaging
+    100014: Arrow Piercing
+    100016: BaseArrow_BaseArrow
+    100018: Bow Mongolian
+    100020: BowLoop
+    100022: BowLoop.001
+    100024: Bowstring.001
+    100026: BrokenArrow_BrokenArrow
+    100028: Grip
+    100030: LimbHold1_Low
+    100032: LimbHold_Low
+    100034: LowerArm
+    100036: LowerLimb1_Low
+    100038: LowerLimb_Low
+    100040: LowerWheel1_Low
+    100042: LowerWheel_Low
+    100044: pCylinder63
+    100046: pCylinder70
+    100048: Ring1_Low
+    100050: Ring_Low
+    100052: Screw_Low
+    100054: StingRest_Low
+    100056: StringHold_Low
+    100058: Tensioner
+    100060: UpperArm
+    100062: UpperLimb1_Low
+    100064: UpperLimb_Low
+    100066: UpperWheel_Low
+    100068: Bow Recurve
+    400000: Bowstring
+    400002: //RootNode
+    400004: Rails
+    400006: Recurve
+    400008: Arrow Basic
+    400010: Arrow Canister
+    400012: Arrow Hemorrhaging
+    400014: Arrow Piercing
+    400016: BaseArrow_BaseArrow
+    400018: Bow Mongolian
+    400020: BowLoop
+    400022: BowLoop.001
+    400024: Bowstring.001
+    400026: BrokenArrow_BrokenArrow
+    400028: Grip
+    400030: LimbHold1_Low
+    400032: LimbHold_Low
+    400034: LowerArm
+    400036: LowerLimb1_Low
+    400038: LowerLimb_Low
+    400040: LowerWheel1_Low
+    400042: LowerWheel_Low
+    400044: pCylinder63
+    400046: pCylinder70
+    400048: Ring1_Low
+    400050: Ring_Low
+    400052: Screw_Low
+    400054: StingRest_Low
+    400056: StringHold_Low
+    400058: Tensioner
+    400060: UpperArm
+    400062: UpperLimb1_Low
+    400064: UpperLimb_Low
+    400066: UpperWheel_Low
+    400068: Bow Recurve
+    2100000: Metal
+    2100002: Wood
+    2100004: Leather
+    2300000: Bowstring
+    2300002: Rails
+    2300004: Recurve
+    2300006: Arrow Basic
+    2300008: Arrow Canister
+    2300010: Arrow Hemorrhaging
+    2300012: Arrow Piercing
+    2300014: BaseArrow_BaseArrow
+    2300016: Bow Mongolian
+    2300018: BowLoop
+    2300020: BowLoop.001
+    2300022: Bowstring.001
+    2300024: BrokenArrow_BrokenArrow
+    2300026: Grip
+    2300028: LimbHold1_Low
+    2300030: LimbHold_Low
+    2300032: LowerArm
+    2300034: LowerLimb1_Low
+    2300036: LowerLimb_Low
+    2300038: LowerWheel1_Low
+    2300040: LowerWheel_Low
+    2300042: pCylinder63
+    2300044: pCylinder70
+    2300046: Ring1_Low
+    2300048: Ring_Low
+    2300050: Screw_Low
+    2300052: StingRest_Low
+    2300054: StringHold_Low
+    2300056: Tensioner
+    2300058: UpperArm
+    2300060: UpperLimb1_Low
+    2300062: UpperLimb_Low
+    2300064: UpperWheel_Low
+    2300066: Bow Recurve
+    3300000: Bowstring
+    3300002: Rails
+    3300004: Recurve
+    3300006: Arrow Basic
+    3300008: Arrow Canister
+    3300010: Arrow Hemorrhaging
+    3300012: Arrow Piercing
+    3300014: BaseArrow_BaseArrow
+    3300016: Bow Mongolian
+    3300018: BowLoop
+    3300020: BowLoop.001
+    3300022: Bowstring.001
+    3300024: BrokenArrow_BrokenArrow
+    3300026: Grip
+    3300028: LimbHold1_Low
+    3300030: LimbHold_Low
+    3300032: LowerArm
+    3300034: LowerLimb1_Low
+    3300036: LowerLimb_Low
+    3300038: LowerWheel1_Low
+    3300040: LowerWheel_Low
+    3300042: pCylinder63
+    3300044: pCylinder70
+    3300046: Ring1_Low
+    3300048: Ring_Low
+    3300050: Screw_Low
+    3300052: StingRest_Low
+    3300054: StringHold_Low
+    3300056: Tensioner
+    3300058: UpperArm
+    3300060: UpperLimb1_Low
+    3300062: UpperLimb_Low
+    3300064: UpperWheel_Low
+    3300066: Bow Recurve
+    4300000: Rails
+    4300002: Recurve
+    4300004: Bowstring
+    4300006: Grip
+    4300008: Tensioner
+    4300010: StringHold_Low
+    4300012: StingRest_Low
+    4300014: UpperArm
+    4300016: Ring1_Low
+    4300018: Screw_Low
+    4300020: LimbHold_Low
+    4300022: UpperLimb1_Low
+    4300024: UpperLimb_Low
+    4300026: UpperWheel_Low
+    4300028: Ring_Low
+    4300030: LowerArm
+    4300032: LowerWheel1_Low
+    4300034: pCylinder70
+    4300036: LowerLimb_Low
+    4300038: pCylinder63
+    4300040: LowerWheel_Low
+    4300042: LimbHold1_Low
+    4300044: LowerLimb1_Low
+    4300046: Arrow Canister
+    4300048: Arrow Piercing
+    4300050: BrokenArrow_BrokenArrow
+    4300052: BaseArrow_BaseArrow
+    4300054: Arrow Hemorrhaging
+    4300056: Arrow Basic
+    4300058: Bow Mongolian
+    4300060: Bowstring.001
+    4300062: BowLoop.001
+    4300064: BowLoop
+    4300066: Bow Recurve
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leather
+    second: {fileID: 2100000, guid: cef6cee0602972f4caba25617090af8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 921701e5609ea894f87d0804b2ff9e05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: d5935423d4321dd428958becf437c6eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: String
+    second: {fileID: 2100000, guid: 91fcf5ebdc75cd047a0a07a91f66a387, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 5803577211d245b43ba87b429d85fd6f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

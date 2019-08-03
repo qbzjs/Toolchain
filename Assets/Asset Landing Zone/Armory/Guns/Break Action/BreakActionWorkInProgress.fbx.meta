@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 0546f2431ab9ae941b3abc2d210e137e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Barrel Long
+    100002: Barrel Mid
+    100004: Barrel Short
+    100006: Barrel Survival
+    100008: Barrel Survival Long
+    100010: Barrel Survival Short
+    100012: BarrelTriLong
+    100014: BarrelTriMid
+    100016: BarrelTriShort
+    100018: BreakAction2Barrel
+    100020: BreakAction3Barrel
+    100022: BreakActionSurvival
+    100024: //RootNode
+    100026: Grip Survival
+    100028: Grip Survival Modern
+    100030: Rails
+    100032: Rails.001
+    100034: Rails.002
+    100036: Receiver2Barrel
+    100038: Receiver3Barrel
+    100040: ReceiverSurvival
+    100042: Stock Poly 2Barrel
+    100044: Stock Poly 3Barrel
+    100046: Stock Wood 2Barrel
+    100048: Stock Wood 3Barrel
+    100050: StockFull2Barrel
+    100052: StockFull2Barrel.001
+    100054: StockFull3Barrel
+    100056: StockFull3Barrel.001
+    100058: StockFullSurvival
+    100060: StockFullSurvivalBarrel
+    100062: StockShort2Barrel
+    100064: StockShort2Barrel.001
+    100066: StockShort3Barrel
+    100068: StockShort3Barrel.001
+    100070: StockShortSurvival
+    100072: StockShortSurvivalBarrel.003
+    100074: TopRail
+    100076: TopRail.001
+    100078: TopRail.002
+    100080: Trigger.001
+    100082: Trigger.002
+    100084: Barrel Combo
+    100086: Barrel Combo Long
+    100088: Barrel Combo Short
+    100090: BreakActionCombo
+    100092: FullCombo
+    100094: Grip Combo
+    100096: Grip Combo Modern
+    100098: ReceiverCombo
+    100100: ShortCombo
+    100102: Grip
+    100104: Grip.001
+    100106: Grip.002
+    100108: Grip.003
+    100110: Grip.004
+    100112: Grip.005
+    100114: Rails.000
+    100116: Stock
+    100118: Stock Full
+    100120: Stock Full.001
+    100122: Stock Full.002
+    100124: Stock Pistol
+    100126: Stock Pistol.002
+    100128: Stock Pistol.003
+    100130: Stock.001
+    100132: Stock.002
+    100134: TriggerGuardClassic
+    100136: TriggerGuardModern
+    100138: Front Sight Rifle.000
+    100140: Front Sight Rifle.001
+    100142: Front Sight Rifle.002
+    100144: Front Sight Rifle.003
+    100146: Front Sight Rifle.004
+    100148: Front Sight Rifle.005
+    100150: Sight Adjust.000
+    100152: Sight Adjust.001
+    100154: Sight Adjust.002
+    100156: Sight Adjust.003
+    100158: Sight Adjust.004
+    100160: Sight Adjust.005
+    100162: Sight Tang.000
+    100164: Sight Tang.001
+    100166: Sight Tang.002
+    100168: Sight Tang.003
+    100170: Sight Tang.004
+    100172: Sight Tang.005
+    100174: Sight Tangent
+    100176: Sight Tangent.001
+    100178: Sight Tangent.002
+    100180: Sight Tangent.003
+    100182: Sight Tangent.004
+    100184: Sight Tangent.005
+    100186: Barrel Long.001
+    100188: Barrel Short.001
+    100190: Barrel Standard
+    100192: BreakFrame
+    100194: Foregrip Mid
+    100196: Foregrip Mid.001
+    100198: Foregrip Short
+    100200: Receiver GL
+    100202: Sight Rear
+    100204: Sight Rear.001
+    100206: Sight Rear.002
+    100208: Stock Full.003
+    100210: Stock Grip
+    100212: Tang Bar
+    100214: Tang Bar.001
+    100216: Tang Bar.002
+    100218: trigger
+    100220: Trigger.000
+    100222: Trigger.003
+    100224: Trigger.004
+    100226: Trigger.005
+    100228: AttachmentBrace.000
+    100230: AttachmentBrace.001
+    100232: AttachmentBrace.002
+    100234: AttachmentBrace.003
+    100236: Botrail.001
+    100238: Rail
+    100240: Rail.001
+    100242: Rail.002
+    100244: Siderail.001
+    100246: Toprail.001
+    100248: Toprail.000
+    100250: Barrel Bull
+    100252: Barrel Short.002
+    100254: Barrel Standard.001
+    100256: Base Schofield
+    100258: Botrail.000
+    100260: Chamber_6
+    100262: Hammer
+    100264: Schofield Body
+    100266: Sight Latch
+    100268: Trigger
+    100270: Base 2Barrel
+    100272: Base 3Barrel
+    100274: Base Combo
+    100276: Base GL
+    400000: Barrel Long
+    400002: Barrel Mid
+    400004: Barrel Short
+    400006: Barrel Survival
+    400008: Barrel Survival Long
+    400010: Barrel Survival Short
+    400012: BarrelTriLong
+    400014: BarrelTriMid
+    400016: BarrelTriShort
+    400018: BreakAction2Barrel
+    400020: BreakAction3Barrel
+    400022: BreakActionSurvival
+    400024: //RootNode
+    400026: Grip Survival
+    400028: Grip Survival Modern
+    400030: Rails
+    400032: Rails.001
+    400034: Rails.002
+    400036: Receiver2Barrel
+    400038: Receiver3Barrel
+    400040: ReceiverSurvival
+    400042: Stock Poly 2Barrel
+    400044: Stock Poly 3Barrel
+    400046: Stock Wood 2Barrel
+    400048: Stock Wood 3Barrel
+    400050: StockFull2Barrel
+    400052: StockFull2Barrel.001
+    400054: StockFull3Barrel
+    400056: StockFull3Barrel.001
+    400058: StockFullSurvival
+    400060: StockFullSurvivalBarrel
+    400062: StockShort2Barrel
+    400064: StockShort2Barrel.001
+    400066: StockShort3Barrel
+    400068: StockShort3Barrel.001
+    400070: StockShortSurvival
+    400072: StockShortSurvivalBarrel.003
+    400074: TopRail
+    400076: TopRail.001
+    400078: TopRail.002
+    400080: Trigger.001
+    400082: Trigger.002
+    400084: Barrel Combo
+    400086: Barrel Combo Long
+    400088: Barrel Combo Short
+    400090: BreakActionCombo
+    400092: FullCombo
+    400094: Grip Combo
+    400096: Grip Combo Modern
+    400098: ReceiverCombo
+    400100: ShortCombo
+    400102: Grip
+    400104: Grip.001
+    400106: Grip.002
+    400108: Grip.003
+    400110: Grip.004
+    400112: Grip.005
+    400114: Rails.000
+    400116: Stock
+    400118: Stock Full
+    400120: Stock Full.001
+    400122: Stock Full.002
+    400124: Stock Pistol
+    400126: Stock Pistol.002
+    400128: Stock Pistol.003
+    400130: Stock.001
+    400132: Stock.002
+    400134: TriggerGuardClassic
+    400136: TriggerGuardModern
+    400138: Front Sight Rifle.000
+    400140: Front Sight Rifle.001
+    400142: Front Sight Rifle.002
+    400144: Front Sight Rifle.003
+    400146: Front Sight Rifle.004
+    400148: Front Sight Rifle.005
+    400150: Sight Adjust.000
+    400152: Sight Adjust.001
+    400154: Sight Adjust.002
+    400156: Sight Adjust.003
+    400158: Sight Adjust.004
+    400160: Sight Adjust.005
+    400162: Sight Tang.000
+    400164: Sight Tang.001
+    400166: Sight Tang.002
+    400168: Sight Tang.003
+    400170: Sight Tang.004
+    400172: Sight Tang.005
+    400174: Sight Tangent
+    400176: Sight Tangent.001
+    400178: Sight Tangent.002
+    400180: Sight Tangent.003
+    400182: Sight Tangent.004
+    400184: Sight Tangent.005
+    400186: Barrel Long.001
+    400188: Barrel Short.001
+    400190: Barrel Standard
+    400192: BreakFrame
+    400194: Foregrip Mid
+    400196: Foregrip Mid.001
+    400198: Foregrip Short
+    400200: Receiver GL
+    400202: Sight Rear
+    400204: Sight Rear.001
+    400206: Sight Rear.002
+    400208: Stock Full.003
+    400210: Stock Grip
+    400212: Tang Bar
+    400214: Tang Bar.001
+    400216: Tang Bar.002
+    400218: trigger
+    400220: Trigger.000
+    400222: Trigger.003
+    400224: Trigger.004
+    400226: Trigger.005
+    400228: AttachmentBrace.000
+    400230: AttachmentBrace.001
+    400232: AttachmentBrace.002
+    400234: AttachmentBrace.003
+    400236: Botrail.001
+    400238: Rail
+    400240: Rail.001
+    400242: Rail.002
+    400244: Siderail.001
+    400246: Toprail.001
+    400248: Toprail.000
+    400250: Barrel Bull
+    400252: Barrel Short.002
+    400254: Barrel Standard.001
+    400256: Base Schofield
+    400258: Botrail.000
+    400260: Chamber_6
+    400262: Hammer
+    400264: Schofield Body
+    400266: Sight Latch
+    400268: Trigger
+    400270: Base 2Barrel
+    400272: Base 3Barrel
+    400274: Base Combo
+    400276: Base GL
+    2100000: steel
+    2100002: Polymer
+    2100004: wood
+    2100006: wood2
+    2300000: Barrel Long
+    2300002: Barrel Mid
+    2300004: Barrel Short
+    2300006: Barrel Survival
+    2300008: Barrel Survival Long
+    2300010: Barrel Survival Short
+    2300012: BarrelTriLong
+    2300014: BarrelTriMid
+    2300016: BarrelTriShort
+    2300018: BreakAction2Barrel
+    2300020: BreakAction3Barrel
+    2300022: BreakActionSurvival
+    2300024: Grip Survival
+    2300026: Grip Survival Modern
+    2300028: Rails
+    2300030: Rails.001
+    2300032: Rails.002
+    2300034: Receiver2Barrel
+    2300036: Receiver3Barrel
+    2300038: ReceiverSurvival
+    2300040: Stock Poly 2Barrel
+    2300042: Stock Poly 3Barrel
+    2300044: Stock Wood 2Barrel
+    2300046: Stock Wood 3Barrel
+    2300048: StockFull2Barrel
+    2300050: StockFull2Barrel.001
+    2300052: StockFull3Barrel
+    2300054: StockFull3Barrel.001
+    2300056: StockFullSurvival
+    2300058: StockFullSurvivalBarrel
+    2300060: StockShort2Barrel
+    2300062: StockShort2Barrel.001
+    2300064: StockShort3Barrel
+    2300066: StockShort3Barrel.001
+    2300068: StockShortSurvival
+    2300070: StockShortSurvivalBarrel.003
+    2300072: TopRail
+    2300074: TopRail.001
+    2300076: TopRail.002
+    2300078: Trigger.001
+    2300080: Trigger.002
+    2300082: Barrel Combo
+    2300084: Barrel Combo Long
+    2300086: Barrel Combo Short
+    2300088: BreakActionCombo
+    2300090: FullCombo
+    2300092: Grip Combo
+    2300094: Grip Combo Modern
+    2300096: ReceiverCombo
+    2300098: ShortCombo
+    2300100: Grip
+    2300102: Grip.001
+    2300104: Grip.002
+    2300106: Grip.003
+    2300108: Grip.004
+    2300110: Grip.005
+    2300112: Rails.000
+    2300114: Stock
+    2300116: Stock Full
+    2300118: Stock Full.001
+    2300120: Stock Full.002
+    2300122: Stock Pistol
+    2300124: Stock Pistol.002
+    2300126: Stock Pistol.003
+    2300128: Stock.001
+    2300130: Stock.002
+    2300132: TriggerGuardClassic
+    2300134: TriggerGuardModern
+    2300136: Front Sight Rifle.000
+    2300138: Front Sight Rifle.001
+    2300140: Front Sight Rifle.002
+    2300142: Front Sight Rifle.003
+    2300144: Front Sight Rifle.004
+    2300146: Front Sight Rifle.005
+    2300148: Sight Adjust.000
+    2300150: Sight Adjust.001
+    2300152: Sight Adjust.002
+    2300154: Sight Adjust.003
+    2300156: Sight Adjust.004
+    2300158: Sight Adjust.005
+    2300160: Sight Tang.000
+    2300162: Sight Tang.001
+    2300164: Sight Tang.002
+    2300166: Sight Tang.003
+    2300168: Sight Tang.004
+    2300170: Sight Tang.005
+    2300172: Sight Tangent
+    2300174: Sight Tangent.001
+    2300176: Sight Tangent.002
+    2300178: Sight Tangent.003
+    2300180: Sight Tangent.004
+    2300182: Sight Tangent.005
+    2300184: Barrel Long.001
+    2300186: Barrel Short.001
+    2300188: Barrel Standard
+    2300190: BreakFrame
+    2300192: Foregrip Mid
+    2300194: Foregrip Mid.001
+    2300196: Foregrip Short
+    2300198: Receiver GL
+    2300200: Sight Rear
+    2300202: Sight Rear.001
+    2300204: Sight Rear.002
+    2300206: Stock Full.003
+    2300208: Stock Grip
+    2300210: Tang Bar
+    2300212: Tang Bar.001
+    2300214: Tang Bar.002
+    2300216: trigger
+    2300218: Trigger.000
+    2300220: Trigger.003
+    2300222: Trigger.004
+    2300224: Trigger.005
+    2300226: AttachmentBrace.000
+    2300228: AttachmentBrace.001
+    2300230: AttachmentBrace.002
+    2300232: AttachmentBrace.003
+    2300234: Botrail.001
+    2300236: Rail
+    2300238: Rail.001
+    2300240: Rail.002
+    2300242: Siderail.001
+    2300244: Toprail.001
+    2300246: Toprail.000
+    2300248: Barrel Bull
+    2300250: Barrel Short.002
+    2300252: Barrel Standard.001
+    2300254: Botrail.000
+    2300256: Chamber_6
+    2300258: Hammer
+    2300260: Schofield Body
+    2300262: Sight Latch
+    2300264: Trigger
+    2300266: Base 2Barrel
+    2300268: Base 3Barrel
+    2300270: Base Combo
+    2300272: Base GL
+    3300000: Barrel Long
+    3300002: Barrel Mid
+    3300004: Barrel Short
+    3300006: Barrel Survival
+    3300008: Barrel Survival Long
+    3300010: Barrel Survival Short
+    3300012: BarrelTriLong
+    3300014: BarrelTriMid
+    3300016: BarrelTriShort
+    3300018: BreakAction2Barrel
+    3300020: BreakAction3Barrel
+    3300022: BreakActionSurvival
+    3300024: Grip Survival
+    3300026: Grip Survival Modern
+    3300028: Rails
+    3300030: Rails.001
+    3300032: Rails.002
+    3300034: Receiver2Barrel
+    3300036: Receiver3Barrel
+    3300038: ReceiverSurvival
+    3300040: Stock Poly 2Barrel
+    3300042: Stock Poly 3Barrel
+    3300044: Stock Wood 2Barrel
+    3300046: Stock Wood 3Barrel
+    3300048: StockFull2Barrel
+    3300050: StockFull2Barrel.001
+    3300052: StockFull3Barrel
+    3300054: StockFull3Barrel.001
+    3300056: StockFullSurvival
+    3300058: StockFullSurvivalBarrel
+    3300060: StockShort2Barrel
+    3300062: StockShort2Barrel.001
+    3300064: StockShort3Barrel
+    3300066: StockShort3Barrel.001
+    3300068: StockShortSurvival
+    3300070: StockShortSurvivalBarrel.003
+    3300072: TopRail
+    3300074: TopRail.001
+    3300076: TopRail.002
+    3300078: Trigger.001
+    3300080: Trigger.002
+    3300082: Barrel Combo
+    3300084: Barrel Combo Long
+    3300086: Barrel Combo Short
+    3300088: BreakActionCombo
+    3300090: FullCombo
+    3300092: Grip Combo
+    3300094: Grip Combo Modern
+    3300096: ReceiverCombo
+    3300098: ShortCombo
+    3300100: Grip
+    3300102: Grip.001
+    3300104: Grip.002
+    3300106: Grip.003
+    3300108: Grip.004
+    3300110: Grip.005
+    3300112: Rails.000
+    3300114: Stock
+    3300116: Stock Full
+    3300118: Stock Full.001
+    3300120: Stock Full.002
+    3300122: Stock Pistol
+    3300124: Stock Pistol.002
+    3300126: Stock Pistol.003
+    3300128: Stock.001
+    3300130: Stock.002
+    3300132: TriggerGuardClassic
+    3300134: TriggerGuardModern
+    3300136: Front Sight Rifle.000
+    3300138: Front Sight Rifle.001
+    3300140: Front Sight Rifle.002
+    3300142: Front Sight Rifle.003
+    3300144: Front Sight Rifle.004
+    3300146: Front Sight Rifle.005
+    3300148: Sight Adjust.000
+    3300150: Sight Adjust.001
+    3300152: Sight Adjust.002
+    3300154: Sight Adjust.003
+    3300156: Sight Adjust.004
+    3300158: Sight Adjust.005
+    3300160: Sight Tang.000
+    3300162: Sight Tang.001
+    3300164: Sight Tang.002
+    3300166: Sight Tang.003
+    3300168: Sight Tang.004
+    3300170: Sight Tang.005
+    3300172: Sight Tangent
+    3300174: Sight Tangent.001
+    3300176: Sight Tangent.002
+    3300178: Sight Tangent.003
+    3300180: Sight Tangent.004
+    3300182: Sight Tangent.005
+    3300184: Barrel Long.001
+    3300186: Barrel Short.001
+    3300188: Barrel Standard
+    3300190: BreakFrame
+    3300192: Foregrip Mid
+    3300194: Foregrip Mid.001
+    3300196: Foregrip Short
+    3300198: Receiver GL
+    3300200: Sight Rear
+    3300202: Sight Rear.001
+    3300204: Sight Rear.002
+    3300206: Stock Full.003
+    3300208: Stock Grip
+    3300210: Tang Bar
+    3300212: Tang Bar.001
+    3300214: Tang Bar.002
+    3300216: trigger
+    3300218: Trigger.000
+    3300220: Trigger.003
+    3300222: Trigger.004
+    3300224: Trigger.005
+    3300226: AttachmentBrace.000
+    3300228: AttachmentBrace.001
+    3300230: AttachmentBrace.002
+    3300232: AttachmentBrace.003
+    3300234: Botrail.001
+    3300236: Rail
+    3300238: Rail.001
+    3300240: Rail.002
+    3300242: Siderail.001
+    3300244: Toprail.001
+    3300246: Toprail.000
+    3300248: Barrel Bull
+    3300250: Barrel Short.002
+    3300252: Barrel Standard.001
+    3300254: Botrail.000
+    3300256: Chamber_6
+    3300258: Hammer
+    3300260: Schofield Body
+    3300262: Sight Latch
+    3300264: Trigger
+    3300266: Base 2Barrel
+    3300268: Base 3Barrel
+    3300270: Base Combo
+    3300272: Base GL
+    4300000: ReceiverSurvival
+    4300002: Grip Survival Modern
+    4300004: TopRail.002
+    4300006: Rails.002
+    4300008: StockShortSurvivalBarrel.003
+    4300010: StockFullSurvivalBarrel
+    4300012: BreakActionSurvival
+    4300014: Barrel Survival Long
+    4300016: Barrel Survival Short
+    4300018: Barrel Survival
+    4300020: Grip Survival
+    4300022: StockFullSurvival
+    4300024: StockShortSurvival
+    4300026: Trigger.002
+    4300028: Trigger.001
+    4300030: Receiver3Barrel
+    4300032: Stock Poly 3Barrel
+    4300034: StockShort3Barrel.001
+    4300036: StockFull3Barrel.001
+    4300038: TopRail
+    4300040: Rails.001
+    4300042: Stock Wood 3Barrel
+    4300044: StockShort3Barrel
+    4300046: StockFull3Barrel
+    4300048: BreakAction3Barrel
+    4300050: BarrelTriShort
+    4300052: BarrelTriLong
+    4300054: BarrelTriMid
+    4300056: Receiver2Barrel
+    4300058: Stock Poly 2Barrel
+    4300060: StockShort2Barrel.001
+    4300062: StockFull2Barrel.001
+    4300064: Rails
+    4300066: TopRail.001
+    4300068: Stock Wood 2Barrel
+    4300070: StockShort2Barrel
+    4300072: StockFull2Barrel
+    4300074: BreakAction2Barrel
+    4300076: Barrel Long
+    4300078: Barrel Mid
+    4300080: Barrel Short
+    4300082: ReceiverCombo
+    4300084: Grip Combo Modern
+    4300086: ShortCombo
+    4300088: FullCombo
+    4300090: BreakActionCombo
+    4300092: Barrel Combo Long
+    4300094: Barrel Combo Short
+    4300096: Barrel Combo
+    4300098: Grip Combo
+    4300100: Stock Full
+    4300102: Grip.001
+    4300104: Stock
+    4300106: Stock Pistol
+    4300108: Grip
+    4300110: TriggerGuardModern
+    4300112: TriggerGuardClassic
+    4300114: Rails.000
+    4300116: Stock Pistol.003
+    4300118: Grip.005
+    4300120: Stock Full.002
+    4300122: Grip.004
+    4300124: Stock.002
+    4300126: Stock Pistol.002
+    4300128: Grip.003
+    4300130: Stock Full.001
+    4300132: Stock.001
+    4300134: Grip.002
+    4300136: Sight Tangent.004
+    4300138: Sight Adjust.004
+    4300140: Sight Tang.004
+    4300142: Front Sight Rifle.004
+    4300144: Sight Tangent.002
+    4300146: Sight Adjust.002
+    4300148: Sight Tang.002
+    4300150: Front Sight Rifle.003
+    4300152: Sight Tangent
+    4300154: Front Sight Rifle.001
+    4300156: Sight Tang.000
+    4300158: Sight Adjust.000
+    4300160: Sight Tangent.001
+    4300162: Sight Adjust.001
+    4300164: Sight Tang.001
+    4300166: Front Sight Rifle.002
+    4300168: Sight Tangent.005
+    4300170: Front Sight Rifle.005
+    4300172: Sight Tang.005
+    4300174: Sight Adjust.005
+    4300176: Sight Tangent.003
+    4300178: Front Sight Rifle.000
+    4300180: Sight Tang.003
+    4300182: Sight Adjust.003
+    4300184: Receiver GL
+    4300186: Stock Grip
+    4300188: Foregrip Mid.001
+    4300190: Sight Rear.002
+    4300192: Tang Bar.002
+    4300194: Barrel Standard
+    4300196: Sight Rear
+    4300198: Tang Bar
+    4300200: Foregrip Mid
+    4300202: Sight Rear.001
+    4300204: Tang Bar.001
+    4300206: Foregrip Short
+    4300208: BreakFrame
+    4300210: trigger
+    4300212: Stock Full.003
+    4300214: Trigger.003
+    4300216: Trigger.000
+    4300218: Trigger.005
+    4300220: Trigger.004
+    4300222: Barrel Long.001
+    4300224: Barrel Short.001
+    4300226: AttachmentBrace.003
+    4300228: Rail.002
+    4300230: AttachmentBrace.001
+    4300232: Botrail.001
+    4300234: Toprail.001
+    4300236: Siderail.001
+    4300238: AttachmentBrace.002
+    4300240: Rail.001
+    4300242: AttachmentBrace.000
+    4300244: Rail
+    4300246: Toprail.000
+    4300248: Barrel Short.002
+    4300250: Barrel Standard.001
+    4300252: Schofield Body
+    4300254: Chamber_6
+    4300256: Hammer
+    4300258: Sight Latch
+    4300260: Trigger
+    4300262: Barrel Bull
+    4300264: Botrail.000
+    4300266: Base GL
+    4300268: Base Combo
+    4300270: Base 3Barrel
+    4300272: Base 2Barrel
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: 34124c21c4b7e544e91d12c36f1a60fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 34124c21c4b7e544e91d12c36f1a60fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 8fb80a79f38c90c4e8575b4856ad7eac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 2fd3a5bb2c2ddad40999b7d72ff806ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: steel
+    second: {fileID: 2100000, guid: a835bb89cea00334a8b9f5fe3f110242, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 2fd3a5bb2c2ddad40999b7d72ff806ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood2
+    second: {fileID: 2100000, guid: cc86fa459c9340f41a0e44269eb672fc, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

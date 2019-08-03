@@ -1,0 +1,2403 @@
+fileFormatVersion: 2
+guid: 181380d82ede6b04d8b00438417c42f7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Adjuster
+    100002: Barrel Long
+    100004: Barrel Short
+    100006: Barrel Standard
+    100008: Body Polymer
+    100010: Body Polymer Extension
+    100012: Body Polymer Extension Long
+    100014: Bolt
+    100016: Bolt Handle
+    100018: //RootNode
+    100020: Cheek Weld
+    100022: Firing System
+    100024: GlockMag Adapter
+    100026: Grip
+    100028: Iron Sight Front Long
+    100030: Iron Sight Front Short
+    100032: Iron Sight Front Standard
+    100034: Iron Sight Rear
+    100036: Lenses
+    100038: Mag Spacer
+    100040: Mag_10
+    100042: Mag_15
+    100044: Mag_15.001
+    100046: Mag_20
+    100048: Mag_30
+    100050: Mag_30.001
+    100052: Mag_30.002
+    100054: Mag_50_Drum
+    100056: Mag_75 Drum
+    100058: MultiMagLarge
+    100060: MultiMagSmall
+    100062: Rail Bottom Long
+    100064: Rail Bottom Long_MeshPart0
+    100066: Rail Bottom Long_MeshPart1
+    100068: Rail Bottom Mid
+    100070: Rail Bottom Oldstyle Long
+    100072: Rail Bottom Oldstyle Mid
+    100074: Rail Bottom Oldstyle Short
+    100076: Rail Bottom Short
+    100078: Rail Top
+    100080: Scope
+    100082: Scope Arm
+    100084: Scope Fixture
+    100086: Stock Adjustable
+    100088: Stock Basic
+    100090: Stock Butt
+    100092: Stock Extension
+    100094: Stock Extension Long
+    100096: Stock Full
+    100098: Stock Short
+    100100: Trigger Advanced
+    100102: Trigger Basic
+    100104: Stock Polymer
+    100106: Multimag
+    100108: Mag_25 Drum
+    100110: Mag_5
+    100112: Frame Shotgun.001
+    100114: Magwell
+    100116: Mag_15_Glock
+    100118: Mag_30_AK
+    100120: Mag_33_Glock
+    100122: Barrel Mid
+    100124: Mag_60
+    100126: MagWell
+    100128: Stock Heavy
+    100130: Stock Lightweight
+    100132: TopRail
+    100134: Trigger
+    100136: FrameLong
+    100138: FrameMid
+    100140: FrameShort
+    100142: Furniture
+    100144: Stock
+    100146: Base
+    100148: Base Short
+    100150: Furniture.001
+    100152: Barrel Compact
+    100154: BottomRail
+    100156: BottomRail.001
+    100158: FrontRails
+    100160: FrontRails.001
+    100162: Grip Sawbutt
+    100164: Grip Sawbutt.001
+    100166: MagBox
+    100168: MagLoader
+    100170: Receiver
+    100172: Sight Adjust
+    100174: Sight Adjust.001
+    100176: Sight Base Classic
+    100178: Sight Base Classic Compact
+    100180: Sight Tang
+    100182: Sight Tang.001
+    100184: Stock Classic
+    100186: Stock Compact Classic
+    100188: Stock Full Modern
+    100190: Stock Modern
+    100192: Stock Modern Adjust
+    100194: Stock Modern Adjust.002
+    100196: Stock Modern Compact
+    100198: Stock Modern.001
+    100200: TopRail.001
+    100202: Trigger Guard
+    100204: Stand
+    100206: Stand.001
+    100208: Stock Modern Adjust.001
+    100210: Stock Compact Modern
+    100212: Stock Modern.002
+    100214: Stock Classic Full
+    100216: Stock Classic Full Compact
+    100218: Stock Classic Full Short
+    100220: Stock Classic Full Short Compact
+    100222: Stock Classic Short Compact
+    100224: Barrel Carbine
+    100226: Barrel Rifle
+    100228: BottomRail.002
+    100230: FrontRails.002
+    100232: Grip Sawbutt.002
+    100234: Sight Adjust.002
+    100236: Sight Base Classic.001
+    100238: Sight Tang.002
+    100240: Stand.002
+    100242: Stand.003
+    100244: Stand.004
+    100246: Stand.005
+    100248: Stock Carbine Modern
+    100250: Stock Classic Full Short.001
+    100252: Stock Classic Full.001
+    100254: Stock Classic.001
+    100256: Stock Modern Adjust Closed
+    100258: Stock Modern Adjust Closed.001
+    100260: Stock Modern Adjust Closed.002
+    100262: Stock Modern Adjust Open
+    100264: Stock Modern Adjust Open.001
+    100266: Stock Modern Adjust Open.002
+    100268: Stock Modern.003
+    100270: TopRail.002
+    100272: Stock Carbine Classic
+    100274: Stock Classic Full Carbine
+    100276: Stock Classic Short
+    100278: Stock Classic Short Carbine
+    100280: Rail Top Carbine
+    100282: Rail Top Carbine_MeshPart0
+    100284: Rail Top Carbine_MeshPart1
+    100286: Scope Brace
+    100288: Scope Brace_MeshPart0
+    100290: Scope Brace_MeshPart1
+    100292: Scope Sharpshooter
+    100294: ScopeBase
+    100296: Barrel Musket
+    100298: BottomRail.003
+    100300: FrontRails.003
+    100302: Grip Sawbutt.003
+    100304: Stock Modern Adjust Open.003
+    100306: Stock Modern.004
+    100308: Stock Modern.005
+    100310: Stock Classic Carbine
+    100312: Stock Classic Compact
+    100314: Stock Musket
+    100316: Stock Rifle
+    100318: Mag_15_Rifle
+    100320: Mag_24
+    100322: Mag_12
+    100324: Legs Down
+    100326: Legs Down.001
+    100328: Legs Down.002
+    100330: Legs up
+    100332: Legs up.001
+    100334: Legs up.002
+    100336: Stock Integrated
+    100338: Stock Integrated.001
+    100340: Stock Integrated.002
+    100342: Grip Sawbutt.004
+    100344: Legs down.000
+    100346: Legs down.003
+    100348: ScoutScopeBase
+    100350: SightRail
+    100352: Stock Poly Long
+    100354: Stock Poly Long.001
+    100356: Stock Poly Long.002
+    100358: Toprail
+    100360: Bipod Brace
+    100362: Bipod Brace.001
+    100364: Bipod Brace.002
+    100366: BipodBase
+    100368: BipodBase.001
+    100370: BipodBase.002
+    100372: bipodLeft
+    100374: bipodLeft.001
+    100376: bipodLeft.002
+    100378: bipodright
+    100380: bipodright.001
+    100382: bipodright.002
+    100384: bolt
+    100386: ForeStock.001
+    100388: ForeStock.002
+    100390: ForeStock.003
+    100392: ForeStock.004
+    100394: StockCombAdjust.001
+    100396: StockCombAdjust.002
+    100398: Bipod Brace.000
+    100400: Bipod Brace.003
+    100402: BipodBase.000
+    100404: BipodBase.003
+    100406: extension
+    100408: extension.001
+    100410: extension.002
+    100412: extension.003
+    100414: extension.004
+    100416: extension.005
+    100418: LegsDown
+    100420: LegsDown.001
+    100422: LegsDown.002
+    100424: LegsDown.003
+    100426: LegsDown.004
+    100428: LegsDown.005
+    100430: LegsUp
+    100432: LegsUp.001
+    100434: LegsUp.002
+    100436: Mag_45
+    100438: Bolt Spiraled
+    100440: Barrel Rifle.001
+    100442: Barrel Rifle.002
+    100444: Barrel Rifle.003
+    100446: Barrel_Long
+    100448: Barrel_Short
+    100450: Barrel_Standard
+    100452: Base Cheytac
+    100454: Body
+    100456: Bolt.001
+    100458: GlockMag Adapter.001
+    100460: Mag_10_Cheytac
+    100462: Toprail.001
+    100464: Trigger.001
+    100466: Base Gewehr
+    100468: Base Remington
+    100470: Rails.001
+    100472: Base McMillan
+    100474: Base Mas36
+    100476: Body.001
+    100478: Bolt.002
+    100480: Stock Folding
+    100482: Stock Folding Closed
+    100484: Trigger.002
+    100486: Stock Classic.002
+    100488: Stock Folding Open
+    100490: TangSIght
+    100492: Toprail.002
+    100494: Base SMLE
+    100496: Body Standard
+    100498: Bolt.003
+    100500: BoltHeadStandard
+    100502: Firemech
+    100504: Integral
+    100506: Mag_10_SMLE
+    100508: Receiver.001
+    100510: Sight
+    100512: Trigger.003
+    100514: TriggerGuard
+    100516: Base Mauser
+    100518: CleaningRod
+    100520: Detail
+    100522: Receiver.002
+    100524: Safety
+    100526: Sight.001
+    100528: Stock Base
+    100530: Tangbar
+    100532: Toprail.000
+    100534: TriggerGuard.001
+    100536: Body Short
+    100538: CleaningRod.001
+    100540: Detail.001
+    100542: Furniture.002
+    100544: Furniture.003
+    100546: 'Sight '
+    100548: Stock Base.001
+    100550: AttachmentBrace.000
+    100552: AttachmentBrace.001
+    100554: AttachmentBrace.002
+    100556: Botrail.000
+    100558: Botrail.001
+    100560: Botrail.002
+    100562: Mag Adapter
+    100564: Receiver.000
+    100566: Siderail.000
+    100568: Siderail.001
+    100570: Siderail.002
+    100572: SightBase
+    100574: Toprail.003
+    100576: Toprail.004
+    100578: AttachmentBrace
+    100580: Barrel Standard.001
+    100582: Base DeLisle
+    100584: BoltHeadStandard.001
+    100586: Botrail.003
+    100588: Firemech.001
+    100590: Furniture.004
+    100592: Integral.001
+    100594: Mag_18
+    100596: Mag_8
+    100598: Receiver.003
+    100600: Sight.002
+    100602: Trigger.000
+    100604: TriggerGuard.002
+    100606: Siderail.003
+    100608: AttachmentBrace.003
+    100610: Furniture.005
+    100612: Barrel GooseGun
+    100614: Barrel Shotgun
+    100616: BarrelCover
+    100618: Detail.002
+    100620: Stock Shotgun
+    100622: Base Geha
+    100624: Safety.001
+    100626: Stock Full.001
+    100628: Stock Short.001
+    100630: TriggerGuard.004
+    100632: AttachmentBrace.004
+    100634: BarrelCover.001
+    100636: Botrail.004
+    100638: Scope Brace.001
+    100640: Scope Brace.001_MeshPart0
+    100642: Scope Brace.001_MeshPart1
+    100644: Scope Sharpshooter.001
+    100646: ScoutScopeBase.001
+    100648: Siderail.004
+    100650: Sight.003
+    100652: SightBase.001
+    100654: Tangbar.001
+    100656: Barrel Standard.002
+    100658: Base Springfield
+    100660: Bolt.004
+    100662: Furniture.006
+    100664: Receiver.004
+    100666: Safety.002
+    100668: Sight.004
+    100670: SightBase.002
+    100672: Stock Base.002
+    100674: Tangbar.002
+    100676: Trigger.004
+    100678: TriggerGuard.003
+    100680: Furniture.007
+    100682: AttachmentBrace.005
+    100684: BarrelCover.002
+    100686: Botrail.005
+    100688: Mag_15_SMLE
+    100690: MagHousing_Large
+    100692: MagHousing_Standard
+    100694: Siderail.005
+    100696: Stock Airservice
+    100698: Stock Standard
+    100700: Toprail.005
+    100702: Base Garand
+    100704: Bolt.005
+    100706: Charging_Handle
+    100708: Mag_10_Mauser
+    100710: Mag_25_Springfield
+    100712: Mag_3_Geha
+    100714: Mag_5_Geha
+    100716: Mag_5_Mauser
+    100718: Mag_5_Springfield
+    100720: Stock Full.002
+    100722: AttachmentBrace.006
+    100724: Barrel Standard.003
+    100726: Barrel Standard.004
+    100728: Botrail.006
+    100730: Detail.003
+    100732: Siderail.006
+    100734: Stock Standard.001
+    100736: Toprail.006
+    100738: Barrel Tanker
+    100740: Stock Closed
+    100742: Stock Closed.001
+    100744: Stock Open
+    100746: Stock Open.001
+    100748: Receiver.005
+    100750: Attachment Sight
+    100752: Barrel Short.001
+    100754: Fore Jungle Carbine
+    100756: Sight mkiii
+    100758: Sight mkiv
+    100760: Attachment Sight.001
+    100762: Body Jungle Carbine
+    100764: AttachmentMount
+    100766: Barrel Short.002
+    100768: Base Frankenrifle
+    100770: Bolt.006
+    100772: BoltHeadStandard.002
+    100774: Firemech.002
+    100776: Folding Stock Arm
+    100778: Folding Stock Arm.001
+    100780: Integral.002
+    100782: Mag_20_AR
+    100784: Mag_30_AK_5.45
+    100786: Mag_30_AK_7.62
+    100788: Mag_30_AR
+    100790: Magloader_AK
+    100792: Magloader_AR
+    100794: Receiver.007
+    100796: Stock Adjustable Modern
+    100798: StockAdjust.000
+    100800: Trigger.005
+    100802: Underrail.001
+    100804: Barrel Full Frankenrifle
+    100806: Barrel Short Frankenrifle
+    100808: Barrel Standard Frankenrifle
+    100810: AttachmentScopeRail
+    100812: Barrel Modern
+    100814: Body Classic
+    100816: Body Modern
+    100818: MagloaderSMLE
+    100820: Sight mkiv.001
+    100822: Sight modern
+    100824: Magloader_SMLE
+    100826: AttachmentBraceMauser
+    100828: AttachmentBraceSpringfield
+    100830: Barrel Gewehr
+    100832: Barrel Modern.001
+    100834: Barrel Standard Mauser Action
+    100836: Body Modern.001
+    100838: Detail.004
+    100840: Grip.001
+    100842: Mag_10_Rifle
+    100844: Mag_5_Rifle
+    100846: SightBaseSpringfield
+    100848: Stock Adjustable Modern.001
+    100850: Stock GooseGun
+    100852: Stock K98
+    100854: Stock Standard Springfield
+    100856: StockAdjust.001
+    100858: Receiver Mauser Action
+    100860: Howell Conversion
+    100862: Mag_30_.303
+    100864: Magloader_Bren
+    100866: Piston
+    100868: Post Grip
+    100870: Sight guards
+    100872: Trunion
+    100874: TriggerCup
+    100876: Mag_Large_Gewehr
+    100878: Mag_Standard_Gewehr
+    100880: Barrel Standard Mauser
+    100882: Receiver Mauser
+    100884: Barrel Short Mauser
+    100886: Barrel ShortShot
+    100888: CleaningRod.002
+    100890: Stock K98.001
+    100892: Stock ShortShot
+    100894: Mag_Drum_AK
+    100896: Mag_Drum_AR
+    100898: Magloader_AK_Gewehr
+    100900: Magloader_AR_Gewehr
+    100902: Mag Botloader AK
+    100904: Mag Botloader AR
+    100906: Mag Botloader Saiga
+    100908: Mag Toploader Large
+    100910: Mag Toploader Standard
+    100912: Mag_4_Saiga
+    100914: Mag_8_Saiga
+    400000: Adjuster
+    400002: Barrel Long
+    400004: Barrel Short
+    400006: Barrel Standard
+    400008: Body Polymer
+    400010: Body Polymer Extension
+    400012: Body Polymer Extension Long
+    400014: Bolt
+    400016: Bolt Handle
+    400018: //RootNode
+    400020: Cheek Weld
+    400022: Firing System
+    400024: GlockMag Adapter
+    400026: Grip
+    400028: Iron Sight Front Long
+    400030: Iron Sight Front Short
+    400032: Iron Sight Front Standard
+    400034: Iron Sight Rear
+    400036: Lenses
+    400038: Mag Spacer
+    400040: Mag_10
+    400042: Mag_15
+    400044: Mag_15.001
+    400046: Mag_20
+    400048: Mag_30
+    400050: Mag_30.001
+    400052: Mag_30.002
+    400054: Mag_50_Drum
+    400056: Mag_75 Drum
+    400058: MultiMagLarge
+    400060: MultiMagSmall
+    400062: Rail Bottom Long
+    400064: Rail Bottom Long_MeshPart0
+    400066: Rail Bottom Long_MeshPart1
+    400068: Rail Bottom Mid
+    400070: Rail Bottom Oldstyle Long
+    400072: Rail Bottom Oldstyle Mid
+    400074: Rail Bottom Oldstyle Short
+    400076: Rail Bottom Short
+    400078: Rail Top
+    400080: Scope
+    400082: Scope Arm
+    400084: Scope Fixture
+    400086: Stock Adjustable
+    400088: Stock Basic
+    400090: Stock Butt
+    400092: Stock Extension
+    400094: Stock Extension Long
+    400096: Stock Full
+    400098: Stock Short
+    400100: Trigger Advanced
+    400102: Trigger Basic
+    400104: Stock Polymer
+    400106: Multimag
+    400108: Mag_25 Drum
+    400110: Mag_5
+    400112: Frame Shotgun.001
+    400114: Magwell
+    400116: Mag_15_Glock
+    400118: Mag_30_AK
+    400120: Mag_33_Glock
+    400122: Barrel Mid
+    400124: Mag_60
+    400126: MagWell
+    400128: Stock Heavy
+    400130: Stock Lightweight
+    400132: TopRail
+    400134: Trigger
+    400136: FrameLong
+    400138: FrameMid
+    400140: FrameShort
+    400142: Furniture
+    400144: Stock
+    400146: Base
+    400148: Base Short
+    400150: Furniture.001
+    400152: Barrel Compact
+    400154: BottomRail
+    400156: BottomRail.001
+    400158: FrontRails
+    400160: FrontRails.001
+    400162: Grip Sawbutt
+    400164: Grip Sawbutt.001
+    400166: MagBox
+    400168: MagLoader
+    400170: Receiver
+    400172: Sight Adjust
+    400174: Sight Adjust.001
+    400176: Sight Base Classic
+    400178: Sight Base Classic Compact
+    400180: Sight Tang
+    400182: Sight Tang.001
+    400184: Stock Classic
+    400186: Stock Compact Classic
+    400188: Stock Full Modern
+    400190: Stock Modern
+    400192: Stock Modern Adjust
+    400194: Stock Modern Adjust.002
+    400196: Stock Modern Compact
+    400198: Stock Modern.001
+    400200: TopRail.001
+    400202: Trigger Guard
+    400204: Stand
+    400206: Stand.001
+    400208: Stock Modern Adjust.001
+    400210: Stock Compact Modern
+    400212: Stock Modern.002
+    400214: Stock Classic Full
+    400216: Stock Classic Full Compact
+    400218: Stock Classic Full Short
+    400220: Stock Classic Full Short Compact
+    400222: Stock Classic Short Compact
+    400224: Barrel Carbine
+    400226: Barrel Rifle
+    400228: BottomRail.002
+    400230: FrontRails.002
+    400232: Grip Sawbutt.002
+    400234: Sight Adjust.002
+    400236: Sight Base Classic.001
+    400238: Sight Tang.002
+    400240: Stand.002
+    400242: Stand.003
+    400244: Stand.004
+    400246: Stand.005
+    400248: Stock Carbine Modern
+    400250: Stock Classic Full Short.001
+    400252: Stock Classic Full.001
+    400254: Stock Classic.001
+    400256: Stock Modern Adjust Closed
+    400258: Stock Modern Adjust Closed.001
+    400260: Stock Modern Adjust Closed.002
+    400262: Stock Modern Adjust Open
+    400264: Stock Modern Adjust Open.001
+    400266: Stock Modern Adjust Open.002
+    400268: Stock Modern.003
+    400270: TopRail.002
+    400272: Stock Carbine Classic
+    400274: Stock Classic Full Carbine
+    400276: Stock Classic Short
+    400278: Stock Classic Short Carbine
+    400280: Rail Top Carbine
+    400282: Rail Top Carbine_MeshPart0
+    400284: Rail Top Carbine_MeshPart1
+    400286: Scope Brace
+    400288: Scope Brace_MeshPart0
+    400290: Scope Brace_MeshPart1
+    400292: Scope Sharpshooter
+    400294: ScopeBase
+    400296: Barrel Musket
+    400298: BottomRail.003
+    400300: FrontRails.003
+    400302: Grip Sawbutt.003
+    400304: Stock Modern Adjust Open.003
+    400306: Stock Modern.004
+    400308: Stock Modern.005
+    400310: Stock Classic Carbine
+    400312: Stock Classic Compact
+    400314: Stock Musket
+    400316: Stock Rifle
+    400318: Mag_15_Rifle
+    400320: Mag_24
+    400322: Mag_12
+    400324: Legs Down
+    400326: Legs Down.001
+    400328: Legs Down.002
+    400330: Legs up
+    400332: Legs up.001
+    400334: Legs up.002
+    400336: Stock Integrated
+    400338: Stock Integrated.001
+    400340: Stock Integrated.002
+    400342: Grip Sawbutt.004
+    400344: Legs down.000
+    400346: Legs down.003
+    400348: ScoutScopeBase
+    400350: SightRail
+    400352: Stock Poly Long
+    400354: Stock Poly Long.001
+    400356: Stock Poly Long.002
+    400358: Toprail
+    400360: Bipod Brace
+    400362: Bipod Brace.001
+    400364: Bipod Brace.002
+    400366: BipodBase
+    400368: BipodBase.001
+    400370: BipodBase.002
+    400372: bipodLeft
+    400374: bipodLeft.001
+    400376: bipodLeft.002
+    400378: bipodright
+    400380: bipodright.001
+    400382: bipodright.002
+    400384: bolt
+    400386: ForeStock.001
+    400388: ForeStock.002
+    400390: ForeStock.003
+    400392: ForeStock.004
+    400394: StockCombAdjust.001
+    400396: StockCombAdjust.002
+    400398: Bipod Brace.000
+    400400: Bipod Brace.003
+    400402: BipodBase.000
+    400404: BipodBase.003
+    400406: extension
+    400408: extension.001
+    400410: extension.002
+    400412: extension.003
+    400414: extension.004
+    400416: extension.005
+    400418: LegsDown
+    400420: LegsDown.001
+    400422: LegsDown.002
+    400424: LegsDown.003
+    400426: LegsDown.004
+    400428: LegsDown.005
+    400430: LegsUp
+    400432: LegsUp.001
+    400434: LegsUp.002
+    400436: Mag_45
+    400438: Bolt Spiraled
+    400440: Barrel Rifle.001
+    400442: Barrel Rifle.002
+    400444: Barrel Rifle.003
+    400446: Barrel_Long
+    400448: Barrel_Short
+    400450: Barrel_Standard
+    400452: Base Cheytac
+    400454: Body
+    400456: Bolt.001
+    400458: GlockMag Adapter.001
+    400460: Mag_10_Cheytac
+    400462: Toprail.001
+    400464: Trigger.001
+    400466: Base Gewehr
+    400468: Base Remington
+    400470: Rails.001
+    400472: Base McMillan
+    400474: Base Mas36
+    400476: Body.001
+    400478: Bolt.002
+    400480: Stock Folding
+    400482: Stock Folding Closed
+    400484: Trigger.002
+    400486: Stock Classic.002
+    400488: Stock Folding Open
+    400490: TangSIght
+    400492: Toprail.002
+    400494: Base SMLE
+    400496: Body Standard
+    400498: Bolt.003
+    400500: BoltHeadStandard
+    400502: Firemech
+    400504: Integral
+    400506: Mag_10_SMLE
+    400508: Receiver.001
+    400510: Sight
+    400512: Trigger.003
+    400514: TriggerGuard
+    400516: Base Mauser
+    400518: CleaningRod
+    400520: Detail
+    400522: Receiver.002
+    400524: Safety
+    400526: Sight.001
+    400528: Stock Base
+    400530: Tangbar
+    400532: Toprail.000
+    400534: TriggerGuard.001
+    400536: Body Short
+    400538: CleaningRod.001
+    400540: Detail.001
+    400542: Furniture.002
+    400544: Furniture.003
+    400546: 'Sight '
+    400548: Stock Base.001
+    400550: AttachmentBrace.000
+    400552: AttachmentBrace.001
+    400554: AttachmentBrace.002
+    400556: Botrail.000
+    400558: Botrail.001
+    400560: Botrail.002
+    400562: Mag Adapter
+    400564: Receiver.000
+    400566: Siderail.000
+    400568: Siderail.001
+    400570: Siderail.002
+    400572: SightBase
+    400574: Toprail.003
+    400576: Toprail.004
+    400578: AttachmentBrace
+    400580: Barrel Standard.001
+    400582: Base DeLisle
+    400584: BoltHeadStandard.001
+    400586: Botrail.003
+    400588: Firemech.001
+    400590: Furniture.004
+    400592: Integral.001
+    400594: Mag_18
+    400596: Mag_8
+    400598: Receiver.003
+    400600: Sight.002
+    400602: Trigger.000
+    400604: TriggerGuard.002
+    400606: Siderail.003
+    400608: AttachmentBrace.003
+    400610: Furniture.005
+    400612: Barrel GooseGun
+    400614: Barrel Shotgun
+    400616: BarrelCover
+    400618: Detail.002
+    400620: Stock Shotgun
+    400622: Base Geha
+    400624: Safety.001
+    400626: Stock Full.001
+    400628: Stock Short.001
+    400630: TriggerGuard.004
+    400632: AttachmentBrace.004
+    400634: BarrelCover.001
+    400636: Botrail.004
+    400638: Scope Brace.001
+    400640: Scope Brace.001_MeshPart0
+    400642: Scope Brace.001_MeshPart1
+    400644: Scope Sharpshooter.001
+    400646: ScoutScopeBase.001
+    400648: Siderail.004
+    400650: Sight.003
+    400652: SightBase.001
+    400654: Tangbar.001
+    400656: Barrel Standard.002
+    400658: Base Springfield
+    400660: Bolt.004
+    400662: Furniture.006
+    400664: Receiver.004
+    400666: Safety.002
+    400668: Sight.004
+    400670: SightBase.002
+    400672: Stock Base.002
+    400674: Tangbar.002
+    400676: Trigger.004
+    400678: TriggerGuard.003
+    400680: Furniture.007
+    400682: AttachmentBrace.005
+    400684: BarrelCover.002
+    400686: Botrail.005
+    400688: Mag_15_SMLE
+    400690: MagHousing_Large
+    400692: MagHousing_Standard
+    400694: Siderail.005
+    400696: Stock Airservice
+    400698: Stock Standard
+    400700: Toprail.005
+    400702: Base Garand
+    400704: Bolt.005
+    400706: Charging_Handle
+    400708: Mag_10_Mauser
+    400710: Mag_25_Springfield
+    400712: Mag_3_Geha
+    400714: Mag_5_Geha
+    400716: Mag_5_Mauser
+    400718: Mag_5_Springfield
+    400720: Stock Full.002
+    400722: AttachmentBrace.006
+    400724: Barrel Standard.003
+    400726: Barrel Standard.004
+    400728: Botrail.006
+    400730: Detail.003
+    400732: Siderail.006
+    400734: Stock Standard.001
+    400736: Toprail.006
+    400738: Barrel Tanker
+    400740: Stock Closed
+    400742: Stock Closed.001
+    400744: Stock Open
+    400746: Stock Open.001
+    400748: Receiver.005
+    400750: Attachment Sight
+    400752: Barrel Short.001
+    400754: Fore Jungle Carbine
+    400756: Sight mkiii
+    400758: Sight mkiv
+    400760: Attachment Sight.001
+    400762: Body Jungle Carbine
+    400764: AttachmentMount
+    400766: Barrel Short.002
+    400768: Base Frankenrifle
+    400770: Bolt.006
+    400772: BoltHeadStandard.002
+    400774: Firemech.002
+    400776: Folding Stock Arm
+    400778: Folding Stock Arm.001
+    400780: Integral.002
+    400782: Mag_20_AR
+    400784: Mag_30_AK_5.45
+    400786: Mag_30_AK_7.62
+    400788: Mag_30_AR
+    400790: Magloader_AK
+    400792: Magloader_AR
+    400794: Receiver.007
+    400796: Stock Adjustable Modern
+    400798: StockAdjust.000
+    400800: Trigger.005
+    400802: Underrail.001
+    400804: Barrel Full Frankenrifle
+    400806: Barrel Short Frankenrifle
+    400808: Barrel Standard Frankenrifle
+    400810: AttachmentScopeRail
+    400812: Barrel Modern
+    400814: Body Classic
+    400816: Body Modern
+    400818: MagloaderSMLE
+    400820: Sight mkiv.001
+    400822: Sight modern
+    400824: Magloader_SMLE
+    400826: AttachmentBraceMauser
+    400828: AttachmentBraceSpringfield
+    400830: Barrel Gewehr
+    400832: Barrel Modern.001
+    400834: Barrel Standard Mauser Action
+    400836: Body Modern.001
+    400838: Detail.004
+    400840: Grip.001
+    400842: Mag_10_Rifle
+    400844: Mag_5_Rifle
+    400846: SightBaseSpringfield
+    400848: Stock Adjustable Modern.001
+    400850: Stock GooseGun
+    400852: Stock K98
+    400854: Stock Standard Springfield
+    400856: StockAdjust.001
+    400858: Receiver Mauser Action
+    400860: Howell Conversion
+    400862: Mag_30_.303
+    400864: Magloader_Bren
+    400866: Piston
+    400868: Post Grip
+    400870: Sight guards
+    400872: Trunion
+    400874: TriggerCup
+    400876: Mag_Large_Gewehr
+    400878: Mag_Standard_Gewehr
+    400880: Barrel Standard Mauser
+    400882: Receiver Mauser
+    400884: Barrel Short Mauser
+    400886: Barrel ShortShot
+    400888: CleaningRod.002
+    400890: Stock K98.001
+    400892: Stock ShortShot
+    400894: Mag_Drum_AK
+    400896: Mag_Drum_AR
+    400898: Magloader_AK_Gewehr
+    400900: Magloader_AR_Gewehr
+    400902: Mag Botloader AK
+    400904: Mag Botloader AR
+    400906: Mag Botloader Saiga
+    400908: Mag Toploader Large
+    400910: Mag Toploader Standard
+    400912: Mag_4_Saiga
+    400914: Mag_8_Saiga
+    2300000: Adjuster
+    2300002: Barrel Long
+    2300004: Barrel Short
+    2300006: Barrel Standard
+    2300008: Body Polymer
+    2300010: Body Polymer Extension
+    2300012: Body Polymer Extension Long
+    2300014: Bolt
+    2300016: Bolt Handle
+    2300018: Cheek Weld
+    2300020: Firing System
+    2300022: GlockMag Adapter
+    2300024: Grip
+    2300026: Iron Sight Front Long
+    2300028: Iron Sight Front Short
+    2300030: Iron Sight Front Standard
+    2300032: Iron Sight Rear
+    2300034: Lenses
+    2300036: Mag Spacer
+    2300038: Mag_10
+    2300040: Mag_15
+    2300042: Mag_15.001
+    2300044: Mag_20
+    2300046: Mag_30
+    2300048: Mag_30.001
+    2300050: Mag_30.002
+    2300052: Mag_50_Drum
+    2300054: Mag_75 Drum
+    2300056: MultiMagLarge
+    2300058: MultiMagSmall
+    2300060: Rail Bottom Long_MeshPart0
+    2300062: Rail Bottom Long_MeshPart1
+    2300064: Rail Bottom Mid
+    2300066: Rail Bottom Oldstyle Long
+    2300068: Rail Bottom Oldstyle Mid
+    2300070: Rail Bottom Oldstyle Short
+    2300072: Rail Bottom Short
+    2300074: Rail Top
+    2300076: Scope
+    2300078: Scope Arm
+    2300080: Scope Fixture
+    2300082: Stock Adjustable
+    2300084: Stock Basic
+    2300086: Stock Butt
+    2300088: Stock Extension
+    2300090: Stock Extension Long
+    2300092: Stock Full
+    2300094: Stock Short
+    2300096: Trigger Advanced
+    2300098: Trigger Basic
+    2300100: //RootNode
+    2300102: Stock Polymer
+    2300104: Multimag
+    2300106: Mag_25 Drum
+    2300108: Mag_5
+    2300110: Frame Shotgun.001
+    2300112: Magwell
+    2300114: Mag_15_Glock
+    2300116: Mag_30_AK
+    2300118: Mag_33_Glock
+    2300120: Barrel Mid
+    2300122: Mag_60
+    2300124: MagWell
+    2300126: Stock Heavy
+    2300128: Stock Lightweight
+    2300130: TopRail
+    2300132: Trigger
+    2300134: FrameLong
+    2300136: FrameMid
+    2300138: FrameShort
+    2300140: Furniture
+    2300142: Stock
+    2300144: Base
+    2300146: Base Short
+    2300148: Furniture.001
+    2300150: Barrel Compact
+    2300152: BottomRail
+    2300154: BottomRail.001
+    2300156: FrontRails
+    2300158: FrontRails.001
+    2300160: Grip Sawbutt
+    2300162: Grip Sawbutt.001
+    2300164: MagBox
+    2300166: MagLoader
+    2300168: Receiver
+    2300170: Sight Adjust
+    2300172: Sight Adjust.001
+    2300174: Sight Base Classic
+    2300176: Sight Base Classic Compact
+    2300178: Sight Tang
+    2300180: Sight Tang.001
+    2300182: Stock Classic
+    2300184: Stock Compact Classic
+    2300186: Stock Full Modern
+    2300188: Stock Modern
+    2300190: Stock Modern Adjust
+    2300192: Stock Modern Adjust.002
+    2300194: Stock Modern Compact
+    2300196: Stock Modern.001
+    2300198: TopRail.001
+    2300200: Trigger Guard
+    2300202: Stand
+    2300204: Stand.001
+    2300206: Stock Modern Adjust.001
+    2300208: Stock Compact Modern
+    2300210: Stock Modern.002
+    2300212: Stock Classic Full
+    2300214: Stock Classic Full Compact
+    2300216: Stock Classic Full Short
+    2300218: Stock Classic Full Short Compact
+    2300220: Stock Classic Short Compact
+    2300222: Barrel Carbine
+    2300224: Barrel Rifle
+    2300226: BottomRail.002
+    2300228: FrontRails.002
+    2300230: Grip Sawbutt.002
+    2300232: Sight Adjust.002
+    2300234: Sight Base Classic.001
+    2300236: Sight Tang.002
+    2300238: Stand.002
+    2300240: Stand.003
+    2300242: Stand.004
+    2300244: Stand.005
+    2300246: Stock Carbine Modern
+    2300248: Stock Classic Full Short.001
+    2300250: Stock Classic Full.001
+    2300252: Stock Classic.001
+    2300254: Stock Modern Adjust Closed
+    2300256: Stock Modern Adjust Closed.001
+    2300258: Stock Modern Adjust Closed.002
+    2300260: Stock Modern Adjust Open
+    2300262: Stock Modern Adjust Open.001
+    2300264: Stock Modern Adjust Open.002
+    2300266: Stock Modern.003
+    2300268: TopRail.002
+    2300270: Stock Carbine Classic
+    2300272: Stock Classic Full Carbine
+    2300274: Stock Classic Short
+    2300276: Stock Classic Short Carbine
+    2300278: Rail Top Carbine_MeshPart0
+    2300280: Rail Top Carbine_MeshPart1
+    2300282: Scope Brace_MeshPart0
+    2300284: Scope Brace_MeshPart1
+    2300286: Scope Sharpshooter
+    2300288: ScopeBase
+    2300290: Barrel Musket
+    2300292: BottomRail.003
+    2300294: FrontRails.003
+    2300296: Grip Sawbutt.003
+    2300298: Stock Modern Adjust Open.003
+    2300300: Stock Modern.004
+    2300302: Stock Modern.005
+    2300304: Stock Classic Carbine
+    2300306: Stock Classic Compact
+    2300308: Stock Musket
+    2300310: Stock Rifle
+    2300312: Mag_15_Rifle
+    2300314: Mag_24
+    2300316: Mag_12
+    2300318: Legs Down
+    2300320: Legs Down.001
+    2300322: Legs Down.002
+    2300324: Legs up
+    2300326: Legs up.001
+    2300328: Legs up.002
+    2300330: Stock Integrated
+    2300332: Stock Integrated.001
+    2300334: Stock Integrated.002
+    2300336: Grip Sawbutt.004
+    2300338: Legs down.000
+    2300340: Legs down.003
+    2300342: ScoutScopeBase
+    2300344: SightRail
+    2300346: Stock Poly Long
+    2300348: Stock Poly Long.001
+    2300350: Stock Poly Long.002
+    2300352: Toprail
+    2300354: Bipod Brace
+    2300356: Bipod Brace.001
+    2300358: Bipod Brace.002
+    2300360: BipodBase
+    2300362: BipodBase.001
+    2300364: BipodBase.002
+    2300366: bipodLeft
+    2300368: bipodLeft.001
+    2300370: bipodLeft.002
+    2300372: bipodright
+    2300374: bipodright.001
+    2300376: bipodright.002
+    2300378: bolt
+    2300380: ForeStock.001
+    2300382: ForeStock.002
+    2300384: ForeStock.003
+    2300386: ForeStock.004
+    2300388: StockCombAdjust.001
+    2300390: StockCombAdjust.002
+    2300392: Bipod Brace.000
+    2300394: Bipod Brace.003
+    2300396: BipodBase.000
+    2300398: BipodBase.003
+    2300400: extension
+    2300402: extension.001
+    2300404: extension.002
+    2300406: extension.003
+    2300408: extension.004
+    2300410: extension.005
+    2300412: LegsDown
+    2300414: LegsDown.001
+    2300416: LegsDown.002
+    2300418: LegsDown.003
+    2300420: LegsDown.004
+    2300422: LegsDown.005
+    2300424: LegsUp
+    2300426: LegsUp.001
+    2300428: LegsUp.002
+    2300430: Mag_45
+    2300432: Bolt Spiraled
+    2300434: Barrel Rifle.001
+    2300436: Barrel Rifle.002
+    2300438: Barrel Rifle.003
+    2300440: Barrel_Long
+    2300442: Barrel_Short
+    2300444: Barrel_Standard
+    2300446: Body
+    2300448: Bolt.001
+    2300450: GlockMag Adapter.001
+    2300452: Mag_10_Cheytac
+    2300454: Toprail.001
+    2300456: Trigger.001
+    2300458: Rails.001
+    2300460: Body.001
+    2300462: Bolt.002
+    2300464: Stock Folding
+    2300466: Stock Folding Closed
+    2300468: Trigger.002
+    2300470: Stock Classic.002
+    2300472: Stock Folding Open
+    2300474: TangSIght
+    2300476: Toprail.002
+    2300478: Body Standard
+    2300480: Bolt.003
+    2300482: BoltHeadStandard
+    2300484: Firemech
+    2300486: Integral
+    2300488: Mag_10_SMLE
+    2300490: Receiver.001
+    2300492: Sight
+    2300494: Trigger.003
+    2300496: TriggerGuard
+    2300498: CleaningRod
+    2300500: Detail
+    2300502: Receiver.002
+    2300504: Safety
+    2300506: Sight.001
+    2300508: Stock Base
+    2300510: Tangbar
+    2300512: Toprail.000
+    2300514: TriggerGuard.001
+    2300516: Body Short
+    2300518: CleaningRod.001
+    2300520: Detail.001
+    2300522: Furniture.002
+    2300524: Furniture.003
+    2300526: 'Sight '
+    2300528: Stock Base.001
+    2300530: AttachmentBrace.000
+    2300532: AttachmentBrace.001
+    2300534: AttachmentBrace.002
+    2300536: Botrail.000
+    2300538: Botrail.001
+    2300540: Botrail.002
+    2300542: Mag Adapter
+    2300544: Receiver.000
+    2300546: Siderail.000
+    2300548: Siderail.001
+    2300550: Siderail.002
+    2300552: SightBase
+    2300554: Toprail.003
+    2300556: Toprail.004
+    2300558: AttachmentBrace
+    2300560: Barrel Standard.001
+    2300562: BoltHeadStandard.001
+    2300564: Botrail.003
+    2300566: Firemech.001
+    2300568: Furniture.004
+    2300570: Integral.001
+    2300572: Mag_18
+    2300574: Mag_8
+    2300576: Receiver.003
+    2300578: Sight.002
+    2300580: Trigger.000
+    2300582: TriggerGuard.002
+    2300584: Siderail.003
+    2300586: AttachmentBrace.003
+    2300588: Furniture.005
+    2300590: Barrel GooseGun
+    2300592: Barrel Shotgun
+    2300594: BarrelCover
+    2300596: Detail.002
+    2300598: Stock Shotgun
+    2300600: Safety.001
+    2300602: Stock Full.001
+    2300604: Stock Short.001
+    2300606: TriggerGuard.004
+    2300608: AttachmentBrace.004
+    2300610: BarrelCover.001
+    2300612: Botrail.004
+    2300614: Scope Brace.001_MeshPart0
+    2300616: Scope Brace.001_MeshPart1
+    2300618: Scope Sharpshooter.001
+    2300620: ScoutScopeBase.001
+    2300622: Siderail.004
+    2300624: Sight.003
+    2300626: SightBase.001
+    2300628: Tangbar.001
+    2300630: Barrel Standard.002
+    2300632: Bolt.004
+    2300634: Furniture.006
+    2300636: Receiver.004
+    2300638: Safety.002
+    2300640: Sight.004
+    2300642: SightBase.002
+    2300644: Stock Base.002
+    2300646: Tangbar.002
+    2300648: Trigger.004
+    2300650: TriggerGuard.003
+    2300652: Furniture.007
+    2300654: AttachmentBrace.005
+    2300656: BarrelCover.002
+    2300658: Botrail.005
+    2300660: Mag_15_SMLE
+    2300662: MagHousing_Large
+    2300664: MagHousing_Standard
+    2300666: Siderail.005
+    2300668: Stock Airservice
+    2300670: Stock Standard
+    2300672: Toprail.005
+    2300674: Bolt.005
+    2300676: Charging_Handle
+    2300678: Mag_10_Mauser
+    2300680: Mag_25_Springfield
+    2300682: Mag_3_Geha
+    2300684: Mag_5_Geha
+    2300686: Mag_5_Mauser
+    2300688: Mag_5_Springfield
+    2300690: Stock Full.002
+    2300692: AttachmentBrace.006
+    2300694: Barrel Standard.003
+    2300696: Barrel Standard.004
+    2300698: Botrail.006
+    2300700: Detail.003
+    2300702: Siderail.006
+    2300704: Stock Standard.001
+    2300706: Toprail.006
+    2300708: Barrel Tanker
+    2300710: Stock Closed
+    2300712: Stock Closed.001
+    2300714: Stock Open
+    2300716: Stock Open.001
+    2300718: Receiver.005
+    2300720: Attachment Sight
+    2300722: Barrel Short.001
+    2300724: Fore Jungle Carbine
+    2300726: Sight mkiii
+    2300728: Sight mkiv
+    2300730: Attachment Sight.001
+    2300732: Body Jungle Carbine
+    2300734: AttachmentMount
+    2300736: Barrel Short.002
+    2300738: Bolt.006
+    2300740: BoltHeadStandard.002
+    2300742: Firemech.002
+    2300744: Folding Stock Arm
+    2300746: Folding Stock Arm.001
+    2300748: Integral.002
+    2300750: Mag_20_AR
+    2300752: Mag_30_AK_5.45
+    2300754: Mag_30_AK_7.62
+    2300756: Mag_30_AR
+    2300758: Magloader_AK
+    2300760: Magloader_AR
+    2300762: Receiver.007
+    2300764: Stock Adjustable Modern
+    2300766: StockAdjust.000
+    2300768: Trigger.005
+    2300770: Underrail.001
+    2300772: Barrel Full Frankenrifle
+    2300774: Barrel Short Frankenrifle
+    2300776: Barrel Standard Frankenrifle
+    2300778: AttachmentScopeRail
+    2300780: Barrel Modern
+    2300782: Body Classic
+    2300784: Body Modern
+    2300786: MagloaderSMLE
+    2300788: Sight mkiv.001
+    2300790: Sight modern
+    2300792: Magloader_SMLE
+    2300794: AttachmentBraceMauser
+    2300796: AttachmentBraceSpringfield
+    2300798: Barrel Gewehr
+    2300800: Barrel Modern.001
+    2300802: Barrel Standard Mauser Action
+    2300804: Body Modern.001
+    2300806: Detail.004
+    2300808: Grip.001
+    2300810: Mag_10_Rifle
+    2300812: Mag_5_Rifle
+    2300814: SightBaseSpringfield
+    2300816: Stock Adjustable Modern.001
+    2300818: Stock GooseGun
+    2300820: Stock K98
+    2300822: Stock Standard Springfield
+    2300824: StockAdjust.001
+    2300826: Receiver Mauser Action
+    2300828: Howell Conversion
+    2300830: Mag_30_.303
+    2300832: Magloader_Bren
+    2300834: Piston
+    2300836: Post Grip
+    2300838: Sight guards
+    2300840: Trunion
+    2300842: TriggerCup
+    2300844: Mag_Large_Gewehr
+    2300846: Mag_Standard_Gewehr
+    2300848: Barrel Standard Mauser
+    2300850: Receiver Mauser
+    2300852: Barrel Short Mauser
+    2300854: Barrel ShortShot
+    2300856: CleaningRod.002
+    2300858: Stock K98.001
+    2300860: Stock ShortShot
+    2300862: Mag_Drum_AK
+    2300864: Mag_Drum_AR
+    2300866: Magloader_AK_Gewehr
+    2300868: Magloader_AR_Gewehr
+    2300870: Mag Botloader AK
+    2300872: Mag Botloader AR
+    2300874: Mag Botloader Saiga
+    2300876: Mag Toploader Large
+    2300878: Mag Toploader Standard
+    2300880: Mag_4_Saiga
+    2300882: Mag_8_Saiga
+    3300000: Adjuster
+    3300002: Barrel Long
+    3300004: Barrel Short
+    3300006: Barrel Standard
+    3300008: Body Polymer
+    3300010: Body Polymer Extension
+    3300012: Body Polymer Extension Long
+    3300014: Bolt
+    3300016: Bolt Handle
+    3300018: Cheek Weld
+    3300020: Firing System
+    3300022: GlockMag Adapter
+    3300024: Grip
+    3300026: Iron Sight Front Long
+    3300028: Iron Sight Front Short
+    3300030: Iron Sight Front Standard
+    3300032: Iron Sight Rear
+    3300034: Lenses
+    3300036: Mag Spacer
+    3300038: Mag_10
+    3300040: Mag_15
+    3300042: Mag_15.001
+    3300044: Mag_20
+    3300046: Mag_30
+    3300048: Mag_30.001
+    3300050: Mag_30.002
+    3300052: Mag_50_Drum
+    3300054: Mag_75 Drum
+    3300056: MultiMagLarge
+    3300058: MultiMagSmall
+    3300060: Rail Bottom Long_MeshPart0
+    3300062: Rail Bottom Long_MeshPart1
+    3300064: Rail Bottom Mid
+    3300066: Rail Bottom Oldstyle Long
+    3300068: Rail Bottom Oldstyle Mid
+    3300070: Rail Bottom Oldstyle Short
+    3300072: Rail Bottom Short
+    3300074: Rail Top
+    3300076: Scope
+    3300078: Scope Arm
+    3300080: Scope Fixture
+    3300082: Stock Adjustable
+    3300084: Stock Basic
+    3300086: Stock Butt
+    3300088: Stock Extension
+    3300090: Stock Extension Long
+    3300092: Stock Full
+    3300094: Stock Short
+    3300096: Trigger Advanced
+    3300098: Trigger Basic
+    3300100: //RootNode
+    3300102: Stock Polymer
+    3300104: Multimag
+    3300106: Mag_25 Drum
+    3300108: Mag_5
+    3300110: Frame Shotgun.001
+    3300112: Magwell
+    3300114: Mag_15_Glock
+    3300116: Mag_30_AK
+    3300118: Mag_33_Glock
+    3300120: Barrel Mid
+    3300122: Mag_60
+    3300124: MagWell
+    3300126: Stock Heavy
+    3300128: Stock Lightweight
+    3300130: TopRail
+    3300132: Trigger
+    3300134: FrameLong
+    3300136: FrameMid
+    3300138: FrameShort
+    3300140: Furniture
+    3300142: Stock
+    3300144: Base
+    3300146: Base Short
+    3300148: Furniture.001
+    3300150: Barrel Compact
+    3300152: BottomRail
+    3300154: BottomRail.001
+    3300156: FrontRails
+    3300158: FrontRails.001
+    3300160: Grip Sawbutt
+    3300162: Grip Sawbutt.001
+    3300164: MagBox
+    3300166: MagLoader
+    3300168: Receiver
+    3300170: Sight Adjust
+    3300172: Sight Adjust.001
+    3300174: Sight Base Classic
+    3300176: Sight Base Classic Compact
+    3300178: Sight Tang
+    3300180: Sight Tang.001
+    3300182: Stock Classic
+    3300184: Stock Compact Classic
+    3300186: Stock Full Modern
+    3300188: Stock Modern
+    3300190: Stock Modern Adjust
+    3300192: Stock Modern Adjust.002
+    3300194: Stock Modern Compact
+    3300196: Stock Modern.001
+    3300198: TopRail.001
+    3300200: Trigger Guard
+    3300202: Stand
+    3300204: Stand.001
+    3300206: Stock Modern Adjust.001
+    3300208: Stock Compact Modern
+    3300210: Stock Modern.002
+    3300212: Stock Classic Full
+    3300214: Stock Classic Full Compact
+    3300216: Stock Classic Full Short
+    3300218: Stock Classic Full Short Compact
+    3300220: Stock Classic Short Compact
+    3300222: Barrel Carbine
+    3300224: Barrel Rifle
+    3300226: BottomRail.002
+    3300228: FrontRails.002
+    3300230: Grip Sawbutt.002
+    3300232: Sight Adjust.002
+    3300234: Sight Base Classic.001
+    3300236: Sight Tang.002
+    3300238: Stand.002
+    3300240: Stand.003
+    3300242: Stand.004
+    3300244: Stand.005
+    3300246: Stock Carbine Modern
+    3300248: Stock Classic Full Short.001
+    3300250: Stock Classic Full.001
+    3300252: Stock Classic.001
+    3300254: Stock Modern Adjust Closed
+    3300256: Stock Modern Adjust Closed.001
+    3300258: Stock Modern Adjust Closed.002
+    3300260: Stock Modern Adjust Open
+    3300262: Stock Modern Adjust Open.001
+    3300264: Stock Modern Adjust Open.002
+    3300266: Stock Modern.003
+    3300268: TopRail.002
+    3300270: Stock Carbine Classic
+    3300272: Stock Classic Full Carbine
+    3300274: Stock Classic Short
+    3300276: Stock Classic Short Carbine
+    3300278: Rail Top Carbine_MeshPart0
+    3300280: Rail Top Carbine_MeshPart1
+    3300282: Scope Brace_MeshPart0
+    3300284: Scope Brace_MeshPart1
+    3300286: Scope Sharpshooter
+    3300288: ScopeBase
+    3300290: Barrel Musket
+    3300292: BottomRail.003
+    3300294: FrontRails.003
+    3300296: Grip Sawbutt.003
+    3300298: Stock Modern Adjust Open.003
+    3300300: Stock Modern.004
+    3300302: Stock Modern.005
+    3300304: Stock Classic Carbine
+    3300306: Stock Classic Compact
+    3300308: Stock Musket
+    3300310: Stock Rifle
+    3300312: Mag_15_Rifle
+    3300314: Mag_24
+    3300316: Mag_12
+    3300318: Legs Down
+    3300320: Legs Down.001
+    3300322: Legs Down.002
+    3300324: Legs up
+    3300326: Legs up.001
+    3300328: Legs up.002
+    3300330: Stock Integrated
+    3300332: Stock Integrated.001
+    3300334: Stock Integrated.002
+    3300336: Grip Sawbutt.004
+    3300338: Legs down.000
+    3300340: Legs down.003
+    3300342: ScoutScopeBase
+    3300344: SightRail
+    3300346: Stock Poly Long
+    3300348: Stock Poly Long.001
+    3300350: Stock Poly Long.002
+    3300352: Toprail
+    3300354: Bipod Brace
+    3300356: Bipod Brace.001
+    3300358: Bipod Brace.002
+    3300360: BipodBase
+    3300362: BipodBase.001
+    3300364: BipodBase.002
+    3300366: bipodLeft
+    3300368: bipodLeft.001
+    3300370: bipodLeft.002
+    3300372: bipodright
+    3300374: bipodright.001
+    3300376: bipodright.002
+    3300378: bolt
+    3300380: ForeStock.001
+    3300382: ForeStock.002
+    3300384: ForeStock.003
+    3300386: ForeStock.004
+    3300388: StockCombAdjust.001
+    3300390: StockCombAdjust.002
+    3300392: Bipod Brace.000
+    3300394: Bipod Brace.003
+    3300396: BipodBase.000
+    3300398: BipodBase.003
+    3300400: extension
+    3300402: extension.001
+    3300404: extension.002
+    3300406: extension.003
+    3300408: extension.004
+    3300410: extension.005
+    3300412: LegsDown
+    3300414: LegsDown.001
+    3300416: LegsDown.002
+    3300418: LegsDown.003
+    3300420: LegsDown.004
+    3300422: LegsDown.005
+    3300424: LegsUp
+    3300426: LegsUp.001
+    3300428: LegsUp.002
+    3300430: Mag_45
+    3300432: Bolt Spiraled
+    3300434: Barrel Rifle.001
+    3300436: Barrel Rifle.002
+    3300438: Barrel Rifle.003
+    3300440: Barrel_Long
+    3300442: Barrel_Short
+    3300444: Barrel_Standard
+    3300446: Body
+    3300448: Bolt.001
+    3300450: GlockMag Adapter.001
+    3300452: Mag_10_Cheytac
+    3300454: Toprail.001
+    3300456: Trigger.001
+    3300458: Rails.001
+    3300460: Body.001
+    3300462: Bolt.002
+    3300464: Stock Folding
+    3300466: Stock Folding Closed
+    3300468: Trigger.002
+    3300470: Stock Classic.002
+    3300472: Stock Folding Open
+    3300474: TangSIght
+    3300476: Toprail.002
+    3300478: Body Standard
+    3300480: Bolt.003
+    3300482: BoltHeadStandard
+    3300484: Firemech
+    3300486: Integral
+    3300488: Mag_10_SMLE
+    3300490: Receiver.001
+    3300492: Sight
+    3300494: Trigger.003
+    3300496: TriggerGuard
+    3300498: CleaningRod
+    3300500: Detail
+    3300502: Receiver.002
+    3300504: Safety
+    3300506: Sight.001
+    3300508: Stock Base
+    3300510: Tangbar
+    3300512: Toprail.000
+    3300514: TriggerGuard.001
+    3300516: Body Short
+    3300518: CleaningRod.001
+    3300520: Detail.001
+    3300522: Furniture.002
+    3300524: Furniture.003
+    3300526: 'Sight '
+    3300528: Stock Base.001
+    3300530: AttachmentBrace.000
+    3300532: AttachmentBrace.001
+    3300534: AttachmentBrace.002
+    3300536: Botrail.000
+    3300538: Botrail.001
+    3300540: Botrail.002
+    3300542: Mag Adapter
+    3300544: Receiver.000
+    3300546: Siderail.000
+    3300548: Siderail.001
+    3300550: Siderail.002
+    3300552: SightBase
+    3300554: Toprail.003
+    3300556: Toprail.004
+    3300558: AttachmentBrace
+    3300560: Barrel Standard.001
+    3300562: BoltHeadStandard.001
+    3300564: Botrail.003
+    3300566: Firemech.001
+    3300568: Furniture.004
+    3300570: Integral.001
+    3300572: Mag_18
+    3300574: Mag_8
+    3300576: Receiver.003
+    3300578: Sight.002
+    3300580: Trigger.000
+    3300582: TriggerGuard.002
+    3300584: Siderail.003
+    3300586: AttachmentBrace.003
+    3300588: Furniture.005
+    3300590: Barrel GooseGun
+    3300592: Barrel Shotgun
+    3300594: BarrelCover
+    3300596: Detail.002
+    3300598: Stock Shotgun
+    3300600: Safety.001
+    3300602: Stock Full.001
+    3300604: Stock Short.001
+    3300606: TriggerGuard.004
+    3300608: AttachmentBrace.004
+    3300610: BarrelCover.001
+    3300612: Botrail.004
+    3300614: Scope Brace.001_MeshPart0
+    3300616: Scope Brace.001_MeshPart1
+    3300618: Scope Sharpshooter.001
+    3300620: ScoutScopeBase.001
+    3300622: Siderail.004
+    3300624: Sight.003
+    3300626: SightBase.001
+    3300628: Tangbar.001
+    3300630: Barrel Standard.002
+    3300632: Bolt.004
+    3300634: Furniture.006
+    3300636: Receiver.004
+    3300638: Safety.002
+    3300640: Sight.004
+    3300642: SightBase.002
+    3300644: Stock Base.002
+    3300646: Tangbar.002
+    3300648: Trigger.004
+    3300650: TriggerGuard.003
+    3300652: Furniture.007
+    3300654: AttachmentBrace.005
+    3300656: BarrelCover.002
+    3300658: Botrail.005
+    3300660: Mag_15_SMLE
+    3300662: MagHousing_Large
+    3300664: MagHousing_Standard
+    3300666: Siderail.005
+    3300668: Stock Airservice
+    3300670: Stock Standard
+    3300672: Toprail.005
+    3300674: Bolt.005
+    3300676: Charging_Handle
+    3300678: Mag_10_Mauser
+    3300680: Mag_25_Springfield
+    3300682: Mag_3_Geha
+    3300684: Mag_5_Geha
+    3300686: Mag_5_Mauser
+    3300688: Mag_5_Springfield
+    3300690: Stock Full.002
+    3300692: AttachmentBrace.006
+    3300694: Barrel Standard.003
+    3300696: Barrel Standard.004
+    3300698: Botrail.006
+    3300700: Detail.003
+    3300702: Siderail.006
+    3300704: Stock Standard.001
+    3300706: Toprail.006
+    3300708: Barrel Tanker
+    3300710: Stock Closed
+    3300712: Stock Closed.001
+    3300714: Stock Open
+    3300716: Stock Open.001
+    3300718: Receiver.005
+    3300720: Attachment Sight
+    3300722: Barrel Short.001
+    3300724: Fore Jungle Carbine
+    3300726: Sight mkiii
+    3300728: Sight mkiv
+    3300730: Attachment Sight.001
+    3300732: Body Jungle Carbine
+    3300734: AttachmentMount
+    3300736: Barrel Short.002
+    3300738: Bolt.006
+    3300740: BoltHeadStandard.002
+    3300742: Firemech.002
+    3300744: Folding Stock Arm
+    3300746: Folding Stock Arm.001
+    3300748: Integral.002
+    3300750: Mag_20_AR
+    3300752: Mag_30_AK_5.45
+    3300754: Mag_30_AK_7.62
+    3300756: Mag_30_AR
+    3300758: Magloader_AK
+    3300760: Magloader_AR
+    3300762: Receiver.007
+    3300764: Stock Adjustable Modern
+    3300766: StockAdjust.000
+    3300768: Trigger.005
+    3300770: Underrail.001
+    3300772: Barrel Full Frankenrifle
+    3300774: Barrel Short Frankenrifle
+    3300776: Barrel Standard Frankenrifle
+    3300778: AttachmentScopeRail
+    3300780: Barrel Modern
+    3300782: Body Classic
+    3300784: Body Modern
+    3300786: MagloaderSMLE
+    3300788: Sight mkiv.001
+    3300790: Sight modern
+    3300792: Magloader_SMLE
+    3300794: AttachmentBraceMauser
+    3300796: AttachmentBraceSpringfield
+    3300798: Barrel Gewehr
+    3300800: Barrel Modern.001
+    3300802: Barrel Standard Mauser Action
+    3300804: Body Modern.001
+    3300806: Detail.004
+    3300808: Grip.001
+    3300810: Mag_10_Rifle
+    3300812: Mag_5_Rifle
+    3300814: SightBaseSpringfield
+    3300816: Stock Adjustable Modern.001
+    3300818: Stock GooseGun
+    3300820: Stock K98
+    3300822: Stock Standard Springfield
+    3300824: StockAdjust.001
+    3300826: Receiver Mauser Action
+    3300828: Howell Conversion
+    3300830: Mag_30_.303
+    3300832: Magloader_Bren
+    3300834: Piston
+    3300836: Post Grip
+    3300838: Sight guards
+    3300840: Trunion
+    3300842: TriggerCup
+    3300844: Mag_Large_Gewehr
+    3300846: Mag_Standard_Gewehr
+    3300848: Barrel Standard Mauser
+    3300850: Receiver Mauser
+    3300852: Barrel Short Mauser
+    3300854: Barrel ShortShot
+    3300856: CleaningRod.002
+    3300858: Stock K98.001
+    3300860: Stock ShortShot
+    3300862: Mag_Drum_AK
+    3300864: Mag_Drum_AR
+    3300866: Magloader_AK_Gewehr
+    3300868: Magloader_AR_Gewehr
+    3300870: Mag Botloader AK
+    3300872: Mag Botloader AR
+    3300874: Mag Botloader Saiga
+    3300876: Mag Toploader Large
+    3300878: Mag Toploader Standard
+    3300880: Mag_4_Saiga
+    3300882: Mag_8_Saiga
+    4300000: Mag_15
+    4300002: Mag_10
+    4300004: Scope Arm
+    4300006: Rail Top
+    4300008: Scope
+    4300010: Lenses
+    4300012: Scope Fixture
+    4300014: Firing System
+    4300016: Bolt
+    4300018: Bolt Handle
+    4300020: Mag Spacer
+    4300022: GlockMag Adapter
+    4300024: Mag_30.002
+    4300026: Mag_15.001
+    4300028: MultiMagSmall
+    4300030: MultiMagLarge
+    4300032: Mag_30.001
+    4300034: Mag_75 Drum
+    4300036: Mag_50_Drum
+    4300038: Mag_20
+    4300040: Mag_30
+    4300042: Barrel Short
+    4300044: Iron Sight Front Short
+    4300046: Barrel Long
+    4300048: Iron Sight Front Long
+    4300050: Trigger Basic
+    4300052: Iron Sight Rear
+    4300054: Stock Basic
+    4300056: Stock Full
+    4300058: Stock Short
+    4300060: Stock Extension
+    4300062: Rail Bottom Oldstyle Mid
+    4300064: Stock Extension Long
+    4300066: Rail Bottom Oldstyle Long
+    4300068: Rail Bottom Oldstyle Short
+    4300070: Body Polymer
+    4300072: Rail Bottom Short
+    4300074: Body Polymer Extension Long
+    4300076: Rail Bottom Long_MeshPart0
+    4300078: Rail Bottom Long_MeshPart1
+    4300080: Body Polymer Extension
+    4300082: Rail Bottom Mid
+    4300084: Stock Adjustable
+    4300086: Stock Butt
+    4300088: Cheek Weld
+    4300090: Adjuster
+    4300092: Grip
+    4300094: Trigger Advanced
+    4300096: Barrel Standard
+    4300098: Iron Sight Front Standard
+    4300100: Stock Polymer
+    4300102: Multimag
+    4300104: Mag_5
+    4300106: Mag_25 Drum
+    4300108: Frame Shotgun.001
+    4300110: Magwell
+    4300112: Mag_15_Glock
+    4300114: Mag_33_Glock
+    4300116: Mag_30_AK
+    4300118: Barrel Mid
+    4300120: Stock Heavy
+    4300122: MagWell
+    4300124: Trigger
+    4300126: TopRail
+    4300128: Stock Lightweight
+    4300130: Mag_60
+    4300132: FrameLong
+    4300134: FrameMid
+    4300136: Stock
+    4300138: Furniture
+    4300140: FrameShort
+    4300142: Base
+    4300144: Base Short
+    4300146: Furniture.001
+    4300148: Stock Classic
+    4300150: Sight Base Classic
+    4300152: Sight Tang
+    4300154: Sight Adjust
+    4300156: Stock Full Modern
+    4300158: FrontRails.001
+    4300160: TopRail.001
+    4300162: Stock Modern.001
+    4300164: Stock Modern Adjust.002
+    4300166: Grip Sawbutt.001
+    4300168: BottomRail.001
+    4300170: Receiver
+    4300172: MagLoader
+    4300174: Trigger Guard
+    4300176: MagBox
+    4300178: Barrel Compact
+    4300180: Stock Modern Compact
+    4300182: BottomRail
+    4300184: Grip Sawbutt
+    4300186: Stock Modern
+    4300188: Stock Modern Adjust
+    4300190: FrontRails
+    4300192: Stock Compact Classic
+    4300194: Sight Base Classic Compact
+    4300196: Sight Adjust.001
+    4300198: Sight Tang.001
+    4300200: Stand
+    4300202: Stock Modern Adjust.001
+    4300204: Stand.001
+    4300206: Stock Modern.002
+    4300208: Stock Compact Modern
+    4300210: Stock Classic Full Short
+    4300212: Stock Classic Full
+    4300214: Stock Classic Full Compact
+    4300216: Stock Classic Full Short Compact
+    4300218: Stock Classic Short Compact
+    4300220: Barrel Carbine
+    4300222: Stock Classic.001
+    4300224: Sight Base Classic.001
+    4300226: Sight Adjust.002
+    4300228: Sight Tang.002
+    4300230: Stock Classic Full Short.001
+    4300232: Stock Carbine Modern
+    4300234: Stock Modern Adjust Closed.001
+    4300236: Stand.004
+    4300238: Stock Modern Adjust Open.001
+    4300240: FrontRails.002
+    4300242: TopRail.002
+    4300244: Grip Sawbutt.002
+    4300246: BottomRail.002
+    4300248: Barrel Rifle
+    4300250: Stock Classic Full.001
+    4300252: Stock Modern.003
+    4300254: Stock Modern Adjust Closed.002
+    4300256: Stand.003
+    4300258: Stock Modern Adjust Open.002
+    4300260: Stand.002
+    4300262: Stock Modern Adjust Closed
+    4300264: Stand.005
+    4300266: Stock Modern Adjust Open
+    4300268: Stock Carbine Classic
+    4300270: Stock Classic Short Carbine
+    4300272: Stock Classic Full Carbine
+    4300274: Stock Classic Short
+    4300276: ScopeBase
+    4300278: Rail Top Carbine_MeshPart0
+    4300280: Rail Top Carbine_MeshPart1
+    4300282: Scope Brace_MeshPart0
+    4300284: Scope Brace_MeshPart1
+    4300286: Scope Sharpshooter
+    4300288: Barrel Musket
+    4300290: Stock Modern.004
+    4300292: BottomRail.003
+    4300294: Grip Sawbutt.003
+    4300296: FrontRails.003
+    4300298: Stock Modern.005
+    4300300: Stock Modern Adjust Open.003
+    4300302: Stock Musket
+    4300304: Stock Classic Carbine
+    4300306: Stock Rifle
+    4300308: Stock Classic Compact
+    4300310: Mag_15_Rifle
+    4300312: Mag_24
+    4300314: Mag_12
+    4300316: Stock Integrated.002
+    4300318: Legs Down.002
+    4300320: Legs up.002
+    4300322: Stock Integrated
+    4300324: Legs Down
+    4300326: Legs up
+    4300328: Stock Integrated.001
+    4300330: Legs up.001
+    4300332: Legs Down.001
+    4300334: Stock Poly Long.002
+    4300336: Legs down.003
+    4300338: Stock Poly Long
+    4300340: Stock Poly Long.001
+    4300342: Grip Sawbutt.004
+    4300344: Legs down.000
+    4300346: SightRail
+    4300348: Toprail
+    4300350: ScoutScopeBase
+    4300352: bolt
+    4300354: ForeStock.004
+    4300356: ForeStock.003
+    4300358: BipodBase.002
+    4300360: bipodLeft.002
+    4300362: bipodright.002
+    4300364: Bipod Brace.002
+    4300366: StockCombAdjust.002
+    4300368: ForeStock.002
+    4300370: BipodBase.001
+    4300372: Bipod Brace.001
+    4300374: bipodright.001
+    4300376: bipodLeft.001
+    4300378: BipodBase
+    4300380: bipodLeft
+    4300382: bipodright
+    4300384: Bipod Brace
+    4300386: ForeStock.001
+    4300388: StockCombAdjust.001
+    4300390: BipodBase.000
+    4300392: LegsDown.005
+    4300394: extension.005
+    4300396: Bipod Brace.000
+    4300398: LegsDown.004
+    4300400: extension.004
+    4300402: LegsDown.001
+    4300404: extension.002
+    4300406: LegsDown
+    4300408: extension
+    4300410: BipodBase.003
+    4300412: LegsDown.003
+    4300414: extension.003
+    4300416: Bipod Brace.003
+    4300418: LegsDown.002
+    4300420: extension.001
+    4300422: LegsUp.002
+    4300424: LegsUp.001
+    4300426: LegsUp
+    4300428: Mag_45
+    4300430: Bolt Spiraled
+    4300432: Barrel Rifle.003
+    4300434: Barrel Rifle.002
+    4300436: Barrel Rifle.001
+    4300438: Barrel_Short
+    4300440: Barrel_Long
+    4300442: Mag_10_Cheytac
+    4300444: Barrel_Standard
+    4300446: Body
+    4300448: Trigger.001
+    4300450: GlockMag Adapter.001
+    4300452: Toprail.001
+    4300454: Bolt.001
+    4300456: Rails.001
+    4300458: Stock Folding Closed
+    4300460: Stock Folding
+    4300462: Trigger.002
+    4300464: Body.001
+    4300466: Bolt.002
+    4300468: Stock Folding Open
+    4300470: Stock Classic.002
+    4300472: TangSIght
+    4300474: Toprail.002
+    4300476: Firemech
+    4300478: BoltHeadStandard
+    4300480: Integral
+    4300482: Receiver.001
+    4300484: TriggerGuard
+    4300486: Trigger.003
+    4300488: Mag_10_SMLE
+    4300490: Body Standard
+    4300492: Sight
+    4300494: Bolt.003
+    4300496: Receiver.002
+    4300498: Safety
+    4300500: Tangbar
+    4300502: TriggerGuard.001
+    4300504: Stock Base
+    4300506: CleaningRod
+    4300508: Detail
+    4300510: Toprail.000
+    4300512: Sight.001
+    4300514: Stock Base.001
+    4300516: Detail.001
+    4300518: Furniture.002
+    4300520: CleaningRod.001
+    4300522: Body Short
+    4300524: 'Sight '
+    4300526: Furniture.003
+    4300528: SightBase
+    4300530: AttachmentBrace.002
+    4300532: Receiver.000
+    4300534: Toprail.004
+    4300536: Botrail.002
+    4300538: Siderail.002
+    4300540: AttachmentBrace.001
+    4300542: Siderail.001
+    4300544: Botrail.001
+    4300546: Toprail.003
+    4300548: AttachmentBrace.000
+    4300550: Botrail.000
+    4300552: Siderail.000
+    4300554: Mag Adapter
+    4300556: AttachmentBrace
+    4300558: Botrail.003
+    4300560: Integral.001
+    4300562: Firemech.001
+    4300564: BoltHeadStandard.001
+    4300566: Furniture.004
+    4300568: Trigger.000
+    4300570: TriggerGuard.002
+    4300572: Receiver.003
+    4300574: Sight.002
+    4300576: Mag_18
+    4300578: Mag_8
+    4300580: Barrel Standard.001
+    4300582: Siderail.003
+    4300584: AttachmentBrace.003
+    4300586: Furniture.005
+    4300588: Stock Shotgun
+    4300590: Barrel GooseGun
+    4300592: Detail.002
+    4300594: Barrel Shotgun
+    4300596: BarrelCover
+    4300598: TriggerGuard.004
+    4300600: Safety.001
+    4300602: Stock Short.001
+    4300604: Stock Full.001
+    4300606: AttachmentBrace.004
+    4300608: Siderail.004
+    4300610: Botrail.004
+    4300612: BarrelCover.001
+    4300614: SightBase.001
+    4300616: ScoutScopeBase.001
+    4300618: Scope Brace.001_MeshPart0
+    4300620: Scope Brace.001_MeshPart1
+    4300622: Scope Sharpshooter.001
+    4300624: Sight.003
+    4300626: Tangbar.001
+    4300628: Receiver.004
+    4300630: Trigger.004
+    4300632: TriggerGuard.003
+    4300634: Safety.002
+    4300636: Bolt.004
+    4300638: Barrel Standard.002
+    4300640: Stock Base.002
+    4300642: Furniture.006
+    4300644: SightBase.002
+    4300646: Sight.004
+    4300648: Tangbar.002
+    4300650: Furniture.007
+    4300652: Stock Airservice
+    4300654: MagHousing_Standard
+    4300656: MagHousing_Large
+    4300658: Stock Standard
+    4300660: AttachmentBrace.005
+    4300662: Botrail.005
+    4300664: Siderail.005
+    4300666: Toprail.005
+    4300668: BarrelCover.002
+    4300670: Mag_15_SMLE
+    4300672: Bolt.005
+    4300674: Charging_Handle
+    4300676: Stock Full.002
+    4300678: Mag_5_Springfield
+    4300680: Mag_25_Springfield
+    4300682: Mag_5_Geha
+    4300684: Mag_3_Geha
+    4300686: Mag_10_Mauser
+    4300688: Mag_5_Mauser
+    4300690: Barrel Standard.004
+    4300692: AttachmentBrace.006
+    4300694: Toprail.006
+    4300696: Siderail.006
+    4300698: Botrail.006
+    4300700: Stock Standard.001
+    4300702: Detail.003
+    4300704: Barrel Standard.003
+    4300706: Barrel Tanker
+    4300708: Stock Closed
+    4300710: Stock Open
+    4300712: Stock Open.001
+    4300714: Stock Closed.001
+    4300716: Receiver.005
+    4300718: Barrel Short.001
+    4300720: Fore Jungle Carbine
+    4300722: Sight mkiv
+    4300724: Sight mkiii
+    4300726: Attachment Sight
+    4300728: Attachment Sight.001
+    4300730: Body Jungle Carbine
+    4300732: Folding Stock Arm.001
+    4300734: Folding Stock Arm
+    4300736: Magloader_AK
+    4300738: Mag_30_AK_7.62
+    4300740: Mag_30_AK_5.45
+    4300742: Magloader_AR
+    4300744: Mag_30_AR
+    4300746: Mag_20_AR
+    4300748: AttachmentMount
+    4300750: Stock Adjustable Modern
+    4300752: StockAdjust.000
+    4300754: Underrail.001
+    4300756: Integral.002
+    4300758: Trigger.005
+    4300760: Receiver.007
+    4300762: Firemech.002
+    4300764: BoltHeadStandard.002
+    4300766: Bolt.006
+    4300768: Barrel Short.002
+    4300770: Barrel Short Frankenrifle
+    4300772: Barrel Full Frankenrifle
+    4300774: Barrel Standard Frankenrifle
+    4300776: Body Modern
+    4300778: Barrel Modern
+    4300780: Sight mkiv.001
+    4300782: AttachmentScopeRail
+    4300784: Sight modern
+    4300786: MagloaderSMLE
+    4300788: Body Classic
+    4300790: Magloader_SMLE
+    4300792: Body Modern.001
+    4300794: Grip.001
+    4300796: Stock Adjustable Modern.001
+    4300798: StockAdjust.001
+    4300800: Detail.004
+    4300802: Stock GooseGun
+    4300804: AttachmentBraceSpringfield
+    4300806: SightBaseSpringfield
+    4300808: Mag_10_Rifle
+    4300810: Barrel Gewehr
+    4300812: Mag_5_Rifle
+    4300814: Barrel Standard Mauser Action
+    4300816: Stock Standard Springfield
+    4300818: Stock K98
+    4300820: AttachmentBraceMauser
+    4300822: Barrel Modern.001
+    4300824: Receiver Mauser Action
+    4300826: Mag_30_.303
+    4300828: Magloader_Bren
+    4300830: Trunion
+    4300832: Howell Conversion
+    4300834: Piston
+    4300836: Post Grip
+    4300838: Sight guards
+    4300840: TriggerCup
+    4300842: Mag_Large_Gewehr
+    4300844: Mag_Standard_Gewehr
+    4300846: Receiver Mauser
+    4300848: Barrel Standard Mauser
+    4300850: Barrel ShortShot
+    4300852: Stock ShortShot
+    4300854: Stock K98.001
+    4300856: CleaningRod.002
+    4300858: Barrel Short Mauser
+    4300860: Magloader_AR_Gewehr
+    4300862: Mag_Drum_AR
+    4300864: Magloader_AK_Gewehr
+    4300866: Mag_Drum_AK
+    4300868: Mag Botloader Saiga
+    4300870: Mag_8_Saiga
+    4300872: Mag_4_Saiga
+    4300874: Mag Botloader AR
+    4300876: Mag Botloader AK
+    4300878: Mag Toploader Large
+    4300880: Mag Toploader Standard
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory
+    second: {fileID: 2100000, guid: 827950a33a084ca44ad402705a6799af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: 2d737a3a14d04fb4d8f1b92e6aeaf1a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyMetal
+    second: {fileID: 2100000, guid: 416543bac945ebc48adc3c4f1d830208, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DetailMetal
+    second: {fileID: 2100000, guid: 32e1a762ee8359a41ab70dd95c0f8f6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 77cf454d023bea446bc8b3d945a15871, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal
+    second: {fileID: 2100000, guid: e5edae77aff32c642bf1ae1cc8dc3741, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lenses
+    second: {fileID: 2100000, guid: e129782b6be8151499aaeb0e273f0dae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine
+    second: {fileID: 2100000, guid: 2f09a1adaa4f0ee49a254e348a59b668, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine.001
+    second: {fileID: 2100000, guid: f630862e373b5414c98358f0f37c1373, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f1afc6d72a7cf9e46bef903a1d3f47e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: a8d69af5ed9d2ca4cbb081c90577f2e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 2422e95a36b09ab4782e8f04723a915b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rail Metal
+    second: {fileID: 2100000, guid: 2451766b729e9274aaed4c5bdd4bb2ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 975557f69b0aa84479e57d1dba8dd475, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

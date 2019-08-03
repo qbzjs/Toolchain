@@ -1,0 +1,526 @@
+fileFormatVersion: 2
+guid: 66721bd1d113c3f49b2f06d67ad931f1
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cube
+    100002: Cube.001
+    100004: Cube.001_MeshPart0
+    100006: Cube.001_MeshPart1
+    100008: Cube.001_MeshPart2
+    100010: Cube.002
+    100012: Cube.003
+    100014: Cube_MeshPart0
+    100016: Cube_MeshPart1
+    100018: Cylinder
+    100020: Cylinder.001
+    100022: Cylinder.002
+    100024: Cylinder.003
+    100026: //RootNode
+    100028: Barrel_Buffer_Tube_Cylinder.002
+    100030: Barrel_Buffer_Tube_Cylinder.002_MeshPart0
+    100032: Barrel_Buffer_Tube_Cylinder.002_MeshPart1
+    100034: Barrel_Buffer_Tube_Cylinder.002_MeshPart2
+    100036: Barrel_Buffer_Tube_Cylinder.002_MeshPart3
+    100038: Basic_Foregrip
+    100040: Body
+    100042: Body_MeshPart0
+    100044: Body_MeshPart1
+    100046: Body_MeshPart2
+    100048: Ergonomic Foregrip
+    100050: Front Sight
+    100052: Grenade Large
+    100054: Grenade Small
+    100056: Grenade Small_MeshPart0
+    100058: Grenade Small_MeshPart1
+    100060: Grip_Foregrip_Cube.001
+    100062: Rail Assembly
+    100064: Rail Assembly_MeshPart0
+    100066: Rail Assembly_MeshPart1
+    100068: Rail Assembly_MeshPart10
+    100070: Rail Assembly_MeshPart11
+    100072: Rail Assembly_MeshPart12
+    100074: Rail Assembly_MeshPart2
+    100076: Rail Assembly_MeshPart3
+    100078: Rail Assembly_MeshPart4
+    100080: Rail Assembly_MeshPart5
+    100082: Rail Assembly_MeshPart6
+    100084: Rail Assembly_MeshPart7
+    100086: Rail Assembly_MeshPart8
+    100088: Rail Assembly_MeshPart9
+    100090: Rear Grip
+    100092: Rear Grip Rail
+    100094: Rear Grip Rail_MeshPart0
+    100096: Rear Grip Rail_MeshPart1
+    100098: Rear Sight
+    100100: Sight Fixtures
+    100102: Sight Fixtures_MeshPart0
+    100104: Sight Fixtures_MeshPart1
+    100106: Trigger.001
+    100108: Trigger.002
+    100110: Vent_Large
+    100112: Vent_Large_MeshPart0
+    100114: Vent_Large_MeshPart1
+    100116: Vent_Sma;;
+    100118: Basic_Grip
+    100120: Basic_Grip_MeshPart0
+    100122: Basic_Grip_MeshPart1
+    100124: Trigger
+    100126: Grenade
+    100128: Grip Rear Basic
+    100130: Grip Rear Rail
+    100132: Stock
+    100134: Stock_MeshPart0
+    100136: Stock_MeshPart1
+    100138: Vent_Small
+    100140: Furniture Modern
+    100142: FurnitureClassic
+    100144: Vent_Mid
+    100146: Receiver
+    100148: Rocket
+    100150: Siderails
+    100152: Siderails_MeshPart0
+    100154: Siderails_MeshPart1
+    100156: Sights
+    100158: Stabilizer
+    100160: Toprail
+    100162: Trigger Thumb
+    100164: Vent
+    100166: Vent Short
+    100168: Rocket Chemical
+    100170: Rocket Energy
+    100172: Rocket Standard
+    400000: Cube
+    400002: Cube.001
+    400004: Cube.001_MeshPart0
+    400006: Cube.001_MeshPart1
+    400008: Cube.001_MeshPart2
+    400010: Cube.002
+    400012: Cube.003
+    400014: Cube_MeshPart0
+    400016: Cube_MeshPart1
+    400018: Cylinder
+    400020: Cylinder.001
+    400022: Cylinder.002
+    400024: Cylinder.003
+    400026: //RootNode
+    400028: Barrel_Buffer_Tube_Cylinder.002
+    400030: Barrel_Buffer_Tube_Cylinder.002_MeshPart0
+    400032: Barrel_Buffer_Tube_Cylinder.002_MeshPart1
+    400034: Barrel_Buffer_Tube_Cylinder.002_MeshPart2
+    400036: Barrel_Buffer_Tube_Cylinder.002_MeshPart3
+    400038: Basic_Foregrip
+    400040: Body
+    400042: Body_MeshPart0
+    400044: Body_MeshPart1
+    400046: Body_MeshPart2
+    400048: Ergonomic Foregrip
+    400050: Front Sight
+    400052: Grenade Large
+    400054: Grenade Small
+    400056: Grenade Small_MeshPart0
+    400058: Grenade Small_MeshPart1
+    400060: Grip_Foregrip_Cube.001
+    400062: Rail Assembly
+    400064: Rail Assembly_MeshPart0
+    400066: Rail Assembly_MeshPart1
+    400068: Rail Assembly_MeshPart10
+    400070: Rail Assembly_MeshPart11
+    400072: Rail Assembly_MeshPart12
+    400074: Rail Assembly_MeshPart2
+    400076: Rail Assembly_MeshPart3
+    400078: Rail Assembly_MeshPart4
+    400080: Rail Assembly_MeshPart5
+    400082: Rail Assembly_MeshPart6
+    400084: Rail Assembly_MeshPart7
+    400086: Rail Assembly_MeshPart8
+    400088: Rail Assembly_MeshPart9
+    400090: Rear Grip
+    400092: Rear Grip Rail
+    400094: Rear Grip Rail_MeshPart0
+    400096: Rear Grip Rail_MeshPart1
+    400098: Rear Sight
+    400100: Sight Fixtures
+    400102: Sight Fixtures_MeshPart0
+    400104: Sight Fixtures_MeshPart1
+    400106: Trigger.001
+    400108: Trigger.002
+    400110: Vent_Large
+    400112: Vent_Large_MeshPart0
+    400114: Vent_Large_MeshPart1
+    400116: Vent_Sma;;
+    400118: Basic_Grip
+    400120: Basic_Grip_MeshPart0
+    400122: Basic_Grip_MeshPart1
+    400124: Trigger
+    400126: Grenade
+    400128: Grip Rear Basic
+    400130: Grip Rear Rail
+    400132: Stock
+    400134: Stock_MeshPart0
+    400136: Stock_MeshPart1
+    400138: Vent_Small
+    400140: Furniture Modern
+    400142: FurnitureClassic
+    400144: Vent_Mid
+    400146: Receiver
+    400148: Rocket
+    400150: Siderails
+    400152: Siderails_MeshPart0
+    400154: Siderails_MeshPart1
+    400156: Sights
+    400158: Stabilizer
+    400160: Toprail
+    400162: Trigger Thumb
+    400164: Vent
+    400166: Vent Short
+    400168: Rocket Chemical
+    400170: Rocket Energy
+    400172: Rocket Standard
+    2300000: Cube.001_MeshPart0
+    2300002: Cube.001_MeshPart1
+    2300004: Cube.001_MeshPart2
+    2300006: Cube.002
+    2300008: Cube.003
+    2300010: Cube_MeshPart0
+    2300012: Cube_MeshPart1
+    2300014: Cylinder
+    2300016: Cylinder.001
+    2300018: Cylinder.002
+    2300020: Cylinder.003
+    2300022: Barrel_Buffer_Tube_Cylinder.002_MeshPart0
+    2300024: Barrel_Buffer_Tube_Cylinder.002_MeshPart1
+    2300026: Barrel_Buffer_Tube_Cylinder.002_MeshPart2
+    2300028: Barrel_Buffer_Tube_Cylinder.002_MeshPart3
+    2300030: Basic_Foregrip
+    2300032: Body_MeshPart0
+    2300034: Body_MeshPart1
+    2300036: Body_MeshPart2
+    2300038: Ergonomic Foregrip
+    2300040: Front Sight
+    2300042: Grenade Large
+    2300044: Grenade Small_MeshPart0
+    2300046: Grenade Small_MeshPart1
+    2300048: Grip_Foregrip_Cube.001
+    2300050: Rail Assembly_MeshPart0
+    2300052: Rail Assembly_MeshPart1
+    2300054: Rail Assembly_MeshPart10
+    2300056: Rail Assembly_MeshPart11
+    2300058: Rail Assembly_MeshPart12
+    2300060: Rail Assembly_MeshPart2
+    2300062: Rail Assembly_MeshPart3
+    2300064: Rail Assembly_MeshPart4
+    2300066: Rail Assembly_MeshPart5
+    2300068: Rail Assembly_MeshPart6
+    2300070: Rail Assembly_MeshPart7
+    2300072: Rail Assembly_MeshPart8
+    2300074: Rail Assembly_MeshPart9
+    2300076: Rear Grip
+    2300078: Rear Grip Rail_MeshPart0
+    2300080: Rear Grip Rail_MeshPart1
+    2300082: Rear Sight
+    2300084: Sight Fixtures_MeshPart0
+    2300086: Sight Fixtures_MeshPart1
+    2300088: Trigger.001
+    2300090: Trigger.002
+    2300092: Vent_Large_MeshPart0
+    2300094: Vent_Large_MeshPart1
+    2300096: Vent_Sma;;
+    2300098: Basic_Grip_MeshPart0
+    2300100: Basic_Grip_MeshPart1
+    2300102: Trigger
+    2300104: Grenade
+    2300106: Rear Grip Rail
+    2300108: Grip Rear Basic
+    2300110: Grip Rear Rail
+    2300112: Stock_MeshPart0
+    2300114: Stock_MeshPart1
+    2300116: Vent_Small
+    2300118: Furniture Modern
+    2300120: FurnitureClassic
+    2300122: Vent_Mid
+    2300124: Receiver
+    2300126: Rocket
+    2300128: Siderails_MeshPart0
+    2300130: Siderails_MeshPart1
+    2300132: Sights
+    2300134: Stabilizer
+    2300136: Toprail
+    2300138: Trigger Thumb
+    2300140: Vent
+    2300142: Vent Short
+    2300144: Rocket Chemical
+    2300146: Rocket Energy
+    2300148: Rocket Standard
+    3300000: Cube.001_MeshPart0
+    3300002: Cube.001_MeshPart1
+    3300004: Cube.001_MeshPart2
+    3300006: Cube.002
+    3300008: Cube.003
+    3300010: Cube_MeshPart0
+    3300012: Cube_MeshPart1
+    3300014: Cylinder
+    3300016: Cylinder.001
+    3300018: Cylinder.002
+    3300020: Cylinder.003
+    3300022: Barrel_Buffer_Tube_Cylinder.002_MeshPart0
+    3300024: Barrel_Buffer_Tube_Cylinder.002_MeshPart1
+    3300026: Barrel_Buffer_Tube_Cylinder.002_MeshPart2
+    3300028: Barrel_Buffer_Tube_Cylinder.002_MeshPart3
+    3300030: Basic_Foregrip
+    3300032: Body_MeshPart0
+    3300034: Body_MeshPart1
+    3300036: Body_MeshPart2
+    3300038: Ergonomic Foregrip
+    3300040: Front Sight
+    3300042: Grenade Large
+    3300044: Grenade Small_MeshPart0
+    3300046: Grenade Small_MeshPart1
+    3300048: Grip_Foregrip_Cube.001
+    3300050: Rail Assembly_MeshPart0
+    3300052: Rail Assembly_MeshPart1
+    3300054: Rail Assembly_MeshPart10
+    3300056: Rail Assembly_MeshPart11
+    3300058: Rail Assembly_MeshPart12
+    3300060: Rail Assembly_MeshPart2
+    3300062: Rail Assembly_MeshPart3
+    3300064: Rail Assembly_MeshPart4
+    3300066: Rail Assembly_MeshPart5
+    3300068: Rail Assembly_MeshPart6
+    3300070: Rail Assembly_MeshPart7
+    3300072: Rail Assembly_MeshPart8
+    3300074: Rail Assembly_MeshPart9
+    3300076: Rear Grip
+    3300078: Rear Grip Rail_MeshPart0
+    3300080: Rear Grip Rail_MeshPart1
+    3300082: Rear Sight
+    3300084: Sight Fixtures_MeshPart0
+    3300086: Sight Fixtures_MeshPart1
+    3300088: Trigger.001
+    3300090: Trigger.002
+    3300092: Vent_Large_MeshPart0
+    3300094: Vent_Large_MeshPart1
+    3300096: Vent_Sma;;
+    3300098: Basic_Grip_MeshPart0
+    3300100: Basic_Grip_MeshPart1
+    3300102: Trigger
+    3300104: Grenade
+    3300106: Rear Grip Rail
+    3300108: Grip Rear Basic
+    3300110: Grip Rear Rail
+    3300112: Stock_MeshPart0
+    3300114: Stock_MeshPart1
+    3300116: Vent_Small
+    3300118: Furniture Modern
+    3300120: FurnitureClassic
+    3300122: Vent_Mid
+    3300124: Receiver
+    3300126: Rocket
+    3300128: Siderails_MeshPart0
+    3300130: Siderails_MeshPart1
+    3300132: Sights
+    3300134: Stabilizer
+    3300136: Toprail
+    3300138: Trigger Thumb
+    3300140: Vent
+    3300142: Vent Short
+    3300144: Rocket Chemical
+    3300146: Rocket Energy
+    3300148: Rocket Standard
+    4300000: Cylinder.003
+    4300002: Cube.003
+    4300004: Cube.002
+    4300006: Cylinder.002
+    4300008: Cube.001_MeshPart0
+    4300010: Cube.001_MeshPart1
+    4300012: Cube.001_MeshPart2
+    4300014: Cube_MeshPart0
+    4300016: Cube_MeshPart1
+    4300018: Cylinder.001
+    4300020: Cylinder
+    4300022: Rear Grip Rail_MeshPart0
+    4300024: Rear Grip Rail_MeshPart1
+    4300026: Trigger.002
+    4300028: Basic_Foregrip
+    4300030: Vent_Sma;;
+    4300032: Rail Assembly_MeshPart0
+    4300034: Rail Assembly_MeshPart1
+    4300036: Rail Assembly_MeshPart2
+    4300038: Rail Assembly_MeshPart3
+    4300040: Rail Assembly_MeshPart4
+    4300042: Rail Assembly_MeshPart5
+    4300044: Rail Assembly_MeshPart6
+    4300046: Rail Assembly_MeshPart7
+    4300048: Rail Assembly_MeshPart8
+    4300050: Rail Assembly_MeshPart9
+    4300052: Rail Assembly_MeshPart10
+    4300054: Rail Assembly_MeshPart11
+    4300056: Rail Assembly_MeshPart12
+    4300058: Vent_Large_MeshPart0
+    4300060: Vent_Large_MeshPart1
+    4300062: Rear Grip
+    4300064: Sight Fixtures_MeshPart0
+    4300066: Sight Fixtures_MeshPart1
+    4300068: Front Sight
+    4300070: Grenade Large
+    4300072: Rear Sight
+    4300074: Grenade Small_MeshPart0
+    4300076: Grenade Small_MeshPart1
+    4300078: Barrel_Buffer_Tube_Cylinder.002_MeshPart0
+    4300080: Barrel_Buffer_Tube_Cylinder.002_MeshPart1
+    4300082: Barrel_Buffer_Tube_Cylinder.002_MeshPart2
+    4300084: Barrel_Buffer_Tube_Cylinder.002_MeshPart3
+    4300086: Grip_Foregrip_Cube.001
+    4300088: Body_MeshPart0
+    4300090: Body_MeshPart1
+    4300092: Body_MeshPart2
+    4300094: Ergonomic Foregrip
+    4300096: Trigger.001
+    4300098: Basic_Grip_MeshPart0
+    4300100: Basic_Grip_MeshPart1
+    4300102: Trigger
+    4300104: Grenade
+    4300106: Rear Grip Rail
+    4300108: Stock_MeshPart0
+    4300110: Stock_MeshPart1
+    4300112: Grip Rear Rail
+    4300114: Grip Rear Basic
+    4300116: Vent_Small
+    4300118: Vent_Mid
+    4300120: FurnitureClassic
+    4300122: Furniture Modern
+    4300124: Toprail
+    4300126: Rocket
+    4300128: Vent Short
+    4300130: Sights
+    4300132: Vent
+    4300134: Receiver
+    4300136: Trigger Thumb
+    4300138: Stabilizer
+    4300140: Siderails_MeshPart0
+    4300142: Siderails_MeshPart1
+    4300144: Rocket Energy
+    4300146: Rocket Chemical
+    4300148: Rocket Standard
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory
+    second: {fileID: 2100000, guid: 00730d5d1eb2655469523780f0d876ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyBase
+    second: {fileID: 2100000, guid: 7fa4c6e6c3890834794252f95645c5b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 6513b5bffab3bb748932ee13f20507bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalDetail
+    second: {fileID: 2100000, guid: 15907181a0631f446a8206fb8021ca5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PressureGlass
+    second: {fileID: 2100000, guid: 11da40b3e81547c45ad19fe1f7878193, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rocket
+    second: {fileID: 2100000, guid: 5171a8e367962e8469db89dffd7a846b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 4d7fa59645d7d634b99723b920ffbc70, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

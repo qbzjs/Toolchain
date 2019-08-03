@@ -1,0 +1,399 @@
+fileFormatVersion: 2
+guid: be5ad06c8484d044aa62796d1f79ca3a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Edge Backsword
+    100002: Edge Cutlass
+    100004: Edge Katana
+    100006: Edge Katzbalg
+    100008: Edge Knightsword
+    100010: Edge Mongolian
+    100012: Edge Rapier
+    100014: Edge Spatha
+    100016: Edge Talwar
+    100018: Edge Zweihander
+    100020: Hilt Backsword
+    100022: Hilt Cutlass
+    100024: Hilt Katana
+    100026: Hilt Katzbalg
+    100028: Hilt Knightsword
+    100030: Hilt Mongolian
+    100032: //RootNode
+    100034: Hilt Rapier
+    100036: Hilt Spatha
+    100038: Hilt Talwar
+    100040: Hilt Zweihander
+    100042: Hilt Officer
+    100044: Hilt Pirate
+    100046: Edge Bastardsword
+    100048: Edge Scimitar
+    100050: Hilt Bastardsword
+    100052: Hilt Guarded
+    100054: Hilt Scimitar
+    100056: Edge Longsword
+    100058: Hilt Crusader
+    100060: Base Curved
+    100062: Base Straight
+    100064: Edge Broadsword
+    100066: Base Bat
+    100068: Base Duelist
+    100070: Base Hand&Half
+    100072: Bat Metal
+    100074: Bat Wood
+    100076: Blades
+    100078: Edge Arming
+    100080: Edge DiamondCrossSection
+    100082: Edge DoubleFuller
+    100084: Edge Falchion
+    100086: Edge Hookslash
+    100088: Edge Khopesh
+    100090: Edge Messer
+    100092: Edge Saber
+    100094: Edge SingleFullerLong
+    100096: Edge SingleFullerShort
+    100098: Edge Straightcut
+    100100: Hilt Arming
+    100102: Hilt Balanced
+    100104: Hilt Basket
+    100106: Hilt Cupped
+    100108: Hilt Khopesh
+    100110: Hilt Mercenary
+    100112: Hilt Ornate
+    100114: Hilt Outlaw
+    100116: Spikes
+    400000: Edge Backsword
+    400002: Edge Cutlass
+    400004: Edge Katana
+    400006: Edge Katzbalg
+    400008: Edge Knightsword
+    400010: Edge Mongolian
+    400012: Edge Rapier
+    400014: Edge Spatha
+    400016: Edge Talwar
+    400018: Edge Zweihander
+    400020: Hilt Backsword
+    400022: Hilt Cutlass
+    400024: Hilt Katana
+    400026: Hilt Katzbalg
+    400028: Hilt Knightsword
+    400030: Hilt Mongolian
+    400032: //RootNode
+    400034: Hilt Rapier
+    400036: Hilt Spatha
+    400038: Hilt Talwar
+    400040: Hilt Zweihander
+    400042: Hilt Officer
+    400044: Hilt Pirate
+    400046: Edge Bastardsword
+    400048: Edge Scimitar
+    400050: Hilt Bastardsword
+    400052: Hilt Guarded
+    400054: Hilt Scimitar
+    400056: Edge Longsword
+    400058: Hilt Crusader
+    400060: Base Curved
+    400062: Base Straight
+    400064: Edge Broadsword
+    400066: Base Bat
+    400068: Base Duelist
+    400070: Base Hand&Half
+    400072: Bat Metal
+    400074: Bat Wood
+    400076: Blades
+    400078: Edge Arming
+    400080: Edge DiamondCrossSection
+    400082: Edge DoubleFuller
+    400084: Edge Falchion
+    400086: Edge Hookslash
+    400088: Edge Khopesh
+    400090: Edge Messer
+    400092: Edge Saber
+    400094: Edge SingleFullerLong
+    400096: Edge SingleFullerShort
+    400098: Edge Straightcut
+    400100: Hilt Arming
+    400102: Hilt Balanced
+    400104: Hilt Basket
+    400106: Hilt Cupped
+    400108: Hilt Khopesh
+    400110: Hilt Mercenary
+    400112: Hilt Ornate
+    400114: Hilt Outlaw
+    400116: Spikes
+    2100000: Grip
+    2100002: DarkMetal
+    2100004: LightMetal
+    2100006: Detail
+    2100008: Wood
+    2300000: Edge Backsword
+    2300002: Edge Cutlass
+    2300004: Edge Katana
+    2300006: Edge Katzbalg
+    2300008: Edge Knightsword
+    2300010: Edge Mongolian
+    2300012: Edge Rapier
+    2300014: Edge Spatha
+    2300016: Edge Talwar
+    2300018: Edge Zweihander
+    2300020: Hilt Backsword
+    2300022: Hilt Cutlass
+    2300024: Hilt Katana
+    2300026: Hilt Katzbalg
+    2300028: Hilt Knightsword
+    2300030: Hilt Mongolian
+    2300032: Hilt Rapier
+    2300034: Hilt Spatha
+    2300036: Hilt Talwar
+    2300038: Hilt Zweihander
+    2300040: Hilt Officer
+    2300042: Hilt Pirate
+    2300044: Edge Bastardsword
+    2300046: Edge Scimitar
+    2300048: Hilt Bastardsword
+    2300050: Hilt Guarded
+    2300052: Hilt Scimitar
+    2300054: Edge Longsword
+    2300056: Hilt Crusader
+    2300058: Edge Broadsword
+    2300060: Bat Metal
+    2300062: Bat Wood
+    2300064: Blades
+    2300066: Edge Arming
+    2300068: Edge DiamondCrossSection
+    2300070: Edge DoubleFuller
+    2300072: Edge Falchion
+    2300074: Edge Hookslash
+    2300076: Edge Khopesh
+    2300078: Edge Messer
+    2300080: Edge Saber
+    2300082: Edge SingleFullerLong
+    2300084: Edge SingleFullerShort
+    2300086: Edge Straightcut
+    2300088: Hilt Arming
+    2300090: Hilt Balanced
+    2300092: Hilt Basket
+    2300094: Hilt Cupped
+    2300096: Hilt Khopesh
+    2300098: Hilt Mercenary
+    2300100: Hilt Ornate
+    2300102: Hilt Outlaw
+    2300104: Spikes
+    3300000: Edge Backsword
+    3300002: Edge Cutlass
+    3300004: Edge Katana
+    3300006: Edge Katzbalg
+    3300008: Edge Knightsword
+    3300010: Edge Mongolian
+    3300012: Edge Rapier
+    3300014: Edge Spatha
+    3300016: Edge Talwar
+    3300018: Edge Zweihander
+    3300020: Hilt Backsword
+    3300022: Hilt Cutlass
+    3300024: Hilt Katana
+    3300026: Hilt Katzbalg
+    3300028: Hilt Knightsword
+    3300030: Hilt Mongolian
+    3300032: Hilt Rapier
+    3300034: Hilt Spatha
+    3300036: Hilt Talwar
+    3300038: Hilt Zweihander
+    3300040: Hilt Officer
+    3300042: Hilt Pirate
+    3300044: Edge Bastardsword
+    3300046: Edge Scimitar
+    3300048: Hilt Bastardsword
+    3300050: Hilt Guarded
+    3300052: Hilt Scimitar
+    3300054: Edge Longsword
+    3300056: Hilt Crusader
+    3300058: Edge Broadsword
+    3300060: Bat Metal
+    3300062: Bat Wood
+    3300064: Blades
+    3300066: Edge Arming
+    3300068: Edge DiamondCrossSection
+    3300070: Edge DoubleFuller
+    3300072: Edge Falchion
+    3300074: Edge Hookslash
+    3300076: Edge Khopesh
+    3300078: Edge Messer
+    3300080: Edge Saber
+    3300082: Edge SingleFullerLong
+    3300084: Edge SingleFullerShort
+    3300086: Edge Straightcut
+    3300088: Hilt Arming
+    3300090: Hilt Balanced
+    3300092: Hilt Basket
+    3300094: Hilt Cupped
+    3300096: Hilt Khopesh
+    3300098: Hilt Mercenary
+    3300100: Hilt Ornate
+    3300102: Hilt Outlaw
+    3300104: Spikes
+    4300000: Hilt Cutlass
+    4300002: Edge Backsword
+    4300004: Hilt Mongolian
+    4300006: Edge Rapier
+    4300008: Hilt Rapier
+    4300010: Edge Zweihander
+    4300012: Hilt Zweihander
+    4300014: Edge Mongolian
+    4300016: Edge Katana
+    4300018: Hilt Katana
+    4300020: Edge Talwar
+    4300022: Edge Cutlass
+    4300024: Hilt Backsword
+    4300026: Hilt Talwar
+    4300028: Edge Knightsword
+    4300030: Hilt Knightsword
+    4300032: Hilt Spatha
+    4300034: Edge Spatha
+    4300036: Hilt Katzbalg
+    4300038: Edge Katzbalg
+    4300040: Hilt Pirate
+    4300042: Hilt Officer
+    4300044: Hilt Scimitar
+    4300046: Edge Scimitar
+    4300048: Edge Bastardsword
+    4300050: Hilt Bastardsword
+    4300052: Hilt Guarded
+    4300054: Edge Longsword
+    4300056: Hilt Crusader
+    4300058: Edge Broadsword
+    4300060: Bat Metal
+    4300062: Bat Wood
+    4300064: Blades
+    4300066: Spikes
+    4300068: Hilt Cupped
+    4300070: Edge Saber
+    4300072: Edge Straightcut
+    4300074: Hilt Basket
+    4300076: Hilt Arming
+    4300078: Edge Arming
+    4300080: Edge Hookslash
+    4300082: Hilt Outlaw
+    4300084: Edge Khopesh
+    4300086: Hilt Khopesh
+    4300088: Edge Messer
+    4300090: Hilt Ornate
+    4300092: Edge SingleFullerLong
+    4300094: Edge SingleFullerShort
+    4300096: Edge Falchion
+    4300098: Hilt Mercenary
+    4300100: Edge DoubleFuller
+    4300102: Edge DiamondCrossSection
+    4300104: Hilt Balanced
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkMetal
+    second: {fileID: 2100000, guid: 028c614e9d97c3b48bed586bce076649, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: a4ad5bea9920cb64caa01195e65d2535, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grip
+    second: {fileID: 2100000, guid: 27c3f0414650d5c41b0f34d0aad03e79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightMetal
+    second: {fileID: 2100000, guid: 3003d0ea32a2b054a99ccf21964c46b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: c2a840b9ca8b0504597fa76759982350, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

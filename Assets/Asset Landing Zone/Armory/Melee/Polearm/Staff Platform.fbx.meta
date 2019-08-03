@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: 5c36bd2c7669c7244a6db22d57d07d22
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Edge Dagger
+    100002: Edge Dagger.001
+    100004: Head Glaive
+    100006: Head Glaive.001
+    100008: Head Halberd
+    100010: Head Halberd.001
+    100012: Head Hybrid Blunt-Pierce
+    100014: Head Hybrid Blunt-Pierce.001
+    100016: Head Morningstar
+    100018: Head Morningstar.001
+    100020: Head Naginata
+    100022: Head Naginata.001
+    100024: Head Pikepoint
+    100026: Head Pikepoint.001
+    100028: Head Pilum
+    100030: Head Pilum.001
+    100032: Head Tristrike
+    100034: Head Tristrike.001
+    100036: Head Voulge
+    100038: Head Voulge.001
+    100040: Staff Basic
+    100042: Staff Basic Long
+    100044: Staff Curved
+    100046: Staff Curved Long
+    100048: Staff Heavy
+    100050: Staff Heavy Long
+    100052: Staff Javelin
+    100054: Staff Metal
+    100056: Staff Metal Long
+    100058: //RootNode
+    100060: Staff Twinhead
+    100062: Top_spike_low_Plane.000
+    100064: Top_spike_low_Plane.003
+    100066: Head Basic
+    100068: Head Basic.001
+    100070: Secondary Head
+    100072: Head Spear
+    100074: Staff Duelist
+    100076: TopPoint
+    100078: Head Shovel
+    100080: Head Spiked
+    100082: Spikes_low_Plane.004
+    100084: Base Halberd
+    100086: Base Pilum
+    100088: Base Spear
+    100090: Base Twinstaff
+    100092: Head Balanced
+    100094: Head Heavy
+    100096: Head Lightweight
+    100098: Twinhead Balanced
+    100100: Twinhead Jitte
+    100102: Twinhead Pointed
+    100104: Twinhead Spiked
+    100106: Twinhead Wide
+    100108: Staff Short
+    100110: Twinstaff Metal
+    100112: Twinstaff Ornate
+    100114: Twinstaff Wood
+    100116: Twinstaff Basic
+    100118: Base Heavy Hybrid
+    100120: Head Bardiche
+    100122: Head Blunt-Pierce
+    100124: Head Slash-Blunt
+    100126: Head Slash-Pierce
+    100128: Base Utility Fullsize
+    100130: Head Hoe
+    100132: Head Pitchfork
+    100134: Staff Basic Metal
+    100136: Staff Basic Wood
+    100138: Staff Utility
+    100140: Staff Utility Handled
+    400000: Edge Dagger
+    400002: Edge Dagger.001
+    400004: Head Glaive
+    400006: Head Glaive.001
+    400008: Head Halberd
+    400010: Head Halberd.001
+    400012: Head Hybrid Blunt-Pierce
+    400014: Head Hybrid Blunt-Pierce.001
+    400016: Head Morningstar
+    400018: Head Morningstar.001
+    400020: Head Naginata
+    400022: Head Naginata.001
+    400024: Head Pikepoint
+    400026: Head Pikepoint.001
+    400028: Head Pilum
+    400030: Head Pilum.001
+    400032: Head Tristrike
+    400034: Head Tristrike.001
+    400036: Head Voulge
+    400038: Head Voulge.001
+    400040: Staff Basic
+    400042: Staff Basic Long
+    400044: Staff Curved
+    400046: Staff Curved Long
+    400048: Staff Heavy
+    400050: Staff Heavy Long
+    400052: Staff Javelin
+    400054: Staff Metal
+    400056: Staff Metal Long
+    400058: //RootNode
+    400060: Staff Twinhead
+    400062: Top_spike_low_Plane.000
+    400064: Top_spike_low_Plane.003
+    400066: Head Basic
+    400068: Head Basic.001
+    400070: Secondary Head
+    400072: Head Spear
+    400074: Staff Duelist
+    400076: TopPoint
+    400078: Head Shovel
+    400080: Head Spiked
+    400082: Spikes_low_Plane.004
+    400084: Base Halberd
+    400086: Base Pilum
+    400088: Base Spear
+    400090: Base Twinstaff
+    400092: Head Balanced
+    400094: Head Heavy
+    400096: Head Lightweight
+    400098: Twinhead Balanced
+    400100: Twinhead Jitte
+    400102: Twinhead Pointed
+    400104: Twinhead Spiked
+    400106: Twinhead Wide
+    400108: Staff Short
+    400110: Twinstaff Metal
+    400112: Twinstaff Ornate
+    400114: Twinstaff Wood
+    400116: Twinstaff Basic
+    400118: Base Heavy Hybrid
+    400120: Head Bardiche
+    400122: Head Blunt-Pierce
+    400124: Head Slash-Blunt
+    400126: Head Slash-Pierce
+    400128: Base Utility Fullsize
+    400130: Head Hoe
+    400132: Head Pitchfork
+    400134: Staff Basic Metal
+    400136: Staff Basic Wood
+    400138: Staff Utility
+    400140: Staff Utility Handled
+    2100000: LightMetal
+    2100002: DarkMetal
+    2100004: Wood
+    2100006: Grip
+    2100008: Detail
+    2100010: DefaultMaterial
+    2300000: Edge Dagger
+    2300002: Edge Dagger.001
+    2300004: Head Glaive
+    2300006: Head Glaive.001
+    2300008: Head Halberd
+    2300010: Head Halberd.001
+    2300012: Head Hybrid Blunt-Pierce
+    2300014: Head Hybrid Blunt-Pierce.001
+    2300016: Head Morningstar
+    2300018: Head Morningstar.001
+    2300020: Head Naginata
+    2300022: Head Naginata.001
+    2300024: Head Pikepoint
+    2300026: Head Pikepoint.001
+    2300028: Head Pilum
+    2300030: Head Pilum.001
+    2300032: Head Tristrike
+    2300034: Head Tristrike.001
+    2300036: Head Voulge
+    2300038: Head Voulge.001
+    2300040: Staff Basic
+    2300042: Staff Basic Long
+    2300044: Staff Curved
+    2300046: Staff Curved Long
+    2300048: Staff Heavy
+    2300050: Staff Heavy Long
+    2300052: Staff Javelin
+    2300054: Staff Metal
+    2300056: Staff Metal Long
+    2300058: Staff Twinhead
+    2300060: Top_spike_low_Plane.000
+    2300062: Top_spike_low_Plane.003
+    2300064: Head Basic
+    2300066: Head Basic.001
+    2300068: Head Spear
+    2300070: Staff Duelist
+    2300072: TopPoint
+    2300074: Head Shovel
+    2300076: Head Spiked
+    2300078: Spikes_low_Plane.004
+    2300080: Base Halberd
+    2300082: Base Pilum
+    2300084: Base Twinstaff
+    2300086: Head Balanced
+    2300088: Head Heavy
+    2300090: Head Lightweight
+    2300092: Twinhead Balanced
+    2300094: Twinhead Jitte
+    2300096: Twinhead Pointed
+    2300098: Twinhead Spiked
+    2300100: Twinhead Wide
+    2300102: Staff Short
+    2300104: Twinstaff Metal
+    2300106: Twinstaff Ornate
+    2300108: Twinstaff Wood
+    2300110: Twinstaff Basic
+    2300112: Base Heavy Hybrid
+    2300114: Head Bardiche
+    2300116: Head Blunt-Pierce
+    2300118: Head Slash-Blunt
+    2300120: Head Slash-Pierce
+    2300122: Head Hoe
+    2300124: Head Pitchfork
+    2300126: Staff Basic Metal
+    2300128: Staff Basic Wood
+    2300130: Staff Utility
+    2300132: Staff Utility Handled
+    3300000: Edge Dagger
+    3300002: Edge Dagger.001
+    3300004: Head Glaive
+    3300006: Head Glaive.001
+    3300008: Head Halberd
+    3300010: Head Halberd.001
+    3300012: Head Hybrid Blunt-Pierce
+    3300014: Head Hybrid Blunt-Pierce.001
+    3300016: Head Morningstar
+    3300018: Head Morningstar.001
+    3300020: Head Naginata
+    3300022: Head Naginata.001
+    3300024: Head Pikepoint
+    3300026: Head Pikepoint.001
+    3300028: Head Pilum
+    3300030: Head Pilum.001
+    3300032: Head Tristrike
+    3300034: Head Tristrike.001
+    3300036: Head Voulge
+    3300038: Head Voulge.001
+    3300040: Staff Basic
+    3300042: Staff Basic Long
+    3300044: Staff Curved
+    3300046: Staff Curved Long
+    3300048: Staff Heavy
+    3300050: Staff Heavy Long
+    3300052: Staff Javelin
+    3300054: Staff Metal
+    3300056: Staff Metal Long
+    3300058: Staff Twinhead
+    3300060: Top_spike_low_Plane.000
+    3300062: Top_spike_low_Plane.003
+    3300064: Head Basic
+    3300066: Head Basic.001
+    3300068: Head Spear
+    3300070: Staff Duelist
+    3300072: TopPoint
+    3300074: Head Shovel
+    3300076: Head Spiked
+    3300078: Spikes_low_Plane.004
+    3300080: Base Halberd
+    3300082: Base Pilum
+    3300084: Base Twinstaff
+    3300086: Head Balanced
+    3300088: Head Heavy
+    3300090: Head Lightweight
+    3300092: Twinhead Balanced
+    3300094: Twinhead Jitte
+    3300096: Twinhead Pointed
+    3300098: Twinhead Spiked
+    3300100: Twinhead Wide
+    3300102: Staff Short
+    3300104: Twinstaff Metal
+    3300106: Twinstaff Ornate
+    3300108: Twinstaff Wood
+    3300110: Twinstaff Basic
+    3300112: Base Heavy Hybrid
+    3300114: Head Bardiche
+    3300116: Head Blunt-Pierce
+    3300118: Head Slash-Blunt
+    3300120: Head Slash-Pierce
+    3300122: Head Hoe
+    3300124: Head Pitchfork
+    3300126: Staff Basic Metal
+    3300128: Staff Basic Wood
+    3300130: Staff Utility
+    3300132: Staff Utility Handled
+    4300000: Head Morningstar
+    4300002: Top_spike_low_Plane.003
+    4300004: Staff Heavy Long
+    4300006: Staff Curved Long
+    4300008: Staff Metal Long
+    4300010: Staff Basic Long
+    4300012: Edge Dagger
+    4300014: Head Pilum
+    4300016: Staff Javelin
+    4300018: Staff Metal
+    4300020: Staff Twinhead
+    4300022: Head Glaive.001
+    4300024: Head Naginata.001
+    4300026: Head Pikepoint.001
+    4300028: Head Tristrike.001
+    4300030: Head Hybrid Blunt-Pierce.001
+    4300032: Head Halberd.001
+    4300034: Head Voulge.001
+    4300036: Head Pilum.001
+    4300038: Edge Dagger.001
+    4300040: Head Morningstar.001
+    4300042: Top_spike_low_Plane.000
+    4300044: Staff Heavy
+    4300046: Head Voulge
+    4300048: Head Halberd
+    4300050: Staff Curved
+    4300052: Head Hybrid Blunt-Pierce
+    4300054: Head Tristrike
+    4300056: Head Pikepoint
+    4300058: Head Naginata
+    4300060: Head Glaive
+    4300062: Staff Basic
+    4300064: Head Basic
+    4300066: Head Basic.001
+    4300068: Head Spear
+    4300070: Staff Duelist
+    4300072: TopPoint
+    4300074: Head Spiked
+    4300076: Spikes_low_Plane.004
+    4300078: Head Shovel
+    4300080: Base Pilum
+    4300082: Head Balanced
+    4300084: Head Heavy
+    4300086: Head Lightweight
+    4300088: Base Twinstaff
+    4300090: Twinhead Jitte
+    4300092: Twinhead Wide
+    4300094: Twinhead Balanced
+    4300096: Twinhead Pointed
+    4300098: Twinhead Spiked
+    4300100: Base Halberd
+    4300102: Twinstaff Ornate
+    4300104: Twinstaff Metal
+    4300106: Twinstaff Wood
+    4300108: Staff Short
+    4300110: Twinstaff Basic
+    4300112: Head Bardiche
+    4300114: Base Heavy Hybrid
+    4300116: Head Slash-Pierce
+    4300118: Head Slash-Blunt
+    4300120: Head Blunt-Pierce
+    4300122: Head Hoe
+    4300124: Staff Utility
+    4300126: Staff Utility Handled
+    4300128: Head Pitchfork
+    4300130: Staff Basic Metal
+    4300132: Staff Basic Wood
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

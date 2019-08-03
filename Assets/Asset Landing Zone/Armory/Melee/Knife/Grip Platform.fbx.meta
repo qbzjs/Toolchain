@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 22ef5763c0961e54db70ff22f47d0b9b
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Edge Basic
+    100002: Edge Dagger
+    100004: Edge Dirk
+    100006: Edge Gladius
+    100008: Edge Jitte
+    100010: Edge Kabar
+    100012: Edge Kukri
+    100014: Edge Lamina
+    100016: Edge Reinforced
+    100018: Grip Basic
+    100020: Grip Bayonet Classic
+    100022: Grip Bayonet Modern
+    100024: Grip Curve Classic
+    100026: Grip Curve Modern
+    100028: Grip Dagger
+    100030: Grip Gladius
+    100032: Grip Jitte
+    100034: //RootNode
+    100036: Grip Trenchknuckle
+    100038: Edge Wakizashi
+    100040: Grip Wakizashi
+    100042: Grip Wakizashi Offset
+    100044: Edge Bayonet
+    100046: Edge Bowie
+    100048: Grip Medieval
+    100050: Edge Cutlass
+    100052: Edge Spiral
+    100054: Edge Trenchknife
+    100056: Grip Cylindrical
+    100058: Grip Dirk
+    100060: Grip Handguard
+    100062: Grip Curve
+    100064: Base Curved
+    100066: Base Rounded
+    100068: Base Straight
+    100070: Edge Kabar Curvebase
+    100072: Edge Kabar Straightbase
+    100074: Grip Futuristic Straightbase
+    100076: Grip Kukri
+    100078: Grip Modern Curvebase
+    100080: Grip Modern Straightbase
+    100082: Base Cylindrical
+    100084: Base Classic
+    100086: Base Exotic
+    100088: Base Modern
+    100090: Edge Machete
+    100092: Edge Serrated
+    100094: Grip Cutlass
+    100096: Grip M9
+    100098: Grip Standard
+    100100: Base Bayonet
+    100102: Edge Bayonet Basic
+    100104: Edge Classic
+    100106: Edge Fillet
+    100108: Edge Spike
+    100110: Edge Utility
+    100112: Edge Wedge
+    100114: Grip Bayonet Rail
+    100116: Grip Bolo
+    100118: Grip K98
+    100120: Grip Socket
+    400000: Edge Basic
+    400002: Edge Dagger
+    400004: Edge Dirk
+    400006: Edge Gladius
+    400008: Edge Jitte
+    400010: Edge Kabar
+    400012: Edge Kukri
+    400014: Edge Lamina
+    400016: Edge Reinforced
+    400018: Grip Basic
+    400020: Grip Bayonet Classic
+    400022: Grip Bayonet Modern
+    400024: Grip Curve Classic
+    400026: Grip Curve Modern
+    400028: Grip Dagger
+    400030: Grip Gladius
+    400032: Grip Jitte
+    400034: //RootNode
+    400036: Grip Trenchknuckle
+    400038: Edge Wakizashi
+    400040: Grip Wakizashi
+    400042: Grip Wakizashi Offset
+    400044: Edge Bayonet
+    400046: Edge Bowie
+    400048: Grip Medieval
+    400050: Edge Cutlass
+    400052: Edge Spiral
+    400054: Edge Trenchknife
+    400056: Grip Cylindrical
+    400058: Grip Dirk
+    400060: Grip Handguard
+    400062: Grip Curve
+    400064: Base Curved
+    400066: Base Rounded
+    400068: Base Straight
+    400070: Edge Kabar Curvebase
+    400072: Edge Kabar Straightbase
+    400074: Grip Futuristic Straightbase
+    400076: Grip Kukri
+    400078: Grip Modern Curvebase
+    400080: Grip Modern Straightbase
+    400082: Base Cylindrical
+    400084: Base Classic
+    400086: Base Exotic
+    400088: Base Modern
+    400090: Edge Machete
+    400092: Edge Serrated
+    400094: Grip Cutlass
+    400096: Grip M9
+    400098: Grip Standard
+    400100: Base Bayonet
+    400102: Edge Bayonet Basic
+    400104: Edge Classic
+    400106: Edge Fillet
+    400108: Edge Spike
+    400110: Edge Utility
+    400112: Edge Wedge
+    400114: Grip Bayonet Rail
+    400116: Grip Bolo
+    400118: Grip K98
+    400120: Grip Socket
+    2100000: LightMetal
+    2100002: Wood
+    2100004: DarkMetal
+    2100006: Detail
+    2100008: Grip
+    2300000: Edge Basic
+    2300002: Edge Dagger
+    2300004: Edge Dirk
+    2300006: Edge Gladius
+    2300008: Edge Jitte
+    2300010: Edge Kabar
+    2300012: Edge Kukri
+    2300014: Edge Lamina
+    2300016: Edge Reinforced
+    2300018: Grip Basic
+    2300020: Grip Bayonet Classic
+    2300022: Grip Bayonet Modern
+    2300024: Grip Curve Classic
+    2300026: Grip Curve Modern
+    2300028: Grip Dagger
+    2300030: Grip Gladius
+    2300032: Grip Jitte
+    2300034: Grip Trenchknuckle
+    2300036: Edge Wakizashi
+    2300038: Grip Wakizashi
+    2300040: Grip Wakizashi Offset
+    2300042: Edge Bayonet
+    2300044: Edge Bowie
+    2300046: Grip Medieval
+    2300048: Edge Cutlass
+    2300050: Edge Spiral
+    2300052: Edge Trenchknife
+    2300054: Grip Cylindrical
+    2300056: Grip Dirk
+    2300058: Grip Handguard
+    2300060: Grip Curve
+    2300062: Edge Kabar Curvebase
+    2300064: Edge Kabar Straightbase
+    2300066: Grip Futuristic Straightbase
+    2300068: Grip Kukri
+    2300070: Grip Modern Curvebase
+    2300072: Grip Modern Straightbase
+    2300074: Edge Machete
+    2300076: Edge Serrated
+    2300078: Grip Cutlass
+    2300080: Grip M9
+    2300082: Grip Standard
+    2300084: Edge Bayonet Basic
+    2300086: Edge Classic
+    2300088: Edge Fillet
+    2300090: Edge Spike
+    2300092: Edge Utility
+    2300094: Edge Wedge
+    2300096: Grip Bayonet Rail
+    2300098: Grip Bolo
+    2300100: Grip K98
+    2300102: Grip Socket
+    3300000: Edge Basic
+    3300002: Edge Dagger
+    3300004: Edge Dirk
+    3300006: Edge Gladius
+    3300008: Edge Jitte
+    3300010: Edge Kabar
+    3300012: Edge Kukri
+    3300014: Edge Lamina
+    3300016: Edge Reinforced
+    3300018: Grip Basic
+    3300020: Grip Bayonet Classic
+    3300022: Grip Bayonet Modern
+    3300024: Grip Curve Classic
+    3300026: Grip Curve Modern
+    3300028: Grip Dagger
+    3300030: Grip Gladius
+    3300032: Grip Jitte
+    3300034: Grip Trenchknuckle
+    3300036: Edge Wakizashi
+    3300038: Grip Wakizashi
+    3300040: Grip Wakizashi Offset
+    3300042: Edge Bayonet
+    3300044: Edge Bowie
+    3300046: Grip Medieval
+    3300048: Edge Cutlass
+    3300050: Edge Spiral
+    3300052: Edge Trenchknife
+    3300054: Grip Cylindrical
+    3300056: Grip Dirk
+    3300058: Grip Handguard
+    3300060: Grip Curve
+    3300062: Edge Kabar Curvebase
+    3300064: Edge Kabar Straightbase
+    3300066: Grip Futuristic Straightbase
+    3300068: Grip Kukri
+    3300070: Grip Modern Curvebase
+    3300072: Grip Modern Straightbase
+    3300074: Edge Machete
+    3300076: Edge Serrated
+    3300078: Grip Cutlass
+    3300080: Grip M9
+    3300082: Grip Standard
+    3300084: Edge Bayonet Basic
+    3300086: Edge Classic
+    3300088: Edge Fillet
+    3300090: Edge Spike
+    3300092: Edge Utility
+    3300094: Edge Wedge
+    3300096: Grip Bayonet Rail
+    3300098: Grip Bolo
+    3300100: Grip K98
+    3300102: Grip Socket
+    4300000: Edge Basic
+    4300002: Grip Basic
+    4300004: Edge Reinforced
+    4300006: Grip Trenchknuckle
+    4300008: Edge Gladius
+    4300010: Grip Gladius
+    4300012: Edge Jitte
+    4300014: Grip Jitte
+    4300016: Edge Kukri
+    4300018: Grip Curve Classic
+    4300020: Edge Dirk
+    4300022: Grip Bayonet Classic
+    4300024: Edge Lamina
+    4300026: Grip Curve Modern
+    4300028: Grip Dagger
+    4300030: Grip Bayonet Modern
+    4300032: Edge Dagger
+    4300034: Edge Kabar
+    4300036: Grip Wakizashi
+    4300038: Edge Wakizashi
+    4300040: Grip Wakizashi Offset
+    4300042: Edge Bowie
+    4300044: Grip Medieval
+    4300046: Edge Bayonet
+    4300048: Grip Handguard
+    4300050: Edge Cutlass
+    4300052: Edge Trenchknife
+    4300054: Grip Cylindrical
+    4300056: Edge Spiral
+    4300058: Grip Dirk
+    4300060: Grip Curve
+    4300062: Grip Modern Straightbase
+    4300064: Edge Kabar Straightbase
+    4300066: Grip Futuristic Straightbase
+    4300068: Edge Kabar Curvebase
+    4300070: Grip Modern Curvebase
+    4300072: Grip Kukri
+    4300074: Grip M9
+    4300076: Edge Serrated
+    4300078: Grip Standard
+    4300080: Edge Machete
+    4300082: Grip Cutlass
+    4300084: Edge Spike
+    4300086: Edge Bayonet Basic
+    4300088: Edge Wedge
+    4300090: Grip Bayonet Rail
+    4300092: Grip Socket
+    4300094: Edge Classic
+    4300096: Grip K98
+    4300098: Edge Utility
+    4300100: Edge Fillet
+    4300102: Grip Bolo
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkMetal
+    second: {fileID: 2100000, guid: 78c1a579c0c273141a93b52100b91a9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: 510bbe470236df946a16975c04670509, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grip
+    second: {fileID: 2100000, guid: 45ac54e56e53d204dbc1b1874422fbc5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightMetal
+    second: {fileID: 2100000, guid: fb7b180a06459154db3ba7ea3d1966bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: e75a687bbef948e4786d3b2fee1b65a8, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

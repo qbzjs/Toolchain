@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: fcc6653780a1edb488085ff6f7b98dcc
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: ORG-f_index_01_L
+    100002: ORG-f_index_01_R
+    100004: ORG-f_index_02_L
+    100006: ORG-f_index_02_L_end
+    100008: ORG-f_index_02_R
+    100010: ORG-f_index_02_R_end
+    100012: ORG-f_middle_01_L
+    100014: ORG-f_middle_01_R
+    100016: ORG-f_middle_02_L
+    100018: ORG-f_middle_02_L_end
+    100020: ORG-f_middle_02_R
+    100022: ORG-f_middle_02_R_end
+    100024: ORG-f_pinky_01_L
+    100026: ORG-f_pinky_01_R
+    100028: ORG-f_pinky_02_L
+    100030: ORG-f_pinky_02_L_end
+    100032: ORG-f_pinky_02_R
+    100034: ORG-f_pinky_02_R_end
+    100036: ORG-f_ring_01_L
+    100038: ORG-f_ring_01_R
+    100040: ORG-f_ring_02_L
+    100042: ORG-f_ring_02_L_end
+    100044: ORG-f_ring_02_R
+    100046: ORG-f_ring_02_R_end
+    100048: ORG-forearm_L
+    100050: ORG-forearm_R
+    100052: ORG-hand_L
+    100054: ORG-hand_R
+    100056: ORG-shoulder_L
+    100058: ORG-shoulder_R
+    100060: ORG-thumb_01_L
+    100062: ORG-thumb_01_R
+    100064: ORG-thumb_02_L
+    100066: ORG-thumb_02_L_end
+    100068: ORG-thumb_02_R
+    100070: ORG-thumb_02_R_end
+    100072: ORG-upper_arm_L
+    100074: ORG-upper_arm_R
+    100076: rig
+    100078: Root
+    100080: //RootNode
+    100082: UMA Arms Male
+    100084: rig 1
+    100086: Armature
+    100088: ORG-f_index_03_L
+    100090: ORG-f_index_03_L_end
+    100092: ORG-f_index_03_R
+    100094: ORG-f_index_03_R_end
+    100096: ORG-f_middle_03_L
+    100098: ORG-f_middle_03_L_end
+    100100: ORG-f_middle_03_R
+    100102: ORG-f_middle_03_R_end
+    100104: ORG-f_pinky_03_L
+    100106: ORG-f_pinky_03_L_end
+    100108: ORG-f_pinky_03_R
+    100110: ORG-f_pinky_03_R_end
+    100112: ORG-f_ring_03_L
+    100114: ORG-f_ring_03_L_end
+    100116: ORG-f_ring_03_R
+    100118: ORG-f_ring_03_R_end
+    100120: ORG-thumb_03_L
+    100122: ORG-thumb_03_L_end
+    100124: ORG-thumb_03_R
+    100126: ORG-thumb_03_R_end
+    400000: ORG-f_index_01_L
+    400002: ORG-f_index_01_R
+    400004: ORG-f_index_02_L
+    400006: ORG-f_index_02_L_end
+    400008: ORG-f_index_02_R
+    400010: ORG-f_index_02_R_end
+    400012: ORG-f_middle_01_L
+    400014: ORG-f_middle_01_R
+    400016: ORG-f_middle_02_L
+    400018: ORG-f_middle_02_L_end
+    400020: ORG-f_middle_02_R
+    400022: ORG-f_middle_02_R_end
+    400024: ORG-f_pinky_01_L
+    400026: ORG-f_pinky_01_R
+    400028: ORG-f_pinky_02_L
+    400030: ORG-f_pinky_02_L_end
+    400032: ORG-f_pinky_02_R
+    400034: ORG-f_pinky_02_R_end
+    400036: ORG-f_ring_01_L
+    400038: ORG-f_ring_01_R
+    400040: ORG-f_ring_02_L
+    400042: ORG-f_ring_02_L_end
+    400044: ORG-f_ring_02_R
+    400046: ORG-f_ring_02_R_end
+    400048: ORG-forearm_L
+    400050: ORG-forearm_R
+    400052: ORG-hand_L
+    400054: ORG-hand_R
+    400056: ORG-shoulder_L
+    400058: ORG-shoulder_R
+    400060: ORG-thumb_01_L
+    400062: ORG-thumb_01_R
+    400064: ORG-thumb_02_L
+    400066: ORG-thumb_02_L_end
+    400068: ORG-thumb_02_R
+    400070: ORG-thumb_02_R_end
+    400072: ORG-upper_arm_L
+    400074: ORG-upper_arm_R
+    400076: rig
+    400078: Root
+    400080: //RootNode
+    400082: UMA Arms Male
+    400084: rig 1
+    400086: Armature
+    400088: ORG-f_index_03_L
+    400090: ORG-f_index_03_L_end
+    400092: ORG-f_index_03_R
+    400094: ORG-f_index_03_R_end
+    400096: ORG-f_middle_03_L
+    400098: ORG-f_middle_03_L_end
+    400100: ORG-f_middle_03_R
+    400102: ORG-f_middle_03_R_end
+    400104: ORG-f_pinky_03_L
+    400106: ORG-f_pinky_03_L_end
+    400108: ORG-f_pinky_03_R
+    400110: ORG-f_pinky_03_R_end
+    400112: ORG-f_ring_03_L
+    400114: ORG-f_ring_03_L_end
+    400116: ORG-f_ring_03_R
+    400118: ORG-f_ring_03_R_end
+    400120: ORG-thumb_03_L
+    400122: ORG-thumb_03_L_end
+    400124: ORG-thumb_03_R
+    400126: ORG-thumb_03_R_end
+    2100000: Hands
+    2100002: Torso
+    4300000: UMA Arms Male
+    9500000: //RootNode
+    13700000: UMA Arms Male
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,2079 @@
+fileFormatVersion: 2
+guid: 6a1d6b6bf6c9ce844a361c06636e98bc
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Barrel BBuss Long
+    100002: Barrel BBuss Short
+    100004: Barrel Blunderbuss
+    100006: Barrel Long Pistol
+    100008: Barrel Musket
+    100010: Barrel Rifle
+    100012: Barrel Ring Front
+    100014: Barrel Ring Front.001
+    100016: Barrel Ring Front.002
+    100018: Barrel Ring Front.004
+    100020: Barrel Ring Front.007
+    100022: Barrel Ring Mid
+    100024: Barrel Ring Mid.001
+    100026: Barrel Ring Rear
+    100028: Barrel Ring Rear.002
+    100030: Barrel Short Pistol
+    100032: Base 1Handed
+    100034: Base 2Handed
+    100036: Battery
+    100038: Battery.001
+    100040: Battery.002
+    100042: Battery.003
+    100044: Battery.004
+    100046: Bipod Brace.002
+    100048: Bipod Brace.003
+    100050: BipodBase.001
+    100052: BipodBase.002
+    100054: Blast Coil BBus Short
+    100056: Blast Coil Carbine
+    100058: Blast Coil Musket
+    100060: Blast Coil Pistol Long
+    100062: Blast Coil Pistol Long.001
+    100064: Blast Coil Pistol Short
+    100066: Blast Coil Pistol Short.001
+    100068: Body BBuss Classic
+    100070: Body BBuss Modern
+    100072: Body Pistol Classic
+    100074: Body Pistol Modern
+    100076: BottomRail.000
+    100078: BottomRail.001
+    100080: BottomRail.002
+    100082: Canister
+    100084: Canister_R.002
+    100086: Cock.001
+    100088: Cock.002
+    100090: Control Nozzle BBuss
+    100092: Control Nozzle BBuss Long
+    100094: Control Nozzle BBuss Short
+    100096: Control Nozzle Musket
+    100098: Control Nozzle Pistol Long
+    100100: Control Nozzle Pistol Short
+    100102: Control Nozzle Rifle
+    100104: Discharge Port
+    100106: Discharge Port BBuss Long
+    100108: Discharge Port BBuss Short
+    100110: Discharge Port Pistol Long
+    100112: Discharge Port Pistol Short
+    100114: Discharge Port.002
+    100116: Discharge Port.003
+    100118: extension.000
+    100120: extension.001
+    100122: extension.002
+    100124: extension.003
+    100126: FacePlate
+    100128: FireMech Battery.001
+    100130: FireMech Pivot BBuss
+    100132: FireMech Pivot Pistol
+    100134: FireMech Pressure
+    100136: FireMechBatteryCompartment
+    100138: FireMechCock
+    100140: FireMechHammer
+    100142: FireMechPressure
+    100144: ForeStock.000
+    100146: ForeStock.002
+    100148: ForeStock.003
+    100150: Frame Classic Pistol Short
+    100152: Frame Long
+    100154: Frame Long Wide Classic
+    100156: Frame Long Wide Modern
+    100158: Frame Modern Pistol
+    100160: Frame Modern Pistol Short
+    100162: Frame Short Wide Classic
+    100164: Frame Short Wide Modern
+    100166: FrontRails.000
+    100168: FrontRails.001
+    100170: FrontRails.002
+    100172: Grip Sawbutt.000
+    100174: Grip Sawbutt.002
+    100176: Grip Sawbutt.003
+    100178: Hammer.001
+    100180: Hammer.002
+    100182: LegsDown.000
+    100184: LegsDown.003
+    100186: LegsUp
+    100188: LegsUp.001
+    100190: //RootNode
+    100192: Pan
+    100194: Pan Pivot BBuss
+    100196: Pan Pivot Pistol
+    100198: Pan.001
+    100200: Pan.002
+    100202: Pin
+    100204: Pin BBuss
+    100206: Pin Pistol
+    100208: Pressurizer
+    100210: Pressurizer.000
+    100212: Pressurizer.001
+    100214: Pressurizer.002
+    100216: Pressurizer.003
+    100218: Pressurizer.004
+    100220: Pressurizer.005
+    100222: Rail Top Carbine
+    100224: Ramrod
+    100226: Ramrod.001
+    100228: Ramrod.002
+    100230: Ramrod.003
+    100232: Ramrod_Blunderbuss
+    100234: Ramrod_Blunderbuss.001
+    100236: Ramrod_Carbine
+    100238: Ramrod_Carbine.002
+    100240: Ramrod_Carbine.003
+    100242: Ramrod_Long
+    100244: Scope Brace
+    100246: Scope Sharpshooter
+    100248: ScopeBase
+    100250: Sight Base
+    100252: Sight Rear
+    100254: Sight Slide
+    100256: SightRail
+    100258: Spring
+    100260: Spring Pistol
+    100262: SpringBBuss
+    100264: Stock_Blunderbuss_Classic
+    100266: Stock_Blunderbuss_Modern
+    100268: Stock_Musket_Classic
+    100270: Stock_Musket_Modern
+    100272: Stock_Rifle_Classic
+    100274: Stock_Rifle_Modern
+    100276: StockBasePoly
+    100278: StockBasePoly.001
+    100280: StockBasePoly.003
+    100282: StockBaseWood
+    100284: StockBaseWood.001
+    100286: StockBaseWood.003
+    100288: Striker
+    100290: Striker.001
+    100292: Striker.002
+    100294: Trigger
+    100296: Trigger.001
+    100298: AxeHead_Short
+    100300: BackTrigger
+    100302: Barrel
+    100304: Barrel Short
+    100306: Barrel.001
+    100308: Base Blunderbuss
+    100310: Base Gunblade
+    100312: Base Musket
+    100314: Base Pistol
+    100316: Base Pistol Small
+    100318: Base Rifle
+    100320: Cap
+    100322: Cap.001
+    100324: Cap.002
+    100326: Cap.003
+    100328: Cap.004
+    100330: Cap.005
+    100332: Cock.000
+    100334: Cock.003
+    100336: Cock.004
+    100338: Cock.005
+    100340: Faceplate
+    100342: Faceplate.001
+    100344: Faceplate.002
+    100346: Faceplate.003
+    100348: Faceplate.004
+    100350: Flint.000
+    100352: Flint.001
+    100354: Flint.002
+    100356: Flint.004
+    100358: Flint.005
+    100360: FrontTrigger
+    100362: Furniture.001
+    100364: Furniture.002
+    100366: Hammer
+    100368: Hammer.003
+    100370: Hammer.004
+    100372: Hammer.005
+    100374: Integral
+    100376: Integral.001
+    100378: Integral.002
+    100380: MechFlintlock
+    100382: MechFlintlock.001
+    100384: MechFlintlock.002
+    100386: MechFlintlock.003
+    100388: MechFlintlock.004
+    100390: MechFlintlock.005
+    100392: MechPercussion
+    100394: MechPercussion.001
+    100396: MechPercussion.002
+    100398: MechPercussion.003
+    100400: MechPercussion.004
+    100402: MechPercussion.005
+    100404: MetalBack_Low
+    100406: MetalKnob_Low
+    100408: Pan.000
+    100410: Pan.003
+    100412: Pan.004
+    100414: Pan.005
+    100416: Pancover.000
+    100418: Pancover.001
+    100420: Pancover.002
+    100422: Pancover.003
+    100424: Pancover.004
+    100426: Pancover.005
+    100428: Sight Base.001
+    100430: Sight Buckhorn
+    100432: Sight Buckhorn.001
+    100434: Sight Rear.001
+    100436: Sight Slide.001
+    100438: Trigger.002
+    100440: Trigger.003
+    100442: TriggerCover_Low
+    100444: Flint.003
+    100446: AttachmentBrace.000
+    100448: AttachmentBrace.001
+    100450: AttachmentBrace.002
+    100452: Botrail.000
+    100454: Botrail.001
+    100456: Botrail.002
+    100458: Ramrod_Long.001
+    100460: Siderail.000
+    100462: Siderail.001
+    100464: Siderail.002
+    100466: Toprail.000
+    100468: Toprail.001
+    100470: Toprail.002
+    100472: AxeHead_Mid
+    100474: AxeHead_Mid.001
+    100476: Barrel Mid
+    100478: Barrel Mid.001
+    100480: Barrel Reinforcement
+    100482: Barrel Reinforcement.001
+    100484: Barrel Reinforcement.002
+    100486: Blade_Mid
+    100488: Blade_Mid.001
+    100490: Blade_Short
+    100492: Body Mid
+    100494: Body Mid.001
+    100496: Body Short
+    100498: HammerHead_Mid
+    100500: HammerHead_Mid.001
+    100502: HammerHead_Short
+    100504: AxeHead_Long
+    100506: Barrel Long
+    100508: Blade_Long
+    100510: Body Long
+    100512: HammerHead_Long
+    100514: AttachmentBrace.003
+    100516: AttachmentBrace.004
+    100518: BackTrigger.001
+    100520: Base Future Rifle
+    100522: Blast Coil
+    100524: Botrail.003
+    100526: Botrail.004
+    100528: Cap.006
+    100530: Faceplate.005
+    100532: FireMechBattery
+    100534: FrontTrigger.001
+    100536: Hammer.006
+    100538: Integral.003
+    100540: MechPercussion.006
+    100542: Siderail.003
+    100544: Siderail.004
+    100546: Sight Base.002
+    100548: Sight Rear.002
+    100550: Sight Slide.002
+    100552: Toprail.003
+    100554: Toprail.004
+    100556: Trigger.004
+    100558: BatteryCompartment
+    100560: ContainerCompartment
+    100562: AttachmentBrace.005
+    100564: AttachmentBrace.006
+    100566: BackTrigger.002
+    100568: Base Derringer
+    100570: Base Future Carbine
+    100572: Battery.005
+    100574: BatteryCompartment.001
+    100576: Blast Coil.001
+    100578: Botrail.005
+    100580: Botrail.006
+    100582: Canister_R.000
+    100584: Cap.007
+    100586: ContainerCompartment.001
+    100588: Faceplate.006
+    100590: FireMechBattery.001
+    100592: FireMechPressure.001
+    100594: FrontTrigger.002
+    100596: Hammer.007
+    100598: Integral.004
+    100600: MechPercussion.007
+    100602: Siderail.005
+    100604: Siderail.006
+    100606: Sight Base.003
+    100608: Sight Rear.003
+    100610: Sight Slide.003
+    100612: Toprail.005
+    100614: Toprail.006
+    100616: Trigger.005
+    100618: TwinTriggerBase
+    100620: TwinTriggerBase.001
+    100622: AttachmentBrace.007
+    100624: Barrel Blunderbuss.001
+    100626: Base Blunderbuss Compact
+    100628: Botrail.007
+    100630: Cap.008
+    100632: Cock.006
+    100634: Faceplate.007
+    100636: Flint.006
+    100638: Hammer.008
+    100640: MechFlintlock.006
+    100642: MechPercussion.008
+    100644: Pan.006
+    100646: Pancover.006
+    100648: Siderail.007
+    100650: Toprail.007
+    100652: Trigger.006
+    100654: Barrel.002
+    100656: Base Future Pistol
+    100658: Battery.008
+    100660: BatteryCompartment.002
+    100662: BatteryCompartment.003
+    100664: Blast Coil.002
+    100666: Cap.009
+    100668: Faceplate.008
+    100670: FireMechBattery.002
+    100672: FireMechPressure.002
+    100674: Furniture.000
+    100676: Hammer.009
+    100678: MechPercussion.009
+    100680: Trigger.007
+    100682: PressureCompartment
+    100684: Barrel Reinforcement.003
+    100686: Barrel Reinforcement.004
+    100688: Barrel Reinforcement.005
+    100690: FrameBladeL
+    100692: FrameBladeM
+    100694: FrameBladeS
+    100696: FrameClassicL
+    100698: FrameClassicM
+    100700: FrameClassicS
+    100702: BackTrigger.003
+    100704: Barrel Ring Mid.002
+    100706: Integral.005
+    100708: Sight Base.004
+    100710: Sight Rear.004
+    100712: Sight Slide.004
+    100714: BreachBlock
+    100716: BreachBlock.001
+    100718: BreachBlock.002
+    100720: BreachBlock.003
+    100722: Hammer.000
+    100724: Latch
+    100726: Latch.001
+    100728: Latch.002
+    100730: Latch.003
+    100732: Barrel SBR
+    100734: Base SBR
+    100736: BreachBlock.004
+    100738: FrontTrigger.003
+    100740: Integral.000
+    100742: Latch.004
+    100744: Sight Base.000
+    100746: Sight Rear.000
+    100748: Sight Slide.000
+    100750: Barrel Carbine
+    100752: Base Carbine
+    100754: BackTrigger.004
+    100756: Base Rifle.001
+    400000: Barrel BBuss Long
+    400002: Barrel BBuss Short
+    400004: Barrel Blunderbuss
+    400006: Barrel Long Pistol
+    400008: Barrel Musket
+    400010: Barrel Rifle
+    400012: Barrel Ring Front
+    400014: Barrel Ring Front.001
+    400016: Barrel Ring Front.002
+    400018: Barrel Ring Front.004
+    400020: Barrel Ring Front.007
+    400022: Barrel Ring Mid
+    400024: Barrel Ring Mid.001
+    400026: Barrel Ring Rear
+    400028: Barrel Ring Rear.002
+    400030: Barrel Short Pistol
+    400032: Base 1Handed
+    400034: Base 2Handed
+    400036: Battery
+    400038: Battery.001
+    400040: Battery.002
+    400042: Battery.003
+    400044: Battery.004
+    400046: Bipod Brace.002
+    400048: Bipod Brace.003
+    400050: BipodBase.001
+    400052: BipodBase.002
+    400054: Blast Coil BBus Short
+    400056: Blast Coil Carbine
+    400058: Blast Coil Musket
+    400060: Blast Coil Pistol Long
+    400062: Blast Coil Pistol Long.001
+    400064: Blast Coil Pistol Short
+    400066: Blast Coil Pistol Short.001
+    400068: Body BBuss Classic
+    400070: Body BBuss Modern
+    400072: Body Pistol Classic
+    400074: Body Pistol Modern
+    400076: BottomRail.000
+    400078: BottomRail.001
+    400080: BottomRail.002
+    400082: Canister
+    400084: Canister_R.002
+    400086: Cock.001
+    400088: Cock.002
+    400090: Control Nozzle BBuss
+    400092: Control Nozzle BBuss Long
+    400094: Control Nozzle BBuss Short
+    400096: Control Nozzle Musket
+    400098: Control Nozzle Pistol Long
+    400100: Control Nozzle Pistol Short
+    400102: Control Nozzle Rifle
+    400104: Discharge Port
+    400106: Discharge Port BBuss Long
+    400108: Discharge Port BBuss Short
+    400110: Discharge Port Pistol Long
+    400112: Discharge Port Pistol Short
+    400114: Discharge Port.002
+    400116: Discharge Port.003
+    400118: extension.000
+    400120: extension.001
+    400122: extension.002
+    400124: extension.003
+    400126: FacePlate
+    400128: FireMech Battery.001
+    400130: FireMech Pivot BBuss
+    400132: FireMech Pivot Pistol
+    400134: FireMech Pressure
+    400136: FireMechBatteryCompartment
+    400138: FireMechCock
+    400140: FireMechHammer
+    400142: FireMechPressure
+    400144: ForeStock.000
+    400146: ForeStock.002
+    400148: ForeStock.003
+    400150: Frame Classic Pistol Short
+    400152: Frame Long
+    400154: Frame Long Wide Classic
+    400156: Frame Long Wide Modern
+    400158: Frame Modern Pistol
+    400160: Frame Modern Pistol Short
+    400162: Frame Short Wide Classic
+    400164: Frame Short Wide Modern
+    400166: FrontRails.000
+    400168: FrontRails.001
+    400170: FrontRails.002
+    400172: Grip Sawbutt.000
+    400174: Grip Sawbutt.002
+    400176: Grip Sawbutt.003
+    400178: Hammer.001
+    400180: Hammer.002
+    400182: LegsDown.000
+    400184: LegsDown.003
+    400186: LegsUp
+    400188: LegsUp.001
+    400190: //RootNode
+    400192: Pan
+    400194: Pan Pivot BBuss
+    400196: Pan Pivot Pistol
+    400198: Pan.001
+    400200: Pan.002
+    400202: Pin
+    400204: Pin BBuss
+    400206: Pin Pistol
+    400208: Pressurizer
+    400210: Pressurizer.000
+    400212: Pressurizer.001
+    400214: Pressurizer.002
+    400216: Pressurizer.003
+    400218: Pressurizer.004
+    400220: Pressurizer.005
+    400222: Rail Top Carbine
+    400224: Ramrod
+    400226: Ramrod.001
+    400228: Ramrod.002
+    400230: Ramrod.003
+    400232: Ramrod_Blunderbuss
+    400234: Ramrod_Blunderbuss.001
+    400236: Ramrod_Carbine
+    400238: Ramrod_Carbine.002
+    400240: Ramrod_Carbine.003
+    400242: Ramrod_Long
+    400244: Scope Brace
+    400246: Scope Sharpshooter
+    400248: ScopeBase
+    400250: Sight Base
+    400252: Sight Rear
+    400254: Sight Slide
+    400256: SightRail
+    400258: Spring
+    400260: Spring Pistol
+    400262: SpringBBuss
+    400264: Stock_Blunderbuss_Classic
+    400266: Stock_Blunderbuss_Modern
+    400268: Stock_Musket_Classic
+    400270: Stock_Musket_Modern
+    400272: Stock_Rifle_Classic
+    400274: Stock_Rifle_Modern
+    400276: StockBasePoly
+    400278: StockBasePoly.001
+    400280: StockBasePoly.003
+    400282: StockBaseWood
+    400284: StockBaseWood.001
+    400286: StockBaseWood.003
+    400288: Striker
+    400290: Striker.001
+    400292: Striker.002
+    400294: Trigger
+    400296: Trigger.001
+    400298: AxeHead_Short
+    400300: BackTrigger
+    400302: Barrel
+    400304: Barrel Short
+    400306: Barrel.001
+    400308: Base Blunderbuss
+    400310: Base Gunblade
+    400312: Base Musket
+    400314: Base Pistol
+    400316: Base Pistol Small
+    400318: Base Rifle
+    400320: Cap
+    400322: Cap.001
+    400324: Cap.002
+    400326: Cap.003
+    400328: Cap.004
+    400330: Cap.005
+    400332: Cock.000
+    400334: Cock.003
+    400336: Cock.004
+    400338: Cock.005
+    400340: Faceplate
+    400342: Faceplate.001
+    400344: Faceplate.002
+    400346: Faceplate.003
+    400348: Faceplate.004
+    400350: Flint.000
+    400352: Flint.001
+    400354: Flint.002
+    400356: Flint.004
+    400358: Flint.005
+    400360: FrontTrigger
+    400362: Furniture.001
+    400364: Furniture.002
+    400366: Hammer
+    400368: Hammer.003
+    400370: Hammer.004
+    400372: Hammer.005
+    400374: Integral
+    400376: Integral.001
+    400378: Integral.002
+    400380: MechFlintlock
+    400382: MechFlintlock.001
+    400384: MechFlintlock.002
+    400386: MechFlintlock.003
+    400388: MechFlintlock.004
+    400390: MechFlintlock.005
+    400392: MechPercussion
+    400394: MechPercussion.001
+    400396: MechPercussion.002
+    400398: MechPercussion.003
+    400400: MechPercussion.004
+    400402: MechPercussion.005
+    400404: MetalBack_Low
+    400406: MetalKnob_Low
+    400408: Pan.000
+    400410: Pan.003
+    400412: Pan.004
+    400414: Pan.005
+    400416: Pancover.000
+    400418: Pancover.001
+    400420: Pancover.002
+    400422: Pancover.003
+    400424: Pancover.004
+    400426: Pancover.005
+    400428: Sight Base.001
+    400430: Sight Buckhorn
+    400432: Sight Buckhorn.001
+    400434: Sight Rear.001
+    400436: Sight Slide.001
+    400438: Trigger.002
+    400440: Trigger.003
+    400442: TriggerCover_Low
+    400444: Flint.003
+    400446: AttachmentBrace.000
+    400448: AttachmentBrace.001
+    400450: AttachmentBrace.002
+    400452: Botrail.000
+    400454: Botrail.001
+    400456: Botrail.002
+    400458: Ramrod_Long.001
+    400460: Siderail.000
+    400462: Siderail.001
+    400464: Siderail.002
+    400466: Toprail.000
+    400468: Toprail.001
+    400470: Toprail.002
+    400472: AxeHead_Mid
+    400474: AxeHead_Mid.001
+    400476: Barrel Mid
+    400478: Barrel Mid.001
+    400480: Barrel Reinforcement
+    400482: Barrel Reinforcement.001
+    400484: Barrel Reinforcement.002
+    400486: Blade_Mid
+    400488: Blade_Mid.001
+    400490: Blade_Short
+    400492: Body Mid
+    400494: Body Mid.001
+    400496: Body Short
+    400498: HammerHead_Mid
+    400500: HammerHead_Mid.001
+    400502: HammerHead_Short
+    400504: AxeHead_Long
+    400506: Barrel Long
+    400508: Blade_Long
+    400510: Body Long
+    400512: HammerHead_Long
+    400514: AttachmentBrace.003
+    400516: AttachmentBrace.004
+    400518: BackTrigger.001
+    400520: Base Future Rifle
+    400522: Blast Coil
+    400524: Botrail.003
+    400526: Botrail.004
+    400528: Cap.006
+    400530: Faceplate.005
+    400532: FireMechBattery
+    400534: FrontTrigger.001
+    400536: Hammer.006
+    400538: Integral.003
+    400540: MechPercussion.006
+    400542: Siderail.003
+    400544: Siderail.004
+    400546: Sight Base.002
+    400548: Sight Rear.002
+    400550: Sight Slide.002
+    400552: Toprail.003
+    400554: Toprail.004
+    400556: Trigger.004
+    400558: BatteryCompartment
+    400560: ContainerCompartment
+    400562: AttachmentBrace.005
+    400564: AttachmentBrace.006
+    400566: BackTrigger.002
+    400568: Base Derringer
+    400570: Base Future Carbine
+    400572: Battery.005
+    400574: BatteryCompartment.001
+    400576: Blast Coil.001
+    400578: Botrail.005
+    400580: Botrail.006
+    400582: Canister_R.000
+    400584: Cap.007
+    400586: ContainerCompartment.001
+    400588: Faceplate.006
+    400590: FireMechBattery.001
+    400592: FireMechPressure.001
+    400594: FrontTrigger.002
+    400596: Hammer.007
+    400598: Integral.004
+    400600: MechPercussion.007
+    400602: Siderail.005
+    400604: Siderail.006
+    400606: Sight Base.003
+    400608: Sight Rear.003
+    400610: Sight Slide.003
+    400612: Toprail.005
+    400614: Toprail.006
+    400616: Trigger.005
+    400618: TwinTriggerBase
+    400620: TwinTriggerBase.001
+    400622: AttachmentBrace.007
+    400624: Barrel Blunderbuss.001
+    400626: Base Blunderbuss Compact
+    400628: Botrail.007
+    400630: Cap.008
+    400632: Cock.006
+    400634: Faceplate.007
+    400636: Flint.006
+    400638: Hammer.008
+    400640: MechFlintlock.006
+    400642: MechPercussion.008
+    400644: Pan.006
+    400646: Pancover.006
+    400648: Siderail.007
+    400650: Toprail.007
+    400652: Trigger.006
+    400654: Barrel.002
+    400656: Base Future Pistol
+    400658: Battery.008
+    400660: BatteryCompartment.002
+    400662: BatteryCompartment.003
+    400664: Blast Coil.002
+    400666: Cap.009
+    400668: Faceplate.008
+    400670: FireMechBattery.002
+    400672: FireMechPressure.002
+    400674: Furniture.000
+    400676: Hammer.009
+    400678: MechPercussion.009
+    400680: Trigger.007
+    400682: PressureCompartment
+    400684: Barrel Reinforcement.003
+    400686: Barrel Reinforcement.004
+    400688: Barrel Reinforcement.005
+    400690: FrameBladeL
+    400692: FrameBladeM
+    400694: FrameBladeS
+    400696: FrameClassicL
+    400698: FrameClassicM
+    400700: FrameClassicS
+    400702: BackTrigger.003
+    400704: Barrel Ring Mid.002
+    400706: Integral.005
+    400708: Sight Base.004
+    400710: Sight Rear.004
+    400712: Sight Slide.004
+    400714: BreachBlock
+    400716: BreachBlock.001
+    400718: BreachBlock.002
+    400720: BreachBlock.003
+    400722: Hammer.000
+    400724: Latch
+    400726: Latch.001
+    400728: Latch.002
+    400730: Latch.003
+    400732: Barrel SBR
+    400734: Base SBR
+    400736: BreachBlock.004
+    400738: FrontTrigger.003
+    400740: Integral.000
+    400742: Latch.004
+    400744: Sight Base.000
+    400746: Sight Rear.000
+    400748: Sight Slide.000
+    400750: Barrel Carbine
+    400752: Base Carbine
+    400754: BackTrigger.004
+    400756: Base Rifle.001
+    2100000: Detail
+    2100002: Metalparts
+    2100004: Conductor
+    2100006: Battery.001
+    2100008: PressurizerTubes
+    2100010: Pistol_TubeGlass.001
+    2100012: WoodpartsPistol
+    2100014: Emission
+    2100016: Polymer
+    2100018: PressurizerGlass
+    2100020: Lenses
+    2100022: Battery
+    2100024: 02___Default
+    2100026: 07___Default
+    2100028: Woodparts
+    2300000: Barrel BBuss Long
+    2300002: Barrel BBuss Short
+    2300004: Barrel Blunderbuss
+    2300006: Barrel Long Pistol
+    2300008: Barrel Musket
+    2300010: Barrel Rifle
+    2300012: Barrel Ring Front
+    2300014: Barrel Ring Front.001
+    2300016: Barrel Ring Front.002
+    2300018: Barrel Ring Front.004
+    2300020: Barrel Ring Front.007
+    2300022: Barrel Ring Mid
+    2300024: Barrel Ring Mid.001
+    2300026: Barrel Ring Rear
+    2300028: Barrel Ring Rear.002
+    2300030: Barrel Short Pistol
+    2300032: Base 1Handed
+    2300034: Base 2Handed
+    2300036: Battery
+    2300038: Battery.001
+    2300040: Battery.002
+    2300042: Battery.003
+    2300044: Battery.004
+    2300046: Bipod Brace.002
+    2300048: Bipod Brace.003
+    2300050: BipodBase.001
+    2300052: BipodBase.002
+    2300054: Blast Coil BBus Short
+    2300056: Blast Coil Carbine
+    2300058: Blast Coil Musket
+    2300060: Blast Coil Pistol Long
+    2300062: Blast Coil Pistol Long.001
+    2300064: Blast Coil Pistol Short
+    2300066: Blast Coil Pistol Short.001
+    2300068: Body BBuss Classic
+    2300070: Body BBuss Modern
+    2300072: Body Pistol Classic
+    2300074: Body Pistol Modern
+    2300076: BottomRail.000
+    2300078: BottomRail.001
+    2300080: BottomRail.002
+    2300082: Canister
+    2300084: Canister_R.002
+    2300086: Cock.001
+    2300088: Cock.002
+    2300090: Control Nozzle BBuss
+    2300092: Control Nozzle BBuss Long
+    2300094: Control Nozzle BBuss Short
+    2300096: Control Nozzle Musket
+    2300098: Control Nozzle Pistol Long
+    2300100: Control Nozzle Pistol Short
+    2300102: Control Nozzle Rifle
+    2300104: Discharge Port
+    2300106: Discharge Port BBuss Long
+    2300108: Discharge Port BBuss Short
+    2300110: Discharge Port Pistol Long
+    2300112: Discharge Port Pistol Short
+    2300114: Discharge Port.002
+    2300116: Discharge Port.003
+    2300118: extension.000
+    2300120: extension.001
+    2300122: extension.002
+    2300124: extension.003
+    2300126: FacePlate
+    2300128: FireMech Battery.001
+    2300130: FireMech Pivot BBuss
+    2300132: FireMech Pivot Pistol
+    2300134: FireMech Pressure
+    2300136: FireMechBatteryCompartment
+    2300138: FireMechCock
+    2300140: FireMechHammer
+    2300142: FireMechPressure
+    2300144: ForeStock.000
+    2300146: ForeStock.002
+    2300148: ForeStock.003
+    2300150: Frame Classic Pistol Short
+    2300152: Frame Long
+    2300154: Frame Long Wide Classic
+    2300156: Frame Long Wide Modern
+    2300158: Frame Modern Pistol
+    2300160: Frame Modern Pistol Short
+    2300162: Frame Short Wide Classic
+    2300164: Frame Short Wide Modern
+    2300166: FrontRails.000
+    2300168: FrontRails.001
+    2300170: FrontRails.002
+    2300172: Grip Sawbutt.000
+    2300174: Grip Sawbutt.002
+    2300176: Grip Sawbutt.003
+    2300178: Hammer.001
+    2300180: Hammer.002
+    2300182: LegsDown.000
+    2300184: LegsDown.003
+    2300186: LegsUp
+    2300188: LegsUp.001
+    2300190: Pan
+    2300192: Pan Pivot BBuss
+    2300194: Pan Pivot Pistol
+    2300196: Pan.001
+    2300198: Pan.002
+    2300200: Pin
+    2300202: Pin BBuss
+    2300204: Pin Pistol
+    2300206: Pressurizer
+    2300208: Pressurizer.000
+    2300210: Pressurizer.001
+    2300212: Pressurizer.002
+    2300214: Pressurizer.003
+    2300216: Pressurizer.004
+    2300218: Pressurizer.005
+    2300220: Rail Top Carbine
+    2300222: Ramrod
+    2300224: Ramrod.001
+    2300226: Ramrod.002
+    2300228: Ramrod.003
+    2300230: Ramrod_Blunderbuss
+    2300232: Ramrod_Blunderbuss.001
+    2300234: Ramrod_Carbine
+    2300236: Ramrod_Carbine.002
+    2300238: Ramrod_Carbine.003
+    2300240: Ramrod_Long
+    2300242: Scope Brace
+    2300244: Scope Sharpshooter
+    2300246: ScopeBase
+    2300248: Sight Base
+    2300250: Sight Rear
+    2300252: Sight Slide
+    2300254: SightRail
+    2300256: Spring
+    2300258: Spring Pistol
+    2300260: SpringBBuss
+    2300262: Stock_Blunderbuss_Classic
+    2300264: Stock_Blunderbuss_Modern
+    2300266: Stock_Musket_Classic
+    2300268: Stock_Musket_Modern
+    2300270: Stock_Rifle_Classic
+    2300272: Stock_Rifle_Modern
+    2300274: StockBasePoly
+    2300276: StockBasePoly.001
+    2300278: StockBasePoly.003
+    2300280: StockBaseWood
+    2300282: StockBaseWood.001
+    2300284: StockBaseWood.003
+    2300286: Striker
+    2300288: Striker.001
+    2300290: Striker.002
+    2300292: Trigger
+    2300294: Trigger.001
+    2300296: AxeHead_Short
+    2300298: BackTrigger
+    2300300: Barrel
+    2300302: Barrel Short
+    2300304: Barrel.001
+    2300306: Base Blunderbuss
+    2300308: Base Gunblade
+    2300310: Base Musket
+    2300312: Base Pistol
+    2300314: Base Pistol Small
+    2300316: Base Rifle
+    2300318: Cap
+    2300320: Cap.001
+    2300322: Cap.002
+    2300324: Cap.003
+    2300326: Cap.004
+    2300328: Cap.005
+    2300330: Cock.000
+    2300332: Cock.003
+    2300334: Cock.004
+    2300336: Cock.005
+    2300338: Faceplate
+    2300340: Faceplate.001
+    2300342: Faceplate.002
+    2300344: Faceplate.003
+    2300346: Faceplate.004
+    2300348: Flint.000
+    2300350: Flint.001
+    2300352: Flint.002
+    2300354: Flint.004
+    2300356: Flint.005
+    2300358: FrontTrigger
+    2300360: Furniture.001
+    2300362: Furniture.002
+    2300364: Hammer
+    2300366: Hammer.003
+    2300368: Hammer.004
+    2300370: Hammer.005
+    2300372: Integral
+    2300374: Integral.001
+    2300376: Integral.002
+    2300378: MechFlintlock
+    2300380: MechFlintlock.001
+    2300382: MechFlintlock.002
+    2300384: MechFlintlock.003
+    2300386: MechFlintlock.004
+    2300388: MechFlintlock.005
+    2300390: MechPercussion
+    2300392: MechPercussion.001
+    2300394: MechPercussion.002
+    2300396: MechPercussion.003
+    2300398: MechPercussion.004
+    2300400: MechPercussion.005
+    2300402: MetalBack_Low
+    2300404: MetalKnob_Low
+    2300406: Pan.000
+    2300408: Pan.003
+    2300410: Pan.004
+    2300412: Pan.005
+    2300414: Pancover.000
+    2300416: Pancover.001
+    2300418: Pancover.002
+    2300420: Pancover.003
+    2300422: Pancover.004
+    2300424: Pancover.005
+    2300426: Sight Base.001
+    2300428: Sight Buckhorn
+    2300430: Sight Buckhorn.001
+    2300432: Sight Rear.001
+    2300434: Sight Slide.001
+    2300436: Trigger.002
+    2300438: Trigger.003
+    2300440: TriggerCover_Low
+    2300442: Flint.003
+    2300444: AttachmentBrace.000
+    2300446: AttachmentBrace.001
+    2300448: AttachmentBrace.002
+    2300450: Botrail.000
+    2300452: Botrail.001
+    2300454: Botrail.002
+    2300456: Ramrod_Long.001
+    2300458: Siderail.000
+    2300460: Siderail.001
+    2300462: Siderail.002
+    2300464: Toprail.000
+    2300466: Toprail.001
+    2300468: Toprail.002
+    2300470: AxeHead_Mid
+    2300472: AxeHead_Mid.001
+    2300474: Barrel Mid
+    2300476: Barrel Mid.001
+    2300478: Barrel Reinforcement
+    2300480: Barrel Reinforcement.001
+    2300482: Barrel Reinforcement.002
+    2300484: Blade_Mid
+    2300486: Blade_Mid.001
+    2300488: Blade_Short
+    2300490: Body Mid
+    2300492: Body Mid.001
+    2300494: Body Short
+    2300496: HammerHead_Mid
+    2300498: HammerHead_Mid.001
+    2300500: HammerHead_Short
+    2300502: AxeHead_Long
+    2300504: Barrel Long
+    2300506: Blade_Long
+    2300508: Body Long
+    2300510: HammerHead_Long
+    2300512: AttachmentBrace.003
+    2300514: AttachmentBrace.004
+    2300516: BackTrigger.001
+    2300518: Base Future Rifle
+    2300520: Blast Coil
+    2300522: Botrail.003
+    2300524: Botrail.004
+    2300526: Cap.006
+    2300528: Faceplate.005
+    2300530: FireMechBattery
+    2300532: FrontTrigger.001
+    2300534: Hammer.006
+    2300536: Integral.003
+    2300538: MechPercussion.006
+    2300540: Siderail.003
+    2300542: Siderail.004
+    2300544: Sight Base.002
+    2300546: Sight Rear.002
+    2300548: Sight Slide.002
+    2300550: Toprail.003
+    2300552: Toprail.004
+    2300554: Trigger.004
+    2300556: BatteryCompartment
+    2300558: ContainerCompartment
+    2300560: AttachmentBrace.005
+    2300562: AttachmentBrace.006
+    2300564: BackTrigger.002
+    2300566: Base Derringer
+    2300568: Base Future Carbine
+    2300570: Battery.005
+    2300572: BatteryCompartment.001
+    2300574: Blast Coil.001
+    2300576: Botrail.005
+    2300578: Botrail.006
+    2300580: Canister_R.000
+    2300582: Cap.007
+    2300584: ContainerCompartment.001
+    2300586: Faceplate.006
+    2300588: FireMechBattery.001
+    2300590: FireMechPressure.001
+    2300592: FrontTrigger.002
+    2300594: Hammer.007
+    2300596: Integral.004
+    2300598: MechPercussion.007
+    2300600: Siderail.005
+    2300602: Siderail.006
+    2300604: Sight Base.003
+    2300606: Sight Rear.003
+    2300608: Sight Slide.003
+    2300610: Toprail.005
+    2300612: Toprail.006
+    2300614: Trigger.005
+    2300616: TwinTriggerBase
+    2300618: TwinTriggerBase.001
+    2300620: AttachmentBrace.007
+    2300622: Barrel Blunderbuss.001
+    2300624: Base Blunderbuss Compact
+    2300626: Botrail.007
+    2300628: Cap.008
+    2300630: Cock.006
+    2300632: Faceplate.007
+    2300634: Flint.006
+    2300636: Hammer.008
+    2300638: MechFlintlock.006
+    2300640: MechPercussion.008
+    2300642: Pan.006
+    2300644: Pancover.006
+    2300646: Siderail.007
+    2300648: Toprail.007
+    2300650: Trigger.006
+    2300652: Barrel.002
+    2300654: Base Future Pistol
+    2300656: Battery.008
+    2300658: BatteryCompartment.002
+    2300660: BatteryCompartment.003
+    2300662: Blast Coil.002
+    2300664: Cap.009
+    2300666: Faceplate.008
+    2300668: FireMechBattery.002
+    2300670: FireMechPressure.002
+    2300672: Furniture.000
+    2300674: Hammer.009
+    2300676: MechPercussion.009
+    2300678: Trigger.007
+    2300680: PressureCompartment
+    2300682: Barrel Reinforcement.003
+    2300684: Barrel Reinforcement.004
+    2300686: Barrel Reinforcement.005
+    2300688: FrameBladeL
+    2300690: FrameBladeM
+    2300692: FrameBladeS
+    2300694: FrameClassicL
+    2300696: FrameClassicM
+    2300698: FrameClassicS
+    2300700: BackTrigger.003
+    2300702: Barrel Ring Mid.002
+    2300704: Integral.005
+    2300706: Sight Base.004
+    2300708: Sight Rear.004
+    2300710: Sight Slide.004
+    2300712: BreachBlock
+    2300714: BreachBlock.001
+    2300716: BreachBlock.002
+    2300718: BreachBlock.003
+    2300720: Hammer.000
+    2300722: Latch
+    2300724: Latch.001
+    2300726: Latch.002
+    2300728: Latch.003
+    2300730: Barrel SBR
+    2300732: Base SBR
+    2300734: BreachBlock.004
+    2300736: FrontTrigger.003
+    2300738: Integral.000
+    2300740: Latch.004
+    2300742: Sight Base.000
+    2300744: Sight Rear.000
+    2300746: Sight Slide.000
+    2300748: Barrel Carbine
+    2300750: Base Carbine
+    2300752: BackTrigger.004
+    2300754: Base Rifle.001
+    3300000: Barrel BBuss Long
+    3300002: Barrel BBuss Short
+    3300004: Barrel Blunderbuss
+    3300006: Barrel Long Pistol
+    3300008: Barrel Musket
+    3300010: Barrel Rifle
+    3300012: Barrel Ring Front
+    3300014: Barrel Ring Front.001
+    3300016: Barrel Ring Front.002
+    3300018: Barrel Ring Front.004
+    3300020: Barrel Ring Front.007
+    3300022: Barrel Ring Mid
+    3300024: Barrel Ring Mid.001
+    3300026: Barrel Ring Rear
+    3300028: Barrel Ring Rear.002
+    3300030: Barrel Short Pistol
+    3300032: Base 1Handed
+    3300034: Base 2Handed
+    3300036: Battery
+    3300038: Battery.001
+    3300040: Battery.002
+    3300042: Battery.003
+    3300044: Battery.004
+    3300046: Bipod Brace.002
+    3300048: Bipod Brace.003
+    3300050: BipodBase.001
+    3300052: BipodBase.002
+    3300054: Blast Coil BBus Short
+    3300056: Blast Coil Carbine
+    3300058: Blast Coil Musket
+    3300060: Blast Coil Pistol Long
+    3300062: Blast Coil Pistol Long.001
+    3300064: Blast Coil Pistol Short
+    3300066: Blast Coil Pistol Short.001
+    3300068: Body BBuss Classic
+    3300070: Body BBuss Modern
+    3300072: Body Pistol Classic
+    3300074: Body Pistol Modern
+    3300076: BottomRail.000
+    3300078: BottomRail.001
+    3300080: BottomRail.002
+    3300082: Canister
+    3300084: Canister_R.002
+    3300086: Cock.001
+    3300088: Cock.002
+    3300090: Control Nozzle BBuss
+    3300092: Control Nozzle BBuss Long
+    3300094: Control Nozzle BBuss Short
+    3300096: Control Nozzle Musket
+    3300098: Control Nozzle Pistol Long
+    3300100: Control Nozzle Pistol Short
+    3300102: Control Nozzle Rifle
+    3300104: Discharge Port
+    3300106: Discharge Port BBuss Long
+    3300108: Discharge Port BBuss Short
+    3300110: Discharge Port Pistol Long
+    3300112: Discharge Port Pistol Short
+    3300114: Discharge Port.002
+    3300116: Discharge Port.003
+    3300118: extension.000
+    3300120: extension.001
+    3300122: extension.002
+    3300124: extension.003
+    3300126: FacePlate
+    3300128: FireMech Battery.001
+    3300130: FireMech Pivot BBuss
+    3300132: FireMech Pivot Pistol
+    3300134: FireMech Pressure
+    3300136: FireMechBatteryCompartment
+    3300138: FireMechCock
+    3300140: FireMechHammer
+    3300142: FireMechPressure
+    3300144: ForeStock.000
+    3300146: ForeStock.002
+    3300148: ForeStock.003
+    3300150: Frame Classic Pistol Short
+    3300152: Frame Long
+    3300154: Frame Long Wide Classic
+    3300156: Frame Long Wide Modern
+    3300158: Frame Modern Pistol
+    3300160: Frame Modern Pistol Short
+    3300162: Frame Short Wide Classic
+    3300164: Frame Short Wide Modern
+    3300166: FrontRails.000
+    3300168: FrontRails.001
+    3300170: FrontRails.002
+    3300172: Grip Sawbutt.000
+    3300174: Grip Sawbutt.002
+    3300176: Grip Sawbutt.003
+    3300178: Hammer.001
+    3300180: Hammer.002
+    3300182: LegsDown.000
+    3300184: LegsDown.003
+    3300186: LegsUp
+    3300188: LegsUp.001
+    3300190: Pan
+    3300192: Pan Pivot BBuss
+    3300194: Pan Pivot Pistol
+    3300196: Pan.001
+    3300198: Pan.002
+    3300200: Pin
+    3300202: Pin BBuss
+    3300204: Pin Pistol
+    3300206: Pressurizer
+    3300208: Pressurizer.000
+    3300210: Pressurizer.001
+    3300212: Pressurizer.002
+    3300214: Pressurizer.003
+    3300216: Pressurizer.004
+    3300218: Pressurizer.005
+    3300220: Rail Top Carbine
+    3300222: Ramrod
+    3300224: Ramrod.001
+    3300226: Ramrod.002
+    3300228: Ramrod.003
+    3300230: Ramrod_Blunderbuss
+    3300232: Ramrod_Blunderbuss.001
+    3300234: Ramrod_Carbine
+    3300236: Ramrod_Carbine.002
+    3300238: Ramrod_Carbine.003
+    3300240: Ramrod_Long
+    3300242: Scope Brace
+    3300244: Scope Sharpshooter
+    3300246: ScopeBase
+    3300248: Sight Base
+    3300250: Sight Rear
+    3300252: Sight Slide
+    3300254: SightRail
+    3300256: Spring
+    3300258: Spring Pistol
+    3300260: SpringBBuss
+    3300262: Stock_Blunderbuss_Classic
+    3300264: Stock_Blunderbuss_Modern
+    3300266: Stock_Musket_Classic
+    3300268: Stock_Musket_Modern
+    3300270: Stock_Rifle_Classic
+    3300272: Stock_Rifle_Modern
+    3300274: StockBasePoly
+    3300276: StockBasePoly.001
+    3300278: StockBasePoly.003
+    3300280: StockBaseWood
+    3300282: StockBaseWood.001
+    3300284: StockBaseWood.003
+    3300286: Striker
+    3300288: Striker.001
+    3300290: Striker.002
+    3300292: Trigger
+    3300294: Trigger.001
+    3300296: AxeHead_Short
+    3300298: BackTrigger
+    3300300: Barrel
+    3300302: Barrel Short
+    3300304: Barrel.001
+    3300306: Base Blunderbuss
+    3300308: Base Gunblade
+    3300310: Base Musket
+    3300312: Base Pistol
+    3300314: Base Pistol Small
+    3300316: Base Rifle
+    3300318: Cap
+    3300320: Cap.001
+    3300322: Cap.002
+    3300324: Cap.003
+    3300326: Cap.004
+    3300328: Cap.005
+    3300330: Cock.000
+    3300332: Cock.003
+    3300334: Cock.004
+    3300336: Cock.005
+    3300338: Faceplate
+    3300340: Faceplate.001
+    3300342: Faceplate.002
+    3300344: Faceplate.003
+    3300346: Faceplate.004
+    3300348: Flint.000
+    3300350: Flint.001
+    3300352: Flint.002
+    3300354: Flint.004
+    3300356: Flint.005
+    3300358: FrontTrigger
+    3300360: Furniture.001
+    3300362: Furniture.002
+    3300364: Hammer
+    3300366: Hammer.003
+    3300368: Hammer.004
+    3300370: Hammer.005
+    3300372: Integral
+    3300374: Integral.001
+    3300376: Integral.002
+    3300378: MechFlintlock
+    3300380: MechFlintlock.001
+    3300382: MechFlintlock.002
+    3300384: MechFlintlock.003
+    3300386: MechFlintlock.004
+    3300388: MechFlintlock.005
+    3300390: MechPercussion
+    3300392: MechPercussion.001
+    3300394: MechPercussion.002
+    3300396: MechPercussion.003
+    3300398: MechPercussion.004
+    3300400: MechPercussion.005
+    3300402: MetalBack_Low
+    3300404: MetalKnob_Low
+    3300406: Pan.000
+    3300408: Pan.003
+    3300410: Pan.004
+    3300412: Pan.005
+    3300414: Pancover.000
+    3300416: Pancover.001
+    3300418: Pancover.002
+    3300420: Pancover.003
+    3300422: Pancover.004
+    3300424: Pancover.005
+    3300426: Sight Base.001
+    3300428: Sight Buckhorn
+    3300430: Sight Buckhorn.001
+    3300432: Sight Rear.001
+    3300434: Sight Slide.001
+    3300436: Trigger.002
+    3300438: Trigger.003
+    3300440: TriggerCover_Low
+    3300442: Flint.003
+    3300444: AttachmentBrace.000
+    3300446: AttachmentBrace.001
+    3300448: AttachmentBrace.002
+    3300450: Botrail.000
+    3300452: Botrail.001
+    3300454: Botrail.002
+    3300456: Ramrod_Long.001
+    3300458: Siderail.000
+    3300460: Siderail.001
+    3300462: Siderail.002
+    3300464: Toprail.000
+    3300466: Toprail.001
+    3300468: Toprail.002
+    3300470: AxeHead_Mid
+    3300472: AxeHead_Mid.001
+    3300474: Barrel Mid
+    3300476: Barrel Mid.001
+    3300478: Barrel Reinforcement
+    3300480: Barrel Reinforcement.001
+    3300482: Barrel Reinforcement.002
+    3300484: Blade_Mid
+    3300486: Blade_Mid.001
+    3300488: Blade_Short
+    3300490: Body Mid
+    3300492: Body Mid.001
+    3300494: Body Short
+    3300496: HammerHead_Mid
+    3300498: HammerHead_Mid.001
+    3300500: HammerHead_Short
+    3300502: AxeHead_Long
+    3300504: Barrel Long
+    3300506: Blade_Long
+    3300508: Body Long
+    3300510: HammerHead_Long
+    3300512: AttachmentBrace.003
+    3300514: AttachmentBrace.004
+    3300516: BackTrigger.001
+    3300518: Base Future Rifle
+    3300520: Blast Coil
+    3300522: Botrail.003
+    3300524: Botrail.004
+    3300526: Cap.006
+    3300528: Faceplate.005
+    3300530: FireMechBattery
+    3300532: FrontTrigger.001
+    3300534: Hammer.006
+    3300536: Integral.003
+    3300538: MechPercussion.006
+    3300540: Siderail.003
+    3300542: Siderail.004
+    3300544: Sight Base.002
+    3300546: Sight Rear.002
+    3300548: Sight Slide.002
+    3300550: Toprail.003
+    3300552: Toprail.004
+    3300554: Trigger.004
+    3300556: BatteryCompartment
+    3300558: ContainerCompartment
+    3300560: AttachmentBrace.005
+    3300562: AttachmentBrace.006
+    3300564: BackTrigger.002
+    3300566: Base Derringer
+    3300568: Base Future Carbine
+    3300570: Battery.005
+    3300572: BatteryCompartment.001
+    3300574: Blast Coil.001
+    3300576: Botrail.005
+    3300578: Botrail.006
+    3300580: Canister_R.000
+    3300582: Cap.007
+    3300584: ContainerCompartment.001
+    3300586: Faceplate.006
+    3300588: FireMechBattery.001
+    3300590: FireMechPressure.001
+    3300592: FrontTrigger.002
+    3300594: Hammer.007
+    3300596: Integral.004
+    3300598: MechPercussion.007
+    3300600: Siderail.005
+    3300602: Siderail.006
+    3300604: Sight Base.003
+    3300606: Sight Rear.003
+    3300608: Sight Slide.003
+    3300610: Toprail.005
+    3300612: Toprail.006
+    3300614: Trigger.005
+    3300616: TwinTriggerBase
+    3300618: TwinTriggerBase.001
+    3300620: AttachmentBrace.007
+    3300622: Barrel Blunderbuss.001
+    3300624: Base Blunderbuss Compact
+    3300626: Botrail.007
+    3300628: Cap.008
+    3300630: Cock.006
+    3300632: Faceplate.007
+    3300634: Flint.006
+    3300636: Hammer.008
+    3300638: MechFlintlock.006
+    3300640: MechPercussion.008
+    3300642: Pan.006
+    3300644: Pancover.006
+    3300646: Siderail.007
+    3300648: Toprail.007
+    3300650: Trigger.006
+    3300652: Barrel.002
+    3300654: Base Future Pistol
+    3300656: Battery.008
+    3300658: BatteryCompartment.002
+    3300660: BatteryCompartment.003
+    3300662: Blast Coil.002
+    3300664: Cap.009
+    3300666: Faceplate.008
+    3300668: FireMechBattery.002
+    3300670: FireMechPressure.002
+    3300672: Furniture.000
+    3300674: Hammer.009
+    3300676: MechPercussion.009
+    3300678: Trigger.007
+    3300680: PressureCompartment
+    3300682: Barrel Reinforcement.003
+    3300684: Barrel Reinforcement.004
+    3300686: Barrel Reinforcement.005
+    3300688: FrameBladeL
+    3300690: FrameBladeM
+    3300692: FrameBladeS
+    3300694: FrameClassicL
+    3300696: FrameClassicM
+    3300698: FrameClassicS
+    3300700: BackTrigger.003
+    3300702: Barrel Ring Mid.002
+    3300704: Integral.005
+    3300706: Sight Base.004
+    3300708: Sight Rear.004
+    3300710: Sight Slide.004
+    3300712: BreachBlock
+    3300714: BreachBlock.001
+    3300716: BreachBlock.002
+    3300718: BreachBlock.003
+    3300720: Hammer.000
+    3300722: Latch
+    3300724: Latch.001
+    3300726: Latch.002
+    3300728: Latch.003
+    3300730: Barrel SBR
+    3300732: Base SBR
+    3300734: BreachBlock.004
+    3300736: FrontTrigger.003
+    3300738: Integral.000
+    3300740: Latch.004
+    3300742: Sight Base.000
+    3300744: Sight Rear.000
+    3300746: Sight Slide.000
+    3300748: Barrel Carbine
+    3300750: Base Carbine
+    3300752: BackTrigger.004
+    3300754: Base Rifle.001
+    4300000: Base 1Handed
+    4300002: FireMech Pivot BBuss
+    4300004: Cock.002
+    4300006: Striker.002
+    4300008: Pan.002
+    4300010: Pan Pivot BBuss
+    4300012: SpringBBuss
+    4300014: Hammer.002
+    4300016: Pin BBuss
+    4300018: FireMech Pivot Pistol
+    4300020: Hammer.001
+    4300022: Pin Pistol
+    4300024: Cock.001
+    4300026: Spring Pistol
+    4300028: Pan.001
+    4300030: Striker.001
+    4300032: Pan Pivot Pistol
+    4300034: FireMech Battery.001
+    4300036: Battery.004
+    4300038: Battery.002
+    4300040: FireMech Pressure
+    4300042: Canister
+    4300044: Trigger.001
+    4300046: SightRail
+    4300048: Body BBuss Classic
+    4300050: Barrel BBuss Short
+    4300052: Ramrod.002
+    4300054: Blast Coil Pistol Short.001
+    4300056: Discharge Port BBuss Short
+    4300058: Frame Short Wide Classic
+    4300060: Frame Short Wide Modern
+    4300062: Control Nozzle BBuss Short
+    4300064: Pressurizer.005
+    4300066: Barrel BBuss Long
+    4300068: Frame Long Wide Modern
+    4300070: Blast Coil Pistol Long.001
+    4300072: Discharge Port BBuss Long
+    4300074: Control Nozzle BBuss Long
+    4300076: Pressurizer.004
+    4300078: Frame Long Wide Classic
+    4300080: Ramrod
+    4300082: Body BBuss Modern
+    4300084: Body Pistol Classic
+    4300086: Barrel Long Pistol
+    4300088: Ramrod.003
+    4300090: Control Nozzle Pistol Long
+    4300092: Pressurizer.002
+    4300094: Blast Coil Pistol Long
+    4300096: Discharge Port Pistol Long
+    4300098: Frame Long
+    4300100: Frame Modern Pistol
+    4300102: Body Pistol Modern
+    4300104: Barrel Short Pistol
+    4300106: Ramrod.001
+    4300108: Blast Coil Pistol Short
+    4300110: Discharge Port Pistol Short
+    4300112: Control Nozzle Pistol Short
+    4300114: Pressurizer.000
+    4300116: Frame Classic Pistol Short
+    4300118: Frame Modern Pistol Short
+    4300120: Base 2Handed
+    4300122: ScopeBase
+    4300124: Scope Brace
+    4300126: Scope Sharpshooter
+    4300128: Rail Top Carbine
+    4300130: FacePlate
+    4300132: FireMechBatteryCompartment
+    4300134: Battery.003
+    4300136: Battery.001
+    4300138: Battery
+    4300140: FireMechHammer
+    4300142: Pin
+    4300144: FireMechCock
+    4300146: Pan
+    4300148: Spring
+    4300150: Striker
+    4300152: FireMechPressure
+    4300154: Canister_R.002
+    4300156: Trigger
+    4300158: Barrel Rifle
+    4300160: Stock_Rifle_Modern
+    4300162: ForeStock.002
+    4300164: FrontRails.000
+    4300166: BottomRail.000
+    4300168: Ramrod_Carbine.002
+    4300170: BipodBase.001
+    4300172: Barrel Ring Front.007
+    4300174: Bipod Brace.003
+    4300176: LegsDown.000
+    4300178: extension.002
+    4300180: LegsUp.001
+    4300182: extension.000
+    4300184: StockBasePoly.001
+    4300186: Grip Sawbutt.000
+    4300188: Control Nozzle Rifle
+    4300190: Pressurizer.001
+    4300192: Stock_Rifle_Classic
+    4300194: StockBaseWood
+    4300196: Ramrod_Carbine
+    4300198: Barrel Ring Rear.002
+    4300200: Barrel Ring Front.001
+    4300202: Blast Coil Carbine
+    4300204: Discharge Port.002
+    4300206: Barrel Blunderbuss
+    4300208: Stock_Blunderbuss_Classic
+    4300210: StockBaseWood.003
+    4300212: Barrel Ring Front.002
+    4300214: Ramrod_Blunderbuss
+    4300216: Blast Coil BBus Short
+    4300218: Discharge Port
+    4300220: Stock_Blunderbuss_Modern
+    4300222: ForeStock.003
+    4300224: BottomRail.002
+    4300226: FrontRails.002
+    4300228: StockBasePoly.003
+    4300230: Grip Sawbutt.002
+    4300232: Ramrod_Blunderbuss.001
+    4300234: Control Nozzle BBuss
+    4300236: Pressurizer.003
+    4300238: Barrel Musket
+    4300240: Stock_Musket_Classic
+    4300242: Barrel Ring Mid.001
+    4300244: StockBaseWood.001
+    4300246: Barrel Ring Front
+    4300248: Barrel Ring Mid
+    4300250: Barrel Ring Rear
+    4300252: Ramrod_Long
+    4300254: Stock_Musket_Modern
+    4300256: BipodBase.002
+    4300258: LegsUp
+    4300260: extension.003
+    4300262: LegsDown.003
+    4300264: extension.001
+    4300266: Barrel Ring Front.004
+    4300268: Bipod Brace.002
+    4300270: ForeStock.000
+    4300272: FrontRails.001
+    4300274: BottomRail.001
+    4300276: Ramrod_Carbine.003
+    4300278: StockBasePoly
+    4300280: Grip Sawbutt.003
+    4300282: Sight Base
+    4300284: Sight Rear
+    4300286: Sight Slide
+    4300288: Blast Coil Musket
+    4300290: Discharge Port.003
+    4300292: Control Nozzle Musket
+    4300294: Pressurizer
+    4300296: Base Blunderbuss
+    4300298: Faceplate.002
+    4300300: MechPercussion.004
+    4300302: Hammer.004
+    4300304: Cap.004
+    4300306: MechFlintlock.004
+    4300308: Pancover.004
+    4300310: Cock.004
+    4300312: Flint.004
+    4300314: Pan.004
+    4300316: Trigger.003
+    4300318: Base Gunblade
+    4300320: Faceplate
+    4300322: MechPercussion.005
+    4300324: Hammer.005
+    4300326: Cap.005
+    4300328: MechFlintlock.005
+    4300330: Pancover.005
+    4300332: Cock.005
+    4300334: Flint.005
+    4300336: Pan.005
+    4300338: Integral.002
+    4300340: MetalBack_Low
+    4300342: MetalKnob_Low
+    4300344: TriggerCover_Low
+    4300346: Barrel Short
+    4300348: AxeHead_Short
+    4300350: Base Pistol
+    4300352: Faceplate.004
+    4300354: MechFlintlock.002
+    4300356: Flint.002
+    4300358: Pancover.002
+    4300360: MechPercussion.002
+    4300362: Cap.002
+    4300364: Furniture.001
+    4300366: Barrel.001
+    4300368: Base Pistol Small
+    4300370: Furniture.002
+    4300372: Barrel
+    4300374: Faceplate.003
+    4300376: MechPercussion.003
+    4300378: Hammer.003
+    4300380: Cap.003
+    4300382: MechFlintlock.003
+    4300384: Pancover.003
+    4300386: Cock.003
+    4300388: Pan.003
+    4300390: Base Rifle
+    4300392: Sight Buckhorn
+    4300394: Faceplate.001
+    4300396: MechFlintlock
+    4300398: Flint.001
+    4300400: Pancover.001
+    4300402: MechPercussion
+    4300404: Cap
+    4300406: Hammer
+    4300408: Integral.001
+    4300410: FrontTrigger
+    4300412: BackTrigger
+    4300414: Sight Base.001
+    4300416: Sight Slide.001
+    4300418: Sight Rear.001
+    4300420: Base Musket
+    4300422: Sight Buckhorn.001
+    4300424: MechPercussion.001
+    4300426: Cap.001
+    4300428: MechFlintlock.001
+    4300430: Pancover.000
+    4300432: Cock.000
+    4300434: Flint.000
+    4300436: Pan.000
+    4300438: Integral
+    4300440: Trigger.002
+    4300442: Flint.003
+    4300444: AttachmentBrace.002
+    4300446: Siderail.002
+    4300448: Toprail.002
+    4300450: Botrail.002
+    4300452: AttachmentBrace.001
+    4300454: Botrail.001
+    4300456: Toprail.001
+    4300458: Siderail.001
+    4300460: AttachmentBrace.000
+    4300462: Siderail.000
+    4300464: Toprail.000
+    4300466: Botrail.000
+    4300468: Ramrod_Long.001
+    4300470: Body Mid.001
+    4300472: AxeHead_Mid.001
+    4300474: Barrel Reinforcement.002
+    4300476: HammerHead_Mid.001
+    4300478: Blade_Mid.001
+    4300480: Barrel Mid.001
+    4300482: Body Mid
+    4300484: Barrel Mid
+    4300486: Barrel Reinforcement.001
+    4300488: Blade_Mid
+    4300490: HammerHead_Mid
+    4300492: AxeHead_Mid
+    4300494: Body Short
+    4300496: Barrel Reinforcement
+    4300498: Blade_Short
+    4300500: HammerHead_Short
+    4300502: Body Long
+    4300504: Barrel Long
+    4300506: HammerHead_Long
+    4300508: Blade_Long
+    4300510: AxeHead_Long
+    4300512: Base Future Rifle
+    4300514: Integral.003
+    4300516: BackTrigger.001
+    4300518: FrontTrigger.001
+    4300520: Faceplate.005
+    4300522: MechPercussion.006
+    4300524: Hammer.006
+    4300526: Cap.006
+    4300528: FireMechBattery
+    4300530: Blast Coil
+    4300532: AttachmentBrace.003
+    4300534: Botrail.003
+    4300536: Toprail.003
+    4300538: Siderail.003
+    4300540: AttachmentBrace.004
+    4300542: Siderail.004
+    4300544: Toprail.004
+    4300546: Botrail.004
+    4300548: Sight Base.002
+    4300550: Sight Rear.002
+    4300552: Sight Slide.002
+    4300554: Trigger.004
+    4300556: BatteryCompartment
+    4300558: ContainerCompartment
+    4300560: Integral.004
+    4300562: Faceplate.006
+    4300564: MechPercussion.007
+    4300566: Cap.007
+    4300568: Hammer.007
+    4300570: FireMechPressure.001
+    4300572: TwinTriggerBase.001
+    4300574: FrontTrigger.002
+    4300576: BackTrigger.002
+    4300578: Sight Base.003
+    4300580: Sight Slide.003
+    4300582: Sight Rear.003
+    4300584: AttachmentBrace.005
+    4300586: Botrail.005
+    4300588: Siderail.005
+    4300590: Toprail.005
+    4300592: ContainerCompartment.001
+    4300594: Canister_R.000
+    4300596: FireMechBattery.001
+    4300598: Blast Coil.001
+    4300600: Trigger.005
+    4300602: AttachmentBrace.006
+    4300604: Siderail.006
+    4300606: Botrail.006
+    4300608: Toprail.006
+    4300610: BatteryCompartment.001
+    4300612: Battery.005
+    4300614: Base Future Carbine
+    4300616: TwinTriggerBase
+    4300618: Base Derringer
+    4300620: Base Blunderbuss Compact
+    4300622: AttachmentBrace.007
+    4300624: Botrail.007
+    4300626: Siderail.007
+    4300628: Toprail.007
+    4300630: Barrel Blunderbuss.001
+    4300632: Trigger.006
+    4300634: Faceplate.007
+    4300636: MechFlintlock.006
+    4300638: Pan.006
+    4300640: Cock.006
+    4300642: Flint.006
+    4300644: Pancover.006
+    4300646: MechPercussion.008
+    4300648: Cap.008
+    4300650: Hammer.008
+    4300652: Base Future Pistol
+    4300654: Furniture.000
+    4300656: Trigger.007
+    4300658: Barrel.002
+    4300660: Faceplate.008
+    4300662: MechPercussion.009
+    4300664: Hammer.009
+    4300666: Cap.009
+    4300668: BatteryCompartment.003
+    4300670: BatteryCompartment.002
+    4300672: Battery.008
+    4300674: FireMechBattery.002
+    4300676: Blast Coil.002
+    4300678: FireMechPressure.002
+    4300680: PressureCompartment
+    4300682: FrameClassicM
+    4300684: FrameBladeM
+    4300686: Barrel Reinforcement.004
+    4300688: FrameBladeL
+    4300690: Barrel Reinforcement.005
+    4300692: FrameClassicL
+    4300694: FrameBladeS
+    4300696: Barrel Reinforcement.003
+    4300698: FrameClassicS
+    4300700: Sight Base.004
+    4300702: Sight Rear.004
+    4300704: Sight Slide.004
+    4300706: Integral.005
+    4300708: BackTrigger.003
+    4300710: Barrel Ring Mid.002
+    4300712: BreachBlock
+    4300714: Latch
+    4300716: BreachBlock.003
+    4300718: Latch.003
+    4300720: BreachBlock.002
+    4300722: Latch.002
+    4300724: BreachBlock.001
+    4300726: Hammer.000
+    4300728: Latch.001
+    4300730: Base SBR
+    4300732: Sight Base.000
+    4300734: Sight Rear.000
+    4300736: Sight Slide.000
+    4300738: Integral.000
+    4300740: FrontTrigger.003
+    4300742: BreachBlock.004
+    4300744: Latch.004
+    4300746: Barrel SBR
+    4300748: Base Carbine
+    4300750: Barrel Carbine
+    4300752: Base Rifle.001
+    4300754: BackTrigger.004
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02___Default
+    second: {fileID: 2100000, guid: eaf9c130745abba43a4b642a72743acd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 07___Default
+    second: {fileID: 2100000, guid: 23de9d32d1417eb47bbbf1590fb540a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery
+    second: {fileID: 2100000, guid: f0ed44505aac9594d8e6064864a22834, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery.001
+    second: {fileID: 2100000, guid: 8fd919d17bd26fe43a9621c6943664b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CanisterCaps
+    second: {fileID: 2100000, guid: bc979a857cdfa6f4fbf1727f5a8e38c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CanisterTubes
+    second: {fileID: 2100000, guid: 44584bb689f17a8409fcac855d5e87d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Conductor
+    second: {fileID: 2100000, guid: 16861235ba63d4045937e70a20da5506, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: f67c4d0135d0a5a48abd0456392c30e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 7ccadde02b7a47d4f8ed957d65e5a869, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lenses
+    second: {fileID: 2100000, guid: a3804eb7fd4e1f1488f665d1a77f345c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metalparts
+    second: {fileID: 2100000, guid: 52e43006641d3e2419f539b2626611c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pistol_TubeGlass.001
+    second: {fileID: 2100000, guid: 90e738d0095168246a4a4fb245da6f35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: c8d17e0b017d6214cb0191a30efb9285, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PressurizerGlass
+    second: {fileID: 2100000, guid: b14fecdb1e1512d43b7f3a6510bc7b78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PressurizerTubes
+    second: {fileID: 2100000, guid: fa6e4c246b556b74fb4183b5a877e0b2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Woodparts
+    second: {fileID: 2100000, guid: f2054087831830c458c201aeddd2de0c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

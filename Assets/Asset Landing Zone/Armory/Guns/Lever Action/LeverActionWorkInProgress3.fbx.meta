@@ -1,0 +1,2617 @@
+fileFormatVersion: 2
+guid: 16e49809cfd079d42acd8ae43a99a420
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Barrel Long
+    100002: Barrel Maresleg Model 94
+    100004: Barrel Maresleg Model 95
+    100006: Barrel Mid
+    100008: Barrel Musket Model 94
+    100010: Barrel Musket Model 95
+    100012: Barrel Rifle Model 94
+    100014: Barrel Rifle Model 95
+    100016: Barrel Short
+    100018: Barrel_LongPistol_Tubeload
+    100020: Barrel_Musket_Tubeload
+    100022: Barrel_Pistol_Tubeload
+    100024: Barrel_Standard_Tubeload
+    100026: Ejector Advanced
+    100028: Ejector Plate Model 94
+    100030: Ejector Plate Model 94.001
+    100032: Ejector Port
+    100034: Ejector_GoldenBoy
+    100036: Fixed Box Mag
+    100038: Follower
+    100040: Hammer
+    100042: Hammer Advanced
+    100044: Hammer_GoldenBoy
+    100046: Lenses
+    100048: Lever Advanced
+    100050: Lever_Finger
+    100052: Lever_Standard
+    100054: Locking Lug
+    100056: Rail Carbine
+    100058: Rail Carbine.001
+    100060: Rail Carbine.002
+    100062: Rail Musket
+    100064: Rail Musket.001
+    100066: Rail Musket.002
+    100068: Rail Short
+    100070: Rail Short.001
+    100072: Rail Short.002
+    100074: Rail Top
+    100076: Receiver Advanced
+    100078: Receiver Model 73
+    100080: Receiver_GoldenBoy
+    100082: Scope
+    100084: Scope Arm
+    100086: Scope Fixture
+    100088: Sight Advanced
+    100090: Sight Model 73
+    100092: Sight Rear Goldenboy
+    100094: Sight Rear Goldenboy Window
+    100096: Stock Advanced
+    100098: Stock Advanced Short
+    100100: Stock Front Long
+    100102: Stock Front Mid
+    100104: Stock Front Short
+    100106: Stock Goldenboy
+    100108: Stock Grip
+    100110: Stock Long
+    100112: Stock Ring
+    100114: Stock Ring Long
+    100116: Stock Ring Short
+    100118: Stock Short
+    100120: Trigger
+    100122: //RootNode
+    100124: Model 95 Parts
+    100126: Ejector Plate Model 95
+    100128: BodyParts60
+    100130: BodyParts73
+    100132: BodyParts94_95
+    100134: FingerLoop
+    100136: HandLoop
+    100138: Lever_Model 60
+    100140: Lever_Model 73
+    100142: Lever_Model 94_95
+    100144: Model 60
+    100146: Model 73
+    100148: Model 94_95
+    100150: Model 95 Boxmag
+    100152: Stock Volcanic
+    100154: Rail Top Carbine
+    100156: Rail Top Carbine_MeshPart0
+    100158: Rail Top Carbine_MeshPart1
+    100160: Rail Top Musket
+    100162: Rail Top Musket_MeshPart0
+    100164: Rail Top Musket_MeshPart1
+    100166: Scope Brace
+    100168: Scope Brace.001
+    100170: Scope Brace.001_MeshPart0
+    100172: Scope Brace.001_MeshPart1
+    100174: Scope Brace_MeshPart0
+    100176: Scope Brace_MeshPart1
+    100178: Scope Sharpshooter
+    100180: Scope Sharpshooter.001
+    100182: ScopeBaseCarbine
+    100184: ScopeBaseMusket
+    100186: Rail Short.003
+    100188: Rail Short.004
+    100190: Rail Short.005
+    100192: Stock MaresLeg
+    100194: Stock Musket
+    100196: Stock Rifle
+    100198: ScopeBase
+    100200: Barrel_MidPistol_Tubeload
+    100202: Barrel_ShortPistol_Tubeload
+    100204: Rail Top Carbine_MeshPart2
+    100206: Barrel_LongPistol
+    100208: BodyParts94
+    100210: BodyParts95
+    100212: Hammer Advanced.001
+    100214: Lever_Model 94
+    100216: Lever_Model 95
+    100218: Locking Lug.001
+    100220: Model 94
+    100222: Model 95
+    100224: Sight Advanced.001
+    100226: Stock Model 94
+    100228: Stock Model 94 Short
+    100230: Stock Model 95
+    100232: Stock Model 95 Short
+    100234: Barrel_Pistol
+    100236: Barrel Carbine
+    100238: Barrel Carbine Model 94
+    100240: Barrel Rifle
+    100242: Barrel Rifle Model 95.001
+    100244: Barrel Stock Standard.001
+    100246: Barrel_Carbine_Tubeload
+    100248: Rail Carbine.003
+    100250: Rail Carbine.004
+    100252: Rail Carbine.005
+    100254: Stock Front Mid.001
+    100256: Stock Front Mid.002
+    100258: Stock Maresleg
+    100260: Stock Maresleg.002
+    100262: Stock Mosin
+    100264: Stock Mosin.001
+    100266: Stock Musket Classic
+    100268: Stock Ring.001
+    100270: Stock Ring.002
+    100272: Stock Standard
+    100274: Stock Standard.001
+    100276: Barrel Maresleg
+    100278: Barrel Rifle.001
+    100280: Barrel Rifle.002
+    100282: Foregrip Tactical.000
+    100284: Foregrip Tactical.001
+    100286: Foregrip Tactical.002
+    100288: Foregrip Tactical.003
+    100290: Foregrip Tactical.004
+    100292: Foregrip Tactical.005
+    100294: Foregrip Tactical.006
+    100296: Foregrip Tactical.007
+    100298: Foregrip Tactical.008
+    100300: Foregrip Tactical.009
+    100302: Foregrip Tactical.010
+    100304: Foregrip Tactical.011
+    100306: HandLoop.001
+    100308: HandLoop.002
+    100310: Sight Advanced.002
+    100312: Sight Advanced.003
+    100314: Sight Advanced.004
+    100316: Sight Advanced.005
+    100318: Sight Model 73.001
+    100320: Sight Model 73.002
+    100322: Sight Model 73.004
+    100324: Stock  Short
+    100326: Stock  Short.001
+    100328: Stock Carbine
+    100330: Stock Classic
+    100332: Stock Classic.001
+    100334: Stock Classic.002
+    100336: Stock Classic.003
+    100338: Stock Classic.004
+    100340: Stock Classic.005
+    100342: Stock Goldenboy.001
+    100344: Stock Goldenboy.002
+    100346: Stock Long.001
+    100348: Stock Long.002
+    100350: Stock Long.003
+    100352: Stock Long.004
+    100354: Stock Long.005
+    100356: Stock Long.006
+    100358: Stock Long.007
+    100360: Stock Long.008
+    100362: Stock Long.009
+    100364: Stock Long.010
+    100366: Stock Model 94.001
+    100368: Stock Model 94.002
+    100370: Stock Model 94.003
+    100372: Stock Model 94.005
+    100374: Stock Model 95.002
+    100376: Stock Short.001
+    100378: Stock Tactical
+    100380: Stock Tactical Long
+    100382: Stock Tactical Long.001
+    100384: Stock Tactical Long.002
+    100386: Stock Tactical Long.003
+    100388: Stock Tactical Long.004
+    100390: Stock Tactical Long.005
+    100392: Stock Tactical.001
+    100394: Stock Tactical.002
+    100396: Stock Tactical.003
+    100398: Stock Tactical.004
+    100400: Tactical Buckhorn.000
+    100402: Tactical Buckhorn.001
+    100404: Tactical Buckhorn.002
+    100406: Tactical Buckhorn.003
+    100408: Tactical Buckhorn.004
+    100410: Tactical Buckhorn.005
+    100412: Tactical Buckhorn.006
+    100414: Tactical Buckhorn.007
+    100416: Tactical Buckhorn.008
+    100418: Tactical Buckhorn.009
+    100420: Tactical Buckhorn.010
+    100422: Tactical Buckhorn.011
+    100424: Rails.000
+    100426: Rails.001
+    100428: Rails.002
+    100430: Rails.003
+    100432: Rails.004
+    100434: Rails.005
+    100436: Rails.006
+    100438: Rails.007
+    100440: Rails.008
+    100442: Rails.009
+    100444: Rails.010
+    100446: Rails.011
+    100448: Sight Adjust
+    100450: Sight Base Classic
+    100452: Sight Tang
+    100454: Stock
+    100456: Stock Model 94.000
+    100458: Stock Model 94.004
+    100460: Stock Short.002
+    100462: Stock Short.003
+    100464: Stock Tactical.006
+    100466: Stock Tactical.007
+    100468: Stock Tactical.008
+    100470: Stock.002
+    100472: Stock.003
+    100474: Stock.004
+    100476: Barrel Carbine.001
+    100478: Sight Adjust.001
+    100480: Sight Adjust.002
+    100482: Sight Adjust.003
+    100484: Sight Buckhorn
+    100486: Sight Buckhorn.001
+    100488: Sight Buckhorn.002
+    100490: Sight Buckhorn.003
+    100492: Sight Buckhorn.004
+    100494: Sight Buckhorn.005
+    100496: Sight Buckhorn.006
+    100498: Sight Classic
+    100500: Sight Classic.001
+    100502: Sight Classic.002
+    100504: Sight Long Range
+    100506: Sight Long Range.001
+    100508: Sight Long Range.002
+    100510: Sight Long Range.003
+    100512: Sight Rear Goldenboy Window.001
+    100514: Sight Rear Goldenboy Window.002
+    100516: Sight Tang.001
+    100518: Sight Tang.002
+    100520: Sight Tang.003
+    100522: TopRail
+    100524: Rails.012
+    100526: Sight Adjust.004
+    100528: Sight Long Range.004
+    100530: Sight Tang.004
+    100532: Legs Down
+    100534: Legs Down.001
+    100536: Legs Down.002
+    100538: Legs Down.003
+    100540: Legs Down.004
+    100542: Legs Down.005
+    100544: Legs Up
+    100546: Legs Up.001
+    100548: Legs Up.002
+    100550: Legs Up.003
+    100552: Legs Up.004
+    100554: Legs Up.005
+    100556: Stock Integrated
+    100558: Stock Integrated.001
+    100560: Stock Integrated.002
+    100562: Stock Integrated.003
+    100564: Stock Integrated.004
+    100566: Stock Integrated.005
+    100568: Legs Down.006
+    100570: Legs Up.006
+    100572: ScopeRail
+    100574: Sight Adjust.005
+    100576: Sight Long Range.005
+    100578: Sight Rear Goldenboy Window.003
+    100580: Sight Tang.005
+    100582: Stock Integrated.006
+    100584: Bipod Brace.000
+    100586: Bipod Brace.001
+    100588: Bipod Brace.002
+    100590: Bipod Brace.003
+    100592: Bipod Brace.004
+    100594: Bipod Brace.005
+    100596: Bipod Brace.006
+    100598: Bipod Brace.007
+    100600: Bipod Brace.008
+    100602: BipodBase.000
+    100604: BipodBase.001
+    100606: BipodBase.002
+    100608: BipodBase.003
+    100610: BipodBase.004
+    100612: BipodBase.005
+    100614: BipodBase.006
+    100616: BipodBase.007
+    100618: BipodBase.008
+    100620: bipodLeft.000
+    100622: bipodLeft.001
+    100624: bipodLeft.002
+    100626: bipodLeft.003
+    100628: bipodLeft.004
+    100630: bipodLeft.005
+    100632: bipodLeft.006
+    100634: bipodLeft.007
+    100636: bipodLeft.008
+    100638: bipodright.000
+    100640: bipodright.001
+    100642: bipodright.002
+    100644: bipodright.003
+    100646: bipodright.004
+    100648: bipodright.005
+    100650: bipodright.006
+    100652: bipodright.007
+    100654: bipodright.008
+    100656: Rails.013
+    100658: Stock Tactical.000
+    100660: Stock Tactical.005
+    100662: Stock Tactical.009
+    100664: Stock Tactical.010
+    100666: Stock Tactical.011
+    100668: Stock Tactical.012
+    100670: StockCombAdjust.000
+    100672: StockCombAdjust.001
+    100674: StockCombAdjust.002
+    100676: StockCombAdjust.003
+    100678: StockCombAdjust.004
+    100680: StockCombAdjust.005
+    100682: StockCombAdjust.006
+    100684: StockCombAdjust.007
+    100686: StockCombAdjust.008
+    100688: StockCombAdjust.009
+    100690: StockCombAdjust.010
+    100692: StockCombAdjust.011
+    100694: Bipod Brace.009
+    100696: Bipod Brace.010
+    100698: extension.000
+    100700: extension.001
+    100702: extension.002
+    100704: extension.003
+    100706: extension.004
+    100708: extension.005
+    100710: extension.006
+    100712: extension.007
+    100714: extension.008
+    100716: extension.009
+    100718: extension.010
+    100720: extension.011
+    100722: extension.012
+    100724: extension.013
+    100726: extension.014
+    100728: extension.015
+    100730: extension.016
+    100732: extension.017
+    100734: LegsDown.000
+    100736: LegsDown.001
+    100738: LegsDown.002
+    100740: LegsDown.003
+    100742: LegsDown.004
+    100744: LegsDown.005
+    100746: LegsDown.006
+    100748: LegsDown.007
+    100750: LegsDown.008
+    100752: LegsUp
+    100754: LegsUp.001
+    100756: LegsUp.002
+    100758: LegsUp.003
+    100760: LegsUp.004
+    100762: LegsUp.005
+    100764: LegsUp.006
+    100766: LegsUp.007
+    100768: LegsUp.008
+    100770: Barrel Long.001
+    100772: Barrel Musket
+    100774: Barrel Short.001
+    100776: Barrel Standard
+    100778: Base Model 87
+    100780: Ejection_port_low
+    100782: Hammer.001
+    100784: IntegralParts
+    100786: Integrater_low
+    100788: Lever_Shotgun
+    100790: Rails.014
+    100792: Rails.015
+    100794: Stock Birdclaw
+    100796: Stock Classic.006
+    100798: Stock Classic.007
+    100800: Stock Classic.008
+    100802: Stock Full
+    100804: Stock Tactical Birdclaw
+    100806: Stock Tactical Full
+    100808: Stock Tactical.014
+    100810: Stock Tactical.015
+    100812: Toprail
+    100814: Model 87
+    100816: Stock Standard.002
+    100818: AttachmentBrace
+    100820: AttachmentBrace.001
+    100822: AttachmentBrace.002
+    100824: AttachmentBrace.003
+    100826: Botrail
+    100828: Botrail.001
+    100830: Botrail.002
+    100832: Botrail.003
+    100834: SideRail
+    100836: Siderail
+    100838: Siderail.001
+    100840: Siderail.002
+    100842: Toprail.001
+    100844: Toprail.002
+    100846: Toprail.003
+    100848: Tubemag
+    100850: Barrel Carbine.002
+    100852: Stock Full.001
+    100854: Stock Standard.000
+    100856: Barrel 94 Carbine
+    100858: Barrel 94 Maresleg
+    100860: Barrel 94 Rifle
+    100862: Barrel 95 Carbine
+    100864: Barrel 95 Rifle
+    100866: Barrel Carbine Browning
+    100868: Barrel Maresleg Browning
+    100870: Barrel Rifle Browning
+    100872: Base Advanced
+    100874: Base Browning
+    100876: Base Classic
+    100878: Ejector Plate 94
+    100880: Hammer_low
+    100882: Integral Browing
+    100884: IntegralAdvanced
+    100886: Lever_low
+    100888: Loading Gate Large
+    100890: Loading Gate Small
+    100892: Locking Lug Advanced
+    100894: Locking Lugs
+    100896: Receiver 86
+    100898: Receiver 92
+    100900: Receiver 94
+    100902: Receiver 95
+    100904: Sight Buckhorn Advanced
+    100906: Sight Buckhorn Browning
+    100908: Sight Tangent Advanced
+    100910: Stock Full Advanced
+    100912: Stock Full Browning
+    100914: Stock Short Advanced
+    100916: Stock Short Browning
+    100918: Trigger Advanced
+    100920: Trigger Browning
+    100922: Trigger Classic
+    100924: Trigger Classic.001
+    100926: Base Shotgun
+    100928: LoadingGateHinge
+    100930: AttachmentBrace.004
+    100932: Barrel Carbine 73
+    100934: Barrel Carbine 86
+    100936: Barrel Carbine 92
+    100938: Barrel Long 73
+    100940: Barrel Maresleg 92
+    100942: Barrel Rifle 73
+    100944: Barrel Rifle 86
+    100946: Barrel Rifle 92
+    100948: Base Winchester 73
+    100950: Base Winchester 86
+    100952: Base Winchester 87
+    100954: Base Winchester 92
+    100956: Base Winchester 95
+    100958: Bolt
+    100960: Bolt 73
+    100962: Bolt 86
+    100964: Bolt 95
+    100966: Botrail.004
+    100968: Hammer 95
+    100970: Hammer_low.001
+    100972: Lever_low.001
+    100974: Locking Lug 95
+    100976: Locking Lugs.001
+    100978: Receiver 73
+    100980: Siderail.003
+    100982: Sight Buckhorn 86
+    100984: Sight Buckhorn 92
+    100986: Sight Buckhorn 95
+    100988: Stock Full 86
+    100990: Stock Full 87
+    100992: Stock Full 92
+    100994: Stock Full 95
+    100996: Stock Long 73
+    100998: Stock Short 92
+    101000: Toprail.004
+    101002: Trigger 86
+    101004: Trigger 92
+    101006: Trigger 95
+    101008: Barrel Musket 73
+    101010: Sight Buckhorn 73
+    400000: Barrel Long
+    400002: Barrel Maresleg Model 94
+    400004: Barrel Maresleg Model 95
+    400006: Barrel Mid
+    400008: Barrel Musket Model 94
+    400010: Barrel Musket Model 95
+    400012: Barrel Rifle Model 94
+    400014: Barrel Rifle Model 95
+    400016: Barrel Short
+    400018: Barrel_LongPistol_Tubeload
+    400020: Barrel_Musket_Tubeload
+    400022: Barrel_Pistol_Tubeload
+    400024: Barrel_Standard_Tubeload
+    400026: Ejector Advanced
+    400028: Ejector Plate Model 94
+    400030: Ejector Plate Model 94.001
+    400032: Ejector Port
+    400034: Ejector_GoldenBoy
+    400036: Fixed Box Mag
+    400038: Follower
+    400040: Hammer
+    400042: Hammer Advanced
+    400044: Hammer_GoldenBoy
+    400046: Lenses
+    400048: Lever Advanced
+    400050: Lever_Finger
+    400052: Lever_Standard
+    400054: Locking Lug
+    400056: Rail Carbine
+    400058: Rail Carbine.001
+    400060: Rail Carbine.002
+    400062: Rail Musket
+    400064: Rail Musket.001
+    400066: Rail Musket.002
+    400068: Rail Short
+    400070: Rail Short.001
+    400072: Rail Short.002
+    400074: Rail Top
+    400076: Receiver Advanced
+    400078: Receiver Model 73
+    400080: Receiver_GoldenBoy
+    400082: Scope
+    400084: Scope Arm
+    400086: Scope Fixture
+    400088: Sight Advanced
+    400090: Sight Model 73
+    400092: Sight Rear Goldenboy
+    400094: Sight Rear Goldenboy Window
+    400096: Stock Advanced
+    400098: Stock Advanced Short
+    400100: Stock Front Long
+    400102: Stock Front Mid
+    400104: Stock Front Short
+    400106: Stock Goldenboy
+    400108: Stock Grip
+    400110: Stock Long
+    400112: Stock Ring
+    400114: Stock Ring Long
+    400116: Stock Ring Short
+    400118: Stock Short
+    400120: Trigger
+    400122: //RootNode
+    400124: Model 95 Parts
+    400126: Ejector Plate Model 95
+    400128: BodyParts60
+    400130: BodyParts73
+    400132: BodyParts94_95
+    400134: FingerLoop
+    400136: HandLoop
+    400138: Lever_Model 60
+    400140: Lever_Model 73
+    400142: Lever_Model 94_95
+    400144: Model 60
+    400146: Model 73
+    400148: Model 94_95
+    400150: Model 95 Boxmag
+    400152: Stock Volcanic
+    400154: Rail Top Carbine
+    400156: Rail Top Carbine_MeshPart0
+    400158: Rail Top Carbine_MeshPart1
+    400160: Rail Top Musket
+    400162: Rail Top Musket_MeshPart0
+    400164: Rail Top Musket_MeshPart1
+    400166: Scope Brace
+    400168: Scope Brace.001
+    400170: Scope Brace.001_MeshPart0
+    400172: Scope Brace.001_MeshPart1
+    400174: Scope Brace_MeshPart0
+    400176: Scope Brace_MeshPart1
+    400178: Scope Sharpshooter
+    400180: Scope Sharpshooter.001
+    400182: ScopeBaseCarbine
+    400184: ScopeBaseMusket
+    400186: Rail Short.003
+    400188: Rail Short.004
+    400190: Rail Short.005
+    400192: Stock MaresLeg
+    400194: Stock Musket
+    400196: Stock Rifle
+    400198: ScopeBase
+    400200: Barrel_MidPistol_Tubeload
+    400202: Barrel_ShortPistol_Tubeload
+    400204: Rail Top Carbine_MeshPart2
+    400206: Barrel_LongPistol
+    400208: BodyParts94
+    400210: BodyParts95
+    400212: Hammer Advanced.001
+    400214: Lever_Model 94
+    400216: Lever_Model 95
+    400218: Locking Lug.001
+    400220: Model 94
+    400222: Model 95
+    400224: Sight Advanced.001
+    400226: Stock Model 94
+    400228: Stock Model 94 Short
+    400230: Stock Model 95
+    400232: Stock Model 95 Short
+    400234: Barrel_Pistol
+    400236: Barrel Carbine
+    400238: Barrel Carbine Model 94
+    400240: Barrel Rifle
+    400242: Barrel Rifle Model 95.001
+    400244: Barrel Stock Standard.001
+    400246: Barrel_Carbine_Tubeload
+    400248: Rail Carbine.003
+    400250: Rail Carbine.004
+    400252: Rail Carbine.005
+    400254: Stock Front Mid.001
+    400256: Stock Front Mid.002
+    400258: Stock Maresleg
+    400260: Stock Maresleg.002
+    400262: Stock Mosin
+    400264: Stock Mosin.001
+    400266: Stock Musket Classic
+    400268: Stock Ring.001
+    400270: Stock Ring.002
+    400272: Stock Standard
+    400274: Stock Standard.001
+    400276: Barrel Maresleg
+    400278: Barrel Rifle.001
+    400280: Barrel Rifle.002
+    400282: Foregrip Tactical.000
+    400284: Foregrip Tactical.001
+    400286: Foregrip Tactical.002
+    400288: Foregrip Tactical.003
+    400290: Foregrip Tactical.004
+    400292: Foregrip Tactical.005
+    400294: Foregrip Tactical.006
+    400296: Foregrip Tactical.007
+    400298: Foregrip Tactical.008
+    400300: Foregrip Tactical.009
+    400302: Foregrip Tactical.010
+    400304: Foregrip Tactical.011
+    400306: HandLoop.001
+    400308: HandLoop.002
+    400310: Sight Advanced.002
+    400312: Sight Advanced.003
+    400314: Sight Advanced.004
+    400316: Sight Advanced.005
+    400318: Sight Model 73.001
+    400320: Sight Model 73.002
+    400322: Sight Model 73.004
+    400324: Stock  Short
+    400326: Stock  Short.001
+    400328: Stock Carbine
+    400330: Stock Classic
+    400332: Stock Classic.001
+    400334: Stock Classic.002
+    400336: Stock Classic.003
+    400338: Stock Classic.004
+    400340: Stock Classic.005
+    400342: Stock Goldenboy.001
+    400344: Stock Goldenboy.002
+    400346: Stock Long.001
+    400348: Stock Long.002
+    400350: Stock Long.003
+    400352: Stock Long.004
+    400354: Stock Long.005
+    400356: Stock Long.006
+    400358: Stock Long.007
+    400360: Stock Long.008
+    400362: Stock Long.009
+    400364: Stock Long.010
+    400366: Stock Model 94.001
+    400368: Stock Model 94.002
+    400370: Stock Model 94.003
+    400372: Stock Model 94.005
+    400374: Stock Model 95.002
+    400376: Stock Short.001
+    400378: Stock Tactical
+    400380: Stock Tactical Long
+    400382: Stock Tactical Long.001
+    400384: Stock Tactical Long.002
+    400386: Stock Tactical Long.003
+    400388: Stock Tactical Long.004
+    400390: Stock Tactical Long.005
+    400392: Stock Tactical.001
+    400394: Stock Tactical.002
+    400396: Stock Tactical.003
+    400398: Stock Tactical.004
+    400400: Tactical Buckhorn.000
+    400402: Tactical Buckhorn.001
+    400404: Tactical Buckhorn.002
+    400406: Tactical Buckhorn.003
+    400408: Tactical Buckhorn.004
+    400410: Tactical Buckhorn.005
+    400412: Tactical Buckhorn.006
+    400414: Tactical Buckhorn.007
+    400416: Tactical Buckhorn.008
+    400418: Tactical Buckhorn.009
+    400420: Tactical Buckhorn.010
+    400422: Tactical Buckhorn.011
+    400424: Rails.000
+    400426: Rails.001
+    400428: Rails.002
+    400430: Rails.003
+    400432: Rails.004
+    400434: Rails.005
+    400436: Rails.006
+    400438: Rails.007
+    400440: Rails.008
+    400442: Rails.009
+    400444: Rails.010
+    400446: Rails.011
+    400448: Sight Adjust
+    400450: Sight Base Classic
+    400452: Sight Tang
+    400454: Stock
+    400456: Stock Model 94.000
+    400458: Stock Model 94.004
+    400460: Stock Short.002
+    400462: Stock Short.003
+    400464: Stock Tactical.006
+    400466: Stock Tactical.007
+    400468: Stock Tactical.008
+    400470: Stock.002
+    400472: Stock.003
+    400474: Stock.004
+    400476: Barrel Carbine.001
+    400478: Sight Adjust.001
+    400480: Sight Adjust.002
+    400482: Sight Adjust.003
+    400484: Sight Buckhorn
+    400486: Sight Buckhorn.001
+    400488: Sight Buckhorn.002
+    400490: Sight Buckhorn.003
+    400492: Sight Buckhorn.004
+    400494: Sight Buckhorn.005
+    400496: Sight Buckhorn.006
+    400498: Sight Classic
+    400500: Sight Classic.001
+    400502: Sight Classic.002
+    400504: Sight Long Range
+    400506: Sight Long Range.001
+    400508: Sight Long Range.002
+    400510: Sight Long Range.003
+    400512: Sight Rear Goldenboy Window.001
+    400514: Sight Rear Goldenboy Window.002
+    400516: Sight Tang.001
+    400518: Sight Tang.002
+    400520: Sight Tang.003
+    400522: TopRail
+    400524: Rails.012
+    400526: Sight Adjust.004
+    400528: Sight Long Range.004
+    400530: Sight Tang.004
+    400532: Legs Down
+    400534: Legs Down.001
+    400536: Legs Down.002
+    400538: Legs Down.003
+    400540: Legs Down.004
+    400542: Legs Down.005
+    400544: Legs Up
+    400546: Legs Up.001
+    400548: Legs Up.002
+    400550: Legs Up.003
+    400552: Legs Up.004
+    400554: Legs Up.005
+    400556: Stock Integrated
+    400558: Stock Integrated.001
+    400560: Stock Integrated.002
+    400562: Stock Integrated.003
+    400564: Stock Integrated.004
+    400566: Stock Integrated.005
+    400568: Legs Down.006
+    400570: Legs Up.006
+    400572: ScopeRail
+    400574: Sight Adjust.005
+    400576: Sight Long Range.005
+    400578: Sight Rear Goldenboy Window.003
+    400580: Sight Tang.005
+    400582: Stock Integrated.006
+    400584: Bipod Brace.000
+    400586: Bipod Brace.001
+    400588: Bipod Brace.002
+    400590: Bipod Brace.003
+    400592: Bipod Brace.004
+    400594: Bipod Brace.005
+    400596: Bipod Brace.006
+    400598: Bipod Brace.007
+    400600: Bipod Brace.008
+    400602: BipodBase.000
+    400604: BipodBase.001
+    400606: BipodBase.002
+    400608: BipodBase.003
+    400610: BipodBase.004
+    400612: BipodBase.005
+    400614: BipodBase.006
+    400616: BipodBase.007
+    400618: BipodBase.008
+    400620: bipodLeft.000
+    400622: bipodLeft.001
+    400624: bipodLeft.002
+    400626: bipodLeft.003
+    400628: bipodLeft.004
+    400630: bipodLeft.005
+    400632: bipodLeft.006
+    400634: bipodLeft.007
+    400636: bipodLeft.008
+    400638: bipodright.000
+    400640: bipodright.001
+    400642: bipodright.002
+    400644: bipodright.003
+    400646: bipodright.004
+    400648: bipodright.005
+    400650: bipodright.006
+    400652: bipodright.007
+    400654: bipodright.008
+    400656: Rails.013
+    400658: Stock Tactical.000
+    400660: Stock Tactical.005
+    400662: Stock Tactical.009
+    400664: Stock Tactical.010
+    400666: Stock Tactical.011
+    400668: Stock Tactical.012
+    400670: StockCombAdjust.000
+    400672: StockCombAdjust.001
+    400674: StockCombAdjust.002
+    400676: StockCombAdjust.003
+    400678: StockCombAdjust.004
+    400680: StockCombAdjust.005
+    400682: StockCombAdjust.006
+    400684: StockCombAdjust.007
+    400686: StockCombAdjust.008
+    400688: StockCombAdjust.009
+    400690: StockCombAdjust.010
+    400692: StockCombAdjust.011
+    400694: Bipod Brace.009
+    400696: Bipod Brace.010
+    400698: extension.000
+    400700: extension.001
+    400702: extension.002
+    400704: extension.003
+    400706: extension.004
+    400708: extension.005
+    400710: extension.006
+    400712: extension.007
+    400714: extension.008
+    400716: extension.009
+    400718: extension.010
+    400720: extension.011
+    400722: extension.012
+    400724: extension.013
+    400726: extension.014
+    400728: extension.015
+    400730: extension.016
+    400732: extension.017
+    400734: LegsDown.000
+    400736: LegsDown.001
+    400738: LegsDown.002
+    400740: LegsDown.003
+    400742: LegsDown.004
+    400744: LegsDown.005
+    400746: LegsDown.006
+    400748: LegsDown.007
+    400750: LegsDown.008
+    400752: LegsUp
+    400754: LegsUp.001
+    400756: LegsUp.002
+    400758: LegsUp.003
+    400760: LegsUp.004
+    400762: LegsUp.005
+    400764: LegsUp.006
+    400766: LegsUp.007
+    400768: LegsUp.008
+    400770: Barrel Long.001
+    400772: Barrel Musket
+    400774: Barrel Short.001
+    400776: Barrel Standard
+    400778: Base Model 87
+    400780: Ejection_port_low
+    400782: Hammer.001
+    400784: IntegralParts
+    400786: Integrater_low
+    400788: Lever_Shotgun
+    400790: Rails.014
+    400792: Rails.015
+    400794: Stock Birdclaw
+    400796: Stock Classic.006
+    400798: Stock Classic.007
+    400800: Stock Classic.008
+    400802: Stock Full
+    400804: Stock Tactical Birdclaw
+    400806: Stock Tactical Full
+    400808: Stock Tactical.014
+    400810: Stock Tactical.015
+    400812: Toprail
+    400814: Model 87
+    400816: Stock Standard.002
+    400818: AttachmentBrace
+    400820: AttachmentBrace.001
+    400822: AttachmentBrace.002
+    400824: AttachmentBrace.003
+    400826: Botrail
+    400828: Botrail.001
+    400830: Botrail.002
+    400832: Botrail.003
+    400834: SideRail
+    400836: Siderail
+    400838: Siderail.001
+    400840: Siderail.002
+    400842: Toprail.001
+    400844: Toprail.002
+    400846: Toprail.003
+    400848: Tubemag
+    400850: Barrel Carbine.002
+    400852: Stock Full.001
+    400854: Stock Standard.000
+    400856: Barrel 94 Carbine
+    400858: Barrel 94 Maresleg
+    400860: Barrel 94 Rifle
+    400862: Barrel 95 Carbine
+    400864: Barrel 95 Rifle
+    400866: Barrel Carbine Browning
+    400868: Barrel Maresleg Browning
+    400870: Barrel Rifle Browning
+    400872: Base Advanced
+    400874: Base Browning
+    400876: Base Classic
+    400878: Ejector Plate 94
+    400880: Hammer_low
+    400882: Integral Browing
+    400884: IntegralAdvanced
+    400886: Lever_low
+    400888: Loading Gate Large
+    400890: Loading Gate Small
+    400892: Locking Lug Advanced
+    400894: Locking Lugs
+    400896: Receiver 86
+    400898: Receiver 92
+    400900: Receiver 94
+    400902: Receiver 95
+    400904: Sight Buckhorn Advanced
+    400906: Sight Buckhorn Browning
+    400908: Sight Tangent Advanced
+    400910: Stock Full Advanced
+    400912: Stock Full Browning
+    400914: Stock Short Advanced
+    400916: Stock Short Browning
+    400918: Trigger Advanced
+    400920: Trigger Browning
+    400922: Trigger Classic
+    400924: Trigger Classic.001
+    400926: Base Shotgun
+    400928: LoadingGateHinge
+    400930: AttachmentBrace.004
+    400932: Barrel Carbine 73
+    400934: Barrel Carbine 86
+    400936: Barrel Carbine 92
+    400938: Barrel Long 73
+    400940: Barrel Maresleg 92
+    400942: Barrel Rifle 73
+    400944: Barrel Rifle 86
+    400946: Barrel Rifle 92
+    400948: Base Winchester 73
+    400950: Base Winchester 86
+    400952: Base Winchester 87
+    400954: Base Winchester 92
+    400956: Base Winchester 95
+    400958: Bolt
+    400960: Bolt 73
+    400962: Bolt 86
+    400964: Bolt 95
+    400966: Botrail.004
+    400968: Hammer 95
+    400970: Hammer_low.001
+    400972: Lever_low.001
+    400974: Locking Lug 95
+    400976: Locking Lugs.001
+    400978: Receiver 73
+    400980: Siderail.003
+    400982: Sight Buckhorn 86
+    400984: Sight Buckhorn 92
+    400986: Sight Buckhorn 95
+    400988: Stock Full 86
+    400990: Stock Full 87
+    400992: Stock Full 92
+    400994: Stock Full 95
+    400996: Stock Long 73
+    400998: Stock Short 92
+    401000: Toprail.004
+    401002: Trigger 86
+    401004: Trigger 92
+    401006: Trigger 95
+    401008: Barrel Musket 73
+    401010: Sight Buckhorn 73
+    2300000: Barrel Long
+    2300002: Barrel Maresleg Model 94
+    2300004: Barrel Maresleg Model 95
+    2300006: Barrel Mid
+    2300008: Barrel Musket Model 94
+    2300010: Barrel Musket Model 95
+    2300012: Barrel Rifle Model 94
+    2300014: Barrel Rifle Model 95
+    2300016: Barrel Short
+    2300018: Barrel_LongPistol_Tubeload
+    2300020: Barrel_Musket_Tubeload
+    2300022: Barrel_Pistol_Tubeload
+    2300024: Barrel_Standard_Tubeload
+    2300026: Ejector Advanced
+    2300028: Ejector Plate Model 94
+    2300030: Ejector Plate Model 94.001
+    2300032: Ejector Port
+    2300034: Ejector_GoldenBoy
+    2300036: Fixed Box Mag
+    2300038: Follower
+    2300040: Hammer
+    2300042: Hammer Advanced
+    2300044: Hammer_GoldenBoy
+    2300046: Lenses
+    2300048: Lever Advanced
+    2300050: Lever_Finger
+    2300052: Lever_Standard
+    2300054: Locking Lug
+    2300056: Rail Carbine
+    2300058: Rail Carbine.001
+    2300060: Rail Carbine.002
+    2300062: Rail Musket
+    2300064: Rail Musket.001
+    2300066: Rail Musket.002
+    2300068: Rail Short
+    2300070: Rail Short.001
+    2300072: Rail Short.002
+    2300074: Rail Top
+    2300076: Receiver Advanced
+    2300078: Receiver Model 73
+    2300080: Receiver_GoldenBoy
+    2300082: Scope
+    2300084: Scope Arm
+    2300086: Scope Fixture
+    2300088: Sight Advanced
+    2300090: Sight Model 73
+    2300092: Sight Rear Goldenboy
+    2300094: Sight Rear Goldenboy Window
+    2300096: Stock Advanced
+    2300098: Stock Advanced Short
+    2300100: Stock Front Long
+    2300102: Stock Front Mid
+    2300104: Stock Front Short
+    2300106: Stock Goldenboy
+    2300108: Stock Grip
+    2300110: Stock Long
+    2300112: Stock Ring
+    2300114: Stock Ring Long
+    2300116: Stock Ring Short
+    2300118: Stock Short
+    2300120: Trigger
+    2300122: Model 95 Parts
+    2300124: Ejector Plate Model 95
+    2300126: BodyParts60
+    2300128: BodyParts73
+    2300130: BodyParts94_95
+    2300132: FingerLoop
+    2300134: HandLoop
+    2300136: Lever_Model 60
+    2300138: Lever_Model 73
+    2300140: Lever_Model 94_95
+    2300142: Model 60
+    2300144: Model 73
+    2300146: Model 94_95
+    2300148: Model 95 Boxmag
+    2300150: Stock Volcanic
+    2300152: Rail Top Carbine_MeshPart0
+    2300154: Rail Top Carbine_MeshPart1
+    2300156: Rail Top Musket_MeshPart0
+    2300158: Rail Top Musket_MeshPart1
+    2300160: Scope Brace.001_MeshPart0
+    2300162: Scope Brace.001_MeshPart1
+    2300164: Scope Brace_MeshPart0
+    2300166: Scope Brace_MeshPart1
+    2300168: Scope Sharpshooter
+    2300170: Scope Sharpshooter.001
+    2300172: ScopeBaseCarbine
+    2300174: ScopeBaseMusket
+    2300176: Rail Short.003
+    2300178: Rail Short.004
+    2300180: Rail Short.005
+    2300182: Stock MaresLeg
+    2300184: Stock Musket
+    2300186: Stock Rifle
+    2300188: ScopeBase
+    2300190: Barrel_MidPistol_Tubeload
+    2300192: Barrel_ShortPistol_Tubeload
+    2300194: Rail Top Carbine_MeshPart2
+    2300196: Barrel_LongPistol
+    2300198: BodyParts94
+    2300200: BodyParts95
+    2300202: Hammer Advanced.001
+    2300204: Lever_Model 94
+    2300206: Lever_Model 95
+    2300208: Locking Lug.001
+    2300210: Model 94
+    2300212: Model 95
+    2300214: Sight Advanced.001
+    2300216: Stock Model 94
+    2300218: Stock Model 94 Short
+    2300220: Stock Model 95
+    2300222: Stock Model 95 Short
+    2300224: Barrel_Pistol
+    2300226: Barrel Carbine
+    2300228: Barrel Carbine Model 94
+    2300230: Barrel Rifle
+    2300232: Barrel Rifle Model 95.001
+    2300234: Barrel Stock Standard.001
+    2300236: Barrel_Carbine_Tubeload
+    2300238: Rail Carbine.003
+    2300240: Rail Carbine.004
+    2300242: Rail Carbine.005
+    2300244: Stock Front Mid.001
+    2300246: Stock Front Mid.002
+    2300248: Stock Maresleg
+    2300250: Stock Maresleg.002
+    2300252: Stock Mosin
+    2300254: Stock Mosin.001
+    2300256: Stock Musket Classic
+    2300258: Stock Ring.001
+    2300260: Stock Ring.002
+    2300262: Stock Standard
+    2300264: Stock Standard.001
+    2300266: Barrel Maresleg
+    2300268: Barrel Rifle.001
+    2300270: Barrel Rifle.002
+    2300272: Foregrip Tactical.000
+    2300274: Foregrip Tactical.001
+    2300276: Foregrip Tactical.002
+    2300278: Foregrip Tactical.003
+    2300280: Foregrip Tactical.004
+    2300282: Foregrip Tactical.005
+    2300284: Foregrip Tactical.006
+    2300286: Foregrip Tactical.007
+    2300288: Foregrip Tactical.008
+    2300290: Foregrip Tactical.009
+    2300292: Foregrip Tactical.010
+    2300294: Foregrip Tactical.011
+    2300296: HandLoop.001
+    2300298: HandLoop.002
+    2300300: Sight Advanced.002
+    2300302: Sight Advanced.003
+    2300304: Sight Advanced.004
+    2300306: Sight Advanced.005
+    2300308: Sight Model 73.001
+    2300310: Sight Model 73.002
+    2300312: Sight Model 73.004
+    2300314: Stock  Short
+    2300316: Stock  Short.001
+    2300318: Stock Carbine
+    2300320: Stock Classic
+    2300322: Stock Classic.001
+    2300324: Stock Classic.002
+    2300326: Stock Classic.003
+    2300328: Stock Classic.004
+    2300330: Stock Classic.005
+    2300332: Stock Goldenboy.001
+    2300334: Stock Goldenboy.002
+    2300336: Stock Long.001
+    2300338: Stock Long.002
+    2300340: Stock Long.003
+    2300342: Stock Long.004
+    2300344: Stock Long.005
+    2300346: Stock Long.006
+    2300348: Stock Long.007
+    2300350: Stock Long.008
+    2300352: Stock Long.009
+    2300354: Stock Long.010
+    2300356: Stock Model 94.001
+    2300358: Stock Model 94.002
+    2300360: Stock Model 94.003
+    2300362: Stock Model 94.005
+    2300364: Stock Model 95.002
+    2300366: Stock Short.001
+    2300368: Stock Tactical
+    2300370: Stock Tactical Long
+    2300372: Stock Tactical Long.001
+    2300374: Stock Tactical Long.002
+    2300376: Stock Tactical Long.003
+    2300378: Stock Tactical Long.004
+    2300380: Stock Tactical Long.005
+    2300382: Stock Tactical.001
+    2300384: Stock Tactical.002
+    2300386: Stock Tactical.003
+    2300388: Stock Tactical.004
+    2300390: Tactical Buckhorn.000
+    2300392: Tactical Buckhorn.001
+    2300394: Tactical Buckhorn.002
+    2300396: Tactical Buckhorn.003
+    2300398: Tactical Buckhorn.004
+    2300400: Tactical Buckhorn.005
+    2300402: Tactical Buckhorn.006
+    2300404: Tactical Buckhorn.007
+    2300406: Tactical Buckhorn.008
+    2300408: Tactical Buckhorn.009
+    2300410: Tactical Buckhorn.010
+    2300412: Tactical Buckhorn.011
+    2300414: Rails.000
+    2300416: Rails.001
+    2300418: Rails.002
+    2300420: Rails.003
+    2300422: Rails.004
+    2300424: Rails.005
+    2300426: Rails.006
+    2300428: Rails.007
+    2300430: Rails.008
+    2300432: Rails.009
+    2300434: Rails.010
+    2300436: Rails.011
+    2300438: Sight Adjust
+    2300440: Sight Base Classic
+    2300442: Sight Tang
+    2300444: Stock
+    2300446: Stock Model 94.000
+    2300448: Stock Model 94.004
+    2300450: Stock Short.002
+    2300452: Stock Short.003
+    2300454: Stock Tactical.006
+    2300456: Stock Tactical.007
+    2300458: Stock Tactical.008
+    2300460: Stock.002
+    2300462: Stock.003
+    2300464: Stock.004
+    2300466: Barrel Carbine.001
+    2300468: Sight Adjust.001
+    2300470: Sight Adjust.002
+    2300472: Sight Adjust.003
+    2300474: Sight Buckhorn
+    2300476: Sight Buckhorn.001
+    2300478: Sight Buckhorn.002
+    2300480: Sight Buckhorn.003
+    2300482: Sight Buckhorn.004
+    2300484: Sight Buckhorn.005
+    2300486: Sight Buckhorn.006
+    2300488: Sight Classic
+    2300490: Sight Classic.001
+    2300492: Sight Classic.002
+    2300494: Sight Long Range
+    2300496: Sight Long Range.001
+    2300498: Sight Long Range.002
+    2300500: Sight Long Range.003
+    2300502: Sight Rear Goldenboy Window.001
+    2300504: Sight Rear Goldenboy Window.002
+    2300506: Sight Tang.001
+    2300508: Sight Tang.002
+    2300510: Sight Tang.003
+    2300512: TopRail
+    2300514: Rails.012
+    2300516: Sight Adjust.004
+    2300518: Sight Long Range.004
+    2300520: Sight Tang.004
+    2300522: Legs Down
+    2300524: Legs Down.001
+    2300526: Legs Down.002
+    2300528: Legs Down.003
+    2300530: Legs Down.004
+    2300532: Legs Down.005
+    2300534: Legs Up
+    2300536: Legs Up.001
+    2300538: Legs Up.002
+    2300540: Legs Up.003
+    2300542: Legs Up.004
+    2300544: Legs Up.005
+    2300546: Stock Integrated
+    2300548: Stock Integrated.001
+    2300550: Stock Integrated.002
+    2300552: Stock Integrated.003
+    2300554: Stock Integrated.004
+    2300556: Stock Integrated.005
+    2300558: Legs Down.006
+    2300560: Legs Up.006
+    2300562: ScopeRail
+    2300564: Sight Adjust.005
+    2300566: Sight Long Range.005
+    2300568: Sight Rear Goldenboy Window.003
+    2300570: Sight Tang.005
+    2300572: Stock Integrated.006
+    2300574: Bipod Brace.000
+    2300576: Bipod Brace.001
+    2300578: Bipod Brace.002
+    2300580: Bipod Brace.003
+    2300582: Bipod Brace.004
+    2300584: Bipod Brace.005
+    2300586: Bipod Brace.006
+    2300588: Bipod Brace.007
+    2300590: Bipod Brace.008
+    2300592: BipodBase.000
+    2300594: BipodBase.001
+    2300596: BipodBase.002
+    2300598: BipodBase.003
+    2300600: BipodBase.004
+    2300602: BipodBase.005
+    2300604: BipodBase.006
+    2300606: BipodBase.007
+    2300608: BipodBase.008
+    2300610: bipodLeft.000
+    2300612: bipodLeft.001
+    2300614: bipodLeft.002
+    2300616: bipodLeft.003
+    2300618: bipodLeft.004
+    2300620: bipodLeft.005
+    2300622: bipodLeft.006
+    2300624: bipodLeft.007
+    2300626: bipodLeft.008
+    2300628: bipodright.000
+    2300630: bipodright.001
+    2300632: bipodright.002
+    2300634: bipodright.003
+    2300636: bipodright.004
+    2300638: bipodright.005
+    2300640: bipodright.006
+    2300642: bipodright.007
+    2300644: bipodright.008
+    2300646: Rails.013
+    2300648: Stock Tactical.000
+    2300650: Stock Tactical.005
+    2300652: Stock Tactical.009
+    2300654: Stock Tactical.010
+    2300656: Stock Tactical.011
+    2300658: Stock Tactical.012
+    2300660: StockCombAdjust.000
+    2300662: StockCombAdjust.001
+    2300664: StockCombAdjust.002
+    2300666: StockCombAdjust.003
+    2300668: StockCombAdjust.004
+    2300670: StockCombAdjust.005
+    2300672: StockCombAdjust.006
+    2300674: StockCombAdjust.007
+    2300676: StockCombAdjust.008
+    2300678: StockCombAdjust.009
+    2300680: StockCombAdjust.010
+    2300682: StockCombAdjust.011
+    2300684: Bipod Brace.009
+    2300686: Bipod Brace.010
+    2300688: extension.000
+    2300690: extension.001
+    2300692: extension.002
+    2300694: extension.003
+    2300696: extension.004
+    2300698: extension.005
+    2300700: extension.006
+    2300702: extension.007
+    2300704: extension.008
+    2300706: extension.009
+    2300708: extension.010
+    2300710: extension.011
+    2300712: extension.012
+    2300714: extension.013
+    2300716: extension.014
+    2300718: extension.015
+    2300720: extension.016
+    2300722: extension.017
+    2300724: LegsDown.000
+    2300726: LegsDown.001
+    2300728: LegsDown.002
+    2300730: LegsDown.003
+    2300732: LegsDown.004
+    2300734: LegsDown.005
+    2300736: LegsDown.006
+    2300738: LegsDown.007
+    2300740: LegsDown.008
+    2300742: LegsUp
+    2300744: LegsUp.001
+    2300746: LegsUp.002
+    2300748: LegsUp.003
+    2300750: LegsUp.004
+    2300752: LegsUp.005
+    2300754: LegsUp.006
+    2300756: LegsUp.007
+    2300758: LegsUp.008
+    2300760: Barrel Long.001
+    2300762: Barrel Musket
+    2300764: Barrel Short.001
+    2300766: Barrel Standard
+    2300768: Ejection_port_low
+    2300770: Hammer.001
+    2300772: IntegralParts
+    2300774: Integrater_low
+    2300776: Lever_Shotgun
+    2300778: Rails.014
+    2300780: Rails.015
+    2300782: Stock Birdclaw
+    2300784: Stock Classic.006
+    2300786: Stock Classic.007
+    2300788: Stock Classic.008
+    2300790: Stock Full
+    2300792: Stock Tactical Birdclaw
+    2300794: Stock Tactical Full
+    2300796: Stock Tactical.014
+    2300798: Stock Tactical.015
+    2300800: Toprail
+    2300802: Stock Standard.002
+    2300804: AttachmentBrace
+    2300806: AttachmentBrace.001
+    2300808: AttachmentBrace.002
+    2300810: AttachmentBrace.003
+    2300812: Botrail
+    2300814: Botrail.001
+    2300816: Botrail.002
+    2300818: Botrail.003
+    2300820: SideRail
+    2300822: Siderail
+    2300824: Siderail.001
+    2300826: Siderail.002
+    2300828: Toprail.001
+    2300830: Toprail.002
+    2300832: Toprail.003
+    2300834: Tubemag
+    2300836: Barrel Carbine.002
+    2300838: Stock Full.001
+    2300840: Stock Standard.000
+    2300842: Barrel 94 Carbine
+    2300844: Barrel 94 Maresleg
+    2300846: Barrel 94 Rifle
+    2300848: Barrel 95 Carbine
+    2300850: Barrel 95 Rifle
+    2300852: Barrel Carbine Browning
+    2300854: Barrel Maresleg Browning
+    2300856: Barrel Rifle Browning
+    2300858: Base Classic
+    2300860: Ejector Plate 94
+    2300862: Hammer_low
+    2300864: Integral Browing
+    2300866: IntegralAdvanced
+    2300868: Lever_low
+    2300870: Loading Gate Large
+    2300872: Loading Gate Small
+    2300874: Locking Lug Advanced
+    2300876: Locking Lugs
+    2300878: Receiver 86
+    2300880: Receiver 92
+    2300882: Receiver 94
+    2300884: Receiver 95
+    2300886: Sight Buckhorn Advanced
+    2300888: Sight Buckhorn Browning
+    2300890: Sight Tangent Advanced
+    2300892: Stock Full Advanced
+    2300894: Stock Full Browning
+    2300896: Stock Short Advanced
+    2300898: Stock Short Browning
+    2300900: Trigger Advanced
+    2300902: Trigger Browning
+    2300904: Trigger Classic
+    2300906: Trigger Classic.001
+    2300908: LoadingGateHinge
+    2300910: AttachmentBrace.004
+    2300912: Barrel Carbine 73
+    2300914: Barrel Carbine 86
+    2300916: Barrel Carbine 92
+    2300918: Barrel Long 73
+    2300920: Barrel Maresleg 92
+    2300922: Barrel Rifle 73
+    2300924: Barrel Rifle 86
+    2300926: Barrel Rifle 92
+    2300928: Bolt
+    2300930: Bolt 73
+    2300932: Bolt 86
+    2300934: Bolt 95
+    2300936: Botrail.004
+    2300938: Hammer 95
+    2300940: Hammer_low.001
+    2300942: Lever_low.001
+    2300944: Locking Lug 95
+    2300946: Locking Lugs.001
+    2300948: Receiver 73
+    2300950: Siderail.003
+    2300952: Sight Buckhorn 86
+    2300954: Sight Buckhorn 92
+    2300956: Sight Buckhorn 95
+    2300958: Stock Full 86
+    2300960: Stock Full 87
+    2300962: Stock Full 92
+    2300964: Stock Full 95
+    2300966: Stock Long 73
+    2300968: Stock Short 92
+    2300970: Toprail.004
+    2300972: Trigger 86
+    2300974: Trigger 92
+    2300976: Trigger 95
+    2300978: Barrel Musket 73
+    2300980: Sight Buckhorn 73
+    3300000: Barrel Long
+    3300002: Barrel Maresleg Model 94
+    3300004: Barrel Maresleg Model 95
+    3300006: Barrel Mid
+    3300008: Barrel Musket Model 94
+    3300010: Barrel Musket Model 95
+    3300012: Barrel Rifle Model 94
+    3300014: Barrel Rifle Model 95
+    3300016: Barrel Short
+    3300018: Barrel_LongPistol_Tubeload
+    3300020: Barrel_Musket_Tubeload
+    3300022: Barrel_Pistol_Tubeload
+    3300024: Barrel_Standard_Tubeload
+    3300026: Ejector Advanced
+    3300028: Ejector Plate Model 94
+    3300030: Ejector Plate Model 94.001
+    3300032: Ejector Port
+    3300034: Ejector_GoldenBoy
+    3300036: Fixed Box Mag
+    3300038: Follower
+    3300040: Hammer
+    3300042: Hammer Advanced
+    3300044: Hammer_GoldenBoy
+    3300046: Lenses
+    3300048: Lever Advanced
+    3300050: Lever_Finger
+    3300052: Lever_Standard
+    3300054: Locking Lug
+    3300056: Rail Carbine
+    3300058: Rail Carbine.001
+    3300060: Rail Carbine.002
+    3300062: Rail Musket
+    3300064: Rail Musket.001
+    3300066: Rail Musket.002
+    3300068: Rail Short
+    3300070: Rail Short.001
+    3300072: Rail Short.002
+    3300074: Rail Top
+    3300076: Receiver Advanced
+    3300078: Receiver Model 73
+    3300080: Receiver_GoldenBoy
+    3300082: Scope
+    3300084: Scope Arm
+    3300086: Scope Fixture
+    3300088: Sight Advanced
+    3300090: Sight Model 73
+    3300092: Sight Rear Goldenboy
+    3300094: Sight Rear Goldenboy Window
+    3300096: Stock Advanced
+    3300098: Stock Advanced Short
+    3300100: Stock Front Long
+    3300102: Stock Front Mid
+    3300104: Stock Front Short
+    3300106: Stock Goldenboy
+    3300108: Stock Grip
+    3300110: Stock Long
+    3300112: Stock Ring
+    3300114: Stock Ring Long
+    3300116: Stock Ring Short
+    3300118: Stock Short
+    3300120: Trigger
+    3300122: Model 95 Parts
+    3300124: Ejector Plate Model 95
+    3300126: BodyParts60
+    3300128: BodyParts73
+    3300130: BodyParts94_95
+    3300132: FingerLoop
+    3300134: HandLoop
+    3300136: Lever_Model 60
+    3300138: Lever_Model 73
+    3300140: Lever_Model 94_95
+    3300142: Model 60
+    3300144: Model 73
+    3300146: Model 94_95
+    3300148: Model 95 Boxmag
+    3300150: Stock Volcanic
+    3300152: Rail Top Carbine_MeshPart0
+    3300154: Rail Top Carbine_MeshPart1
+    3300156: Rail Top Musket_MeshPart0
+    3300158: Rail Top Musket_MeshPart1
+    3300160: Scope Brace.001_MeshPart0
+    3300162: Scope Brace.001_MeshPart1
+    3300164: Scope Brace_MeshPart0
+    3300166: Scope Brace_MeshPart1
+    3300168: Scope Sharpshooter
+    3300170: Scope Sharpshooter.001
+    3300172: ScopeBaseCarbine
+    3300174: ScopeBaseMusket
+    3300176: Rail Short.003
+    3300178: Rail Short.004
+    3300180: Rail Short.005
+    3300182: Stock MaresLeg
+    3300184: Stock Musket
+    3300186: Stock Rifle
+    3300188: ScopeBase
+    3300190: Barrel_MidPistol_Tubeload
+    3300192: Barrel_ShortPistol_Tubeload
+    3300194: Rail Top Carbine_MeshPart2
+    3300196: Barrel_LongPistol
+    3300198: BodyParts94
+    3300200: BodyParts95
+    3300202: Hammer Advanced.001
+    3300204: Lever_Model 94
+    3300206: Lever_Model 95
+    3300208: Locking Lug.001
+    3300210: Model 94
+    3300212: Model 95
+    3300214: Sight Advanced.001
+    3300216: Stock Model 94
+    3300218: Stock Model 94 Short
+    3300220: Stock Model 95
+    3300222: Stock Model 95 Short
+    3300224: Barrel_Pistol
+    3300226: Barrel Carbine
+    3300228: Barrel Carbine Model 94
+    3300230: Barrel Rifle
+    3300232: Barrel Rifle Model 95.001
+    3300234: Barrel Stock Standard.001
+    3300236: Barrel_Carbine_Tubeload
+    3300238: Rail Carbine.003
+    3300240: Rail Carbine.004
+    3300242: Rail Carbine.005
+    3300244: Stock Front Mid.001
+    3300246: Stock Front Mid.002
+    3300248: Stock Maresleg
+    3300250: Stock Maresleg.002
+    3300252: Stock Mosin
+    3300254: Stock Mosin.001
+    3300256: Stock Musket Classic
+    3300258: Stock Ring.001
+    3300260: Stock Ring.002
+    3300262: Stock Standard
+    3300264: Stock Standard.001
+    3300266: Barrel Maresleg
+    3300268: Barrel Rifle.001
+    3300270: Barrel Rifle.002
+    3300272: Foregrip Tactical.000
+    3300274: Foregrip Tactical.001
+    3300276: Foregrip Tactical.002
+    3300278: Foregrip Tactical.003
+    3300280: Foregrip Tactical.004
+    3300282: Foregrip Tactical.005
+    3300284: Foregrip Tactical.006
+    3300286: Foregrip Tactical.007
+    3300288: Foregrip Tactical.008
+    3300290: Foregrip Tactical.009
+    3300292: Foregrip Tactical.010
+    3300294: Foregrip Tactical.011
+    3300296: HandLoop.001
+    3300298: HandLoop.002
+    3300300: Sight Advanced.002
+    3300302: Sight Advanced.003
+    3300304: Sight Advanced.004
+    3300306: Sight Advanced.005
+    3300308: Sight Model 73.001
+    3300310: Sight Model 73.002
+    3300312: Sight Model 73.004
+    3300314: Stock  Short
+    3300316: Stock  Short.001
+    3300318: Stock Carbine
+    3300320: Stock Classic
+    3300322: Stock Classic.001
+    3300324: Stock Classic.002
+    3300326: Stock Classic.003
+    3300328: Stock Classic.004
+    3300330: Stock Classic.005
+    3300332: Stock Goldenboy.001
+    3300334: Stock Goldenboy.002
+    3300336: Stock Long.001
+    3300338: Stock Long.002
+    3300340: Stock Long.003
+    3300342: Stock Long.004
+    3300344: Stock Long.005
+    3300346: Stock Long.006
+    3300348: Stock Long.007
+    3300350: Stock Long.008
+    3300352: Stock Long.009
+    3300354: Stock Long.010
+    3300356: Stock Model 94.001
+    3300358: Stock Model 94.002
+    3300360: Stock Model 94.003
+    3300362: Stock Model 94.005
+    3300364: Stock Model 95.002
+    3300366: Stock Short.001
+    3300368: Stock Tactical
+    3300370: Stock Tactical Long
+    3300372: Stock Tactical Long.001
+    3300374: Stock Tactical Long.002
+    3300376: Stock Tactical Long.003
+    3300378: Stock Tactical Long.004
+    3300380: Stock Tactical Long.005
+    3300382: Stock Tactical.001
+    3300384: Stock Tactical.002
+    3300386: Stock Tactical.003
+    3300388: Stock Tactical.004
+    3300390: Tactical Buckhorn.000
+    3300392: Tactical Buckhorn.001
+    3300394: Tactical Buckhorn.002
+    3300396: Tactical Buckhorn.003
+    3300398: Tactical Buckhorn.004
+    3300400: Tactical Buckhorn.005
+    3300402: Tactical Buckhorn.006
+    3300404: Tactical Buckhorn.007
+    3300406: Tactical Buckhorn.008
+    3300408: Tactical Buckhorn.009
+    3300410: Tactical Buckhorn.010
+    3300412: Tactical Buckhorn.011
+    3300414: Rails.000
+    3300416: Rails.001
+    3300418: Rails.002
+    3300420: Rails.003
+    3300422: Rails.004
+    3300424: Rails.005
+    3300426: Rails.006
+    3300428: Rails.007
+    3300430: Rails.008
+    3300432: Rails.009
+    3300434: Rails.010
+    3300436: Rails.011
+    3300438: Sight Adjust
+    3300440: Sight Base Classic
+    3300442: Sight Tang
+    3300444: Stock
+    3300446: Stock Model 94.000
+    3300448: Stock Model 94.004
+    3300450: Stock Short.002
+    3300452: Stock Short.003
+    3300454: Stock Tactical.006
+    3300456: Stock Tactical.007
+    3300458: Stock Tactical.008
+    3300460: Stock.002
+    3300462: Stock.003
+    3300464: Stock.004
+    3300466: Barrel Carbine.001
+    3300468: Sight Adjust.001
+    3300470: Sight Adjust.002
+    3300472: Sight Adjust.003
+    3300474: Sight Buckhorn
+    3300476: Sight Buckhorn.001
+    3300478: Sight Buckhorn.002
+    3300480: Sight Buckhorn.003
+    3300482: Sight Buckhorn.004
+    3300484: Sight Buckhorn.005
+    3300486: Sight Buckhorn.006
+    3300488: Sight Classic
+    3300490: Sight Classic.001
+    3300492: Sight Classic.002
+    3300494: Sight Long Range
+    3300496: Sight Long Range.001
+    3300498: Sight Long Range.002
+    3300500: Sight Long Range.003
+    3300502: Sight Rear Goldenboy Window.001
+    3300504: Sight Rear Goldenboy Window.002
+    3300506: Sight Tang.001
+    3300508: Sight Tang.002
+    3300510: Sight Tang.003
+    3300512: TopRail
+    3300514: Rails.012
+    3300516: Sight Adjust.004
+    3300518: Sight Long Range.004
+    3300520: Sight Tang.004
+    3300522: Legs Down
+    3300524: Legs Down.001
+    3300526: Legs Down.002
+    3300528: Legs Down.003
+    3300530: Legs Down.004
+    3300532: Legs Down.005
+    3300534: Legs Up
+    3300536: Legs Up.001
+    3300538: Legs Up.002
+    3300540: Legs Up.003
+    3300542: Legs Up.004
+    3300544: Legs Up.005
+    3300546: Stock Integrated
+    3300548: Stock Integrated.001
+    3300550: Stock Integrated.002
+    3300552: Stock Integrated.003
+    3300554: Stock Integrated.004
+    3300556: Stock Integrated.005
+    3300558: Legs Down.006
+    3300560: Legs Up.006
+    3300562: ScopeRail
+    3300564: Sight Adjust.005
+    3300566: Sight Long Range.005
+    3300568: Sight Rear Goldenboy Window.003
+    3300570: Sight Tang.005
+    3300572: Stock Integrated.006
+    3300574: Bipod Brace.000
+    3300576: Bipod Brace.001
+    3300578: Bipod Brace.002
+    3300580: Bipod Brace.003
+    3300582: Bipod Brace.004
+    3300584: Bipod Brace.005
+    3300586: Bipod Brace.006
+    3300588: Bipod Brace.007
+    3300590: Bipod Brace.008
+    3300592: BipodBase.000
+    3300594: BipodBase.001
+    3300596: BipodBase.002
+    3300598: BipodBase.003
+    3300600: BipodBase.004
+    3300602: BipodBase.005
+    3300604: BipodBase.006
+    3300606: BipodBase.007
+    3300608: BipodBase.008
+    3300610: bipodLeft.000
+    3300612: bipodLeft.001
+    3300614: bipodLeft.002
+    3300616: bipodLeft.003
+    3300618: bipodLeft.004
+    3300620: bipodLeft.005
+    3300622: bipodLeft.006
+    3300624: bipodLeft.007
+    3300626: bipodLeft.008
+    3300628: bipodright.000
+    3300630: bipodright.001
+    3300632: bipodright.002
+    3300634: bipodright.003
+    3300636: bipodright.004
+    3300638: bipodright.005
+    3300640: bipodright.006
+    3300642: bipodright.007
+    3300644: bipodright.008
+    3300646: Rails.013
+    3300648: Stock Tactical.000
+    3300650: Stock Tactical.005
+    3300652: Stock Tactical.009
+    3300654: Stock Tactical.010
+    3300656: Stock Tactical.011
+    3300658: Stock Tactical.012
+    3300660: StockCombAdjust.000
+    3300662: StockCombAdjust.001
+    3300664: StockCombAdjust.002
+    3300666: StockCombAdjust.003
+    3300668: StockCombAdjust.004
+    3300670: StockCombAdjust.005
+    3300672: StockCombAdjust.006
+    3300674: StockCombAdjust.007
+    3300676: StockCombAdjust.008
+    3300678: StockCombAdjust.009
+    3300680: StockCombAdjust.010
+    3300682: StockCombAdjust.011
+    3300684: Bipod Brace.009
+    3300686: Bipod Brace.010
+    3300688: extension.000
+    3300690: extension.001
+    3300692: extension.002
+    3300694: extension.003
+    3300696: extension.004
+    3300698: extension.005
+    3300700: extension.006
+    3300702: extension.007
+    3300704: extension.008
+    3300706: extension.009
+    3300708: extension.010
+    3300710: extension.011
+    3300712: extension.012
+    3300714: extension.013
+    3300716: extension.014
+    3300718: extension.015
+    3300720: extension.016
+    3300722: extension.017
+    3300724: LegsDown.000
+    3300726: LegsDown.001
+    3300728: LegsDown.002
+    3300730: LegsDown.003
+    3300732: LegsDown.004
+    3300734: LegsDown.005
+    3300736: LegsDown.006
+    3300738: LegsDown.007
+    3300740: LegsDown.008
+    3300742: LegsUp
+    3300744: LegsUp.001
+    3300746: LegsUp.002
+    3300748: LegsUp.003
+    3300750: LegsUp.004
+    3300752: LegsUp.005
+    3300754: LegsUp.006
+    3300756: LegsUp.007
+    3300758: LegsUp.008
+    3300760: Barrel Long.001
+    3300762: Barrel Musket
+    3300764: Barrel Short.001
+    3300766: Barrel Standard
+    3300768: Ejection_port_low
+    3300770: Hammer.001
+    3300772: IntegralParts
+    3300774: Integrater_low
+    3300776: Lever_Shotgun
+    3300778: Rails.014
+    3300780: Rails.015
+    3300782: Stock Birdclaw
+    3300784: Stock Classic.006
+    3300786: Stock Classic.007
+    3300788: Stock Classic.008
+    3300790: Stock Full
+    3300792: Stock Tactical Birdclaw
+    3300794: Stock Tactical Full
+    3300796: Stock Tactical.014
+    3300798: Stock Tactical.015
+    3300800: Toprail
+    3300802: Stock Standard.002
+    3300804: AttachmentBrace
+    3300806: AttachmentBrace.001
+    3300808: AttachmentBrace.002
+    3300810: AttachmentBrace.003
+    3300812: Botrail
+    3300814: Botrail.001
+    3300816: Botrail.002
+    3300818: Botrail.003
+    3300820: SideRail
+    3300822: Siderail
+    3300824: Siderail.001
+    3300826: Siderail.002
+    3300828: Toprail.001
+    3300830: Toprail.002
+    3300832: Toprail.003
+    3300834: Tubemag
+    3300836: Barrel Carbine.002
+    3300838: Stock Full.001
+    3300840: Stock Standard.000
+    3300842: Barrel 94 Carbine
+    3300844: Barrel 94 Maresleg
+    3300846: Barrel 94 Rifle
+    3300848: Barrel 95 Carbine
+    3300850: Barrel 95 Rifle
+    3300852: Barrel Carbine Browning
+    3300854: Barrel Maresleg Browning
+    3300856: Barrel Rifle Browning
+    3300858: Base Classic
+    3300860: Ejector Plate 94
+    3300862: Hammer_low
+    3300864: Integral Browing
+    3300866: IntegralAdvanced
+    3300868: Lever_low
+    3300870: Loading Gate Large
+    3300872: Loading Gate Small
+    3300874: Locking Lug Advanced
+    3300876: Locking Lugs
+    3300878: Receiver 86
+    3300880: Receiver 92
+    3300882: Receiver 94
+    3300884: Receiver 95
+    3300886: Sight Buckhorn Advanced
+    3300888: Sight Buckhorn Browning
+    3300890: Sight Tangent Advanced
+    3300892: Stock Full Advanced
+    3300894: Stock Full Browning
+    3300896: Stock Short Advanced
+    3300898: Stock Short Browning
+    3300900: Trigger Advanced
+    3300902: Trigger Browning
+    3300904: Trigger Classic
+    3300906: Trigger Classic.001
+    3300908: LoadingGateHinge
+    3300910: AttachmentBrace.004
+    3300912: Barrel Carbine 73
+    3300914: Barrel Carbine 86
+    3300916: Barrel Carbine 92
+    3300918: Barrel Long 73
+    3300920: Barrel Maresleg 92
+    3300922: Barrel Rifle 73
+    3300924: Barrel Rifle 86
+    3300926: Barrel Rifle 92
+    3300928: Bolt
+    3300930: Bolt 73
+    3300932: Bolt 86
+    3300934: Bolt 95
+    3300936: Botrail.004
+    3300938: Hammer 95
+    3300940: Hammer_low.001
+    3300942: Lever_low.001
+    3300944: Locking Lug 95
+    3300946: Locking Lugs.001
+    3300948: Receiver 73
+    3300950: Siderail.003
+    3300952: Sight Buckhorn 86
+    3300954: Sight Buckhorn 92
+    3300956: Sight Buckhorn 95
+    3300958: Stock Full 86
+    3300960: Stock Full 87
+    3300962: Stock Full 92
+    3300964: Stock Full 95
+    3300966: Stock Long 73
+    3300968: Stock Short 92
+    3300970: Toprail.004
+    3300972: Trigger 86
+    3300974: Trigger 92
+    3300976: Trigger 95
+    3300978: Barrel Musket 73
+    3300980: Sight Buckhorn 73
+    4300000: Lever_Finger
+    4300002: Receiver Advanced
+    4300004: Fixed Box Mag
+    4300006: Barrel Musket Model 95
+    4300008: Rail Musket.002
+    4300010: Barrel Maresleg Model 95
+    4300012: Rail Short.002
+    4300014: Barrel Rifle Model 95
+    4300016: Rail Carbine.002
+    4300018: Stock Advanced Short
+    4300020: Barrel Maresleg Model 94
+    4300022: Rail Short.001
+    4300024: Barrel Musket Model 94
+    4300026: Rail Musket.001
+    4300028: Hammer Advanced
+    4300030: Stock Advanced
+    4300032: Sight Advanced
+    4300034: Barrel Rifle Model 94
+    4300036: Rail Carbine.001
+    4300038: Ejector Advanced
+    4300040: Trigger
+    4300042: Lever Advanced
+    4300044: Ejector Plate Model 94.001
+    4300046: Ejector Plate Model 94
+    4300048: Locking Lug
+    4300050: Lever_Standard
+    4300052: Receiver_GoldenBoy
+    4300054: Stock Grip
+    4300056: Barrel_Pistol_Tubeload
+    4300058: Barrel_LongPistol_Tubeload
+    4300060: Barrel_Musket_Tubeload
+    4300062: Follower
+    4300064: Ejector_GoldenBoy
+    4300066: Hammer_GoldenBoy
+    4300068: Sight Rear Goldenboy
+    4300070: Sight Rear Goldenboy Window
+    4300072: Barrel_Standard_Tubeload
+    4300074: Stock Goldenboy
+    4300076: Scope Arm
+    4300078: Rail Top
+    4300080: Scope
+    4300082: Lenses
+    4300084: Scope Fixture
+    4300086: Receiver Model 73
+    4300088: Stock Long
+    4300090: Stock Short
+    4300092: Barrel Long
+    4300094: Stock Front Long
+    4300096: Rail Musket
+    4300098: Stock Ring Long
+    4300100: Barrel Short
+    4300102: Stock Front Short
+    4300104: Rail Short
+    4300106: Stock Ring Short
+    4300108: Barrel Mid
+    4300110: Stock Front Mid
+    4300112: Rail Carbine
+    4300114: Stock Ring
+    4300116: Sight Model 73
+    4300118: Ejector Port
+    4300120: Hammer
+    4300122: Model 95 Parts
+    4300124: Ejector Plate Model 95
+    4300126: Model 94_95
+    4300128: BodyParts94_95
+    4300130: Lever_Model 94_95
+    4300132: Model 95 Boxmag
+    4300134: Model 60
+    4300136: Lever_Model 60
+    4300138: Stock Volcanic
+    4300140: FingerLoop
+    4300142: HandLoop
+    4300144: BodyParts60
+    4300146: Model 73
+    4300148: Lever_Model 73
+    4300150: BodyParts73
+    4300152: ScopeBaseCarbine
+    4300154: Rail Top Carbine_MeshPart0
+    4300156: Rail Top Carbine_MeshPart1
+    4300158: Scope Brace_MeshPart0
+    4300160: Scope Brace_MeshPart1
+    4300162: Scope Sharpshooter
+    4300164: ScopeBaseMusket
+    4300166: Rail Top Musket_MeshPart0
+    4300168: Rail Top Musket_MeshPart1
+    4300170: Scope Brace.001_MeshPart0
+    4300172: Scope Brace.001_MeshPart1
+    4300174: Scope Sharpshooter.001
+    4300176: Rail Short.004
+    4300178: Rail Short.005
+    4300180: Rail Short.003
+    4300182: Stock Musket
+    4300184: Stock MaresLeg
+    4300186: Stock Rifle
+    4300188: ScopeBase
+    4300190: Rail Top Carbine_MeshPart2
+    4300192: Barrel_ShortPistol_Tubeload
+    4300194: Barrel_MidPistol_Tubeload
+    4300196: Barrel_LongPistol
+    4300198: Model 95
+    4300200: Stock Model 95
+    4300202: Stock Model 95 Short
+    4300204: BodyParts95
+    4300206: Sight Advanced.001
+    4300208: Hammer Advanced.001
+    4300210: Locking Lug.001
+    4300212: Lever_Model 95
+    4300214: Model 94
+    4300216: BodyParts94
+    4300218: Lever_Model 94
+    4300220: Stock Model 94 Short
+    4300222: Stock Model 94
+    4300224: Barrel_Pistol
+    4300226: Barrel Rifle Model 95.001
+    4300228: Rail Carbine.005
+    4300230: Stock Mosin
+    4300232: Stock Mosin.001
+    4300234: Barrel Carbine Model 94
+    4300236: Rail Carbine.004
+    4300238: Barrel Stock Standard.001
+    4300240: Stock Maresleg.002
+    4300242: Stock Maresleg
+    4300244: Stock Musket Classic
+    4300246: Stock Standard.001
+    4300248: Stock Standard
+    4300250: Barrel_Carbine_Tubeload
+    4300252: Barrel Carbine
+    4300254: Stock Front Mid.002
+    4300256: Stock Ring.002
+    4300258: Stock Ring.001
+    4300260: Rail Carbine.003
+    4300262: Stock Front Mid.001
+    4300264: Barrel Rifle
+    4300266: Stock Tactical.004
+    4300268: Tactical Buckhorn.009
+    4300270: Foregrip Tactical.009
+    4300272: Stock Long.007
+    4300274: Stock Model 95.002
+    4300276: Sight Advanced.005
+    4300278: Stock Tactical Long.005
+    4300280: Tactical Buckhorn.011
+    4300282: Foregrip Tactical.011
+    4300284: Stock Long.010
+    4300286: Barrel Maresleg
+    4300288: Sight Advanced.003
+    4300290: Stock Tactical.002
+    4300292: Stock  Short.001
+    4300294: Foregrip Tactical.008
+    4300296: Tactical Buckhorn.008
+    4300298: Barrel Rifle.002
+    4300300: Sight Advanced.004
+    4300302: Stock Tactical Long.004
+    4300304: Stock Long.009
+    4300306: Foregrip Tactical.010
+    4300308: Tactical Buckhorn.010
+    4300310: Stock Tactical
+    4300312: Foregrip Tactical.001
+    4300314: Tactical Buckhorn.002
+    4300316: Stock Model 94.005
+    4300318: Stock Carbine
+    4300320: Stock Model 94.001
+    4300322: Stock Tactical.003
+    4300324: Tactical Buckhorn.006
+    4300326: Foregrip Tactical.006
+    4300328: Stock  Short
+    4300330: Stock Classic
+    4300332: Sight Advanced.002
+    4300334: Stock Tactical Long.003
+    4300336: Foregrip Tactical.007
+    4300338: Tactical Buckhorn.007
+    4300340: Stock Model 94.003
+    4300342: Stock Model 94.002
+    4300344: Stock Tactical Long
+    4300346: Tactical Buckhorn.000
+    4300348: Foregrip Tactical.003
+    4300350: Stock Long.008
+    4300352: Stock Goldenboy.002
+    4300354: HandLoop.002
+    4300356: Stock Goldenboy.001
+    4300358: HandLoop.001
+    4300360: Stock Tactical.001
+    4300362: Tactical Buckhorn.003
+    4300364: Foregrip Tactical.000
+    4300366: Stock Long.004
+    4300368: Stock Classic.004
+    4300370: Sight Model 73.002
+    4300372: Stock Long.001
+    4300374: Stock Tactical Long.002
+    4300376: Foregrip Tactical.004
+    4300378: Tactical Buckhorn.005
+    4300380: Stock Long.005
+    4300382: Stock Classic.003
+    4300384: Stock Long.002
+    4300386: Sight Model 73.004
+    4300388: Stock Classic.005
+    4300390: Tactical Buckhorn.001
+    4300392: Foregrip Tactical.005
+    4300394: Stock Short.001
+    4300396: Stock Classic.001
+    4300398: Sight Model 73.001
+    4300400: Barrel Rifle.001
+    4300402: Stock Tactical Long.001
+    4300404: Foregrip Tactical.002
+    4300406: Tactical Buckhorn.004
+    4300408: Stock Long.003
+    4300410: Stock Classic.002
+    4300412: Stock Long.006
+    4300414: Stock Tactical.008
+    4300416: Rails.010
+    4300418: Stock.004
+    4300420: Rails.011
+    4300422: Stock Model 94.004
+    4300424: Stock Tactical.007
+    4300426: Rails.009
+    4300428: Stock Short.003
+    4300430: Rails.008
+    4300432: Sight Base Classic
+    4300434: Sight Adjust
+    4300436: Sight Tang
+    4300438: Stock
+    4300440: Stock Tactical.006
+    4300442: Stock.003
+    4300444: Rails.006
+    4300446: Stock Short.002
+    4300448: Rails.005
+    4300450: Rails.004
+    4300452: Stock Model 94.000
+    4300454: Stock.002
+    4300456: Rails.007
+    4300458: Rails.002
+    4300460: Rails.000
+    4300462: Rails.003
+    4300464: Rails.001
+    4300466: Barrel Carbine.001
+    4300468: TopRail
+    4300470: Sight Buckhorn.004
+    4300472: Sight Long Range.003
+    4300474: Sight Tang.003
+    4300476: Sight Adjust.003
+    4300478: Sight Buckhorn.003
+    4300480: Sight Long Range
+    4300482: Sight Buckhorn.002
+    4300484: Sight Buckhorn.001
+    4300486: Sight Long Range.002
+    4300488: Sight Adjust.002
+    4300490: Sight Tang.002
+    4300492: Sight Long Range.001
+    4300494: Sight Tang.001
+    4300496: Sight Adjust.001
+    4300498: Sight Classic.001
+    4300500: Sight Rear Goldenboy Window.001
+    4300502: Sight Classic
+    4300504: Sight Classic.002
+    4300506: Sight Rear Goldenboy Window.002
+    4300508: Sight Buckhorn
+    4300510: Sight Buckhorn.005
+    4300512: Sight Buckhorn.006
+    4300514: Sight Long Range.004
+    4300516: Sight Adjust.004
+    4300518: Sight Tang.004
+    4300520: Rails.012
+    4300522: Stock Integrated.005
+    4300524: Legs Up.005
+    4300526: Legs Down.005
+    4300528: Stock Integrated.004
+    4300530: Legs Down.004
+    4300532: Legs Up.004
+    4300534: Stock Integrated.003
+    4300536: Legs Up.003
+    4300538: Legs Down.003
+    4300540: Stock Integrated.002
+    4300542: Legs Down.002
+    4300544: Legs Up.002
+    4300546: Stock Integrated.001
+    4300548: Legs Up.001
+    4300550: Legs Down.001
+    4300552: Stock Integrated
+    4300554: Legs Down
+    4300556: Legs Up
+    4300558: ScopeRail
+    4300560: Stock Integrated.006
+    4300562: Legs Up.006
+    4300564: Legs Down.006
+    4300566: Sight Long Range.005
+    4300568: Sight Adjust.005
+    4300570: Sight Tang.005
+    4300572: Sight Rear Goldenboy Window.003
+    4300574: Stock Tactical.012
+    4300576: BipodBase.008
+    4300578: bipodLeft.008
+    4300580: bipodright.008
+    4300582: Bipod Brace.008
+    4300584: StockCombAdjust.009
+    4300586: BipodBase.005
+    4300588: bipodLeft.005
+    4300590: bipodright.006
+    4300592: Bipod Brace.005
+    4300594: StockCombAdjust.006
+    4300596: StockCombAdjust.011
+    4300598: Stock Tactical.011
+    4300600: StockCombAdjust.008
+    4300602: BipodBase.007
+    4300604: Bipod Brace.007
+    4300606: bipodright.007
+    4300608: bipodLeft.007
+    4300610: StockCombAdjust.003
+    4300612: BipodBase.003
+    4300614: Bipod Brace.003
+    4300616: bipodright.003
+    4300618: bipodLeft.003
+    4300620: StockCombAdjust.010
+    4300622: Stock Tactical.010
+    4300624: StockCombAdjust.007
+    4300626: BipodBase.006
+    4300628: Bipod Brace.006
+    4300630: bipodright.005
+    4300632: bipodLeft.006
+    4300634: Stock Tactical.000
+    4300636: BipodBase.004
+    4300638: bipodLeft.004
+    4300640: bipodright.004
+    4300642: Bipod Brace.004
+    4300644: StockCombAdjust.005
+    4300646: BipodBase.001
+    4300648: bipodLeft.001
+    4300650: bipodright.001
+    4300652: Bipod Brace.001
+    4300654: StockCombAdjust.002
+    4300656: BipodBase.002
+    4300658: bipodLeft.002
+    4300660: bipodright.002
+    4300662: Bipod Brace.002
+    4300664: StockCombAdjust.001
+    4300666: Stock Tactical.009
+    4300668: Rails.013
+    4300670: StockCombAdjust.004
+    4300672: Stock Tactical.005
+    4300674: StockCombAdjust.000
+    4300676: BipodBase.000
+    4300678: Bipod Brace.000
+    4300680: bipodright.000
+    4300682: bipodLeft.000
+    4300684: LegsUp
+    4300686: extension.003
+    4300688: LegsDown.003
+    4300690: extension.001
+    4300692: LegsUp.008
+    4300694: extension.017
+    4300696: LegsDown.008
+    4300698: extension.016
+    4300700: Bipod Brace.010
+    4300702: LegsDown.007
+    4300704: extension.015
+    4300706: LegsUp.007
+    4300708: extension.014
+    4300710: LegsUp.004
+    4300712: extension.009
+    4300714: LegsDown.004
+    4300716: extension.008
+    4300718: LegsUp.006
+    4300720: extension.013
+    4300722: LegsDown.006
+    4300724: extension.012
+    4300726: LegsDown.005
+    4300728: extension.011
+    4300730: LegsUp.005
+    4300732: extension.010
+    4300734: LegsDown.002
+    4300736: extension.007
+    4300738: LegsUp.003
+    4300740: extension.006
+    4300742: LegsDown.000
+    4300744: extension.002
+    4300746: LegsUp.001
+    4300748: extension.000
+    4300750: Bipod Brace.009
+    4300752: LegsUp.002
+    4300754: extension.005
+    4300756: LegsDown.001
+    4300758: extension.004
+    4300760: Stock Classic.008
+    4300762: Stock Tactical Birdclaw
+    4300764: Barrel Musket
+    4300766: Stock Classic.006
+    4300768: Stock Tactical.015
+    4300770: Rails.015
+    4300772: Barrel Standard
+    4300774: Stock Classic.007
+    4300776: Rails.014
+    4300778: Toprail
+    4300780: Stock Full
+    4300782: IntegralParts
+    4300784: Integrater_low
+    4300786: Ejection_port_low
+    4300788: Lever_Shotgun
+    4300790: Stock Tactical Full
+    4300792: Stock Birdclaw
+    4300794: Stock Tactical.014
+    4300796: Barrel Long.001
+    4300798: Barrel Short.001
+    4300800: Hammer.001
+    4300802: Stock Standard.002
+    4300804: AttachmentBrace.001
+    4300806: Siderail.001
+    4300808: Toprail.001
+    4300810: Botrail.001
+    4300812: AttachmentBrace.003
+    4300814: Toprail.003
+    4300816: Botrail.003
+    4300818: Siderail.002
+    4300820: AttachmentBrace.002
+    4300822: Siderail
+    4300824: Botrail.002
+    4300826: Toprail.002
+    4300828: AttachmentBrace
+    4300830: SideRail
+    4300832: Botrail
+    4300834: Tubemag
+    4300836: Stock Full.001
+    4300838: Barrel Carbine.002
+    4300840: Stock Standard.000
+    4300842: Stock Short Browning
+    4300844: Receiver 86
+    4300846: Loading Gate Large
+    4300848: Barrel Carbine Browning
+    4300850: Barrel Maresleg Browning
+    4300852: Sight Buckhorn Browning
+    4300854: Barrel Rifle Browning
+    4300856: Integral Browing
+    4300858: Trigger Browning
+    4300860: Hammer_low
+    4300862: Locking Lugs
+    4300864: Lever_low
+    4300866: Stock Full Browning
+    4300868: Receiver 92
+    4300870: Loading Gate Small
+    4300872: Barrel 94 Rifle
+    4300874: Receiver 95
+    4300876: Barrel 95 Carbine
+    4300878: Barrel 95 Rifle
+    4300880: Sight Tangent Advanced
+    4300882: IntegralAdvanced
+    4300884: Trigger Advanced
+    4300886: Locking Lug Advanced
+    4300888: Receiver 94
+    4300890: Ejector Plate 94
+    4300892: Sight Buckhorn Advanced
+    4300894: Barrel 94 Maresleg
+    4300896: Barrel 94 Carbine
+    4300898: Stock Short Advanced
+    4300900: Stock Full Advanced
+    4300902: Trigger Classic.001
+    4300904: Base Classic
+    4300906: Trigger Classic
+    4300908: LoadingGateHinge
+    4300910: Barrel Long 73
+    4300912: Barrel Carbine 73
+    4300914: Barrel Rifle 73
+    4300916: Stock Long 73
+    4300918: Receiver 73
+    4300920: Bolt 73
+    4300922: Sight Buckhorn 86
+    4300924: Barrel Rifle 86
+    4300926: Stock Full 86
+    4300928: Barrel Carbine 86
+    4300930: AttachmentBrace.004
+    4300932: Siderail.003
+    4300934: Botrail.004
+    4300936: Toprail.004
+    4300938: Bolt 86
+    4300940: Lever_low.001
+    4300942: Locking Lugs.001
+    4300944: Hammer_low.001
+    4300946: Trigger 86
+    4300948: Stock Short 92
+    4300950: Barrel Carbine 92
+    4300952: Barrel Maresleg 92
+    4300954: Sight Buckhorn 92
+    4300956: Barrel Rifle 92
+    4300958: Stock Full 92
+    4300960: Bolt
+    4300962: Trigger 92
+    4300964: Bolt 95
+    4300966: Trigger 95
+    4300968: Hammer 95
+    4300970: Locking Lug 95
+    4300972: Sight Buckhorn 95
+    4300974: Stock Full 95
+    4300976: Stock Full 87
+    4300978: Barrel Musket 73
+    4300980: Sight Buckhorn 73
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory
+    second: {fileID: 2100000, guid: 5bff2d75d4013a545babf7207f4b28df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BaseMetal
+    second: {fileID: 2100000, guid: fb4dc082983c5ee4bbb2349c3fd108bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BodyMetal
+    second: {fileID: 2100000, guid: e7239f8d95a66c44389b6030a0ee83b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DetailMetal
+    second: {fileID: 2100000, guid: 16fe0f612d25f214d91714f993296756, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Goldenboy
+    second: {fileID: 2100000, guid: dd76ddfbb7de5be4489ea69e222b81ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lenses
+    second: {fileID: 2100000, guid: a553ab9f364f9ff4b8768d84094d0e8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 9dab5a7a80142ad4bbcc6c1d0a41f1e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: 9f35ffee1f3cde946bd028979a278596, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

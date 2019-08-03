@@ -1,0 +1,485 @@
+fileFormatVersion: 2
+guid: 45b511d4d1d673343902faa7a0d0d46c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: AerodynamicHead
+    100002: AxeHeadLarge
+    100004: BallPeenHead
+    100006: BasicHandle
+    100008: Capsule002
+    100010: Capsule002.001
+    100012: ClawHammer.001
+    100014: CrowHandle
+    100016: CrowHook
+    100018: CurveHandle
+    100020: Handle
+    100022: //RootNode
+    100024: HatchetHead
+    100026: Head
+    100028: HeavyWrench01_Length
+    100030: HeavyWrench01_Wheel
+    100032: MidHandle
+    100034: MorningstarHead
+    100036: OrnateHandle
+    100038: pickaxe
+    100040: Spikes
+    100042: TacHandle
+    100044: Throwing Handle
+    100046: ThrowingHead
+    100048: WrenchHandle
+    100050: WrenchHead
+    100052: AerodynamicHandle
+    100054: ClawHammerHead
+    100056: TonfaHandle
+    100058: TonfaHead
+    100060: Cube_Cube_Material.002
+    100062: grip
+    100064: Handle Aerodynamic
+    100066: Handle Basic
+    100068: Handle Curved
+    100070: Handle Gripped
+    100072: Handle Long
+    100074: Handle Modern
+    100076: Handle Prybar
+    100078: Handle Tonfa
+    100080: Head Axe Bearded
+    100082: Head BlacksmithHammer
+    100084: Head Clawhammer
+    100086: Head Hatchet
+    100088: Head Hybrid Blunt-Pierce
+    100090: Head Hybrid Blunt-Slash
+    100092: Head Hybrid Slash-Pierce
+    100094: Head Pickaxe
+    100096: Head Spiked
+    100098: Head Tonfa
+    100100: Spikes_low_Plane.004
+    100102: Top_spike_low_Plane.003
+    100104: Handle Basic Short
+    100106: Handle Basic Short.001
+    100108: Handle Curved Long
+    100110: Handle Curved Short
+    100112: Handle Gripped Long
+    100114: Handle Gripped Standard
+    100116: Handle Modern Curved
+    100118: Handle Modern Straight
+    100120: Handle Basic Long
+    100122: Handle Gripped Short
+    100124: grip.001
+    100126: Handle Metallic Curved
+    100128: Handle Metallic Straight
+    100130: Handle Metallic Gripped
+    100132: Handle Metallic Long
+    100134: Handle Wood Gripped
+    100136: Head Shovel
+    100138: Base Axe
+    100140: Base Crowbar
+    100142: Base Hammer
+    100144: Base Hybrid
+    100146: Base Tonfa
+    100148: Handle Wood Curved
+    100150: Head Blacksmith
+    100152: Base Shovel
+    100154: Base Utility
+    400000: AerodynamicHead
+    400002: AxeHeadLarge
+    400004: BallPeenHead
+    400006: BasicHandle
+    400008: Capsule002
+    400010: Capsule002.001
+    400012: ClawHammer.001
+    400014: CrowHandle
+    400016: CrowHook
+    400018: CurveHandle
+    400020: Handle
+    400022: //RootNode
+    400024: HatchetHead
+    400026: Head
+    400028: HeavyWrench01_Length
+    400030: HeavyWrench01_Wheel
+    400032: MidHandle
+    400034: MorningstarHead
+    400036: OrnateHandle
+    400038: pickaxe
+    400040: Spikes
+    400042: TacHandle
+    400044: Throwing Handle
+    400046: ThrowingHead
+    400048: WrenchHandle
+    400050: WrenchHead
+    400052: AerodynamicHandle
+    400054: ClawHammerHead
+    400056: TonfaHandle
+    400058: TonfaHead
+    400060: Cube_Cube_Material.002
+    400062: grip
+    400064: Handle Aerodynamic
+    400066: Handle Basic
+    400068: Handle Curved
+    400070: Handle Gripped
+    400072: Handle Long
+    400074: Handle Modern
+    400076: Handle Prybar
+    400078: Handle Tonfa
+    400080: Head Axe Bearded
+    400082: Head BlacksmithHammer
+    400084: Head Clawhammer
+    400086: Head Hatchet
+    400088: Head Hybrid Blunt-Pierce
+    400090: Head Hybrid Blunt-Slash
+    400092: Head Hybrid Slash-Pierce
+    400094: Head Pickaxe
+    400096: Head Spiked
+    400098: Head Tonfa
+    400100: Spikes_low_Plane.004
+    400102: Top_spike_low_Plane.003
+    400104: Handle Basic Short
+    400106: Handle Basic Short.001
+    400108: Handle Curved Long
+    400110: Handle Curved Short
+    400112: Handle Gripped Long
+    400114: Handle Gripped Standard
+    400116: Handle Modern Curved
+    400118: Handle Modern Straight
+    400120: Handle Basic Long
+    400122: Handle Gripped Short
+    400124: grip.001
+    400126: Handle Metallic Curved
+    400128: Handle Metallic Straight
+    400130: Handle Metallic Gripped
+    400132: Handle Metallic Long
+    400134: Handle Wood Gripped
+    400136: Head Shovel
+    400138: Base Axe
+    400140: Base Crowbar
+    400142: Base Hammer
+    400144: Base Hybrid
+    400146: Base Tonfa
+    400148: Handle Wood Curved
+    400150: Head Blacksmith
+    400152: Base Shovel
+    400154: Base Utility
+    2100000: BaseMetal
+    2100002: DetailMetal
+    2100004: Polymer
+    2100006: HandleWood
+    2300000: AerodynamicHead
+    2300002: AxeHeadLarge
+    2300004: BallPeenHead
+    2300006: BasicHandle
+    2300008: Capsule002
+    2300010: Capsule002.001
+    2300012: ClawHammer.001
+    2300014: CrowHandle
+    2300016: CrowHook
+    2300018: CurveHandle
+    2300020: HatchetHead
+    2300022: HeavyWrench01_Length
+    2300024: HeavyWrench01_Wheel
+    2300026: MidHandle
+    2300028: MorningstarHead
+    2300030: OrnateHandle
+    2300032: pickaxe
+    2300034: Spikes
+    2300036: TacHandle
+    2300038: Throwing Handle
+    2300040: ThrowingHead
+    2300042: WrenchHandle
+    2300044: WrenchHead
+    2300046: AerodynamicHandle
+    2300048: ClawHammerHead
+    2300050: TonfaHandle
+    2300052: TonfaHead
+    2300054: Cube_Cube_Material.002
+    2300056: grip
+    2300058: Handle Aerodynamic
+    2300060: Handle Basic
+    2300062: Handle Curved
+    2300064: Handle Gripped
+    2300066: Handle Long
+    2300068: Handle Modern
+    2300070: Handle Prybar
+    2300072: Handle Tonfa
+    2300074: Head Axe Bearded
+    2300076: Head BlacksmithHammer
+    2300078: Head Clawhammer
+    2300080: Head Hatchet
+    2300082: Head Hybrid Blunt-Pierce
+    2300084: Head Hybrid Blunt-Slash
+    2300086: Head Hybrid Slash-Pierce
+    2300088: Head Pickaxe
+    2300090: Head Spiked
+    2300092: Head Tonfa
+    2300094: Spikes_low_Plane.004
+    2300096: Top_spike_low_Plane.003
+    2300098: Handle Basic Short
+    2300100: Handle Basic Short.001
+    2300102: Handle Curved Long
+    2300104: Handle Curved Short
+    2300106: Handle Gripped Long
+    2300108: Handle Gripped Standard
+    2300110: Handle Modern Curved
+    2300112: Handle Modern Straight
+    2300114: Handle Basic Long
+    2300116: Handle Gripped Short
+    2300118: grip.001
+    2300120: Handle Metallic Curved
+    2300122: Handle Metallic Straight
+    2300124: Handle Metallic Gripped
+    2300126: Handle Metallic Long
+    2300128: Handle Wood Gripped
+    2300130: Head Shovel
+    2300132: Base Crowbar
+    2300134: Base Tonfa
+    2300136: Handle Wood Curved
+    2300138: Head Blacksmith
+    2300140: Base Shovel
+    3300000: AerodynamicHead
+    3300002: AxeHeadLarge
+    3300004: BallPeenHead
+    3300006: BasicHandle
+    3300008: Capsule002
+    3300010: Capsule002.001
+    3300012: ClawHammer.001
+    3300014: CrowHandle
+    3300016: CrowHook
+    3300018: CurveHandle
+    3300020: HatchetHead
+    3300022: HeavyWrench01_Length
+    3300024: HeavyWrench01_Wheel
+    3300026: MidHandle
+    3300028: MorningstarHead
+    3300030: OrnateHandle
+    3300032: pickaxe
+    3300034: Spikes
+    3300036: TacHandle
+    3300038: Throwing Handle
+    3300040: ThrowingHead
+    3300042: WrenchHandle
+    3300044: WrenchHead
+    3300046: AerodynamicHandle
+    3300048: ClawHammerHead
+    3300050: TonfaHandle
+    3300052: TonfaHead
+    3300054: Cube_Cube_Material.002
+    3300056: grip
+    3300058: Handle Aerodynamic
+    3300060: Handle Basic
+    3300062: Handle Curved
+    3300064: Handle Gripped
+    3300066: Handle Long
+    3300068: Handle Modern
+    3300070: Handle Prybar
+    3300072: Handle Tonfa
+    3300074: Head Axe Bearded
+    3300076: Head BlacksmithHammer
+    3300078: Head Clawhammer
+    3300080: Head Hatchet
+    3300082: Head Hybrid Blunt-Pierce
+    3300084: Head Hybrid Blunt-Slash
+    3300086: Head Hybrid Slash-Pierce
+    3300088: Head Pickaxe
+    3300090: Head Spiked
+    3300092: Head Tonfa
+    3300094: Spikes_low_Plane.004
+    3300096: Top_spike_low_Plane.003
+    3300098: Handle Basic Short
+    3300100: Handle Basic Short.001
+    3300102: Handle Curved Long
+    3300104: Handle Curved Short
+    3300106: Handle Gripped Long
+    3300108: Handle Gripped Standard
+    3300110: Handle Modern Curved
+    3300112: Handle Modern Straight
+    3300114: Handle Basic Long
+    3300116: Handle Gripped Short
+    3300118: grip.001
+    3300120: Handle Metallic Curved
+    3300122: Handle Metallic Straight
+    3300124: Handle Metallic Gripped
+    3300126: Handle Metallic Long
+    3300128: Handle Wood Gripped
+    3300130: Head Shovel
+    3300132: Base Crowbar
+    3300134: Base Tonfa
+    3300136: Handle Wood Curved
+    3300138: Head Blacksmith
+    3300140: Base Shovel
+    4300000: pickaxe
+    4300002: CrowHook
+    4300004: BallPeenHead
+    4300006: HatchetHead
+    4300008: ThrowingHead
+    4300010: WrenchHead
+    4300012: HeavyWrench01_Length
+    4300014: HeavyWrench01_Wheel
+    4300016: Capsule002.001
+    4300018: ClawHammer.001
+    4300020: AerodynamicHead
+    4300022: MorningstarHead
+    4300024: Spikes
+    4300026: AxeHeadLarge
+    4300028: CrowHandle
+    4300030: BasicHandle
+    4300032: MidHandle
+    4300034: CurveHandle
+    4300036: Throwing Handle
+    4300038: WrenchHandle
+    4300040: Capsule002
+    4300042: TacHandle
+    4300044: OrnateHandle
+    4300046: TonfaHead
+    4300048: ClawHammerHead
+    4300050: AerodynamicHandle
+    4300052: TonfaHandle
+    4300054: Head BlacksmithHammer
+    4300056: Handle Basic
+    4300058: Handle Prybar
+    4300060: Head Hybrid Blunt-Slash
+    4300062: Head Hybrid Blunt-Pierce
+    4300064: Cube_Cube_Material.002
+    4300066: Head Clawhammer
+    4300068: Handle Gripped
+    4300070: grip
+    4300072: Head Spiked
+    4300074: Top_spike_low_Plane.003
+    4300076: Spikes_low_Plane.004
+    4300078: Handle Long
+    4300080: Handle Modern
+    4300082: Handle Tonfa
+    4300084: Handle Aerodynamic
+    4300086: Handle Curved
+    4300088: Head Axe Bearded
+    4300090: Head Hybrid Slash-Pierce
+    4300092: Head Tonfa
+    4300094: Head Hatchet
+    4300096: Head Pickaxe
+    4300098: Handle Basic Short.001
+    4300100: Handle Curved Short
+    4300102: Handle Basic Short
+    4300104: Handle Gripped Standard
+    4300106: Handle Gripped Long
+    4300108: Handle Modern Straight
+    4300110: Handle Modern Curved
+    4300112: Handle Curved Long
+    4300114: Handle Basic Long
+    4300116: Handle Gripped Short
+    4300118: grip.001
+    4300120: Handle Metallic Straight
+    4300122: Handle Metallic Curved
+    4300124: Handle Metallic Long
+    4300126: Head Shovel
+    4300128: Handle Wood Gripped
+    4300130: Handle Metallic Gripped
+    4300132: Base Crowbar
+    4300134: Head Blacksmith
+    4300136: Handle Wood Curved
+    4300138: Base Tonfa
+    4300140: Base Shovel
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BaseMetal
+    second: {fileID: 2100000, guid: dee2d62d251d43c40ba9895f2f1f6c27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DetailMetal
+    second: {fileID: 2100000, guid: 944553ea47ed49a4cb8bd1a109cea329, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HandleWood
+    second: {fileID: 2100000, guid: 70f887a2ae0856b47a05cfa1a13a184a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: f9833b8fc42796f4f8903856a43535a2, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

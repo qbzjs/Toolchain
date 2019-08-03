@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 83249d62f0239c6408d2e872e1d86153
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Brace_Angle
+    100002: Brace_Linear
+    100004: Handrail_Angle
+    100006: Handrail_Double
+    100008: Handrail_Post
+    100010: Handrail_Singular
+    100012: //RootNode
+    100014: Platform
+    100016: Stair
+    100018: Stair_Connector_Bottom
+    100020: Stair_Connector_Top
+    100022: Brace_Cross
+    100024: Brace_T
+    400000: Brace_Angle
+    400002: Brace_Linear
+    400004: Handrail_Angle
+    400006: Handrail_Double
+    400008: Handrail_Post
+    400010: Handrail_Singular
+    400012: //RootNode
+    400014: Platform
+    400016: Stair
+    400018: Stair_Connector_Bottom
+    400020: Stair_Connector_Top
+    400022: Brace_Cross
+    400024: Brace_T
+    2100000: Material__20
+    2300000: Brace_Angle
+    2300002: Brace_Linear
+    2300004: Handrail_Angle
+    2300006: Handrail_Double
+    2300008: Handrail_Post
+    2300010: Handrail_Singular
+    2300012: Platform
+    2300014: Stair
+    2300016: Stair_Connector_Bottom
+    2300018: Stair_Connector_Top
+    2300020: Brace_Cross
+    2300022: Brace_T
+    3300000: Brace_Angle
+    3300002: Brace_Linear
+    3300004: Handrail_Angle
+    3300006: Handrail_Double
+    3300008: Handrail_Post
+    3300010: Handrail_Singular
+    3300012: Platform
+    3300014: Stair
+    3300016: Stair_Connector_Bottom
+    3300018: Stair_Connector_Top
+    3300020: Brace_Cross
+    3300022: Brace_T
+    4300000: Handrail_Double
+    4300002: Handrail_Singular
+    4300004: Brace_Linear
+    4300006: Handrail_Post
+    4300008: Handrail_Angle
+    4300010: Platform
+    4300012: Stair
+    4300014: Brace_Angle
+    4300016: Stair_Connector_Bottom
+    4300018: Stair_Connector_Top
+    4300020: Brace_Cross
+    4300022: Brace_T
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

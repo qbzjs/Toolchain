@@ -1,0 +1,912 @@
+fileFormatVersion: 2
+guid: 0faa1d72901001c4bb700919c33683bf
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 'Axe '
+    100002: Axe Pistolcal
+    100004: Axe Shotty
+    100006: Barrel Short
+    100008: Barrel Standard
+    100010: Barrel Standard Bren
+    100012: Barrel Standard Bren.001
+    100014: Barrel_ARblade_Long
+    100016: Barrel_ARblade_Short
+    100018: Barrel_ARblade_Shotgun
+    100020: Base Bren
+    100022: Base Gunblade
+    100024: Base MG15
+    100026: Bipod Bren
+    100028: Bipod Down
+    100030: Bipod Down.001
+    100032: BipodBase
+    100034: BipodClosed
+    100036: BipodMountLong
+    100038: BipodMountShort
+    100040: BipodOpen
+    100042: Blade
+    100044: Blade Pistolcal
+    100046: Blade Shotty
+    100048: Body.003
+    100050: Bolt Enclosure
+    100052: Bolt Large
+    100054: Bolt Small
+    100056: Charging Handle Bren
+    100058: Charging Handle MG15
+    100060: Charging Handle.001
+    100062: d_l
+    100064: d_l.001
+    100066: d_r
+    100068: d_r.001
+    100070: Dustcover Bren
+    100072: Dustcover Kalashnikov
+    100074: Dustcover Stanag
+    100076: Foregrip.001
+    100078: Front Sight Mount
+    100080: Front Sight Mount.001
+    100082: Grip Base
+    100084: Mace Pistolcal
+    100086: Mace Riflecal
+    100088: Mace Shotty
+    100090: Mag_20_AR
+    100092: Mag_30_AK_5.45
+    100094: Mag_30_AK_7.62
+    100096: Mag_30_AR
+    100098: Mag_30_Bren
+    100100: Mag_45_MG15
+    100102: Mag_75_MG15
+    100104: Mag_Gblade_Large
+    100106: Mag_Gblade_Small
+    100108: Rails
+    100110: Rails.001
+    100112: Rear Sight Mount
+    100114: Receiver Bren
+    100116: Receiver MG15
+    100118: Scope Housing
+    100120: Shroud
+    100122: Shroud Short
+    100124: Sight Front
+    100126: Sight Front.001
+    100128: Sight Front.002
+    100130: Sight Front.003
+    100132: Sight Rear
+    100134: Sight Rear Bren
+    100136: Sight Scope
+    100138: Stock Adjustable Modern
+    100140: Stock Duelist
+    100142: Stock Modern
+    100144: Stock Modern MG15
+    100146: Stock Standard
+    100148: Stock Standard MG15
+    100150: Stock Swashbuckler
+    100152: Stock.001
+    100154: StockAdjust.000
+    100156: StockBase
+    100158: StockBase.001
+    100160: StockBaseExtended
+    100162: StockBaseExtended.003
+    100164: StockBaseRetracted
+    100166: StockBaseRetracted.003
+    100168: //RootNode
+    100170: Trigger
+    100172: Trigger Bren
+    100174: Trigger.004
+    100176: TriggerRingDuelist
+    100178: Barrel Short Bren
+    100180: Frame Large
+    100182: Frame Small
+    100184: Barrel Furniture Long
+    100186: Barrel Furniture Standard
+    100188: Barrel Long DP28
+    100190: Barrel Standard DP28
+    100192: Base DP28
+    100194: Bipod Base
+    100196: Chargehandle
+    100198: Legs Down
+    100200: Legs Up
+    100202: Mag Top
+    100204: Mag_47_DP28
+    100206: Mag_50_MG15
+    100208: Piston
+    100210: Piston Long
+    100212: Rails.002
+    100214: Receiver
+    100216: Shroud Long DP28
+    100218: Shroud Standard DP28
+    100220: Sight Base
+    100222: Sight Front Long
+    100224: Sight Front Standard
+    100226: Sight Tang
+    100228: Stock Classic DP28
+    100230: Stock Modern DP28
+    100232: Trigger DP28
+    100234: Barrel Compact
+    100236: Barrel Long
+    100238: Barrel Standard.001
+    100240: Base Owen
+    100242: Foregrip
+    100244: Furniture Classic
+    100246: Furniture Modern
+    100248: Mag_20_Folded
+    100250: Mag_33_Owen_Stick
+    100252: Mag_50_Owen_Drum
+    100254: Rails.003
+    100256: Receiver Owen
+    100258: Stock Classic
+    100260: Stock Classic Owen
+    100262: Stock Wire
+    100264: Trigger Housing
+    100266: Trigger.001
+    100268: Axe Riflecal
+    100270: Blade Riflecal
+    100272: Dustcover Classic
+    100274: Mag_20_Bren
+    100276: Mag_20_7.92
+    100278: Mag_30_.303
+    100280: Foregrip Chatelleraut
+    100282: Rail Bottom
+    100284: Rail Side
+    100286: Rail Sight
+    100288: Stock Cap MG15
+    100290: Barrel Short ZB26
+    100292: Barrel Standard ZB26
+    100294: Base ZB26
+    100296: Bipod Up
+    100298: CarryHandle ZB26
+    100300: Mag_30_7.92
+    100302: Receiver ZB26
+    100304: Sight Rear Classic
+    100306: Mag_20_30-06_ZB26
+    100308: Mag_30_30-06_ZB26
+    100310: Mag_AR_loader
+    100312: Mag_Classic_Loader
+    100314: Mag_Drum_AR
+    100316: Mag_Drum_ZB26
+    400000: 'Axe '
+    400002: Axe Pistolcal
+    400004: Axe Shotty
+    400006: Barrel Short
+    400008: Barrel Standard
+    400010: Barrel Standard Bren
+    400012: Barrel Standard Bren.001
+    400014: Barrel_ARblade_Long
+    400016: Barrel_ARblade_Short
+    400018: Barrel_ARblade_Shotgun
+    400020: Base Bren
+    400022: Base Gunblade
+    400024: Base MG15
+    400026: Bipod Bren
+    400028: Bipod Down
+    400030: Bipod Down.001
+    400032: BipodBase
+    400034: BipodClosed
+    400036: BipodMountLong
+    400038: BipodMountShort
+    400040: BipodOpen
+    400042: Blade
+    400044: Blade Pistolcal
+    400046: Blade Shotty
+    400048: Body.003
+    400050: Bolt Enclosure
+    400052: Bolt Large
+    400054: Bolt Small
+    400056: Charging Handle Bren
+    400058: Charging Handle MG15
+    400060: Charging Handle.001
+    400062: d_l
+    400064: d_l.001
+    400066: d_r
+    400068: d_r.001
+    400070: Dustcover Bren
+    400072: Dustcover Kalashnikov
+    400074: Dustcover Stanag
+    400076: Foregrip.001
+    400078: Front Sight Mount
+    400080: Front Sight Mount.001
+    400082: Grip Base
+    400084: Mace Pistolcal
+    400086: Mace Riflecal
+    400088: Mace Shotty
+    400090: Mag_20_AR
+    400092: Mag_30_AK_5.45
+    400094: Mag_30_AK_7.62
+    400096: Mag_30_AR
+    400098: Mag_30_Bren
+    400100: Mag_45_MG15
+    400102: Mag_75_MG15
+    400104: Mag_Gblade_Large
+    400106: Mag_Gblade_Small
+    400108: Rails
+    400110: Rails.001
+    400112: Rear Sight Mount
+    400114: Receiver Bren
+    400116: Receiver MG15
+    400118: Scope Housing
+    400120: Shroud
+    400122: Shroud Short
+    400124: Sight Front
+    400126: Sight Front.001
+    400128: Sight Front.002
+    400130: Sight Front.003
+    400132: Sight Rear
+    400134: Sight Rear Bren
+    400136: Sight Scope
+    400138: Stock Adjustable Modern
+    400140: Stock Duelist
+    400142: Stock Modern
+    400144: Stock Modern MG15
+    400146: Stock Standard
+    400148: Stock Standard MG15
+    400150: Stock Swashbuckler
+    400152: Stock.001
+    400154: StockAdjust.000
+    400156: StockBase
+    400158: StockBase.001
+    400160: StockBaseExtended
+    400162: StockBaseExtended.003
+    400164: StockBaseRetracted
+    400166: StockBaseRetracted.003
+    400168: //RootNode
+    400170: Trigger
+    400172: Trigger Bren
+    400174: Trigger.004
+    400176: TriggerRingDuelist
+    400178: Barrel Short Bren
+    400180: Frame Large
+    400182: Frame Small
+    400184: Barrel Furniture Long
+    400186: Barrel Furniture Standard
+    400188: Barrel Long DP28
+    400190: Barrel Standard DP28
+    400192: Base DP28
+    400194: Bipod Base
+    400196: Chargehandle
+    400198: Legs Down
+    400200: Legs Up
+    400202: Mag Top
+    400204: Mag_47_DP28
+    400206: Mag_50_MG15
+    400208: Piston
+    400210: Piston Long
+    400212: Rails.002
+    400214: Receiver
+    400216: Shroud Long DP28
+    400218: Shroud Standard DP28
+    400220: Sight Base
+    400222: Sight Front Long
+    400224: Sight Front Standard
+    400226: Sight Tang
+    400228: Stock Classic DP28
+    400230: Stock Modern DP28
+    400232: Trigger DP28
+    400234: Barrel Compact
+    400236: Barrel Long
+    400238: Barrel Standard.001
+    400240: Base Owen
+    400242: Foregrip
+    400244: Furniture Classic
+    400246: Furniture Modern
+    400248: Mag_20_Folded
+    400250: Mag_33_Owen_Stick
+    400252: Mag_50_Owen_Drum
+    400254: Rails.003
+    400256: Receiver Owen
+    400258: Stock Classic
+    400260: Stock Classic Owen
+    400262: Stock Wire
+    400264: Trigger Housing
+    400266: Trigger.001
+    400268: Axe Riflecal
+    400270: Blade Riflecal
+    400272: Dustcover Classic
+    400274: Mag_20_Bren
+    400276: Mag_20_7.92
+    400278: Mag_30_.303
+    400280: Foregrip Chatelleraut
+    400282: Rail Bottom
+    400284: Rail Side
+    400286: Rail Sight
+    400288: Stock Cap MG15
+    400290: Barrel Short ZB26
+    400292: Barrel Standard ZB26
+    400294: Base ZB26
+    400296: Bipod Up
+    400298: CarryHandle ZB26
+    400300: Mag_30_7.92
+    400302: Receiver ZB26
+    400304: Sight Rear Classic
+    400306: Mag_20_30-06_ZB26
+    400308: Mag_30_30-06_ZB26
+    400310: Mag_AR_loader
+    400312: Mag_Classic_Loader
+    400314: Mag_Drum_AR
+    400316: Mag_Drum_ZB26
+    2100000: Polymer
+    2100002: GunMetal
+    2100004: Wood
+    2100006: SwordMetal
+    2100008: Magazine
+    2100010: Lens
+    2300000: 'Axe '
+    2300002: Axe Pistolcal
+    2300004: Axe Shotty
+    2300006: Barrel Short
+    2300008: Barrel Standard
+    2300010: Barrel Standard Bren
+    2300012: Barrel Standard Bren.001
+    2300014: Barrel_ARblade_Long
+    2300016: Barrel_ARblade_Short
+    2300018: Barrel_ARblade_Shotgun
+    2300020: Bipod Bren
+    2300022: Bipod Down
+    2300024: Bipod Down.001
+    2300026: BipodBase
+    2300028: BipodClosed
+    2300030: BipodMountLong
+    2300032: BipodMountShort
+    2300034: BipodOpen
+    2300036: Blade
+    2300038: Blade Pistolcal
+    2300040: Blade Shotty
+    2300042: Body.003
+    2300044: Bolt Enclosure
+    2300046: Bolt Large
+    2300048: Bolt Small
+    2300050: Charging Handle Bren
+    2300052: Charging Handle MG15
+    2300054: Charging Handle.001
+    2300056: d_l
+    2300058: d_l.001
+    2300060: d_r
+    2300062: d_r.001
+    2300064: Dustcover Bren
+    2300066: Dustcover Kalashnikov
+    2300068: Dustcover Stanag
+    2300070: Foregrip.001
+    2300072: Front Sight Mount
+    2300074: Front Sight Mount.001
+    2300076: Grip Base
+    2300078: Mace Pistolcal
+    2300080: Mace Riflecal
+    2300082: Mace Shotty
+    2300084: Mag_20_AR
+    2300086: Mag_30_AK_5.45
+    2300088: Mag_30_AK_7.62
+    2300090: Mag_30_AR
+    2300092: Mag_30_Bren
+    2300094: Mag_45_MG15
+    2300096: Mag_75_MG15
+    2300098: Mag_Gblade_Large
+    2300100: Mag_Gblade_Small
+    2300102: Rails
+    2300104: Rails.001
+    2300106: Rear Sight Mount
+    2300108: Receiver Bren
+    2300110: Receiver MG15
+    2300112: Scope Housing
+    2300114: Shroud
+    2300116: Shroud Short
+    2300118: Sight Front
+    2300120: Sight Front.001
+    2300122: Sight Front.002
+    2300124: Sight Front.003
+    2300126: Sight Rear
+    2300128: Sight Rear Bren
+    2300130: Sight Scope
+    2300132: Stock Adjustable Modern
+    2300134: Stock Duelist
+    2300136: Stock Modern
+    2300138: Stock Modern MG15
+    2300140: Stock Standard
+    2300142: Stock Standard MG15
+    2300144: Stock Swashbuckler
+    2300146: Stock.001
+    2300148: StockAdjust.000
+    2300150: StockBase
+    2300152: StockBase.001
+    2300154: StockBaseExtended
+    2300156: StockBaseExtended.003
+    2300158: StockBaseRetracted
+    2300160: StockBaseRetracted.003
+    2300162: Trigger
+    2300164: Trigger Bren
+    2300166: Trigger.004
+    2300168: TriggerRingDuelist
+    2300170: Barrel Short Bren
+    2300172: Frame Large
+    2300174: Frame Small
+    2300176: Barrel Furniture Long
+    2300178: Barrel Furniture Standard
+    2300180: Barrel Long DP28
+    2300182: Barrel Standard DP28
+    2300184: Bipod Base
+    2300186: Chargehandle
+    2300188: Legs Down
+    2300190: Legs Up
+    2300192: Mag Top
+    2300194: Mag_47_DP28
+    2300196: Mag_50_MG15
+    2300198: Piston
+    2300200: Piston Long
+    2300202: Rails.002
+    2300204: Receiver
+    2300206: Shroud Long DP28
+    2300208: Shroud Standard DP28
+    2300210: Sight Base
+    2300212: Sight Front Long
+    2300214: Sight Front Standard
+    2300216: Sight Tang
+    2300218: Stock Classic DP28
+    2300220: Stock Modern DP28
+    2300222: Trigger DP28
+    2300224: Barrel Compact
+    2300226: Barrel Long
+    2300228: Barrel Standard.001
+    2300230: Foregrip
+    2300232: Furniture Classic
+    2300234: Furniture Modern
+    2300236: Mag_20_Folded
+    2300238: Mag_33_Owen_Stick
+    2300240: Mag_50_Owen_Drum
+    2300242: Rails.003
+    2300244: Receiver Owen
+    2300246: Stock Classic
+    2300248: Stock Classic Owen
+    2300250: Stock Wire
+    2300252: Trigger Housing
+    2300254: Trigger.001
+    2300256: Axe Riflecal
+    2300258: Blade Riflecal
+    2300260: Dustcover Classic
+    2300262: Mag_20_Bren
+    2300264: Mag_20_7.92
+    2300266: Mag_30_.303
+    2300268: Foregrip Chatelleraut
+    2300270: Rail Bottom
+    2300272: Rail Side
+    2300274: Rail Sight
+    2300276: Stock Cap MG15
+    2300278: Barrel Short ZB26
+    2300280: Barrel Standard ZB26
+    2300282: Bipod Up
+    2300284: CarryHandle ZB26
+    2300286: Mag_30_7.92
+    2300288: Receiver ZB26
+    2300290: Sight Rear Classic
+    2300292: Mag_20_30-06_ZB26
+    2300294: Mag_30_30-06_ZB26
+    2300296: Mag_AR_loader
+    2300298: Mag_Classic_Loader
+    2300300: Mag_Drum_AR
+    2300302: Mag_Drum_ZB26
+    3300000: 'Axe '
+    3300002: Axe Pistolcal
+    3300004: Axe Shotty
+    3300006: Barrel Short
+    3300008: Barrel Standard
+    3300010: Barrel Standard Bren
+    3300012: Barrel Standard Bren.001
+    3300014: Barrel_ARblade_Long
+    3300016: Barrel_ARblade_Short
+    3300018: Barrel_ARblade_Shotgun
+    3300020: Bipod Bren
+    3300022: Bipod Down
+    3300024: Bipod Down.001
+    3300026: BipodBase
+    3300028: BipodClosed
+    3300030: BipodMountLong
+    3300032: BipodMountShort
+    3300034: BipodOpen
+    3300036: Blade
+    3300038: Blade Pistolcal
+    3300040: Blade Shotty
+    3300042: Body.003
+    3300044: Bolt Enclosure
+    3300046: Bolt Large
+    3300048: Bolt Small
+    3300050: Charging Handle Bren
+    3300052: Charging Handle MG15
+    3300054: Charging Handle.001
+    3300056: d_l
+    3300058: d_l.001
+    3300060: d_r
+    3300062: d_r.001
+    3300064: Dustcover Bren
+    3300066: Dustcover Kalashnikov
+    3300068: Dustcover Stanag
+    3300070: Foregrip.001
+    3300072: Front Sight Mount
+    3300074: Front Sight Mount.001
+    3300076: Grip Base
+    3300078: Mace Pistolcal
+    3300080: Mace Riflecal
+    3300082: Mace Shotty
+    3300084: Mag_20_AR
+    3300086: Mag_30_AK_5.45
+    3300088: Mag_30_AK_7.62
+    3300090: Mag_30_AR
+    3300092: Mag_30_Bren
+    3300094: Mag_45_MG15
+    3300096: Mag_75_MG15
+    3300098: Mag_Gblade_Large
+    3300100: Mag_Gblade_Small
+    3300102: Rails
+    3300104: Rails.001
+    3300106: Rear Sight Mount
+    3300108: Receiver Bren
+    3300110: Receiver MG15
+    3300112: Scope Housing
+    3300114: Shroud
+    3300116: Shroud Short
+    3300118: Sight Front
+    3300120: Sight Front.001
+    3300122: Sight Front.002
+    3300124: Sight Front.003
+    3300126: Sight Rear
+    3300128: Sight Rear Bren
+    3300130: Sight Scope
+    3300132: Stock Adjustable Modern
+    3300134: Stock Duelist
+    3300136: Stock Modern
+    3300138: Stock Modern MG15
+    3300140: Stock Standard
+    3300142: Stock Standard MG15
+    3300144: Stock Swashbuckler
+    3300146: Stock.001
+    3300148: StockAdjust.000
+    3300150: StockBase
+    3300152: StockBase.001
+    3300154: StockBaseExtended
+    3300156: StockBaseExtended.003
+    3300158: StockBaseRetracted
+    3300160: StockBaseRetracted.003
+    3300162: Trigger
+    3300164: Trigger Bren
+    3300166: Trigger.004
+    3300168: TriggerRingDuelist
+    3300170: Barrel Short Bren
+    3300172: Frame Large
+    3300174: Frame Small
+    3300176: Barrel Furniture Long
+    3300178: Barrel Furniture Standard
+    3300180: Barrel Long DP28
+    3300182: Barrel Standard DP28
+    3300184: Bipod Base
+    3300186: Chargehandle
+    3300188: Legs Down
+    3300190: Legs Up
+    3300192: Mag Top
+    3300194: Mag_47_DP28
+    3300196: Mag_50_MG15
+    3300198: Piston
+    3300200: Piston Long
+    3300202: Rails.002
+    3300204: Receiver
+    3300206: Shroud Long DP28
+    3300208: Shroud Standard DP28
+    3300210: Sight Base
+    3300212: Sight Front Long
+    3300214: Sight Front Standard
+    3300216: Sight Tang
+    3300218: Stock Classic DP28
+    3300220: Stock Modern DP28
+    3300222: Trigger DP28
+    3300224: Barrel Compact
+    3300226: Barrel Long
+    3300228: Barrel Standard.001
+    3300230: Foregrip
+    3300232: Furniture Classic
+    3300234: Furniture Modern
+    3300236: Mag_20_Folded
+    3300238: Mag_33_Owen_Stick
+    3300240: Mag_50_Owen_Drum
+    3300242: Rails.003
+    3300244: Receiver Owen
+    3300246: Stock Classic
+    3300248: Stock Classic Owen
+    3300250: Stock Wire
+    3300252: Trigger Housing
+    3300254: Trigger.001
+    3300256: Axe Riflecal
+    3300258: Blade Riflecal
+    3300260: Dustcover Classic
+    3300262: Mag_20_Bren
+    3300264: Mag_20_7.92
+    3300266: Mag_30_.303
+    3300268: Foregrip Chatelleraut
+    3300270: Rail Bottom
+    3300272: Rail Side
+    3300274: Rail Sight
+    3300276: Stock Cap MG15
+    3300278: Barrel Short ZB26
+    3300280: Barrel Standard ZB26
+    3300282: Bipod Up
+    3300284: CarryHandle ZB26
+    3300286: Mag_30_7.92
+    3300288: Receiver ZB26
+    3300290: Sight Rear Classic
+    3300292: Mag_20_30-06_ZB26
+    3300294: Mag_30_30-06_ZB26
+    3300296: Mag_AR_loader
+    3300298: Mag_Classic_Loader
+    3300300: Mag_Drum_AR
+    3300302: Mag_Drum_ZB26
+    4300000: Rails
+    4300002: Barrel Standard Bren.001
+    4300004: Sight Front.003
+    4300006: Stock Modern
+    4300008: Rails.001
+    4300010: Barrel Short
+    4300012: Shroud Short
+    4300014: BipodMountShort
+    4300016: Front Sight Mount.001
+    4300018: Sight Front.002
+    4300020: Stock Modern MG15
+    4300022: Stock Adjustable Modern
+    4300024: StockAdjust.000
+    4300026: Mag_45_MG15
+    4300028: Stock Standard MG15
+    4300030: Barrel Standard
+    4300032: Front Sight Mount
+    4300034: Sight Front
+    4300036: Shroud
+    4300038: BipodMountLong
+    4300040: Receiver MG15
+    4300042: Rear Sight Mount
+    4300044: Sight Rear
+    4300046: Grip Base
+    4300048: Trigger
+    4300050: Charging Handle MG15
+    4300052: BipodBase
+    4300054: BipodClosed
+    4300056: d_r.001
+    4300058: d_l.001
+    4300060: BipodOpen
+    4300062: d_l
+    4300064: d_r
+    4300066: Mag_75_MG15
+    4300068: Sight Rear Bren
+    4300070: Stock Standard
+    4300072: Barrel Standard Bren
+    4300074: Sight Front.001
+    4300076: Bipod Bren
+    4300078: Bipod Down.001
+    4300080: Bipod Down
+    4300082: Receiver Bren
+    4300084: Dustcover Kalashnikov
+    4300086: Mag_30_AK_7.62
+    4300088: Mag_30_AK_5.45
+    4300090: Dustcover Stanag
+    4300092: Mag_30_AR
+    4300094: Mag_20_AR
+    4300096: Dustcover Bren
+    4300098: Mag_30_Bren
+    4300100: Charging Handle Bren
+    4300102: Trigger Bren
+    4300104: Bolt Enclosure
+    4300106: Bolt Small
+    4300108: Mag_Gblade_Small
+    4300110: Scope Housing
+    4300112: Sight Scope
+    4300114: Stock.001
+    4300116: Stock Duelist
+    4300118: Stock Swashbuckler
+    4300120: Barrel_ARblade_Long
+    4300122: Blade
+    4300124: StockBase
+    4300126: StockBaseRetracted
+    4300128: StockBaseExtended
+    4300130: 'Axe '
+    4300132: Mace Riflecal
+    4300134: Body.003
+    4300136: TriggerRingDuelist
+    4300138: Trigger.004
+    4300140: Charging Handle.001
+    4300142: Bolt Large
+    4300144: Mag_Gblade_Large
+    4300146: Barrel_ARblade_Short
+    4300148: Blade Pistolcal
+    4300150: StockBase.001
+    4300152: StockBaseRetracted.003
+    4300154: StockBaseExtended.003
+    4300156: Axe Pistolcal
+    4300158: Mace Pistolcal
+    4300160: Barrel_ARblade_Shotgun
+    4300162: Foregrip.001
+    4300164: Blade Shotty
+    4300166: Axe Shotty
+    4300168: Mace Shotty
+    4300170: Barrel Short Bren
+    4300172: Frame Small
+    4300174: Frame Large
+    4300176: Stock Modern DP28
+    4300178: Barrel Long DP28
+    4300180: Shroud Long DP28
+    4300182: Piston Long
+    4300184: Barrel Furniture Long
+    4300186: Sight Front Long
+    4300188: Barrel Standard DP28
+    4300190: Shroud Standard DP28
+    4300192: Sight Front Standard
+    4300194: Barrel Furniture Standard
+    4300196: Piston
+    4300198: Bipod Base
+    4300200: Legs Up
+    4300202: Legs Down
+    4300204: Stock Classic DP28
+    4300206: Receiver
+    4300208: Chargehandle
+    4300210: Trigger DP28
+    4300212: Mag_47_DP28
+    4300214: Mag Top
+    4300216: Sight Base
+    4300218: Sight Tang
+    4300220: Rails.002
+    4300222: Mag_50_MG15
+    4300224: Mag_50_Owen_Drum
+    4300226: Mag_20_Folded
+    4300228: Barrel Compact
+    4300230: Stock Wire
+    4300232: Furniture Modern
+    4300234: Rails.003
+    4300236: Barrel Long
+    4300238: Furniture Classic
+    4300240: Foregrip
+    4300242: Stock Classic Owen
+    4300244: Mag_33_Owen_Stick
+    4300246: Receiver Owen
+    4300248: Trigger.001
+    4300250: Trigger Housing
+    4300252: Stock Classic
+    4300254: Barrel Standard.001
+    4300256: Blade Riflecal
+    4300258: Axe Riflecal
+    4300260: Dustcover Classic
+    4300262: Mag_20_Bren
+    4300264: Mag_20_7.92
+    4300266: Mag_30_.303
+    4300268: Foregrip Chatelleraut
+    4300270: Rail Side
+    4300272: Rail Bottom
+    4300274: Rail Sight
+    4300276: Stock Cap MG15
+    4300278: Barrel Standard ZB26
+    4300280: Receiver ZB26
+    4300282: CarryHandle ZB26
+    4300284: Sight Rear Classic
+    4300286: Bipod Up
+    4300288: Mag_30_7.92
+    4300290: Barrel Short ZB26
+    4300292: Mag_AR_loader
+    4300294: Mag_Drum_AR
+    4300296: Mag_Classic_Loader
+    4300298: Mag_20_30-06_ZB26
+    4300300: Mag_30_30-06_ZB26
+    4300302: Mag_Drum_ZB26
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal
+    second: {fileID: 2100000, guid: b2049f85db662f24b90d9f6b66d55f05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal.001
+    second: {fileID: 2100000, guid: 76d615e034fcf7a448822482c52cca10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lens
+    second: {fileID: 2100000, guid: f9afde1e66711e24f909246d42bc6927, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine
+    second: {fileID: 2100000, guid: 694c8dc6decae1540af03b794cf13441, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Magazine.002
+    second: {fileID: 2100000, guid: 0e942d0a838f9a9448e964ea2af30e75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 65efc090b667ad54d8ba8fb500011c49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SwordMetal
+    second: {fileID: 2100000, guid: fa8ecaa0d4f62e244aa601d5cf72e4cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood
+    second: {fileID: 2100000, guid: c9260c221f3aab2468d5140f3f195bbf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

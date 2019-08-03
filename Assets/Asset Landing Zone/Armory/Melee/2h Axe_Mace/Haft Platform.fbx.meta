@@ -1,0 +1,302 @@
+fileFormatVersion: 2
+guid: c939de45215e2c24fa04e3b0a1893c0a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Blade_low
+    100002: Haft Basic
+    100004: Haft Basic Long
+    100006: Haft Heavy
+    100008: Haft Heavy.001
+    100010: Haft Metallic Long
+    100012: Haft Metallic Short
+    100014: //RootNode
+    100016: Haft Wood Curved
+    100018: Haft Wood Curved Long
+    100020: Haft Wood Gripped Long
+    100022: Haft Wood Gripped Short
+    100024: HandleRing_low
+    100026: HandleRing_low.001
+    100028: Head Axe Bearded
+    100030: Head Greataxe
+    100032: Head Hatchet
+    100034: Head Hybrid Blunt-Pierce
+    100036: Head Hybrid Blunt-Slash
+    100038: Head Hybrid Slash-Pierce
+    100040: Head Morningstar
+    100042: Head Pernach
+    100044: Head Pickaxe
+    100046: Head Sledgehammer
+    100048: Shaft_low
+    100050: Shaft_low.001
+    100052: Top_spike_low_Plane.003
+    100054: Haft Heavy Long
+    100056: Head Axe Basic
+    100058: Haft Wood Gripped
+    100060: Base Curved
+    100062: Base Hybrid
+    100064: Base Straight
+    100066: Haft Concave
+    100068: Haft Convex
+    100070: Haft Gripped
+    100072: Haft Metallic
+    100074: Head Spiked
+    100076: Base Heavy
+    100078: Base Utility
+    100080: Haft Heavy Metallic
+    100082: Haft Heavy Wood
+    100084: Base Basic
+    100086: Base Complex
+    100088: Haft Heavy Basic
+    100090: Haft Heavy Hybrid
+    400000: Blade_low
+    400002: Haft Basic
+    400004: Haft Basic Long
+    400006: Haft Heavy
+    400008: Haft Heavy.001
+    400010: Haft Metallic Long
+    400012: Haft Metallic Short
+    400014: //RootNode
+    400016: Haft Wood Curved
+    400018: Haft Wood Curved Long
+    400020: Haft Wood Gripped Long
+    400022: Haft Wood Gripped Short
+    400024: HandleRing_low
+    400026: HandleRing_low.001
+    400028: Head Axe Bearded
+    400030: Head Greataxe
+    400032: Head Hatchet
+    400034: Head Hybrid Blunt-Pierce
+    400036: Head Hybrid Blunt-Slash
+    400038: Head Hybrid Slash-Pierce
+    400040: Head Morningstar
+    400042: Head Pernach
+    400044: Head Pickaxe
+    400046: Head Sledgehammer
+    400048: Shaft_low
+    400050: Shaft_low.001
+    400052: Top_spike_low_Plane.003
+    400054: Haft Heavy Long
+    400056: Head Axe Basic
+    400058: Haft Wood Gripped
+    400060: Base Curved
+    400062: Base Hybrid
+    400064: Base Straight
+    400066: Haft Concave
+    400068: Haft Convex
+    400070: Haft Gripped
+    400072: Haft Metallic
+    400074: Head Spiked
+    400076: Base Heavy
+    400078: Base Utility
+    400080: Haft Heavy Metallic
+    400082: Haft Heavy Wood
+    400084: Base Basic
+    400086: Base Complex
+    400088: Haft Heavy Basic
+    400090: Haft Heavy Hybrid
+    2100000: Grip
+    2100002: Metal1
+    2100004: Metal2
+    2100006: Wood
+    2300000: Blade_low
+    2300002: Haft Basic
+    2300004: Haft Basic Long
+    2300006: Haft Heavy
+    2300008: Haft Heavy.001
+    2300010: Haft Metallic Long
+    2300012: Haft Metallic Short
+    2300014: Haft Wood Curved
+    2300016: Haft Wood Curved Long
+    2300018: Haft Wood Gripped Long
+    2300020: Haft Wood Gripped Short
+    2300022: HandleRing_low
+    2300024: HandleRing_low.001
+    2300026: Head Axe Bearded
+    2300028: Head Greataxe
+    2300030: Head Hatchet
+    2300032: Head Hybrid Blunt-Pierce
+    2300034: Head Hybrid Blunt-Slash
+    2300036: Head Hybrid Slash-Pierce
+    2300038: Head Morningstar
+    2300040: Head Pernach
+    2300042: Head Pickaxe
+    2300044: Head Sledgehammer
+    2300046: Shaft_low
+    2300048: Shaft_low.001
+    2300050: Top_spike_low_Plane.003
+    2300052: Haft Heavy Long
+    2300054: Head Axe Basic
+    2300056: Haft Wood Gripped
+    2300058: Haft Concave
+    2300060: Haft Convex
+    2300062: Haft Gripped
+    2300064: Haft Metallic
+    2300066: Head Spiked
+    2300068: Haft Heavy Metallic
+    2300070: Haft Heavy Wood
+    2300072: Haft Heavy Basic
+    2300074: Haft Heavy Hybrid
+    3300000: Blade_low
+    3300002: Haft Basic
+    3300004: Haft Basic Long
+    3300006: Haft Heavy
+    3300008: Haft Heavy.001
+    3300010: Haft Metallic Long
+    3300012: Haft Metallic Short
+    3300014: Haft Wood Curved
+    3300016: Haft Wood Curved Long
+    3300018: Haft Wood Gripped Long
+    3300020: Haft Wood Gripped Short
+    3300022: HandleRing_low
+    3300024: HandleRing_low.001
+    3300026: Head Axe Bearded
+    3300028: Head Greataxe
+    3300030: Head Hatchet
+    3300032: Head Hybrid Blunt-Pierce
+    3300034: Head Hybrid Blunt-Slash
+    3300036: Head Hybrid Slash-Pierce
+    3300038: Head Morningstar
+    3300040: Head Pernach
+    3300042: Head Pickaxe
+    3300044: Head Sledgehammer
+    3300046: Shaft_low
+    3300048: Shaft_low.001
+    3300050: Top_spike_low_Plane.003
+    3300052: Haft Heavy Long
+    3300054: Head Axe Basic
+    3300056: Haft Wood Gripped
+    3300058: Haft Concave
+    3300060: Haft Convex
+    3300062: Haft Gripped
+    3300064: Haft Metallic
+    3300066: Head Spiked
+    3300068: Haft Heavy Metallic
+    3300070: Haft Heavy Wood
+    3300072: Haft Heavy Basic
+    3300074: Haft Heavy Hybrid
+    4300000: Haft Metallic Long
+    4300002: Shaft_low.001
+    4300004: HandleRing_low.001
+    4300006: Haft Heavy.001
+    4300008: Head Hybrid Slash-Pierce
+    4300010: Head Morningstar
+    4300012: Top_spike_low_Plane.003
+    4300014: Haft Wood Gripped Short
+    4300016: Haft Wood Curved Long
+    4300018: Head Hatchet
+    4300020: Head Axe Bearded
+    4300022: Head Hybrid Blunt-Slash
+    4300024: Haft Basic Long
+    4300026: Head Hybrid Blunt-Pierce
+    4300028: Haft Heavy
+    4300030: Haft Basic
+    4300032: Head Sledgehammer
+    4300034: Head Pernach
+    4300036: Blade_low
+    4300038: Haft Metallic Short
+    4300040: HandleRing_low
+    4300042: Shaft_low
+    4300044: Head Greataxe
+    4300046: Head Pickaxe
+    4300048: Haft Wood Gripped Long
+    4300050: Haft Wood Curved
+    4300052: Haft Heavy Long
+    4300054: Head Axe Basic
+    4300056: Haft Wood Gripped
+    4300058: Head Spiked
+    4300060: Haft Gripped
+    4300062: Haft Convex
+    4300064: Haft Concave
+    4300066: Haft Metallic
+    4300068: Haft Heavy Wood
+    4300070: Haft Heavy Metallic
+    4300072: Haft Heavy Basic
+    4300074: Haft Heavy Hybrid
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

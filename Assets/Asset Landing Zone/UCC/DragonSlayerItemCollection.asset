@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3960382162399091859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Desert Eagle
+  m_EditorClassIdentifier: 
+  m_ID: 2
+  m_CategoryIDs: 00000000
+  m_Description: Can use .357mag
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd29761419510c7469e993b29ea117d8, type: 3}
+  m_Name: DragonSlayerItemCollection
+  m_EditorClassIdentifier: 
+  m_Categories:
+  - m_ID: 451790767
+    m_Name: Items
+  m_ItemTypes:
+  - {fileID: 5694302346885615034}
+  - {fileID: 7108031455733742899}
+  - {fileID: -3960382162399091859}
+  - {fileID: 6933023767811286485}
+  - {fileID: 4350811617079311664}
+  - {fileID: 5653116037040233699}
+  - {fileID: 8399629277727554691}
+  - {fileID: 1888496083275608775}
+--- !u!114 &1888496083275608775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: WeaponBase
+  m_EditorClassIdentifier: 
+  m_ID: 7
+  m_CategoryIDs: 00000000
+  m_Description: Base Item Type to load into Basic Item Setups
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &4350811617079311664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: 9x19mm
+  m_EditorClassIdentifier: 
+  m_ID: 4
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &5653116037040233699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: .45acp
+  m_EditorClassIdentifier: 
+  m_ID: 5
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &5694302346885615034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: HandsFree
+  m_EditorClassIdentifier: 
+  m_ID: 0
+  m_CategoryIDs: 00000000
+  m_Description: Hand to Hand Combat Item
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &6933023767811286485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Sword 1h/2h
+  m_EditorClassIdentifier: 
+  m_ID: 3
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &7108031455733742899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Glock
+  m_EditorClassIdentifier: 
+  m_ID: 1
+  m_CategoryIDs: 00000000
+  m_Description: Can Use 9x19mm or .45acp
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &8399629277727554691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: .357mag
+  m_EditorClassIdentifier: 
+  m_ID: 6
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []

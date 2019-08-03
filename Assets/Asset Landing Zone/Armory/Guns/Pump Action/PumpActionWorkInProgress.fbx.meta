@@ -1,0 +1,523 @@
+fileFormatVersion: 2
+guid: 223c1bac324857741b9b6fc7f7bdb89e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BackTop
+    100002: Barrel Long.002
+    100004: Barrel Masterkey
+    100006: Barrel Short
+    100008: Barrel Short.002
+    100010: Barrel Tactical
+    100012: Barrel Tactical.001
+    100014: Barrel Wingmaster
+    100016: Barrels Long
+    100018: Barrels Mid
+    100020: Barrels Short
+    100022: Base DP12
+    100024: Base Fab
+    100026: Base Remington
+    100028: Body
+    100030: Body DP12
+    100032: Body.001
+    100034: BottomBarrels
+    100036: BottomBarrels.001
+    100038: BottomBarrels.002
+    100040: Ejector
+    100042: Ejector Port
+    100044: Foregrip Poly
+    100046: Foregrip Poly.001
+    100048: Foregrip Wood
+    100050: Integral Parts
+    100052: Integral.001
+    100054: Loading Port
+    100056: MidTop
+    100058: Pump DP12
+    100060: Pump Modern
+    100062: Pump Tactical
+    100064: Pump Wingmaster
+    100066: //RootNode
+    100068: Rail
+    100070: Rail.001
+    100072: Rail.002
+    100074: RailBottom
+    100076: Rails
+    100078: Rails.001
+    100080: Rails.002
+    100082: Rails.003
+    100084: Rails.004
+    100086: Rails.005
+    100088: RailSides
+    100090: Sight Front
+    100092: Sight Front.001
+    100094: Sights
+    100096: Stock
+    100098: Stock Birdclaw
+    100100: Stock Birdclaw.001
+    100102: Stock Poly
+    100104: Stock Poly Extension
+    100106: Stock Poly Extension.001
+    100108: Stock Poly.002
+    100110: Stock Wood
+    100112: Stock Wood.001
+    100114: TopBarrels
+    100116: TopBarrels.001
+    100118: TopBarrels.002
+    100120: Toprail
+    100122: Trigger
+    100124: Trigger.001
+    100126: Trigger.002
+    100128: Barrel Wingmaster.001
+    100130: Barrel Compact
+    100132: Barrel Tactical.000
+    100134: Barrel Tactical.002
+    100136: Pump Classic
+    100138: Base 2Barrel
+    100140: Base Combat
+    100142: Base Semiauto
+    100144: Body Slamfire
+    100146: Body Standard
+    100148: Sight_Front_Hinge
+    100150: Sight_Rear_Hinge
+    100152: Sights.001
+    100154: Barrel Bayonet
+    100156: Barrel Bayonet.001
+    100158: Barrel HiCap
+    100160: Barrel Hicap
+    100162: BayonetMount
+    100164: BayonetMount.001
+    100166: Trigger.003
+    100168: TriggerGuard
+    100170: Barrel HiCap.001
+    400000: BackTop
+    400002: Barrel Long.002
+    400004: Barrel Masterkey
+    400006: Barrel Short
+    400008: Barrel Short.002
+    400010: Barrel Tactical
+    400012: Barrel Tactical.001
+    400014: Barrel Wingmaster
+    400016: Barrels Long
+    400018: Barrels Mid
+    400020: Barrels Short
+    400022: Base DP12
+    400024: Base Fab
+    400026: Base Remington
+    400028: Body
+    400030: Body DP12
+    400032: Body.001
+    400034: BottomBarrels
+    400036: BottomBarrels.001
+    400038: BottomBarrels.002
+    400040: Ejector
+    400042: Ejector Port
+    400044: Foregrip Poly
+    400046: Foregrip Poly.001
+    400048: Foregrip Wood
+    400050: Integral Parts
+    400052: Integral.001
+    400054: Loading Port
+    400056: MidTop
+    400058: Pump DP12
+    400060: Pump Modern
+    400062: Pump Tactical
+    400064: Pump Wingmaster
+    400066: //RootNode
+    400068: Rail
+    400070: Rail.001
+    400072: Rail.002
+    400074: RailBottom
+    400076: Rails
+    400078: Rails.001
+    400080: Rails.002
+    400082: Rails.003
+    400084: Rails.004
+    400086: Rails.005
+    400088: RailSides
+    400090: Sight Front
+    400092: Sight Front.001
+    400094: Sights
+    400096: Stock
+    400098: Stock Birdclaw
+    400100: Stock Birdclaw.001
+    400102: Stock Poly
+    400104: Stock Poly Extension
+    400106: Stock Poly Extension.001
+    400108: Stock Poly.002
+    400110: Stock Wood
+    400112: Stock Wood.001
+    400114: TopBarrels
+    400116: TopBarrels.001
+    400118: TopBarrels.002
+    400120: Toprail
+    400122: Trigger
+    400124: Trigger.001
+    400126: Trigger.002
+    400128: Barrel Wingmaster.001
+    400130: Barrel Compact
+    400132: Barrel Tactical.000
+    400134: Barrel Tactical.002
+    400136: Pump Classic
+    400138: Base 2Barrel
+    400140: Base Combat
+    400142: Base Semiauto
+    400144: Body Slamfire
+    400146: Body Standard
+    400148: Sight_Front_Hinge
+    400150: Sight_Rear_Hinge
+    400152: Sights.001
+    400154: Barrel Bayonet
+    400156: Barrel Bayonet.001
+    400158: Barrel HiCap
+    400160: Barrel Hicap
+    400162: BayonetMount
+    400164: BayonetMount.001
+    400166: Trigger.003
+    400168: TriggerGuard
+    400170: Barrel HiCap.001
+    2100000: Accessory
+    2100002: GunMetal
+    2100004: Stock
+    2300000: BackTop
+    2300002: Barrel Long.002
+    2300004: Barrel Masterkey
+    2300006: Barrel Short
+    2300008: Barrel Short.002
+    2300010: Barrel Tactical
+    2300012: Barrel Tactical.001
+    2300014: Barrel Wingmaster
+    2300016: Barrels Long
+    2300018: Barrels Mid
+    2300020: Barrels Short
+    2300022: Body
+    2300024: Body DP12
+    2300026: Body.001
+    2300028: BottomBarrels
+    2300030: BottomBarrels.001
+    2300032: BottomBarrels.002
+    2300034: Ejector
+    2300036: Ejector Port
+    2300038: Foregrip Poly
+    2300040: Foregrip Poly.001
+    2300042: Foregrip Wood
+    2300044: Integral Parts
+    2300046: Integral.001
+    2300048: Loading Port
+    2300050: MidTop
+    2300052: Pump DP12
+    2300054: Pump Modern
+    2300056: Pump Tactical
+    2300058: Pump Wingmaster
+    2300060: Rail
+    2300062: Rail.001
+    2300064: Rail.002
+    2300066: RailBottom
+    2300068: Rails
+    2300070: Rails.001
+    2300072: Rails.002
+    2300074: Rails.003
+    2300076: Rails.004
+    2300078: Rails.005
+    2300080: RailSides
+    2300082: Sight Front
+    2300084: Sight Front.001
+    2300086: Sights
+    2300088: Stock
+    2300090: Stock Birdclaw
+    2300092: Stock Birdclaw.001
+    2300094: Stock Poly
+    2300096: Stock Poly Extension
+    2300098: Stock Poly Extension.001
+    2300100: Stock Poly.002
+    2300102: Stock Wood
+    2300104: Stock Wood.001
+    2300106: TopBarrels
+    2300108: TopBarrels.001
+    2300110: TopBarrels.002
+    2300112: Toprail
+    2300114: Trigger
+    2300116: Trigger.001
+    2300118: Trigger.002
+    2300120: Barrel Wingmaster.001
+    2300122: Barrel Compact
+    2300124: Barrel Tactical.000
+    2300126: Barrel Tactical.002
+    2300128: Pump Classic
+    2300130: Body Slamfire
+    2300132: Body Standard
+    2300134: Sight_Front_Hinge
+    2300136: Sight_Rear_Hinge
+    2300138: Sights.001
+    2300140: Barrel Bayonet
+    2300142: Barrel Bayonet.001
+    2300144: Barrel HiCap
+    2300146: Barrel Hicap
+    2300148: BayonetMount
+    2300150: BayonetMount.001
+    2300152: Trigger.003
+    2300154: TriggerGuard
+    2300156: Barrel HiCap.001
+    3300000: BackTop
+    3300002: Barrel Long.002
+    3300004: Barrel Masterkey
+    3300006: Barrel Short
+    3300008: Barrel Short.002
+    3300010: Barrel Tactical
+    3300012: Barrel Tactical.001
+    3300014: Barrel Wingmaster
+    3300016: Barrels Long
+    3300018: Barrels Mid
+    3300020: Barrels Short
+    3300022: Body
+    3300024: Body DP12
+    3300026: Body.001
+    3300028: BottomBarrels
+    3300030: BottomBarrels.001
+    3300032: BottomBarrels.002
+    3300034: Ejector
+    3300036: Ejector Port
+    3300038: Foregrip Poly
+    3300040: Foregrip Poly.001
+    3300042: Foregrip Wood
+    3300044: Integral Parts
+    3300046: Integral.001
+    3300048: Loading Port
+    3300050: MidTop
+    3300052: Pump DP12
+    3300054: Pump Modern
+    3300056: Pump Tactical
+    3300058: Pump Wingmaster
+    3300060: Rail
+    3300062: Rail.001
+    3300064: Rail.002
+    3300066: RailBottom
+    3300068: Rails
+    3300070: Rails.001
+    3300072: Rails.002
+    3300074: Rails.003
+    3300076: Rails.004
+    3300078: Rails.005
+    3300080: RailSides
+    3300082: Sight Front
+    3300084: Sight Front.001
+    3300086: Sights
+    3300088: Stock
+    3300090: Stock Birdclaw
+    3300092: Stock Birdclaw.001
+    3300094: Stock Poly
+    3300096: Stock Poly Extension
+    3300098: Stock Poly Extension.001
+    3300100: Stock Poly.002
+    3300102: Stock Wood
+    3300104: Stock Wood.001
+    3300106: TopBarrels
+    3300108: TopBarrels.001
+    3300110: TopBarrels.002
+    3300112: Toprail
+    3300114: Trigger
+    3300116: Trigger.001
+    3300118: Trigger.002
+    3300120: Barrel Wingmaster.001
+    3300122: Barrel Compact
+    3300124: Barrel Tactical.000
+    3300126: Barrel Tactical.002
+    3300128: Pump Classic
+    3300130: Body Slamfire
+    3300132: Body Standard
+    3300134: Sight_Front_Hinge
+    3300136: Sight_Rear_Hinge
+    3300138: Sights.001
+    3300140: Barrel Bayonet
+    3300142: Barrel Bayonet.001
+    3300144: Barrel HiCap
+    3300146: Barrel Hicap
+    3300148: BayonetMount
+    3300150: BayonetMount.001
+    3300152: Trigger.003
+    3300154: TriggerGuard
+    3300156: Barrel HiCap.001
+    4300000: Barrels Long
+    4300002: TopBarrels.002
+    4300004: BottomBarrels.002
+    4300006: Rail.002
+    4300008: Barrels Mid
+    4300010: Rail.001
+    4300012: BottomBarrels.001
+    4300014: TopBarrels.001
+    4300016: Barrels Short
+    4300018: TopBarrels
+    4300020: BottomBarrels
+    4300022: Rail
+    4300024: Body DP12
+    4300026: Pump DP12
+    4300028: RailSides
+    4300030: RailBottom
+    4300032: Trigger.002
+    4300034: MidTop
+    4300036: BackTop
+    4300038: Stock
+    4300040: Barrel Short
+    4300042: Barrel Short.002
+    4300044: Stock Poly.002
+    4300046: Stock Poly Extension
+    4300048: Foregrip Poly
+    4300050: Rails.004
+    4300052: Sights
+    4300054: Body
+    4300056: Integral.001
+    4300058: Loading Port
+    4300060: Ejector
+    4300062: Trigger
+    4300064: Barrel Long.002
+    4300066: Stock Birdclaw.001
+    4300068: Foregrip Poly.001
+    4300070: Rails.005
+    4300072: Stock Wood.001
+    4300074: Foregrip Wood
+    4300076: Rails.003
+    4300078: Barrel Tactical.001
+    4300080: Sight Front.001
+    4300082: Sight Front
+    4300084: Toprail
+    4300086: Barrel Masterkey
+    4300088: Pump Modern
+    4300090: Rails.001
+    4300092: Stock Poly
+    4300094: Stock Poly Extension.001
+    4300096: Barrel Tactical
+    4300098: Pump Tactical
+    4300100: Rails.002
+    4300102: Stock Wood
+    4300104: Barrel Wingmaster
+    4300106: Pump Wingmaster
+    4300108: Rails
+    4300110: Stock Birdclaw
+    4300112: Body.001
+    4300114: Integral Parts
+    4300116: Trigger.001
+    4300118: Ejector Port
+    4300120: Barrel Wingmaster.001
+    4300122: Barrel Compact
+    4300124: Barrel Tactical.000
+    4300126: Barrel Tactical.002
+    4300128: Pump Classic
+    4300130: Sights.001
+    4300132: Sight_Front_Hinge
+    4300134: Sight_Rear_Hinge
+    4300136: Body Slamfire
+    4300138: Body Standard
+    4300140: Barrel Hicap
+    4300142: Barrel Bayonet.001
+    4300144: BayonetMount.001
+    4300146: Barrel Bayonet
+    4300148: BayonetMount
+    4300150: TriggerGuard
+    4300152: Trigger.003
+    4300154: Barrel HiCap
+    4300156: Barrel HiCap.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessory
+    second: {fileID: 2100000, guid: abc2bc6ef6f216f4fa2c2c37180ffa82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal
+    second: {fileID: 2100000, guid: fd1f583c7e8cc7544b3e40d680355b5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal.001
+    second: {fileID: 2100000, guid: 8bb5c9305bc9f3f4386184e8862cd17d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stock
+    second: {fileID: 2100000, guid: 9b662fa24a1f67f489816abdec55f1cd, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd29761419510c7469e993b29ea117d8, type: 3}
+  m_Name: TestItemCollection
+  m_EditorClassIdentifier: 
+  m_Categories:
+  - m_ID: 350006457
+    m_Name: Items
+  m_ItemTypes:
+  - {fileID: 114671071060001414}
+  - {fileID: 114962698380284380}
+  - {fileID: 114565974477640120}
+  - {fileID: 114917828472143444}
+  - {fileID: 114557506971175410}
+--- !u!114 &114557506971175410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Desert Eagle Ammo
+  m_EditorClassIdentifier: 
+  m_ID: 4
+  m_CategoryIDs: 00000000
+  m_Description: Can be .357 Magnum or .44 Magnum
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &114565974477640120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Glock Ammo
+  m_EditorClassIdentifier: 
+  m_ID: 2
+  m_CategoryIDs: 00000000
+  m_Description: Can be 9x19mm or .45acp
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &114671071060001414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Handsfree
+  m_EditorClassIdentifier: 
+  m_ID: 0
+  m_CategoryIDs: 00000000
+  m_Description: Hand to Hand Combat item
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &114917828472143444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Desert Eagle
+  m_EditorClassIdentifier: 
+  m_ID: 3
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
+--- !u!114 &114962698380284380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Glock
+  m_EditorClassIdentifier: 
+  m_ID: 1
+  m_CategoryIDs: 00000000
+  m_Description: 
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []

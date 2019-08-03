@@ -1,0 +1,508 @@
+fileFormatVersion: 2
+guid: 442aaf4f078f9004d912bd9ffac5ed96
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: A_IR_Wing_Turbine_Fin_Bottom_L
+    100002: A_IR_Wing_Turbine_Fin_Bottom_L.001
+    100004: A_IR_Wing_Turbine_Fin_Bottom_L.002
+    100006: A_IR_Wing_Turbine_Fin_Bottom_R
+    100008: A_IR_Wing_Turbine_Fin_Bottom_R.001
+    100010: A_IR_Wing_Turbine_Fin_Bottom_R.002
+    100012: A_IR_Wing_Turbine_Fin_Top_L
+    100014: A_IR_Wing_Turbine_Fin_Top_L.001
+    100016: A_IR_Wing_Turbine_Fin_Top_L.002
+    100018: A_IR_Wing_Turbine_Fin_Top_R
+    100020: A_IR_Wing_Turbine_Fin_Top_R.001
+    100022: A_IR_Wing_Turbine_Fin_Top_R.002
+    100024: A_IR_Wing_Turbine_Rear_Emission_L
+    100026: A_IR_Wing_Turbine_Rear_Emission_L.001
+    100028: A_IR_Wing_Turbine_Rear_Emission_L.002
+    100030: A_IR_Wing_Turbine_Rear_Emission_R
+    100032: A_IR_Wing_Turbine_Rear_Emission_R.001
+    100034: A_IR_Wing_Turbine_Rear_Emission_R.002
+    100036: A_IR_Wing_Turine_Fan_L
+    100038: A_IR_Wing_Turine_Fan_L.001
+    100040: A_IR_Wing_Turine_Fan_L.002
+    100042: A_IR_Wing_Turine_Fan_R
+    100044: A_IR_Wing_Turine_Fan_R.001
+    100046: A_IR_Wing_Turine_Fan_R.002
+    100048: Cockpit
+    100050: //RootNode
+    100052: Engine Core Bottom
+    100054: Engine Core Bottom Fighter
+    100056: Engine Core Bottom Fighter.001
+    100058: Engine Core Left
+    100060: Engine Core Left.001
+    100062: Engine Core Left.002
+    100064: Engine Core Right
+    100066: Engine Core Right.001
+    100068: Engine Core Right.002
+    100070: Engine Core Top
+    100072: Engine Large L
+    100074: Engine Large L.001
+    100076: Engine Large L.002
+    100078: Engine Large L.003
+    100080: Engine Large R
+    100082: Engine Large R.001
+    100084: Engine Large R.002
+    100086: Engine Large R.003
+    100088: Feet
+    100090: Fighter
+    100092: Fighter Engine Core Top
+    100094: Fighter Engine Core Top.001
+    100096: Fighter.001
+    100098: Fin L
+    100100: Fin R
+    100102: Flap L
+    100104: Flap R
+    100106: Gun L
+    100108: Gun L.001
+    100110: Gun L.002
+    100112: Gun L.003
+    100114: Gun R
+    100116: Gun R.001
+    100118: Gun R.002
+    100120: Gun R.003
+    100122: Hover Vent L
+    100124: Hover Vent L.001
+    100126: Hover Vent R
+    100128: Hover Vent R.001
+    100130: Jet L
+    100132: Jet L.001
+    100134: Jet L.002
+    100136: Jet R
+    100138: Jet R.001
+    100140: Jet R.002
+    100142: Wing_Gun_L
+    100144: Wing_Gun_R
+    100146: Wing_L
+    100148: Wing_R
+    100150: Gate Closed
+    100152: Gate Open Full
+    100154: Gate Open Half
+    100156: Gate Pivot
+    100158: Dragon's Ferry Landed
+    100160: Gun L Rear
+    100162: Gun R Rear
+    400000: A_IR_Wing_Turbine_Fin_Bottom_L
+    400002: A_IR_Wing_Turbine_Fin_Bottom_L.001
+    400004: A_IR_Wing_Turbine_Fin_Bottom_L.002
+    400006: A_IR_Wing_Turbine_Fin_Bottom_R
+    400008: A_IR_Wing_Turbine_Fin_Bottom_R.001
+    400010: A_IR_Wing_Turbine_Fin_Bottom_R.002
+    400012: A_IR_Wing_Turbine_Fin_Top_L
+    400014: A_IR_Wing_Turbine_Fin_Top_L.001
+    400016: A_IR_Wing_Turbine_Fin_Top_L.002
+    400018: A_IR_Wing_Turbine_Fin_Top_R
+    400020: A_IR_Wing_Turbine_Fin_Top_R.001
+    400022: A_IR_Wing_Turbine_Fin_Top_R.002
+    400024: A_IR_Wing_Turbine_Rear_Emission_L
+    400026: A_IR_Wing_Turbine_Rear_Emission_L.001
+    400028: A_IR_Wing_Turbine_Rear_Emission_L.002
+    400030: A_IR_Wing_Turbine_Rear_Emission_R
+    400032: A_IR_Wing_Turbine_Rear_Emission_R.001
+    400034: A_IR_Wing_Turbine_Rear_Emission_R.002
+    400036: A_IR_Wing_Turine_Fan_L
+    400038: A_IR_Wing_Turine_Fan_L.001
+    400040: A_IR_Wing_Turine_Fan_L.002
+    400042: A_IR_Wing_Turine_Fan_R
+    400044: A_IR_Wing_Turine_Fan_R.001
+    400046: A_IR_Wing_Turine_Fan_R.002
+    400048: Cockpit
+    400050: //RootNode
+    400052: Engine Core Bottom
+    400054: Engine Core Bottom Fighter
+    400056: Engine Core Bottom Fighter.001
+    400058: Engine Core Left
+    400060: Engine Core Left.001
+    400062: Engine Core Left.002
+    400064: Engine Core Right
+    400066: Engine Core Right.001
+    400068: Engine Core Right.002
+    400070: Engine Core Top
+    400072: Engine Large L
+    400074: Engine Large L.001
+    400076: Engine Large L.002
+    400078: Engine Large L.003
+    400080: Engine Large R
+    400082: Engine Large R.001
+    400084: Engine Large R.002
+    400086: Engine Large R.003
+    400088: Feet
+    400090: Fighter
+    400092: Fighter Engine Core Top
+    400094: Fighter Engine Core Top.001
+    400096: Fighter.001
+    400098: Fin L
+    400100: Fin R
+    400102: Flap L
+    400104: Flap R
+    400106: Gun L
+    400108: Gun L.001
+    400110: Gun L.002
+    400112: Gun L.003
+    400114: Gun R
+    400116: Gun R.001
+    400118: Gun R.002
+    400120: Gun R.003
+    400122: Hover Vent L
+    400124: Hover Vent L.001
+    400126: Hover Vent R
+    400128: Hover Vent R.001
+    400130: Jet L
+    400132: Jet L.001
+    400134: Jet L.002
+    400136: Jet R
+    400138: Jet R.001
+    400140: Jet R.002
+    400142: Wing_Gun_L
+    400144: Wing_Gun_R
+    400146: Wing_L
+    400148: Wing_R
+    400150: Gate Closed
+    400152: Gate Open Full
+    400154: Gate Open Half
+    400156: Gate Pivot
+    400158: Dragon's Ferry Landed
+    400160: Gun L Rear
+    400162: Gun R Rear
+    2100000: Fuselage
+    2100002: Glass
+    2100004: Frame
+    2100006: Turbine
+    2100008: Wings
+    2100010: Jet
+    2100012: Weapon
+    2100014: Transparency
+    2300000: A_IR_Wing_Turbine_Fin_Bottom_L
+    2300002: A_IR_Wing_Turbine_Fin_Bottom_L.001
+    2300004: A_IR_Wing_Turbine_Fin_Bottom_L.002
+    2300006: A_IR_Wing_Turbine_Fin_Bottom_R
+    2300008: A_IR_Wing_Turbine_Fin_Bottom_R.001
+    2300010: A_IR_Wing_Turbine_Fin_Bottom_R.002
+    2300012: A_IR_Wing_Turbine_Fin_Top_L
+    2300014: A_IR_Wing_Turbine_Fin_Top_L.001
+    2300016: A_IR_Wing_Turbine_Fin_Top_L.002
+    2300018: A_IR_Wing_Turbine_Fin_Top_R
+    2300020: A_IR_Wing_Turbine_Fin_Top_R.001
+    2300022: A_IR_Wing_Turbine_Fin_Top_R.002
+    2300024: A_IR_Wing_Turbine_Rear_Emission_L
+    2300026: A_IR_Wing_Turbine_Rear_Emission_L.001
+    2300028: A_IR_Wing_Turbine_Rear_Emission_L.002
+    2300030: A_IR_Wing_Turbine_Rear_Emission_R
+    2300032: A_IR_Wing_Turbine_Rear_Emission_R.001
+    2300034: A_IR_Wing_Turbine_Rear_Emission_R.002
+    2300036: A_IR_Wing_Turine_Fan_L
+    2300038: A_IR_Wing_Turine_Fan_L.001
+    2300040: A_IR_Wing_Turine_Fan_L.002
+    2300042: A_IR_Wing_Turine_Fan_R
+    2300044: A_IR_Wing_Turine_Fan_R.001
+    2300046: A_IR_Wing_Turine_Fan_R.002
+    2300048: Cockpit
+    2300050: //RootNode
+    2300052: Engine Core Bottom
+    2300054: Engine Core Bottom Fighter
+    2300056: Engine Core Bottom Fighter.001
+    2300058: Engine Core Left
+    2300060: Engine Core Left.001
+    2300062: Engine Core Left.002
+    2300064: Engine Core Right
+    2300066: Engine Core Right.001
+    2300068: Engine Core Right.002
+    2300070: Engine Core Top
+    2300072: Engine Large L
+    2300074: Engine Large L.001
+    2300076: Engine Large L.002
+    2300078: Engine Large L.003
+    2300080: Engine Large R
+    2300082: Engine Large R.001
+    2300084: Engine Large R.002
+    2300086: Engine Large R.003
+    2300088: Feet
+    2300090: Fighter
+    2300092: Fighter Engine Core Top
+    2300094: Fighter Engine Core Top.001
+    2300096: Fighter.001
+    2300098: Fin L
+    2300100: Fin R
+    2300102: Flap L
+    2300104: Flap R
+    2300106: Gun L
+    2300108: Gun L.001
+    2300110: Gun L.002
+    2300112: Gun L.003
+    2300114: Gun R
+    2300116: Gun R.001
+    2300118: Gun R.002
+    2300120: Gun R.003
+    2300122: Hover Vent L
+    2300124: Hover Vent L.001
+    2300126: Hover Vent R
+    2300128: Hover Vent R.001
+    2300130: Jet L
+    2300132: Jet L.001
+    2300134: Jet L.002
+    2300136: Jet R
+    2300138: Jet R.001
+    2300140: Jet R.002
+    2300142: Wing_Gun_L
+    2300144: Wing_Gun_R
+    2300146: Wing_L
+    2300148: Wing_R
+    2300150: Gate Closed
+    2300152: Gate Open Full
+    2300154: Gate Open Half
+    2300156: Gate Pivot
+    2300158: Dragon's Ferry Landed
+    2300160: Gun L Rear
+    2300162: Gun R Rear
+    3300000: A_IR_Wing_Turbine_Fin_Bottom_L
+    3300002: A_IR_Wing_Turbine_Fin_Bottom_L.001
+    3300004: A_IR_Wing_Turbine_Fin_Bottom_L.002
+    3300006: A_IR_Wing_Turbine_Fin_Bottom_R
+    3300008: A_IR_Wing_Turbine_Fin_Bottom_R.001
+    3300010: A_IR_Wing_Turbine_Fin_Bottom_R.002
+    3300012: A_IR_Wing_Turbine_Fin_Top_L
+    3300014: A_IR_Wing_Turbine_Fin_Top_L.001
+    3300016: A_IR_Wing_Turbine_Fin_Top_L.002
+    3300018: A_IR_Wing_Turbine_Fin_Top_R
+    3300020: A_IR_Wing_Turbine_Fin_Top_R.001
+    3300022: A_IR_Wing_Turbine_Fin_Top_R.002
+    3300024: A_IR_Wing_Turbine_Rear_Emission_L
+    3300026: A_IR_Wing_Turbine_Rear_Emission_L.001
+    3300028: A_IR_Wing_Turbine_Rear_Emission_L.002
+    3300030: A_IR_Wing_Turbine_Rear_Emission_R
+    3300032: A_IR_Wing_Turbine_Rear_Emission_R.001
+    3300034: A_IR_Wing_Turbine_Rear_Emission_R.002
+    3300036: A_IR_Wing_Turine_Fan_L
+    3300038: A_IR_Wing_Turine_Fan_L.001
+    3300040: A_IR_Wing_Turine_Fan_L.002
+    3300042: A_IR_Wing_Turine_Fan_R
+    3300044: A_IR_Wing_Turine_Fan_R.001
+    3300046: A_IR_Wing_Turine_Fan_R.002
+    3300048: Cockpit
+    3300050: //RootNode
+    3300052: Engine Core Bottom
+    3300054: Engine Core Bottom Fighter
+    3300056: Engine Core Bottom Fighter.001
+    3300058: Engine Core Left
+    3300060: Engine Core Left.001
+    3300062: Engine Core Left.002
+    3300064: Engine Core Right
+    3300066: Engine Core Right.001
+    3300068: Engine Core Right.002
+    3300070: Engine Core Top
+    3300072: Engine Large L
+    3300074: Engine Large L.001
+    3300076: Engine Large L.002
+    3300078: Engine Large L.003
+    3300080: Engine Large R
+    3300082: Engine Large R.001
+    3300084: Engine Large R.002
+    3300086: Engine Large R.003
+    3300088: Feet
+    3300090: Fighter
+    3300092: Fighter Engine Core Top
+    3300094: Fighter Engine Core Top.001
+    3300096: Fighter.001
+    3300098: Fin L
+    3300100: Fin R
+    3300102: Flap L
+    3300104: Flap R
+    3300106: Gun L
+    3300108: Gun L.001
+    3300110: Gun L.002
+    3300112: Gun L.003
+    3300114: Gun R
+    3300116: Gun R.001
+    3300118: Gun R.002
+    3300120: Gun R.003
+    3300122: Hover Vent L
+    3300124: Hover Vent L.001
+    3300126: Hover Vent R
+    3300128: Hover Vent R.001
+    3300130: Jet L
+    3300132: Jet L.001
+    3300134: Jet L.002
+    3300136: Jet R
+    3300138: Jet R.001
+    3300140: Jet R.002
+    3300142: Wing_Gun_L
+    3300144: Wing_Gun_R
+    3300146: Wing_L
+    3300148: Wing_R
+    3300150: Gate Closed
+    3300152: Gate Open Full
+    3300154: Gate Open Half
+    3300156: Gate Pivot
+    3300158: Dragon's Ferry Landed
+    3300160: Gun L Rear
+    3300162: Gun R Rear
+    4300000: Dragon's Ferry Landed
+    4300002: Fighter.001
+    4300004: Fighter Engine Core Top.001
+    4300006: Engine Large L.003
+    4300008: Engine Large R.003
+    4300010: Engine Core Bottom Fighter.001
+    4300012: Engine Core Left.002
+    4300014: Jet L.002
+    4300016: A_IR_Wing_Turbine_Fin_Bottom_L.002
+    4300018: A_IR_Wing_Turbine_Rear_Emission_L.002
+    4300020: A_IR_Wing_Turine_Fan_L.002
+    4300022: A_IR_Wing_Turbine_Fin_Top_L.002
+    4300024: Engine Core Right.002
+    4300026: Jet R.002
+    4300028: A_IR_Wing_Turbine_Fin_Bottom_R.002
+    4300030: A_IR_Wing_Turbine_Rear_Emission_R.002
+    4300032: A_IR_Wing_Turine_Fan_R.002
+    4300034: A_IR_Wing_Turbine_Fin_Top_R.002
+    4300036: Gun R.003
+    4300038: Gun L.003
+    4300040: Feet
+    4300042: Engine Core Top
+    4300044: Hover Vent L
+    4300046: Hover Vent L.001
+    4300048: Hover Vent R
+    4300050: Hover Vent R.001
+    4300052: Engine Large R
+    4300054: Engine Large R.001
+    4300056: Engine Large L
+    4300058: Engine Large L.001
+    4300060: Engine Core Bottom
+    4300062: Engine Core Left
+    4300064: Jet L
+    4300066: A_IR_Wing_Turbine_Fin_Bottom_L
+    4300068: A_IR_Wing_Turbine_Rear_Emission_L
+    4300070: A_IR_Wing_Turine_Fan_L
+    4300072: A_IR_Wing_Turbine_Fin_Top_L
+    4300074: Engine Core Right
+    4300076: Jet R
+    4300078: A_IR_Wing_Turbine_Fin_Bottom_R
+    4300080: A_IR_Wing_Turbine_Rear_Emission_R
+    4300082: A_IR_Wing_Turine_Fan_R
+    4300084: A_IR_Wing_Turbine_Fin_Top_R
+    4300086: Cockpit
+    4300088: Wing_R
+    4300090: Wing_Gun_R
+    4300092: Fin R
+    4300094: Flap R
+    4300096: Fin L
+    4300098: Flap L
+    4300100: Gun L.001
+    4300102: Gun R.001
+    4300104: Gun R
+    4300106: Gun L
+    4300108: Wing_L
+    4300110: Wing_Gun_L
+    4300112: Fighter
+    4300114: Gun L.002
+    4300116: Gun R.002
+    4300118: Fighter Engine Core Top
+    4300120: Engine Core Bottom Fighter
+    4300122: Engine Core Right.001
+    4300124: Jet R.001
+    4300126: A_IR_Wing_Turbine_Fin_Top_R.001
+    4300128: A_IR_Wing_Turine_Fan_R.001
+    4300130: A_IR_Wing_Turbine_Rear_Emission_R.001
+    4300132: A_IR_Wing_Turbine_Fin_Bottom_R.001
+    4300134: Engine Core Left.001
+    4300136: Jet L.001
+    4300138: A_IR_Wing_Turbine_Fin_Top_L.001
+    4300140: A_IR_Wing_Turine_Fan_L.001
+    4300142: A_IR_Wing_Turbine_Rear_Emission_L.001
+    4300144: A_IR_Wing_Turbine_Fin_Bottom_L.001
+    4300146: Engine Large R.002
+    4300148: Engine Large L.002
+    4300150: Gate Closed
+    4300152: Gate Pivot
+    4300154: Gate Open Full
+    4300156: Gate Open Half
+    4300158: Gun L Rear
+    4300160: Gun R Rear
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

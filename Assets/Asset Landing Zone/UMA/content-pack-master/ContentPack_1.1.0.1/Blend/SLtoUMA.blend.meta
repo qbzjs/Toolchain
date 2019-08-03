@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: 9005175e644ec53458201e448b4d0d8a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: sl_avatar_true_female
+    100002: sl_avatar_true_male
+    100004: SL_UMA_Human_Female
+    100006: SL_UMA_Human_Female_Preview
+    100008: SL_UMA_Human_Male
+    100010: SL_UMA_Human_Male_Preview
+    100012: //RootNode
+    400000: sl_avatar_true_female
+    400002: sl_avatar_true_male
+    400004: SL_UMA_Human_Female
+    400006: SL_UMA_Human_Female_Preview
+    400008: SL_UMA_Human_Male
+    400010: SL_UMA_Human_Male_Preview
+    400012: //RootNode
+    2100000: SL_UMA_Head
+    2100002: SL_UMA_Body
+    2100004: SL_UMA_Head__untitled
+    2100006: SL_UMA_Body__untitled_001
+    2100008: SL_Female_Head
+    2100010: SL_Female_Lower
+    2100012: SL_Female_Upper
+    2100014: SL_Male_Head
+    2100016: SL_Male_Lower
+    2100018: SL_Male_Upper
+    2100020: SL_UMA_Body__UV06_png
+    2100022: SL_Male_Head__Untitled
+    2100024: SL_Male_Lower__Untitled
+    2300000: sl_avatar_true_female
+    2300002: sl_avatar_true_male
+    2300004: SL_UMA_Human_Female
+    2300006: SL_UMA_Human_Female_Preview
+    2300008: SL_UMA_Human_Male
+    2300010: SL_UMA_Human_Male_Preview
+    3300000: sl_avatar_true_female
+    3300002: sl_avatar_true_male
+    3300004: SL_UMA_Human_Female
+    3300006: SL_UMA_Human_Female_Preview
+    3300008: SL_UMA_Human_Male
+    3300010: SL_UMA_Human_Male_Preview
+    4300000: SL_UMA_Human_Male
+    4300002: SL_UMA_Human_Female
+    4300004: sl_avatar_true_female
+    4300006: sl_avatar_true_male
+    4300008: SL_UMA_Human_Female_Preview
+    4300010: SL_UMA_Human_Male_Preview
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

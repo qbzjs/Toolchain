@@ -1,0 +1,279 @@
+fileFormatVersion: 2
+guid: 03feffc12b28c2747bf78b82ba331942
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Edge Claymore
+    100002: Edge Curvesword
+    100004: Edge Estoc
+    100006: Edge Executioner
+    100008: Edge Flamberge
+    100010: Edge Messer
+    100012: Edge Sawcut
+    100014: Edge Tetsubo
+    100016: Edge Uchigatana
+    100018: Edge Zweihander
+    100020: Greathilt Claymore
+    100022: Greathilt Estoc
+    100024: Greathilt Executioner
+    100026: Greathilt Messer
+    100028: //RootNode
+    100030: Greathilt Tetsubo
+    100032: Greathilt Uchigatana
+    100034: Greathilt Zweihander
+    100036: Hilt Curvesword
+    100038: Hilt Flamberge
+    100040: Hilt Ringguard
+    100042: Greathilt Curvesword
+    100044: Greathilt Flamberge
+    100046: Greathilt Ringguard
+    100048: Edge Mongolian
+    100050: Greathilt Basic
+    100052: Hilt Mongolian
+    100054: Greathilt Mongolian
+    100056: Base Curved
+    100058: Base Straight
+    100060: Base Tetsubo
+    100062: Base Longmace
+    100064: Greathilt Mace Long
+    100066: Head Macahuitl
+    100068: Head Tetsubo
+    100070: Greathilt Mace Metal
+    100072: Greathilt Mace Wood
+    100074: Head Mace Metal
+    100076: Head Mace Wood
+    400000: Edge Claymore
+    400002: Edge Curvesword
+    400004: Edge Estoc
+    400006: Edge Executioner
+    400008: Edge Flamberge
+    400010: Edge Messer
+    400012: Edge Sawcut
+    400014: Edge Tetsubo
+    400016: Edge Uchigatana
+    400018: Edge Zweihander
+    400020: Greathilt Claymore
+    400022: Greathilt Estoc
+    400024: Greathilt Executioner
+    400026: Greathilt Messer
+    400028: //RootNode
+    400030: Greathilt Tetsubo
+    400032: Greathilt Uchigatana
+    400034: Greathilt Zweihander
+    400036: Hilt Curvesword
+    400038: Hilt Flamberge
+    400040: Hilt Ringguard
+    400042: Greathilt Curvesword
+    400044: Greathilt Flamberge
+    400046: Greathilt Ringguard
+    400048: Edge Mongolian
+    400050: Greathilt Basic
+    400052: Hilt Mongolian
+    400054: Greathilt Mongolian
+    400056: Base Curved
+    400058: Base Straight
+    400060: Base Tetsubo
+    400062: Base Longmace
+    400064: Greathilt Mace Long
+    400066: Head Macahuitl
+    400068: Head Tetsubo
+    400070: Greathilt Mace Metal
+    400072: Greathilt Mace Wood
+    400074: Head Mace Metal
+    400076: Head Mace Wood
+    2100000: LightMetal
+    2100002: Grip
+    2100004: DarkMetal
+    2100006: Wood
+    2100008: Detail
+    2300000: Edge Claymore
+    2300002: Edge Curvesword
+    2300004: Edge Estoc
+    2300006: Edge Executioner
+    2300008: Edge Flamberge
+    2300010: Edge Messer
+    2300012: Edge Sawcut
+    2300014: Edge Tetsubo
+    2300016: Edge Uchigatana
+    2300018: Edge Zweihander
+    2300020: Greathilt Claymore
+    2300022: Greathilt Estoc
+    2300024: Greathilt Executioner
+    2300026: Greathilt Messer
+    2300028: Greathilt Tetsubo
+    2300030: Greathilt Uchigatana
+    2300032: Greathilt Zweihander
+    2300034: Hilt Curvesword
+    2300036: Hilt Flamberge
+    2300038: Hilt Ringguard
+    2300040: Greathilt Curvesword
+    2300042: Greathilt Flamberge
+    2300044: Greathilt Ringguard
+    2300046: Edge Mongolian
+    2300048: Greathilt Basic
+    2300050: Hilt Mongolian
+    2300052: Greathilt Mongolian
+    2300054: Base Tetsubo
+    2300056: Greathilt Mace Long
+    2300058: Head Macahuitl
+    2300060: Head Tetsubo
+    2300062: Greathilt Mace Metal
+    2300064: Greathilt Mace Wood
+    2300066: Head Mace Metal
+    2300068: Head Mace Wood
+    3300000: Edge Claymore
+    3300002: Edge Curvesword
+    3300004: Edge Estoc
+    3300006: Edge Executioner
+    3300008: Edge Flamberge
+    3300010: Edge Messer
+    3300012: Edge Sawcut
+    3300014: Edge Tetsubo
+    3300016: Edge Uchigatana
+    3300018: Edge Zweihander
+    3300020: Greathilt Claymore
+    3300022: Greathilt Estoc
+    3300024: Greathilt Executioner
+    3300026: Greathilt Messer
+    3300028: Greathilt Tetsubo
+    3300030: Greathilt Uchigatana
+    3300032: Greathilt Zweihander
+    3300034: Hilt Curvesword
+    3300036: Hilt Flamberge
+    3300038: Hilt Ringguard
+    3300040: Greathilt Curvesword
+    3300042: Greathilt Flamberge
+    3300044: Greathilt Ringguard
+    3300046: Edge Mongolian
+    3300048: Greathilt Basic
+    3300050: Hilt Mongolian
+    3300052: Greathilt Mongolian
+    3300054: Base Tetsubo
+    3300056: Greathilt Mace Long
+    3300058: Head Macahuitl
+    3300060: Head Tetsubo
+    3300062: Greathilt Mace Metal
+    3300064: Greathilt Mace Wood
+    3300066: Head Mace Metal
+    3300068: Head Mace Wood
+    4300000: Edge Executioner
+    4300002: Greathilt Executioner
+    4300004: Greathilt Tetsubo
+    4300006: Edge Tetsubo
+    4300008: Edge Curvesword
+    4300010: Hilt Curvesword
+    4300012: Edge Messer
+    4300014: Greathilt Messer
+    4300016: Edge Sawcut
+    4300018: Hilt Ringguard
+    4300020: Edge Flamberge
+    4300022: Hilt Flamberge
+    4300024: Edge Claymore
+    4300026: Greathilt Claymore
+    4300028: Greathilt Zweihander
+    4300030: Edge Zweihander
+    4300032: Greathilt Uchigatana
+    4300034: Edge Uchigatana
+    4300036: Greathilt Estoc
+    4300038: Edge Estoc
+    4300040: Greathilt Curvesword
+    4300042: Greathilt Ringguard
+    4300044: Greathilt Flamberge
+    4300046: Hilt Mongolian
+    4300048: Edge Mongolian
+    4300050: Greathilt Basic
+    4300052: Greathilt Mongolian
+    4300054: Base Tetsubo
+    4300056: Greathilt Mace Long
+    4300058: Head Macahuitl
+    4300060: Head Tetsubo
+    4300062: Greathilt Mace Metal
+    4300064: Head Mace Metal
+    4300066: Greathilt Mace Wood
+    4300068: Head Mace Wood
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

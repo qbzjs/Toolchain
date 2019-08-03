@@ -1,0 +1,2001 @@
+fileFormatVersion: 2
+guid: 660ed9980a645fd4f9a9ecd2c68b9d8c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Axe Long
+    100004: Axe Mid
+    100006: Axe Short
+    100008: Barrel
+    100010: Barrel Fixture Gunblade Long
+    100012: Barrel Fixture Gunblade Mid
+    100014: Barrel Fixture Gunblade Short
+    100016: Barrel Fixture Roni Carbine
+    100018: Barrel Fixture Roni Rifle
+    100020: Barrel Fixture Roni SMG
+    100022: Barrel Mid.000
+    100024: Barrel Ported
+    100026: Barrel Standard Short
+    100028: Barrel Standard.001
+    100030: Barrel_end
+    100032: Base 1911
+    100034: Base 1911.001
+    100036: Base Glock
+    100038: Base Gunblade
+    100040: Base Roni
+    100042: BaseParts
+    100044: BaseParts.001
+    100046: BaseParts.002
+    100048: Blade Long
+    100050: Blade Mid
+    100052: Blade Short
+    100054: ColtParts
+    100056: ColtSlide
+    100058: Compenstator Standard Mid
+    100060: CoreParts Classic
+    100062: CoreParts Modern
+    100064: CoreParts Modern.001
+    100066: Folding Stock Arm
+    100068: Folding Stock Arm.001
+    100070: ForegripClosed
+    100072: ForegripClosed.001
+    100074: ForegripClosed.002
+    100076: ForegripOpen
+    100078: ForegripOpen.001
+    100080: ForegripOpen.002
+    100082: GlockBase
+    100084: GlockParts
+    100086: GlockSlide.001
+    100088: GripGuardsClassic
+    100090: GripGuardsModern
+    100092: GripGuardsModern.001
+    100094: GripShootist.001
+    100096: Hammer
+    100098: Hammer Modern
+    100100: Handguard
+    100102: Handguard.001
+    100104: Loading Chamber
+    100106: Loading Chamber.001
+    100108: Loading Chamber.002
+    100110: Loading Port
+    100112: Loading Port.001
+    100114: Mace Long
+    100116: Mace Mid
+    100118: Mace Short
+    100120: Mag_15
+    100122: Mag_18
+    100124: Mag_33
+    100126: Mag_8
+    100128: Rail
+    100130: Rail.001
+    100132: Rails
+    100134: Root
+    100136: Selector
+    100138: Selector.001
+    100140: Sight Front Standard
+    100142: Sight Front Standard.001
+    100144: Sight Front Standard.002
+    100146: Sight Front Standard.003
+    100148: Sight Front Standard.004
+    100150: Sight Front Standard.005
+    100152: Sight Front Standard.006
+    100154: Sight Front Standard.007
+    100156: Sight Front Standard.008
+    100158: Sight Front Standard.010
+    100160: Sight Front Standard.011
+    100162: Sight Front Standard.012
+    100164: Sight Gunblade
+    100166: Sight Rear
+    100168: Sight Rear.001
+    100170: Sight Rear.002
+    100172: Sight Standard Short
+    100174: Sight Standard.001
+    100176: SightRail
+    100178: Slide
+    100180: Slide Pistol Auto
+    100182: Slide Pistol Standard
+    100184: Slide Spring Full Base
+    100186: Slide Spring Full Base.003
+    100188: Slide Standard
+    100190: Slide Standard Short
+    100192: Slide Standard Short.001
+    100194: Slide Standard Short.002
+    100196: Slide_end
+    100198: //RootNode
+    100200: Stock Adjustable
+    100202: Stock Duelist
+    100204: Stock Folding
+    100206: Stock Swashbuckler
+    100208: StockAdjust
+    100210: TopRail
+    100212: Trigger
+    100214: Trigger 1
+    100216: Trigger Modern
+    100218: Trigger Modern.001
+    100220: Trigger.001
+    100222: Trigger.002
+    100224: Trigger.003
+    100226: Trigger_end
+    100228: TriggerMelee
+    100230: ColtBase
+    100232: IntegralParts
+    100234: Barrel Beretta
+    100236: Barrel Compact
+    100238: Barrel Long
+    100240: Barrel Ported.001
+    100242: Base Walbretta
+    100244: Core Colt
+    100246: Core Colt Gblade
+    100248: Core Colt.001
+    100250: Core Glock
+    100252: Core Glock Gblade
+    100254: Core Walretta
+    100256: Core Walretta GBlade
+    100258: Coreparts Beretta
+    100260: Coreparts Walther
+    100262: Glock Slide
+    100264: Hammer Beretta
+    100266: Hammer Walther
+    100268: Mag_17
+    100270: Mag_30
+    100272: Panels Beretta
+    100274: Panels Walther
+    100276: SightRail.001
+    100278: Slide Beretta
+    100280: Slide Beretta.001
+    100282: Slide Walretta
+    100284: Slide Walretta.001
+    100286: Slide Walther
+    100288: Trigger Modern.002
+    100290: Trigger.004
+    100292: Trigger.005
+    100294: Trigger.006
+    100296: Slide Colt
+    100298: Mag_25
+    100300: Base Extensions
+    100302: Slide Hook GB
+    100304: Slide Hook GB.001
+    100306: Slide Hook Gblade
+    100308: Slide Hook Roni
+    100310: Slide Hook Roni.001
+    100312: Slide Hook Roni.002
+    100314: Fore Gunblade
+    100316: Fore Roni
+    100318: Rear Adjustable
+    100320: Base Colt
+    100322: Base Deagle
+    100324: Deagle Slide
+    100326: Hammer.001
+    100328: Mag_7
+    100330: Barrel Long.001
+    100332: Barrel Standard
+    100334: Body Deagle
+    100336: Base Uzi
+    100338: Charging Handle
+    100340: Frame Micro
+    100342: Frame Standard
+    100344: Integral
+    100346: Integral.001
+    100348: Integral.002
+    100350: Mag_20
+    100352: Mag_32
+    100354: slide
+    100356: slide.001
+    100358: Stock Folding Base
+    100360: Stock Folding Closed
+    100362: Stock Folding Open
+    100364: Stock Folding.001
+    100366: trigger
+    100368: Stock Classic
+    100370: Rail.002
+    100372: SightRail.002
+    100374: Charging Handle.001
+    100376: Folding Stock Arm.004
+    100378: Folding Stock Arm.005
+    100380: Frame Mini
+    100382: Integral.003
+    100384: Siderails
+    100386: slide.002
+    100388: Stock Folding Horizontal
+    100390: Stock Folding.002
+    100392: Bolt
+    100394: GripBase
+    100396: Mag_15_GunBlade
+    100398: Mag_16_Beretta
+    100400: Mag_17_Glock
+    100402: Mag_18_Colt
+    100404: Mag_20_Uzi
+    100406: Mag_25_Beretta
+    100408: Mag_25_GunBlade
+    100410: Mag_32_Uzi
+    100412: Mag_33_Glock
+    100414: Mag_7_Deagle
+    100416: Mag_8_Colt
+    100418: ThumbtriggerMelee
+    100420: ThumbtriggerPistol
+    100422: TriggerPistol
+    100424: Slide Sight
+    100426: Barrel Walther
+    100428: Stock Folding Vertical
+    100430: Canister
+    100432: Control Nozzle Charge
+    100434: Control Nozzle Spray
+    100436: Control Nozzle Stream
+    100438: FireMechPhysical
+    100440: FireMechPressurizer
+    100442: Mag_12_Deagle
+    100444: Solid Stock
+    100446: SightRail.003
+    100448: Barrel Short
+    100450: Barrel Standard.002
+    100452: Base CX8
+    100454: Mag_16_Beretta.001
+    100456: Mag_25_Beretta.001
+    100458: WPN_CX8_ejector
+    100460: WPN_CX8_handle
+    100462: WPN_CX8_trigger
+    100464: Mag_16_CX8
+    100466: Mag_25_CX8
+    100468: Barrel Carbine
+    100470: WPN_CX8_Integral
+    100472: Base Storm
+    100474: Mag_16_Storm
+    100476: Mag_25_Storm
+    100478: Storm_ejector
+    100480: Storm_handle
+    100482: Storm_Integral
+    100484: Barrel 93
+    100486: Compenstator
+    100488: Core Beretta 92
+    100490: Core Beretta 93
+    100492: Core Roni
+    100494: Core Selectfire
+    100496: Core Standard
+    100498: Core Walther
+    100500: Cylinder
+    100502: Integral Slideparts
+    100504: SlideHook
+    100506: Foregrip
+    100508: Fire Selector Burst
+    100510: Fire Selector Singleshot
+    100512: Mag_Gblade_Small
+    100514: Barrel Beretta Heavy
+    100516: Barrel Walther Long
+    100518: Barrel Walther Short
+    100520: Barrel Walther Standard
+    100522: Base Beretta
+    100524: Base P38
+    100526: Core Beretta Heavy
+    100528: Core Heavy Beretta Frame
+    100530: Core Heavy Glock
+    100532: Folding Stock Arm.002
+    100534: Folding Stock Arm.003
+    100536: Mag_8_Walther
+    100538: Sight Front
+    100540: SightRail.004
+    100542: SlideHook.001
+    100544: Trigger.000
+    100546: Folding Stock Arm.000
+    100548: Stock Folding.000
+    400000: Armature
+    400002: Axe Long
+    400004: Axe Mid
+    400006: Axe Short
+    400008: Barrel
+    400010: Barrel Fixture Gunblade Long
+    400012: Barrel Fixture Gunblade Mid
+    400014: Barrel Fixture Gunblade Short
+    400016: Barrel Fixture Roni Carbine
+    400018: Barrel Fixture Roni Rifle
+    400020: Barrel Fixture Roni SMG
+    400022: Barrel Mid.000
+    400024: Barrel Ported
+    400026: Barrel Standard Short
+    400028: Barrel Standard.001
+    400030: Barrel_end
+    400032: Base 1911
+    400034: Base 1911.001
+    400036: Base Glock
+    400038: Base Gunblade
+    400040: Base Roni
+    400042: BaseParts
+    400044: BaseParts.001
+    400046: BaseParts.002
+    400048: Blade Long
+    400050: Blade Mid
+    400052: Blade Short
+    400054: ColtParts
+    400056: ColtSlide
+    400058: Compenstator Standard Mid
+    400060: CoreParts Classic
+    400062: CoreParts Modern
+    400064: CoreParts Modern.001
+    400066: Folding Stock Arm
+    400068: Folding Stock Arm.001
+    400070: ForegripClosed
+    400072: ForegripClosed.001
+    400074: ForegripClosed.002
+    400076: ForegripOpen
+    400078: ForegripOpen.001
+    400080: ForegripOpen.002
+    400082: GlockBase
+    400084: GlockParts
+    400086: GlockSlide.001
+    400088: GripGuardsClassic
+    400090: GripGuardsModern
+    400092: GripGuardsModern.001
+    400094: GripShootist.001
+    400096: Hammer
+    400098: Hammer Modern
+    400100: Handguard
+    400102: Handguard.001
+    400104: Loading Chamber
+    400106: Loading Chamber.001
+    400108: Loading Chamber.002
+    400110: Loading Port
+    400112: Loading Port.001
+    400114: Mace Long
+    400116: Mace Mid
+    400118: Mace Short
+    400120: Mag_15
+    400122: Mag_18
+    400124: Mag_33
+    400126: Mag_8
+    400128: Rail
+    400130: Rail.001
+    400132: Rails
+    400134: Root
+    400136: Selector
+    400138: Selector.001
+    400140: Sight Front Standard
+    400142: Sight Front Standard.001
+    400144: Sight Front Standard.002
+    400146: Sight Front Standard.003
+    400148: Sight Front Standard.004
+    400150: Sight Front Standard.005
+    400152: Sight Front Standard.006
+    400154: Sight Front Standard.007
+    400156: Sight Front Standard.008
+    400158: Sight Front Standard.010
+    400160: Sight Front Standard.011
+    400162: Sight Front Standard.012
+    400164: Sight Gunblade
+    400166: Sight Rear
+    400168: Sight Rear.001
+    400170: Sight Rear.002
+    400172: Sight Standard Short
+    400174: Sight Standard.001
+    400176: SightRail
+    400178: Slide
+    400180: Slide Pistol Auto
+    400182: Slide Pistol Standard
+    400184: Slide Spring Full Base
+    400186: Slide Spring Full Base.003
+    400188: Slide Standard
+    400190: Slide Standard Short
+    400192: Slide Standard Short.001
+    400194: Slide Standard Short.002
+    400196: Slide_end
+    400198: //RootNode
+    400200: Stock Adjustable
+    400202: Stock Duelist
+    400204: Stock Folding
+    400206: Stock Swashbuckler
+    400208: StockAdjust
+    400210: TopRail
+    400212: Trigger
+    400214: Trigger 1
+    400216: Trigger Modern
+    400218: Trigger Modern.001
+    400220: Trigger.001
+    400222: Trigger.002
+    400224: Trigger.003
+    400226: Trigger_end
+    400228: TriggerMelee
+    400230: ColtBase
+    400232: IntegralParts
+    400234: Barrel Beretta
+    400236: Barrel Compact
+    400238: Barrel Long
+    400240: Barrel Ported.001
+    400242: Base Walbretta
+    400244: Core Colt
+    400246: Core Colt Gblade
+    400248: Core Colt.001
+    400250: Core Glock
+    400252: Core Glock Gblade
+    400254: Core Walretta
+    400256: Core Walretta GBlade
+    400258: Coreparts Beretta
+    400260: Coreparts Walther
+    400262: Glock Slide
+    400264: Hammer Beretta
+    400266: Hammer Walther
+    400268: Mag_17
+    400270: Mag_30
+    400272: Panels Beretta
+    400274: Panels Walther
+    400276: SightRail.001
+    400278: Slide Beretta
+    400280: Slide Beretta.001
+    400282: Slide Walretta
+    400284: Slide Walretta.001
+    400286: Slide Walther
+    400288: Trigger Modern.002
+    400290: Trigger.004
+    400292: Trigger.005
+    400294: Trigger.006
+    400296: Slide Colt
+    400298: Mag_25
+    400300: Base Extensions
+    400302: Slide Hook GB
+    400304: Slide Hook GB.001
+    400306: Slide Hook Gblade
+    400308: Slide Hook Roni
+    400310: Slide Hook Roni.001
+    400312: Slide Hook Roni.002
+    400314: Fore Gunblade
+    400316: Fore Roni
+    400318: Rear Adjustable
+    400320: Base Colt
+    400322: Base Deagle
+    400324: Deagle Slide
+    400326: Hammer.001
+    400328: Mag_7
+    400330: Barrel Long.001
+    400332: Barrel Standard
+    400334: Body Deagle
+    400336: Base Uzi
+    400338: Charging Handle
+    400340: Frame Micro
+    400342: Frame Standard
+    400344: Integral
+    400346: Integral.001
+    400348: Integral.002
+    400350: Mag_20
+    400352: Mag_32
+    400354: slide
+    400356: slide.001
+    400358: Stock Folding Base
+    400360: Stock Folding Closed
+    400362: Stock Folding Open
+    400364: Stock Folding.001
+    400366: trigger
+    400368: Stock Classic
+    400370: Rail.002
+    400372: SightRail.002
+    400374: Charging Handle.001
+    400376: Folding Stock Arm.004
+    400378: Folding Stock Arm.005
+    400380: Frame Mini
+    400382: Integral.003
+    400384: Siderails
+    400386: slide.002
+    400388: Stock Folding Horizontal
+    400390: Stock Folding.002
+    400392: Bolt
+    400394: GripBase
+    400396: Mag_15_GunBlade
+    400398: Mag_16_Beretta
+    400400: Mag_17_Glock
+    400402: Mag_18_Colt
+    400404: Mag_20_Uzi
+    400406: Mag_25_Beretta
+    400408: Mag_25_GunBlade
+    400410: Mag_32_Uzi
+    400412: Mag_33_Glock
+    400414: Mag_7_Deagle
+    400416: Mag_8_Colt
+    400418: ThumbtriggerMelee
+    400420: ThumbtriggerPistol
+    400422: TriggerPistol
+    400424: Slide Sight
+    400426: Barrel Walther
+    400428: Stock Folding Vertical
+    400430: Canister
+    400432: Control Nozzle Charge
+    400434: Control Nozzle Spray
+    400436: Control Nozzle Stream
+    400438: FireMechPhysical
+    400440: FireMechPressurizer
+    400442: Mag_12_Deagle
+    400444: Solid Stock
+    400446: SightRail.003
+    400448: Barrel Short
+    400450: Barrel Standard.002
+    400452: Base CX8
+    400454: Mag_16_Beretta.001
+    400456: Mag_25_Beretta.001
+    400458: WPN_CX8_ejector
+    400460: WPN_CX8_handle
+    400462: WPN_CX8_trigger
+    400464: Mag_16_CX8
+    400466: Mag_25_CX8
+    400468: Barrel Carbine
+    400470: WPN_CX8_Integral
+    400472: Base Storm
+    400474: Mag_16_Storm
+    400476: Mag_25_Storm
+    400478: Storm_ejector
+    400480: Storm_handle
+    400482: Storm_Integral
+    400484: Barrel 93
+    400486: Compenstator
+    400488: Core Beretta 92
+    400490: Core Beretta 93
+    400492: Core Roni
+    400494: Core Selectfire
+    400496: Core Standard
+    400498: Core Walther
+    400500: Cylinder
+    400502: Integral Slideparts
+    400504: SlideHook
+    400506: Foregrip
+    400508: Fire Selector Burst
+    400510: Fire Selector Singleshot
+    400512: Mag_Gblade_Small
+    400514: Barrel Beretta Heavy
+    400516: Barrel Walther Long
+    400518: Barrel Walther Short
+    400520: Barrel Walther Standard
+    400522: Base Beretta
+    400524: Base P38
+    400526: Core Beretta Heavy
+    400528: Core Heavy Beretta Frame
+    400530: Core Heavy Glock
+    400532: Folding Stock Arm.002
+    400534: Folding Stock Arm.003
+    400536: Mag_8_Walther
+    400538: Sight Front
+    400540: SightRail.004
+    400542: SlideHook.001
+    400544: Trigger.000
+    400546: Folding Stock Arm.000
+    400548: Stock Folding.000
+    2100000: Metal
+    2100002: Detail
+    2100004: Pistol Grip
+    2100006: Grip
+    2100008: BrightMetal
+    2100010: Slide Poly
+    2300000: Axe Long
+    2300002: Axe Mid
+    2300004: Axe Short
+    2300006: Blade Long
+    2300008: Blade Mid
+    2300010: Blade Short
+    2300012: Folding Stock Arm
+    2300014: Folding Stock Arm.001
+    2300016: ForegripClosed
+    2300018: ForegripClosed.001
+    2300020: ForegripClosed.002
+    2300022: ForegripOpen
+    2300024: ForegripOpen.001
+    2300026: ForegripOpen.002
+    2300028: GripShootist.001
+    2300030: Handguard
+    2300032: Handguard.001
+    2300034: Mace Long
+    2300036: Mace Mid
+    2300038: Mace Short
+    2300040: Rail
+    2300042: Rail.001
+    2300044: Rails
+    2300046: Selector
+    2300048: Selector.001
+    2300050: Sight Front Standard
+    2300052: Sight Front Standard.001
+    2300054: Sight Front Standard.002
+    2300056: Sight Front Standard.003
+    2300058: Sight Front Standard.004
+    2300060: Sight Front Standard.005
+    2300062: Sight Front Standard.006
+    2300064: Sight Front Standard.007
+    2300066: Sight Front Standard.008
+    2300068: Sight Front Standard.010
+    2300070: Sight Front Standard.011
+    2300072: Sight Front Standard.012
+    2300074: Sight Gunblade
+    2300076: Sight Rear
+    2300078: Sight Rear.001
+    2300080: Sight Rear.002
+    2300082: StockAdjust
+    2300084: TriggerMelee
+    2300086: IntegralParts
+    2300088: Barrel Fixture Gunblade Long
+    2300090: Barrel Fixture Gunblade Mid
+    2300092: Barrel Fixture Gunblade Short
+    2300094: Barrel Fixture Roni Carbine
+    2300096: Barrel Fixture Roni Rifle
+    2300098: Barrel Fixture Roni SMG
+    2300100: Barrel Mid.000
+    2300102: Barrel Ported
+    2300104: Barrel Standard Short
+    2300106: Barrel Standard.001
+    2300108: Base 1911
+    2300110: Base Glock
+    2300112: Base Gunblade
+    2300114: Base Roni
+    2300116: BaseParts
+    2300118: BaseParts.001
+    2300120: BaseParts.002
+    2300122: ColtBase
+    2300124: ColtParts
+    2300126: ColtSlide
+    2300128: Compenstator Standard Mid
+    2300130: CoreParts Classic
+    2300132: CoreParts Modern
+    2300134: CoreParts Modern.001
+    2300136: GlockBase
+    2300138: GlockParts
+    2300140: GlockSlide.001
+    2300142: GripGuardsClassic
+    2300144: GripGuardsModern
+    2300146: GripGuardsModern.001
+    2300148: Hammer
+    2300150: Hammer Modern
+    2300152: Loading Chamber
+    2300154: Loading Chamber.001
+    2300156: Loading Chamber.002
+    2300158: Loading Port
+    2300160: Loading Port.001
+    2300162: Mag_15
+    2300164: Mag_18
+    2300166: Mag_33
+    2300168: Mag_8
+    2300170: Sight Standard Short
+    2300172: Sight Standard.001
+    2300174: SightRail
+    2300176: Slide Pistol Auto
+    2300178: Slide Pistol Standard
+    2300180: Slide Spring Full Base
+    2300182: Slide Spring Full Base.003
+    2300184: Slide Standard
+    2300186: Slide Standard Short
+    2300188: Slide Standard Short.001
+    2300190: Slide Standard Short.002
+    2300192: Stock Adjustable
+    2300194: Stock Duelist
+    2300196: Stock Folding
+    2300198: Stock Swashbuckler
+    2300200: TopRail
+    2300202: Trigger
+    2300204: Trigger Modern
+    2300206: Trigger Modern.001
+    2300208: Trigger.001
+    2300210: Trigger.002
+    2300212: Trigger.003
+    2300214: Barrel Beretta
+    2300216: Barrel Compact
+    2300218: Barrel Long
+    2300220: Barrel Ported.001
+    2300222: Base Walbretta
+    2300224: Core Colt
+    2300226: Core Colt Gblade
+    2300228: Core Colt.001
+    2300230: Core Glock
+    2300232: Core Glock Gblade
+    2300234: Core Walretta
+    2300236: Core Walretta GBlade
+    2300238: Coreparts Beretta
+    2300240: Coreparts Walther
+    2300242: Glock Slide
+    2300244: Hammer Beretta
+    2300246: Hammer Walther
+    2300248: Mag_17
+    2300250: Mag_30
+    2300252: Panels Beretta
+    2300254: Panels Walther
+    2300256: SightRail.001
+    2300258: Slide Beretta
+    2300260: Slide Beretta.001
+    2300262: Slide Walretta
+    2300264: Slide Walretta.001
+    2300266: Slide Walther
+    2300268: Trigger Modern.002
+    2300270: Trigger.004
+    2300272: Trigger.005
+    2300274: Trigger.006
+    2300276: Slide Colt
+    2300278: //RootNode
+    2300280: Mag_25
+    2300282: Slide Hook GB
+    2300284: Slide Hook GB.001
+    2300286: Slide Hook Gblade
+    2300288: Slide Hook Roni
+    2300290: Slide Hook Roni.001
+    2300292: Slide Hook Roni.002
+    2300294: Fore Gunblade
+    2300296: Fore Roni
+    2300298: Rear Adjustable
+    2300300: Base Colt
+    2300302: Base Deagle
+    2300304: Deagle Slide
+    2300306: Hammer.001
+    2300308: Mag_7
+    2300310: Barrel Long.001
+    2300312: Barrel Standard
+    2300314: Body Deagle
+    2300316: Charging Handle
+    2300318: Frame Micro
+    2300320: Frame Standard
+    2300322: Integral
+    2300324: Integral.001
+    2300326: Integral.002
+    2300328: Mag_20
+    2300330: Mag_32
+    2300332: slide
+    2300334: slide.001
+    2300336: Stock Folding Base
+    2300338: Stock Folding Closed
+    2300340: Stock Folding Open
+    2300342: Stock Folding.001
+    2300344: trigger
+    2300346: Stock Classic
+    2300348: Rail.002
+    2300350: SightRail.002
+    2300352: Charging Handle.001
+    2300354: Folding Stock Arm.004
+    2300356: Folding Stock Arm.005
+    2300358: Frame Mini
+    2300360: Integral.003
+    2300362: Siderails
+    2300364: slide.002
+    2300366: Stock Folding Horizontal
+    2300368: Stock Folding.002
+    2300370: Bolt
+    2300372: GripBase
+    2300374: Mag_15_GunBlade
+    2300376: Mag_16_Beretta
+    2300378: Mag_17_Glock
+    2300380: Mag_18_Colt
+    2300382: Mag_20_Uzi
+    2300384: Mag_25_Beretta
+    2300386: Mag_25_GunBlade
+    2300388: Mag_32_Uzi
+    2300390: Mag_33_Glock
+    2300392: Mag_7_Deagle
+    2300394: Mag_8_Colt
+    2300396: ThumbtriggerMelee
+    2300398: ThumbtriggerPistol
+    2300400: TriggerPistol
+    2300402: Slide Sight
+    2300404: Barrel Walther
+    2300406: Stock Folding Vertical
+    2300408: Canister
+    2300410: Control Nozzle Charge
+    2300412: Control Nozzle Spray
+    2300414: Control Nozzle Stream
+    2300416: FireMechPhysical
+    2300418: FireMechPressurizer
+    2300420: Mag_12_Deagle
+    2300422: Solid Stock
+    2300424: SightRail.003
+    2300426: Barrel Short
+    2300428: Barrel Standard.002
+    2300430: Base CX8
+    2300432: Mag_16_Beretta.001
+    2300434: Mag_25_Beretta.001
+    2300436: WPN_CX8_ejector
+    2300438: WPN_CX8_handle
+    2300440: WPN_CX8_trigger
+    2300442: Mag_16_CX8
+    2300444: Mag_25_CX8
+    2300446: Barrel Carbine
+    2300448: WPN_CX8_Integral
+    2300450: Base Storm
+    2300452: Mag_16_Storm
+    2300454: Mag_25_Storm
+    2300456: Storm_ejector
+    2300458: Storm_handle
+    2300460: Storm_Integral
+    2300462: Barrel 93
+    2300464: Compenstator
+    2300466: Core Beretta 92
+    2300468: Core Beretta 93
+    2300470: Core Roni
+    2300472: Core Selectfire
+    2300474: Core Standard
+    2300476: Core Walther
+    2300478: Cylinder
+    2300480: Integral Slideparts
+    2300482: SlideHook
+    2300484: Foregrip
+    2300486: Fire Selector Burst
+    2300488: Fire Selector Singleshot
+    2300490: Mag_Gblade_Small
+    2300492: Barrel Beretta Heavy
+    2300494: Barrel Walther Long
+    2300496: Barrel Walther Short
+    2300498: Barrel Walther Standard
+    2300500: Base Beretta
+    2300502: Base P38
+    2300504: Core Beretta Heavy
+    2300506: Core Heavy Beretta Frame
+    2300508: Core Heavy Glock
+    2300510: Folding Stock Arm.002
+    2300512: Folding Stock Arm.003
+    2300514: Mag_8_Walther
+    2300516: Sight Front
+    2300518: SightRail.004
+    2300520: SlideHook.001
+    2300522: Trigger.000
+    2300524: Folding Stock Arm.000
+    2300526: Stock Folding.000
+    3300000: Axe Long
+    3300002: Axe Mid
+    3300004: Axe Short
+    3300006: Blade Long
+    3300008: Blade Mid
+    3300010: Blade Short
+    3300012: Folding Stock Arm
+    3300014: Folding Stock Arm.001
+    3300016: ForegripClosed
+    3300018: ForegripClosed.001
+    3300020: ForegripClosed.002
+    3300022: ForegripOpen
+    3300024: ForegripOpen.001
+    3300026: ForegripOpen.002
+    3300028: GripShootist.001
+    3300030: Handguard
+    3300032: Handguard.001
+    3300034: Mace Long
+    3300036: Mace Mid
+    3300038: Mace Short
+    3300040: Rail
+    3300042: Rail.001
+    3300044: Rails
+    3300046: Selector
+    3300048: Selector.001
+    3300050: Sight Front Standard
+    3300052: Sight Front Standard.001
+    3300054: Sight Front Standard.002
+    3300056: Sight Front Standard.003
+    3300058: Sight Front Standard.004
+    3300060: Sight Front Standard.005
+    3300062: Sight Front Standard.006
+    3300064: Sight Front Standard.007
+    3300066: Sight Front Standard.008
+    3300068: Sight Front Standard.010
+    3300070: Sight Front Standard.011
+    3300072: Sight Front Standard.012
+    3300074: Sight Gunblade
+    3300076: Sight Rear
+    3300078: Sight Rear.001
+    3300080: Sight Rear.002
+    3300082: StockAdjust
+    3300084: TriggerMelee
+    3300086: IntegralParts
+    3300088: Barrel Fixture Gunblade Long
+    3300090: Barrel Fixture Gunblade Mid
+    3300092: Barrel Fixture Gunblade Short
+    3300094: Barrel Fixture Roni Carbine
+    3300096: Barrel Fixture Roni Rifle
+    3300098: Barrel Fixture Roni SMG
+    3300100: Barrel Mid.000
+    3300102: Barrel Ported
+    3300104: Barrel Standard Short
+    3300106: Barrel Standard.001
+    3300108: Base 1911
+    3300110: Base Glock
+    3300112: Base Gunblade
+    3300114: Base Roni
+    3300116: BaseParts
+    3300118: BaseParts.001
+    3300120: BaseParts.002
+    3300122: ColtBase
+    3300124: ColtParts
+    3300126: ColtSlide
+    3300128: Compenstator Standard Mid
+    3300130: CoreParts Classic
+    3300132: CoreParts Modern
+    3300134: CoreParts Modern.001
+    3300136: GlockBase
+    3300138: GlockParts
+    3300140: GlockSlide.001
+    3300142: GripGuardsClassic
+    3300144: GripGuardsModern
+    3300146: GripGuardsModern.001
+    3300148: Hammer
+    3300150: Hammer Modern
+    3300152: Loading Chamber
+    3300154: Loading Chamber.001
+    3300156: Loading Chamber.002
+    3300158: Loading Port
+    3300160: Loading Port.001
+    3300162: Mag_15
+    3300164: Mag_18
+    3300166: Mag_33
+    3300168: Mag_8
+    3300170: Sight Standard Short
+    3300172: Sight Standard.001
+    3300174: SightRail
+    3300176: Slide Pistol Auto
+    3300178: Slide Pistol Standard
+    3300180: Slide Spring Full Base
+    3300182: Slide Spring Full Base.003
+    3300184: Slide Standard
+    3300186: Slide Standard Short
+    3300188: Slide Standard Short.001
+    3300190: Slide Standard Short.002
+    3300192: Stock Adjustable
+    3300194: Stock Duelist
+    3300196: Stock Folding
+    3300198: Stock Swashbuckler
+    3300200: TopRail
+    3300202: Trigger
+    3300204: Trigger Modern
+    3300206: Trigger Modern.001
+    3300208: Trigger.001
+    3300210: Trigger.002
+    3300212: Trigger.003
+    3300214: Barrel Beretta
+    3300216: Barrel Compact
+    3300218: Barrel Long
+    3300220: Barrel Ported.001
+    3300222: Base Walbretta
+    3300224: Core Colt
+    3300226: Core Colt Gblade
+    3300228: Core Colt.001
+    3300230: Core Glock
+    3300232: Core Glock Gblade
+    3300234: Core Walretta
+    3300236: Core Walretta GBlade
+    3300238: Coreparts Beretta
+    3300240: Coreparts Walther
+    3300242: Glock Slide
+    3300244: Hammer Beretta
+    3300246: Hammer Walther
+    3300248: Mag_17
+    3300250: Mag_30
+    3300252: Panels Beretta
+    3300254: Panels Walther
+    3300256: SightRail.001
+    3300258: Slide Beretta
+    3300260: Slide Beretta.001
+    3300262: Slide Walretta
+    3300264: Slide Walretta.001
+    3300266: Slide Walther
+    3300268: Trigger Modern.002
+    3300270: Trigger.004
+    3300272: Trigger.005
+    3300274: Trigger.006
+    3300276: Slide Colt
+    3300278: //RootNode
+    3300280: Mag_25
+    3300282: Slide Hook GB
+    3300284: Slide Hook GB.001
+    3300286: Slide Hook Gblade
+    3300288: Slide Hook Roni
+    3300290: Slide Hook Roni.001
+    3300292: Slide Hook Roni.002
+    3300294: Fore Gunblade
+    3300296: Fore Roni
+    3300298: Rear Adjustable
+    3300300: Base Colt
+    3300302: Base Deagle
+    3300304: Deagle Slide
+    3300306: Hammer.001
+    3300308: Mag_7
+    3300310: Barrel Long.001
+    3300312: Barrel Standard
+    3300314: Body Deagle
+    3300316: Charging Handle
+    3300318: Frame Micro
+    3300320: Frame Standard
+    3300322: Integral
+    3300324: Integral.001
+    3300326: Integral.002
+    3300328: Mag_20
+    3300330: Mag_32
+    3300332: slide
+    3300334: slide.001
+    3300336: Stock Folding Base
+    3300338: Stock Folding Closed
+    3300340: Stock Folding Open
+    3300342: Stock Folding.001
+    3300344: trigger
+    3300346: Stock Classic
+    3300348: Rail.002
+    3300350: SightRail.002
+    3300352: Charging Handle.001
+    3300354: Folding Stock Arm.004
+    3300356: Folding Stock Arm.005
+    3300358: Frame Mini
+    3300360: Integral.003
+    3300362: Siderails
+    3300364: slide.002
+    3300366: Stock Folding Horizontal
+    3300368: Stock Folding.002
+    3300370: Bolt
+    3300372: GripBase
+    3300374: Mag_15_GunBlade
+    3300376: Mag_16_Beretta
+    3300378: Mag_17_Glock
+    3300380: Mag_18_Colt
+    3300382: Mag_20_Uzi
+    3300384: Mag_25_Beretta
+    3300386: Mag_25_GunBlade
+    3300388: Mag_32_Uzi
+    3300390: Mag_33_Glock
+    3300392: Mag_7_Deagle
+    3300394: Mag_8_Colt
+    3300396: ThumbtriggerMelee
+    3300398: ThumbtriggerPistol
+    3300400: TriggerPistol
+    3300402: Slide Sight
+    3300404: Barrel Walther
+    3300406: Stock Folding Vertical
+    3300408: Canister
+    3300410: Control Nozzle Charge
+    3300412: Control Nozzle Spray
+    3300414: Control Nozzle Stream
+    3300416: FireMechPhysical
+    3300418: FireMechPressurizer
+    3300420: Mag_12_Deagle
+    3300422: Solid Stock
+    3300424: SightRail.003
+    3300426: Barrel Short
+    3300428: Barrel Standard.002
+    3300430: Base CX8
+    3300432: Mag_16_Beretta.001
+    3300434: Mag_25_Beretta.001
+    3300436: WPN_CX8_ejector
+    3300438: WPN_CX8_handle
+    3300440: WPN_CX8_trigger
+    3300442: Mag_16_CX8
+    3300444: Mag_25_CX8
+    3300446: Barrel Carbine
+    3300448: WPN_CX8_Integral
+    3300450: Base Storm
+    3300452: Mag_16_Storm
+    3300454: Mag_25_Storm
+    3300456: Storm_ejector
+    3300458: Storm_handle
+    3300460: Storm_Integral
+    3300462: Barrel 93
+    3300464: Compenstator
+    3300466: Core Beretta 92
+    3300468: Core Beretta 93
+    3300470: Core Roni
+    3300472: Core Selectfire
+    3300474: Core Standard
+    3300476: Core Walther
+    3300478: Cylinder
+    3300480: Integral Slideparts
+    3300482: SlideHook
+    3300484: Foregrip
+    3300486: Fire Selector Burst
+    3300488: Fire Selector Singleshot
+    3300490: Mag_Gblade_Small
+    3300492: Barrel Beretta Heavy
+    3300494: Barrel Walther Long
+    3300496: Barrel Walther Short
+    3300498: Barrel Walther Standard
+    3300500: Base Beretta
+    3300502: Base P38
+    3300504: Core Beretta Heavy
+    3300506: Core Heavy Beretta Frame
+    3300508: Core Heavy Glock
+    3300510: Folding Stock Arm.002
+    3300512: Folding Stock Arm.003
+    3300514: Mag_8_Walther
+    3300516: Sight Front
+    3300518: SightRail.004
+    3300520: SlideHook.001
+    3300522: Trigger.000
+    3300524: Folding Stock Arm.000
+    3300526: Stock Folding.000
+    4300000: Base 1911.001
+    4300002: Base 1911
+    4300004: TopRail
+    4300006: Slide Standard Short
+    4300008: Barrel Standard Short
+    4300010: Sight Standard Short
+    4300012: CoreParts Modern
+    4300014: GripGuardsModern
+    4300016: Trigger Modern
+    4300018: Hammer Modern
+    4300020: CoreParts Classic
+    4300022: GripGuardsClassic
+    4300024: Hammer
+    4300026: Trigger.001
+    4300028: Slide Standard
+    4300030: Compenstator Standard Mid
+    4300032: Sight Standard.001
+    4300034: Barrel Standard.001
+    4300036: Barrel Fixture Gunblade Short
+    4300038: Axe Short
+    4300040: Sight Front Standard.012
+    4300042: Mace Short
+    4300044: Sight Front Standard.011
+    4300046: Blade Short
+    4300048: ForegripOpen.002
+    4300050: ForegripClosed.002
+    4300052: Sight Front Standard.010
+    4300054: Barrel Fixture Gunblade Mid
+    4300056: Blade Mid
+    4300058: Sight Front Standard.008
+    4300060: ForegripClosed.001
+    4300062: ForegripOpen.001
+    4300064: Mace Mid
+    4300066: Sight Front Standard.007
+    4300068: Axe Mid
+    4300070: Sight Front Standard.006
+    4300072: Stock Swashbuckler
+    4300074: Handguard.001
+    4300076: Stock Duelist
+    4300078: Handguard
+    4300080: GripShootist.001
+    4300082: Barrel Fixture Gunblade Long
+    4300084: Axe Long
+    4300086: Sight Front Standard.003
+    4300088: Mace Long
+    4300090: Sight Front Standard.004
+    4300092: Blade Long
+    4300094: ForegripOpen
+    4300096: ForegripClosed
+    4300098: Sight Front Standard.005
+    4300100: Base Gunblade
+    4300102: Sight Gunblade
+    4300104: TriggerMelee
+    4300106: Selector.001
+    4300108: ColtParts
+    4300110: Slide Standard Short.002
+    4300112: Loading Port.001
+    4300114: GlockParts
+    4300116: BaseParts.001
+    4300118: Loading Chamber.001
+    4300120: Trigger.002
+    4300122: Stock Folding
+    4300124: Folding Stock Arm
+    4300126: Folding Stock Arm.001
+    4300128: Stock Adjustable
+    4300130: StockAdjust
+    4300132: Barrel Fixture Roni Rifle
+    4300134: Rail.001
+    4300136: Sight Front Standard.001
+    4300138: Sight Rear.001
+    4300140: Barrel Fixture Roni Carbine
+    4300142: Rails
+    4300144: Sight Front Standard.002
+    4300146: Sight Rear.002
+    4300148: Barrel Fixture Roni SMG
+    4300150: Rail
+    4300152: Sight Front Standard
+    4300154: Sight Rear
+    4300156: Base Roni
+    4300158: Selector
+    4300160: GlockBase
+    4300162: ColtSlide
+    4300164: CoreParts Modern.001
+    4300166: Trigger Modern.001
+    4300168: GripGuardsModern.001
+    4300170: Slide Standard Short.001
+    4300172: Loading Port
+    4300174: BaseParts.002
+    4300176: Trigger.003
+    4300178: Loading Chamber.002
+    4300180: GlockSlide.001
+    4300182: Mag_15
+    4300184: Mag_33
+    4300186: Base Glock
+    4300188: BaseParts
+    4300190: Trigger
+    4300192: Loading Chamber
+    4300194: SightRail
+    4300196: Slide Pistol Standard
+    4300198: Barrel Mid.000
+    4300200: Slide Spring Full Base.003
+    4300202: Slide Pistol Auto
+    4300204: Barrel Ported
+    4300206: Slide Spring Full Base
+    4300208: Mag_8
+    4300210: Mag_18
+    4300212: IntegralParts
+    4300214: ColtBase
+    4300216: Mag_30
+    4300218: Base Walbretta
+    4300220: Coreparts Walther
+    4300222: Barrel Long
+    4300224: Barrel Compact
+    4300226: Slide Beretta.001
+    4300228: Panels Walther
+    4300230: Slide Walther
+    4300232: Hammer Walther
+    4300234: Coreparts Beretta
+    4300236: Hammer Beretta
+    4300238: Panels Beretta
+    4300240: Slide Beretta
+    4300242: Barrel Beretta
+    4300244: Barrel Ported.001
+    4300246: Trigger.004
+    4300248: SightRail.001
+    4300250: Core Walretta GBlade
+    4300252: Slide Walretta.001
+    4300254: Trigger.006
+    4300256: Core Colt Gblade
+    4300258: Core Glock Gblade
+    4300260: Glock Slide
+    4300262: Core Walretta
+    4300264: Trigger.005
+    4300266: Slide Walretta
+    4300268: Core Colt.001
+    4300270: Core Colt
+    4300272: Trigger Modern.002
+    4300274: Core Glock
+    4300276: Mag_17
+    4300278: Slide Colt
+    4300280: Mag_25
+    4300282: Slide Hook Roni
+    4300284: Slide Hook Gblade
+    4300286: Slide Hook Roni.002
+    4300288: Slide Hook GB
+    4300290: Slide Hook Roni.001
+    4300292: Slide Hook GB.001
+    4300294: Fore Gunblade
+    4300296: Fore Roni
+    4300298: Rear Adjustable
+    4300300: Base Colt
+    4300302: Base Deagle
+    4300304: Mag_7
+    4300306: Deagle Slide
+    4300308: Hammer.001
+    4300310: Body Deagle
+    4300312: Barrel Standard
+    4300314: Barrel Long.001
+    4300316: Stock Folding Base
+    4300318: Stock Folding Closed
+    4300320: Stock Folding Open
+    4300322: Integral.001
+    4300324: trigger
+    4300326: Frame Micro
+    4300328: Integral.002
+    4300330: slide
+    4300332: Frame Standard
+    4300334: Integral
+    4300336: slide.001
+    4300338: Charging Handle
+    4300340: Mag_32
+    4300342: Mag_20
+    4300344: Stock Folding.001
+    4300346: Stock Classic
+    4300348: Rail.002
+    4300350: SightRail.002
+    4300352: Frame Mini
+    4300354: Siderails
+    4300356: Integral.003
+    4300358: Charging Handle.001
+    4300360: slide.002
+    4300362: Stock Folding Horizontal
+    4300364: Stock Folding.002
+    4300366: Folding Stock Arm.005
+    4300368: Folding Stock Arm.004
+    4300370: Mag_25_GunBlade
+    4300372: Mag_15_GunBlade
+    4300374: Mag_32_Uzi
+    4300376: Mag_20_Uzi
+    4300378: Mag_7_Deagle
+    4300380: GripBase
+    4300382: ThumbtriggerPistol
+    4300384: ThumbtriggerMelee
+    4300386: TriggerPistol
+    4300388: Bolt
+    4300390: Mag_25_Beretta
+    4300392: Mag_16_Beretta
+    4300394: Mag_8_Colt
+    4300396: Mag_18_Colt
+    4300398: Mag_17_Glock
+    4300400: Mag_33_Glock
+    4300402: Slide Sight
+    4300404: Barrel Walther
+    4300406: Stock Folding Vertical
+    4300408: Canister
+    4300410: Solid Stock
+    4300412: FireMechPressurizer
+    4300414: Control Nozzle Spray
+    4300416: Control Nozzle Charge
+    4300418: Control Nozzle Stream
+    4300420: Mag_12_Deagle
+    4300422: FireMechPhysical
+    4300424: SightRail.003
+    4300426: Base CX8
+    4300428: Barrel Short
+    4300430: Mag_25_Beretta.001
+    4300432: WPN_CX8_handle
+    4300434: WPN_CX8_ejector
+    4300436: WPN_CX8_trigger
+    4300438: Mag_16_Beretta.001
+    4300440: Barrel Standard.002
+    4300442: Mag_25_CX8
+    4300444: Mag_16_CX8
+    4300446: Barrel Carbine
+    4300448: WPN_CX8_Integral
+    4300450: Base Storm
+    4300452: Mag_25_Storm
+    4300454: Storm_Integral
+    4300456: Storm_handle
+    4300458: Storm_ejector
+    4300460: Mag_16_Storm
+    4300462: Cylinder
+    4300464: Core Walther
+    4300466: Core Beretta 93
+    4300468: Barrel 93
+    4300470: Core Beretta 92
+    4300472: Compenstator
+    4300474: Core Roni
+    4300476: SlideHook
+    4300478: Core Selectfire
+    4300480: Core Standard
+    4300482: Integral Slideparts
+    4300484: Foregrip
+    4300486: Fire Selector Burst
+    4300488: Fire Selector Singleshot
+    4300490: Mag_Gblade_Small
+    4300492: Base P38
+    4300494: Barrel Walther Long
+    4300496: Barrel Walther Short
+    4300498: Sight Front
+    4300500: Barrel Walther Standard
+    4300502: Trigger.000
+    4300504: Mag_8_Walther
+    4300506: SightRail.004
+    4300508: Base Beretta
+    4300510: Core Beretta Heavy
+    4300512: Core Heavy Beretta Frame
+    4300514: Folding Stock Arm.003
+    4300516: Folding Stock Arm.002
+    4300518: SlideHook.001
+    4300520: Barrel Beretta Heavy
+    4300522: Core Heavy Glock
+    4300524: Stock Folding.000
+    4300526: Folding Stock Arm.000
+    7400000: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|a
+    7400002: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|B
+    7400004: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|F
+    7400006: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|H
+    7400008: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|M
+    7400010: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|S
+    7400012: Armature|Armature.001|Armature|aps-model|aps-model|aps-model|aps-model|T
+    7400014: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.000
+    7400016: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.001
+    7400018: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.002
+    7400020: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.003
+    7400022: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.004
+    7400024: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.005
+    7400026: Armature|Armature.001|Armature|aps-model|aps-model|Barrel.003|Barrel.006
+    7400028: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.000
+    7400030: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.001
+    7400032: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.002
+    7400034: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.003
+    7400036: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.004
+    7400038: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fir.005
+    7400040: Armature|Armature.001|Armature|aps-model|aps-model|Fire Selector|Fire
+      Se
+    7400042: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|aps-mod
+    7400044: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Barrel.
+    7400046: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Fire
+      Se
+    7400048: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Hammer|
+    7400050: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Mag_20.
+    7400052: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Slide.0
+    7400054: Armature|Armature.001|Armature|aps-model|aps-model|Hammer|Hammer|Trigger
+    7400056: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.000
+    7400058: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.001
+    7400060: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.002
+    7400062: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.003
+    7400064: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.004
+    7400066: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.005
+    7400068: Armature|Armature.001|Armature|aps-model|aps-model|Mag_20.001|Mag_20.006
+    7400070: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|a
+    7400072: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|B
+    7400074: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|F
+    7400076: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|H
+    7400078: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|M
+    7400080: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|S
+    7400082: Armature|Armature.001|Armature|aps-model|aps-model|Slide.001|Slide.001|T
+    7400084: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.000
+    7400086: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.001
+    7400088: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.002
+    7400090: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.003
+    7400092: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.004
+    7400094: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigg.005
+    7400096: Armature|Armature.001|Armature|aps-model|aps-model|Trigger.003|Trigger.0
+    7400098: Armature|Armature.001|Armature|Armature|Armature|Fire|Armature|Fire|Arma
+    7400100: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.000
+    7400102: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.001
+    7400104: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.002
+    7400106: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.003
+    7400108: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.004
+    7400110: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-m.005
+    7400112: Armature|Armature.001|Armature|Barrel.003|Barrel.003|aps-model|aps-model
+    7400114: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.000
+    7400116: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.001
+    7400118: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.002
+    7400120: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.003
+    7400122: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.004
+    7400124: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barr.005
+    7400126: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Barrel.003|Barrel.0
+    7400128: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.000
+    7400130: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.001
+    7400132: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.002
+    7400134: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.003
+    7400136: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.004
+    7400138: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|F.005
+    7400140: 'Armature|Armature.001|Armature|Barrel.003|Barrel.003|Fire Selector|Fire '
+    7400142: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|aps-m
+    7400144: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Barre
+    7400146: 'Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Fire '
+    7400148: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Hamme
+    7400150: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Mag_2
+    7400152: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Slide
+    7400154: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Hammer|Hammer|Trigg
+    7400156: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.000
+    7400158: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.001
+    7400160: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.002
+    7400162: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.003
+    7400164: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.004
+    7400166: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_.005
+    7400168: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Mag_20.001|Mag_20.0
+    7400170: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.000
+    7400172: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.001
+    7400174: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.002
+    7400176: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.003
+    7400178: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.004
+    7400180: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.005
+    7400182: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Slide.001|Slide.006
+    7400184: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.000
+    7400186: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.001
+    7400188: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.002
+    7400190: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.003
+    7400192: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.004
+    7400194: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Tri.005
+    7400196: Armature|Armature.001|Armature|Barrel.003|Barrel.003|Trigger.003|Trigger
+    7400198: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.000
+    7400200: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.001
+    7400202: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.002
+    7400204: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.003
+    7400206: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.004
+    7400208: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model.005
+    7400210: Armature|Armature.001|Armature|Fire Selector|Fire Selector|aps-model|aps
+    7400212: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.000
+    7400214: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.001
+    7400216: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.002
+    7400218: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.003
+    7400220: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.004
+    7400222: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.00.005
+    7400224: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Barrel.003|Ba
+    7400226: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.000
+    7400228: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.001
+    7400230: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.002
+    7400232: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.003
+    7400234: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.004
+    7400236: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Sele.005
+    7400238: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Fire Selector
+    7400240: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.000
+    7400242: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.001
+    7400244: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.002
+    7400246: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.003
+    7400248: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.004
+    7400250: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Ha.005
+    7400252: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Hammer|Hammer
+    7400254: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.000
+    7400256: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.001
+    7400258: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.002
+    7400260: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.003
+    7400262: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.004
+    7400264: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.00.005
+    7400266: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Mag_20.001|Ma
+    7400268: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.000
+    7400270: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.001
+    7400272: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.002
+    7400274: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.003
+    7400276: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.004
+    7400278: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001.005
+    7400280: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Slide.001|Sli
+    7400282: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.000
+    7400284: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.001
+    7400286: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.002
+    7400288: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.003
+    7400290: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.004
+    7400292: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.0.005
+    7400294: Armature|Armature.001|Armature|Fire Selector|Fire Selector|Trigger.003|T
+    7400296: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|aps
+    7400298: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Bar
+    7400300: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Fir
+    7400302: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Ham
+    7400304: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Mag
+    7400306: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Sli
+    7400308: Armature|Armature.001|Armature|Hammer.001|Hammer|aps-model|aps-model|Tri
+    7400310: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|a
+    7400312: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|B
+    7400314: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|F
+    7400316: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|H
+    7400318: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|M
+    7400320: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|S
+    7400322: Armature|Armature.001|Armature|Hammer.001|Hammer|Barrel.003|Barrel.001|T
+    7400324: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .000
+    7400326: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .001
+    7400328: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .002
+    7400330: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .003
+    7400332: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .004
+    7400334: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire .005
+    7400336: Armature|Armature.001|Armature|Hammer.001|Hammer|Fire Selector|Fire Sele
+    7400338: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|aps-model
+    7400340: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Barrel.00
+    7400342: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Fire Sele
+    7400344: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Hammer|Ha
+    7400346: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Mag_20.00
+    7400348: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Slide.001
+    7400350: Armature|Armature.001|Armature|Hammer.001|Hammer|Hammer|Hammer|Trigger.0
+    7400352: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|a
+    7400354: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|B
+    7400356: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|F
+    7400358: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|H
+    7400360: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|M
+    7400362: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|S
+    7400364: Armature|Armature.001|Armature|Hammer.001|Hammer|Mag_20.001|Mag_20.001|T
+    7400366: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|aps
+    7400368: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Bar
+    7400370: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Fir
+    7400372: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Ham
+    7400374: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Mag
+    7400376: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Sli
+    7400378: Armature|Armature.001|Armature|Hammer.001|Hammer|Slide.001|Slide.001|Tri
+    7400380: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.000
+    7400382: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.001
+    7400384: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.002
+    7400386: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.003
+    7400388: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.004
+    7400390: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.005
+    7400392: Armature|Armature.001|Armature|Hammer.001|Hammer|Trigger.003|Trigger.006
+    7400394: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.000
+    7400396: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.001
+    7400398: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.002
+    7400400: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.003
+    7400402: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.004
+    7400404: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-m.005
+    7400406: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|aps-model|aps-model
+    7400408: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.000
+    7400410: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.001
+    7400412: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.002
+    7400414: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.003
+    7400416: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.004
+    7400418: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barr.005
+    7400420: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Barrel.003|Barrel.0
+    7400422: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.000
+    7400424: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.001
+    7400426: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.002
+    7400428: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.003
+    7400430: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.004
+    7400432: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|F.005
+    7400434: 'Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Fire Selector|Fire '
+    7400436: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|aps-m
+    7400438: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Barre
+    7400440: 'Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Fire '
+    7400442: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Hamme
+    7400444: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Mag_2
+    7400446: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Slide
+    7400448: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Hammer|Hammer|Trigg
+    7400450: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.000
+    7400452: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.001
+    7400454: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.002
+    7400456: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.003
+    7400458: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.004
+    7400460: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_.005
+    7400462: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Mag_20.001|Mag_20.0
+    7400464: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.000
+    7400466: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.001
+    7400468: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.002
+    7400470: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.003
+    7400472: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.004
+    7400474: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.005
+    7400476: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Slide.001|Slide.006
+    7400478: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.000
+    7400480: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.001
+    7400482: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.002
+    7400484: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.003
+    7400486: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.004
+    7400488: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Tri.005
+    7400490: Armature|Armature.001|Armature|Mag_20.001|Mag_20.001|Trigger.003|Trigger
+    7400492: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|a
+    7400494: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|B
+    7400496: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|F
+    7400498: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|H
+    7400500: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|M
+    7400502: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|S
+    7400504: Armature|Armature.001|Armature|Slide.001|Slide.001|aps-model|aps-model|T
+    7400506: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.000
+    7400508: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.001
+    7400510: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.002
+    7400512: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.003
+    7400514: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.004
+    7400516: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.005
+    7400518: Armature|Armature.001|Armature|Slide.001|Slide.001|Barrel.003|Barrel.006
+    7400520: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.000
+    7400522: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.001
+    7400524: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.002
+    7400526: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.003
+    7400528: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.004
+    7400530: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fir.005
+    7400532: Armature|Armature.001|Armature|Slide.001|Slide.001|Fire Selector|Fire
+      Se
+    7400534: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|aps-mod
+    7400536: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Barrel.
+    7400538: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Fire
+      Se
+    7400540: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Hammer|
+    7400542: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Mag_20.
+    7400544: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Slide.0
+    7400546: Armature|Armature.001|Armature|Slide.001|Slide.001|Hammer|Hammer|Trigger
+    7400548: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.000
+    7400550: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.001
+    7400552: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.002
+    7400554: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.003
+    7400556: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.004
+    7400558: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.005
+    7400560: Armature|Armature.001|Armature|Slide.001|Slide.001|Mag_20.001|Mag_20.006
+    7400562: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|a
+    7400564: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|B
+    7400566: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|F
+    7400568: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|H
+    7400570: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|M
+    7400572: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|S
+    7400574: Armature|Armature.001|Armature|Slide.001|Slide.001|Slide.001|Slide.001|T
+    7400576: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.000
+    7400578: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.001
+    7400580: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.002
+    7400582: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.003
+    7400584: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.004
+    7400586: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigg.005
+    7400588: Armature|Armature.001|Armature|Slide.001|Slide.001|Trigger.003|Trigger.0
+    7400590: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps-mod
+    7400592: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.000
+    7400594: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.001
+    7400596: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.002
+    7400598: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.003
+    7400600: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.004
+    7400602: Armature|Armature.001|Armature|Trigger.003|Trigger.003|aps-model|aps.005
+    7400604: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.000
+    7400606: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.001
+    7400608: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.002
+    7400610: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.003
+    7400612: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.004
+    7400614: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Ba.005
+    7400616: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Barrel.003|Barrel
+    7400618: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.000
+    7400620: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.001
+    7400622: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.002
+    7400624: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.003
+    7400626: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.004
+    7400628: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector.005
+    7400630: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Fire Selector|Fir
+    7400632: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|aps
+    7400634: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Bar
+    7400636: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Fir
+    7400638: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Ham
+    7400640: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Mag
+    7400642: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Sli
+    7400644: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Hammer|Hammer|Tri
+    7400646: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.000
+    7400648: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.001
+    7400650: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.002
+    7400652: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.003
+    7400654: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.004
+    7400656: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Ma.005
+    7400658: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Mag_20.001|Mag_20
+    7400660: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.000
+    7400662: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.001
+    7400664: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.002
+    7400666: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.003
+    7400668: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.004
+    7400670: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Sli.005
+    7400672: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Slide.001|Slide.0
+    7400674: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.000
+    7400676: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.001
+    7400678: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.002
+    7400680: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.003
+    7400682: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.004
+    7400684: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|T.005
+    7400686: Armature|Armature.001|Armature|Trigger.003|Trigger.003|Trigger.003|Trigg
+    7400688: Armature|Fire
+    7400690: Trigger.003|body|Scene|Scene
+    7400692: Trigger.003|magazine|Scene|Scene
+    7400694: Trigger.003|shell|Scene|Scene
+    7400696: Trigger.003|slide|Scene|Scene
+    7400698: Trigger.003|slide|Scene|Scene.001
+    7400700: Trigger.003|trigger|Scene|Scene
+    7400702: Loading Chamber.002|body|Scene|Scene
+    7400704: Loading Chamber.002|magazine|Scene|Scene
+    7400706: Loading Chamber.002|shell|Scene|Scene
+    7400708: Loading Chamber.002|slide|Scene|Scene
+    7400710: Loading Chamber.002|slide|Scene|Scene.001
+    7400712: Loading Chamber.002|trigger|Scene|Scene
+    7400714: SightRail.001|body|Scene|Scene
+    7400716: SightRail.001|magazine|Scene|Scene
+    7400718: SightRail.001|shell|Scene|Scene
+    7400720: SightRail.001|slide|Scene|Scene
+    7400722: SightRail.001|slide|Scene|Scene.001
+    7400724: SightRail.001|trigger|Scene|Scene
+    7400726: Trigger.006|body|Scene|Scene
+    7400728: Trigger.006|magazine|Scene|Scene
+    7400730: Trigger.006|shell|Scene|Scene
+    7400732: Trigger.006|slide|Scene|Scene
+    7400734: Trigger.006|slide|Scene|Scene.001
+    7400736: Trigger.006|trigger|Scene|Scene
+    7400738: Loading Chamber|body|Scene|Scene
+    7400740: Loading Chamber|magazine|Scene|Scene
+    7400742: Loading Chamber|shell|Scene|Scene
+    7400744: Loading Chamber|slide|Scene|Scene
+    7400746: Loading Chamber|slide|Scene|Scene.001
+    7400748: Loading Chamber|trigger|Scene|Scene
+    7400750: SightRail|body|Scene|Scene
+    7400752: SightRail|magazine|Scene|Scene
+    7400754: SightRail|shell|Scene|Scene
+    7400756: SightRail|slide|Scene|Scene
+    7400758: SightRail|slide|Scene|Scene.001
+    7400760: SightRail|trigger|Scene|Scene
+    7400762: SightRail.003|body|Scene|Scene
+    7400764: SightRail.003|magazine|Scene|Scene
+    7400766: SightRail.003|shell|Scene|Scene
+    7400768: SightRail.003|slide|Scene|Scene
+    7400770: SightRail.003|trigger|Scene|Scene
+    7400772: SightRail.003|cal_40.001|Take 001|BaseLayer
+    7400774: SightRail.003|cal_40.002|Take 001|BaseLayer
+    7400776: SightRail.003|cal_40|Take 001|BaseLayer
+    7400778: SightRail.001|cal_40.001|Take 001|BaseLayer
+    7400780: SightRail.001|cal_40.002|Take 001|BaseLayer
+    7400782: SightRail.001|cal_40|Take 001|BaseLayer
+    7400784: Trigger.006|cal_40.001|Take 001|BaseLayer
+    7400786: Trigger.006|cal_40.002|Take 001|BaseLayer
+    7400788: Trigger.006|cal_40|Take 001|BaseLayer
+    7400790: Loading Chamber|cal_40.001|Take 001|BaseLayer
+    7400792: Loading Chamber|cal_40.002|Take 001|BaseLayer
+    7400794: Loading Chamber|cal_40|Take 001|BaseLayer
+    7400796: SightRail|cal_40.001|Take 001|BaseLayer
+    7400798: SightRail|cal_40.002|Take 001|BaseLayer
+    7400800: SightRail|cal_40|Take 001|BaseLayer
+    7400802: SightRail.004|body|Scene|Scene
+    7400804: SightRail.004|cal_40.001|Take 001|BaseLayer
+    7400806: SightRail.004|cal_40.002|Take 001|BaseLayer
+    7400808: SightRail.004|cal_40|Take 001|BaseLayer
+    7400810: SightRail.004|magazine|Scene|Scene
+    7400812: SightRail.004|shell|Scene|Scene
+    7400814: SightRail.004|slide|Scene|Scene
+    7400816: SightRail.004|trigger|Scene|Scene
+    7400818: SightRail.002|body|Scene|Scene
+    7400820: SightRail.002|cal_40.001|Take 001|BaseLayer
+    7400822: SightRail.002|cal_40.002|Take 001|BaseLayer
+    7400824: SightRail.002|cal_40|Take 001|BaseLayer
+    7400826: SightRail.002|magazine|Scene|Scene
+    7400828: SightRail.002|shell|Scene|Scene
+    7400830: SightRail.002|slide|Scene|Scene
+    7400832: SightRail.002|trigger|Scene|Scene
+    9500000: //RootNode
+    13700000: Barrel Fixture Gunblade Long
+    13700002: Barrel Fixture Gunblade Mid
+    13700004: Barrel Fixture Gunblade Short
+    13700006: Barrel Fixture Roni Carbine
+    13700008: Barrel Fixture Roni Rifle
+    13700010: Barrel Fixture Roni SMG
+    13700012: Barrel Mid.000
+    13700014: Barrel Ported
+    13700016: Barrel Standard Short
+    13700018: Barrel Standard.001
+    13700020: Base 1911
+    13700022: Base 1911.001
+    13700024: Base Glock
+    13700026: Base Gunblade
+    13700028: Base Roni
+    13700030: BaseParts
+    13700032: BaseParts.001
+    13700034: BaseParts.002
+    13700036: ColtParts
+    13700038: ColtSlide
+    13700040: Compenstator Standard Mid
+    13700042: CoreParts Classic
+    13700044: CoreParts Modern
+    13700046: CoreParts Modern.001
+    13700048: GlockBase
+    13700050: GlockParts
+    13700052: GlockSlide.001
+    13700054: GripGuardsClassic
+    13700056: GripGuardsModern
+    13700058: GripGuardsModern.001
+    13700060: Hammer
+    13700062: Hammer Modern
+    13700064: Loading Chamber
+    13700066: Loading Chamber.001
+    13700068: Loading Chamber.002
+    13700070: Loading Port
+    13700072: Loading Port.001
+    13700074: Mag_15
+    13700076: Mag_18
+    13700078: Mag_33
+    13700080: Mag_8
+    13700082: Sight Standard Short
+    13700084: Sight Standard.001
+    13700086: SightRail
+    13700088: Slide Pistol Auto
+    13700090: Slide Pistol Standard
+    13700092: Slide Spring Full Base
+    13700094: Slide Spring Full Base.003
+    13700096: Slide Standard
+    13700098: Slide Standard Short
+    13700100: Slide Standard Short.001
+    13700102: Slide Standard Short.002
+    13700104: Stock Adjustable
+    13700106: Stock Duelist
+    13700108: Stock Folding
+    13700110: Stock Swashbuckler
+    13700112: TopRail
+    13700114: Trigger 1
+    13700116: Trigger Modern
+    13700118: Trigger Modern.001
+    13700120: Trigger.001
+    13700122: Trigger.002
+    13700124: Trigger.003
+    13700126: ColtBase
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BrightMetal
+    second: {fileID: 2100000, guid: 95d690a5bc9e16440af73f5669fed7ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CanisterCaps
+    second: {fileID: 2100000, guid: c139fc1e94adb0546adf7e8c75c501c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CanisterTubes
+    second: {fileID: 2100000, guid: d7525a05fad4aff4c95e944e60cd5f83, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail
+    second: {fileID: 2100000, guid: 966cef088042f9642801360bece862be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Detail.001
+    second: {fileID: 2100000, guid: f55631a26d963cf4fbb68a1c433e68a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grip
+    second: {fileID: 2100000, guid: e1fdf8df1cf8a6c48a95baa5d2a7972d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GunMetal
+    second: {fileID: 2100000, guid: 7c727ad9905aa1f40b80aa0c68f980bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lens
+    second: {fileID: 2100000, guid: 4792525af753c3146847bba828be494f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: aa4aabe83ff86bc48bb62fed103bc822, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal.001
+    second: {fileID: 2100000, guid: eed61c3b1030dbe489cfaa50787e518b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pistol Grip
+    second: {fileID: 2100000, guid: f99bfae284d827f4b810e0e3262b2404, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pistol Grip.001
+    second: {fileID: 2100000, guid: afb646a0ee2abad438a75b475c1c9065, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Polymer
+    second: {fileID: 2100000, guid: 1b668bd0f21372a4eb83bf39a1e770e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pressurizer
+    second: {fileID: 2100000, guid: 77b663c076f17b44cb77e1367c962c54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Slide Poly
+    second: {fileID: 2100000, guid: 93e4c24492a56c142955b09eb2d4b2ba, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
