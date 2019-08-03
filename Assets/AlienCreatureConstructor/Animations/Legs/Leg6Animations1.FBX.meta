@@ -1,0 +1,1375 @@
+fileFormatVersion: 2
+guid: a467187ebdcf544549e7be901ec4634a
+timeCreated: 1449935121
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: //RootNode
+    100006: Leg_6Dummy
+    100008: LegCenter
+    100010: LegCenter.001
+    100012: LegCenter.002
+    100014: LegCenter.003
+    100016: LegCenter.004
+    100018: LegCenter.005
+    100020: LegCenter.006
+    100022: LegCenter.007
+    100024: LegCenter.008
+    100026: LegCenter.009
+    100028: LegCenter.010
+    100030: LegCenter.011
+    100032: LegCenter.012
+    100034: LegCenter.013
+    100036: LegCenter.014
+    100038: LegCenter.015
+    100040: LegCenter.016
+    100042: LegCenter.017
+    100044: LegCenter.018
+    100046: LegCenter.019
+    100048: LegCenter.020
+    100050: LegCenter.021
+    100052: LegCenter.022
+    100054: LegCenter.023
+    100056: LegCenter.024
+    100058: LegCenter.025
+    100060: LegCenter.026
+    100062: LegCenter.027
+    100064: LegCenter.028
+    100066: LegCenter.029
+    100068: LegCenter.030
+    100070: LegCenter.031
+    100072: LegCenter.032
+    100074: LegCenter.033
+    100076: LegCenter.034
+    100078: LegCenter.035
+    100080: LegCenter.036
+    100082: LegCenter.037
+    100084: LegCenter.038
+    100086: LegCenter.039
+    100088: LegCenter.040
+    100090: LegCenter.041
+    100092: LegCenter.042
+    100094: LegCenter.043
+    100096: LegCenter.044
+    100098: LegCenter.045
+    100100: LegCenter.046
+    100102: LegCenter.047
+    100104: LegCenter.048
+    400000: Armature
+    400002: Bone
+    400004: //RootNode
+    400006: Leg_6Dummy
+    400008: LegCenter
+    400010: LegCenter.001
+    400012: LegCenter.002
+    400014: LegCenter.003
+    400016: LegCenter.004
+    400018: LegCenter.005
+    400020: LegCenter.006
+    400022: LegCenter.007
+    400024: LegCenter.008
+    400026: LegCenter.009
+    400028: LegCenter.010
+    400030: LegCenter.011
+    400032: LegCenter.012
+    400034: LegCenter.013
+    400036: LegCenter.014
+    400038: LegCenter.015
+    400040: LegCenter.016
+    400042: LegCenter.017
+    400044: LegCenter.018
+    400046: LegCenter.019
+    400048: LegCenter.020
+    400050: LegCenter.021
+    400052: LegCenter.022
+    400054: LegCenter.023
+    400056: LegCenter.024
+    400058: LegCenter.025
+    400060: LegCenter.026
+    400062: LegCenter.027
+    400064: LegCenter.028
+    400066: LegCenter.029
+    400068: LegCenter.030
+    400070: LegCenter.031
+    400072: LegCenter.032
+    400074: LegCenter.033
+    400076: LegCenter.034
+    400078: LegCenter.035
+    400080: LegCenter.036
+    400082: LegCenter.037
+    400084: LegCenter.038
+    400086: LegCenter.039
+    400088: LegCenter.040
+    400090: LegCenter.041
+    400092: LegCenter.042
+    400094: LegCenter.043
+    400096: LegCenter.044
+    400098: LegCenter.045
+    400100: LegCenter.046
+    400102: LegCenter.047
+    400104: LegCenter.048
+    7400000: WalkForward
+    7400002: WalkRight
+    7400004: WalkLeft
+    7400006: WalkBack
+    7400008: Idle
+    7400010: Hit
+    7400012: Attack
+    7400014: Down
+    7400016: StandUp
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: WalkForward
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: WalkRight
+      takeName: Take 001
+      firstFrame: 40
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: WalkLeft
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: WalkBack
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 130
+      lastFrame: 160
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Hit
+      takeName: Take 001
+      firstFrame: 170
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 220
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Down
+      takeName: Take 001
+      firstFrame: 230
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: StandUp
+      takeName: Take 001
+      firstFrame: 270
+      lastFrame: 290
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/LegCenter
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.001/LegCenter.002/LegCenter.003/LegCenter.004/LegCenter.005/LegCenter.006
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.007/LegCenter.008/LegCenter.009/LegCenter.010/LegCenter.011/LegCenter.012
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.013/LegCenter.014/LegCenter.015/LegCenter.016/LegCenter.017/LegCenter.018
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.019/LegCenter.020/LegCenter.021/LegCenter.022/LegCenter.023/LegCenter.024
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.025/LegCenter.026/LegCenter.027/LegCenter.028/LegCenter.029/LegCenter.030
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.031/LegCenter.032/LegCenter.033/LegCenter.034/LegCenter.035/LegCenter.036
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.037/LegCenter.038/LegCenter.039/LegCenter.040/LegCenter.041/LegCenter.042
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047
+        weight: 1
+      - path: Armature/Bone/LegCenter/LegCenter.043/LegCenter.044/LegCenter.045/LegCenter.046/LegCenter.047/LegCenter.048
+        weight: 1
+      - path: Leg_6Dummy
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Bone
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
