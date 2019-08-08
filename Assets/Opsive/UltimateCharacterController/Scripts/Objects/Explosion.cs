@@ -8,7 +8,6 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Audio;
 using Opsive.UltimateCharacterController.Game;
 using Opsive.UltimateCharacterController.Events;
-using Opsive.UltimateCharacterController.Items.Actions;
 using Opsive.UltimateCharacterController.Objects.ItemAssist;
 using Opsive.UltimateCharacterController.Traits;
 using Opsive.UltimateCharacterController.Utility;
@@ -35,7 +34,7 @@ namespace Opsive.UltimateCharacterController.Objects
         [SerializeField] protected LayerMask m_ImpactLayers = ~(1 << LayerManager.IgnoreRaycast | 1 << LayerManager.Water | 1 << LayerManager.SubCharacter | 1 << LayerManager.Overlay | 
                                                                 1 << LayerManager.VisualEffect);
         [Tooltip("Does the explosion require line of sight in order to damage the hit object?")]
-        [SerializeField] protected bool m_LineOfSight = true;
+        [SerializeField] protected bool m_LineOfSight;
         [Tooltip("The duration of the explosion.")]
         [SerializeField] protected float m_Lifespan = 3;
         [Tooltip("The maximum number of objects that the explosions can detect.")]
@@ -150,7 +149,8 @@ namespace Opsive.UltimateCharacterController.Objects
                             var head = parentAnimator.GetBoneTransform(HumanBodyBones.Head);
                             direction = head.position - position;
                             if (Physics.Raycast(position, direction, out m_RaycastHit, direction.magnitude, m_ImpactLayers, QueryTriggerInteraction.Ignore) &&
-                                !m_RaycastHit.transform.IsChildOf(m_CollidersHit[i].transform) && !m_CollidersHit[i].transform.IsChildOf(m_RaycastHit.transform)
+                                !m_RaycastHit.transform.IsChildOf(m_CollidersHit[i].transform) && !m_CollidersHit[i].transform.IsChildOf(m_RaycastHit.transform) &&
+                                m_RaycastHit.transform.IsChildOf(m_Transform)
 #if FIRST_PERSON_CONTROLLER
                                 // The cast should not hit any colliders who are a child of the camera.
                                 && m_RaycastHit.transform.gameObject.GetCachedParentComponent<FirstPersonController.Character.FirstPersonObjects>() == null
@@ -184,6 +184,8 @@ namespace Opsive.UltimateCharacterController.Objects
 
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(m_CollidersHit[i].transform.gameObject, "OnObjectImpact", hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator, m_CollidersHit[i]);
+                // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
+                EventHandler.ExecuteEvent(m_CollidersHit[i].transform.gameObject, "OnObjectImpact", hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator, this, m_CollidersHit[i]);
                 if (m_OnImpactEvent != null) {
                     m_OnImpactEvent.Invoke(hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator);
                 }

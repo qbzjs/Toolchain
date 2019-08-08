@@ -618,6 +618,27 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             GUI.enabled = m_Item != null;
             EditorGUILayout.EndHorizontal();
 
+            // Actions can be removed.
+            if (m_Item != null) {
+                var actions = m_Item.GetComponents<ItemAction>();
+                if (actions.Length > 0) {
+                    var actionStrings = new string[actions.Length];
+                    for (int i = 0; i < actions.Length; ++i) {
+                        actionStrings[i] = InspectorUtility.DisplayTypeName(actions[i].GetType(), false);
+                        if (actions.Length > 1) {
+                            actionStrings[i] += " (ID " + actions[i].ID + ")";
+                        }
+                    }
+                    EditorGUILayout.BeginHorizontal();
+                    m_RemoveActionTypeIndex = EditorGUILayout.Popup("Remove Action", m_RemoveActionTypeIndex, actionStrings);
+                    if (GUILayout.Button("Remove", GUILayout.Width(80))) {
+                        ItemBuilder.RemoveAction(actions[m_RemoveActionTypeIndex]);
+                        m_RemoveActionTypeIndex = 0;
+                    }
+                    EditorGUILayout.EndHorizontal();
+                }
+            }
+
             // Actions can be added.
             GUILayout.Space(5);
             EditorGUILayout.BeginHorizontal();
@@ -648,27 +669,6 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             }
             EditorGUILayout.EndHorizontal();
             GUI.enabled = m_Item != null && canBuild;
-
-            // Actions can be removed.
-            if (m_Item != null) {
-                var actions = m_Item.GetComponents<ItemAction>();
-                if (actions.Length > 0) {
-                    var actionStrings = new string[actions.Length];
-                    for (int i = 0; i < actions.Length; ++i) {
-                        actionStrings[i] = InspectorUtility.DisplayTypeName(actions[i].GetType(), false);
-                        if (actions.Length > 1) {
-                            actionStrings[i] += " (ID " + actions[i].ID + ")";
-                        }
-                    }
-                    EditorGUILayout.BeginHorizontal();
-                    m_RemoveActionTypeIndex = EditorGUILayout.Popup("Remove Action", m_RemoveActionTypeIndex, actionStrings);
-                    if (GUILayout.Button("Remove", GUILayout.Width(80))) {
-                        ItemBuilder.RemoveAction(actions[m_RemoveActionTypeIndex]);
-                        m_RemoveActionTypeIndex = 0;
-                    }
-                    EditorGUILayout.EndHorizontal();
-                }
-            }
 
 #if FIRST_PERSON_CONTROLLER
             GUILayout.Space(5);
@@ -707,7 +707,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             if (GUILayout.Button("Add")) {
                 var character = m_Item.GetComponentInParent<Character.UltimateCharacterLocomotion>();
                 ItemBuilder.AddFirstPersonObject(character.gameObject, m_Item.name, m_Item.gameObject, ref m_ExistingFirstPersonObject, m_ExistingFirstPersonObjectAnimatorController,
-                                                    ref m_ExistingFirstPersonVisibleItem,  m_FirstPersonItemSlot, m_ExistingFirstPersonVisibleItemAnimatorController);
+                                                    ref m_ExistingFirstPersonVisibleItem, m_ExistingFirstPersonItemSlot, m_ExistingFirstPersonVisibleItemAnimatorController);
             }
 
             GUI.enabled = m_Item != null && firstPersonVisibleItem != null;
@@ -752,7 +752,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             GUI.enabled = m_Item != null && thirdPersonVisibleItem == null;
             if (GUILayout.Button("Add")) {
                 var character = m_Item.GetComponentInParent<Character.UltimateCharacterLocomotion>();
-                ItemBuilder.AddThirdPersonObject(character.gameObject, m_Item.name, m_Item.gameObject, ref m_ExistingThirdPersonObject, m_ThirdPersonItemSlot, m_ExistingThirdPersonObjectAnimatorController, m_InvisibleShadowCaster, false);
+                ItemBuilder.AddThirdPersonObject(character.gameObject, m_Item.name, m_Item.gameObject, ref m_ExistingThirdPersonObject, m_ExistingThirdPersonItemSlot, m_ExistingThirdPersonObjectAnimatorController, m_InvisibleShadowCaster, false);
             }
             GUI.enabled = m_Item != null && thirdPersonVisibleItem != null;
             if (GUILayout.Button("Remove")) {

@@ -18,7 +18,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects
     /// <summary>
     /// Custom inspector for the MovingPlatform component.
     /// </summary>
-    [CustomEditor(typeof(MovingPlatform))]
+    [CustomEditor(typeof(MovingPlatform), true)]
     public class MovingPlatformInspector : StateBehaviorInspector
     {
         private const int c_DelayWidth = 50;

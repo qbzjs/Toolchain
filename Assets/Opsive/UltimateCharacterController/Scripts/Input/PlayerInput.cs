@@ -42,6 +42,8 @@ namespace Opsive.UltimateCharacterController.Input
         [SerializeField] protected int m_SmoothLookSteps = 20;
         [Tooltip("If using look smoothing, specifies how much weight each element should have on the total smoothed value (range 0-1).")]
         [SerializeField] protected float m_SmoothLookWeight = 0.5f;
+        [Tooltip("If using look smoothing, specifies an exponent to give a smoother feel with smaller inputs.")]
+        [SerializeField] protected float m_SmoothExponent = 1.05f;
         [Tooltip("If using look smoothing, specifies a maximum acceleration value of the smoothed look value (0 to disable).")]
         [SerializeField] protected float m_LookAccelerationThreshold = 0.4f;
         [Tooltip("The rate (in seconds) the component checks to determine if a controller is connected.")]
@@ -65,6 +67,7 @@ namespace Opsive.UltimateCharacterController.Input
         public Vector2 LookSensitivity { get { return m_LookSensitivity; } set { m_LookSensitivity = value; } }
         public int SmoothLookSteps { get { return m_SmoothLookSteps; } set { m_SmoothLookSteps = value; } }
         public float SmoothLookWeight { get { return m_SmoothLookWeight; } set { m_SmoothLookWeight = value; } }
+        public float SmoothExponent { get { return m_SmoothExponent; } set { m_SmoothExponent = value; } }
         public float LookAccelerationThreshold { get { return m_LookAccelerationThreshold; } set { m_LookAccelerationThreshold = value; } }
         public float ControllerConnectedCheckRate { get { return m_ControllerConnectedCheckRate; } set { m_ControllerConnectedCheckRate = value; } }
         public string ConnectedControllerState { get { return m_ConnectedControllerState; } set { m_ConnectedControllerState = value; } }
@@ -401,8 +404,11 @@ namespace Opsive.UltimateCharacterController.Input
                 }
 
                 // Determine the final value.
-                m_CurrentLookVector.x *= (m_LookSensitivity.x + lookAcceleration);
-                m_CurrentLookVector.y *= (m_LookSensitivity.y + lookAcceleration);
+                m_CurrentLookVector.x *= (m_LookSensitivity.x + lookAcceleration) * TimeUtility.FramerateDeltaTime;
+                m_CurrentLookVector.y *= (m_LookSensitivity.y + lookAcceleration) * TimeUtility.FramerateDeltaTime;
+
+                m_CurrentLookVector.x = Mathf.Sign(m_CurrentLookVector.x) * Mathf.Pow(Mathf.Abs(m_CurrentLookVector.x), m_SmoothExponent);
+                m_CurrentLookVector.y = Mathf.Sign(m_CurrentLookVector.y) * Mathf.Pow(Mathf.Abs(m_CurrentLookVector.y), m_SmoothExponent);
             } else if (m_LookVectorMode == LookVectorMode.UnitySmoothed) {
                 m_CurrentLookVector.x = GetAxis(m_HorizontalLookInputName);
                 m_CurrentLookVector.y = GetAxis(m_VerticalLookInputName);

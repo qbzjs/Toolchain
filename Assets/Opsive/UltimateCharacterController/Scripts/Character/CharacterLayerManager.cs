@@ -17,9 +17,9 @@ namespace Opsive.UltimateCharacterController.Character
         [Tooltip("Layer Mask that specifies the layer that the enemies use.")]
         [SerializeField] protected LayerMask m_EnemyLayers = 1 << LayerManager.Enemy;
         [Tooltip("Layer Mask that specifies any layers that are invisible to the character (such as water or invisible planes placed on top of stairs). ")]
-        [SerializeField] protected LayerMask m_InvisibleLayers = (1 << LayerManager.TransparentFX) | (1 << LayerManager.IgnoreRaycast) | (1 << LayerManager.UI) | (1 << LayerManager.Overlay) | (1 << LayerManager.VisualEffect) | (1 << LayerManager.SubCharacter);
+        [SerializeField] protected LayerMask m_InvisibleLayers = (1 << LayerManager.TransparentFX) | (1 << LayerManager.IgnoreRaycast) | (1 << LayerManager.UI) | (1 << LayerManager.VisualEffect) | (1 << LayerManager.Overlay) | (1 << LayerManager.SubCharacter);
         [Tooltip("Layer mask that specifies any layers that represent a solid object (such as the ground or a moving platform).")]
-        [SerializeField] protected LayerMask m_SolidObjectLayers = (1 << LayerManager.Default) | (1 << LayerManager.TransparentFX) | (1 << LayerManager.MovingPlatform) | (1 << LayerManager.Character) | (1 << LayerManager.Character);
+        [SerializeField] protected LayerMask m_SolidObjectLayers = ~((1 << LayerManager.IgnoreRaycast) | (1 << LayerManager.Water) | (1 << LayerManager.UI) | (1 << LayerManager.VisualEffect) | (1 << LayerManager.Overlay) | (1 << LayerManager.SubCharacter));
 
         public LayerMask EnemyLayers { get { return m_EnemyLayers; } }
         public LayerMask InvisibleLayers { get { return m_InvisibleLayers; } }

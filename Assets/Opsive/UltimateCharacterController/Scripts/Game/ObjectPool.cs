@@ -56,6 +56,7 @@ namespace Opsive.UltimateCharacterController.Game
         private Dictionary<int, Stack<GameObject>> m_GameObjectPool = new Dictionary<int, Stack<GameObject>>();
         private Dictionary<int, int> m_InstantiatedGameObjects = new Dictionary<int, int>();
         private Dictionary<Type, object> m_GenericPool = new Dictionary<Type, object>();
+        private Dictionary<int, GameObject> m_OriginalObjectIDs = new Dictionary<int, GameObject>();
 
         /// <summary>
         /// The object has been enabled.
@@ -147,13 +148,16 @@ namespace Opsive.UltimateCharacterController.Game
             var instantiatedObject = ObjectFromPool(originalInstanceID, position, rotation, parent);
             if (instantiatedObject == null) {
                 instantiatedObject = GameObject.Instantiate(original, position, rotation, parent);
-                // Map the newly instantiated instance ID to the original instance ID so when the object is returned it knows what pool to go to.
-                m_InstantiatedGameObjects.Add(instantiatedObject.GetInstanceID(), originalInstanceID);
+                if (!m_OriginalObjectIDs.ContainsKey(originalInstanceID)) {
+                    m_OriginalObjectIDs.Add(originalInstanceID, original);
+                }
             } else {
                 instantiatedObject.transform.position = position;
                 instantiatedObject.transform.rotation = rotation;
                 instantiatedObject.transform.parent = parent;
             }
+            // Map the newly instantiated instance ID to the original instance ID so when the object is returned it knows what pool to go to.
+            m_InstantiatedGameObjects.Add(instantiatedObject.GetInstanceID(), originalInstanceID);
 
             return instantiatedObject;
         }
@@ -180,8 +184,6 @@ namespace Opsive.UltimateCharacterController.Game
                     instantiatedObject.transform.rotation = rotation;
                     instantiatedObject.transform.parent = parent;
                     instantiatedObject.SetActive(true);
-                    // Map the newly instantiated instance ID to the original instance ID so when the object is returned it knows what pool to go to.
-                    m_InstantiatedGameObjects.Add(instantiatedObject.GetInstanceID(), originalInstanceID);
                     return instantiatedObject;
                 }
             }
@@ -292,6 +294,41 @@ namespace Opsive.UltimateCharacterController.Game
                 pool.Push(instantiatedObject);
                 m_GameObjectPool.Add(originalInstanceID, pool);
             }
+        }
+
+        /// <summary>
+        /// Returns the original GameObject that the specified object was instantiated from.
+        /// </summary>
+        /// <param name="instantiatedObject">The GameObject that was instantiated.</param>
+        /// <returns>The original GameObject that the specified object was instantiated from.</returns>
+        public static GameObject OriginalObject(GameObject instantiatedObject)
+        {
+            // Objects may be wanting to be destroyed as the game is stopping but the ObjectPool has already been destroyed. Ensure the ObjectPool is still valid.
+            if (Instance == null) {
+                return null;
+            }
+
+            return Instance.OriginalObjectInternal(instantiatedObject);
+        }
+
+        /// <summary>
+        /// Internal method which returns the original GameObject that the specified object was instantiated from.
+        /// </summary>
+        /// <param name="instantiatedObject">The GameObject that was instantiated.</param>
+        /// <returns>The original GameObject that the specified object was instantiated from.</returns>
+        private GameObject OriginalObjectInternal(GameObject instantiatedObject)
+        {
+            var originalInstanceID = -1;
+            if (!m_InstantiatedGameObjects.TryGetValue(instantiatedObject.GetInstanceID(), out originalInstanceID)) {
+                return null;
+            }
+
+            GameObject original;
+            if (!m_OriginalObjectIDs.TryGetValue(originalInstanceID, out original)) {
+                return null;
+            }
+
+            return original;
         }
 
         /// <summary>

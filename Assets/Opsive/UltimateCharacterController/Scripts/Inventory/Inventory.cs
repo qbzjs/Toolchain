@@ -41,17 +41,17 @@ namespace Opsive.UltimateCharacterController.Inventory
         protected override bool AddItemInternal(Item item)
         {
             if (item.ItemType == null) {
-                Debug.LogError("Error: Item " + item + " has no ItemType.");
+                Debug.LogError("Error: Item " + item.gameObject.name + " has no ItemType.");
                 return false;
             }
 
             if (m_ItemTypeItemMap == null) {
-                Debug.LogError("Error: Unable to add " + item + " because the inventory component doesn't exist.");
+                Debug.LogError("Error: Unable to add " + item.gameObject.name + " because the inventory component doesn't exist.");
                 return false;
             }
 
             if (item.SlotID >= m_ItemTypeItemMap.Length) {
-                Debug.LogError("Error: Unable to add " + item + " because the slot id is greater than the number of slots that exist in the inventory.");
+                Debug.LogError("Error: Unable to add " + item.gameObject.name + " because the slot id is greater than the number of slots that exist in the inventory.");
                 return false;
             }
 

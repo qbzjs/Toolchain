@@ -82,7 +82,7 @@ namespace Opsive.UltimateCharacterController.Demo
                 return;
             }
 
-            var characterLocomotion = other.gameObject.GetComponentInParent<Character.UltimateCharacterLocomotion>();
+            var characterLocomotion = other.gameObject.GetComponentInParent<UltimateCharacterController.Character.UltimateCharacterLocomotion>();
             if (characterLocomotion == null) {
                 return;
             }
@@ -111,7 +111,7 @@ namespace Opsive.UltimateCharacterController.Demo
                 return;
             }
 
-            var characterLocomotion = other.gameObject.GetComponentInParent<Character.UltimateCharacterLocomotion>();
+            var characterLocomotion = other.gameObject.GetComponentInParent<UltimateCharacterController.Character.UltimateCharacterLocomotion>();
             if (characterLocomotion == null) {
                 return;
             }

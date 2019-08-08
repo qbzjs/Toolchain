@@ -53,7 +53,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             GUI.enabled = enableButton;
-            if (GUILayout.Button(button, GUILayout.Width(130))) {
+            if (!string.IsNullOrEmpty(button) && GUILayout.Button(button, GUILayout.Width(130))) {
                 action();
                 if (!string.IsNullOrEmpty(successLog)) {
                     Debug.Log(successLog);

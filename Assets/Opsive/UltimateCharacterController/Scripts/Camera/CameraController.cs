@@ -290,7 +290,7 @@ namespace Opsive.UltimateCharacterController.Camera
             float pitch = 0f, yaw = 0f;
             var characterRotation = Quaternion.identity;
             // ViewType will be null on startup.
-            if (m_ViewType != null && Application.isPlaying) {
+            if (m_ViewType != null && m_Character != null && Application.isPlaying) {
                 pitch = m_ViewType.Pitch;
                 yaw = m_ViewType.Yaw;
                 characterRotation = m_ViewType.CharacterRotation;
@@ -316,7 +316,7 @@ namespace Opsive.UltimateCharacterController.Camera
             }
 
             // If the original view type is not null then the view type has been changed at runtime. Transition to that new view type.
-            if (originalViewType != null && Application.isPlaying) {
+            if (originalViewType != null && m_Character != null && Application.isPlaying) {
                 m_ViewType.ChangeViewType(true, pitch, yaw, characterRotation);
 
                 EventHandler.ExecuteEvent(m_GameObject, "OnChangeViewType", m_ViewType, true);
@@ -372,7 +372,7 @@ namespace Opsive.UltimateCharacterController.Camera
                 if (m_InitCharacterOnAwake) {
                     // Set m_Character to null to prevent InitializeCharacter from thinking that it previously had a character that it needs to cleanup after.
                     var character = m_Character;
-                    m_Character = null;
+                    InitializeCharacter(null);
                     InitializeCharacter(character);
                 }
             } else {
@@ -418,12 +418,14 @@ namespace Opsive.UltimateCharacterController.Camera
 
             // Set the character values.
             if ((enabled = (character != null))) {
+                if (m_Character != character) {
+                    m_Anchor = null;
+                }
                 m_Character = character;
                 m_CharacterTransform = m_Character.transform;
                 m_CharacterLocomotion = character.GetCachedComponent<UltimateCharacterLocomotion>();
                 m_CharacterInventory = character.GetCachedComponent<InventoryBase>();
 
-                m_Anchor = null;
                 InitializeAnchor();
             } else {
                 m_Character = null;
@@ -440,7 +442,6 @@ namespace Opsive.UltimateCharacterController.Camera
 
             if (m_Character != null) {
                 m_ViewType.ChangeViewType(true, 0, 0, m_CharacterTransform.rotation);
-                m_CharacterLocomotion.FirstPersonPerspective = m_ViewType.FirstPersonPerspective;
                 if (m_ViewType.RotatePriority) {
                     KinematicObjectManager.SetCameraRotation(m_KinematicObjectIndex, m_ViewType.Rotate(0, 0, true));
                     KinematicObjectManager.SetCameraPosition(m_KinematicObjectIndex, m_ViewType.Move(true));
@@ -496,11 +497,9 @@ namespace Opsive.UltimateCharacterController.Camera
         private void InitializeAnchor()
         {
             // Assign the anchor to the bone transform if auto anchor is enabled. Otherwise use the character's Transform.
-            if (m_Anchor != null) {
-                Transform anchor = null;
-                if (m_AutoAnchor && (anchor = m_Character.GetComponent<Animator>().GetBoneTransform(m_AutoAnchorBone)) != null) {
-                    m_Anchor = anchor;
-                }
+            Transform anchor = null;
+            if (m_AutoAnchor && (anchor = m_Character.GetComponent<Animator>().GetBoneTransform(m_AutoAnchorBone)) != null) {
+                m_Anchor = anchor;
             }
 
             if (m_Anchor == null) {
@@ -756,10 +755,6 @@ namespace Opsive.UltimateCharacterController.Camera
         /// <param name="immediateTransition">Should the ViewType be transitioned immediately?</param>
         public void SetPerspective(bool firstPersonPerspective, bool immediateTransition)
         {
-            if (m_Character == null || !m_Character.activeInHierarchy) {
-                return;
-            }
-
             var viewType = (firstPersonPerspective ? m_FirstPersonViewType : m_ThirdPersonViewType);
             if (viewType != null) {
                 SetViewType(viewType.GetType(), immediateTransition);
@@ -865,14 +860,25 @@ namespace Opsive.UltimateCharacterController.Camera
         /// </summary>
         public void PositionImmediately()
         {
+            PositionImmediately(true);
+        }
+
+        /// <summary>
+        /// Positions the camera immediately.
+        /// </summary>
+        /// <param name="resetViewTypes">Should the view types variables be reset?</param>
+        public void PositionImmediately(bool resetViewTypes)
+        {
             // If the camera is being positioned immediately then there is no use for the transitioner.
             if (m_Transitioner != null && m_Transitioner.IsTransitioning) {
                 m_Transitioner.StopTransition(false);
             }
 
-            // Reset the view type's variables.
-            for (int i = 0; i < m_ViewTypes.Length; ++i) {
-                m_ViewTypes[i].Reset(m_CharacterTransform.rotation);
+            if (resetViewTypes) {
+                // Reset the view type's variables.
+                for (int i = 0; i < m_ViewTypes.Length; ++i) {
+                    m_ViewTypes[i].Reset(m_CharacterTransform.rotation);
+                }
             }
 
             m_ViewType.UpdateFieldOfView(true);
@@ -892,7 +898,7 @@ namespace Opsive.UltimateCharacterController.Camera
         /// <param name="snapAnimator">Should the animator be snapped?</param>
         private void OnImmediateTransformChange(bool snapAnimator)
         {
-            PositionImmediately();
+            PositionImmediately(snapAnimator);
         }
 
         /// <summary>

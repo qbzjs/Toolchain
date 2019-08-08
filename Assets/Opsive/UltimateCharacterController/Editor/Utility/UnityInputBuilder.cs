@@ -58,7 +58,7 @@ namespace Opsive.UltimateCharacterController.Editor.Utility
             AddInputAxis(axesProperty, "Mouse Y", "", "", "", "", 0, 0.19f, 1, false, true, AxisType.Joystick, AxisNumber.Five);
 
             // New axis:
-            AddInputAxis(axesProperty, "Alt Horizontal", "z", "x", "", "", 1000, 0.19f, 3, true, false, AxisType.KeyMouseButton, AxisNumber.X);
+            AddInputAxis(axesProperty, "Alt Horizontal", "q", "e", "", "", 1000, 0.19f, 3, true, false, AxisType.KeyMouseButton, AxisNumber.X);
             AddInputAxis(axesProperty, "Change Speeds", "", "left shift", "", "", 1000, 0.001f, 1000, false, false, AxisType.KeyMouseButton, AxisNumber.X);
             AddInputAxis(axesProperty, "Crouch", "", "c", "", "", 1000, 0.001f, 1000, false, false, AxisType.KeyMouseButton, AxisNumber.X);
             AddInputAxis(axesProperty, "Crouch", "", "joystick button 9", "", "", 1000, 0.001f, 1000, false, false, AxisType.KeyMouseButton, AxisNumber.X);

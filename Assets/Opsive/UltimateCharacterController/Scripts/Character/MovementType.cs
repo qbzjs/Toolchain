@@ -21,6 +21,7 @@ namespace Opsive.UltimateCharacterController.Character.MovementTypes
         protected ILookSource m_LookSource;
 
         private bool m_ForceIndependentLook;
+        public abstract bool FirstPersonPerspective { get; }
 
         /// <summary>
         /// Initializes the MovementType.

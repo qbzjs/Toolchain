@@ -262,14 +262,23 @@ namespace Opsive.UltimateCharacterController.Motion
         }
 
         /// <summary>
-        /// Spring destructor. The scheduled event is no longer needed.
+        /// Destroys the spring.
         /// </summary>
-        ~Spring()
+        public void Destroy()
         {
             if (m_ScheduledEvent != null) {
                 Scheduler.Cancel(m_ScheduledEvent);
                 m_ScheduledEvent = null;
             }
+            m_SoftForceFrames = null;
+        }
+
+        /// <summary>
+        /// Spring destructor. The scheduled event is no longer needed.
+        /// </summary>
+        ~Spring()
+        {
+            Destroy();
         }
     }
 }

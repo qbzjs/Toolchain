@@ -16,6 +16,8 @@ namespace Opsive.UltimateCharacterController.Character
     {
         [Tooltip("The distance that the character should look ahead.")]
         [SerializeField] protected float m_LookDirectionDistance = 100;
+        [Tooltip("The location of the look source. The character's head is a good value.")]
+        [SerializeField] protected Transform m_LookTransform;
         [Tooltip("The object that the character should look at.")]
         [SerializeField] protected Transform m_Target;
 
@@ -36,6 +38,17 @@ namespace Opsive.UltimateCharacterController.Character
         {
             m_GameObject = gameObject;
             m_Transform = transform;
+
+            if (m_LookTransform == null) {
+                var animator = GetComponent<Animator>();
+                if (animator != null) {
+                    m_LookTransform = animator.GetBoneTransform(HumanBodyBones.Head);
+                }
+
+                if (m_LookTransform == null) {
+                    m_LookTransform = m_Transform;
+                }
+            }
         }
 
         /// <summary>
@@ -75,7 +88,7 @@ namespace Opsive.UltimateCharacterController.Character
         public Vector3 LookDirection(bool characterLookDirection)
         {
             if (m_Target != null) {
-                return (m_Target.position - m_Transform.position).normalized;
+                return (m_Target.position - m_LookTransform.position).normalized;
             }
             return m_Transform.forward;
         }
@@ -102,7 +115,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// <returns>The position of the look source.</returns>
         public Vector3 LookPosition()
         {
-            return m_Transform.position;
+            return m_LookTransform.position;
         }
     }
 }

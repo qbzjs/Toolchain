@@ -53,6 +53,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects
                 EditorGUILayout.PropertyField(PropertyFromName("m_RotateInMoveDirection"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_SettleThreshold"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_SidewaysSettleThreshold"));
+                EditorGUILayout.PropertyField(PropertyFromName("m_StartSidewaysVelocityMagnitude"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_MaxCollisionCount"));
                 EditorGUI.indentLevel--;
             }
@@ -65,6 +66,10 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects
                 EditorGUILayout.PropertyField(PropertyFromName("m_BounceMode"));
                 if (PropertyFromName("m_BounceMode").enumValueIndex != (int)TrajectoryObject.BounceMode.None) {
                     EditorGUILayout.PropertyField(PropertyFromName("m_BounceMultiplier"));
+                } else {
+                    if (target is Destructible) {
+                        EditorGUILayout.PropertyField(PropertyFromName("m_StickyLayers"), true);
+                    }
                 }
                 EditorGUI.indentLevel--;
             }

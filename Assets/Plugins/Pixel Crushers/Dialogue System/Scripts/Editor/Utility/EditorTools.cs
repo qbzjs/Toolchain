@@ -1,8 +1,7 @@
 // Copyright (c) Pixel Crushers. All rights reserved.
 
-using UnityEngine;
 using UnityEditor;
-using UnityEditor.Graphs;
+using UnityEngine;
 
 namespace PixelCrushers.DialogueSystem
 {
@@ -129,6 +128,13 @@ namespace PixelCrushers.DialogueSystem
         public static void TryAddScriptingDefineSymbols(string newDefine)
         {
             MoreEditorUtility.TryAddScriptingDefineSymbols(newDefine);
+        }
+
+        public static void ReimportScripts()
+        {
+            Debug.Log("Recompiled scripts with updated options. If options are not working, please right-click on the Dialogue System's Scripts and Wrappers folders and select Reimport.");
+            AssetDatabase.ImportAsset("Assets/Plugins/Pixel Crushers/Dialogue System/Scripts");
+            AssetDatabase.ImportAsset("Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers");
         }
 
     }

@@ -505,7 +505,7 @@ namespace PixelCrushers.DialogueSystem.Articy.Articy_3_1
                     return GetNameWithHierarchyPath(item as DialogueType);
                 }
             }
-            return idRef;
+            return string.Equals("0x0000000000000000", idRef) ? string.Empty : idRef;
         }
 
         private static string GetNameWithHierarchyPath(DialogueType item)

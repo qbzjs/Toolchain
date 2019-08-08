@@ -28,15 +28,18 @@ namespace Opsive.UltimateCharacterController.Traits
         }
 
         /// <summary>
-        /// Do the respawn by setting the position and rotation back to their starting values. Enable the GameObject and let all of the listening objects know that
-        /// we have been respawned.
+        /// Does the respawn by setting the position and rotation to the specified values.
+        /// Enable the GameObject and let all of the listening objects know that the object has been respawned.
         /// </summary>
-        public override void Respawn()
+        /// <param name="position">The respawn position.</param>
+        /// <param name="rotation">The respawn rotation.</param>
+        /// <param name="transformChange">Was the position or rotation changed?</param>
+        public override void Respawn(Vector3 position, Quaternion rotation, bool transformChange)
         {
-            base.Respawn();
+            base.Respawn(position, rotation, transformChange);
 
             // Execute OnCharacterImmediateTransformChange after OnRespawn to ensure all of the interested components are using the new position/rotation.
-            if (m_PositioningMode != SpawnPositioningMode.None) {
+            if (transformChange) {
                 EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", true);
             }
         }

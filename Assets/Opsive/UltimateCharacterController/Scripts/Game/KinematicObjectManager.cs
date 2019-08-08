@@ -100,14 +100,17 @@ namespace Opsive.UltimateCharacterController.Game
         {
             private UltimateCharacterLocomotion m_CharacterLocomotion;
             private UltimateCharacterLocomotionHandler m_CharacterHandler;
+            private CharacterIKBase m_CharacterIK;
             private SmoothFixedLocation[] m_SmoothedBones;
             private CameraController m_AttachedCamera;
             private float m_HorizontalMovement;
             private float m_ForwardMovement;
             private float m_DeltaYawRotation;
+            private ScheduledEventBase m_CompleteInitEvent;
 
             public UltimateCharacterLocomotion CharacterLocomotion { get { return m_CharacterLocomotion; } }
             public CameraController AttachedCamera { get { return m_AttachedCamera; } }
+            public CharacterIKBase CharacterIK { get { return m_CharacterIK; } }
             public float HorizontalMovement { set { m_HorizontalMovement = value; } }
             public float ForwardMovement { set { m_ForwardMovement = value; } }
             public float DeltaYawRotation { set { m_DeltaYawRotation = value; } }
@@ -115,11 +118,10 @@ namespace Opsive.UltimateCharacterController.Game
             /// <summary>
             /// Initializes the object.
             /// </summary>
-            /// <param name="transform">The character that is being managed by the KinematicObjectManager.</param>
+            /// <param name="characterLocomotion">The character that is being managed by the KinematicObjectManager.</param>
             public void Initialize(UltimateCharacterLocomotion characterLocomotion)
             {
                 m_CharacterLocomotion = characterLocomotion;
-                m_CharacterHandler = m_CharacterLocomotion.GetComponent<UltimateCharacterLocomotionHandler>();
 
                 OnAttachLookSource(m_CharacterLocomotion.LookSource);
                 EventHandler.RegisterEvent<ILookSource>(m_CharacterLocomotion.gameObject, "OnCharacterAttachLookSource", OnAttachLookSource);
@@ -128,14 +130,28 @@ namespace Opsive.UltimateCharacterController.Game
                 m_HorizontalMovement = m_ForwardMovement = m_DeltaYawRotation = 0;
                 Initialize(characterLocomotion.transform);
 
-                var smoothedBones = m_CharacterLocomotion.SmoothedBones;
-                if (smoothedBones != null && smoothedBones.Length > 0) {
-                    m_SmoothedBones = new SmoothFixedLocation[smoothedBones.Length];
-                    for (int i = 0; i < m_SmoothedBones.Length; ++i) {
-                        m_SmoothedBones[i] = ObjectPool.Get<SmoothFixedLocation>();
-                        m_SmoothedBones[i].Initialize(smoothedBones[i]);
+                m_CharacterHandler = m_CharacterLocomotion.GetComponent<UltimateCharacterLocomotionHandler>();
+                m_CharacterIK = m_CharacterLocomotion.GetComponent<CharacterIKBase>();
+
+                // Wait a moment before finishing with the initialization. This allows the character to be created at runtime.
+                m_CompleteInitEvent = Scheduler.ScheduleFixed(Time.fixedDeltaTime / 2, () => {
+                    if (m_CharacterHandler == null) {
+                        m_CharacterHandler = m_CharacterLocomotion.GetComponent<UltimateCharacterLocomotionHandler>();
                     }
-                }
+                    if (m_CharacterIK == null) {
+                        m_CharacterIK = m_CharacterLocomotion.GetComponent<CharacterIKBase>();
+                    }
+
+                    var smoothedBones = m_CharacterLocomotion.SmoothedBones;
+                    if (smoothedBones != null && smoothedBones.Length > 0) {
+                        m_SmoothedBones = new SmoothFixedLocation[smoothedBones.Length];
+                        for (int i = 0; i < m_SmoothedBones.Length; ++i) {
+                            m_SmoothedBones[i] = ObjectPool.Get<SmoothFixedLocation>();
+                            m_SmoothedBones[i].Initialize(smoothedBones[i]);
+                        }
+                    }
+                    m_CompleteInitEvent = null;
+                });
             }
 
             /// <summary>
@@ -254,6 +270,11 @@ namespace Opsive.UltimateCharacterController.Game
             /// </summary>
             public void UnregisterCharacter()
             {
+                if (m_CompleteInitEvent != null) {
+                    Scheduler.Cancel(m_CompleteInitEvent);
+                    m_CompleteInitEvent = null;
+                }
+
                 if (m_SmoothedBones != null) {
                     for (int i = 0; i < m_SmoothedBones.Length; ++i) {
                         ObjectPool.Return(m_SmoothedBones[i]);
@@ -360,6 +381,10 @@ namespace Opsive.UltimateCharacterController.Game
         [SerializeField] protected int m_StartKinematicObjectCount;
         [Tooltip("Should the Auto Sync Transforms be enabled? See this page for more info: https://docs.unity3d.com/ScriptReference/Physics-autoSyncTransforms.html.")]
         [SerializeField] protected bool m_AutoSyncTransforms;
+
+        public int StartCharacterCount { get { return m_StartCharacterCount; } }
+        public int StartCameraCount { get { return m_StartCameraCount; } }
+        public int StartKinematicObjectCount { get { return m_StartKinematicObjectCount; } }
 
         private KinematicCharacter[] m_Characters;
         private KinematicCamera[] m_Cameras;
@@ -533,7 +558,7 @@ namespace Opsive.UltimateCharacterController.Game
         }
 
         /// <summary>
-        /// Internal methodh which immediately sets the character's position.
+        /// Internal method which immediately sets the character's position.
         /// </summary>
         /// <param name="characterIndex">The index of the character within the characters array.</param>
         /// <param name="position">The position of the object.</param>
@@ -557,7 +582,7 @@ namespace Opsive.UltimateCharacterController.Game
         }
 
         /// <summary>
-        /// Internal methodh which immediately sets the character's rotation.
+        /// Internal method which immediately sets the character's rotation.
         /// </summary>
         /// <param name="characterIndex">The index of the character within the characters array.</param>
         /// <param name="position">The position of the object.</param>
@@ -631,6 +656,54 @@ namespace Opsive.UltimateCharacterController.Game
         }
 
         /// <summary>
+        /// Immediately sets the kinematic object's position.
+        /// </summary>
+        /// <param name="kinematicObjectIndex">The index of the kinematic object within the array.</param>
+        /// <param name="position">The position of the object.</param>
+        public static void SetKinematicObjectPosition(int kinematicObjectIndex, Vector3 position)
+        {
+            Instance.SetKinematicObjectPositionInternal(kinematicObjectIndex, position);
+        }
+
+        /// <summary>
+        /// Internal method which immediately sets the kinematic object's position.
+        /// </summary>
+        /// <param name="characterIndex">The index of the character within the characters array.</param>
+        /// <param name="position">The position of the object.</param>
+        private void SetKinematicObjectPositionInternal(int kinematicObjectIndex, Vector3 position)
+        {
+            m_KinematicObjects[kinematicObjectIndex].SetPosition(position);
+
+            if (!m_AutoSyncTransforms) {
+                Physics.SyncTransforms();
+            }
+        }
+
+        /// <summary>
+        /// Immediately sets the kinematic object's rotation.
+        /// </summary>
+        /// <param name="kinematicObjectIndex">The index of the character within the characters array.</param>
+        /// <param name="position">The position of the object.</param>
+        public static void SetKinematicObjectRotation(int kinematicObjectIndex, Quaternion rotation)
+        {
+            Instance.SetKinematicObjectRotationInternal(kinematicObjectIndex, rotation);
+        }
+
+        /// <summary>
+        /// Internal method which immediately sets the kinematic object's rotation.
+        /// </summary>
+        /// <param name="kinematicObjectIndex">The index of the kinematic object within the array.</param>
+        /// <param name="position">The position of the object.</param>
+        private void SetKinematicObjectRotationInternal(int kinematicObjectIndex, Quaternion rotation)
+        {
+            m_KinematicObjects[kinematicObjectIndex].SetRotation(rotation);
+
+            if (!m_AutoSyncTransforms) {
+                Physics.SyncTransforms();
+            }
+        }
+
+        /// <summary>
         /// Smoothly moves the objects.
         /// </summary>
         private void Update()
@@ -639,10 +712,17 @@ namespace Opsive.UltimateCharacterController.Game
             for (int i = 0; i < m_KinematicObjectCount; ++i) {
                 m_KinematicObjects[i].SmoothMove(interpAmount);
             }
+            // Sync the transforms for IK.
+            if (m_KinematicObjectCount > 0 && !m_AutoSyncTransforms) {
+                Physics.SyncTransforms();
+            }
             for (int i = 0; i < m_CameraCount; ++i) {
                 m_Cameras[i].SmoothMove(interpAmount);
             }
             for (int i = 0; i < m_CharacterCount; ++i) {
+                if (m_Characters[i].CharacterIK != null && m_Characters[i].CharacterIK.enabled) {
+                    m_Characters[i].CharacterIK.Move(false);
+                }
                 // Update the smoothed bone fixed location after the IK pass has executed. The animator is updated
                 // during the physics loop so the smooth bone locations only need to be assigned after the FixedUpdate
                 // loop has run.
@@ -659,7 +739,7 @@ namespace Opsive.UltimateCharacterController.Game
         /// </summary>
         public void FixedUpdate()
         {
-            // The kinematic objects should be moved first so the characters receive the most recent changes.
+            // The kinematic object and cameras should be moved first so the characters receive the most recent changes.
             for (int i = 0; i < m_KinematicObjectCount; ++i) {
                 m_KinematicObjects[i].FixedMove();
             }
@@ -669,6 +749,9 @@ namespace Opsive.UltimateCharacterController.Game
                     Physics.SyncTransforms();
                 }
                 m_Characters[i].FixedMove(false);
+                if (m_Characters[i].CharacterIK != null && m_Characters[i].CharacterIK.enabled) {
+                    m_Characters[i].CharacterIK.Move(true);
+                }
                 // If FixedUpdate is called multiple times before Update then the framerate is low.
                 // Update the position immediately to prevent jittering.
                 if (m_FixedUpdate) {
@@ -724,6 +807,10 @@ namespace Opsive.UltimateCharacterController.Game
         {
             if (characterIndex < 0) {
                 return;
+            }
+
+            if (!m_AutoSyncTransforms) {
+                Physics.SyncTransforms();
             }
 
             m_Characters[characterIndex].RestoreFixedLocation();

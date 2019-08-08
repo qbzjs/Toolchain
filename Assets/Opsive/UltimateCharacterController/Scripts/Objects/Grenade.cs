@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using Opsive.UltimateCharacterController.Game;
+using Opsive.UltimateCharacterController.SurfaceSystem;
 
 namespace Opsive.UltimateCharacterController.Objects
 {
@@ -22,7 +23,7 @@ namespace Opsive.UltimateCharacterController.Objects
         public float Lifespan { get { return m_Lifespan; } set { m_Lifespan = value; } }
         public Transform Pin { get { return m_Pin; } set { m_Pin = value; } }
 
-        private ScheduledEventBase m_ScheduledDeactivation;
+        protected ScheduledEventBase m_ScheduledDeactivation;
         private Transform m_PinParent;
         private Vector3 m_PinLocalPosition;
         private Quaternion m_PinLocalRotation;
@@ -45,9 +46,33 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// The grenade has been enabled.
         /// </summary>
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+
             DetachAttachPin(null);
+        }
+
+        /// <summary>
+        /// Initializes the object.
+        /// </summary>
+        /// <param name="velocity">The velocity to apply.</param>
+        /// <param name="torque">The torque to apply.</param>
+        /// <param name="damageAmount">The amount of damage to apply to the hit object.</param>
+        /// <param name="impactForce">The amount of force to apply to the hit object.</param>
+        /// <param name="impactForceFrames">The number of frames to add the force to.</param>
+        /// <param name="impactLayers">The layers that the projectile can impact with.</param>
+        /// <param name="impactStateName">The name of the state to activate upon impact.</param>
+        /// <param name="impactStateDisableTimer">The number of seconds until the impact state is disabled.</param>
+        /// <param name="surfaceImpact">A reference to the Surface Impact triggered when the object hits an object.</param>
+        /// <param name="originator">The object that instantiated the trajectory object.</param>
+        /// <param name="originatorCollisionCheck">Should a collision check against the originator be performed?</param>
+        public virtual void Initialize(Vector3 velocity, Vector3 torque, float damageAmount, float impactForce, int impactForceFrames, LayerMask impactLayers,
+                                     string impactStateName, float impactStateDisableTimer, SurfaceImpact surfaceImpact, GameObject originator, bool originatorCollisionCheck)
+        {
+            InitializeDestructibleProperties(damageAmount, impactForce, impactForceFrames, impactLayers, impactStateName, impactStateDisableTimer, surfaceImpact);
+
+            base.Initialize(velocity, torque, originator, originatorCollisionCheck);
         }
 
         /// <summary>
@@ -84,7 +109,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// The grenade has reached its lifespan.
         /// </summary>
-        private void Deactivate()
+        protected void Deactivate()
         {
             Scheduler.Cancel(m_ScheduledDeactivation);
 

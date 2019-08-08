@@ -514,6 +514,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 
                 // The ability can be stopped if no action needs to be performed.
                 if (unequip || equip) {
+                    EventHandler.ExecuteEvent<int>(this, "OnEquipUnequipItemSetIndexChange", m_ActiveItemSetIndex);
+                    m_ItemSetManager.UpdateNextItemSet(m_ItemSetCategoryIndex, m_ActiveItemSetIndex);
+
                     m_CanEquip = !unequip; // The ability can equip as soon as the unequips are complete.
                     var canEqup = m_CanEquip; // The can equp status may change if an item is unequipped immediately. Remember the initial value so the item isn't equipped twice.
                                               // Wait to schedule the events until after all of the equip/unequip items have been determined. Otherwise if the event is fired immediate (with a duration
@@ -540,12 +543,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                         }
                     }
 
-                    EventHandler.ExecuteEvent<int>(this, "OnEquipUnequipItemSetIndexChange", m_ActiveItemSetIndex);
-                    m_ItemSetManager.UpdateNextItemSet(m_ItemSetCategoryIndex, m_ActiveItemSetIndex);
                     m_CharacterLocomotion.UpdateItemAbilityAnimatorParameters();
                 } else {
                     EventHandler.ExecuteEvent<int>(this, "OnEquipUnequipItemSetIndexChange", m_ActiveItemSetIndex);
-                    m_ItemSetManager.UpdateNextItemSet(m_ItemSetCategoryIndex, m_ActiveItemSetIndex);
                     StopAbility();
                 }
                 return;
@@ -1026,6 +1026,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             m_PrevActiveItemSetIndex = m_ActiveItemSetIndex;
             // Don't immediately unequip if in first person view to allow the arms move off the screen.
             StartEquipUnequip(-1, false, !m_CharacterLocomotion.FirstPersonPerspective);
+
+            if (m_Inventory.RemoveAllOnDeath) {
+                m_InventoryCount.Clear();
+            }
         }
 
         /// <summary>

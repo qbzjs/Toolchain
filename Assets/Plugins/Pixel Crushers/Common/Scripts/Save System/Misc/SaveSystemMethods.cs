@@ -93,6 +93,24 @@ namespace PixelCrushers
             SaveSystem.ApplySavedGameData();
         }
 
+        /// <summary>
+        /// Additively loads another scene.
+        /// </summary>
+        /// <param name="sceneName">Scene to additively load.</param>
+        public void LoadAdditiveScene(string sceneName)
+        {
+            SaveSystem.LoadAdditiveScene(sceneName);
+        }
+
+        /// <summary>
+        /// Unloads a previously additively-loaded scene.
+        /// </summary>
+        /// <param name="sceneName">Scene to unload</param>
+        public void UnloadAdditiveScene(string sceneName)
+        {
+            SaveSystem.UnloadAdditiveScene(sceneName);
+        }
+
     }
 
 }

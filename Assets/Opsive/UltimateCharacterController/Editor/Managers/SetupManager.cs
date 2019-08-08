@@ -300,10 +300,10 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 }
 
                 // Setup the components which help the Camera Controller.
-                AddComponent<CameraControllerHandler>(cameraGameObject);
+                InspectorUtility.AddComponent<CameraControllerHandler>(cameraGameObject);
 #if THIRD_PERSON_CONTROLLER
                 if (m_Perspective != Perspective.First) {
-                    AddComponent<UltimateCharacterController.ThirdPersonController.Camera.ObjectFader>(cameraGameObject);
+                    InspectorUtility.AddComponent<ThirdPersonController.Camera.ObjectFader>(cameraGameObject);
                 }
 #endif
                 addedCameraController = true;
@@ -338,33 +338,15 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             }
 
             // Add the Singletons.
-            if (gameGameObject.GetComponent<SurfaceSystem.SurfaceManager>() == null) {
-                AddComponent<SurfaceSystem.SurfaceManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<SurfaceSystem.DecalManager>() == null) {
-                AddComponent<SurfaceSystem.DecalManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<KinematicObjectManager>() == null) {
-                AddComponent<KinematicObjectManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<ObjectPool>() == null) {
-                AddComponent<ObjectPool>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<Scheduler>() == null) {
-                AddComponent<Scheduler>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<Audio.AudioManager>() == null) {
-                AddComponent<Audio.AudioManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<SpawnPointManager>() == null) {
-                AddComponent<SpawnPointManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<StateManager>() == null) {
-                AddComponent<StateManager>(gameGameObject);
-            }
-            if (gameGameObject.GetComponent<LayerManager>() == null) {
-                AddComponent<LayerManager>(gameGameObject);
-            }
+            InspectorUtility.AddComponent<SurfaceSystem.SurfaceManager>(gameGameObject);
+            InspectorUtility.AddComponent<SurfaceSystem.DecalManager>(gameGameObject);
+            InspectorUtility.AddComponent<KinematicObjectManager>(gameGameObject);
+            InspectorUtility.AddComponent<ObjectPool>(gameGameObject);
+            InspectorUtility.AddComponent<Scheduler>(gameGameObject);
+            InspectorUtility.AddComponent<Audio.AudioManager>(gameGameObject);
+            InspectorUtility.AddComponent<SpawnPointManager>(gameGameObject);
+            InspectorUtility.AddComponent<StateManager>(gameGameObject);
+            InspectorUtility.AddComponent<LayerManager>(gameGameObject);
             Debug.Log("The managers have has been added.");
         }
 
@@ -479,21 +461,6 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             if (string.IsNullOrEmpty(layerElement.stringValue)) {
                 layerElement.stringValue = name;
             }
-        }
-
-        /// <summary>
-        /// Adds the component of the specified type if it doesn't already exist.
-        /// </summary>
-        /// <typeparam name="T">The type of component to add.</typeparam>
-        /// <param name="gameObject">The GameObject to add the component to.</param>
-        /// <returns>The added component.</returns>
-        private T AddComponent<T>(GameObject gameObject) where T : Component
-        {
-            T component;
-            if ((component = gameObject.GetComponent<T>()) == null) {
-                return gameObject.AddComponent<T>();
-            }
-            return component;
         }
     }
 }

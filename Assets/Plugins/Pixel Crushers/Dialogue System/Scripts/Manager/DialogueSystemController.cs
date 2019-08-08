@@ -533,6 +533,14 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
+        /// Resets the database to a default state, keeping all databases loaded.
+        /// </summary>
+        public void ResetDatabase()
+        {
+            if (m_databaseManager != null) m_databaseManager.Reset(DatabaseResetOptions.KeepAllLoaded);
+        }
+
+        /// <summary>
         /// Preloads the master database. The Dialogue System delays loading of the dialogue database 
         /// until the data is needed. This avoids potentially long delays during Start(). If you want
         /// to load the database manually (for example to run Lua commands on its contents), call
@@ -688,7 +696,7 @@ namespace PixelCrushers.DialogueSystem
                 if (model.firstState != null && model.firstState.subtitle != null && model.firstState.subtitle.dialogueEntry != null) lastConversationID = model.firstState.subtitle.dialogueEntry.conversationID;
                 var view = this.gameObject.AddComponent<ConversationView>();
                 view.Initialize(dialogueUI, GetNewSequencer(), displaySettings, OnDialogueEntrySpoken);
-                view.SetPCPortrait(model.GetPCTexture(), model.GetPCName());
+                view.SetPCPortrait(model.GetPCSprite(), model.GetPCName());
                 m_conversationController = new ConversationController(model, view, displaySettings.inputSettings.alwaysForceResponseMenu, OnEndConversation);
                 if (needToSetRandomizeNextEntryAgain) RandomizeNextEntry();
                 var target = (actor != null) ? actor : this.transform;
@@ -827,39 +835,39 @@ namespace PixelCrushers.DialogueSystem
                 if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: SetPortrait({1}, {2}): actor '{1}' not found.", new System.Object[] { DialogueDebug.Prefix, actorName, portraitName }));
                 return;
             }
-            Texture2D texture = null;
+            Sprite sprite = null;
             if (string.IsNullOrEmpty(portraitName) || string.Equals(portraitName, "default"))
             {
                 DialogueLua.SetActorField(actorName, DialogueSystemFields.CurrentPortrait, string.Empty);
-                texture = actor.portrait;
+                sprite = actor.GetPortraitSprite();
             }
             else
             {
                 DialogueLua.SetActorField(actorName, DialogueSystemFields.CurrentPortrait, portraitName);
                 if (portraitName.StartsWith("pic="))
                 {
-                    texture = actor.GetPortraitTexture(Tools.StringToInt(portraitName.Substring("pic=".Length)));
+                    sprite = actor.GetPortraitSprite(Tools.StringToInt(portraitName.Substring("pic=".Length)));
                 }
                 else
                 {
-                    texture = DialogueManager.LoadAsset(portraitName) as Texture2D;
+                    sprite = UITools.CreateSprite(DialogueManager.LoadAsset(portraitName) as Texture2D);
                 }
             }
-            if (DialogueDebug.logWarnings && (texture == null)) Debug.LogWarning(string.Format("{0}: SetPortrait({1}, {2}): portrait texture not found.", new System.Object[] { DialogueDebug.Prefix, actorName, portraitName }));
-            SetActorPortraitTexture(actorName, texture);
+            if (DialogueDebug.logWarnings && (sprite == null)) Debug.LogWarning(string.Format("{0}: SetPortrait({1}, {2}): portrait image not found.", new System.Object[] { DialogueDebug.Prefix, actorName, portraitName }));
+            SetActorPortraitSprite(actorName, sprite);
         }
 
         /// <summary>
-        /// This method is used internally by SetPortrait() to set the portrait texture
+        /// This method is used internally by SetPortrait() to set the portrait image
         /// for an actor.
         /// </summary>
         /// <param name="actorName">Actor name.</param>
-        /// <param name="portraitTexture">Portrait texture.</param>
-        public void SetActorPortraitTexture(string actorName, Texture2D portraitTexture)
+        /// <param name="sprite">Portrait sprite.</param>
+        public void SetActorPortraitSprite(string actorName, Sprite sprite)
         {
             if (isConversationActive && (m_conversationController != null))
             {
-                m_conversationController.SetActorPortraitTexture(actorName, portraitTexture);
+                m_conversationController.SetActorPortraitSprite(actorName, sprite);
             }
         }
 
@@ -1052,6 +1060,8 @@ namespace PixelCrushers.DialogueSystem
                     case ResponseTimeoutAction.ChooseLastResponse:
                         m_conversationController.GotoLastResponse();
                         break;
+                    case ResponseTimeoutAction.Custom:
+                        break;
                 }
             }
         }
@@ -1185,7 +1195,7 @@ namespace PixelCrushers.DialogueSystem
             var actorName = DialogueActor.GetActorName(actorTransform);
             var actor = masterDatabase.GetActor(actorName);
             var actorID = (actor != null) ? actor.id : 1;
-            var portrait = (actor != null) ? actor.portrait : null;
+            var portrait = (actor != null) ? actor.GetPortraitSprite() : null;
             return new CharacterInfo(actorID, actorName, actorTransform, CharacterType.NPC, portrait);
         }
 

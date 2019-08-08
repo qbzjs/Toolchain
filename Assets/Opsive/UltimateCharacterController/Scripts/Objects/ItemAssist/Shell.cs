@@ -42,8 +42,10 @@ namespace Opsive.UltimateCharacterController.Objects.ItemAssist
         /// <summary>
         /// The shell has been spawned - reset the timing and component values.
         /// </summary>
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+
             m_RemoveTime = Time.time + m_Lifespan;
             m_Transform.localScale = m_StartScale;
 

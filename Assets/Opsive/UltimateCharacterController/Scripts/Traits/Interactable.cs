@@ -6,6 +6,11 @@
 
 using UnityEngine;
 using Opsive.UltimateCharacterController.Objects.CharacterAssist;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Traits;
+#endif
+using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Traits
 {
@@ -24,6 +29,10 @@ namespace Opsive.UltimateCharacterController.Traits
 
         private IInteractableTarget[] m_InteractableTargets;
         private AbilityIKTarget[] m_IKTargets;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private INetworkInteractableMonitor m_NetworkInteractable;
+#endif
 
         public AbilityIKTarget[] IKTargets { get { return m_IKTargets; } }
 
@@ -45,6 +54,14 @@ namespace Opsive.UltimateCharacterController.Traits
                     m_InteractableTargets[i] = m_Targets[i] as IInteractableTarget;
                 }
             }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = gameObject.GetCachedComponent<INetworkInfo>();
+            m_NetworkInteractable = gameObject.GetCachedComponent<INetworkInteractableMonitor>();
+            if (m_NetworkInfo != null && m_NetworkInteractable == null) {
+                Debug.LogError("Error: The object " + gameObject.name + " must have a NetworkInteractableMonitor component.");
+            }
+#endif
 
             m_IKTargets = GetComponentsInChildren<AbilityIKTarget>();
         }
@@ -71,6 +88,19 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <param name="character">The character that wants to interactact with the target.</param>
         public void Interact(GameObject character)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null) {
+                if (m_NetworkInfo.IsLocalPlayer()) {
+                    m_NetworkInteractable.Interact(character);
+                } else {
+                    // The event may have been sent multiple times for remoate players. Ensure the object is only interacted with once.
+                    if (!CanInteract(character)) {
+                        return;
+                    }
+                }
+            }
+#endif
+
             for (int i = 0; i < m_InteractableTargets.Length; ++i) {
                 m_InteractableTargets[i].Interact(character);
             }

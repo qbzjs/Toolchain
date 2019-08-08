@@ -23,6 +23,8 @@ namespace Opsive.UltimateCharacterController.UI
         [SerializeField] protected bool m_ShowCrosshairs = true;
         [Tooltip("The radius of the crosshair's collision sphere to detect if it is targetting an enemy.")]
         [SerializeField] protected float m_CollisionRadius = 0.05f;
+        [Tooltip("The maximum number of colliders that the crosshairs can detect.")]
+        [SerializeField] protected int m_MaxCollisionCount = 5;
         [Tooltip("The crosshairs used when the item doesn't specify a crosshairs.")]
         [SerializeField] protected Sprite m_DefaultSprite;
         [Tooltip("The default color of the crosshairs.")]
@@ -52,7 +54,9 @@ namespace Opsive.UltimateCharacterController.UI
         private UnityEngine.Camera m_Camera;
         private CameraController m_CameraController;
         private AimAssist m_AimAssist;
+        private Transform m_CharacterTransform;
         private CharacterLayerManager m_CharacterLayerManager;
+        private UltimateCharacterLocomotion m_CharacterLocomotion;
 
         private RectTransform m_CenterRectTransform;
         private RectTransform m_LeftRectTransform;
@@ -60,7 +64,8 @@ namespace Opsive.UltimateCharacterController.UI
         private RectTransform m_RightRectTransform;
         private RectTransform m_BottomRectTransform;
 
-        private RaycastHit m_RaycastHit;
+        private RaycastHit[] m_RaycastHits;
+        private UnityEngineUtility.RaycastHitComparer m_RaycastHitComparer = new UnityEngineUtility.RaycastHitComparer();
         private Item m_EquippedItem;
         private float m_CurrentCrosshairsSpread;
         private float m_TargetCrosshairsSpread;
@@ -90,6 +95,8 @@ namespace Opsive.UltimateCharacterController.UI
             if (m_TopCrosshairsImage != null) m_TopRectTransform = m_TopCrosshairsImage.GetComponent<RectTransform>();
             if (m_RightCrosshairsImage != null) m_RightRectTransform = m_RightCrosshairsImage.GetComponent<RectTransform>();
             if (m_BottomCrosshairsImage != null) m_BottomRectTransform = m_BottomCrosshairsImage.GetComponent<RectTransform>();
+
+            m_RaycastHits = new RaycastHit[m_MaxCollisionCount];
 
             // Setup the crosshairs defaults.
             ResetMonitor();
@@ -124,7 +131,9 @@ namespace Opsive.UltimateCharacterController.UI
             m_CameraController.SetCrosshairs(transform);
 
             m_AimAssist = m_Camera.GetComponent<AimAssist>();
+            m_CharacterTransform = m_Character.transform;
             m_CharacterLayerManager = m_Character.GetCachedComponent<CharacterLayerManager>();
+            m_CharacterLocomotion = m_Character.GetCachedComponent<UltimateCharacterLocomotion>();
             m_EnableImage = false;
 
             EventHandler.RegisterEvent<Item, int>(m_Character, "OnAbilityWillEquipItem", OnEquipItem);
@@ -155,18 +164,32 @@ namespace Opsive.UltimateCharacterController.UI
         {
             var crosshairsColor = m_DefaultColor;
             var crosshairsRay = m_Camera.ScreenPointToRay(m_CenterRectTransform.position);
-            if (Physics.SphereCast(crosshairsRay.origin, m_CollisionRadius, crosshairsRay.direction, out m_RaycastHit, m_CameraController.LookDirectionDistance, m_CharacterLayerManager.IgnoreInvisibleCharacterWaterLayers, QueryTriggerInteraction.Ignore)) {
-                // The raycast will return any visible object that was hit. The crosshairs color should only change when targetting an enemy.
-                if (MathUtility.InLayerMask(m_RaycastHit.transform.gameObject.layer, m_CharacterLayerManager.EnemyLayers)) {
-                    if (m_AimAssist != null) {
-                        m_AimAssist.SetTarget(m_RaycastHit.transform);
+            Transform target = null;
+            // Prevent the ray between the character and the camera from causing a false collision.
+            if (!m_CharacterLocomotion.FirstPersonPerspective) {
+                var direction = m_CharacterTransform.InverseTransformPoint(crosshairsRay.origin);
+                direction.y = 0;
+                crosshairsRay.origin = crosshairsRay.GetPoint(direction.magnitude);
+            }
+            var hitCount = Physics.SphereCastNonAlloc(crosshairsRay, m_CollisionRadius, m_RaycastHits, m_CameraController.LookDirectionDistance, m_CharacterLayerManager.IgnoreInvisibleLayers, QueryTriggerInteraction.Ignore);
+            if (hitCount > 0) {
+                for (int i = 0; i < hitCount; ++i) {
+                    var closestRaycastHit = QuickSelect.SmallestK(m_RaycastHits, hitCount, i, m_RaycastHitComparer);
+                    var closestRaycastHitTransform = closestRaycastHit.transform;
+                    // The crosshairs cannot hit the character that is attached to the camera.
+                    if (closestRaycastHitTransform.IsChildOf(m_CharacterTransform)) {
+                        continue;
                     }
-                    crosshairsColor = m_TargetColor;
-                } else if (m_AimAssist != null) {
-                    m_AimAssist.SetTarget(null);
+
+                    if (MathUtility.InLayerMask(closestRaycastHitTransform.gameObject.layer, m_CharacterLayerManager.EnemyLayers)) {
+                        target = closestRaycastHitTransform;
+                        crosshairsColor = m_TargetColor;
+                    }
+                    break;
                 }
-            } else if (m_AimAssist != null) {
-                m_AimAssist.SetTarget(null);
+            }
+            if (m_AimAssist != null) {
+                m_AimAssist.SetTarget(target);
             }
 
             if (m_EquippedItem != null) {

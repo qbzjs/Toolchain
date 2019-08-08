@@ -26,7 +26,7 @@ namespace PixelCrushers.DialogueSystem
         public static WelcomeWindow ShowWindow()
         {
             var window = GetWindow<WelcomeWindow>(false, "Welcome");
-            window.minSize = new Vector2(370, 280);
+            window.minSize = new Vector2(370, 430);
             window.showOnStart = true; // Can't check EditorPrefs when constructing window: showOnStartPrefs;
             return window;
         }
@@ -63,6 +63,7 @@ namespace PixelCrushers.DialogueSystem
         {
             DrawBanner();
             DrawButtons();
+            DrawDefines();
             DrawFooter();
         }
 
@@ -81,11 +82,12 @@ namespace PixelCrushers.DialogueSystem
             if (!string.IsNullOrEmpty(version))
             {
                 var versionSize = EditorStyles.label.CalcSize(new GUIContent(version));
-                GUI.Label(new Rect(position.width - (versionSize.x + 5), 5, versionSize.x, versionSize.y), version);
+                GUI.Label(new Rect(position.width - (versionSize.x + 5) - 5, 5, versionSize.x + 5, versionSize.y), version);
             }
         }
 
         private const float ButtonWidth = 68;
+        private const float ButtonHeight = 50;
 
         private void DrawButtons()
         {
@@ -160,6 +162,70 @@ namespace PixelCrushers.DialogueSystem
             {
                 GUILayout.EndArea();
             }
+        }
+
+        private void DrawDefines()
+        {
+            GUILayout.BeginArea(new Rect(5, 256, position.width - 10, position.height - 256));
+            EditorGUILayout.LabelField("Current Build Target: " + ObjectNames.NicifyVariableName(EditorUserBuildSettings.activeBuildTarget.ToString()), EditorStyles.boldLabel);
+
+            var define_USE_PHYSICS2D = false;
+            var define_USE_TIMELINE = false;
+            var define_USE_CINEMACHINE = false;
+            var define_USE_ARTICY = false;
+            var define_USE_AURORA = false;
+            var define_TMP_PRESENT = false;
+            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Split(';');
+            for (int i = 0; i < defines.Length; i++)
+            {
+                if (string.Equals(ScriptingSymbolNames.USE_PHYSICS2D, defines[i].Trim())) define_USE_PHYSICS2D = true;
+                if (string.Equals(ScriptingSymbolNames.USE_TIMELINE, defines[i].Trim())) define_USE_TIMELINE = true;
+                if (string.Equals(ScriptingSymbolNames.USE_CINEMACHINE, defines[i].Trim())) define_USE_CINEMACHINE = true;
+                if (string.Equals(ScriptingSymbolNames.USE_ARTICY, defines[i].Trim())) define_USE_ARTICY = true;
+                if (string.Equals(ScriptingSymbolNames.USE_AURORA, defines[i].Trim())) define_USE_AURORA = true;
+                if (string.Equals(ScriptingSymbolNames.TMP_PRESENT, defines[i].Trim())) define_TMP_PRESENT = true;
+            }
+#if EVALUATION_VERSION || !UNITY_2018_1_OR_NEWER
+            define_USE_PHYSICS2D = true;
+            define_TMP_PRESENT = false;
+#endif
+
+            EditorGUI.BeginChangeCheck();
+            EditorGUILayout.LabelField(new GUIContent("Enable support for:", "NOTE: Enables Dialogue System support. You must still enable each package in Package Manager."));
+#if UNITY_2018_1_OR_NEWER && !EVALUATION_VERSION
+            var new_USE_PHYSICS2D = EditorGUILayout.ToggleLeft("2D Physics (USE_PHYSICS2D)", define_USE_PHYSICS2D);
+#else
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.ToggleLeft(new GUIContent("2D Physics (USE_PHYSICS2D)", "Support is built in for evaluation version or Unity 2017 and earlier."), define_USE_PHYSICS2D);
+            EditorGUI.EndDisabledGroup();
+            var new_USE_PHYSICS2D = define_USE_PHYSICS2D;
+#endif
+
+            var new_USE_TIMELINE = EditorGUILayout.ToggleLeft(new GUIContent("Timeline (USE_TIMELINE)", "Enable Dialogue System support for Timeline. You must still enable Timeline in Package Manager."), define_USE_TIMELINE);
+            var new_USE_CINEMACHINE = EditorGUILayout.ToggleLeft(new GUIContent("Cinemachine (USE_CINEMACHINE)", "Enable Dialogue System support for Cinemachine. You must still enable Cinemachine in Package Manager."), define_USE_CINEMACHINE);
+            var new_USE_ARTICY = EditorGUILayout.ToggleLeft(new GUIContent("articy:draft (USE_ARTICY)", "Enable Dialogue System support for articy:draft XML import."), define_USE_ARTICY);
+            var new_USE_AURORA = EditorGUILayout.ToggleLeft(new GUIContent("Aurora Toolset (USE_AURORA)", "Enable Dialogue System support for Aurora (Neverwinter Nights) Toolset import."), define_USE_AURORA);
+#if EVALUATION_VERSION
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.ToggleLeft(new GUIContent("TextMesh Pro (TMP_PRESENT)", "TextMesh Pro support not available in evaluation version."), define_TMP_PRESENT);
+            EditorGUI.EndDisabledGroup();
+            var new_TMP_PRESENT = define_TMP_PRESENT;
+#else
+            var new_TMP_PRESENT = EditorGUILayout.ToggleLeft(new GUIContent("TextMesh Pro (TMP_PRESENT)", "Enable Dialogue System support for TextMesh Pro. You must still enable TextMesh Pro in Package Manager."), define_TMP_PRESENT);
+#endif
+            var changed = EditorGUI.EndChangeCheck();
+
+            if (new_USE_PHYSICS2D != define_USE_PHYSICS2D) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.USE_PHYSICS2D, new_USE_PHYSICS2D);
+            if (new_USE_TIMELINE!= define_USE_TIMELINE) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.USE_TIMELINE, new_USE_TIMELINE);
+            if (new_USE_CINEMACHINE != define_USE_CINEMACHINE) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.USE_CINEMACHINE, new_USE_CINEMACHINE);
+            if (new_USE_ARTICY != define_USE_ARTICY) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.USE_ARTICY, new_USE_ARTICY);
+            if (new_USE_AURORA != define_USE_AURORA) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.USE_AURORA, new_USE_AURORA);
+            if (new_TMP_PRESENT != define_TMP_PRESENT) MoreEditorUtility.ToggleScriptingDefineSymbol(ScriptingSymbolNames.TMP_PRESENT, new_TMP_PRESENT);
+
+            EditorWindowTools.DrawHorizontalLine();
+            GUILayout.EndArea();
+
+            if (changed) EditorTools.ReimportScripts();
         }
 
         private void DrawFooter()

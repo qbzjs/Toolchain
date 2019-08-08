@@ -85,8 +85,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <summary>
         /// Sets the UsableItemType amount on the UsableItem.
         /// </summary>
-        /// <param name="amount">The amount to set the UsableItemType to.</param>
-        void SetConsumableItemTypeCount(float amount);
+        /// <param name="count">The amount to set the UsableItemType to.</param>
+        void SetConsumableItemTypeCount(float count);
 
         /// <summary>
         /// Removes the amount of UsableItemType which has been consumed by the UsableItem.

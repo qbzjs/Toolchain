@@ -217,7 +217,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             if (m_RideState == RideState.Ride || m_RideState == RideState.WaitForItemUnequip) {
                 // The input parameters should match the rideable object's input parameters.
                 m_CharacterLocomotion.InputVector = m_Rideable.CharacterLocomotion.InputVector;
-                m_CharacterLocomotion.DeltaYawRotation = m_Rideable.CharacterLocomotion.DeltaYawRotation;
+                m_CharacterLocomotion.DeltaRotation = m_Rideable.CharacterLocomotion.DeltaRotation;
             }
         }
 

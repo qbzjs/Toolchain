@@ -117,15 +117,19 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
                 horizontalMovement = 0;
             }
 
-            // FreeMovement allows the camera's yaw to freely rotate around the character. This will be true when Fire1 is down. YawSnap will be true
-            // when the character starts to move.
-            if (m_FreeMovement) {
-                m_YawOffset += horizontalMovement * m_CharacterLocomotion.TimeScale * Time.timeScale;
-            } else if (m_CharacterLocomotion.Moving) {
-                m_YawOffset = Mathf.SmoothDamp(m_YawOffset, 0, ref m_YawSnapVelocity, m_YawSnapDamping * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.FramerateDeltaTime);
+            if (m_CharacterRotate) {
+                m_Yaw += horizontalMovement * m_CharacterLocomotion.TimeScale * Time.timeScale;
+            } else {
+                // FreeMovement allows the camera's yaw to freely rotate around the character. This will be true when Fire1 is down. YawSnap will be true
+                // when the character starts to move.
+                if (m_FreeMovement) {
+                    m_YawOffset += horizontalMovement * m_CharacterLocomotion.TimeScale * Time.timeScale;
+                } else if (m_CharacterLocomotion.Moving) {
+                    m_YawOffset = Mathf.SmoothDamp(m_YawOffset, 0, ref m_YawSnapVelocity, m_YawSnapDamping * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.FramerateDeltaTime);
+                }
+                var deltaRotation = MathUtility.InverseTransformQuaternion(m_CharacterRotation, m_CharacterTransform.rotation);
+                m_Yaw = deltaRotation.eulerAngles.y + m_YawOffset;
             }
-            var deltaRotation = MathUtility.InverseTransformQuaternion(m_CharacterRotation, m_CharacterTransform.rotation);
-            m_Yaw = deltaRotation.eulerAngles.y + m_YawOffset;
 
             // The camera can only rotate along the pitch if MovementType.RPG.RotateInputName or CameraFreeMovementInputName is down.
             if (!m_FreeMovement && !m_CharacterRotate) {
@@ -200,16 +204,6 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         private void OnStartCharacterRotate()
         {
             m_CharacterRotate = true;
-
-            // Wait a frame so the character's movement type can get the cameras rotation before the camera rotation is set to the characters rotation.
-            Scheduler.ScheduleFixed(Time.fixedDeltaTime + 0.001f, ResetYawOffset);
-        }
-
-        /// <summary>
-        /// Resets the yaw offset to 0.
-        /// </summary>
-        private void ResetYawOffset()
-        {
             m_YawOffset = 0;
         }
 
@@ -228,6 +222,10 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// <param name="active">True if the ability was started, false if it was stopped.</param>
         private void OnAbilityActive(Ability ability, bool active)
         {
+            if (!(ability is MoveTowards)) {
+                return;
+            }
+
             // Rotate with the camera so the camera will follow the character's rotation when the character is getting into position for Move Towards.
             m_RotateWithCharacter = active;
 

@@ -78,6 +78,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             DrawSlotsPopup();
             DrawRecursionMode();
             DrawFlowFragmentMode();
+            DrawOtherScriptsField();
             DrawUseTechnicalNamesToggle();
             DrawDirectConversationLinksToEntry1Toggle();
             DrawConvertMarkupToggle();
@@ -211,6 +212,13 @@ namespace PixelCrushers.DialogueSystem.Articy
                     EditorGUILayout.EndHorizontal();
                 }
             }
+            if (EditorGUI.EndChangeCheck()) ConverterPrefsTools.Save(prefs);
+        }
+
+        private void DrawOtherScriptsField()
+        {
+            EditorGUI.BeginChangeCheck();
+            prefs.OtherScriptFields = EditorGUILayout.TextField(new GUIContent("Other Script Fields", "(Optional) Other fields that contain articy:expresso code that should be converted to Lua. Separate fields with semicolons (;)."), prefs.OtherScriptFields);
             if (EditorGUI.EndChangeCheck()) ConverterPrefsTools.Save(prefs);
         }
 

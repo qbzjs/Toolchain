@@ -354,6 +354,7 @@ namespace PixelCrushers.DialogueSystem
             if (EditorUtility.DisplayDialog("Enable TextMesh Pro Support", "This will enable the Dialogue System's TextMesh Pro support for the current build platform. Your project must already contain the TextMesh Pro package. To continue, press OK. If you need to install TextMesh Pro first, press Cancel.", "OK", "Cancel"))
             {
                 MoreEditorUtility.TryAddScriptingDefineSymbols("TMP_PRESENT");
+                EditorTools.ReimportScripts();
                 EditorUtility.DisplayDialog("TextMesh Pro Support Enabled", "TextMesh Pro support has been enabled for the current build platform. You may need to right-click on the two files named TextMeshProTypewriterEffect and select Reimport to be able to add them to your GameObjects. If you change build platforms, you may need to select this menu item again.", "OK");
             }
         }

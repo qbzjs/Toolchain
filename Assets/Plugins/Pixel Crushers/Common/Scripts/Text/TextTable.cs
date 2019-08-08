@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
-using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace PixelCrushers
 {
@@ -364,9 +364,10 @@ namespace PixelCrushers
         {
             var field = GetField(fieldName);
             if (field == null) return fieldName;
-            if (field.HasTextForLanguage(languageID)) return field.GetTextForLanguage(languageID);
+            if (field.HasTextForLanguage(languageID)) return field.GetTextForLanguage(languageID).Replace(@"\n", "\n");
             var defaultText = field.GetTextForLanguage(0);
-            return !string.IsNullOrEmpty(defaultText) ? defaultText : fieldName;
+            var result = !string.IsNullOrEmpty(defaultText) ? defaultText : fieldName;
+            return result.Replace(@"\n", "\n");
         }
 
         /// <summary>

@@ -411,7 +411,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 if (modelType == ModelType.Humanoid && !IsValidHumanoid(character)) {
                     animatorController = null;
                     if (character != null) {
-                        EditorGUILayout.HelpBox("The specified character is not a humanoid.", MessageType.Error);
+                        EditorGUILayout.HelpBox("The specified character is not a humanoid.\nHumanoid characters should have the avatar is set to humanoid and have a head bone assigned.", MessageType.Error);
                     }
                 }
                 // The non-default animator controller can be selected.
@@ -575,6 +575,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                     if (m_ExistingAnimator) {
                         var animator = m_ExistingCharacter.GetComponent<Animator>();
                         m_ExistingAnimatorController = animator.runtimeAnimatorController;
+                        m_ExistingModelType = IsValidHumanoid(m_ExistingCharacter) ? ModelType.Humanoid : ModelType.Generic;
                     }
                     // Search for any existing first person hidden objects.
                     var renderers = m_ExistingCharacter.GetComponentsInChildren<Renderer>();
@@ -584,12 +585,11 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                             continue;
                         }
 
-#if THIRD_PERSON_CONTROLLER
-                        if (renderers[i].GetComponent<ThirdPersonController.Character.Identifiers.ThirdPersonObject>() != null) {
+                        if (renderers[i].GetComponent<Character.Identifiers.ThirdPersonObject>() != null) {
                             existingFirstPersonObjects.Add(renderers[i].gameObject);
                             continue;
                         }
-#endif
+
                         var addGameObject = false;
                         var materials = renderers[i].sharedMaterials;
                         for (int j = 0; j < materials.Length; ++j) {
@@ -706,13 +706,11 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                             continue;
                         }
 
-#if THIRD_PERSON_CONTROLLER
-                        ThirdPersonController.Character.Identifiers.ThirdPersonObject thirdPersonObject;
-                        if ((thirdPersonObject = m_OriginalExistingFirstPersonHiddenObjects[i].GetComponent<ThirdPersonController.Character.Identifiers.ThirdPersonObject>())) {
+                        Character.Identifiers.ThirdPersonObject thirdPersonObject;
+                        if ((thirdPersonObject = m_OriginalExistingFirstPersonHiddenObjects[i].GetComponent<Character.Identifiers.ThirdPersonObject>())) {
                             UnityEngine.Object.DestroyImmediate(thirdPersonObject, true);
                             continue;
                         }
-#endif
 
                         var renderers = m_OriginalExistingFirstPersonHiddenObjects[i].GetComponents<Renderer>();
                         for (int j = 0; j < renderers.Length; ++j) {
@@ -726,14 +724,22 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                         }
                     }
 
-                    var hasThirdPersonMovementType = false;
-                    var characterLocomotion = m_ExistingCharacter.GetComponent<UltimateCharacterLocomotion>();
-                    characterLocomotion.DeserializeMovementTypes();
-                    var movementTypes = characterLocomotion.MovementTypes;
-                    for (int i = 0; i < movementTypes.Length; ++i) {
-                        if (movementTypes[i].GetType().FullName.Contains("ThirdPerson")) {
-                            hasThirdPersonMovementType = true;
-                            break;
+                    var addThirdPersonObject = false;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                    var networkInfo = m_ExistingCharacter.GetComponent<Networking.INetworkInfo>();
+                    if (networkInfo != null) {
+                        addThirdPersonObject = true;
+                    }
+#endif
+                    if (!addThirdPersonObject) {
+                        var characterLocomotion = m_ExistingCharacter.GetComponent<UltimateCharacterLocomotion>();
+                        characterLocomotion.DeserializeMovementTypes();
+                        var movementTypes = characterLocomotion.MovementTypes;
+                        for (int i = 0; i < movementTypes.Length; ++i) {
+                            if (movementTypes[i].GetType().FullName.Contains("ThirdPerson")) {
+                                addThirdPersonObject = true;
+                                break;
+                            }
                         }
                     }
 
@@ -743,7 +749,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                             continue;
                         }
 
-                        if (!hasThirdPersonMovementType) {
+                        if (!addThirdPersonObject) {
                             var renderers = m_ExistingFirstPersonHiddenObjects[i].GetComponents<Renderer>();
                             for (int j = 0; j < renderers.Length; ++j) {
                                 var materials = renderers[j].sharedMaterials;
@@ -753,16 +759,16 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                                 renderers[j].sharedMaterials = materials;
                             }
                         } else {
-#if THIRD_PERSON_CONTROLLER
                             // The PerspectiveMonitor component is responsible for switching out the material.
-                            m_ExistingFirstPersonHiddenObjects[i].AddComponent<ThirdPersonController.Character.Identifiers.ThirdPersonObject>();
-#endif
+                            m_ExistingFirstPersonHiddenObjects[i].AddComponent<Character.Identifiers.ThirdPersonObject>();
                         }
                     }
                     InspectorUtility.SetDirty(m_ExistingCharacter);
                     m_OriginalExistingFirstPersonHiddenObjects = m_ExistingFirstPersonHiddenObjects;
                     // An empty element will occupy the last existing slot.
-                    Array.Resize(ref m_OriginalExistingFirstPersonHiddenObjects, m_OriginalExistingFirstPersonHiddenObjects.Length - 1);
+                    if (m_OriginalExistingFirstPersonHiddenObjects != null && m_OriginalExistingFirstPersonHiddenObjects.Length > 0) {
+                        Array.Resize(ref m_OriginalExistingFirstPersonHiddenObjects, m_OriginalExistingFirstPersonHiddenObjects.Length - 1);
+                    }
                 }
                 if (m_ExistingAIAgent != IsAIAgent(m_ExistingCharacter)) {
                     if (m_ExistingAIAgent) {

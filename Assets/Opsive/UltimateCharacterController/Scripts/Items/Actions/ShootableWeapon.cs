@@ -12,16 +12,15 @@ using Opsive.UltimateCharacterController.Game;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Inventory;
 using Opsive.UltimateCharacterController.Items.AnimatorAudioStates;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking.Game;
+#endif
 using Opsive.UltimateCharacterController.Objects;
 using Opsive.UltimateCharacterController.Objects.ItemAssist;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Traits;
 using Opsive.UltimateCharacterController.Utility;
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-using Opsive.UltimateCharacterController.Networking.Character;
-using Opsive.UltimateCharacterController.Networking.Game;
-#endif
 using System.Collections.Generic;
 
 namespace Opsive.UltimateCharacterController.Items.Actions
@@ -291,10 +290,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
         private UltimateCharacterLocomotion m_CharacterLocomotion;
         private Transform m_CharacterTransform;
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-        private INetworkCharacter m_NetworkCharacter;
-        private INetworkAction m_NetworkAction;
-#endif
 
         private bool m_FacingTarget;
         private bool m_Firing;
@@ -347,10 +342,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
             m_CharacterLocomotion = m_Character.GetCachedComponent<UltimateCharacterLocomotion>();
             m_CharacterTransform = m_Character.transform;
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-            m_NetworkAction = m_Character.GetCachedComponent<INetworkAction>();
-            m_NetworkCharacter = m_Character.GetCachedComponent<INetworkCharacter>();
-#endif
 #if FIRST_PERSON_CONTROLLER
             if (m_Item.FirstPersonPerspectiveItem != null) {
                 AudioManager.SetReserveCount(m_Item.FirstPersonPerspectiveItem.GetVisibleObject(), 1);
@@ -490,10 +481,10 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <summary>
         /// Sets the UsableItemType amount on the UsableItem.
         /// </summary>
-        /// <param name="amount">The amount to set the UsableItemType to.</param>
-        public override void SetConsumableItemTypeCount(float amount)
+        /// <param name="count">The amount to set the UsableItemType to.</param>
+        public override void SetConsumableItemTypeCount(float count)
         {
-            ClipRemaining = amount;
+            ClipRemaining = count;
         }
 
         /// <summary>
@@ -620,6 +611,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// </summary>
         public override void UseItem()
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                return;
+            }
+#endif
+
             // The weapon may not have any more ammo left. Play a dry fire sound and return immediately so the weapon is not fired.
             if (m_ConsumableItemType != null && ClipRemaining == 0) {
                 if (!m_Reloading && m_FireModeCanUse && m_CanPlayDryFireAudio) {
@@ -676,25 +673,35 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// Fires the weapon.
         /// </summary>
         /// <param name="strength">(0 - 1) value indicating the amount of strength to apply to the shot.</param>
-        private void Fire(float strength)
+        public void Fire(float strength)
         {
             base.UseItem();
-            m_Firing = true;
-            m_UseCount++;
-            if (m_FireMode == FireMode.Burst) {
-                // The weapon can continue to be fired if the current burst count is greater than the total burst count.
-                m_FireModeCanUse = m_UseCount < m_BurstCount;
 
-                // If the weapon can't be used that means the burst count needs to be reset after the specified delay.
-                if (!m_FireModeCanUse) {
-                    m_BurstEvent = Scheduler.ScheduleFixed(m_BurstDelay, BurstReset);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+                if (m_NetworkCharacter != null) {
+                    m_NetworkCharacter.Fire(this, strength);
                 }
-            } else {
-                // Prevent the weapon from continuously firing if it not a fully automatic.
-                m_FireModeCanUse = m_FireMode == FireMode.FullAuto;
-            }
+#endif
+                m_Firing = true;
+                m_UseCount++;
+                if (m_FireMode == FireMode.Burst) {
+                    // The weapon can continue to be fired if the current burst count is greater than the total burst count.
+                    m_FireModeCanUse = m_UseCount < m_BurstCount;
 
-            m_CharacterLocomotion.UpdateItemAbilityAnimatorParameters();
+                    // If the weapon can't be used that means the burst count needs to be reset after the specified delay.
+                    if (!m_FireModeCanUse) {
+                        m_BurstEvent = Scheduler.ScheduleFixed(m_BurstDelay, BurstReset);
+                    }
+                } else {
+                    // Prevent the weapon from continuously firing if it not a fully automatic.
+                    m_FireModeCanUse = m_FireMode == FireMode.FullAuto;
+                }
+                m_CharacterLocomotion.UpdateItemAbilityAnimatorParameters();
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            }
+#endif
             // Update the clips remaining after the parameters so dry fire doesn't play when there was still a single shot left.
             if (m_ConsumableItemType != null) {
                 ClipRemaining--;
@@ -720,7 +727,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             // Do not spawn the projectile unless on the server. The server will manage the projectile.
-            if (m_NetworkCharacter != null && !m_NetworkCharacter.IsServer()) {
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsServer()) {
+                if (m_SpawnedProjectile != null) {
+                    ObjectPool.Destroy(m_SpawnedProjectile);
+                    m_SpawnedProjectile = null;
+                }
                 return;
             }
 #endif
@@ -730,15 +741,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             var rotation = Quaternion.LookRotation(fireDirection);
             // The projectile will already be spawned if it is always visible.
             if (m_SpawnedProjectile == null) {
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                if (NetworkObjectPool.IsNetworkActive()) {
-                    m_SpawnedProjectile = NetworkObjectPool.Spawn(m_Projectile, firePoint, rotation * m_Projectile.transform.rotation);
-                } else {
-#endif
-                    m_SpawnedProjectile = ObjectPool.Instantiate(m_Projectile, firePoint, rotation * m_Projectile.transform.rotation);
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                }
-#endif
+                m_SpawnedProjectile = ObjectPool.Instantiate(m_Projectile, firePoint, rotation * m_Projectile.transform.rotation);
             } else {
                 // The projectile may be on the other side of an object (especially in the case of separate arms for the first person perspective). Perform a linecast
                 // to ensure the projectile doesn't go through any objects.
@@ -774,8 +777,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             projectile.Initialize(rotation * Vector3.forward * m_ProjectileFireVelocityMagnitude * strength, Vector3.zero, m_DamageAmount, m_ImpactForce, m_ImpactForceFrames,
                                     m_ImpactLayers, m_ImpactStateName, m_ImpactStateDisableTimer, m_SurfaceImpact, m_Character);
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-            if (m_NetworkAction != null) {
-                m_NetworkAction.SpawnProjectile(m_Projectile, firePoint, rotation * m_Projectile.transform.rotation, strength, m_DamageAmount, m_ImpactForce, m_ImpactLayers, m_ImpactStateName, m_ImpactStateDisableTimer, m_SurfaceImpact);
+            if (m_NetworkCharacter != null) {
+                NetworkObjectPool.NetworkSpawn(m_Projectile, projectile.gameObject);
             }
 #endif
             m_SpawnedProjectile = null;
@@ -816,15 +819,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
             if (enable) {
                 if (m_SpawnedProjectile == null) {
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                    if (NetworkObjectPool.IsNetworkActive()) {
-                        m_SpawnedProjectile = NetworkObjectPool.Spawn(m_Projectile);
-                    } else {
-#endif
-                        m_SpawnedProjectile = ObjectPool.Instantiate(m_Projectile);
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                    }
-#endif
+                    m_SpawnedProjectile = ObjectPool.Instantiate(m_Projectile);
                     m_SpawnedProjectile.transform.SetLayerRecursively(m_ProjectileStartLayer);
                     // If the character is reloading the projectile should be shown 
                     if (m_ShowReloadProjectile == ShowProjectileStatus.AttachmentLocation) {
@@ -839,15 +834,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                 EventHandler.ExecuteEvent(m_Character, "OnShootableWeaponShowProjectile", m_SpawnedProjectile, true);
             } else if (m_SpawnedProjectile != null) {
                 EventHandler.ExecuteEvent(m_Character, "OnShootableWeaponShowProjectile", m_SpawnedProjectile, false);
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                if (NetworkObjectPool.IsNetworkActive()) {
-                    NetworkObjectPool.Spawn(m_SpawnedProjectile);
-                } else {
-#endif
-                    ObjectPool.Destroy(m_SpawnedProjectile);
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-                }
-#endif
+                ObjectPool.Destroy(m_SpawnedProjectile);
                 m_SpawnedProjectile = null;
             }
         }
@@ -885,10 +872,17 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         private void HitscanFire(float strength)
         {
             // The hitscan should be fired from the center of the camera so the hitscan will always hit the correct crosshairs location.
-            var firePoint = m_FireInLookSourceDirection && !m_CharacterLocomotion.ActiveMovementType.UseIndependentLook(false) ?
-                                            m_LookSource.LookPosition() : m_ShootableWeaponPerspectiveProperties.FirePointLocation.position;
+            var useLookPosition = m_FireInLookSourceDirection && !m_CharacterLocomotion.ActiveMovementType.UseIndependentLook(false);
+            var firePoint = useLookPosition ? m_LookSource.LookPosition() : m_ShootableWeaponPerspectiveProperties.FirePointLocation.position;
             var fireDirection = FireDirection(firePoint);
-            var hitCount = Physics.RaycastNonAlloc(firePoint, fireDirection, m_HitscanRaycastHits, m_HitscanFireRange * strength, m_ImpactLayers.value, QueryTriggerInteraction.Ignore);
+            var fireRay = new Ray(firePoint, fireDirection);
+            // Prevent the ray between the character and the look source from causing a false collision.
+            if (useLookPosition && !m_CharacterLocomotion.FirstPersonPerspective) {
+                var direction = m_CharacterTransform.InverseTransformPoint(firePoint);
+                direction.y = 0;
+                fireRay.origin = fireRay.GetPoint(direction.magnitude);
+            }
+            var hitCount = Physics.RaycastNonAlloc(fireRay, m_HitscanRaycastHits, m_HitscanFireRange * strength, m_ImpactLayers.value, QueryTriggerInteraction.Ignore);
             var hasHit = false;
 
 #if UNITY_EDITOR
@@ -921,6 +915,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(closestRaycastHit.transform.gameObject, "OnObjectImpact", damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character, closestRaycastHit.collider);
+                // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
+                EventHandler.ExecuteEvent(closestRaycastHit.transform.gameObject, "OnObjectImpact", damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character, this, closestRaycastHit.collider);
                 if (m_OnHitscanImpactEvent != null) {
                     m_OnHitscanImpactEvent.Invoke(damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character);
                 }
@@ -1192,6 +1188,14 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         public void StartItemReload()
         {
             m_Reloading = true;
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+                if (m_NetworkCharacter != null) {
+                    m_NetworkCharacter.StartItemReload(this);
+                }
+            }
+#endif
             if (m_ActiveSharedConsumableItemTypeCount > 0) {
                 DetermineTotalReloadAmount();
             }
@@ -1449,9 +1453,17 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <param name="fullClip">Should the full clip be force reloaded?</param>
         public void ReloadItem(bool fullClip)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+                if (m_NetworkCharacter != null) {
+                    m_NetworkCharacter.ReloadItem(this, fullClip);
+                }
+            }
+#endif
             if (!fullClip) {
                 EventHandler.ExecuteEvent(m_Character, "OnAddCrosshairsSpread", false, false);
             }
+
             var consumableItemTypeCount = m_Inventory.GetItemTypeCount(m_ConsumableItemType);
             if (consumableItemTypeCount == 0) {
                 return;
@@ -1477,7 +1489,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             }
             ClipRemaining += reloadAmount;
             m_UseCount = 0;
-
             m_Inventory.UseItem(m_ConsumableItemType, reloadAmount);
 
             if (!fullClip && m_ReloadType == ReloadClipType.Single) {
@@ -1563,6 +1574,14 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <param name="success">Was the item reloaded successfully?</param>
         public void ItemReloadComplete(bool success)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+                if (m_NetworkCharacter != null) {
+                    m_NetworkCharacter.ItemReloadComplete(this, success);
+                }
+            }
+#endif
+
             if (!success) {
                 // The weapon will not be successfully reloaded if the Reload ability stopped early.
                 AttachClip();

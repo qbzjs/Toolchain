@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136680203202698276}
   - component: {fileID: 54179673272873228}
   - component: {fileID: 96793803462781070}
+  - component: {fileID: 114075510291464382}
   m_Layer: 28
   m_Name: Arrow
   m_TagString: Untagged
@@ -194,6 +195,19 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114075510291464382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550800345144822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e458a25b435dd4086faf6dce3b39e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SurfaceType: {fileID: 0}
+  m_AllowDecals: 0
 --- !u!114 &114235742836134184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,6 +230,7 @@ MonoBehaviour:
   m_RotateInMoveDirection: 1
   m_SettleThreshold: 0.1
   m_SidewaysSettleThreshold: 0.75
+  m_StartSidewaysVelocityMagnitude: 3
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096353
@@ -228,6 +243,9 @@ MonoBehaviour:
   m_ActiveAudioClipSet:
     m_Delay: 0
     m_AudioClips: []
+  m_StickyLayers:
+    serializedVersion: 2
+    m_Bits: 268435403
   m_DestroyOnCollision: 0
   m_DestructionDelay: 0.2
   m_SpawnedObjectsOnDestruction: []

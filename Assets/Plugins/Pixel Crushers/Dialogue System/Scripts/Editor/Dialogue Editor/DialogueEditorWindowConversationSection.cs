@@ -105,6 +105,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             ResetConversationSection();
             SetCurrentConversation(conversation);
             startEntry = GetOrCreateFirstDialogueEntry();
+            CheckNodeWidths();
             if (showNodeEditor) CheckNodeArrangement();
         }
 

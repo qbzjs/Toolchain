@@ -662,6 +662,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         protected virtual void AbilityStopped(bool force)
         {
             m_InputIndex = -1;
+            m_StartAudioClipSet.Stop(m_GameObject);
             m_StopAudioClipSet.PlayAudioClip(m_GameObject);
 
             ResetInput(force);
@@ -786,6 +787,20 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// Called when the character is destroyed.
         /// </summary>
         public virtual void OnDestroy() { if (m_Starter != null) { m_Starter.OnDestroy(); } }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        /// <summary>
+        /// Returns any data required to start the ability.
+        /// </summary>
+        /// <returns>Any data required to start the ability.</returns>
+        public virtual object[] GetNetworkStartData() { return null; }
+
+        /// <summary>
+        /// Sets the start data from the network.
+        /// </summary>
+        /// <param name="startData">The data required to start the ability.</param>
+        public virtual void SetNetworkStartData(object[] startData) { }
+#endif
 
         /// <summary>
         /// Helper method which returns the component on the GameObject of type T.

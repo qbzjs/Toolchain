@@ -32,6 +32,12 @@ namespace PixelCrushers.DialogueSystem
 
         private static GameObjectDragDropCommand alternateGameObjectDragDropCommand = GameObjectDragDropCommand.SetActiveTrue;
 
+        private enum ComponentDragDropCommand { SetEnabledTrue, SetEnabledFalse }
+
+        private static ComponentDragDropCommand componentDragDropCommand = ComponentDragDropCommand.SetEnabledTrue;
+
+        private static ComponentDragDropCommand alternateComponentDragDropCommand = ComponentDragDropCommand.SetEnabledTrue;
+
         private static string otherCommandName = string.Empty;
 
         [Serializable]
@@ -130,6 +136,24 @@ namespace PixelCrushers.DialogueSystem
                                     }
                                     GUI.changed = true;
                                 }
+                                else if (obj is Component)
+                                {
+                                    // Drop component.
+                                    var component = obj as Component;
+                                    var go = component.gameObject;
+                                    if (sequence.EndsWith("("))
+                                    {
+                                        // If sequence ends in open paren, add component and close:
+                                        sequence += component.GetType().Name + ")";
+                                    }
+                                    else
+                                    {
+                                        // Drop component according to selected component command:
+                                        var command = Event.current.alt ? alternateComponentDragDropCommand : componentDragDropCommand;
+                                        sequence = AddCommandToSequence(sequence, GetCurrentComponentCommand(command, component.GetType().Name, go.name));
+                                    }
+                                    GUI.changed = true;
+                                }
                             }
                         }
                     }
@@ -167,10 +191,14 @@ namespace PixelCrushers.DialogueSystem
             menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Default/Use DOF()"), gameObjectDragDropCommand == GameObjectDragDropCommand.DOF, SetGameObjectDragDropCommand, GameObjectDragDropCommand.DOF);
             menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Default/SetActive(GameObject,true)"), gameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveTrue, SetGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveTrue);
             menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Default/SetActive(GameObject,false)"), gameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveFalse, SetGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveFalse);
-            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/Use Camera()"), gameObjectDragDropCommand == GameObjectDragDropCommand.Camera, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.Camera);
-            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/Use DOF()"), gameObjectDragDropCommand == GameObjectDragDropCommand.DOF, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.DOF);
-            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/SetActive(GameObject,true)"), gameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveTrue, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveTrue);
-            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/SetActive(GameObject,false)"), gameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveFalse, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveFalse);
+            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/Use Camera()"), alternateGameObjectDragDropCommand == GameObjectDragDropCommand.Camera, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.Camera);
+            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/Use DOF()"), alternateGameObjectDragDropCommand == GameObjectDragDropCommand.DOF, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.DOF);
+            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/SetActive(GameObject,true)"), alternateGameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveTrue, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveTrue);
+            menu.AddItem(new GUIContent("GameObject Drag-n-Drop/Alt-Key/SetActive(GameObject,false)"), alternateGameObjectDragDropCommand == GameObjectDragDropCommand.SetActiveFalse, SetAlternateGameObjectDragDropCommand, GameObjectDragDropCommand.SetActiveFalse);
+            menu.AddItem(new GUIContent("Component Drag-n-Drop/Default/SetEnabled(Component,true,GameObject)"), componentDragDropCommand == ComponentDragDropCommand.SetEnabledTrue, SetComponentDragDropCommand, ComponentDragDropCommand.SetEnabledTrue);
+            menu.AddItem(new GUIContent("Component Drag-n-Drop/Default/SetEnabled(Component,false,GameObject)"), componentDragDropCommand == ComponentDragDropCommand.SetEnabledFalse, SetComponentDragDropCommand, ComponentDragDropCommand.SetEnabledFalse);
+            menu.AddItem(new GUIContent("Component Drag-n-Drop/Alt-Key/SetEnabled(Component,true,GameObject)"), alternateComponentDragDropCommand == ComponentDragDropCommand.SetEnabledTrue, SetAlternateComponentDragDropCommand, ComponentDragDropCommand.SetEnabledTrue);
+            menu.AddItem(new GUIContent("Component Drag-n-Drop/Alt-Key/SetEnabled(Component,false,GameObject)"), alternateComponentDragDropCommand == ComponentDragDropCommand.SetEnabledFalse, SetAlternateComponentDragDropCommand, ComponentDragDropCommand.SetEnabledFalse);
             AddAllSequencerCommands(menu);
             menu.ShowAsContext();
         }
@@ -234,6 +262,29 @@ namespace PixelCrushers.DialogueSystem
                     return "SetActive(" + goName + ",true)";
                 case GameObjectDragDropCommand.SetActiveFalse:
                     return "SetActive(" + goName + ",false)";
+            }
+        }
+
+        private static void SetComponentDragDropCommand(object data)
+        {
+            componentDragDropCommand = (ComponentDragDropCommand)data;
+        }
+
+        private static void SetAlternateComponentDragDropCommand(object data)
+        {
+            alternateComponentDragDropCommand = (ComponentDragDropCommand)data;
+        }
+
+        private static string GetCurrentComponentCommand(ComponentDragDropCommand command, string componentName, string goName)
+        {
+            if (string.IsNullOrEmpty(componentName)) return string.Empty;
+            switch (command)
+            {
+                default:
+                case ComponentDragDropCommand.SetEnabledTrue:
+                    return "SetEnabled(" + componentName + ",true," + goName + ")";
+                case ComponentDragDropCommand.SetEnabledFalse:
+                    return "SetEnabled(" + componentName+ ",false," + goName + ")";
             }
         }
 
@@ -303,25 +354,31 @@ namespace PixelCrushers.DialogueSystem
 
         private static string[] InternalSequencerCommands =
         {
-"None",
-"AnimatorController",
-"AnimatorBool",
-"AnimatorInt",
-"AnimatorFloat",
-"AnimatorTrigger",
-"Audio",
-"SendMessage",
-"SetActive",
-"SetEnabled",
-"SetPanel",
-"SetPortrait",
-"SetContinueMode",
-"Continue",
-"SetVariable",
-"ShowAlert",
-"UpdateTracker",
-"RandomizeNextEntry",
-        };
+            "None",
+            "AnimatorController",
+            "AnimatorBool",
+            "AnimatorInt",
+            "AnimatorFloat",
+            "AnimatorTrigger",
+            "AnimatorPlay",
+            "Audio",
+            "ClearSubtitleText",
+            "Continue",
+            "SendMessage",
+            "SetActive",
+            "SetEnabled",
+            "SetPanel",
+            "SetMenuPanel",
+            "SetDialoguePanel",
+            "SetPortrait",
+            "SetTimeout",
+            "SetContinueMode",
+            "Continue",
+            "SetVariable",
+            "ShowAlert",
+            "UpdateTracker",
+            "RandomizeNextEntry",
+                    };
 
         private static void AddAllSequencerCommands(GenericMenu menu)
         {

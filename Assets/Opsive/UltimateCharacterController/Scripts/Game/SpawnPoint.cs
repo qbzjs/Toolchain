@@ -5,7 +5,6 @@
 /// ---------------------------------------------
 
 using UnityEngine;
-using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Game
 {
@@ -30,15 +29,19 @@ namespace Opsive.UltimateCharacterController.Game
         [SerializeField] protected SpawnShape m_Shape;
         [Tooltip("The size of the spawn shape.")]
         [SerializeField] protected float m_Size;
+        [Tooltip("Should the object be spawned randomly within the shape?")]
+        [SerializeField] protected bool m_RandomShapeSpawn = true;
         [Tooltip("Specifies the height of the ground check.")]
         [SerializeField] protected float m_GroundSnapHeight;
         [Tooltip("Should the character spawn with a random y direction?")]
         [SerializeField] protected bool m_RandomDirection;
         [Tooltip("Should a check be performed to determine if there are any objects obstructing the spawn point?")]
         [SerializeField] protected bool m_CheckForObstruction;
+        [Tooltip("The maximum number of collision points which the spawn points should check against.")]
+        [SerializeField] protected int m_MaxCollisionCount = 20;
         [Tooltip("The layers which can obstruct the spawn point.")]
-        [SerializeField] protected LayerMask m_ObstructionLayers = ~(1 << LayerManager.IgnoreRaycast | 1 << LayerManager.TransparentFX | 1 << LayerManager.SubCharacter |
-                                                                1 << LayerManager.Overlay | 1 << LayerManager.VisualEffect);
+        [SerializeField] protected LayerMask m_ObstructionLayers = ~(1 << LayerManager.Default | 1 << LayerManager.IgnoreRaycast | 1 << LayerManager.TransparentFX | 
+                                                                     1 << LayerManager.SubCharacter | 1 << LayerManager.Overlay | 1 << LayerManager.VisualEffect);
         [Tooltip("If checking for obstruction, specifies how many times the location should be determined before it is decided that there are no valid spawn locations.")]
         [SerializeField] protected int m_PlacementAttempts = 10;
 #if UNITY_EDITOR
@@ -71,6 +74,7 @@ namespace Opsive.UltimateCharacterController.Game
 #endif
 
         private Transform m_Transform;
+        private Collider[] m_ObstructionColliders;
 
         /// <summary>
         /// Initialize the default values.
@@ -78,6 +82,10 @@ namespace Opsive.UltimateCharacterController.Game
         private void Awake()
         {
             m_Transform = transform;
+
+            if (m_CheckForObstruction) {
+                m_ObstructionColliders = new Collider[m_MaxCollisionCount];
+            }
         }
 
         /// <summary>
@@ -91,12 +99,13 @@ namespace Opsive.UltimateCharacterController.Game
         /// <summary>
         /// Gets the position and rotation of the spawn point. If false is returned then the point wasn't successfully retrieved.
         /// </summary>
+        /// <param name="spawningObject">The object that is spawning.</param>
         /// <param name="position">The position of the spawn point.</param>
         /// <param name="rotation">The rotation of the spawn point.</param>
         /// <returns>True if the spawn point was successfully retrieved.</returns>
-        public bool GetPlacement(ref Vector3 position, ref Quaternion rotation)
+        public bool GetPlacement(GameObject spawningObject, ref Vector3 position, ref Quaternion rotation)
         {
-            position = RandomPosition();
+            position = RandomPosition(0);
 
             // Ensure the spawn point is clear of any obstructing objects.
             if (m_CheckForObstruction) {
@@ -107,8 +116,18 @@ namespace Opsive.UltimateCharacterController.Game
                         // A point will always succeed.
                         success = true;
                     } else if (m_Shape == SpawnShape.Sphere) {
-                        if (!Physics.CheckSphere(position, m_Size, m_ObstructionLayers, QueryTriggerInteraction.Ignore)) {
-                            success = true;
+                        // Ignore any collisions with itself.
+                        var overlapCount = Physics.OverlapSphereNonAlloc(position, m_Size / 2, m_ObstructionColliders, m_ObstructionLayers, QueryTriggerInteraction.Ignore);
+                        if (spawningObject != null) {
+                            for (int i = overlapCount - 1; i > -1; --i) {
+                                if (!m_ObstructionColliders[i].transform.IsChildOf(spawningObject.transform)) {
+                                    break;
+                                }
+                                overlapCount--;
+                            }
+                        }
+                        success = overlapCount == 0;
+                        if (success) {
                             break;
                         }
                     } else { // Box.
@@ -116,14 +135,23 @@ namespace Opsive.UltimateCharacterController.Game
                         extents.x = extents.z = m_Size / 2;
                         extents.y = m_GroundSnapHeight / 2;
                         var boxPosition = m_Transform.TransformPoint(extents);
-                        if (!Physics.CheckBox(boxPosition, extents, m_Transform.rotation, m_ObstructionLayers, QueryTriggerInteraction.Ignore)) {
-                            success = true;
+
+                        // Ignore any collisions with itself.
+                        var overlapCount = Physics.OverlapBoxNonAlloc(boxPosition, extents, m_ObstructionColliders, m_Transform.rotation, m_ObstructionLayers, QueryTriggerInteraction.Ignore);
+                        for (int i = overlapCount - 1; i > -1; --i) {
+                            if (!m_ObstructionColliders[i].transform.IsChildOf(spawningObject.transform)) {
+                                break;
+                            }
+                            overlapCount--;
+                        }
+                        success = overlapCount == 0;
+                        if (success) {
                             break;
                         }
                     }
 
-                    position = RandomPosition();
-                    attempt++;
+                    ++attempt;
+                    position = RandomPosition(attempt);
                 }
 
                 // No valid position was found - return false.
@@ -151,11 +179,16 @@ namespace Opsive.UltimateCharacterController.Game
         }
 
         /// <summary>
-        /// Retruns a random position based on the shape.
+        /// Retruns a position based on the spawn shape.
         /// </summary>
-        /// <returns></returns>
-        private Vector3 RandomPosition()
+        /// <param name="attempt">The attempt to position the object.</param>
+        /// <returns>A position within the spawn spape.</returns>
+        private Vector3 RandomPosition(int attempt)
         {
+            // Always first try to position in the center.
+            if (attempt == 0 || !m_RandomShapeSpawn) {
+                return m_Transform.position;
+            }
             var localPosition = Vector3.zero;
             if (m_Shape == SpawnShape.Sphere) {
                 localPosition = Random.insideUnitSphere * m_Size;

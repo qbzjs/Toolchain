@@ -85,7 +85,13 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Camera
                     var initOnAwake = PropertyFromName("m_InitCharacterOnAwake");
                     EditorGUILayout.PropertyField(initOnAwake);
                     if (initOnAwake.boolValue || Application.isPlaying) {
-                        EditorGUILayout.PropertyField(PropertyFromName("m_Character"));
+                        var characterProperty = PropertyFromName("m_Character");
+                        EditorGUILayout.PropertyField(characterProperty);
+                        if (!Application.isPlaying && characterProperty.objectReferenceValue != null) {
+                            if (!string.IsNullOrEmpty(AssetDatabase.GetAssetPath(characterProperty.objectReferenceValue))) {
+                                EditorGUILayout.HelpBox("The Camera Controller Character property cannot point to a prefab.", MessageType.Error);
+                            }
+                        }
                     }
 
                     var autoAnchorProperty = PropertyFromName("m_AutoAnchor");

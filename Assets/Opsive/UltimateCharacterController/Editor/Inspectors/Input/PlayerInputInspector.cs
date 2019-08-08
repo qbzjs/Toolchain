@@ -37,6 +37,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Input
                     EditorGUILayout.PropertyField(PropertyFromName("m_LookSensitivity"));
                     EditorGUILayout.PropertyField(PropertyFromName("m_SmoothLookSteps"));
                     EditorGUILayout.PropertyField(PropertyFromName("m_SmoothLookWeight"));
+                    EditorGUILayout.PropertyField(PropertyFromName("m_SmoothExponent"));
                     EditorGUILayout.PropertyField(PropertyFromName("m_LookAccelerationThreshold"));
                     EditorGUI.indentLevel--;
                 }

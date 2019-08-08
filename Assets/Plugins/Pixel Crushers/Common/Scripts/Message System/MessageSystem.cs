@@ -185,16 +185,14 @@ namespace PixelCrushers
 
         private static void RemoveMarkedListenerInfo()
         {
-            for (int i = 0; i < listenerInfo.Count; i++)
-            {
-                var x = listenerInfo[i];
-                if (x.removed)
-                {
-                    x.Clear();
-                    listenerInfoPool.Release(x);
-                }
-            }
+            var listenersToRemove = listenerInfo.FindAll(x => x.removed);
             listenerInfo.RemoveAll(x => x.removed);
+            for (int i = 0; i < listenersToRemove.Count; i++)
+            {
+                var listenerToRemove = listenersToRemove[i];
+                listenerToRemove.Clear();
+                listenerInfoPool.Release(listenerToRemove);
+            }
         }
 
         /// <summary>
@@ -307,7 +305,12 @@ namespace PixelCrushers
                 for (int i = 0; i < listenerInfo.Count; i++)
                 {
                     var x = listenerInfo[i];
-                    if (x.removed) continue;
+                    if (x == null || x.removed) continue;
+                    if (x.listener == null)
+                    {
+                        x.removed = true;
+                        continue;
+                    }
                     if (string.Equals(x.message, message) && (string.Equals(x.parameter, parameter) || string.IsNullOrEmpty(x.parameter)))
                     {
                         try

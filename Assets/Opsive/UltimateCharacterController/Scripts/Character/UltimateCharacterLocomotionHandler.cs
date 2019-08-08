@@ -274,7 +274,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// <summary>
         /// The character has respawned. Enable the handler.
         /// </summary>
-        private void OnRespawn()
+        protected virtual void OnRespawn()
         {
             enabled = true;
             // Call update immediately to force the horizontal, forward, and look rotation values to update before FixedUpdate is called.

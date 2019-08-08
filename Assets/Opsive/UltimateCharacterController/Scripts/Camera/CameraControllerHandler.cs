@@ -19,12 +19,15 @@ namespace Opsive.UltimateCharacterController.Camera
     {
         [Tooltip("The name of the zoom input mapping.")]
         [SerializeField] protected string m_ZoomInputName = "Fire2";
+        [Tooltip("Does the zoom button need to be held down in order for the camera to zoom?")]
+        [SerializeField] protected bool m_ContinuousZoom = true;
 #if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
         [Tooltip("The name of the toggle perspective input mapping.")]
         [SerializeField] protected string m_TogglePerspectiveInputName = "Toggle Perspective";
 #endif
 
         public string ZoomInputName { get { return m_ZoomInputName; } set { m_ZoomInputName = value; } }
+        public bool ContinuousZoom { get { return m_ContinuousZoom; } set { m_ContinuousZoom = value; } }
 #if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
         public string TogglePerspectiveInputName { get { return m_TogglePerspectiveInputName; } set { m_TogglePerspectiveInputName = value; } }
 #endif
@@ -97,7 +100,13 @@ namespace Opsive.UltimateCharacterController.Camera
         /// </summary>
         private void Update()
         {
-            var zoom = m_PlayerInput.GetButton(m_ZoomInputName);
+            bool zoom;
+            if (m_ContinuousZoom) {
+                zoom = m_PlayerInput.GetButton(m_ZoomInputName);
+            } else {
+                zoom = m_PlayerInput.GetButtonDown(m_ZoomInputName) ? !m_CameraController.ZoomInput : m_CameraController.ZoomInput;
+            }
+
             if (zoom != m_CameraController.ZoomInput) {
                 m_CameraController.TryZoom(zoom);
             }

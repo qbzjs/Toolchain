@@ -134,6 +134,7 @@ namespace Opsive.UltimateCharacterController.Character
 
         private Vector3 m_HipsPosition;
         private float m_HipsOffset;
+        private bool m_HipsUpdate;
         private float[] m_FootOffset = new float[2];
         private float[] m_FootIKWeight = new float[2];
         private float[] m_MaxLegLength = new float[2];
@@ -476,7 +477,8 @@ namespace Opsive.UltimateCharacterController.Character
         /// <summary>
         /// Updates the IK component after the animator has updated.
         /// </summary>
-        public override void Move()
+        /// <param name="fixedUpdate">Is the IK being updated within the FixedUpdate loop?</param>
+        public override void Move(bool fixedUpdate)
         {
             m_Hips.position = m_Transform.TransformPoint(m_HipsPosition);
 
@@ -536,7 +538,9 @@ namespace Opsive.UltimateCharacterController.Character
                     float distance;
                     var target = (i == 0 ? m_LeftFoot : m_RightFoot);
                     var lowerLeg = (i == 0 ? m_LeftLowerLeg : m_RightLowerLeg);
-                    if (Physics.Raycast(GetFootRaycastPosition(target, lowerLeg, m_MaxLegLength[i], out distance), -m_CharacterLocomotion.Up, out m_RaycastHit, distance + m_FootOffset[i] + m_MaxLegLength[i], m_LayerMask, QueryTriggerInteraction.Ignore)) {
+                    if (Physics.Raycast(GetFootRaycastPosition(target, lowerLeg, out distance), -m_CharacterLocomotion.Up, out m_RaycastHit, 
+                                            distance + m_FootOffset[i] + m_MaxLegLength[i], m_LayerMask, QueryTriggerInteraction.Ignore) && 
+                                            m_Transform.InverseTransformPoint(m_RaycastHit.point).y < m_CharacterLocomotion.MaxStepHeight) {
                         m_RaycastDistance[i] = distance * m_Transform.lossyScale.y;
                         m_GroundDistance[i] = m_RaycastHit.distance;
                         m_GroundPoint[i] = m_RaycastHit.point;
@@ -548,7 +552,9 @@ namespace Opsive.UltimateCharacterController.Character
                     // Fire the second raycast from the toe. If a closer object is hit then the toe raycast results should be used. This prevent the toe from clipping objects
                     // if the object isn't at the same height as the foot.
                     target = (i == 0 ? m_LeftToes : m_RightToes);
-                    if (target != null && Physics.Raycast(GetFootRaycastPosition(target, lowerLeg, m_MaxLegLength[i], out distance), -m_CharacterLocomotion.Up, out m_RaycastHit, distance + m_FootOffset[i] + m_MaxLegLength[i], m_LayerMask, QueryTriggerInteraction.Ignore)) {
+                    if (target != null && Physics.Raycast(GetFootRaycastPosition(target, lowerLeg, out distance), -m_CharacterLocomotion.Up, out m_RaycastHit, 
+                                                            distance + m_FootOffset[i] + m_MaxLegLength[i], m_LayerMask, QueryTriggerInteraction.Ignore) &&
+                                                            m_Transform.InverseTransformPoint(m_RaycastHit.point).y < m_CharacterLocomotion.MaxStepHeight) {
                         // In addition to checking the distance also ensure the normal is the same as the up direction as the character. This will prevent the toes from
                         // positioning the IK while on a slope.
                         if (m_RaycastHit.distance + m_CharacterLocomotion.ColliderSpacing < m_GroundDistance[i] && m_RaycastHit.normal == m_CharacterLocomotion.Up) {
@@ -642,16 +648,15 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         /// <param name="targetTransform">The Transform of the foot or toe.</param>
         /// <param name="lowerLeg">The Transform of the lower leg.</param>
-        /// <param name="maxLegLegth">The maximum distance that the leg can adjust to.</param>
         /// <param name="distance">The vertical distance between the hip and target Transform.</param>
         /// <returns>The position that the raycast should start at when determining if the foot is near the ground.</returns>
-        private Vector3 GetFootRaycastPosition(Transform targetTransform, Transform lowerLeg, float maxLegLegth, out float distance)
+        private Vector3 GetFootRaycastPosition(Transform targetTransform, Transform lowerLeg, out float distance)
         {
             // The relative y position should be the same as the lower leg so the raycast can detect any objects between the lower leg position and current foot position.
             var raycastPosition = m_Transform.InverseTransformPoint(targetTransform.position);
-            var localLowerLegPosition = m_Transform.InverseTransformPoint(lowerLeg.position);
-            distance = (localLowerLegPosition.y - raycastPosition.y);
-            raycastPosition.y = localLowerLegPosition.y - maxLegLegth / 2;
+            var localHipPosition = m_Transform.InverseTransformPoint(lowerLeg.position);
+            distance = (localHipPosition.y - raycastPosition.y);
+            raycastPosition.y = localHipPosition.y;
             return m_Transform.TransformPoint(raycastPosition);
         }
 
@@ -916,7 +921,7 @@ namespace Opsive.UltimateCharacterController.Character
                 return;
             }
 
-            Move();
+            Move(true);
         }
 
         /// <summary>
@@ -968,6 +973,9 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         private void OnDestroy()
         {
+            m_PositionSpring.Destroy();
+            m_RotationSpring.Destroy();
+
             EventHandler.UnregisterEvent<ILookSource>(m_GameObject, "OnCharacterAttachLookSource", OnAttachLookSource);
             EventHandler.UnregisterEvent<Item, int>(m_GameObject, "OnInventoryEquipItem", OnEquipItem);
             EventHandler.UnregisterEvent<Item, int>(m_GameObject, "OnInventoryUnequipItem", OnUnequipItem);

@@ -29,6 +29,8 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         private UnityEngine.Camera m_Camera;
         private Plane m_HitPlane = new Plane();
 
+        public override bool FirstPersonPerspective { get { return false; } }
+
         /// <summary>
         /// Initializes the MovementType.
         /// </summary>

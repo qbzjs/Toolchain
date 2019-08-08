@@ -13,6 +13,10 @@ using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Inventory;
 using Opsive.UltimateCharacterController.Items.Actions;
 using Opsive.UltimateCharacterController.Items.AnimatorAudioStates;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Character;
+#endif
 using Opsive.UltimateCharacterController.Objects.CharacterAssist;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
@@ -133,9 +137,9 @@ namespace Opsive.UltimateCharacterController.Items
         protected UltimateCharacterLocomotion m_CharacterLocomotion;
         protected InventoryBase m_Inventory;
         protected PerspectiveItem m_ActivePerspectiveItem;
-        private PerspectiveItem m_FirstPersonPerspectiveItem;
         private PerspectiveItem m_ThirdPersonPerspectiveItem;
 #if FIRST_PERSON_CONTROLLER
+        private PerspectiveItem m_FirstPersonPerspectiveItem;
         private GameObject[] m_FirstPersonObjects;
         private ChildAnimatorMonitor[] m_FirstPersonObjectsAnimatorMonitor;
         private ChildAnimatorMonitor m_FirstPersonPerspectiveItemAnimatorMonitor;
@@ -143,6 +147,9 @@ namespace Opsive.UltimateCharacterController.Items
         private ChildAnimatorMonitor m_ThirdPersonItemAnimatorMonitor;
         private ItemAction[] m_ItemActions;
         private Dictionary<int, ItemAction> m_IDItemActionMap;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+#endif
 
         private bool m_Started;
         private bool m_VisibleObjectActive;
@@ -151,7 +158,14 @@ namespace Opsive.UltimateCharacterController.Items
         private Quaternion m_UnequipDropRotation;
 
         public PerspectiveItem ActivePerspectiveItem { get { return m_ActivePerspectiveItem; } }
-        public PerspectiveItem FirstPersonPerspectiveItem { get { return m_FirstPersonPerspectiveItem; } }
+        public PerspectiveItem FirstPersonPerspectiveItem { get {
+#if FIRST_PERSON_CONTROLLER
+                return m_FirstPersonPerspectiveItem; 
+#else
+                return null;
+#endif
+            } }
+
         public PerspectiveItem ThirdPersonPerspectiveItem { get { return m_ThirdPersonPerspectiveItem; } }
         public ItemAction[] ItemActions { get { return m_ItemActions; } }
         public bool VisibleObjectActive { get { return m_VisibleObjectActive; } }
@@ -165,27 +179,21 @@ namespace Opsive.UltimateCharacterController.Items
             m_CharacterLocomotion = m_GameObject.GetCachedParentComponent<UltimateCharacterLocomotion>();
             m_Character = m_CharacterLocomotion.gameObject;
             m_Inventory = m_Character.GetCachedComponent<InventoryBase>();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_Character.GetCachedComponent<INetworkInfo>();
+#endif
 
             base.Awake();
 
             // Find the PerspectiveItems/ItemActions.
             var perspectiveItems = GetComponents<PerspectiveItem>();
             for (int i = 0; i < perspectiveItems.Length; ++i) {
-                // AI agents and networked characters will not have a camera attached.
-                if (perspectiveItems[i].FirstPersonItem) {
-                    var camera = UnityEngineUtility.FindCamera(m_Character);
-                    if (camera == null) {
-                        continue;
-                    }
-                }
-
                 // Initialize the perspective item manually to ensure an Object GameObject exists. This is important because the Item component will execute
                 // before the FirstPersonPerspectiveItem component, but the FirstPersonPerspectiveItem component may not be completely initialized.
                 // The FirstPersonPerspectiveItem component must be initialized after Item so Item.Start can be called and add the item to the inventory.
                 perspectiveItems[i].Initialize(m_Character);
 
                 if (perspectiveItems[i].FirstPersonItem) {
-                    m_FirstPersonPerspectiveItem = perspectiveItems[i];
 #if FIRST_PERSON_CONTROLLER
                     var firstPersonPerspectiveItem = perspectiveItems[i] as FirstPersonController.Items.FirstPersonPerspectiveItem;
                     if (firstPersonPerspectiveItem.Object != null) {
@@ -200,7 +208,11 @@ namespace Opsive.UltimateCharacterController.Items
                                 m_FirstPersonObjectsAnimatorMonitor[j + 1] = firstPersonPerspectiveItem.AdditionalControlObjects[j].GetComponent<ChildAnimatorMonitor>();
                             }
                         }
+                    } else {
+                        // The character doesn't have a first person perspective setup.
+                        continue;
                     }
+                    m_FirstPersonPerspectiveItem = perspectiveItems[i];
 
                     var visibleItem = firstPersonPerspectiveItem.VisibleItem;
                     if (visibleItem != null) {
@@ -234,6 +246,8 @@ namespace Opsive.UltimateCharacterController.Items
             m_EquipAnimatorAudioStateSet.Awake(m_GameObject);
             m_UnequipAnimatorAudioStateSet.Awake(m_GameObject);
 
+            m_Inventory.AddItem(this, true);
+
             EventHandler.RegisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
         }
 
@@ -247,37 +261,55 @@ namespace Opsive.UltimateCharacterController.Items
                 return;
             }
             m_Started = true;
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            var remotePlayer = false;
+            // Perform any initialization for a non-local network player.
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+#if FIRST_PERSON_CONTROLLER
+                // First person items do not need to be updated for remote players.
+                if (m_FirstPersonPerspectiveItem != null) {
+                    m_FirstPersonPerspectiveItem = null;
+                    m_FirstPersonObjects = null;
+                    m_FirstPersonObjectsAnimatorMonitor = null;
+                    m_FirstPersonPerspectiveItemAnimatorMonitor = null;
+                }
+#endif
+
+                // Remote players should always be in the third person view.
+                OnChangePerspectives(false);
+                EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
+                remotePlayer = true;
+            }
+#endif
+
+#if FIRST_PERSON_CONTROLLER
             if (m_FirstPersonPerspectiveItem != null) {
                 m_FirstPersonPerspectiveItem.ItemStarted();
             }
+#endif
             if (m_ThirdPersonPerspectiveItem != null) {
                 m_ThirdPersonPerspectiveItem.ItemStarted();
             }
             SetVisibleObjectActive(false);
 
             // Set the correct visible object for the current perspective.
-            var characterLocomotion = m_Character.GetCachedComponent<UltimateCharacterLocomotion>();
-            if (characterLocomotion.FirstPersonPerspective) {
+            if (m_CharacterLocomotion.FirstPersonPerspective
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                && !remotePlayer
+#endif
+                ) {
+#if FIRST_PERSON_CONTROLLER
                 m_ActivePerspectiveItem = m_FirstPersonPerspectiveItem;
+#endif
             } else {
                 m_ActivePerspectiveItem = m_ThirdPersonPerspectiveItem;
             }
-            m_Inventory.AddItem(this, true);
             // The character should ignore any of the item's colliders.
             var colliders = GetComponents<Collider>();
             for (int i = 0; i < colliders.Length; ++i) {
-                characterLocomotion.AddSubCollider(colliders[i]);
+                m_CharacterLocomotion.AddSubCollider(colliders[i]);
             }
-
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-            // Perform any initialization for a non-local network player.
-            var networkCharacter = m_Character.GetCachedComponent<Networking.Character.INetworkCharacter>();
-            if (networkCharacter != null && !networkCharacter.IsLocalPlayer()) {
-                // Remote players should always be in the third person view.
-                OnChangePerspectives(false);
-                Events.EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
-            }
-#endif
         }
 
         /// <summary>
@@ -285,14 +317,16 @@ namespace Opsive.UltimateCharacterController.Items
         /// </summary>
         public virtual void Pickup()
         {
-            // The Active Visible Item will be null if the item is picked up at runtime.
-            if (m_ActivePerspectiveItem == null) {
+            // The item will not be started if the item is picked up at runtime.
+            if (!m_Started) {
                 Start();
             }
 
+#if FIRST_PERSON_CONTROLLER
             if (m_FirstPersonPerspectiveItem != null) {
                 m_FirstPersonPerspectiveItem.Pickup();
             }
+#endif
 
             if (m_ThirdPersonPerspectiveItem != null) {
                 m_ThirdPersonPerspectiveItem.Pickup();
@@ -383,6 +417,11 @@ namespace Opsive.UltimateCharacterController.Items
         /// <param name="immediateEquip">Is the item being equipped immediately? Immediate equips will occur from the default loadout or quickly switching to the item.</param>
         public void Equip(bool immediateEquip)
         {
+            // The item will not be started if the item is picked up at runtime.
+            if (!m_Started) {
+                Pickup();
+            }
+
             SetVisibleObjectActive(true);
 
             if (!immediateEquip) {
@@ -415,9 +454,11 @@ namespace Opsive.UltimateCharacterController.Items
         /// <param name="verticalMovement">-1 to 1 value specifying the amount of vertical movement.</param>
         public void Move(float horizontalMovement, float verticalMovement)
         {
+#if FIRST_PERSON_CONTROLLER
             if (m_FirstPersonPerspectiveItem != null) {
                 m_FirstPersonPerspectiveItem.Move(horizontalMovement, verticalMovement);
             }
+#endif
             if (m_ThirdPersonPerspectiveItem != null) {
                 m_ThirdPersonPerspectiveItem.Move(horizontalMovement, verticalMovement);
             }
@@ -524,9 +565,11 @@ namespace Opsive.UltimateCharacterController.Items
                 }
             }
 
+#if FIRST_PERSON_CONTROLLER
             if (m_FirstPersonPerspectiveItem != null) {
                 m_FirstPersonPerspectiveItem.SetActive(active);
             }
+#endif
             if (m_ThirdPersonPerspectiveItem != null) {
                 m_ThirdPersonPerspectiveItem.SetActive(active);
             }
@@ -1000,7 +1043,9 @@ namespace Opsive.UltimateCharacterController.Items
             // The object isn't active if it isn't equipped. OnChangePerspective will be sent to all items regardless of whether or not they are equipped.
             var isActive = m_ActivePerspectiveItem != null && m_ActivePerspectiveItem.IsActive();
             if (firstPersonPerspective) {
+#if FIRST_PERSON_CONTROLLER
                 m_ActivePerspectiveItem = m_FirstPersonPerspectiveItem;
+#endif
             } else {
                 m_ActivePerspectiveItem = m_ThirdPersonPerspectiveItem;
             }
@@ -1037,91 +1082,104 @@ namespace Opsive.UltimateCharacterController.Items
             ItemPickup itemPickup = null;
             // If a drop prefab exists then the character should drop a prefab of the item so it can later be picked up.
             if (m_DropPrefab != null) {
-                var count = m_Inventory.GetItemTypeCount(m_ItemType);
-                // The prefab can be dropped if the inventory contains the item or is force dropped.
-                if (count > 0 || forceDrop) {
-                    Vector3 dropPosition;
-                    Quaternion dropRotation;
-                    // If the item is unequipped before it is dropped then it could be holstered so the current transform should not be used.
-                    if (m_ShouldDropAfterUnequip) {
-                        dropPosition = m_UnequpDropPosition;
-                        dropRotation = m_UnequipDropRotation;
-                    } else {
-                        var itemObject = GetVisibleObject().transform;
-                        dropPosition = itemObject.position;
-                        dropRotation = itemObject.rotation;
-                    }
-                    var spawnedObject = ObjectPool.Instantiate(m_DropPrefab, dropPosition, dropRotation);
-                    // The ItemPickup component is responsible for allowing characters to pick up the item. Save the ItemType count
-                    // to the ItemTypeAmount array so that same amount can be picked up again.
-                    itemPickup = spawnedObject.GetCachedComponent<ItemPickup>();
-                    if (itemPickup != null) {
-                        // Return the old.
-                        for (int j = 0; j < itemPickup.ItemTypeCounts.Length; ++j) {
-                            ObjectPool.Return(itemPickup.ItemTypeCounts[j]);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (m_NetworkInfo == null || m_NetworkInfo.IsServer()) {
+#endif
+                    var count = m_Inventory.GetItemTypeCount(m_ItemType);
+                    // The prefab can be dropped if the inventory contains the item or is force dropped.
+                    if (count > 0 || forceDrop) {
+                        Vector3 dropPosition;
+                        Quaternion dropRotation;
+                        // If the item is unequipped before it is dropped then it could be holstered so the current transform should not be used.
+                        if (m_ShouldDropAfterUnequip) {
+                            dropPosition = m_UnequpDropPosition;
+                            dropRotation = m_UnequipDropRotation;
+                        } else {
+                            var itemObject = GetVisibleObject().transform;
+                            dropPosition = itemObject.position;
+                            dropRotation = itemObject.rotation;
                         }
-                        var itemTypeCount = ObjectPool.Get<ItemTypeCount>();
-                        itemTypeCount.Initialize(m_ItemType, Mathf.Min(count, 1)); // The count may be 0 if the item is force dropped.
-
-                        // If the dropped Item is a usable item then the array should be larger to be able to pick up the usable ItemType.
-                        var consumableItemTypes = 0;
-                        UsableItem usableItem;
-                        for (int i = 0; i < m_ItemActions.Length; ++i) {
-                            if ((usableItem = (m_ItemActions[i] as UsableItem)) != null && usableItem.GetConsumableItemType() != null) {
-                                consumableItemTypes++;
+                        var spawnedObject = ObjectPool.Instantiate(m_DropPrefab, dropPosition, dropRotation);
+                        // The ItemPickup component is responsible for allowing characters to pick up the item. Save the ItemType count
+                        // to the ItemTypeAmount array so that same amount can be picked up again.
+                        itemPickup = spawnedObject.GetCachedComponent<ItemPickup>();
+                        if (itemPickup != null) {
+                            // Return the old.
+                            for (int j = 0; j < itemPickup.ItemTypeCounts.Length; ++j) {
+                                ObjectPool.Return(itemPickup.ItemTypeCounts[j]);
                             }
-                        }
+                            var itemTypeCount = ObjectPool.Get<ItemTypeCount>();
+                            itemTypeCount.Initialize(m_ItemType, Mathf.Min(count, 1)); // The count may be 0 if the item is force dropped.
 
-                        // Save the main ItemType.
-                        var mainItemTypeCount = (m_ItemType.DroppedItemTypes != null ? m_ItemType.DroppedItemTypes.Length : 0) + 1;
-                        var length = consumableItemTypes + mainItemTypeCount;
-                        if (itemPickup.ItemTypeCounts.Length != length) {
-                            itemPickup.ItemTypeCounts = new ItemTypeCount[length];
-                        }
-                        itemPickup.ItemTypeCounts[0] = itemTypeCount;
-                        if (m_ItemType.DroppedItemTypes != null) {
-                            for (int i = 0; i < m_ItemType.DroppedItemTypes.Length; ++i) {
-                                itemTypeCount = ObjectPool.Get<ItemTypeCount>();
-                                itemTypeCount.Initialize(m_ItemType.DroppedItemTypes[i], 1);
-                                itemPickup.ItemTypeCounts[i + 1] = itemTypeCount;
-                            }
-                        }
-
-                        // Save the usable ItemTypes if any exist.
-                        ItemType consumableItemType;
-                        consumableItemTypes = 0;
-                        for (int i = 0; i < m_ItemActions.Length; ++i) {
-                            if ((usableItem = (m_ItemActions[i] as UsableItem)) != null && (consumableItemType = usableItem.GetConsumableItemType()) != null) {
-                                var itemTypeAmount = ObjectPool.Get<ItemTypeCount>();
-                                var consumableDropCount = 0f;
-                                // Only remove the remaining inventory if there is just one ItemType remaining. This will allow the character to keep the consumable ammo
-                                // if only one item is dropped and the character has multiple of the same item.
-                                if (count == 1) {
-                                    consumableDropCount = m_Inventory.GetItemTypeCount(consumableItemType);
+                            // If the dropped Item is a usable item then the array should be larger to be able to pick up the usable ItemType.
+                            var consumableItemTypes = 0;
+                            UsableItem usableItem;
+                            for (int i = 0; i < m_ItemActions.Length; ++i) {
+                                if ((usableItem = (m_ItemActions[i] as UsableItem)) != null && usableItem.GetConsumableItemType() != null) {
+                                    consumableItemTypes++;
                                 }
-                                var remainingConsumableCount = usableItem.GetConsumableItemTypeCount(); // The count may be negative (for use by the UI).
-                                itemTypeAmount.Initialize(consumableItemType, consumableDropCount + (remainingConsumableCount > 0 ? remainingConsumableCount : 0));
-                                itemPickup.ItemTypeCounts[consumableItemTypes + mainItemTypeCount] = itemTypeAmount;
                             }
+
+                            // Save the main ItemType.
+                            var mainItemTypeCount = (m_ItemType.DroppedItemTypes != null ? m_ItemType.DroppedItemTypes.Length : 0) + 1;
+                            var length = consumableItemTypes + mainItemTypeCount;
+                            if (itemPickup.ItemTypeCounts.Length != length) {
+                                itemPickup.ItemTypeCounts = new ItemTypeCount[length];
+                            }
+                            itemPickup.ItemTypeCounts[0] = itemTypeCount;
+                            if (m_ItemType.DroppedItemTypes != null) {
+                                for (int i = 0; i < m_ItemType.DroppedItemTypes.Length; ++i) {
+                                    itemTypeCount = ObjectPool.Get<ItemTypeCount>();
+                                    itemTypeCount.Initialize(m_ItemType.DroppedItemTypes[i], 1);
+                                    itemPickup.ItemTypeCounts[i + 1] = itemTypeCount;
+                                }
+                            }
+
+                            // Save the usable ItemTypes if any exist.
+                            ItemType consumableItemType;
+                            consumableItemTypes = 0;
+                            for (int i = 0; i < m_ItemActions.Length; ++i) {
+                                if ((usableItem = (m_ItemActions[i] as UsableItem)) != null && (consumableItemType = usableItem.GetConsumableItemType()) != null) {
+                                    var itemTypeAmount = ObjectPool.Get<ItemTypeCount>();
+                                    var consumableDropCount = 0f;
+                                    // Only remove the remaining inventory if there is just one ItemType remaining. This will allow the character to keep the consumable ammo
+                                    // if only one item is dropped and the character has multiple of the same item.
+                                    if (count == 1) {
+                                        consumableDropCount = m_Inventory.GetItemTypeCount(consumableItemType);
+                                    }
+                                    var remainingConsumableCount = usableItem.GetConsumableItemTypeCount(); // The count may be negative (for use by the UI).
+                                    itemTypeAmount.Initialize(consumableItemType, consumableDropCount + (remainingConsumableCount > 0 ? remainingConsumableCount : 0));
+                                    itemPickup.ItemTypeCounts[consumableItemTypes + mainItemTypeCount] = itemTypeAmount;
+                                }
+                            }
+
+                            // Enable the ItemPickup.
+                            itemPickup.Initialize(true);
                         }
 
-                        // Enable the ItemPickup.
-                        itemPickup.Initialize(true);
+                        // The ItemPickup may have a TrajectoryObject attached instead of a Rigidbody.
+                        var trajectoryObject = spawnedObject.GetCachedComponent<Objects.TrajectoryObject>();
+                        if (trajectoryObject != null) {
+                            trajectoryObject.Initialize(m_CharacterLocomotion.Velocity, m_CharacterLocomotion.Torque.eulerAngles, m_Character);
+                        }
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                        if (m_NetworkInfo != null) {
+                            Networking.Game.NetworkObjectPool.NetworkSpawn(m_DropPrefab, spawnedObject);
+                        }
+#endif
                     }
-
-                    // The ItemPickup may have a TrajectoryObject attached instead of a Rigidbody.
-                    var trajectoryObject = spawnedObject.GetCachedComponent<Objects.TrajectoryObject>();
-                    if (trajectoryObject != null) {
-                        trajectoryObject.Initialize(m_CharacterLocomotion.Velocity, m_CharacterLocomotion.Torque.eulerAngles, m_Character);
-                    }
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
                 }
+#endif
             }
             m_ShouldDropAfterUnequip = false;
 
             SetVisibleObjectActive(false);
+#if FIRST_PERSON_CONTROLLER
             if (m_FirstPersonPerspectiveItem != null) {
                 m_FirstPersonPerspectiveItem.Drop();
             }
+#endif
             if (m_ThirdPersonPerspectiveItem != null) {
                 m_ThirdPersonPerspectiveItem.Drop();
             }
@@ -1130,6 +1188,8 @@ namespace Opsive.UltimateCharacterController.Items
                     m_ItemActions[i].Drop();
                 }
             }
+            m_Inventory.RemoveItem(m_ItemType, m_SlotID, false);
+
             // The item can be removed from the inventory after it has been dropped. All corresponding DroppedItemTypes should also be dropped.
             if (m_ItemType.DroppedItemTypes != null) {
                 for (int i = 0; i < m_ItemType.DroppedItemTypes.Length; ++i) {
@@ -1138,13 +1198,12 @@ namespace Opsive.UltimateCharacterController.Items
                         for (int j = 0; j < m_Inventory.SlotCount; ++j) {
                             var item = m_Inventory.GetItem(j, droppedItemType);
                             if (item != null) {
-                                m_Inventory.RemoveItem(droppedItemType, j, false);
+                                m_Inventory.RemoveItem(droppedItemType, j, m_DropPrefab == null);
                             }
                         }
                     }
                 }
             }
-            m_Inventory.RemoveItem(m_ItemType, m_SlotID, false);
 
             if (m_DropItemEvent != null) {
                 m_DropItemEvent.Invoke();
@@ -1157,7 +1216,7 @@ namespace Opsive.UltimateCharacterController.Items
         /// </summary>
         protected virtual void OnDestroy()
         {
-            Events.EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
+            EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
         }
     }
 }

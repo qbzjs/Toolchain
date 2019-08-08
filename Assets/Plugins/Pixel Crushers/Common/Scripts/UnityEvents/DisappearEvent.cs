@@ -33,7 +33,7 @@ namespace PixelCrushers
             set { m_eventTrigger = value; }
         }
 
-        private UnityEvent onDisappeared
+        public UnityEvent onDisappeared
         {
             get { return m_onDisappeared; }
             set { m_onDisappeared = value; }

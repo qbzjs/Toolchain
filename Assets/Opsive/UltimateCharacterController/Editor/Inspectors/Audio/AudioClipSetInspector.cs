@@ -44,9 +44,6 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Audio
                 reorderableList.drawElementCallback = drawElementCallback;
                 reorderableList.onAddCallback = addCallback;
                 reorderableList.onRemoveCallback = removeCallback;
-                if (serializedProperty != null) {
-                    reorderableList.serializedProperty = serializedProperty.FindPropertyRelative("m_AudioClips");
-                }
             }
             // ReorderableLists do not like indentation.
             var indentLevel = EditorGUI.indentLevel;
@@ -81,16 +78,9 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Audio
             EditorGUI.BeginChangeCheck();
             rect.y += 2;
             rect.height -= 5;
-            if (list.serializedProperty != null) {
-                list.serializedProperty.GetArrayElementAtIndex(index).objectReferenceValue = (AudioClip)EditorGUI.ObjectField(rect, audioClipSet.AudioClips[index], typeof(AudioClip), false);
-                if (EditorGUI.EndChangeCheck()) {
-                    list.serializedProperty.serializedObject.ApplyModifiedProperties();
-                }
-            } else {
-                audioClipSet.AudioClips[index] = (AudioClip)EditorGUI.ObjectField(rect, audioClipSet.AudioClips[index], typeof(AudioClip), false);
-                if (EditorGUI.EndChangeCheck() && target != null) {
-                    InspectorUtility.RecordUndoDirtyObject(target, "Change Value");
-                }
+            audioClipSet.AudioClips[index] = (AudioClip)EditorGUI.ObjectField(rect, audioClipSet.AudioClips[index], typeof(AudioClip), false);
+            if (EditorGUI.EndChangeCheck() && target != null) {
+                InspectorUtility.RecordUndoDirtyObject(target, "Change Value");
             }
         }
 
@@ -99,20 +89,15 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Audio
         /// </summary>
         public static void OnAudioClipListAdd(ReorderableList list, AudioClipSet audioClipSet, UnityEngine.Object target)
         {
-            if (list.serializedProperty != null) {
-                list.serializedProperty.InsertArrayElementAtIndex(list.serializedProperty.arraySize);
-                list.serializedProperty.serializedObject.ApplyModifiedProperties();
+            var audioClips = audioClipSet.AudioClips;
+            if (audioClips == null) {
+                audioClips = new AudioClip[1];
             } else {
-                var audioClips = audioClipSet.AudioClips;
-                if (audioClips == null) {
-                    audioClips = new AudioClip[1];
-                } else {
-                    Array.Resize(ref audioClips, audioClips.Length + 1);
-                }
-                list.list = audioClipSet.AudioClips = audioClips;
-                if (target != null) {
-                    InspectorUtility.RecordUndoDirtyObject(target, "Change Value");
-                }
+                Array.Resize(ref audioClips, audioClips.Length + 1);
+            }
+            list.list = audioClipSet.AudioClips = audioClips;
+            if (target != null) {
+                InspectorUtility.RecordUndoDirtyObject(target, "Change Value");
             }
         }
 
@@ -121,13 +106,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Audio
         /// </summary>
         public static void OnAudioClipListRemove(ReorderableList list, AudioClipSet audioClipSet, UnityEngine.Object target)
         {
-            // Convert to a list and remove the audio clip. A new list needs to be assigned because a new allocation occurred.
             var audioClipList = new List<AudioClip>(audioClipSet.AudioClips);
             audioClipList.RemoveAt(list.index);
-            if (list.serializedProperty != null) {
-                list.serializedProperty.DeleteArrayElementAtIndex(list.index);
-                list.serializedProperty.serializedObject.ApplyModifiedProperties();
-            }
             list.list = audioClipSet.AudioClips = audioClipList.ToArray();
             list.index = list.index - 1;
             if (target != null) {

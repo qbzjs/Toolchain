@@ -56,6 +56,8 @@ namespace Opsive.UltimateCharacterController.Objects
         [Tooltip("Specifies if the collider should settle on its side or upright. The higher the value the more likely the collider will settle on its side. " +
                  "This is only used for CapsuleColliders and BoxColliders.")]
         [Range(0, 1)] [SerializeField] protected float m_SidewaysSettleThreshold = 0.75f;
+        [Tooltip("Starts to rotate to the settle rotation when the velocity magnitude is less than the specified values.")]
+        [SerializeField] protected float m_StartSidewaysVelocityMagnitude = 3f;
         [Tooltip("The layers that the object can collide with.")]
         [SerializeField] protected LayerMask m_ImpactLayers = ~(1 << LayerManager.IgnoreRaycast | 1 << LayerManager.Water | 1 << LayerManager.SubCharacter | 1 << LayerManager.Overlay |
                                                                 1 << LayerManager.VisualEffect);
@@ -108,6 +110,9 @@ namespace Opsive.UltimateCharacterController.Objects
         private Vector3 m_PlatformRelativePosition;
         private Quaternion m_PrevPlatformRotation;
 
+        public GameObject Originator { get { return m_Originator; } }
+        public Vector3 Velocity { get { return m_Velocity; } }
+        public Vector3 Torque { get { return m_Torque; } }
         protected bool AutoDisable { set { m_AutoDisable = value; } }
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// The component has been enabled.
         /// </summary>
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             if (m_InitializeOnEnable) {
                 InitializeComponentReferences();
@@ -497,7 +502,7 @@ namespace Opsive.UltimateCharacterController.Objects
         private bool Move(ref Vector3 position, Quaternion rotation)
         {
             // The object can't move if the movement and rotation has settled.
-            if (m_MovementSettled && m_RotationSettled) {
+            if (m_MovementSettled && m_RotationSettled && m_SettleThreshold > 0) {
                 return true;
             }
 
@@ -551,6 +556,9 @@ namespace Opsive.UltimateCharacterController.Objects
                     var dynamicFrictionValue = m_Collider != null ? Mathf.Clamp01(1 - MathUtility.FrictionValue(m_Collider.material, m_RaycastHit.collider.material, true)) : 0;
                     // Update the velocity to the reflection direction.
                     m_Velocity = Vector3.Reflect(velocity, m_RaycastHit.normal) * dynamicFrictionValue * m_BounceMultiplier;
+                    if (m_Velocity.magnitude < m_StartSidewaysVelocityMagnitude) {
+                        m_MovementSettled = true;
+                    }
                     m_Bounced = true;
                     return false;
                 } else {

@@ -24,7 +24,11 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Game
             base.OnInspectorGUI();
 
             GUI.enabled = !Application.isPlaying;
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(PropertyFromName("m_MaxEventCount"));
+            if (EditorGUI.EndChangeCheck()) {
+                serializedObject.ApplyModifiedProperties();
+            }
             GUI.enabled = true;
 
             var scheduler = target as Scheduler;
@@ -32,7 +36,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Game
             if (scheduler.ActiveUpdateEventCount > 0) {
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Time", GUILayout.Width(50));
-                EditorGUILayout.LabelField("Target", GUILayout.Width(200));
+                EditorGUILayout.LabelField("Target", GUILayout.Width(300));
                 EditorGUILayout.LabelField("Method");
                 EditorGUILayout.EndHorizontal();
                 var updateIndex = 0;
@@ -71,13 +75,13 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Game
                         if (scheduledEvent.Target is Object) {
                             targetName = (scheduledEvent.Target as Object).name;
                         } else {
-                            targetName = scheduledEvent.Target.ToString();
+                            targetName = scheduledEvent.Target.GetType().Name;
                         }
                     }
                     if (scheduledEvent.Method != null) {
                         methodName = scheduledEvent.Method.Name;
                     }
-                    EditorGUILayout.LabelField(targetName, GUILayout.Width(200));
+                    EditorGUILayout.LabelField(targetName, GUILayout.Width(300));
                     EditorGUILayout.LabelField(methodName);
                     EditorGUILayout.EndHorizontal();
                 }

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace PixelCrushers.DialogueSystem
 {
@@ -54,6 +54,88 @@ namespace PixelCrushers.DialogueSystem
         public string[] locationFieldNames = new string[0];
 
         public FieldType[] locationFieldTypes = new FieldType[0];
+
+        // These allow the wizards to remember the last info used,
+        // so the next wizard can start using it by default:
+
+        public static ConditionWizardResourceType s_lastWizardResourceType = ConditionWizardResourceType.Quest;
+        public static int s_lastActorNamesIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastActorNamesIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastActorNamesIndex", value); }
+        }
+        public static int s_lastActorFieldIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastActorFieldIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastActorFieldIndex", value); }
+        }
+        public static int s_lastQuestNamesIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastQuestNamesIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastQuestNamesIndex", value); }
+        }
+        public static int s_lastQuestEntryIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastQuestEntryIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastQuestEntryIndex", value); }
+        }
+        public static int s_lastItemNamesIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastItemNamesIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastItemNamesIndex", value); }
+        }
+        public static int s_lastItemFieldIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastItemFieldIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastItemFieldIndex", value); }
+        }
+        public static int s_lastLocationNameIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastLocationNameIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastLocationNameIndex", value); }
+        }
+        public static int s_lastLocationFieldIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastLocationFieldIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastLocationFieldIndex", value); }
+        }
+        public static int s_lastVariableNameIndex
+        {
+            get { return EditorPrefs.GetInt("LuaWizard.s_lastVariableNameIndex", 0); }
+            set { EditorPrefs.SetInt("LuaWizard.s_lastVariableNameIndex", value); }
+        }
+
+        public static ScriptWizardResourceType GetConditionResourceTypeToScriptResourceType(ConditionWizardResourceType conditionResourceType)
+        {
+            switch (conditionResourceType)
+            {
+                default:
+                case ConditionWizardResourceType.Quest: return ScriptWizardResourceType.Quest;
+                case ConditionWizardResourceType.QuestEntry: return ScriptWizardResourceType.QuestEntry;
+                case ConditionWizardResourceType.Actor: return ScriptWizardResourceType.Actor;
+                case ConditionWizardResourceType.Item: return ScriptWizardResourceType.Item;
+                case ConditionWizardResourceType.Variable: return ScriptWizardResourceType.Variable;
+                case ConditionWizardResourceType.Location: return ScriptWizardResourceType.Location;
+                case ConditionWizardResourceType.SimStatus: return ScriptWizardResourceType.SimStatus;
+                case ConditionWizardResourceType.Custom: return ScriptWizardResourceType.Custom;
+            }
+        }
+
+        public static ConditionWizardResourceType GetScriptResourceTypeToConditionResourceType(ScriptWizardResourceType scriptResourceType)
+        {
+            switch (scriptResourceType)
+            {
+                default:
+                case ScriptWizardResourceType.Quest: return ConditionWizardResourceType.Quest;
+                case ScriptWizardResourceType.QuestEntry: return ConditionWizardResourceType.QuestEntry;
+                case ScriptWizardResourceType.Actor: return ConditionWizardResourceType.Actor;
+                case ScriptWizardResourceType.Item: return ConditionWizardResourceType.Item;
+                case ScriptWizardResourceType.Variable: return ConditionWizardResourceType.Variable;
+                case ScriptWizardResourceType.Location: return ConditionWizardResourceType.Location;
+                case ScriptWizardResourceType.SimStatus: return ConditionWizardResourceType.SimStatus;
+                case ScriptWizardResourceType.Custom: return ConditionWizardResourceType.Custom;
+            }
+        }
 
         public LuaWizardBase(DialogueDatabase database)
         {

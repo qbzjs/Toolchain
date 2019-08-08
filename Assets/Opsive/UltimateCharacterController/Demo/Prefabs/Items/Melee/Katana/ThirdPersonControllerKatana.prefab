@@ -505,7 +505,7 @@ MonoBehaviour:
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096345
-  m_DamageAmount: 10
+  m_DamageAmount: 40
   m_ImpactForce: 2
   m_ImpactForceFrames: 15
   m_ImpactStateName: 
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_AnimatorMovementSetID: 1
   m_DominantItem: 1
   m_AllowCameraZoom: 0
-  m_DropPrefab: {fileID: 1801393450085596, guid: 0c5251bd8d5dd0c4fa56e844bc4ef0d9,
+  m_DropPrefab: {fileID: 1801393450085596, guid: 8fb7289eae75f5c419102a6b5e3d0615,
     type: 2}
   m_EquipEvent:
     m_WaitForAnimationEvent: 1
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096345
-  m_DamageAmount: 10
+  m_DamageAmount: 40
   m_ImpactForce: 2
   m_ImpactForceFrames: 15
   m_ImpactStateName: 

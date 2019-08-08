@@ -21,6 +21,8 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         private bool m_AimActive;
         private bool m_FaceUseTarget;
 
+        public override bool FirstPersonPerspective { get { return false; } }
+
         /// <summary>
         /// Initialize the default values.
         /// </summary>

@@ -55,11 +55,11 @@ namespace Opsive.UltimateCharacterController.Traits
                 m_Value = Mathf.Clamp(value, m_MinValue, m_MaxValue);
                 EventHandler.ExecuteEvent(m_GameObject, "OnAttributeUpdateValue", this);
 
-                ScheduleAutoUpdate();
+                ScheduleAutoUpdate(0.01f);
             }
         }
-        public AutoUpdateValue AutoUpdateValueType { get { return m_AutoUpdateValueType; } set { m_AutoUpdateValueType = value; ScheduleAutoUpdate(); } }
-        public float AutoUpdateStartDelay { get { return m_AutoUpdateStartDelay; } set { m_AutoUpdateStartDelay = value; ScheduleAutoUpdate(); } }
+        public AutoUpdateValue AutoUpdateValueType { get { return m_AutoUpdateValueType; } set { m_AutoUpdateValueType = value; ScheduleAutoUpdate(0.01f); } }
+        public float AutoUpdateStartDelay { get { return m_AutoUpdateStartDelay; } set { m_AutoUpdateStartDelay = value; ScheduleAutoUpdate(0.01f); } }
         public float AutoUpdateInterval { get { return m_AutoUpdateInterval; } set { m_AutoUpdateInterval = value; } }
         public float AutoUpdateAmount { get { return m_AutoUpdateAmount; } set { m_AutoUpdateAmount = value; } }
 
@@ -94,18 +94,19 @@ namespace Opsive.UltimateCharacterController.Traits
             m_GameObject = gameObject;
             m_StartValue = m_Value;
 
-            ScheduleAutoUpdate();
+            ScheduleAutoUpdate(m_AutoUpdateStartDelay);
         }
 
         /// <summary>
         /// Schedules an auto update if the auto update value type is not set to none.
         /// </summary>
-        private void ScheduleAutoUpdate()
+        /// <param name="delay">The amount to delay the attribute update event by.</param>
+        private void ScheduleAutoUpdate(float delay)
         {
             Scheduler.Cancel(m_AutoUpdateEvent);
             if ((m_AutoUpdateValueType == AutoUpdateValue.Increase && m_Value != m_MaxValue) ||
                 (m_AutoUpdateValueType == AutoUpdateValue.Decrease && m_Value != m_MinValue)) {
-                m_AutoUpdateEvent = Scheduler.Schedule(m_AutoUpdateStartDelay, UpdateValue);
+                m_AutoUpdateEvent = Scheduler.Schedule(delay, UpdateValue);
             }
         }
 
@@ -165,7 +166,7 @@ namespace Opsive.UltimateCharacterController.Traits
         /// </summary>
         public override void StateChange()
         {
-            ScheduleAutoUpdate();
+            ScheduleAutoUpdate(0.01f);
         }
 
         /// <summary>

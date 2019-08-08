@@ -12,7 +12,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects
     /// <summary>
     /// Custom inspector for the Grenade component.
     /// </summary>
-    [CustomEditor(typeof(Grenade))]
+    [CustomEditor(typeof(Grenade), true)]
     public class GrenadeInspector : DestructibleInspector
     {
         /// <summary>

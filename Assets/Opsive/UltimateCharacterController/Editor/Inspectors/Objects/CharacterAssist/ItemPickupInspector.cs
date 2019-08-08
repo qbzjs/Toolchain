@@ -21,7 +21,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects.Character
     /// <summary>
     /// Custom inspector for the ItemPickup component.
     /// </summary>
-    [CustomEditor(typeof(ItemPickup))]
+    [CustomEditor(typeof(ItemPickup), true)]
     public class ItemPickupInspector : ObjectPickupInspector
     {
         private const int c_SlotRowHeight = 22;
@@ -154,6 +154,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects.Character
             elementTitleRect.height = 19;
             GUI.Label(elementTitleRect, "PickupSet " + index, InspectorStyles.CenterBoldLabel);
 
+            EditorGUI.BeginChangeCheck();
+
             // Each slot should have its own lighter background.
             var slotRect = rowRect;
             slotRect.x += 4;
@@ -185,6 +187,10 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Objects.Character
             }
 
             (target as ItemPickup).ItemPickupSet = pickupSet;
+
+            if (EditorGUI.EndChangeCheck()) {
+                InspectorUtility.SetDirty(target);
+            }
         }
 
         /// <summary>

@@ -207,7 +207,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// <param name="layerMask">The LayerMask value of the objects that the look direction can hit.</param>
         /// <param name="useRecoil">Should recoil be included in the look direction?</param>
         /// <returns>The direction that the character is looking.</returns>
-        public override Vector3 LookDirection(Vector3 lookPosition, bool characterLookDirection,int layerMask, bool useRecoil)
+        public override Vector3 LookDirection(Vector3 lookPosition, bool characterLookDirection, int layerMask, bool useRecoil)
         {
             // The character should look towards the cursor or Mouse X/Y direction.
             if (m_PlayerInput.IsCursorVisible()) {

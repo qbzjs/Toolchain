@@ -50,6 +50,9 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
             if (m_RotateWithCharacter) {
                 m_CharacterRotation = m_CharacterTransform.rotation;
             } else {
+                if (m_Pitch > 90 || m_Pitch < -90) {
+                    horizontalMovement *= -1;
+                }
                 m_Yaw += horizontalMovement;
             }
 

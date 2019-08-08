@@ -5,7 +5,6 @@
 /// ---------------------------------------------
 
 using UnityEngine;
-using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Character.Abilities
 {
@@ -57,17 +56,14 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// <param name="targetNormal">The direction that the character should be oriented towards on the vertical axis.</param>
         protected void Rotate(Vector3 targetNormal)
         {
-            var rotation = m_Transform.rotation * m_CharacterLocomotion.Torque;
+            var deltaRotation = Quaternion.Euler(m_CharacterLocomotion.DeltaRotation);
+            var rotation = m_Transform.rotation * deltaRotation;
             var proj = (rotation * Vector3.forward) - (Vector3.Dot((rotation * Vector3.forward), targetNormal)) * targetNormal;
             if (proj.sqrMagnitude > 0.0001f) {
-                var alignToGroundSpeed = m_CharacterLocomotion.Platform == null ? m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime : 1;
+                var alignToGroundSpeed = m_CharacterLocomotion.Platform == null && !m_Stopping ? m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime : 1;
                 var targetRotation = Quaternion.Slerp(rotation, Quaternion.LookRotation(proj, targetNormal), alignToGroundSpeed);
-                var rotationDelta = m_CharacterLocomotion.Torque * (Quaternion.Inverse(rotation) * targetRotation);
-                var collisionRotationDelta = m_CharacterLocomotion.CheckRotation(rotationDelta, true);
-                // If the collision rotation is the same as the rotation delta then there are no collisions with aligning to the ground and the maximum
-                // rotation delta should be applied (the collision rotation delta). If, however, there is a collision then only the original rotation delta
-                // should be applied so the character can still rotate from input/root motion.
-                m_CharacterLocomotion.Torque = (collisionRotationDelta == rotationDelta ? collisionRotationDelta : m_CharacterLocomotion.Torque);
+                var rotationDelta = deltaRotation * (Quaternion.Inverse(rotation) * targetRotation);
+                m_CharacterLocomotion.DeltaRotation = rotationDelta.eulerAngles;
             }
         }
 
@@ -91,7 +87,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public override bool CanStopAbility()
         {
             // Don't stop until the character is oriented in the correct direction.
-            if (m_StopGravityDirection.sqrMagnitude == 0 || m_CharacterLocomotion.Up == -m_StopGravityDirection) {
+            if (m_StopGravityDirection.sqrMagnitude == 0 || Vector3.Dot(m_CharacterLocomotion.Up, -m_StopGravityDirection) > 0.9999f) {
                 return true;
             }
 

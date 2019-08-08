@@ -15,6 +15,8 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character.Mov
     /// </summary>
     public class Combat : MovementType
     {
+        public override bool FirstPersonPerspective { get { return true; } }
+
         /// <summary>
         /// Returns the delta yaw rotation of the character.
         /// </summary>

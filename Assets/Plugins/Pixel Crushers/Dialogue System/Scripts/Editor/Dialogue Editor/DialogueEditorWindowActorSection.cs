@@ -26,6 +26,12 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         [SerializeField]
         private int actorListSelectedIndex = -1;
 
+        [SerializeField]
+        private bool actorTexturesFoldout = false;
+
+        [SerializeField]
+        private bool actorSpritesFoldout = false;
+
         private void ResetActorSection()
         {
             actorFoldouts = new AssetFoldouts();
@@ -212,78 +218,161 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 DrawLocalizedVersions(actor.fields, "Display Name {0}", false, FieldType.Text);
             }
 
-            // Portraits
-            try
+            // Portrait Textures:
+            actorTexturesFoldout = EditorGUILayout.Foldout(actorTexturesFoldout, new GUIContent("Portrait Textures", "Portrait images using texture assets."));
+            if (actorTexturesFoldout)
             {
-                var newPortrait = EditorGUILayout.ObjectField(new GUIContent("Portraits", "This actor's portrait. Only necessary if your UI uses portraits."),
-                                                         actor.portrait, typeof(Texture2D), false, GUILayout.Height(64)) as Texture2D;
-                if (newPortrait != actor.portrait)
-                {
-                    actor.portrait = newPortrait;
-                    ClearActorInfoCaches();
-                }
-            }
-            catch (NullReferenceException)
-            {
-            }
-            int indexToDelete = -1;
-            if (actor.alternatePortraits == null) actor.alternatePortraits = new List<Texture2D>();
-            for (int i = 0; i < actor.alternatePortraits.Count; i++)
-            {
+
                 try
                 {
-                    EditorGUILayout.BeginHorizontal();
-                    GUILayout.FlexibleSpace();
-
+                    var newPortrait = EditorGUILayout.ObjectField(new GUIContent("Portraits", "This actor's portrait. Only necessary if your UI uses portraits."),
+                                                             actor.portrait, typeof(Texture2D), false, GUILayout.Height(64)) as Texture2D;
+                    if (newPortrait != actor.portrait)
+                    {
+                        actor.portrait = newPortrait;
+                        ClearActorInfoCaches();
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                }
+                int indexToDelete = -1;
+                if (actor.alternatePortraits == null) actor.alternatePortraits = new List<Texture2D>();
+                for (int i = 0; i < actor.alternatePortraits.Count; i++)
+                {
                     try
                     {
-                        EditorGUILayout.BeginVertical(GUILayout.Width(27));
-                        EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5), GUILayout.Height(16));
-                        EditorGUILayout.LabelField(string.Format("[{0}]", i + 2), CenteredLabelStyle, GUILayout.Width(27));
                         EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5));
-                        if (GUILayout.Button(new GUIContent(" ", "Delete this portrait."), "OL Minus", GUILayout.Width(16), GUILayout.Height(16)))
+                        GUILayout.FlexibleSpace();
+
+                        try
                         {
-                            indexToDelete = i;
+                            EditorGUILayout.BeginVertical(GUILayout.Width(27));
+                            EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5), GUILayout.Height(16));
+                            EditorGUILayout.LabelField(string.Format("[{0}]", i + 2), CenteredLabelStyle, GUILayout.Width(27));
+                            EditorGUILayout.BeginHorizontal();
+                            EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5));
+                            if (GUILayout.Button(new GUIContent(" ", "Delete this portrait."), "OL Minus", GUILayout.Width(16), GUILayout.Height(16)))
+                            {
+                                indexToDelete = i;
+                            }
+                            EditorGUILayout.EndHorizontal();
                         }
-                        EditorGUILayout.EndHorizontal();
+                        finally
+                        {
+                            EditorGUILayout.EndVertical();
+                        }
+
+                        try
+                        {
+                            actor.alternatePortraits[i] = EditorGUILayout.ObjectField(actor.alternatePortraits[i], typeof(Texture2D), false, GUILayout.Width(64), GUILayout.Height(64)) as Texture2D;
+                        }
+                        catch (NullReferenceException)
+                        {
+                        }
                     }
                     finally
                     {
-                        EditorGUILayout.EndVertical();
+                        EditorGUILayout.EndHorizontal();
                     }
+                }
+                if (indexToDelete > -1)
+                {
+                    actor.alternatePortraits.RemoveAt(indexToDelete);
+                    SetDatabaseDirty("Delete Portrait");
+                }
 
+                EditorGUILayout.LabelField(string.Empty, GUILayout.Height(4));
+
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button(new GUIContent(" ", "Add new alternate portrait image."), "OL Plus", GUILayout.Height(16)))
+                {
+                    actor.alternatePortraits.Add(null);
+                    SetDatabaseDirty("Add Portrait");
+                }
+                EditorGUILayout.LabelField(string.Empty, GUILayout.Width(12));
+                EditorGUILayout.EndHorizontal();
+            }
+
+            // Portrait Sprites:
+            actorSpritesFoldout = EditorGUILayout.Foldout(actorSpritesFoldout, new GUIContent("Portrait Sprites", "Portrait images using sprite assets."));
+            if (actorSpritesFoldout)
+            {
+
+                try
+                {
+                    var newPortrait = EditorGUILayout.ObjectField(new GUIContent("Portraits", "This actor's portrait. Only necessary if your UI uses portraits."),
+                                                             actor.spritePortrait, typeof(Sprite), false, GUILayout.Height(64)) as Sprite;
+                    if (newPortrait != actor.spritePortrait)
+                    {
+                        actor.spritePortrait = newPortrait;
+                        ClearActorInfoCaches();
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                }
+                int indexToDelete = -1;
+                if (actor.spritePortraits == null) actor.spritePortraits = new List<Sprite>();
+                for (int i = 0; i < actor.spritePortraits.Count; i++)
+                {
                     try
                     {
-                        actor.alternatePortraits[i] = EditorGUILayout.ObjectField(actor.alternatePortraits[i], typeof(Texture2D), false, GUILayout.Width(64), GUILayout.Height(64)) as Texture2D;
+                        EditorGUILayout.BeginHorizontal();
+                        GUILayout.FlexibleSpace();
+
+                        try
+                        {
+                            EditorGUILayout.BeginVertical(GUILayout.Width(27));
+                            EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5), GUILayout.Height(16));
+                            EditorGUILayout.LabelField(string.Format("[{0}]", i + 2), CenteredLabelStyle, GUILayout.Width(27));
+                            EditorGUILayout.BeginHorizontal();
+                            EditorGUILayout.LabelField(string.Empty, GUILayout.Width(5));
+                            if (GUILayout.Button(new GUIContent(" ", "Delete this portrait."), "OL Minus", GUILayout.Width(16), GUILayout.Height(16)))
+                            {
+                                indexToDelete = i;
+                            }
+                            EditorGUILayout.EndHorizontal();
+                        }
+                        finally
+                        {
+                            EditorGUILayout.EndVertical();
+                        }
+
+                        try
+                        {
+                            actor.spritePortraits[i] = EditorGUILayout.ObjectField(actor.spritePortraits[i], typeof(Sprite), false, GUILayout.Width(64), GUILayout.Height(64)) as Sprite;
+                        }
+                        catch (NullReferenceException)
+                        {
+                        }
                     }
-                    catch (NullReferenceException)
+                    finally
                     {
+                        EditorGUILayout.EndHorizontal();
                     }
                 }
-                finally
+                if (indexToDelete > -1)
                 {
-                    EditorGUILayout.EndHorizontal();
+                    actor.spritePortraits.RemoveAt(indexToDelete);
+                    SetDatabaseDirty("Delete Portrait");
                 }
-            }
-            if (indexToDelete > -1)
-            {
-                actor.alternatePortraits.RemoveAt(indexToDelete);
-                SetDatabaseDirty("Delete Portrait");
+
+                EditorGUILayout.LabelField(string.Empty, GUILayout.Height(4));
+
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button(new GUIContent(" ", "Add new alternate portrait image."), "OL Plus", GUILayout.Height(16)))
+                {
+                    actor.spritePortraits.Add(null);
+                    SetDatabaseDirty("Add Portrait");
+                }
+                EditorGUILayout.LabelField(string.Empty, GUILayout.Width(12));
+                EditorGUILayout.EndHorizontal();
             }
 
-            EditorGUILayout.LabelField(string.Empty, GUILayout.Height(4));
-
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            if (GUILayout.Button(new GUIContent(" ", "Add new alternate portrait image."), "OL Plus", GUILayout.Height(16)))
-            {
-                actor.alternatePortraits.Add(null);
-                SetDatabaseDirty("Add Portrait");
-            }
-            EditorGUILayout.LabelField(string.Empty, GUILayout.Width(12));
-            EditorGUILayout.EndHorizontal();
-
+            // The rest: node color, Is Player, etc.
             DrawActorNodeColor(actor);
 
             actor.IsPlayer = EditorGUILayout.Toggle(new GUIContent("Is Player", ""), actor.IsPlayer);

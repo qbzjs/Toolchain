@@ -10,6 +10,9 @@ using Opsive.UltimateCharacterController.Character.Abilities.Items;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Game;
 using Opsive.UltimateCharacterController.Inventory;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking.Game;
+#endif
 using Opsive.UltimateCharacterController.Objects;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Utility;
@@ -223,7 +226,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// Enables or disables the object mesh renderers for the current perspective.
         /// </summary>
         /// <param name="enable">Should the renderers be enabled?</param>
-        private void EnableObjectMeshRenderers(bool enable)
+        public void EnableObjectMeshRenderers(bool enable)
         {
             var meshRenderers = m_CharacterLocomotion.FirstPersonPerspective ? m_FirstPersonObjectMeshRenderers : m_ThirdPersonObjectMeshRenderers;
             if (meshRenderers != null) {
@@ -353,6 +356,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// </summary>
         public override void StartItemUse()
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                return;
+            }
+#endif
+
             base.StartItemUse();
             
             // An Animator Audio State Set may prevent the item from being used.
@@ -378,6 +387,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                 (m_InstantiatedTrajectoryObject as Destructible).InitializeDestructibleProperties(m_DamageAmount, m_ImpactForce, m_ImpactLayers, 
                                                     m_ImpactForceFrames, m_ImpactStateName, m_ImpactStateDisableTimer, m_SurfaceImpact);
             }
+            // The trajectory object will be enabled when the object is thrown.
+            m_InstantiatedTrajectoryObject.enabled = false;
 
             // Hide the object that isn't thrown.
             EnableObjectMeshRenderers(false);
@@ -423,7 +434,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             m_Reequipping = false;
             m_Reequipped = false;
 
-
             if (m_Aiming && m_ShowTrajectoryOnAim && m_TrajectoryObject != null) {
                 m_TrajectoryObject.ClearTrajectory();
             }
@@ -437,40 +447,68 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.UseItem();
 
-            m_InstantiatedThrownObject.transform.parent = null;
-            // The collider was previously disabled. Enable it again when it is thrown.
-            var collider = m_InstantiatedThrownObject.GetCachedComponent<Collider>();
-            collider.enabled = true;
-
-            // When the item is used the trajectory object should start moving on its own.
-            if (m_InstantiatedTrajectoryObject != null) {
-                // The throwable item may be on the other side of an object (especially in the case of separate arms for the first person perspective). Perform a linecast
-                // to ensure the throwable item doesn' move through any objects.
-                if (!m_CharacterLocomotion.ActiveMovementType.UseIndependentLook(false) &&
-                                Physics.Linecast(m_CharacterLocomotion.LookSource.LookPosition(), m_InstantiatedTrajectoryObject.transform.position, out m_RaycastHit,
-                                                    m_ImpactLayers, QueryTriggerInteraction.Ignore)) {
-                    m_InstantiatedTrajectoryObject.transform.position = m_RaycastHit.point;
-                }
-
-                var trajectoryTransform = m_ThrowableItemPerpectiveProperties.TrajectoryLocation != null ? m_ThrowableItemPerpectiveProperties.TrajectoryLocation : m_CharacterTransform;
-                var lookDirection = m_LookSource.LookDirection(trajectoryTransform.TransformPoint(m_TrajectoryOffset), false, m_ImpactLayers, true);
-                var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection));
-                // Prevent the item from being thrown behind the character. This can happen if the character is looking straight up and there is a positive
-                // y velocity. Gravity will cause the thrown object to go in the opposite direction.
-                if (Vector3.Dot(velocity.normalized, m_CharacterTransform.forward) < 0) {
-                    velocity = m_CharacterTransform.up * velocity.magnitude;
-                }
-                m_InstantiatedTrajectoryObject.Initialize(velocity + (m_CharacterTransform.forward * m_CharacterLocomotion.LocalVelocity.z), Vector3.zero, m_Character, false);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.ThrowItem(this);
             }
-
-            if (m_Inventory != null) {
-                m_Inventory.UseItem(m_ConsumableItemType, 1);
-            }
+#endif
+            ThrowItem();
             m_Thrown = true;
             // Optionally change the layer after the object has been thrown. This allows the object to change from the first person Overlay layer
             // to the Default layer after it has cleared the character's hands.
             if (m_StartLayer != m_ThrownLayer) {
                 Scheduler.ScheduleFixed(m_LayerChangeDelay, ChangeThrownLayer, m_InstantiatedThrownObject);
+            }
+        }
+
+        /// <summary>
+        /// Throws the throwable object.
+        /// </summary>
+        public void ThrowItem()
+        {
+            // m_InstantiatedThrownObject will be null for remote players on the network.
+            if (m_InstantiatedThrownObject != null) {
+                m_InstantiatedThrownObject.transform.parent = null;
+                // The collider was previously disabled. Enable it again when it is thrown.
+                var collider = m_InstantiatedThrownObject.GetCachedComponent<Collider>();
+                collider.enabled = true;
+
+                // When the item is used the trajectory object should start moving on its own.
+                if (m_InstantiatedTrajectoryObject != null) {
+                    // The throwable item may be on the other side of an object (especially in the case of separate arms for the first person perspective). Perform a linecast
+                    // to ensure the throwable item doesn' move through any objects.
+                    if (!m_CharacterLocomotion.ActiveMovementType.UseIndependentLook(false) &&
+                                    Physics.Linecast(m_CharacterLocomotion.LookSource.LookPosition(), m_InstantiatedTrajectoryObject.transform.position, out m_RaycastHit,
+                                                        m_ImpactLayers, QueryTriggerInteraction.Ignore)) {
+                        m_InstantiatedTrajectoryObject.transform.position = m_RaycastHit.point;
+                    }
+
+                    var trajectoryTransform = m_ThrowableItemPerpectiveProperties.TrajectoryLocation != null ? m_ThrowableItemPerpectiveProperties.TrajectoryLocation : m_CharacterTransform;
+                    var lookDirection = m_LookSource.LookDirection(trajectoryTransform.TransformPoint(m_TrajectoryOffset), false, m_ImpactLayers, true);
+                    var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection));
+                    // Prevent the item from being thrown behind the character. This can happen if the character is looking straight up and there is a positive
+                    // y velocity. Gravity will cause the thrown object to go in the opposite direction.
+                    if (Vector3.Dot(velocity.normalized, m_CharacterTransform.forward) < 0) {
+                        velocity = m_CharacterTransform.up * velocity.magnitude;
+                    }
+                    m_InstantiatedTrajectoryObject.Initialize(velocity + (m_CharacterTransform.forward * m_CharacterLocomotion.LocalVelocity.z), Vector3.zero, m_Character, false);
+                }
+            }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null) {
+                // The object has been thrown. If the ItemAction is local then that object should be spawned on the network.
+                // Non-local actions should disable the mesh renderers so the object can take its place. The mesh renderers will be enabled again in a separate call.
+                if (m_NetworkInfo.IsLocalPlayer()) {
+                    NetworkObjectPool.NetworkSpawn(m_ThrownObject, m_InstantiatedThrownObject);
+                } else {
+                    EnableObjectMeshRenderers(false);
+                }
+            }
+#endif
+
+            if (m_Inventory != null) {
+                m_Inventory.UseItem(m_ConsumableItemType, 1);
             }
         }
 
@@ -569,6 +607,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
             if (!m_DisableVisibleObject) {
                 EnableObjectMeshRenderers(true);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                    m_NetworkCharacter.EnableThrowableObjectMeshRenderers(this);
+                }
+#endif
             }
         }
 

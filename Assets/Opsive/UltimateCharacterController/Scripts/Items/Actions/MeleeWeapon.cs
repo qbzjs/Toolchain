@@ -189,7 +189,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         [Tooltip("A LayerMask of the layers that can be hit by the weapon.")]
         [SerializeField] protected LayerMask m_ImpactLayers = ~(1 << LayerManager.IgnoreRaycast | 1 << LayerManager.TransparentFX | 1 << LayerManager.UI | 1 << LayerManager.Overlay);
         [Tooltip("The amount of damage done to the object hit.")]
-        [SerializeField] protected float m_DamageAmount = 10;
+        [SerializeField] protected float m_DamageAmount = 30;
         [Tooltip("The amount of force to apply to the object hit.")]
         [SerializeField] protected float m_ImpactForce = 2;
         [Tooltip("The number of frames to add the impact force to.")]
@@ -538,7 +538,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 #endif
 
                         // The collider was hit. ComputePenetration needs to be used to retrieve more information.
-                        if (HitCollider(hitboxes[i], hitCollider, hitCharacterLocomotion)) {
+                        if (HitCollider(i, hitCollider, hitCharacterLocomotion)) {
                             hitboxes[i].HitCollider();
                             if (m_SingleHit || m_SolidObjectHit) {
                                 break;
@@ -571,11 +571,13 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <summary>
         /// The melee weapon hit a collider.
         /// </summary>
-        /// <param name="hitbox">The hitbox that caused the collision.</param>
+        /// <param name="hitboxIndex">The index of the hitbox that caused the collision.</param>
         /// <param name="other">The collider that was hit.</param>
+        /// <param name="hitCharacterLocomotion">The hit Ultimate Character Locomotion component.</param>
         /// <returns>True if the hit was successfully registered.</returns>
-        private bool HitCollider(MeleeHitbox hitbox, Collider other, CharacterLocomotion hitCharacterLocomotion)
+        private bool HitCollider(int hitboxIndex, Collider other, UltimateCharacterLocomotion hitCharacterLocomotion)
         {
+            var hitbox = m_MeleeWeaponPerspectiveProperties.Hitboxes[hitboxIndex];
             var hitCount = 0;
             Vector3 direction;
             float distance;
@@ -692,46 +694,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                         m_HitList[hitListGameObject] = Time.frameCount;
                     }
 
-                    // The shield can absorb some (or none) of the damage from the melee attack.
-                    var damageAmount = m_DamageAmount;
-                    ShieldCollider shieldCollider;
-                    if ((shieldCollider = hitGameObject.GetCachedComponent<ShieldCollider>()) != null) {
-                        var shieldDamageAmount = shieldCollider.Shield.Damage(this, damageAmount);
-                        damageAmount = shieldDamageAmount;
-                        m_SolidObjectHit = m_ApplyRecoil;
-                    } else if (hitGameObject.GetCachedComponent<RecoilObject>() != null) {
-                        m_SolidObjectHit = m_ApplyRecoil;
+                    HitCollider(hitbox, m_CollisionsHit[i], hitGameObject, hitCollider, hitHealth, hitCharacterLocomotion);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                    if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                        m_NetworkCharacter.MeleeHitCollider(this, hitboxIndex, m_CollisionsHit[i], hitGameObject, hitCharacterLocomotion);
                     }
-
-                    // Allow a custom event to be received.
-                    EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, m_CollisionsHit[i].point, m_CollisionsHit[i].normal * m_ImpactForce, m_Character, hitCollider);
-                    if (m_OnImpactEvent != null) {
-                        m_OnImpactEvent.Invoke(damageAmount, m_CollisionsHit[i].point, m_CollisionsHit[i].normal * m_ImpactForce, m_Character);
-                    }
-
-                    // If the shield didn't absorb all of the damage then it should be applied to the character.
-                    if (damageAmount > 0) {
-                        // If the Health component exists it will apply a force to the rigidbody in addition to deducting the health. Otherwise just apply the force to the rigidbody. 
-                        if (hitHealth != null) {
-                            hitHealth.Damage(damageAmount, m_CollisionsHit[i].point, -m_CollisionsHit[i].normal, m_ImpactForce, m_ImpactForceFrames, 0, m_Character, hitCollider);
-                        } else if (m_ImpactForce > 0 && m_CollisionsHit[i].rigidbody != null && !m_CollisionsHit[i].rigidbody.isKinematic) {
-                            m_CollisionsHit[i].rigidbody.AddForceAtPosition(-m_CollisionsHit[i].normal * m_ImpactForce * MathUtility.RigidbodyForceMultiplier, m_CollisionsHit[i].point);
-                        }
-                    }
-
-                    // An optional state can be activated on the hit object.
-                    if (!string.IsNullOrEmpty(m_ImpactStateName)) {
-                        StateManager.SetState(hitGameObject, m_ImpactStateName, true);
-                        // If the timer isn't -1 then the state should be disabled after a specified amount of time. If it is -1 then the state
-                        // will have to be disabled manually.
-                        if (m_ImpactStateDisableTimer != -1) {
-                            StateManager.DeactivateStateTimer(hitGameObject, m_ImpactStateName, m_ImpactStateDisableTimer);
-                        }
-                    }
-
-                    // The surface manager will apply effects based on the type of impact. If the melee hitbox has a Surface Impact then that should override the weapon's Surface Impact.
-                    var surfaceImpact = hitbox.SurfaceImpact != null ? hitbox.SurfaceImpact : m_SurfaceImpact;
-                    SurfaceManager.SpawnEffect(m_CollisionsHit[i], hitCollider, surfaceImpact, m_CharacterLocomotion.GravityDirection, m_CharacterLocomotion.TimeScale, hitbox.GameObject);
+#endif
 
                     m_AttackHit = true;
                     m_HasRecoil = m_ApplyRecoil;
@@ -741,6 +709,61 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// The melee weapon hit a collider.
+        /// </summary>
+        /// <param name="hitbox">The hitbox that caused the collision.</param>
+        /// <param name="raycastHit">The RaycastHit that caused the collision.</param>
+        /// <param name="hitGameObject">The GameObject that was hit.</param>
+        /// <param name="hitCollider">The Collider that was hit.</param>
+        /// <param name="hitHealth">The Health that was hit.</param>
+        /// <param name="hitCharacterLocomotion">The hit Ultimate Character Locomotion component.</param>
+        public void HitCollider(MeleeHitbox hitbox, RaycastHit raycastHit, GameObject hitGameObject, Collider hitCollider, Health hitHealth, UltimateCharacterLocomotion hitCharacterLocomotion)
+        {
+            // The shield can absorb some (or none) of the damage from the melee attack.
+            var damageAmount = m_DamageAmount * hitbox.DamageMultiplier;
+            ShieldCollider shieldCollider;
+            if ((shieldCollider = hitGameObject.GetCachedComponent<ShieldCollider>()) != null) {
+                var shieldDamageAmount = shieldCollider.Shield.Damage(this, damageAmount);
+                damageAmount = shieldDamageAmount;
+                m_SolidObjectHit = m_ApplyRecoil;
+            } else if (hitGameObject.GetCachedComponent<RecoilObject>() != null) {
+                m_SolidObjectHit = m_ApplyRecoil;
+            }
+
+            // Allow a custom event to be received.
+            EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character, hitCollider);
+            // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
+            EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character, this, hitCollider);
+            if (m_OnImpactEvent != null) {
+                m_OnImpactEvent.Invoke(damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character);
+            }
+
+            // If the shield didn't absorb all of the damage then it should be applied to the character.
+            if (damageAmount > 0) {
+                // If the Health component exists it will apply a force to the rigidbody in addition to deducting the health. Otherwise just apply the force to the rigidbody. 
+                if (hitHealth != null) {
+                    hitHealth.Damage(damageAmount, raycastHit.point, -raycastHit.normal, m_ImpactForce, m_ImpactForceFrames, 0, m_Character, hitCollider);
+                } else if (m_ImpactForce > 0 && raycastHit.rigidbody != null && !raycastHit.rigidbody.isKinematic) {
+                    raycastHit.rigidbody.AddForceAtPosition(-raycastHit.normal * m_ImpactForce * MathUtility.RigidbodyForceMultiplier, raycastHit.point);
+                }
+            }
+
+            // An optional state can be activated on the hit object.
+            if (!string.IsNullOrEmpty(m_ImpactStateName)) {
+                StateManager.SetState(hitGameObject, m_ImpactStateName, true);
+                // If the timer isn't -1 then the state should be disabled after a specified amount of time. If it is -1 then the state
+                // will have to be disabled manually.
+                if (m_ImpactStateDisableTimer != -1) {
+                    StateManager.DeactivateStateTimer(hitGameObject, m_ImpactStateName, m_ImpactStateDisableTimer);
+                }
+            }
+
+            // The surface manager will apply effects based on the type of impact. If the melee hitbox has a Surface Impact then that should override the weapon's Surface Impact.
+            var surfaceImpact = hitbox.SurfaceImpact != null ? hitbox.SurfaceImpact : m_SurfaceImpact;
+            SurfaceManager.SpawnEffect(raycastHit, hitCollider, surfaceImpact, m_CharacterLocomotion.GravityDirection, m_CharacterLocomotion.TimeScale, hitbox.GameObject);
         }
 
         /// <summary>

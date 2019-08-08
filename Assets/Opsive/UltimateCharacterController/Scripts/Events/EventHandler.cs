@@ -309,6 +309,18 @@ namespace Opsive.UltimateCharacterController.Events
         }
 
         /// <summary>
+        /// Register a new global event with five parameters.
+        /// </summary>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="action">The function to call when the event executes.</param>
+        public static void RegisterEvent<T1, T2, T3, T4, T5>(string eventName, Action<T1, T2, T3, T4, T5> action)
+        {
+            var invokableAction = ObjectPool.Get<InvokableAction<T1, T2, T3, T4, T5>>();
+            invokableAction.Initialize(action);
+            RegisterEvent(eventName, invokableAction);
+        }
+
+        /// <summary>
         /// Register a new event with five parameters.
         /// </summary>
         /// <param name="obj">The target object.</param>
@@ -322,15 +334,28 @@ namespace Opsive.UltimateCharacterController.Events
         }
 
         /// <summary>
-        /// Register a new global event with five parameters.
+        /// Register a new global event with six parameters.
         /// </summary>
         /// <param name="eventName">The name of the event.</param>
         /// <param name="action">The function to call when the event executes.</param>
-        public static void RegisterEvent<T1, T2, T3, T4, T5>(string eventName, Action<T1, T2, T3, T4, T5> action)
+        public static void RegisterEvent<T1, T2, T3, T4, T5, T6>(string eventName, Action<T1, T2, T3, T4, T5, T6> action)
         {
-            var invokableAction = ObjectPool.Get<InvokableAction<T1, T2, T3, T4, T5>>();
+            var invokableAction = ObjectPool.Get<InvokableAction<T1, T2, T3, T4, T5, T6>>();
             invokableAction.Initialize(action);
             RegisterEvent(eventName, invokableAction);
+        }
+
+        /// <summary>
+        /// Register a new event with six parameters.
+        /// </summary>
+        /// <param name="obj">The target object.</param>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="action">The function to call when the event executes.</param>
+        public static void RegisterEvent<T1, T2, T3, T4, T5, T6>(object obj, string eventName, Action<T1, T2, T3, T4, T5, T6> action)
+        {
+            var invokableAction = ObjectPool.Get<InvokableAction<T1, T2, T3, T4, T5, T6>>();
+            invokableAction.Initialize(action);
+            RegisterEvent(obj, eventName, invokableAction);
         }
 
         /// <summary>
@@ -507,12 +532,18 @@ namespace Opsive.UltimateCharacterController.Events
         /// <param name="arg2">The second parameter.</param>
         /// <param name="arg3">The third parameter.</param>
         /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="arg5">The fifth parameter.</param>
         public static void ExecuteEvent<T1, T2, T3, T4, T5>(string eventName, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             var actions = GetActionList(eventName);
             if (actions != null) {
                 for (int i = actions.Count - 1; i >= 0; --i) {
-                    (actions[i] as InvokableAction<T1, T2, T3, T4, T5>).Invoke(arg1, arg2, arg3, arg4, arg5);
+                    // TODO: version 2.1.5 changes the OnObjectImpact parameters.
+                    var action = (actions[i] as InvokableAction<T1, T2, T3, T4, T5>);
+                    if (action == null) {
+                        continue;
+                    }
+                    action.Invoke(arg1, arg2, arg3, arg4, arg5);
                 }
             }
         }
@@ -532,7 +563,61 @@ namespace Opsive.UltimateCharacterController.Events
             var actions = GetActionList(obj, eventName);
             if (actions != null) {
                 for (int i = actions.Count - 1; i >= 0; --i) {
-                    (actions[i] as InvokableAction<T1, T2, T3, T4, T5>).Invoke(arg1, arg2, arg3, arg4, arg5);
+                    // TODO: version 2.1.5 changes the OnObjectImpact parameters.
+                    var action = (actions[i] as InvokableAction<T1, T2, T3, T4, T5>);
+                    if (action == null) {
+                        continue;
+                    }
+                    action.Invoke(arg1, arg2, arg3, arg4, arg5);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executes the global event with five parameters.
+        /// </summary>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="arg5">The fifth parameter.</param>
+        public static void ExecuteEvent<T1, T2, T3, T4, T5, T6>(string eventName, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        {
+            var actions = GetActionList(eventName);
+            if (actions != null) {
+                for (int i = actions.Count - 1; i >= 0; --i) {
+                    // TODO: version 2.1.5 changes the OnObjectImpact parameters.
+                    var action = (actions[i] as InvokableAction<T1, T2, T3, T4, T5, T6>);
+                    if (action == null) {
+                        continue;
+                    }
+                    action.Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executes the event with five parameters.
+        /// </summary>
+        /// <param name="obj">The object that the event is attached to.</param>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="arg5">The fifth parameter.</param>
+        public static void ExecuteEvent<T1, T2, T3, T4, T5, T6>(object obj, string eventName, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6)
+        {
+            var actions = GetActionList(obj, eventName);
+            if (actions != null) {
+                for (int i = actions.Count - 1; i >= 0; --i) {
+                    // TODO: version 2.1.5 changes the OnObjectImpact parameters.
+                    var action = (actions[i] as InvokableAction<T1, T2, T3, T4, T5, T6>);
+                    if (action == null) {
+                        continue;
+                    }
+                    action.Invoke(arg1, arg2, arg3, arg4, arg5, arg6);
                 }
             }
         }
@@ -788,6 +873,49 @@ namespace Opsive.UltimateCharacterController.Events
             if (actions != null) {
                 for (int i = 0; i < actions.Count; ++i) {
                     var invokeableAction = (actions[i] as InvokableAction<T1, T2, T3, T4, T5>);
+                    if (invokeableAction.IsAction(action)) {
+                        ObjectPool.Return(invokeableAction);
+                        actions.RemoveAt(i);
+                        break;
+                    }
+                }
+                CheckForEventRemoval(obj, eventName, actions);
+            }
+        }
+
+        /// <summary>
+        /// Unregisters the specified global event with six parameters.
+        /// </summary>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="action">The action to remove.</param>
+        public static void UnregisterEvent<T1, T2, T3, T4, T5, T6>(string eventName, Action<T1, T2, T3, T4, T5, T6> action)
+        {
+            var actions = GetActionList(eventName);
+            if (actions != null) {
+                for (int i = 0; i < actions.Count; ++i) {
+                    var invokeableAction = (actions[i] as InvokableAction<T1, T2, T3, T4, T5, T6>);
+                    if (invokeableAction.IsAction(action)) {
+                        ObjectPool.Return(invokeableAction);
+                        actions.RemoveAt(i);
+                        break;
+                    }
+                }
+                CheckForEventRemoval(eventName, actions);
+            }
+        }
+
+        /// <summary>
+        /// Unregisters the specified event with six parameters.
+        /// </summary>
+        /// <param name="obj">The object that the event is attached to.</param>
+        /// <param name="eventName">The name of the event.</param>
+        /// <param name="action">The action to remove.</param>
+        public static void UnregisterEvent<T1, T2, T3, T4, T5, T6>(object obj, string eventName, Action<T1, T2, T3, T4, T5, T6> action)
+        {
+            var actions = GetActionList(obj, eventName);
+            if (actions != null) {
+                for (int i = 0; i < actions.Count; ++i) {
+                    var invokeableAction = (actions[i] as InvokableAction<T1, T2, T3, T4, T5, T6>);
                     if (invokeableAction.IsAction(action)) {
                         ObjectPool.Return(invokeableAction);
                         actions.RemoveAt(i);

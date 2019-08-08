@@ -88,6 +88,15 @@ namespace Opsive.UltimateCharacterController.Audio
         /// Stops playing the audio on the specified GameObject.
         /// </summary>
         /// <param name="gameObject">The GameObject to stop the audio on.</param>
+        public void Stop(GameObject gameObject)
+        {
+            AudioManager.Stop(gameObject);
+        }
+
+        /// <summary>
+        /// Stops playing the audio on the specified GameObject.
+        /// </summary>
+        /// <param name="gameObject">The GameObject to stop the audio on.</param>
         /// <param name="reservedIndex">The index of the component that should be stopped. -1 indicates all components.</param>
         public void Stop(GameObject gameObject, int reservedIndex)
         {

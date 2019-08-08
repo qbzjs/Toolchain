@@ -15,6 +15,8 @@ namespace Opsive.UltimateCharacterController.Demo.AI
     /// </summary>
     public class Idle : MovementType
     {
+        public override bool FirstPersonPerspective { get { return false; } }
+
         /// <summary>
         /// Returns the delta yaw rotation of the character.
         /// </summary>

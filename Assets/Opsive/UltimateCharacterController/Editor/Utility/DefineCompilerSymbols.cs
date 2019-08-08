@@ -104,8 +104,8 @@ namespace Opsive.UltimateCharacterController.Networking.Editor.Utility
             }
 #endif
 
-            // INetworkCharacter will exist if the multiplayer addon is imported.
-            var multiplayerExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.Addons.Networking.Character.INetworkCharacter") != null;
+            // INetworkCharacter will exist if the multiplayer add-on is imported.
+            var multiplayerExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.AddOns.Multiplayer.Character.NetworkCharacterLocomotionHandler") != null;
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             if (!multiplayerExists) {
                 RemoveSymbol(s_MultiplayerSymbol);
@@ -116,7 +116,7 @@ namespace Opsive.UltimateCharacterController.Networking.Editor.Utility
             }
 #endif
 
-            // VRViewType will exist if the VR addon is imported.
+            // VRViewType will exist if the VR add-on is imported.
             var VRExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.VR.Camera.ViewTypes.VRViewType") != null;
 #if ULTIMATE_CHARACTER_CONTROLLER_VR
             if (!VRExists) {

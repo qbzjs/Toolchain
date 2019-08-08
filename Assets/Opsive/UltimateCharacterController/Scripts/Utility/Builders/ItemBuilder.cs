@@ -388,16 +388,20 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
                             }
                         }
                     }
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                    var networkInfo = character.GetComponent<Networking.INetworkInfo>();
+                    if (networkInfo != null) {
+                        addThirdPersonObject = true;
+                    }
+#endif
                 }
 #else
                 addThirdPersonObject = false;
 #endif
 
                 if (addThirdPersonObject) {
-#if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
                     // The ThirdPersonObject component is added so the PerspectiveMonitor knows what objects should use the invisible shadow caster material.
-                    thirdPersonObject.AddComponent<ThirdPersonController.Character.Identifiers.ThirdPersonObject>();
-#endif
+                    thirdPersonObject.AddComponent<Character.Identifiers.ThirdPersonObject>();
                 } else {
                     // If the ThirdPersonObject isn't added then the renderer should be directly attached.
                     var renderers = thirdPersonObject.GetComponentsInChildren<Renderer>();

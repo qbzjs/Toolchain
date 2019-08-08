@@ -132,7 +132,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// </summary>
         protected override void AbilityStarted()
         {
-            m_AllowEquippedSlotsMask = m_OnArriveAbility.AllowEquippedSlotsMask;
+            // The ability can be null on the network.
+            if (m_OnArriveAbility != null) {
+                m_AllowEquippedSlotsMask = m_OnArriveAbility.AllowEquippedSlotsMask;
+            }
 
             base.AbilityStarted();
 
@@ -174,14 +177,16 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             // The input and target rotation values should move towards the target.
             var arrived = m_StartLocation.IsRotationValid(m_Transform.rotation);
             var rotation = GetTargetRotation() * Quaternion.Inverse(m_Transform.rotation);
-            m_CharacterLocomotion.DeltaYawRotation = Mathf.MoveTowards(0, MathUtility.ClampInnerAngle(rotation.eulerAngles.y), 
+            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
+            deltaRotation.y = Mathf.MoveTowards(0, MathUtility.ClampInnerAngle(rotation.eulerAngles.y),
                                                         m_CharacterLocomotion.MotorRotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
+            m_CharacterLocomotion.DeltaRotation = deltaRotation;
 
             m_TargetDirection = m_StartLocation.GetTargetDirection(m_Transform.position, m_Transform.rotation);
             if (!m_StartLocation.IsPositionValid(m_Transform.position, m_Transform.rotation, m_CharacterLocomotion.Grounded)) {
                 m_CharacterLocomotion.InputVector = GetInputVector(m_TargetDirection);
                 arrived = false;
-            } else if (!m_StartLocation.PrecisionStart && m_OnArriveAbility.AllowPositionalInput) {
+            } else if (!m_StartLocation.PrecisionStart && (m_OnArriveAbility == null || m_OnArriveAbility.AllowPositionalInput)) {
                 m_CharacterLocomotion.InputVector = m_CharacterLocomotion.RawInputVector;
             }
 
@@ -202,8 +207,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
                 if (!m_StartLocation.PrecisionStart || !m_PrecisionStartWait) {
                     // Stop the ability before starting the OnArrive ability so MoveTowards doesn't prevent the ability from starting.
                     StopAbility();
-                    m_CharacterLocomotion.TryStartAbility(m_OnArriveAbility, true, true);
-                    m_OnArriveAbility = null;
+                    if (m_OnArriveAbility != null) {
+                        m_CharacterLocomotion.TryStartAbility(m_OnArriveAbility, true, true);
+                        m_OnArriveAbility = null;
+                    }
                 }
 
                 // After the character is no longer in transition the arrive ability can start. This will ensure the character always starts in the correct location.

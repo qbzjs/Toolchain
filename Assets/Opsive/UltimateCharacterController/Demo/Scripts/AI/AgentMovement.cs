@@ -31,7 +31,7 @@ namespace Opsive.UltimateCharacterController.Demo.AI
         private float m_ArriveTime;
 
         public override Vector2 InputVector { get { return m_InputVector; } }
-        public override float DeltaYawRotation { get { return 0; } }
+        public override Vector3 DeltaRotation { get { return Vector3.zero; } }
 
         /// <summary>
         /// Initialize the default values.

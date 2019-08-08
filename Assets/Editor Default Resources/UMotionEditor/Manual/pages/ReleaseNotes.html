@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="versionHeader">
-			<p class="versionText">Version: <b>1.18</b> </p>
+			<p class="versionText">Version: <b>1.19p02</b> </p>
 		</div>
 		<div class="leftContent">
 			<div class="leftContentInner">
@@ -249,7 +249,36 @@
         </br>
         </br>The beta version is incremented with every change related to the current beta generation (includes bug fixes, new features or changes to the manual). Beta versions are watermarked as "beta" in the Clip Editor and are not available via the Asset Store.</td>
     </tr>
-</table></br></br><h2 class="headline2" id="">UMotion V1.18</h2><h3 class="headline3" id="">New or Changed Features</h3><ul class="listMain">
+</table></br></br><h2 class="headline2" id="">UMotion V1.19p02</h2><h3 class="headline3" id="">New or Changed Features</h3><p class="textBlock">None</p><h3 class="headline3" id="">Bug Fixes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Fixed that in some cases animated characters got invisible in the scene view.</span></li>
+    <li class="listItem"><span class="listText">Fixed an exception that is thrown when UMotion is installed without the UMotion manual.</span></li>
+</ul><h3 class="headline3" id="">Manual Changes</h3><p class="textBlock">None</p></br></br><h2 class="headline2" id="">UMotion V1.19p01</h2><h3 class="headline3" id="">New or Changed Features</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Experimental: Setting to instruct UMotion to directly create root motion curves for humanoid *.anim files.</span></li>
+</ul><h3 class="headline3" id="">Bug Fixes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Fixed that control is used instead of command for shortcuts and various other actions (like multi-selecting) on Mac.</span></li>
+    <li class="listItem"><span class="listText">Fixed that the delete shortcut doesn't work on Mac.</span></li>
+    <li class="listItem"><span class="listText">Fixed the naming of the shortcut modifiers in the preferences window on Mac.</span></li>
+    <li class="listItem"><span class="listText">Fixed that sometimes the dopesheet is zoomed while the animated properties list is scrolled via the touchpad on Mac.</span></li>
+</ul><h3 class="headline3" id="">Manual Changes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Added descriptions of the new root motion settings in the "Clip Settings" chapter.</span></li>
+</ul></br></br><h2 class="headline2" id="">UMotion V1.19</h2><h3 class="headline3" id="">New or Changed Features</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">All input fields now support mathematical expressions (e.g. "5+4").</span></li>
+    <li class="listItem"><span class="listText">The position/rotation/scale properties of generic bones can now be enabled/disabled in config mode. This is useuful for reducing the number of animated properties displayed in the Clip Editor.</span></li>
+    <li class="listItem"><span class="listText">The IK Setup Wizard now automatically hides the scale properties of the IK Handle and the IK Pole Handle.</span></li>
+</ul><h3 class="headline3" id="">Bug Fixes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Fixed that the keys of the IK pole rotation property contribute to the total clip length even though the pole rotation property isn't used (because a pole target is used instead).</span></li>
+    <li class="listItem"><span class="listText">Fixed that the playback end cursor (white arrow) was reset to the clip end when switching clips.</span></li>
+    <li class="listItem"><span class="listText">Fixed an exception that is thrown when exporting an animation with a custom component property where the related component is missing.</span></li>
+</ul><h3 class="headline3" id="">Manual Changes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Fixed a typo in the "UMotion API" chapter.</span></li>
+    <li class="listItem"><span class="listText">Added a description of the new "Properties" setting to the "Pose Editor/Config Mode/Configuration" chapter.</span></li>
+</ul></br></br><h2 class="headline2" id="">UMotion V1.18p01</h2><h3 class="headline3" id="">New or Changed Features</h3><p class="textBlock">None</p><h3 class="headline3" id="">Bug Fixes</h3><ul class="listMain">
+    <li class="listItem"><span class="listText">Fixed an exception that is thrown when copying an euler rotation key to a quaternion rotation property or the other way around.</span></li>
+    <li class="listItem"><span class="listText">Fixed an exception that is thrown when importing a umotion project that contains animation layers into another umotion project.</span></li>
+    <li class="listItem"><span class="listText">Fixed an exception that is thrown when importing an animation clip and a custom property constraint is used.</span></li>
+    <li class="listItem"><span class="listText">Added a workaround for a Unity GUI bug that causes an exception under specific circumstances when the rotation tool assistant window is shown.</span></li>
+    <li class="listItem"><span class="listText">UMotion now ignores an exception that is thrown by 3rd party code when UMotion changes the Unity editor's playmode.</span></li>
+</ul><h3 class="headline3" id="">Manual Changes</h3><p class="textBlock">None</p></br></br><h2 class="headline2" id="">UMotion V1.18</h2><h3 class="headline3" id="">New or Changed Features</h3><ul class="listMain">
     <li class="listItem"><span class="listText">All scriptable render pipelines (LWRP, HDRP, custom SRP) are now officially supported.</span></li>
     <li class="listItem"><span class="listText">Added an official UMotion scripting API.</span></li>
     <li class="listItem"><span class="listText">Improved the behaviour when copying & pasting rotation keys from one clip to the other when the clips use different rotation modes.</span></li>

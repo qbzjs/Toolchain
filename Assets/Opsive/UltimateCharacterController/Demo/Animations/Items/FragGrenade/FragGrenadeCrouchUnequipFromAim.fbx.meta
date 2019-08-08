@@ -444,6 +444,7 @@ ModelImporter:
     100872: ORG-palm_03_R
     100874: ORG-palm_04_L
     100876: ORG-palm_04_R
+    100878: referencebone
     400000: chest
     400002: elbow_target_ik_L
     400004: elbow_target_ik_R
@@ -883,6 +884,7 @@ ModelImporter:
     400872: ORG-palm_03_R
     400874: ORG-palm_04_L
     400876: ORG-palm_04_R
+    400878: referencebone
     7400000: FragGrenadeCrouchUnequipFromAim
     7400002: RifleAim
     9500000: //RootNode
@@ -901,7 +903,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'FragGrenadeCrouchUnequipFromAim' has import
+      animation warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'ORG-forearm_R' has scale animation
+      that will be discarded.\n\t'ORG-hand_R' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -949,6 +954,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L

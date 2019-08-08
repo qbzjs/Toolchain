@@ -77,7 +77,7 @@ namespace Opsive.UltimateCharacterController.Input.VirtualControls
             }
 
             // GetButtonDown and GetButtonUp requires the button to be pressed or released within the same frame.
-            if (Time.frameCount - m_Frame > 1) {
+            if (Time.frameCount - m_Frame > 0) {
                 return false;
             }
 

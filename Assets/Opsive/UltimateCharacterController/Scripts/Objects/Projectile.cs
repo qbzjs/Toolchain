@@ -57,8 +57,24 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <param name="hit">The RaycastHit of the object. Can be null.</param>
         protected override void OnCollision(RaycastHit? hit)
         {
-            Scheduler.Cancel(m_ScheduledDeactivation);
+            if (m_ScheduledDeactivation != null) {
+                Scheduler.Cancel(m_ScheduledDeactivation);
+                m_ScheduledDeactivation = null;
+            }
             base.OnCollision(hit);
+        }
+
+        /// <summary>
+        /// The component has been disabled.
+        /// </summary>
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            if (m_ScheduledDeactivation != null) {
+                Scheduler.Cancel(m_ScheduledDeactivation);
+                m_ScheduledDeactivation = null;
+            }
         }
     }
 }

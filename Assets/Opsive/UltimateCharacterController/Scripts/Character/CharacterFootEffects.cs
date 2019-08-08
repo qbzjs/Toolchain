@@ -376,10 +376,7 @@ namespace Opsive.UltimateCharacterController.Character
             // A RaycastHit is required for the SurfaceManager.
             RaycastHit hit;
             if (Physics.Raycast(foot.position + m_CharacterLocomotion.Up * 0.1f, -m_CharacterLocomotion.Up, out hit, 0.11f + m_FootOffset, m_CharacterLayerManager.IgnoreInvisibleCharacterWaterLayers, QueryTriggerInteraction.Ignore)) {
-                var localDirection = m_Transform.InverseTransformDirection(foot.forward);
-                // The vertical look direction can be ignored.
-                localDirection.y = 0;
-                SurfaceManager.SpawnEffect(hit, m_SurfaceImpact, m_CharacterLocomotion.GravityDirection, m_CharacterLocomotion.TimeScale, foot.gameObject, m_Transform.TransformDirection(localDirection), flipFootprint);
+                SurfaceManager.SpawnEffect(hit, m_SurfaceImpact, m_CharacterLocomotion.GravityDirection, m_CharacterLocomotion.TimeScale, foot.gameObject, m_Transform.forward, flipFootprint);
                 return true;
             } 
             return false;

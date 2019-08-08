@@ -579,13 +579,21 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
                 m_PlatformRotation = MathUtility.InverseTransformQuaternion(m_CharacterLocomotion.Platform.rotation, m_CharacterPlatformRotationOffset) *
                     Quaternion.Inverse(MathUtility.InverseTransformQuaternion(m_CharacterLocomotion.Platform.rotation, m_CharacterRotation *
                     Quaternion.Inverse(m_CharacterLocomotion.Platform.rotation)));
+                if (!m_CharacterLocomotion.AlignToGravity) {
+                    // Only the local y rotation should affect the character's rotation.
+                    var localPlatformTorque = MathUtility.InverseTransformQuaternion(m_CharacterTransform.rotation, m_PlatformRotation).eulerAngles;
+                    localPlatformTorque.x = localPlatformTorque.z = 0;
+                    m_PlatformRotation = MathUtility.TransformQuaternion(m_CharacterTransform.rotation, Quaternion.Euler(localPlatformTorque));
+                }
                 m_CharacterRotation *= m_PlatformRotation;
             }
 
             // The camera should always stay aligned to the character's up direction.
-            var localRotation = MathUtility.InverseTransformQuaternion(m_CharacterTransform.rotation, m_CharacterRotation).eulerAngles;
-            localRotation.x = localRotation.z = 0;
-            m_CharacterRotation = MathUtility.TransformQuaternion(m_CharacterTransform.rotation, Quaternion.Euler(localRotation));
+            if (m_CharacterLocomotion.AlignToGravity) {
+                var localRotation = MathUtility.InverseTransformQuaternion(m_CharacterTransform.rotation, m_CharacterRotation).eulerAngles;
+                localRotation.x = localRotation.z = 0;
+                m_CharacterRotation = MathUtility.TransformQuaternion(m_CharacterTransform.rotation, Quaternion.Euler(localRotation));
+            }
 
             // Remember the offset so the delta can be compared the next update.
             if (m_CharacterLocomotion.Platform != null) {
@@ -594,7 +602,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
 
             // Set limits on the pitch.
             if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                m_Pitch = Mathf.Clamp(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
+                m_Pitch = MathUtility.ClampAngle(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
             }
 
             // Prevent the values from getting too large.
@@ -672,12 +680,12 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
             }
 
             // Ensure there aren't any objects obstructing the distance between the anchor offset and the target position.
+            var collisionLayerEnabled = m_CharacterLocomotion.CollisionLayerEnabled;
+            m_CharacterLocomotion.EnableColliderCollisionLayer(false);
             var offset = m_PositionSpring.Value + GetHeadOffset();
             offset.x = offset.z = 0;
             var startPosition = GetAnchorTransformPoint(offset);
             var direction = targetPosition - startPosition;
-            var collisionLayerEnabled = m_CharacterLocomotion.CollisionLayerEnabled;
-            m_CharacterLocomotion.EnableColliderCollisionLayer(false);
             if (Physics.SphereCast(startPosition, m_CollisionRadius, direction.normalized, out m_RaycastHit, direction.magnitude + m_Camera.nearClipPlane, 
                             m_CharacterLayerManager.IgnoreInvisibleCharacterWaterLayers, QueryTriggerInteraction.Ignore)) {
                 // Move the camera in if an object obstructed the view.
@@ -1004,11 +1012,16 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         }
 
         /// <summary>
-        /// The camera has been destroyed. Unregister for an registered events.
+        /// The camera has been destroyed.
         /// </summary>
         public override void OnDestroy()
         {
             base.OnDestroy();
+
+            m_PositionSpring.Destroy();
+            m_RotationSpring.Destroy();
+            m_SecondaryPositionSpring.Destroy();
+            m_SecondaryRotationSpring.Destroy();
 
             EventHandler.UnregisterEvent(m_GameObject, "OnAnchorOffsetUpdated", InitializePositionSpringValue);
             EventHandler.UnregisterEvent<ViewType, bool>(m_GameObject, "OnCameraChangeViewTypes", OnChangeViewType);

@@ -180,6 +180,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Inventory
                 return;
             }
 
+            characterLocomotion.DeserializeItemAbilities();
             var itemAbilities = characterLocomotion.ItemAbilities;
             if (itemAbilities == null) {
                 return;
@@ -193,25 +194,24 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Inventory
                 }
 
                 var itemSetAbilityBase = itemAbilities[i] as ItemSetAbilityBase;
-                var hasCategory = itemSetAbilityBase.ItemSetCategoryID == 0;
-                if (!hasCategory) {
-                    for (int j = 0; j < m_ItemCollection.Categories.Length; ++j) {
-                        if (m_ItemCollection.Categories[j].ID == itemSetAbilityBase.ItemSetCategoryID) {
-                            hasCategory = true;
-                            break;
-                        }
+                var hasCategory = false;
+                for (int j = 0; j < m_ItemCollection.Categories.Length; ++j) {
+                    if (m_ItemCollection.Categories[j].ID == itemSetAbilityBase.ItemSetCategoryID) {
+                        hasCategory = true;
+                        break;
                     }
                 }
 
                 // If the category doesn't exist then it should be reset.
                 if (!hasCategory) {
-                    itemSetAbilityBase.ItemSetCategoryID = 0;
+                    itemSetAbilityBase.ItemSetCategoryID = m_ItemCollection.Categories[0].ID;
+                    changed = true;
                 }
             }
 
             if (changed) {
-                UltimateCharacterController.Utility.Builders.AbilityBuilder.SerializeAbilities(characterLocomotion);
-                EditorUtility.SetDirty(characterLocomotion);
+                UltimateCharacterController.Utility.Builders.AbilityBuilder.SerializeItemAbilities(characterLocomotion);
+                InspectorUtility.SetDirty(characterLocomotion);
             }
         }
 
@@ -238,7 +238,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Inventory
             var elementTitleRect = rowRect;
             elementTitleRect.y += 2;
             elementTitleRect.height = 19;
-            var itemSetActive = Application.isPlaying && m_ItemSetManager.gameObject.activeSelf && 
+            var itemSetActive = Application.isPlaying && m_ItemSetManager.GetInstanceID() < 0 && m_ItemSetManager.gameObject.activeSelf && 
                                         m_ItemSetListIndex < m_ItemSetManager.ActiveItemSetIndex.Length && m_ItemSetManager.ActiveItemSetIndex[m_ItemSetListIndex] == index;
             GUI.Label(elementTitleRect, "Item Set " + index + (itemSetActive ? " (Active)" : ""), InspectorStyles.CenterBoldLabel);
 

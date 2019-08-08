@@ -131,6 +131,15 @@ namespace PixelCrushers
         public abstract void ApplyData(string s);
 
         /// <summary>
+        /// If the Saver needs to pull data from the Save System immediately after loading a
+        /// scene, instead of waiting for ApplyData to be called at it its normal time, it 
+        /// can implement this method. For efficiency, the Save System will not look up the 
+        /// Saver's data; your method must look it up manually by calling 
+        /// SaveSystem.savedGameData.GetData(key).
+        /// </summary>
+        public virtual void ApplyDataImmediate() { }
+
+        /// <summary>
         /// The Save System will call this method before scene changes. If your saver listens for 
         /// OnDisable or OnDestroy messages (see DestructibleSaver for example), it can use this 
         /// method to ignore the next OnDisable or OnDestroy message since they will be called
@@ -138,6 +147,11 @@ namespace PixelCrushers
         /// </summary>
         public virtual void OnBeforeSceneChange() { }
 
+        /// <summary>
+        /// The Save System will call this method when restarting the game. Your saver can
+        /// reset data to a fresh state if necessary.
+        /// </summary>
+        public virtual void OnRestartGame() { }
     }
 
 }

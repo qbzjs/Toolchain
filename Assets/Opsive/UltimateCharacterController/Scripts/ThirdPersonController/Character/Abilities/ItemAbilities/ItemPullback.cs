@@ -93,6 +93,11 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Abi
                     continue;
                 }
 
+                // Projectiles shouldn't prevent the pullback ability.
+                if (m_HitColliders[i].gameObject.GetCachedComponent<Objects.Projectile>() != null) {
+                    continue;
+                }
+
                 // It only takes one object for the ability to be in a collision state.
                 return true;
             }

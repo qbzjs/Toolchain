@@ -81,6 +81,11 @@ namespace Opsive.UltimateCharacterController.Game
             Physics.IgnoreLayerCollision(SubCharacter, Default);
             Physics.IgnoreLayerCollision(SubCharacter, VisualEffect);
             Physics.IgnoreLayerCollision(VisualEffect, VisualEffect);
+            Physics.IgnoreLayerCollision(Overlay, Default);
+            Physics.IgnoreLayerCollision(Overlay, VisualEffect);
+            Physics.IgnoreLayerCollision(Overlay, Enemy);
+            Physics.IgnoreLayerCollision(Overlay, SubCharacter);
+            Physics.IgnoreLayerCollision(Overlay, Character);
         }
 
         /// <summary>

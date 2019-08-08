@@ -10,6 +10,10 @@ using Opsive.UltimateCharacterController.Audio;
 using Opsive.UltimateCharacterController.Character;
 using Opsive.UltimateCharacterController.Game;
 using Opsive.UltimateCharacterController.Events;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Traits;
+#endif
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
 
@@ -59,6 +63,10 @@ namespace Opsive.UltimateCharacterController.Traits
         protected GameObject m_GameObject;
         private Transform m_Transform;
         private UltimateCharacterLocomotion m_CharacterLocomotion;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private INetworkRespawnerMonitor m_NetworkRespawnerMonitor;
+#endif
 
         private Vector3 m_StartPosition;
         private Quaternion m_StartRotation;
@@ -74,6 +82,13 @@ namespace Opsive.UltimateCharacterController.Traits
             m_GameObject = gameObject;
             m_Transform = transform;
             m_CharacterLocomotion = m_GameObject.GetCachedComponent<UltimateCharacterLocomotion>();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_GameObject.GetCachedComponent<INetworkInfo>();
+            m_NetworkRespawnerMonitor = m_GameObject.GetCachedComponent<INetworkRespawnerMonitor>();
+            if (m_NetworkInfo != null && m_NetworkRespawnerMonitor == null) {
+                Debug.LogError("Error: The object " + m_GameObject.name + " must have a NetworkRespawnerMonitor component.");
+            }
+#endif
 
             m_StartPosition = m_Transform.position;
             m_StartRotation = m_Transform.rotation;
@@ -93,6 +108,13 @@ namespace Opsive.UltimateCharacterController.Traits
                 return;
             }
 
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            // The local player will control when the object respawns.
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                return;
+            }
+#endif
+
             if (m_ScheduledRespawnEvent != null) {
                 Scheduler.Cancel(m_ScheduledRespawnEvent);
                 m_ScheduledRespawnEvent = null;
@@ -105,21 +127,23 @@ namespace Opsive.UltimateCharacterController.Traits
         /// </summary>
         protected virtual void OnDisable()
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                return;
+            }
+#endif
+
             if (ScheduleRespawnOnDisable && m_ScheduledRespawnEvent == null) {
                 m_ScheduledRespawnEvent = Scheduler.Schedule(Random.Range(m_MinRespawnTime, m_MaxRespawnTime), Respawn);
             }
         }
 
         /// <summary>
-        /// Do the respawn by setting the position and rotation back to their starting values. Enable the GameObject and let all of the listening objects know that
-        /// we have been respawned.
+        /// Determines the location to respawn the object to and then does the respawn.
         /// </summary>
-        public virtual void Respawn()
+        public void Respawn()
         {
             m_ScheduledRespawnEvent = null;
-
-            // Send a pre-respawn event so abilities can stop if they should no longer be active.
-            EventHandler.ExecuteEvent(m_GameObject, "OnWillRespawn");
 
             if (m_PositioningMode != SpawnPositioningMode.None) {
                 Vector3 position;
@@ -128,7 +152,7 @@ namespace Opsive.UltimateCharacterController.Traits
                     position = m_Transform.position;
                     rotation = m_Transform.rotation;
                     // If the object can't be spawned then try again in the future.
-                    if (!SpawnPointManager.GetPlacement(m_Grouping, ref position, ref rotation)) {
+                    if (!SpawnPointManager.GetPlacement(m_GameObject, m_Grouping, ref position, ref rotation)) {
                         m_ScheduledRespawnEvent = Scheduler.Schedule(Random.Range(m_MinRespawnTime, m_MaxRespawnTime), Respawn);
                         return;
                     }
@@ -137,6 +161,25 @@ namespace Opsive.UltimateCharacterController.Traits
                     rotation = m_StartRotation;
                 }
 
+                Respawn(position, rotation, true);
+            } else {
+                Respawn(m_Transform.position, m_Transform.rotation, false);
+            }
+        }
+
+        /// <summary>
+        /// Does the respawn by setting the position and rotation to the specified values.
+        /// Enable the GameObject and let all of the listening objects know that the object has been respawned.
+        /// </summary>
+        /// <param name="position">The respawn position.</param>
+        /// <param name="rotation">The respawn rotation.</param>
+        /// <param name="transformChange">Was the position or rotation changed?</param>
+        public virtual void Respawn(Vector3 position, Quaternion rotation, bool transformChange)
+        {
+            // Send a pre-respawn event so abilities can stop if they should no longer be active.
+            EventHandler.ExecuteEvent(m_GameObject, "OnWillRespawn");
+
+            if (transformChange) {
                 // Characters require a specific setter for the position and rotation.
                 if (m_CharacterLocomotion != null) {
                     m_CharacterLocomotion.SetPositionAndRotation(position, rotation);
@@ -155,6 +198,12 @@ namespace Opsive.UltimateCharacterController.Traits
             if (m_OnRespawnEvent != null) {
                 m_OnRespawnEvent.Invoke();
             }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkRespawnerMonitor.Respawn(position, rotation, transformChange);
+            }
+#endif
         }
 
         /// <summary>

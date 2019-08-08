@@ -31,7 +31,22 @@ namespace Opsive.UltimateCharacterController.Inventory
         private int[] m_NextItemSetIndex;
 
         public int[] ActiveItemSetIndex { get { return m_ActiveItemSetIndex; } }
-        
+
+        /// <summary>
+        /// Initialize the ItemCollection and ItemSet.
+        /// </summary>
+        private void Awake()
+        {
+            InitializeItemCollection(m_ItemCollection);
+
+            for (int i = 0; i < m_CategoryItemSets.Length; ++i) {
+                for (int j = 0; j < m_CategoryItemSets[i].ItemSetList.Count; ++j) {
+                    // The ItemSet must be initialized.
+                    m_CategoryItemSets[i].ItemSetList[j].Initialize(m_GameObject, this, m_CategoryItemSets[i].CategoryID, i, j);
+                }
+            }
+        }
+
         /// <summary>
         /// Initializes the ItemCollection reference. This is useful if the ItemCollection is assigned after Awake is called.
         /// </summary>
@@ -49,7 +64,6 @@ namespace Opsive.UltimateCharacterController.Inventory
             }
 
             if (itemCollection == null) {
-                Debug.LogError("Error: The ItemCollection is null. Ensure an ItemCollection has been assigned to the ItemSetManager.");
                 return;
             }
 
@@ -88,21 +102,6 @@ namespace Opsive.UltimateCharacterController.Inventory
             }
 
             EventHandler.RegisterEvent<Item>(gameObject, "OnInventoryAddItem", OnAddItem);
-        }
-
-        /// <summary>
-        /// Initialize the ItemSet.
-        /// </summary>
-        private void Start()
-        {
-            InitializeItemCollection(m_ItemCollection);
-
-            for (int i = 0; i < m_CategoryItemSets.Length; ++i) {
-                for (int j = 0; j < m_CategoryItemSets[i].ItemSetList.Count; ++j) {
-                    // The ItemSet must be initialized.
-                    m_CategoryItemSets[i].ItemSetList[j].Initialize(m_GameObject, this, m_CategoryItemSets[i].CategoryID, i, j);
-                }
-            }
         }
 
         /// <summary>
@@ -392,14 +391,19 @@ namespace Opsive.UltimateCharacterController.Inventory
             if (itemSetIndex != -1) {
                 m_CategoryItemSets[categoryIndex].ItemSetList[itemSetIndex].Active = true;
             }
-            string state;
+            string state, newState = null;
             if (itemSetIndex != -1) {
                 if (!string.IsNullOrEmpty((state = m_CategoryItemSets[categoryIndex].ItemSetList[itemSetIndex].State))) {
                     StateSystem.StateManager.SetState(m_GameObject, state, true);
+                    // Store the new state name for testing against.
+                    newState = state;
                 }
             }
             if (activeItemSetIndex != -1 && !string.IsNullOrEmpty((state = m_CategoryItemSets[categoryIndex].ItemSetList[activeItemSetIndex].State))) {
-                StateSystem.StateManager.SetState(m_GameObject, state, false);
+                // If the new state is null or different, then deactivate the state of the old item set.
+                if (string.IsNullOrEmpty(newState) || state != newState) {
+                    StateSystem.StateManager.SetState(m_GameObject, state, false);
+                }
             }
             EventHandler.ExecuteEvent(m_GameObject, "OnItemSetManagerUpdateItemSet", categoryIndex, itemSetIndex);
         }

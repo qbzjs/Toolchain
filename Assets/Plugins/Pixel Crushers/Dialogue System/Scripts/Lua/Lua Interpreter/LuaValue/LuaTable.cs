@@ -270,7 +270,7 @@ namespace Language.Lua
             //[PixelCrushers]
             if (dict != null)
             {
-                if (m_intKeyCache.ContainsKey(index)) return dict[m_intKeyCache[index]];
+                if (m_intKeyCache.ContainsKey(index) && dict.ContainsKey(m_intKeyCache[index])) return dict[m_intKeyCache[index]];
                 return GetValue(index.ToString());
             }
 
@@ -352,7 +352,7 @@ namespace Language.Lua
             {
                 int index = (int)number.Number;
 
-                if (m_intKeyCache.ContainsKey(index)) //[PixelCrushers]
+                if (m_intKeyCache.ContainsKey(index) && Dict.ContainsKey(m_intKeyCache[index])) //[PixelCrushers]
                 {
                     Dict[m_intKeyCache[index]] = value;
                     return;

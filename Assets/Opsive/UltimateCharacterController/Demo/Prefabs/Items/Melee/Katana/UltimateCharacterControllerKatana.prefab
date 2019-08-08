@@ -706,7 +706,7 @@ MonoBehaviour:
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096345
-  m_DamageAmount: 10
+  m_DamageAmount: 40
   m_ImpactForce: 2
   m_ImpactForceFrames: 15
   m_ImpactStateName: 
@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096345
-  m_DamageAmount: 10
+  m_DamageAmount: 40
   m_ImpactForce: 2
   m_ImpactForceFrames: 15
   m_ImpactStateName: 

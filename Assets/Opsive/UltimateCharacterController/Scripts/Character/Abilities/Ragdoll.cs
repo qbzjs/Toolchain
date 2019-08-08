@@ -16,6 +16,8 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
     /// </summary>
     [DefaultStartType(AbilityStartType.Manual)]
     [DefaultState("Death")]
+    [DefaultAllowPositionalInput(false)]
+    [DefaultAllowRotationalInput(false)]
     public class Ragdoll : Ability
     {
         [Tooltip("Should the ability start when the character dies?")]
@@ -43,7 +45,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         private Vector3 m_Force;
         private Vector3 m_Position;
         private bool m_FromDeath;
-        
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private object[] m_StartData;
+#endif
+
         [NonSerialized] public Vector3 Force { get { return m_Force; } set { m_Force = value; } }
         [NonSerialized] public Vector3 Position { get { return m_Position; } set { m_Position = value; } }
         public override bool CanStayActivatedOnDeath { get { return true; } }
@@ -75,14 +80,6 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
 
             EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
             EventHandler.RegisterEvent(m_GameObject, "OnWillRespawn", OnRespawn);
-        }
-
-        /// <summary>
-        /// Disable the ragdoll upon start.
-        /// </summary>
-        public override void Start()
-        {
-            base.Start();
 
             EnableRagdoll(false, Vector3.zero, Vector3.zero);
         }
@@ -202,5 +199,49 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
             EventHandler.UnregisterEvent(m_GameObject, "OnWillRespawn", OnRespawn);
         }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        /// <summary>
+        /// Returns any data required to start the ability.
+        /// </summary>
+        /// <returns>Any data required to start the ability.</returns>
+        public override object[] GetNetworkStartData()
+        {
+            if (!IsActive) {
+                return null;
+            }
+
+            if (m_StartData == null) {
+                m_StartData = new object[m_Rigidbodies.Length * 4];
+            }
+            // Save the rigidbody values so they can be sent across the network.
+            for (int i = 0; i < m_Rigidbodies.Length; ++i) {
+                m_StartData[(i * 3)] = m_Rigidbodies[i].position;
+                m_StartData[(i * 3) + 1] = m_Rigidbodies[i].rotation;
+                m_StartData[(i * 3) + 2] = m_Rigidbodies[i].velocity;
+                m_StartData[(i * 3) + 3] = m_Rigidbodies[i].angularVelocity;
+            }
+            return m_StartData; 
+        }
+
+        /// <summary>
+        /// Sets the start data from the network.
+        /// </summary>
+        /// <param name="startData">The data required to start the ability.</param>
+        public override void SetNetworkStartData(object[] startData)
+        {
+            m_Force = Vector3.zero;
+            m_Position = Vector3.zero;
+            m_CharacterLocomotion.TryStartAbility(this, true, true);
+
+            // Restore the rigidbody momentum.
+            for (int i = 0; i < m_Rigidbodies.Length; ++i) {
+                m_Rigidbodies[i].position = (Vector3)m_StartData[(i * 3)];
+                m_Rigidbodies[i].rotation = (Quaternion)m_StartData[(i * 3) + 1];
+                m_Rigidbodies[i].velocity = (Vector3)m_StartData[(i * 3) + 2];
+                m_Rigidbodies[i].angularVelocity = (Vector3)m_StartData[(i * 3) + 3];
+            }
+        }
+#endif
     }
 }

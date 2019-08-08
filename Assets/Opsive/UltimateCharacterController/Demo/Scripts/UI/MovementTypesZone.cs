@@ -47,7 +47,7 @@ namespace Opsive.UltimateCharacterController.Demo.UI
             m_Character = GameObject.FindObjectOfType<DemoManager>().Character;
             m_CharacterLocomotion = m_Character.GetComponent<UltimateCharacterLocomotion>();
 
-            EventHandler.RegisterEvent<Character.MovementTypes.MovementType, bool>(m_Character, "OnCharacterChangeMovementType", OnMovementTypeChanged);
+            EventHandler.RegisterEvent<UltimateCharacterController.Character.MovementTypes.MovementType, bool>(m_Character, "OnCharacterChangeMovementType", OnMovementTypeChanged);
             EventHandler.RegisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
         }
 
@@ -134,7 +134,7 @@ namespace Opsive.UltimateCharacterController.Demo.UI
         /// </summary>
         /// <param name="movementType">The movement type that was changed.</param>
         /// <param name="activated">Was the specified movement type activated?</param>
-        private void OnMovementTypeChanged(Character.MovementTypes.MovementType movementType, bool activated)
+        private void OnMovementTypeChanged(UltimateCharacterController.Character.MovementTypes.MovementType movementType, bool activated)
         {
             if (!activated || m_ActiveCharacter != null) {
                 return;
@@ -195,7 +195,7 @@ namespace Opsive.UltimateCharacterController.Demo.UI
         /// </summary>
         private void OnDestroy()
         {
-            EventHandler.UnregisterEvent<Character.MovementTypes.MovementType, bool>(m_Character, "OnCharacterChangeMovementType", OnMovementTypeChanged);
+            EventHandler.UnregisterEvent<UltimateCharacterController.Character.MovementTypes.MovementType, bool>(m_Character, "OnCharacterChangeMovementType", OnMovementTypeChanged);
             EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
         }
     }

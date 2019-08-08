@@ -29,6 +29,9 @@ namespace Opsive.UltimateCharacterController.Game
         }
         private static bool s_Initialized;
 
+        [Tooltip("Checks the first spawn point before checking the other spawn points.")]
+        [SerializeField] protected bool m_FirstSpawnPreferred;
+
         private List<SpawnPoint> m_SpawnPoints = new List<SpawnPoint>();
         private Dictionary<int, List<SpawnPoint>> m_SpawnPointGroupings = new Dictionary<int, List<SpawnPoint>>();
 
@@ -121,22 +124,26 @@ namespace Opsive.UltimateCharacterController.Game
         /// Gets the position and rotation of the spawn point with the specified grouping.
         /// If false is returned then the point wasn't successfully retrieved.
         /// </summary>
+        /// <param name="spawningObject">The object that is spawning.</param>
+        /// <param name="grouping">The grouping index of spawn points to select from.</param>
         /// <param name="position">The position of the spawn point.</param>
         /// <param name="rotation">The rotation of the spawn point.</param>
         /// <returns>True if the spawn point was successfully retrieved.</returns>
-        public static bool GetPlacement(int grouping, ref Vector3 position, ref Quaternion rotation)
+        public static bool GetPlacement(GameObject spawningObject, int grouping, ref Vector3 position, ref Quaternion rotation)
         {
-            return Instance.GetPlacementInternal(grouping, ref position, ref rotation);
+            return Instance.GetPlacementInternal(spawningObject, grouping, ref position, ref rotation);
         }
 
         /// <summary>
         /// Internal method which gets the position and rotation of the spawn point with the specified grouping.
         /// If false is returned then the point wasn't successfully retrieved.
         /// </summary>
+        /// <param name="spawningObject">The object that is spawning.</param>
+        /// <param name="grouping">The grouping index of spawn points to select from.</param>
         /// <param name="position">The position of the spawn point.</param>
         /// <param name="rotation">The rotation of the spawn point.</param>
         /// <returns>True if the spawn point was successfully retrieved.</returns>
-        private bool GetPlacementInternal(int grouping, ref Vector3 position, ref Quaternion rotation)
+        protected virtual bool GetPlacementInternal(GameObject spawningObject, int grouping, ref Vector3 position, ref Quaternion rotation)
         {
             List<SpawnPoint> spawnPoints;
             if (grouping != -1) {
@@ -148,9 +155,26 @@ namespace Opsive.UltimateCharacterController.Game
                 spawnPoints = m_SpawnPoints;
             }
 
+            // Optionally try to spawn in the first spawn point.
+            var firstSpawnIndex = 0;
+            if (m_FirstSpawnPreferred && spawnPoints.Count > 1) {
+                if (spawnPoints[0].GetPlacement(spawningObject, ref position, ref rotation)) {
+                    return true;
+                }
+
+                firstSpawnIndex = 1;
+            }
+
             // Choose a random spawn point and get the spawn placement.
-            var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count - 1)];
-            return spawnPoint.GetPlacement(ref position, ref rotation);
+            var attempt = 0;
+            while (attempt < spawnPoints.Count) {
+                var spawnPoint = spawnPoints[Random.Range(firstSpawnIndex, spawnPoints.Count - 1)];
+                if (spawnPoint.GetPlacement(spawningObject, ref position, ref rotation)) {
+                    return true;
+                }
+                attempt++;
+            }
+            return false;
         }
 
         /// <summary>

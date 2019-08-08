@@ -146,8 +146,11 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
 
             m_ActiveEquipUnequipAbilities.Clear();
             EventHandler.RegisterEvent<ItemAbility, bool>(m_GameObject, "OnCharacterItemAbilityActive", OnItemAbilityActive);
-            m_CanStopAbility = !m_Equip && m_OriginalAbility.ImmediateUnequip;
-            EventHandler.ExecuteEvent(m_GameObject, "OnAbilityToggleSlots", m_AllowEquippedSlotsMask, m_Equip, !m_Equip && m_OriginalAbility.ImmediateUnequip);
+            // The original ability may be null on the network.
+            if (m_OriginalAbility != null) {
+                m_CanStopAbility = !m_Equip && m_OriginalAbility.ImmediateUnequip;
+                EventHandler.ExecuteEvent(m_GameObject, "OnAbilityToggleSlots", m_AllowEquippedSlotsMask, m_Equip, !m_Equip && m_OriginalAbility.ImmediateUnequip);
+            }
             m_CanStopAbility = true;
 
             // If the count is still zero then all of the items were unequipped in a single frame.

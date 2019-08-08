@@ -64,9 +64,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         }
 
         /// <summary>
-        /// Verify the rotation values. Called immediately before the rotation is applied.
+        /// Update the rotation forces.
         /// </summary>
-        public override void ApplyRotation()
+        public override void UpdateRotation()
         {
             var targetNormal = m_Stopping ? -m_CharacterLocomotion.GravityDirection : Vector3.zero;
             if (!m_Stopping) {

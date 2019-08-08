@@ -5,7 +5,9 @@
 /// ---------------------------------------------
 
 using UnityEngine;
+using Opsive.UltimateCharacterController.Camera;
 using Opsive.UltimateCharacterController.Camera.ViewTypes;
+using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTypes
 {
@@ -20,6 +22,8 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         [SerializeField] protected Transform m_RotationTarget;
         [Tooltip("The offset relative to the move target.")]
         [SerializeField] protected Vector3 m_Offset = new Vector3(0, 0.2f, 0.2f);
+        [Tooltip("The radius of the camera's collision sphere to prevent it from clipping with other objects.")]
+        [SerializeField] protected float m_CollisionRadius = 0.05f;
         [Tooltip("The speed at which the camera should move.")]
         [SerializeField] protected float m_MoveSpeed = 10;
         [Tooltip("The speed at which the view type should rotate towards the target rotation.")]
@@ -28,6 +32,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         public Transform MoveTarget { get { return m_MoveTarget; } set { m_MoveTarget = value; } }
         public Transform RotationTarget { get { return m_RotationTarget; } set { m_RotationTarget = value; } }
         public Vector3 Offset { get { return m_Offset; } set { m_Offset = value; } }
+        public float CollisionRadius { get { return m_CollisionRadius; } set { m_CollisionRadius = value; } }
         public float MoveSpeed { get { return m_MoveSpeed; } set { m_MoveSpeed = value; } }
         public float RotationalLerpSpeed { get { return m_RotationalLerpSpeed; } set { m_RotationalLerpSpeed = value; } }
 
@@ -36,6 +41,41 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         public override float LookDirectionDistance { get { return m_Offset.magnitude; } }
         public override float Pitch { get { return 0; } }
         public override float Yaw { get { return 0; } }
+
+        private UnityEngine.Camera m_Camera;
+        private RaycastHit m_RaycastHit;
+
+        /// <summary>
+        /// Initializes the view type to the specified camera controller.
+        /// </summary>
+        /// <param name="cameraController">The camera controller to initialize the view type to.</param>
+        public override void Initialize(CameraController cameraController)
+        {
+            base.Initialize(cameraController);
+
+            m_Camera = cameraController.gameObject.GetCachedComponent<UnityEngine.Camera>();
+        }
+
+        /// <summary>
+        /// Attaches the view type to the specified character.
+        /// </summary>
+        /// <param name="character">The character to attach the camera to.</param>
+        public override void AttachCharacter(GameObject character)
+        {
+            base.AttachCharacter(character);
+
+            if (m_MoveTarget == null || m_RotationTarget == null) {
+                Transform moveTarget = m_CharacterTransform, rotationTarget = m_CharacterTransform;
+                var characterAnimator = m_Character.GetCachedComponent<Animator>();
+                if (characterAnimator != null) {
+                    moveTarget = characterAnimator.GetBoneTransform(HumanBodyBones.Head);
+                    rotationTarget = characterAnimator.GetBoneTransform(HumanBodyBones.Hips);
+                }
+
+                m_MoveTarget = moveTarget;
+                m_RotationTarget = rotationTarget;
+            }
+        }
 
         /// <summary>
         /// Rotates the camera to face in the same direction as the target.
@@ -60,7 +100,19 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         /// <returns>The updated position.</returns>
         public override Vector3 Move(bool immediateUpdate)
         {
-            return Vector3.MoveTowards(m_Transform.position, m_MoveTarget.TransformPoint(m_Offset), immediateUpdate ? float.MaxValue : Time.fixedDeltaTime * m_MoveSpeed);
+            // Ensure there aren't any objects obstructing the distance between the anchor offset and the target position.
+            var collisionLayerEnabled = m_CharacterLocomotion.CollisionLayerEnabled;
+            m_CharacterLocomotion.EnableColliderCollisionLayer(false);
+            var targetPosition = m_MoveTarget.TransformPoint(m_Offset);
+            var direction = targetPosition - m_MoveTarget.position;
+            if (Physics.SphereCast(m_MoveTarget.position, m_CollisionRadius, direction.normalized, out m_RaycastHit, direction.magnitude + m_Camera.nearClipPlane,
+                            m_CharacterLayerManager.IgnoreInvisibleCharacterWaterLayers, QueryTriggerInteraction.Ignore)) {
+                // Move the camera in if an object obstructed the view.
+                targetPosition = m_RaycastHit.point + m_RaycastHit.normal * (m_Camera.nearClipPlane + m_CharacterLocomotion.ColliderSpacing);
+            }
+            m_CharacterLocomotion.EnableColliderCollisionLayer(collisionLayerEnabled);
+
+            return Vector3.MoveTowards(m_Transform.position, targetPosition, immediateUpdate ? float.MaxValue : Time.fixedDeltaTime * m_MoveSpeed);
         }
 
         /// <summary>

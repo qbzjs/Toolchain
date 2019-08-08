@@ -41,6 +41,20 @@ namespace PixelCrushers.DialogueSystem
             public float floatValue = 0;
             public float floatValue2 = 0;
             public string[] conditionsQuestEntryNames = new string[0];
+
+            public ConditionItem()
+            {
+                conditionType = s_lastWizardResourceType;
+                questNamesIndex = s_lastQuestNamesIndex;
+                questEntryIndex = s_lastQuestEntryIndex;
+                actorNamesIndex = s_lastActorNamesIndex;
+                actorFieldIndex = s_lastActorFieldIndex;
+                itemNamesIndex = s_lastItemNamesIndex;
+                itemFieldIndex = s_lastItemFieldIndex;
+                locationNamesIndex = s_lastLocationNameIndex;
+                locationFieldIndex = s_lastLocationFieldIndex;
+                variableNamesIndex = s_lastVariableNameIndex;
+            }
         }
 
         public bool IsOpen { get { return isOpen; } }
@@ -163,20 +177,21 @@ namespace PixelCrushers.DialogueSystem
             {
                 item.conditionType = newConditionType;
                 item.conditionsQuestEntryNames = new string[0];
+
+                s_lastWizardResourceType = newConditionType;
             }
 
             if (item.conditionType == ConditionWizardResourceType.Quest)
             {
-
                 // Quest:
                 item.questNamesIndex = EditorGUILayout.Popup(item.questNamesIndex, questNames);
                 item.equalityType = (EqualityType)EditorGUILayout.EnumPopup(item.equalityType, GUILayout.Width(60));
                 item.questState = QuestStateDrawer.LayoutQuestStatePopup(item.questState, 96);
 
+                s_lastQuestNamesIndex = item.questNamesIndex;
             }
             else if (item.conditionType == ConditionWizardResourceType.QuestEntry)
             {
-
                 // Quest Entry:
                 int newQuestNamesIndex = EditorGUILayout.Popup(item.questNamesIndex, complexQuestNames);
                 if (newQuestNamesIndex != item.questNamesIndex)
@@ -192,46 +207,51 @@ namespace PixelCrushers.DialogueSystem
                 item.equalityType = (EqualityType)EditorGUILayout.EnumPopup(item.equalityType, GUILayout.Width(60));
                 item.questState = QuestStateDrawer.LayoutQuestStatePopup(item.questState, 96);
 
+                s_lastQuestNamesIndex = item.questNamesIndex;
+                s_lastQuestEntryIndex = item.questEntryIndex;
+
             }
             else if (item.conditionType == ConditionWizardResourceType.Variable)
             {
-
                 // Variable:
                 item.variableNamesIndex = EditorGUILayout.Popup(item.variableNamesIndex, variableNames);
                 DrawRightHand(item, GetWizardVariableType(item.variableNamesIndex));
 
+                s_lastVariableNameIndex = item.variableNamesIndex;
             }
             else if (item.conditionType == ConditionWizardResourceType.Actor)
             {
-
                 // Actor:
                 item.actorNamesIndex = EditorGUILayout.Popup(item.actorNamesIndex, actorNames);
                 item.actorFieldIndex = EditorGUILayout.Popup(item.actorFieldIndex, actorFieldNames);
                 DrawRightHand(item, GetWizardActorFieldType(item.actorFieldIndex));
 
+                s_lastActorNamesIndex = item.actorNamesIndex;
+                s_lastActorFieldIndex = item.actorFieldIndex;
             }
             else if (item.conditionType == ConditionWizardResourceType.Item)
             {
-
                 // Item:
                 item.itemNamesIndex = EditorGUILayout.Popup(item.itemNamesIndex, itemNames);
                 item.itemFieldIndex = EditorGUILayout.Popup(item.itemFieldIndex, itemFieldNames);
                 DrawRightHand(item, GetWizardItemFieldType(item.itemFieldIndex));
 
+                s_lastItemNamesIndex = item.itemNamesIndex;
+                s_lastItemFieldIndex = item.itemFieldIndex;
             }
             else if (item.conditionType == ConditionWizardResourceType.Location)
             {
-
                 // Location:
                 item.locationNamesIndex = EditorGUILayout.Popup(item.locationNamesIndex, locationNames);
                 item.locationFieldIndex = EditorGUILayout.Popup(item.locationFieldIndex, locationFieldNames);
                 DrawRightHand(item, GetWizardLocationFieldType(item.locationFieldIndex));
 
+                s_lastLocationNameIndex = item.locationNamesIndex;
+                s_lastLocationFieldIndex = item.locationFieldIndex;
             }
 
             else if (item.conditionType == ConditionWizardResourceType.SimStatus)
             {
-
                 // SimStatus:
                 item.simStatusThisID = EditorGUILayout.Toggle(GUIContent.none, item.simStatusThisID, GUILayout.Width(14));
                 if (item.simStatusThisID)
@@ -248,7 +268,6 @@ namespace PixelCrushers.DialogueSystem
 
             else if (item.conditionType == ConditionWizardResourceType.Custom)
             {
-
                 // Custom:
                 item.stringValue = EditorGUILayout.TextField(item.stringValue);
             }

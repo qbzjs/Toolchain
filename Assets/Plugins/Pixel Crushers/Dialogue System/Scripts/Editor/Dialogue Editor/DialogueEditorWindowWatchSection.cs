@@ -173,7 +173,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             {
                 EditorGUILayout.BeginHorizontal();
                 DrawWatch(watch);
-                if (GUILayout.Button(new GUIContent("Update", "Re-evaluate now."), EditorStyles.miniButton, GUILayout.Width(56)))
+                if (GUILayout.Button(new GUIContent("Refresh", "Re-evaluate now."), EditorStyles.miniButton, GUILayout.Width(56)))
                 {
                     EvaluateWatch(watch);
                 }
@@ -409,11 +409,11 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         private void DrawGlobalWatchControls()
         {
             EditorGUILayout.BeginHorizontal();
-            autoUpdateWatches = EditorGUILayout.ToggleLeft("Auto-Update", autoUpdateWatches, GUILayout.Width(100));
+            autoUpdateWatches = EditorGUILayout.ToggleLeft("Auto-Refresh", autoUpdateWatches, GUILayout.Width(100));
             watchUpdateFrequency = EditorGUILayout.FloatField(watchUpdateFrequency, GUILayout.Width(128));
             GUILayout.FlexibleSpace();
             EditorGUI.BeginDisabledGroup(watches.Count == 0);
-            if (GUILayout.Button(new GUIContent("Update All", "Re-evaluate all now."), EditorStyles.miniButton, GUILayout.Width(56 + 27)))
+            if (GUILayout.Button(new GUIContent("Refresh All", "Re-evaluate all now."), EditorStyles.miniButton, GUILayout.Width(56 + 27)))
             {
                 UpdateAllWatches();
             }

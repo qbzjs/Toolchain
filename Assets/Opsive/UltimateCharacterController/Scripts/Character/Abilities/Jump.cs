@@ -93,6 +93,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         private float m_JumpTime = -1;
         private float m_LandTime = -1;
         private float m_InAirTime = -1;
+        private bool m_RepeatedJumpRegistered;
 
         [Snapshot] protected float HoldForce { get { return m_HoldForce; } set { m_HoldForce = value; } }
         [Snapshot] protected bool JumpApplied { get { return m_JumpApplied; } set { m_JumpApplied = value; } }
@@ -198,13 +199,14 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             }
 
             // The character can do a repeated jump after the character is already in the air.
-            if (m_RepeatedJumpInput == null) {
+            if (!m_RepeatedJumpRegistered) {
                 if (m_Handler != null && InputIndex != -1) {
                     m_RepeatedJumpInput = ObjectPool.Get<ActiveInputEvent>();
                     m_RepeatedJumpInput.Initialize(ActiveInputEvent.Type.ButtonDown, InputNames[InputIndex], "OnJumpAbilityRepeatedJump");
                     m_Handler.RegisterInputEvent(m_RepeatedJumpInput);
                 }
                 EventHandler.RegisterEvent(m_GameObject, "OnJumpAbilityRepeatedJump", OnRepeatedJump);
+                m_RepeatedJumpRegistered = true;
             }
             m_ForceImmediateJump = false;
 
@@ -232,8 +234,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
                     m_Handler.UnregisterInputEvent(m_RepeatedJumpInput);
                     ObjectPool.Return(m_RepeatedJumpInput);
                     m_RepeatedJumpInput = null;
-                    EventHandler.UnregisterEvent(m_GameObject, "OnJumpAbilityRepeatedJump", OnRepeatedJump);
                 }
+                EventHandler.UnregisterEvent(m_GameObject, "OnJumpAbilityRepeatedJump", OnRepeatedJump);
+                m_RepeatedJumpRegistered = false;
             } else if (!IsActive) {
                 m_InAirTime = Time.time;
             }

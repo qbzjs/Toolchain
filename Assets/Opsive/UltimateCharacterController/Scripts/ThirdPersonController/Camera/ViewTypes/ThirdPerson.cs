@@ -38,7 +38,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         [Tooltip("The offset from the anchor position when determining if there is a collision.")]
         [SerializeField] protected Vector3 m_CollisionAnchorOffset;
         [Tooltip("The amount of smoothing to apply to the position. Can be zero.")]
-        [SerializeField] protected float m_PositionSmoothing = 0.1f;
+        [SerializeField] protected float m_PositionSmoothing = 0.02f;
         [Tooltip("The amount of smoothing to apply to the position when an object is obstructing the target position. Can be zero.")]
         [SerializeField] protected float m_ObstructionPositionSmoothing = 0.04f;
         [Tooltip("The minimum pitch angle (in degrees).")]
@@ -353,7 +353,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
 
             // Set limits on the pitch.
             if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                m_Pitch = Mathf.Clamp(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
+                m_Pitch = MathUtility.ClampAngle(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
             }
 
             // Prevent the values from getting too large.
@@ -607,6 +607,19 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
             m_PositionSpring.Velocity = m_PrevPositionSpringVelocity;
             m_RotationSpring.Value = m_PrevRotationSpringValue;
             m_RotationSpring.Velocity = m_PrevRotationSpringVelocity;
+        }
+
+        /// <summary>
+        /// The object has been destroyed.
+        /// </summary>
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            m_PositionSpring.Destroy();
+            m_RotationSpring.Destroy();
+            m_SecondaryPositionSpring.Destroy();
+            m_SecondaryRotationSpring.Destroy();
         }
     }
 }

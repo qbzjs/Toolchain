@@ -65,13 +65,17 @@ namespace Opsive.UltimateCharacterController.Utility
                     }
                 }
             }
-            // QuickStart and QuickStop were renamed in version 2.1.3.
             if (type == null) {
+                // TODO: QuickStart and QuickStop were renamed in version 2.1.3.
                 if (name == "Opsive.UltimateCharacterController.Character.Abilities.StartMovement") {
                     return GetType("Opsive.UltimateCharacterController.Character.Abilities.QuickStart");
                 }
                 if (name == "Opsive.UltimateCharacterController.Character.Abilities.StopMovement") {
                     return GetType("Opsive.UltimateCharacterController.Character.Abilities.QuickStop");
+                }
+                // TODO: Add-on directory was renamed in 2.1.5.
+                if (name.Contains("Opsive.UltimateCharacterController.Addons.")) {
+                    return GetType(name.Replace("Opsive.UltimateCharacterController.Addons.", "Opsive.UltimateCharacterController.AddOns."));
                 }
             }
             if (type != null) {
@@ -175,7 +179,7 @@ namespace Opsive.UltimateCharacterController.Utility
         }
 
         /// <summary>
-        /// Returns the camera with the MainCamera tag or the camera with the CameraMonitor attached.
+        /// Returns the camera with the MainCamera tag or the camera with the CameraController attached.
         /// </summary>
         /// <param name="character">The character that the camera is attached to.</param>
         /// <returns>The found camera (if any).</returns>

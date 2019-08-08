@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
-using UnityEngine;
-using UnityEditor;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEditor;
+using UnityEngine;
 
 namespace PixelCrushers.DialogueSystem.DialogueEditor
 {
@@ -317,7 +317,13 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
 
         private string BuildDialogueEntryNodeText(DialogueEntry entry)
         {
-            string text = entry.currentMenuText;
+            var text = string.Empty;
+            if (showTitlesInsteadOfText)
+            {
+                var title = entry.Title;
+                if (!(string.IsNullOrEmpty(title) || string.Equals(title, "New Dialogue Entry"))) text = title;
+            }
+            if (string.IsNullOrEmpty(text)) text = entry.currentMenuText;
             if (string.IsNullOrEmpty(text)) text = entry.currentDialogueText;
             if (string.IsNullOrEmpty(text)) text = "<" + entry.Title + ">";
             if (entry.isGroup) text = "{group} " + text;
@@ -340,7 +346,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             if (!string.IsNullOrEmpty(entry.conditionsString)) text += " [condition]";
             if (!string.IsNullOrEmpty(entry.userScript)) text += " {script}";
             if ((entry.outgoingLinks == null) || (entry.outgoingLinks.Count == 0)) text += " [END]";
-            return text.Substring(0, Mathf.Min(text.Length, MaxNodeTextLength + extraLength));
+            return text.Substring(0, Mathf.Min(text.Length, canvasRectWidthMultiplier * MaxNodeTextLength + extraLength));
         }
 
         private void DrawDialogueTree()
@@ -788,7 +794,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                     changed = true;
                     BuildLanguageListFromFields(entry.fields);
                 }
-            }            
+            }
 
             if (changed) SetDatabaseDirty("Dialogue Entry Fields Changed");
             return changed;
@@ -1073,6 +1079,8 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
 
                         if (link.destinationConversationID == currentConversation.id)
                         {
+                            // Fix any links whose originDialogueID doesn't match the origin entry's ID:
+                            if (link.originDialogueID != entry.id) link.originDialogueID = entry.id;
 
                             // Is a link to an entry in the current conversation, so handle normally:
                             DialogueEntry linkEntry = database.GetDialogueEntry(link);
@@ -1271,13 +1279,21 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             }
         }
 
-        private void LinkToNewEntry(DialogueEntry source)
+        private void LinkToNewEntry(DialogueEntry source, bool useSameActorAssignments = false)
         {
             if (source != null)
             {
                 DialogueEntry newEntry = CreateNewDialogueEntry("New Dialogue Entry");
-                newEntry.ActorID = source.ConversantID;
-                newEntry.ConversantID = (source.ActorID == source.ConversantID) ? database.playerID : source.ActorID;
+                if (useSameActorAssignments)
+                {
+                    newEntry.ActorID = (source.ActorID == source.ConversantID) ? database.playerID : source.ActorID;
+                    newEntry.ConversantID = source.ConversantID;
+                }
+                else
+                {
+                    newEntry.ActorID = source.ConversantID;
+                    newEntry.ConversantID = (source.ActorID == source.ConversantID) ? database.playerID : source.ActorID;
+                }
                 newEntry.canvasRect = new Rect(source.canvasRect.x, source.canvasRect.y + source.canvasRect.height + 20, source.canvasRect.width, source.canvasRect.height);
                 Link link = new Link();
                 link.originConversationID = currentConversation.id;

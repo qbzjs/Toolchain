@@ -37,12 +37,7 @@ namespace Opsive.UltimateCharacterController.Demo
                 return;
             }
 
-            // Only enter the trigger if the object is a character (and not the horse).
-            if (other.gameObject.GetCachedParentComponent<UltimateCharacterLocomotion>() == null || other.gameObject.GetCachedParentComponent<LocalLookSource>() != null) {
-                return;
-            }
-
-            m_DemoManager.EnteredTriggerZone(this);
+            m_DemoManager.EnteredTriggerZone(this, other.gameObject);
         }
 
         /// <summary>

@@ -7,6 +7,10 @@
 using UnityEngine;
 using Opsive.UltimateCharacterController.Character;
 using Opsive.UltimateCharacterController.Game;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Game;
+#endif
 using Opsive.UltimateCharacterController.Objects;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Traits;
@@ -57,6 +61,9 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         private GameObject m_GameObject;
         private Transform m_Transform;
         private AudioSource m_AudioSource;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+#endif
 
         private Transform m_Target;
         private Health m_Health;
@@ -70,6 +77,9 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
             m_GameObject = gameObject;
             m_Transform = transform;
             m_AudioSource = GetComponent<AudioSource>();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = GetComponent<INetworkInfo>();
+#endif
 
             // A turret head is required.
             if (m_TurretHead == null) {
@@ -77,6 +87,18 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
             }
             m_LastFireTime = -m_FireDelay;
         }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        /// <summary>
+        /// Determine if the object should be enabled on the network.
+        /// </summary>
+        private void Start()
+        {
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                enabled = false;
+            }
+        }
+#endif
 
         /// <summary>
         /// Rotates the turret head and attacks if the character is within range.
@@ -122,6 +144,11 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
             var projectile = ObjectPool.Instantiate(m_Projectile, m_FireLocation.position, m_Transform.rotation).GetCachedComponent<Projectile>();
             projectile.Initialize(m_FireLocation.forward * m_VelocityMagnitude, Vector3.zero, m_DamageAmount, m_ImpactForce, m_ImpactForceFrames,
                                     m_ImpactLayers, string.Empty, 0, m_SurfaceImpact, m_GameObject);
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null) {
+                NetworkObjectPool.NetworkSpawn(m_Projectile, projectile.gameObject);
+            }
+#endif
 
             // Spawn a muzzle flash.
             if (m_MuzzleFlash) {

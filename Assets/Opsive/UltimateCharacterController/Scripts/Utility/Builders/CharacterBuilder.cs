@@ -53,10 +53,8 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
                             renderers[j].sharedMaterials = materials;
                         }
                     } else {
-#if THIRD_PERSON_CONTROLLER
                         // The PerspectiveMonitor component is responsible for switching out the material.
-                        firstPersonHiddenObjects[i].AddComponent<ThirdPersonController.Character.Identifiers.ThirdPersonObject>();
-#endif
+                        firstPersonHiddenObjects[i].AddComponent<ThirdPersonObject>();
                     }
                 }
             }
@@ -127,8 +125,8 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
                 AddAnimator(character, animatorController, aiAgent);
             }
 
-#if UNITY_EDITOR
             if (character.GetComponent<UltimateCharacterLocomotion>() == null) {
+#if UNITY_EDITOR
                 var characterLocomotion = character.AddComponent<UltimateCharacterLocomotion>();
                 if (!Application.isPlaying) {
                     // The Moving state should automatically be added.
@@ -145,8 +143,10 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
                         }
                     }
                 }
-            }
+#else
+                character.AddComponent<UltimateCharacterLocomotion>();
 #endif
+            }
 
             if (collider != null) {
                 var positioner = collider.AddComponent<CapsuleColliderPositioner>();

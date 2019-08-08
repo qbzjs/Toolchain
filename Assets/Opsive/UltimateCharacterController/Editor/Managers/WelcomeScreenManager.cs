@@ -71,7 +71,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
 
             // The remaining images should be drawn in a grid.
             GUILayout.BeginHorizontal();
-            GUILayout.Space(width / 2 + 10);
+            GUILayout.Space(width / 2 + 2);
             var selected = GUILayout.SelectionGrid(-1, 
                 new Texture2D[] { m_IntegrationsTexture, m_ForumTexture, m_VideosTexture, m_DiscordTexture, m_RateReviewTexture, m_ShowcaseTexture }, 
                 2,

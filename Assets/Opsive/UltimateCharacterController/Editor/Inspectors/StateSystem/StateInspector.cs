@@ -186,7 +186,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.StateSystem
             var desiredPreset = EditorGUI.ObjectField(new Rect(startRectX, rect.y + 1, presetWidth,
                                                         EditorGUIUtility.singleLineHeight), string.Empty, state.Preset, typeof(PersistablePreset), false) as PersistablePreset;
             if (desiredPreset != null) {
-                if (desiredPreset.Data.ObjectType == obj.GetType().FullName) {
+                if (UnityEngineUtility.GetType(desiredPreset.Data.ObjectType).IsAssignableFrom(obj.GetType())) {
                     if (stateProperty != null) {
                         stateProperty.FindPropertyRelative("m_Preset").objectReferenceValue = desiredPreset;
                     } else {

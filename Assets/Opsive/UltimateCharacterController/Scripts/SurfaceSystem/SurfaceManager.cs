@@ -29,7 +29,6 @@ namespace Opsive.UltimateCharacterController.SurfaceSystem
         }
         private static bool s_Initialized;
         private static int s_MaskID;
-        private static int s_MainTextureID;
         private static int s_SecondaryTextureID;
 
         [Tooltip("An array of SurfaceTypes which are paired to a UV position within a texture.")]
@@ -85,7 +84,6 @@ namespace Opsive.UltimateCharacterController.SurfaceSystem
             InitObjectSurfaces();
 
             s_MaskID = Shader.PropertyToID("_Mask");
-            s_MainTextureID = Shader.PropertyToID("_MainTexture");
             s_SecondaryTextureID = Shader.PropertyToID("_MainTex2");
 
             m_HasTerrain = FindObjectsOfType<Terrain>().Length > 0;
@@ -680,10 +678,6 @@ namespace Opsive.UltimateCharacterController.SurfaceSystem
                 return null;
             }
 
-            if (material.HasProperty(s_MainTextureID)) {
-                return null;
-            }
-
             // The location may be on the secondary map.
             var texture = material.mainTexture;
             if (material.HasProperty(s_MaskID) && material.HasProperty(s_SecondaryTextureID)) {
@@ -832,6 +826,10 @@ namespace Opsive.UltimateCharacterController.SurfaceSystem
             }
 
             var terrainData = terrain.terrainData;
+            if (terrainData.alphamapTextures == null || terrainData.alphamapTextures.Length == 0) {
+                return 0;
+            }
+
             var terrainPos = terrain.transform.position;
 
             // Calculate which splat map cell the worldPosition falls within (ignoring y).

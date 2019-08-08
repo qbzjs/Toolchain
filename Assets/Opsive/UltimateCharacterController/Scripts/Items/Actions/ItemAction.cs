@@ -10,6 +10,10 @@ using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Inventory;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Character;
+#endif
 
 namespace Opsive.UltimateCharacterController.Items.Actions
 {
@@ -27,6 +31,10 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         protected Item m_Item;
         protected InventoryBase m_Inventory;
         protected GameObject m_Character;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        protected INetworkInfo m_NetworkInfo;
+        protected INetworkCharacter m_NetworkCharacter;
+#endif
 
         protected ItemPerspectiveProperties m_FirstPersonPerspectiveProperties;
         protected ItemPerspectiveProperties m_ThirdPersonPerspectiveProperties;
@@ -49,6 +57,13 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             var characterLocomotion = m_GameObject.GetCachedParentComponent<UltimateCharacterLocomotion>();
             m_Character = characterLocomotion.gameObject;
             m_Inventory = m_Character.GetCachedComponent<InventoryBase>();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_Character.GetCachedComponent<INetworkInfo>();
+            m_NetworkCharacter = m_Character.GetCachedComponent<INetworkCharacter>();
+            if (m_NetworkInfo != null && m_NetworkCharacter == null) {
+                Debug.LogError("Error: The character " + m_Character.name + " must have a NetworkCharacter component.");
+            }
+#endif
 
             var perspectiveProperties = GetComponents<ItemPerspectiveProperties>();
             for (int i = 0; i < perspectiveProperties.Length; ++i) {

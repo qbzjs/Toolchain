@@ -133,7 +133,7 @@ namespace Opsive.UltimateCharacterController.StateSystem
         {
             if (m_BlockStates != null) {
                 for (int i = 0; i < m_BlockStates.Length; ++i) {
-                    if (m_BlockStates[i] != null && m_BlockStates[i].Active) {
+                    if (m_BlockStates[i] != null && m_BlockStates[i].Active && !m_BlockStates[i].IsBlocked()) {
                         return true;
                     }
                 }

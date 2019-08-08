@@ -21,12 +21,12 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.AI
         private Fall m_FallAbility;
 
         private Vector2 m_InputVector;
-        private float m_DeltaYawRotation;
+        private Vector3 m_DeltaRotation;
         private bool m_UpdateRotation;
         private int m_LastPathPendingFrame;
 
         public override Vector2 InputVector { get { return m_InputVector; } }
-        public override float DeltaYawRotation { get { return m_DeltaYawRotation; } }
+        public override Vector3 DeltaRotation { get { return m_DeltaRotation; } }
 
         /// <summary>
         /// Initialize the default values.
@@ -76,7 +76,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.AI
                 }
             }
             var rotation = lookRotation * Quaternion.Inverse(m_Transform.rotation);
-            m_DeltaYawRotation = Utility.MathUtility.ClampInnerAngle(rotation.eulerAngles.y);
+            m_DeltaRotation.y = Utility.MathUtility.ClampInnerAngle(rotation.eulerAngles.y);
 
             base.Update();
         }

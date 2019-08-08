@@ -12,7 +12,11 @@ namespace PixelCrushers.DialogueSystem
     public static class DialogueEditorStyles
     {
 
+#if UNITY_2019_1_OR_NEWER
+        public const string CollapsibleHeaderButtonStyleName = "Popup";
+#else
         public const string CollapsibleHeaderButtonStyleName = "dragtab"; // Alternate choice: "OL Title";
+#endif
         public const string CollapsibleSubheaderButtonStyleName = "MiniToolbarButtonLeft"; // Alternate choice: "ObjectFieldThumb";
 
 #if UNITY_5 && !(EVALUATION_VERSION || ACADEMIC)

@@ -61,7 +61,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// </summary>
         public override void ApplyRotation()
         {
-            var targetRotation = m_Transform.rotation * Quaternion.Euler(0, m_CharacterLocomotion.DeltaYawRotation, 0);
+            var targetRotation = m_Transform.rotation * Quaternion.Euler(m_CharacterLocomotion.DeltaRotation);
             var localTargetRotation = MathUtility.InverseTransformQuaternion(Quaternion.LookRotation(Vector3.forward, m_CharacterLocomotion.Up), targetRotation);
 
             // Find the closest angle to the degree restriction.

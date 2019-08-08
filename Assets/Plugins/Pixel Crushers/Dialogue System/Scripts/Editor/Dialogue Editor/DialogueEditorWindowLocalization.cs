@@ -365,12 +365,19 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                 }
                                 else
                                 {
-                                    var displayName = columns[2];
-                                    if (!string.IsNullOrEmpty(displayName) && !quest.FieldExists("Display Name")) Field.SetValue(quest.fields, "Display Name", string.Empty);
-                                    if (quest.FieldExists("Display Name")) Field.SetValue(quest.fields, "Display Name", displayName, FieldType.Localization);
-                                    var group = columns[4];
-                                    if (!string.IsNullOrEmpty(group) && !quest.FieldExists("Group")) Field.SetValue(quest.fields, "Group", string.Empty);
-                                    if (quest.FieldExists("Group")) Field.SetValue(quest.fields, "Group", group, FieldType.Localization);
+                                    var displayName = columns[1];
+                                    var translatedDisplayName = columns[2];
+                                    if (!string.IsNullOrEmpty(translatedDisplayName))
+                                    {
+                                        if (!quest.FieldExists("Display Name")) Field.SetValue(quest.fields, "Display Name", displayName);
+                                        Field.SetValue(quest.fields, "Display Name " + language, translatedDisplayName, FieldType.Localization);
+                                    }
+                                    var group = columns[3];
+                                    var translatedGroup = columns[4];
+                                    var needToAddGroup = !quest.FieldExists("Group") && (!string.IsNullOrEmpty(group) || !string.IsNullOrEmpty(translatedGroup));
+                                    if (quest.FieldExists("Group") && string.IsNullOrEmpty(quest.LookupValue("Group")) && !string.IsNullOrEmpty(group)) needToAddGroup = true;
+                                    if (needToAddGroup) Field.SetValue(quest.fields, "Group", group);
+                                    if (quest.FieldExists("Group")) Field.SetValue(quest.fields, "Group " + language, translatedGroup, FieldType.Localization);
                                     Field.SetValue(quest.fields, "Description " + language, columns[6], FieldType.Localization);
                                     Field.SetValue(quest.fields, "Success Description " + language, columns[8], FieldType.Localization);
                                     Field.SetValue(quest.fields, "Failure Description " + language, columns[10], FieldType.Localization);

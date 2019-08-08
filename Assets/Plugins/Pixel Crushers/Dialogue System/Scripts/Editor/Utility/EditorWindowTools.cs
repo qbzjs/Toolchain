@@ -79,7 +79,11 @@ namespace PixelCrushers.DialogueSystem
             {
                 GUILayout.BeginHorizontal();
                 GUI.backgroundColor = foldout ? DialogueEditorStyles.collapsibleHeaderOpenColor : DialogueEditorStyles.collapsibleHeaderClosedColor;
+#if UNITY_2019_1_OR_NEWER
+                var text = label;
+#else
                 var text = topLevel ? ("<b>" + label + "</b>") : label;
+#endif
                 var guiContent = new GUIContent((foldout ? DialogueEditorStyles.FoldoutOpenArrow : DialogueEditorStyles.FoldoutClosedArrow) + text, tooltip);
                 var guiStyle = topLevel ? DialogueEditorStyles.CollapsibleHeaderButtonStyleName : DialogueEditorStyles.CollapsibleSubheaderButtonStyleName;
                 if (!GUILayout.Toggle(true, guiContent, guiStyle))
@@ -164,7 +168,7 @@ namespace PixelCrushers.DialogueSystem
             if (textTableProperty != null) textTableProperty.objectReferenceValue = null;
         }
 
-        #endregion
+#endregion
 
 
 

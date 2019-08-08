@@ -41,7 +41,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character
         private string SelectedAbilityIndexKey { get { return c_EditorPrefsSelectedAbilityIndexKey + "." + target.GetType() + "." + target.name; } }
         private string SelectedItemAbilityIndexKey { get { return c_EditorPrefsSelectedItemAbilityIndexKey + "." + target.GetType() + "." + target.name; } }
         private string SelectedEffectIndexKey { get { return c_EditorPrefsSelectedEffectIndexKey + "." + target.GetType() + "." + target.name; } }
-        
+
         private UltimateCharacterLocomotion m_CharacterLocomotion;
         private ReorderableList m_ReorderableMovementTypeList;
         private ReorderableList m_ReorderableAbilityList;
@@ -158,8 +158,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character
                         }
                     }
                 }
-                ReorderableListSerializationHelper.DrawReorderableList(ref m_ReorderableMovementTypeList, this, m_CharacterLocomotion.MovementTypes, "m_MovementTypeData", 
-                                                                OnMovementTypeListDrawHeader, OnMovementTypeListDraw, OnMovementTypeListReorder, OnMovementTypeListAdd, 
+                ReorderableListSerializationHelper.DrawReorderableList(ref m_ReorderableMovementTypeList, this, m_CharacterLocomotion.MovementTypes, "m_MovementTypeData",
+                                                                OnMovementTypeListDrawHeader, OnMovementTypeListDraw, OnMovementTypeListReorder, OnMovementTypeListAdd,
                                                                 OnMovementTypeListRemove, OnMovementTypeListSelect,
                                                                 DrawSelectedMovementType, SelectedMovementTypeIndexKey, true, false);
 
@@ -179,6 +179,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character
                         EditorGUILayout.PropertyField(PropertyFromName("m_MotorDamping"));
                         EditorGUILayout.PropertyField(PropertyFromName("m_MotorAirborneAcceleration"));
                         EditorGUILayout.PropertyField(PropertyFromName("m_MotorAirborneDamping"));
+                        EditorGUILayout.Slider(PropertyFromName("m_PreviousAccelerationInfluence"), 0, 1);
                     }
                     EditorGUI.indentLevel--;
                     var useRootMotionRotation = PropertyFromName("m_UseRootMotionRotation");
@@ -970,8 +971,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character
                     stateIndexHelper.StateIndexData[i] = i;
                 }
                 var stateIndexSerializedObject = new SerializedObject(stateIndexHelper);
-                m_ReorderableMovementTypeStateList = StateInspector.DrawStates(m_ReorderableMovementTypeStateList, serializedObject, stateIndexSerializedObject.FindProperty("m_StateIndexData"), 
-                                                            GetSelectedMovementTypeStateIndexKey(selectedMovementType), OnMovementTypeStateListDraw, OnMovementTypeStateListAdd, 
+                m_ReorderableMovementTypeStateList = StateInspector.DrawStates(m_ReorderableMovementTypeStateList, serializedObject, stateIndexSerializedObject.FindProperty("m_StateIndexData"),
+                                                            GetSelectedMovementTypeStateIndexKey(selectedMovementType), OnMovementTypeStateListDraw, OnMovementTypeStateListAdd,
                                                             OnMovementTypeStateListReorder, OnMovementTypeStateListRemove);
                 DestroyImmediate(gameObject);
             }
@@ -990,6 +991,11 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character
         /// </summary>
         private void OnMovementTypeStateListDraw(Rect rect, int index, bool isActive, bool isFocused)
         {
+            if (m_CharacterLocomotion.MovementTypes == null || EditorPrefs.GetInt(SelectedMovementTypeIndexKey) >= m_CharacterLocomotion.MovementTypes.Length) {
+                m_ReorderableMovementTypeStateList.index = -1;
+                return;
+            }
+
             EditorGUI.BeginChangeCheck();
             var movementType = m_CharacterLocomotion.MovementTypes[EditorPrefs.GetInt(SelectedMovementTypeIndexKey)];
 

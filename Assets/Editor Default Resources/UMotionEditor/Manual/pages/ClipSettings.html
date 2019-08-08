@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="versionHeader">
-			<p class="versionText">Version: <b>1.18</b> </p>
+			<p class="versionText">Version: <b>1.19p02</b> </p>
 		</div>
 		<div class="leftContent">
 			<div class="leftContentInner">
@@ -246,6 +246,22 @@
     <tr class="themeTableRow">
         <td class="themeTableCell">Loop Clip</td>
         <td class="themeTableCell">When enabled, the exported clips loop flag will be set. This will loop the clip when added to an animator controller. Furthermore the <a href="DopesheetCurves.html" class="link">auto/clamped auto tangent mode</a> is changed in such a way, that the first and last key's tangent loop seamlessly.</td>
+    </tr>
+    <tr class="themeTableRow">
+        <td class="themeTableCell">Generate Root Motion Curves</td>
+        <td class="themeTableCell">When enabled, UMotion will generate the root motion curves for humanoid *.anim files directly instead of Unity. Use the settings below instead of the settings usually shown in the Inspector of the exported *.anim file. Not supported for projects of type generic or when exporting to *.FBX.</td>
+    </tr>
+    <tr class="themeTableRow">
+        <td class="themeTableCell">Root Transform Rotation - Bake Into Pose</td>
+        <td class="themeTableCell">Bakes the root motion rotation into the animation. That means that when the animation loops, the character's rotation will be reset to the starting rotation.</td>
+    </tr>
+    <tr class="themeTableRow">
+        <td class="themeTableCell">Root Transform Position (Y) - Bake Into Pose</td>
+        <td class="themeTableCell">Bakes the root motion y position into the animation. That means that when the animation loops, the character's y position will be reset to the starting value.</td>
+    </tr>
+    <tr class="themeTableRow">
+        <td class="themeTableCell">Root Transform Position (XZ) - Bake Into Pose</td>
+        <td class="themeTableCell">Bakes the root motion x and z position into the animation. That means that when the animation loops, the character's x and z position will be reset to the starting value.</td>
     </tr>
 </table>
 				<div class="mainContentFooter">

@@ -6,11 +6,11 @@
 
 using UnityEngine;
 using Opsive.UltimateCharacterController.Character;
+using Opsive.UltimateCharacterController.Character.Identifiers;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Items;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
-using Opsive.UltimateCharacterController.ThirdPersonController.Character.Identifiers;
 using System.Collections.Generic;
 
 namespace Opsive.UltimateCharacterController.ThirdPersonController.Character
@@ -51,12 +51,27 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character
         private List<int> m_ThirdPersonRenderers = new List<int>();
 
         /// <summary>
+        /// Registeres for any interested events.
+        /// </summary>
+        protected override void Awake()
+        {
+            base.Awake();
+
+            m_GameObject = gameObject;
+            m_CharacterLocomotion = m_GameObject.GetCachedComponent<UltimateCharacterLocomotion>();
+
+            m_FirstPersonPerspective = m_CharacterLocomotion.FirstPersonPerspective;
+            EventHandler.RegisterEvent<bool>(m_GameObject, "OnCameraChangePerspectives", OnChangePerspectives);
+            EventHandler.RegisterEvent<Item>(m_GameObject, "OnInventoryAddItem", OnAddItem);
+            EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
+            EventHandler.RegisterEvent(m_GameObject, "OnRespawn", OnRespawn);
+        }
+
+        /// <summary>
         /// Initialize the default values.
         /// </summary>
         private void Start()
         {
-            m_GameObject = gameObject;
-            m_CharacterLocomotion = m_GameObject.GetCachedComponent<UltimateCharacterLocomotion>();
             m_Inventory = m_GameObject.GetCachedComponent<Inventory.InventoryBase>();
 
             // The third person objects will be hidden with the invisible shadow caster while in first person view.
@@ -72,15 +87,9 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character
                 }
             }
 
-            m_FirstPersonPerspective = m_CharacterLocomotion.FirstPersonPerspective;
-            EventHandler.RegisterEvent<bool>(m_GameObject, "OnCameraChangePerspectives", OnChangePerspectives);
-            EventHandler.RegisterEvent<Item>(m_GameObject, "OnInventoryAddItem", OnAddItem);
-            EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
-            EventHandler.RegisterEvent(m_GameObject, "OnRespawn", OnRespawn);
-
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-            var networkCharacter = m_GameObject.GetCachedComponent<Networking.Character.INetworkCharacter>();
-            if (networkCharacter != null && !networkCharacter.IsLocalPlayer()) {
+            var networkInfo = m_GameObject.GetCachedComponent<Networking.INetworkInfo>();
+            if (networkInfo != null && !networkInfo.IsLocalPlayer()) {
                 // Remote players should always be in the third person view.
                 m_FirstPersonPerspective = false;
                 EventHandler.UnregisterEvent<bool>(m_GameObject, "OnCameraChangePerspectives", OnChangePerspectives);

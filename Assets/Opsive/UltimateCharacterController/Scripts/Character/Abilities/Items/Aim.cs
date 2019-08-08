@@ -7,7 +7,6 @@
 using UnityEngine;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Input;
-using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 {
@@ -218,11 +217,18 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                 return;
             }
 
+            // The look source may be null if a remote player is still being initialized.
+            if (m_LookSource == null) {
+                return;
+            }
+
             // Determine the direction that the character should be facing.
             var lookDirection = m_LookSource.LookDirection(m_LookSource.LookPosition(), true, m_CharacterLayerManager.IgnoreInvisibleCharacterLayers, false);
             var localLookDirection = m_Transform.InverseTransformDirection(lookDirection);
             localLookDirection.y = 0;
-            m_CharacterLocomotion.DeltaYawRotation = MathUtility.ClampInnerAngle(Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y);
+            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
+            deltaRotation.y = Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y;
+            m_CharacterLocomotion.DeltaRotation = deltaRotation;
 
             base.UpdateRotation();
         }

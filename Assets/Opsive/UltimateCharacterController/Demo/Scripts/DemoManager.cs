@@ -35,8 +35,6 @@ namespace Opsive.UltimateCharacterController.Demo
             [SerializeField] protected string m_Description;
             [Tooltip("The text that appears beneath the header requiring action.")]
             [SerializeField] protected string m_Action;
-            [Tooltip("The location the character should teleport to when moving to this zone.")]
-            [SerializeField] protected Transform m_TeleportLocation;
             [Tooltip("The trigger that enables the header and description text.")]
             [SerializeField] protected DemoZoneTrigger m_DemoZoneTrigger;
             [Tooltip("The objects that the trigger should enable.")]
@@ -47,15 +45,12 @@ namespace Opsive.UltimateCharacterController.Demo
             public string Header { get { return m_Header; } }
             public string Description { get { return m_Description; } }
             public string Action { get { return m_Action; } }
-            public Transform TeleportLocation { get { return m_TeleportLocation; } }
             public DemoZoneTrigger DemoZoneTrigger { get { return m_DemoZoneTrigger; } }
             public MonoBehaviour[] EnableObjects { get { return m_EnableObjects; } }
             public GameObject[] ToggleObjects { get { return m_ToggleObjects; } }
 
             private int m_Index;
-            private SpawnPoint m_SpawnPoint;
             public int Index { get { return m_Index; } }
-            public SpawnPoint SpawnPoint { get { return m_SpawnPoint; } }
 
             /// <summary>
             /// Initializes the zone.
@@ -66,8 +61,10 @@ namespace Opsive.UltimateCharacterController.Demo
                 m_Index = index;
 
                 // Assign the spawn point so the character will know where to spawn upon death.
-                m_SpawnPoint = m_TeleportLocation.GetComponent<SpawnPoint>();
-                m_SpawnPoint.Grouping = index;
+                var spawnPoints = m_DemoZoneTrigger.GetComponentsInChildren<SpawnPoint>();
+                for (int i = 0; i < spawnPoints.Length; ++i) {
+                    spawnPoints[i].Grouping = index;
+                }
 
                 // The toggled objects should start disabled.
                 for (int i = 0; i < m_ToggleObjects.Length; ++i) {
@@ -104,8 +101,13 @@ namespace Opsive.UltimateCharacterController.Demo
         [SerializeField] protected string m_NoZoneTitle;
         [Tooltip("The description that should be displayed when the character is not in a zone.")]
         [SerializeField] protected string m_NoZoneDescription;
-        [Tooltip("Is this manager part of an addon?")]
-        [SerializeField] protected bool m_AddonDemoManager;
+        [Tooltip("Is this manager part of an add-on?")]
+        [UnityEngine.Serialization.FormerlySerializedAs("m_AddonDemoManager")]
+        [SerializeField] protected bool m_AddOnDemoManager;
+#if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
+        [Tooltip("Specifies the perspective that the character should start in if there is no perspective selection GameObject.")]
+        [SerializeField] protected bool m_DefaultFirstPersonStart = true;
+#endif
 
         public GameObject Character { get { return m_Character; } }
         public bool FreeRoam { get { return m_FreeRoam; } set { m_FreeRoam = value; } }
@@ -125,7 +127,7 @@ namespace Opsive.UltimateCharacterController.Demo
         /// <summary>
         /// Initialize the default values.
         /// </summary>
-        private void Start()
+        protected virtual void Awake()
         {
 #if !FIRST_PERSON_CONTROLLER || !THIRD_PERSON_CONTROLLER
             var demoZones = new List<DemoZone>(m_DemoZones);
@@ -138,7 +140,7 @@ namespace Opsive.UltimateCharacterController.Demo
             m_DemoZones = demoZones.ToArray();
 #endif
             for (int i = 0; i < m_DemoZones.Length; ++i) {
-                if (m_DemoZones[i].TeleportLocation == null) {
+                if (m_DemoZones[i].DemoZoneTrigger == null) {
                     continue;
                 }
 
@@ -148,9 +150,38 @@ namespace Opsive.UltimateCharacterController.Demo
             
             // Enable the UI after the character has spawned.
             m_TextPanel.SetActive(false);
-            m_PreviousZoneArrow.SetActive(false);
-            m_NextZoneArrow.SetActive(false);
-            m_Action.enabled = false;
+            if (m_PreviousZoneArrow != null) {
+                m_PreviousZoneArrow.SetActive(false);
+            }
+            if (m_NextZoneArrow != null) {
+                m_NextZoneArrow.SetActive(false);
+            }
+            if (m_Action != null) {
+                m_Action.enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Initializes the character.
+        /// </summary>
+        protected virtual void Start()
+        {
+            InitializeCharacter(m_Character, true);
+        }
+
+        /// <summary>
+        /// Initializes the Demo Manager with the specified character.
+        /// </summary>
+        /// <param name="character">The character that should be initialized/</param>
+        /// <param name="teleport">Should the character be teleported to the first demo zone?</param>
+        protected void InitializeCharacter(GameObject character, bool teleport)
+        {
+            m_Character = character;
+
+            if (m_Character == null) {
+                return;
+            }
+
             m_CharacterLocomotion = m_Character.GetComponent<UltimateCharacterLocomotion>();
             m_CharacterHealth = m_Character.GetComponent<Health>();
             m_CharacterRespawner = m_Character.GetComponent<Respawner>();
@@ -215,14 +246,12 @@ namespace Opsive.UltimateCharacterController.Demo
 
                 m_PerspectiveSelection.SetActive(true);
             } else {
-                // Determine if the character is a first or third person character.
-                var firstPersonPerspective = m_CharacterLocomotion.MovementTypeFullName.Contains("FirstPerson");
-                SelectStartingPerspective(firstPersonPerspective);
+                SelectStartingPerspective(m_DefaultFirstPersonStart, teleport);
             }
 #elif FIRST_PERSON_CONTROLLER
-            SelectStartingPerspective(true);
+            SelectStartingPerspective(true, teleport);
 #else
-            SelectStartingPerspective(false);
+            SelectStartingPerspective(false, teleport);
 #endif
         }
 
@@ -248,8 +277,14 @@ namespace Opsive.UltimateCharacterController.Demo
         /// The character has entered a trigger zone.
         /// </summary>
         /// <param name="demoZoneTrigger">The trigger zone that the character entered.</param>
-        public void EnteredTriggerZone(DemoZoneTrigger demoZoneTrigger)
+        /// <param name="other">The GameObject that entered the trigger.</param>
+        public void EnteredTriggerZone(DemoZoneTrigger demoZoneTrigger, GameObject other)
         {
+            var characterLocomotion = other.GetComponentInParent<UltimateCharacterLocomotion>();
+            if (characterLocomotion == null || characterLocomotion.gameObject != m_Character) {
+                return;
+            }
+
             DemoZone demoZone;
             if (!m_DemoZoneTriggerDemoZoneMap.TryGetValue(demoZoneTrigger, out demoZone)) {
                 return;
@@ -270,7 +305,7 @@ namespace Opsive.UltimateCharacterController.Demo
         private void ActiveDemoZone(DemoZone demoZone, bool teleport)
         {
             // The ride ability should be force stopped.
-            var ride = m_CharacterLocomotion.GetAbility<Character.Abilities.Ride>();
+            var ride = m_CharacterLocomotion.GetAbility<UltimateCharacterController.Character.Abilities.Ride>();
             if (ride != null && ride.IsActive) {
                 m_CharacterLocomotion.TryStopAbility(ride, true);
             }
@@ -279,8 +314,12 @@ namespace Opsive.UltimateCharacterController.Demo
             }
             m_LastZoneIndex = demoZone.Index;
             ShowText(demoZone.Header, demoZone.Description, demoZone.Action);
-            m_PreviousZoneArrow.SetActive(demoZone.Index != 0);
-            m_NextZoneArrow.SetActive(demoZone.Index != m_DemoZones.Length - 1);
+            if (m_PreviousZoneArrow != null) {
+                m_PreviousZoneArrow.SetActive(demoZone.Index != 0);
+            }
+            if (m_NextZoneArrow != null) {
+                m_NextZoneArrow.SetActive(demoZone.Index != m_DemoZones.Length - 1);
+            }
             m_EnterFrame = Time.frameCount;
             for (int i = 0; i < demoZone.EnableObjects.Length; ++i) {
                 demoZone.EnableObjects[i].enabled = true;
@@ -290,7 +329,7 @@ namespace Opsive.UltimateCharacterController.Demo
             }
 
             // When the character reaches the outside section all doors should be unlocked.
-            if (!m_AddonDemoManager && !m_FullAccess && demoZone.Index >= m_DemoZones.Length - 6) {
+            if (!m_AddOnDemoManager && !m_FullAccess && demoZone.Index >= m_DemoZones.Length - 6) {
                 for (int i = 0; i < m_Doors.Count; ++i) {
                     m_Doors[i].CloseOnTriggerExit = false;
                     m_Doors[i].OpenClose(true, true, false);
@@ -299,11 +338,14 @@ namespace Opsive.UltimateCharacterController.Demo
             }
 
             if (teleport) {
-                m_CharacterLocomotion.SetPositionAndRotation(demoZone.TeleportLocation.position, demoZone.TeleportLocation.rotation, true);
+                var position = Vector3.zero;
+                var rotation = Quaternion.identity;
+                SpawnPointManager.GetPlacement(m_Character, demoZone.Index, ref position, ref rotation);
+                m_CharacterLocomotion.SetPositionAndRotation(position, rotation, true);
             }
 
             // Set the group after the state so the default state doesn't override the grouping value.
-            m_CharacterRespawner.Grouping = demoZone.SpawnPoint.Grouping;
+            m_CharacterRespawner.Grouping = demoZone.Index;
         }
 
         /// <summary>
@@ -322,7 +364,7 @@ namespace Opsive.UltimateCharacterController.Demo
             m_ActiveZoneIndices.Remove(demoZone.Index);
 
             // Show standard text if the demo zone isn't the last demo zone.
-            if (m_ActiveZoneIndices.Count == 0 && (m_AddonDemoManager || demoZone.Index != m_DemoZones.Length - 1) && m_EnterFrame != Time.frameCount) {
+            if (m_ActiveZoneIndices.Count == 0 && (m_AddOnDemoManager || demoZone.Index != m_DemoZones.Length - 1) && m_EnterFrame != Time.frameCount) {
                 ShowText(m_NoZoneTitle.Replace("{AssetName}", AssetInfo.Name), m_NoZoneDescription, string.Empty);
             } else if (m_ActiveZoneIndices.Count > 0 && m_LastZoneIndex != m_ActiveZoneIndices[m_ActiveZoneIndices.Count - 1]) {
                 ActiveDemoZone(m_DemoZones[m_ActiveZoneIndices[m_ActiveZoneIndices.Count - 1]], false);
@@ -347,7 +389,18 @@ namespace Opsive.UltimateCharacterController.Demo
         /// Sets the starting perspective on the character.
         /// </summary>
         /// <param name="firstPersonPerspective">Should the character start in a first person perspective?</param>
+        /// <param name="teleport">Should the character be teleported to the demo zone?</param>
         public void SelectStartingPerspective(bool firstPersonPerspective)
+        {
+            SelectStartingPerspective(firstPersonPerspective, true);
+        }
+
+        /// <summary>
+        /// Sets the starting perspective on the character.
+        /// </summary>
+        /// <param name="firstPersonPerspective">Should the character start in a first person perspective?</param>
+        /// <param name="teleport">Should the character be teleported to the demo zone?</param>
+        protected void SelectStartingPerspective(bool firstPersonPerspective, bool teleport)
         {
             m_CharacterLocomotion.SetActive(true, true);
 
@@ -357,12 +410,12 @@ namespace Opsive.UltimateCharacterController.Demo
             // Ensure the camera starts with the correct view type.
             cameraController.FirstPersonViewTypeFullName = "Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTypes.Combat";
             cameraController.ThirdPersonViewTypeFullName = "Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes.Adventure";
-            cameraController.Character = m_Character;
             cameraController.SetPerspective(firstPersonPerspective, true);
+            cameraController.Character = m_Character;
 
             // Set the starting position.
             m_LastZoneIndex = -1;
-            ActiveDemoZone(m_DemoZones[0], true);
+            ActiveDemoZone(m_DemoZones[0], teleport);
 
             // The cursor should be hidden to start the demo.
             Cursor.lockState = CursorLockMode.Locked;
@@ -391,8 +444,10 @@ namespace Opsive.UltimateCharacterController.Demo
             m_TextPanel.SetActive(true);
             m_Header.text = "--- " + header + " ---";
             m_Description.text = description.Replace("{AssetName}", AssetInfo.Name);
-            m_Action.text = action;
-            m_Action.enabled = !string.IsNullOrEmpty(action);
+            if (m_Action != null) {
+                m_Action.text = action;
+                m_Action.enabled = !string.IsNullOrEmpty(action);
+            }
         }
     }
 }

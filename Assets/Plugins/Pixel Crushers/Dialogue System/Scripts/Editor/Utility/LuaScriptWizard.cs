@@ -50,6 +50,20 @@ namespace PixelCrushers.DialogueSystem
             public ValueSetMode valueSetMode = ValueSetMode.To;
             public NetSetMode netSetMode = NetSetMode.Set;
             public string[] scriptQuestEntryNames = new string[0];
+
+            public ScriptItem()
+            {
+                resourceType = LuaWizardBase.GetConditionResourceTypeToScriptResourceType(s_lastWizardResourceType);
+                questNamesIndex = s_lastQuestNamesIndex;
+                questEntryIndex = s_lastQuestEntryIndex;
+                actorNamesIndex = s_lastActorNamesIndex;
+                actorFieldIndex = s_lastActorFieldIndex;
+                itemNamesIndex = s_lastItemNamesIndex;
+                itemFieldIndex = s_lastItemFieldIndex;
+                locationNamesIndex = s_lastLocationNameIndex;
+                locationFieldIndex = s_lastLocationFieldIndex;
+                variableNamesIndex = s_lastVariableNameIndex;
+            }
         }
 
         private bool isOpen = false;
@@ -181,21 +195,22 @@ namespace PixelCrushers.DialogueSystem
             {
                 item.resourceType = newResourceType;
                 item.scriptQuestEntryNames = new string[0];
+
+                s_lastWizardResourceType = LuaWizardBase.GetScriptResourceTypeToConditionResourceType(newResourceType);
             }
 
             if (item.resourceType == ScriptWizardResourceType.Quest)
             {
-
                 // Quest:
                 item.questNamesIndex = EditorGUILayout.Popup(item.questNamesIndex, questNames);
                 EditorGUILayout.LabelField("to", GUILayout.Width(22));
                 //---Was: item.questState = (QuestState) EditorGUILayout.EnumPopup(item.questState, GUILayout.Width(96));
                 item.questState = QuestStateDrawer.LayoutQuestStatePopup(item.questState, 96);
 
+                s_lastQuestNamesIndex = item.questNamesIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.QuestEntry)
             {
-
                 // Quest Entry:
                 int newQuestNamesIndex = EditorGUILayout.Popup(item.questNamesIndex, complexQuestNames);
                 if (newQuestNamesIndex != item.questNamesIndex)
@@ -212,10 +227,11 @@ namespace PixelCrushers.DialogueSystem
                 //---Was: item.questState = (QuestState) EditorGUILayout.EnumPopup(item.questState, GUILayout.Width(96));
                 item.questState = QuestStateDrawer.LayoutQuestStatePopup(item.questState, 96);
 
+                s_lastQuestNamesIndex = item.questNamesIndex;
+                s_lastQuestEntryIndex = item.questEntryIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.Variable)
             {
-
                 // Variable:
                 item.variableNamesIndex = EditorGUILayout.Popup(item.variableNamesIndex, variableNames);
                 var variableType = GetWizardVariableType(item.variableNamesIndex);
@@ -232,10 +248,11 @@ namespace PixelCrushers.DialogueSystem
                         item.stringValue = EditorGUILayout.TextField(item.stringValue);
                         break;
                 }
+
+                s_lastVariableNameIndex = item.variableNamesIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.Actor)
             {
-
                 // Actor:
                 item.actorNamesIndex = EditorGUILayout.Popup(item.actorNamesIndex, actorNames);
                 item.actorFieldIndex = EditorGUILayout.Popup(item.actorFieldIndex, actorFieldNames);
@@ -254,10 +271,11 @@ namespace PixelCrushers.DialogueSystem
                         break;
                 }
 
+                s_lastActorNamesIndex = item.actorNamesIndex;
+                s_lastActorFieldIndex = item.actorFieldIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.Item)
             {
-
                 // Item:
                 item.itemNamesIndex = EditorGUILayout.Popup(item.itemNamesIndex, itemNames);
                 item.itemFieldIndex = EditorGUILayout.Popup(item.itemFieldIndex, itemFieldNames);
@@ -276,10 +294,11 @@ namespace PixelCrushers.DialogueSystem
                         break;
                 }
 
+                s_lastItemNamesIndex = item.itemNamesIndex;
+                s_lastItemFieldIndex = item.itemFieldIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.Location)
             {
-
                 // Location:
                 item.locationNamesIndex = EditorGUILayout.Popup(item.locationNamesIndex, locationNames);
                 item.locationFieldIndex = EditorGUILayout.Popup(item.locationFieldIndex, locationFieldNames);
@@ -298,10 +317,11 @@ namespace PixelCrushers.DialogueSystem
                         break;
                 }
 
+                s_lastLocationNameIndex = item.locationNamesIndex;
+                s_lastLocationFieldIndex = item.locationFieldIndex;
             }
             else if (item.resourceType == ScriptWizardResourceType.SimStatus)
             {
-
                 // SimStatus:
                 item.simStatusID = EditorGUILayout.IntField(item.simStatusID, GUILayout.Width(50));
                 item.simStatusType = (SimStatusType)EditorGUILayout.EnumPopup(item.simStatusType);
@@ -309,14 +329,12 @@ namespace PixelCrushers.DialogueSystem
             }
             else if (item.resourceType == ScriptWizardResourceType.Alert)
             {
-
                 // Alert:
                 item.stringValue = EditorGUILayout.TextField(item.stringValue);
 
             }
             else if (item.resourceType == ScriptWizardResourceType.Custom)
             {
-
                 // Custom:
                 item.stringValue = EditorGUILayout.TextField(item.stringValue);
             }

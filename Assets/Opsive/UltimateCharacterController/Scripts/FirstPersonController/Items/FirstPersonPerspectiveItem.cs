@@ -271,9 +271,13 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
                     objTransform = firstPersonObjects.transform;
                 } else {
                     var camera = UnityEngineUtility.FindCamera(character);
-                    if ((firstPersonObjects = camera.GetComponentInChildren<FirstPersonObjects>(true))) {
+                    if (camera != null && (firstPersonObjects = camera.GetComponentInChildren<FirstPersonObjects>(true))) {
                         objTransform = firstPersonObjects.transform;
                     }
+                }
+                // The character may not have a first person perspective setup.
+                if (objTransform == null) {
+                    return;
                 }
 
                 // A First Person Base Object ID can specified if there are multiple FirstPersonBaseObjects and the item should be spawned under a particular
@@ -926,6 +930,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
             if (m_Character == null) {
                 return;
             }
+
+            m_PositionSpring.Destroy();
+            m_RotationSpring.Destroy();
+            m_PivotPositionSpring.Destroy();
+            m_PivotRotationSpring.Destroy();
 
             EventHandler.UnregisterEvent<float>(m_Character, "OnCharacterLand", OnCharacterLand);
             EventHandler.UnregisterEvent<float>(m_Character, "OnCharacterChangeTimeScale", OnChangeTimeScale);

@@ -8,14 +8,16 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Character;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Game;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Game;
+using Opsive.UltimateCharacterController.Networking.Objects;
+#endif
 using Opsive.UltimateCharacterController.Objects.ItemAssist;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Traits;
 using Opsive.UltimateCharacterController.Utility;
-#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
-using Opsive.UltimateCharacterController.Networking.Game;
-#endif
 
 namespace Opsive.UltimateCharacterController.Objects
 {
@@ -26,6 +28,9 @@ namespace Opsive.UltimateCharacterController.Objects
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Destructible : TrajectoryObject
     {
+        [Tooltip("The layers that the object can stick to.")]
+        [SerializeField] protected LayerMask m_StickyLayers = ~((1 << LayerManager.IgnoreRaycast) | (1 << LayerManager.Water) | (1 << LayerManager.UI) | (1 << LayerManager.VisualEffect) |
+                                                                (1 << LayerManager.Overlay) | (1 << LayerManager.Character) | (1 << LayerManager.SubCharacter));
         [Tooltip("Should the projectile be destroyed when it collides with another object?")]
         [SerializeField] protected bool m_DestroyOnCollision = true;
         [Tooltip("The amount of time after a collision that the object should be destroyed.")]
@@ -35,20 +40,26 @@ namespace Opsive.UltimateCharacterController.Objects
         [Tooltip("Unity event invoked when the destructable hits another object.")]
         [SerializeField] protected UnityFloatVector3Vector3GameObjectEvent m_OnImpactEvent;
 
+        public LayerMask StickyLayers { get { return m_StickyLayers; } set { m_StickyLayers = value; } }
         public bool DestroyOnCollision { get { return m_DestroyOnCollision; } set { m_DestroyOnCollision = value; } }
         public float DestructionDelay { get { return m_DestructionDelay; } set { m_DestructionDelay = value; } }
         public ObjectSpawnInfo[] SpawnedObjectsOnDestruction { get { return m_SpawnedObjectsOnDestruction; } set { m_SpawnedObjectsOnDestruction = value; } }
         public UnityFloatVector3Vector3GameObjectEvent OnImpactEvent { get { return m_OnImpactEvent; } set { m_OnImpactEvent = value; } }
 
-        private float m_DamageAmount;
-        private float m_ImpactForce;
-        private int m_ImpactForceFrames;
-        private string m_ImpactStateName;
-        private float m_ImpactStateDisableTimer;
+        protected float m_DamageAmount;
+        protected float m_ImpactForce;
+        protected int m_ImpactForceFrames;
+        protected string m_ImpactStateName;
+        protected float m_ImpactStateDisableTimer;
         private TrailRenderer m_TrailRenderer;
         private ParticleSystem m_ParticleSystem;
+        private bool m_Destroyed;
 
         private UltimateCharacterLocomotion m_StickyCharacterLocomotion;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private IDestructibleMonitor m_DestructibleMonitor;
+#endif
 
         /// <summary>
         /// Initialize the defualt values.
@@ -71,6 +82,15 @@ namespace Opsive.UltimateCharacterController.Objects
             rigidbody.mass = m_Mass;
             rigidbody.isKinematic = true;
             rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = GetComponent<INetworkInfo>();
+            m_DestructibleMonitor = GetComponent<IDestructibleMonitor>();
+#endif
+
+            if (m_DestroyOnCollision && m_BounceMode != BounceMode.None) {
+                Debug.LogWarning("Warning: The Destructible " + name + " will be destroyed on collision but does not have a Bounce Mode set to None.");
+                m_BounceMode = BounceMode.None;
+            }
         }
 
         /// <summary>
@@ -106,6 +126,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <param name="surfaceImpact">A reference to the Surface Impact triggered when the object hits an object.</param>
         public void InitializeDestructibleProperties(float damageAmount, float impactForce, int impactForceFrames, LayerMask impactLayers, string impactStateName, float impactStateDisableTimer, SurfaceImpact surfaceImpact)
         {
+            m_Destroyed = false;
             m_DamageAmount = damageAmount;
             m_ImpactForce = impactForce;
             m_ImpactForceFrames = impactForceFrames;
@@ -141,6 +162,7 @@ namespace Opsive.UltimateCharacterController.Objects
         {
             base.OnCollision(hit);
 
+            var forceDestruct = false;
             if (m_BounceMode == BounceMode.None) {
                 // When there is a collision the object should move to the position that was hit so if it's not destroyed then it looks like it
                 // is penetrating the hit object.
@@ -149,12 +171,17 @@ namespace Opsive.UltimateCharacterController.Objects
                     m_Transform.position += (hit.Value.point - closestPoint);
                     // Only set the parent to the hit transform on uniform objects to prevent stretching.
                     if (MathUtility.IsUniform(hit.Value.transform.localScale)) {
-                        m_Transform.parent = hit.Value.transform;
+                        // The parent layer must be within the sticky layer mask.
+                        if (MathUtility.InLayerMask(hit.Value.transform.gameObject.layer, m_StickyLayers)) {
+                            m_Transform.parent = hit.Value.transform;
 
-                        // If the destructible sticks to a character then the object should be added as a sub collider so collisions will be ignored.
-                        m_StickyCharacterLocomotion = hit.Value.transform.gameObject.GetCachedComponent<UltimateCharacterLocomotion>();
-                        if (m_StickyCharacterLocomotion != null) {
-                            m_StickyCharacterLocomotion.AddSubCollider(m_Collider);
+                            // If the destructible sticks to a character then the object should be added as a sub collider so collisions will be ignored.
+                            m_StickyCharacterLocomotion = hit.Value.transform.gameObject.GetCachedComponent<UltimateCharacterLocomotion>();
+                            if (m_StickyCharacterLocomotion != null) {
+                                m_StickyCharacterLocomotion.AddSubCollider(m_Collider);
+                            }
+                        } else {
+                            forceDestruct = true;
                         }
                     }
                 }
@@ -186,6 +213,8 @@ namespace Opsive.UltimateCharacterController.Objects
 
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator, hitValue.collider);
+                // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
+                EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator, this, hitValue.collider);
                 if (m_OnImpactEvent != null) {
                     m_OnImpactEvent.Invoke(damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator);
                 }
@@ -221,24 +250,47 @@ namespace Opsive.UltimateCharacterController.Objects
             }
 
             // The object can destroy itself after a small delay.
-            if (m_DestroyOnCollision) {
+            if (m_DestroyOnCollision || forceDestruct) {
                 Scheduler.ScheduleFixed(m_DestructionDelay, Destruct, hit);
             }
         }
 
         /// <summary>
-        /// The object should be destroyed.
+        /// Destroys the object.
         /// </summary>
         /// <param name="hit">The RaycastHit of the object. Can be null.</param>
         protected void Destruct(RaycastHit? hit)
         {
-            if (!enabled) {
+            if (m_Destroyed) {
                 return;
             }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            // The object can only explode on the server.
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsServer()) {
+                return;
+            }
+#endif
 
             // The RaycastHit will be null if the destruction happens with no collision.
             var hitPosition = (hit != null && hit.HasValue) ? hit.Value.point : m_Transform.position;
             var hitNormal = (hit != null && hit.HasValue) ? hit.Value.normal : m_Transform.up;
+            Destruct(hitPosition, hitNormal);
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsServer()) {
+                m_DestructibleMonitor.Destruct(hitPosition, hitNormal);
+            }
+#endif
+        }
+
+        /// <summary>
+        /// Destroys the object.
+        /// </summary>
+        /// <param name="hitPosition">The position of the destruction.</param>
+        /// <param name="hitNormal">The normal direction of the destruction</param>
+        public void Destruct(Vector3 hitPosition, Vector3 hitNormal)
+        {
             for (int i = 0; i < m_SpawnedObjectsOnDestruction.Length; ++i) {
                 if (m_SpawnedObjectsOnDestruction[i] == null) {
                     continue;
@@ -258,10 +310,14 @@ namespace Opsive.UltimateCharacterController.Objects
             if (m_Collider != null) {
                 m_Collider.enabled = false;
             }
-            enabled = false;
+            m_Destroyed = true;
 
             // The destructible should be destroyed.
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            // The object may have already been destroyed over the network.
+            if (!m_GameObject.activeSelf) {
+                return;
+            }
             if (NetworkObjectPool.IsNetworkActive()) {
                 NetworkObjectPool.Destroy(m_GameObject);
             } else {

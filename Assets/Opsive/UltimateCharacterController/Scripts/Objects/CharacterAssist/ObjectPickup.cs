@@ -8,6 +8,9 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Audio;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Game;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking.Game;
+#endif
 
 namespace Opsive.UltimateCharacterController.Objects.CharacterAssist
 {
@@ -191,6 +194,12 @@ namespace Opsive.UltimateCharacterController.Objects.CharacterAssist
             }
 
             if (ObjectPool.InstantiatedWithPool(m_GameObject)) {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (NetworkObjectPool.IsNetworkActive()) {
+                    NetworkObjectPool.Destroy(m_GameObject);
+                    return;
+                }
+#endif
                 ObjectPool.Destroy(m_GameObject);
             } else {
                 // Deactivate the pickup for now. It can appear again if a Respawner component is attached to the GameObject.

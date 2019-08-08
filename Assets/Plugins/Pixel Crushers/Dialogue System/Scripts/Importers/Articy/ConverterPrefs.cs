@@ -57,6 +57,7 @@ namespace PixelCrushers.DialogueSystem.Articy
         public string PortraitFolder { get; set; }
         public bool StageDirectionsAreSequences { get; set; }
         public FlowFragmentModes FlowFragmentMode { get; set; }
+        public string OtherScriptFields { get; set; }
         public string DocumentsSubmenu { get; set; }
         public string TextTableDocument { get; set; }
         public string OutputFolder { get; set; }
@@ -87,6 +88,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             PortraitFolder = string.Empty;
             StageDirectionsAreSequences = true;
             FlowFragmentMode = FlowFragmentModes.ConversationGroups;
+            OtherScriptFields = string.Empty;
             DocumentsSubmenu = string.Empty;
             TextTableDocument = string.Empty;
             OutputFolder = "Assets";

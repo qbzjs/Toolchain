@@ -119,7 +119,7 @@ MonoBehaviour:
   m_PickupMessageText: PICKED UP BOW AND ARROW
   m_PickupMessageIcon: {fileID: 0}
   m_ItemPickupSet:
-  - m_Item: {fileID: 1834043069192340, guid: 422567bb9c74bde4cac96559baff8ff4, type: 2}
+  - m_Item: {fileID: 1834043069192340, guid: 16227c61ee3c87e48b4a4a0fd312508e, type: 2}
     m_ItemSet:
       m_States:
       - m_Name: Default
@@ -158,12 +158,13 @@ MonoBehaviour:
   m_StartVelocityMultiplier: 1
   m_GravityMagnitude: 9.8
   m_Speed: 1
-  m_RotationSpeed: 5
+  m_RotationSpeed: 4
   m_Damping: 0.1
   m_RotationDamping: 0.1
   m_RotateInMoveDirection: 0
   m_SettleThreshold: 0
-  m_SidewaysSettleThreshold: 0.213
+  m_SidewaysSettleThreshold: 0.04
+  m_StartSidewaysVelocityMagnitude: 3
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 268435425

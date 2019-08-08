@@ -367,6 +367,7 @@ ModelImporter:
     100718: upper_arm_hose_end_R
     100720: upper_arm_hose_L
     100722: upper_arm_hose_R
+    100724: referencebone
     400000: chest
     400002: //RootNode
     400004: elbow_target_ik_L
@@ -729,6 +730,7 @@ ModelImporter:
     400718: upper_arm_hose_end_R
     400720: upper_arm_hose_L
     400722: upper_arm_hose_R
+    400724: referencebone
     7400000: AimCrouchIdle
     7400002: CrouchIdleMovement
     9500000: //RootNode
@@ -751,7 +753,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 3
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5

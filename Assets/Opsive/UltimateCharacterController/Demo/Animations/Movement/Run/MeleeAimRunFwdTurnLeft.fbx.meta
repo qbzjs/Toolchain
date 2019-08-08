@@ -26,7 +26,7 @@ ModelImporter:
     100036: f_middle_R
     100038: f_pinky_01_L
     100040: f_pinky_01_R
-    100042: f_pinky_02_L
+    100042: lef_pinky_02_L
     100044: f_pinky_02_R
     100046: f_pinky_03_L
     100048: f_pinky_03_R
@@ -367,6 +367,7 @@ ModelImporter:
     100718: upper_arm_hose_end_R
     100720: upper_arm_hose_L
     100722: upper_arm_hose_R
+    100724: f_pinky_02_L
     400000: chest
     400002: elbow_target_ik_L
     400004: elbow_target_ik_R
@@ -768,9 +769,9 @@ ModelImporter:
       firstFrame: 0
       lastFrame: 14
       wrapMode: 0
-      orientationOffsetY: 46.2
+      orientationOffsetY: 45.2
       level: 0
-      cycleOffset: 0.33
+      cycleOffset: 0.38
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
@@ -796,25 +797,49 @@ ModelImporter:
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.099
+            time: 0.0099
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.1
+            time: 0.01
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.599
+            time: 0.24916038
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.6
+            time: 0.25044855
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.49900004
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.5
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.7493445
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.75002325
             value: 1
             inSlope: 0
             outSlope: 0

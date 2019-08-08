@@ -30,6 +30,7 @@ namespace UMotionEditor
         // Inspector
         //----------------------
         [SerializeField]private List<ResourceDefinition> resourcesList = new List<ResourceDefinition>();
+        [SerializeField]private List<ResourceDefinition> optionalResourcesList = new List<ResourceDefinition>();
         private Dictionary<string, UnityEngine.Object> resourcesDictionary = new Dictionary<string, UnityEngine.Object>();
 
         //----------------------
@@ -72,7 +73,7 @@ namespace UMotionEditor
             return dataPath;
         }
 
-        public T GetResource<T>(string name) where T : UnityEngine.Object
+        public T GetResource<T>(string name, bool required = true) where T : UnityEngine.Object
         {
             T loadedObject = null;
             UnityEngine.Object obj;
@@ -81,7 +82,7 @@ namespace UMotionEditor
                 loadedObject = obj as T;
             }
 
-            if (loadedObject == null)
+            if (required && (loadedObject == null))
             {
                 throw new Exception(string.Format("Resource \"{0}\" can not be loaded.", name));
             }
@@ -108,6 +109,10 @@ namespace UMotionEditor
                 {
                     resourcesDictionary.Add(resourceDef.Name, resourceDef.Reference);
                 }
+            }
+            foreach (ResourceDefinition resourceDef in optionalResourcesList)
+            {
+                resourcesDictionary.Add(resourceDef.Name, resourceDef.Reference);
             }
         }
     }

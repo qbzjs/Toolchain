@@ -202,7 +202,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// <summary>
         /// Snaps the animator to the default values.
         /// </summary>
-        private void SnapAnimator()
+        protected virtual void SnapAnimator()
         {
             // A first person view may not use an Animator.
             if (m_Animator != null) {

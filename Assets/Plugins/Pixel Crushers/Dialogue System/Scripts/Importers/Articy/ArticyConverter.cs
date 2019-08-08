@@ -82,6 +82,8 @@ namespace PixelCrushers.DialogueSystem.Articy
         //private Conversation documentConversation;
         //private DialogueEntry lastDocumentEntry;
 
+        private HashSet<string> otherScriptFieldTitles = new HashSet<string>();
+
         #endregion
 
         #region Stacks
@@ -198,10 +200,10 @@ namespace PixelCrushers.DialogueSystem.Articy
                 onProgressCallback("Converting non-dialogue elements", 0.01f);
                 Setup(articyData, prefs, template, database);
                 ConvertProjectAttributes();
+                ConvertVariables();
                 ConvertEntities();
                 ConvertLocations();
                 ConvertFlowFragmentsToQuests();
-                ConvertVariables();
                 ConvertDialogues();
                 ResetArticyIdIndex();
                 ConvertEmVarSet();
@@ -231,6 +233,11 @@ namespace PixelCrushers.DialogueSystem.Articy
             //documentConversation = null;
             //lastDocumentEntry = null;
             fullVariableNames.Clear();
+            otherScriptFieldTitles.Clear();
+            foreach (var otherScriptFieldTitle in prefs.OtherScriptFields.Split(';'))
+            {
+                otherScriptFieldTitles.Add(otherScriptFieldTitle.Trim());
+            }
             ResetArticyIdIndex();
             this.template = template;
         }
@@ -377,19 +384,25 @@ namespace PixelCrushers.DialogueSystem.Articy
                         if (!string.IsNullOrEmpty(field.title))
                         {
                             var fieldTitle = ConvertSpecialTechnicalNames(field.title);
+                            var fieldValue = IsOtherScriptField(fieldTitle) ? ConvertExpression(field.value) : field.value;
                             var existingField = Field.Lookup(fields, fieldTitle);
                             if (existingField != null)
                             {
-                                existingField.value = field.value;
+                                existingField.value = fieldValue;
                             }
                             else
                             {
-                                fields.Add(new Field(fieldTitle, field.value, field.type));
+                                fields.Add(new Field(fieldTitle, fieldValue, field.type));
                             }
                         }
                     }
                 }
             }
+        }
+
+        private bool IsOtherScriptField(string fieldTitle)
+        {
+            return otherScriptFieldTitles.Contains(fieldTitle);
         }
 
         private string ConvertSpecialTechnicalNames(string technicalName)

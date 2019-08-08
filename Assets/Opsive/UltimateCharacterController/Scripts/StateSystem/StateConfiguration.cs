@@ -97,6 +97,9 @@ namespace Opsive.UltimateCharacterController.StateSystem
             }
 
             m_ProfileStateMap = new Dictionary<string, Dictionary<Type, Profile.StateElement[]>>();
+            if (m_Profiles == null) {
+                return;
+            }
             for (int i = 0; i < m_Profiles.Length; ++i) {
                 var profileStateElements = m_Profiles[i].StateElements;
                 var typeStateMap = new Dictionary<Type, Profile.StateElement[]>();

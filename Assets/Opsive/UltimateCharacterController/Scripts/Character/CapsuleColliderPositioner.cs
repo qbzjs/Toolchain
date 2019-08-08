@@ -96,8 +96,8 @@ namespace Opsive.UltimateCharacterController.Character
 
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             // The positioner cannot be used with server autoritative implementations.
-            var networkCharacter = m_CharacterGameObject.GetCachedComponent<Networking.Character.INetworkCharacter>();
-            if (networkCharacter != null && networkCharacter.IsServerAuthoritative()) {
+            var networkInfo = m_CharacterGameObject.GetCachedComponent<Networking.INetworkInfo>();
+            if (networkInfo != null && networkInfo.IsServerAuthoritative()) {
                 enabled = false;
                 Debug.LogWarning("Warning: The CapsuleColliderPositioner has been disabled. Unity bug 985643 needs to be fixed for it to work over a server authoritative network.");
             }

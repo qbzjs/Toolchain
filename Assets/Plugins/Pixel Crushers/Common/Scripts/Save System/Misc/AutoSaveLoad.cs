@@ -65,6 +65,7 @@ namespace PixelCrushers
         /// </summary>
         private void OnApplicationQuit()
         {
+            CheckSaveOnQuit();
         }
 #endif
 

@@ -20,9 +20,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.AI
         /// </summary>
         public abstract Vector2 InputVector { get; }
         /// <summary>
-        /// Returns the desired yaw rotation value. This will be used by the Ultimate Character Locomotion component.
+        /// Returns the desired rotation value. This will be used by the Ultimate Character Locomotion component.
         /// </summary>
-        public abstract float DeltaYawRotation { get; }
+        public abstract Vector3 DeltaRotation { get; }
 
         /// <summary>
         /// Updates the character's input and target rotation values.
@@ -30,7 +30,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.AI
         public override void Update()
         {
             m_CharacterLocomotion.InputVector = InputVector;
-            m_CharacterLocomotion.DeltaYawRotation = DeltaYawRotation;
+            m_CharacterLocomotion.DeltaRotation = DeltaRotation;
         }
     }
 }

@@ -211,6 +211,29 @@ namespace Opsive.UltimateCharacterController.Utility
         }
 
         /// <summary>
+        /// Clamp the angle between min and max degrees.
+        /// </summary>
+        /// <param name="angle">The angle to clamp.</param>
+        /// <param name="min">The minimum angle range.</param>
+        /// <param name="max">The maximum angle range.</param>
+        /// <returns>An angle between min and max degrees.</returns>
+        public static float ClampAngle(float angle, float min, float max)
+        {
+            var minDiff = ClampInnerAngle(min - angle);
+            var maxDiff = ClampInnerAngle(angle - max);
+            if (Mathf.Abs(minDiff) < Mathf.Abs(maxDiff)) {
+                if (minDiff <= 0) {
+                    return angle;
+                }
+                return min;
+            }
+            if (maxDiff <= 0) {
+                return angle;
+            }
+            return max;
+        }
+
+        /// <summary>
         /// Returns the rotation of the specified matrix.
         /// </summary>
         /// <param name="matrix">The matrix to get the rotation of.</param>

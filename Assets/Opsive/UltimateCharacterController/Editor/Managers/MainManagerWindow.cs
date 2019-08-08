@@ -224,13 +224,13 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
         }
 
         /// <summary>
-        /// Initializes the Main Manager and shows the Integrations Manager.
+        /// Initializes the Main Manager and shows the Add-Ons Manager.
         /// </summary> 
-        [MenuItem("Tools/Opsive/Ultimate Character Controller/Addons Manager", false, 26)]
-        public static void ShowAddonsManagerWindow()
+        [MenuItem("Tools/Opsive/Ultimate Character Controller/Add-Ons Manager", false, 26)]
+        public static void ShowAddOnsManagerWindow()
         {
             var window = ShowWindow();
-            window.Open(typeof(AddonsManager));
+            window.Open(typeof(AddOnsManager));
         }
 
         /// <summary>

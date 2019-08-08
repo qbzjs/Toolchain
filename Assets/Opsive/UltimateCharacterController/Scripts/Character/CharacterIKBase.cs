@@ -38,7 +38,8 @@ namespace Opsive.UltimateCharacterController.Character
         /// <summary>
         /// Updates the IK component after the animator has updated.
         /// </summary>
-        public abstract void Move();
+        /// <param name="fixedUpdate">Is the IK being updated within the FixedUpdate loop?</param>
+        public abstract void Move(bool fixedUpdate);
 
         /// <summary>
         /// Specifies the location of the left or right hand IK target and IK hint target.

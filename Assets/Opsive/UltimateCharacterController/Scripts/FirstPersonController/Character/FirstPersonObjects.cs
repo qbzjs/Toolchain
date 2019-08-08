@@ -202,6 +202,21 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
                 Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360 ||m_LockYaw || m_RotateWithCrosshairs || m_IgnorePositionalLookOffset || m_Transform.localPosition != Vector3.zero);
         }
 
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        /// <summary>
+        /// Disables the GameObject if the character is remote.
+        /// </summary>
+        public void Start()
+        {
+            // Remote players should never see the first person objects.
+            var networkInfo = m_Character.GetComponentInParent<Networking.INetworkInfo>();
+            if (networkInfo != null && !networkInfo.IsLocalPlayer()) {
+                m_GameObject.SetActive(false);
+                EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterActivate", OnActivate);
+            }
+        }
+#endif
+
         /// <summary>
         /// Updates the internal pitch angle while ensuring it is within the pitch limits.
         /// </summary>
@@ -209,7 +224,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
         {
             var localRotation = MathUtility.InverseTransformQuaternion(m_CharacterTransform.rotation, m_CameraTransform.rotation).eulerAngles;
             if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                m_Pitch = Mathf.Clamp(localRotation.x, m_MinPitchLimit, m_MaxPitchLimit);
+                m_Pitch = MathUtility.ClampAngle(localRotation.x, m_MinPitchLimit, m_MaxPitchLimit);
             } else {
                 m_Pitch = localRotation.x;
             }
@@ -222,7 +237,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
         {
             var localRotation = MathUtility.InverseTransformQuaternion(m_CharacterTransform.rotation, m_CameraTransform.rotation).eulerAngles;
             if (Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360) {
-                m_Yaw = Mathf.Clamp(localRotation.y, m_MinYawLimit, m_MaxYawLimit);
+                m_Yaw = MathUtility.ClampAngle(localRotation.y, m_MinYawLimit, m_MaxYawLimit);
             } else {
                 m_Yaw = localRotation.y;
             }
@@ -237,12 +252,12 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
             if (m_LockPitch) {
                 localRotation.x = m_Pitch;
             } else if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                localRotation.x = Mathf.Clamp(localRotation.x, m_MinPitchLimit, m_MaxPitchLimit);
+                localRotation.x = MathUtility.ClampAngle(localRotation.x, m_MinPitchLimit, m_MaxPitchLimit);
             }
             if (m_LockYaw) {
                 localRotation.y = m_Yaw;
             } else if (Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360) {
-                localRotation.y = Mathf.Clamp(localRotation.y, m_MinYawLimit, m_MaxYawLimit);
+                localRotation.y = MathUtility.ClampAngle(localRotation.y, m_MinYawLimit, m_MaxYawLimit);
             }
             var rotation = MathUtility.TransformQuaternion(m_CharacterTransform.rotation, Quaternion.Euler(localRotation));
             if (m_RotateWithCrosshairs) {

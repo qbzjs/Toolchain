@@ -191,6 +191,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             if (m_DurabilityAttribute != null) {
                 EventHandler.UnregisterEvent(m_DurabilityAttribute, "OnAttributeReachedDestinationValue", DurabilityDepleted);
             }
+            EventHandler.UnregisterEvent<bool, bool>(m_Character, "OnAimAbilityStart", OnAim);
         }
     }
 }

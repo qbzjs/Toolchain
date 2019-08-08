@@ -217,25 +217,25 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
         {
 #pragma warning disable 0162
 #if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER && ULTIMATE_CHARACTER_CONTROLLER_MELEE
-            return "https://opsive.com/integrations/?pid=923";
+            return "https://opsive.com/downloads/?pid=923";
 #endif
 #if FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER && ULTIMATE_CHARACTER_CONTROLLER_MELEE
-            return "https://opsive.com/integrations?pid=807";
+            return "https://opsive.com/downloads?pid=807";
 #endif
 #if THIRD_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER && ULTIMATE_CHARACTER_CONTROLLER_MELEE
-            return "https://opsive.com/integrations?pid=926";
+            return "https://opsive.com/downloads?pid=926";
 #endif
 #if FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
-            return "https://opsive.com/integrations?pid=185";
+            return "https://opsive.com/downloads?pid=185";
 #endif
 #if FIRST_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_MELEE
-            return "https://opsive.com/integrations?pid=1106";
+            return "https://opsive.com/downloads?pid=1106";
 #endif
 #if THIRD_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_SHOOTER
-            return "https://opsive.com/integrations?pid=1107";
+            return "https://opsive.com/downloads?pid=1107";
 #endif
 #if THIRD_PERSON_CONTROLLER && ULTIMATE_CHARACTER_CONTROLLER_MELEE
-            return "https://opsive.com/integrations?pid=1108";
+            return "https://opsive.com/downloads?pid=1108";
 #endif
             return string.Empty;
 #pragma warning restore 0162

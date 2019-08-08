@@ -703,5 +703,20 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Utility
 
             return selectedPath;
         }
+
+        /// <summary>
+        /// Adds the component of the specified type if it doesn't already exist.
+        /// </summary>
+        /// <typeparam name="T">The type of component to add.</typeparam>
+        /// <param name="gameObject">The GameObject to add the component to.</param>
+        /// <returns>The added component.</returns>
+        public static T AddComponent<T>(GameObject gameObject) where T : Component
+        {
+            T component;
+            if ((component = gameObject.GetComponent<T>()) == null) {
+                return gameObject.AddComponent<T>();
+            }
+            return component;
+        }
     }
 }

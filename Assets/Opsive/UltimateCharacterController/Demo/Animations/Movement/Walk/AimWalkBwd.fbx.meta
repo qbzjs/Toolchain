@@ -764,11 +764,11 @@ ModelImporter:
       name: AimWalkBwd
       takeName: WalkBackwards_Combat
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 32
       wrapMode: 0
-      orientationOffsetY: 0.1
+      orientationOffsetY: 0
       level: 0
-      cycleOffset: 0.79
+      cycleOffset: 0.82
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
@@ -806,13 +806,37 @@ ModelImporter:
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.499
+            time: 0.24861959
             value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
+            time: 0.24987352
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.499
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
             time: 0.5
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.7489765
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.75026447
             value: 0
             inSlope: 0
             outSlope: 0

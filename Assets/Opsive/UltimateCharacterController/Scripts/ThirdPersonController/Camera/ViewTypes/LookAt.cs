@@ -191,5 +191,15 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
             m_RotationSpring.Value = m_PrevRotationSpringValue;
             m_RotationSpring.Velocity = m_PrevRotationSpringVelocity;
         }
+
+        /// <summary>
+        /// The object has been destroyed.
+        /// </summary>
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            m_RotationSpring.Destroy();
+        }
     }
 }

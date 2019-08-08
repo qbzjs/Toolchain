@@ -29,11 +29,11 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         private RaycastHit[] m_CombinedRaycastHits;
         private Dictionary<RaycastHit, int> m_ColliderIndexMap;
         private UnityEngineUtility.RaycastHitComparer m_RaycastHitComparer = new UnityEngineUtility.RaycastHitComparer();
-        
+
         /// <summary>
-        /// Verify the rotation values. Called immediately before the rotation is applied.
+        /// Update the rotation forces.
         /// </summary>
-        public override void ApplyRotation()
+        public override void UpdateRotation()
         {
             var updateNormalRotation = m_Stopping;
             var targetNormal = m_Stopping ? -m_CharacterLocomotion.GravityDirection : m_CharacterLocomotion.Up;

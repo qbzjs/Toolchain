@@ -214,10 +214,11 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                     var field = Field.Lookup(fields, templateField.title);
                     if (field != null)
                     {
-                        if (field.type != templateField.type)
+                        // Variables' Initial Value should never be applied from template.
+                        var shouldApplyTemplateFieldType = (field.type != templateField.type) && !string.Equals(field.title, "Initial Value");
+                        if (shouldApplyTemplateFieldType)
                         {
                             field.type = templateField.type;
-                            //field.value = string.Empty;
                             field.typeString = string.Empty;
                         }
                     }

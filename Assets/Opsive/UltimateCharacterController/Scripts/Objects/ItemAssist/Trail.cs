@@ -140,7 +140,7 @@ namespace Opsive.UltimateCharacterController.Objects.ItemAssist
                 if (m_TrailSlicesCount > 3) {
                     m_TrailSlicesIndex = m_TrailSlicesIndex - 1;
                     if (m_TrailSlicesIndex < 0) {
-                        m_TrailSlicesIndex = m_TrailSlicesCount - 1;
+                        m_TrailSlicesIndex += m_TrailSlicesCount;
                     }
 
                     m_SmoothedTrailSlicesIndex = m_SmoothedTrailSlicesPrevIndex;
@@ -177,6 +177,11 @@ namespace Opsive.UltimateCharacterController.Objects.ItemAssist
         /// <param name="up">The up direction of the slice.</param>
         private void AddTrailSlice(Vector3 point, Vector3 up)
         {
+            // Catmull-rom curves do not like repeated points.
+            if (m_TrailSlicesCount > 0 && m_TrailSlices[m_TrailSlicesIndex].Point == point) {
+                return;
+            }
+
             m_TrailSlicesIndex = (m_TrailSlicesIndex + 1) % m_TrailSlices.Length;
             m_TrailSlices[m_TrailSlicesIndex].Initialize(point, up);
             if (m_TrailSlicesIndex + 1 > m_TrailSlicesCount) {
@@ -220,12 +225,12 @@ namespace Opsive.UltimateCharacterController.Objects.ItemAssist
             // Iterate based on the number of sample values.
             var iterAmount = ((t2 - t1) / m_CurveSmoothness);
             for (float t = t1; t < t2; t += iterAmount) {
-                var p = CentripetralCatmullRomValue(p0, p1, p2, p3, 0, t1, t2, t3, t);
+                var point = CentripetralCatmullRomValue(p0, p1, p2, p3, 0, t1, t2, t3, t);
                 var up = CentripetralCatmullRomValue(u0, u1, u2, u3, 0, t1, t2, t3, t);
 
                 // The value has been determined. Add it to the smoothed array.
                 m_SmoothedTrailSlicesIndex = (m_SmoothedTrailSlicesIndex + 1) % m_SmoothedTrailSlices.Length;
-                m_SmoothedTrailSlices[m_SmoothedTrailSlicesIndex].Initialize(p, up);
+                m_SmoothedTrailSlices[m_SmoothedTrailSlicesIndex].Initialize(point, up);
                 if (m_SmoothedTrailSlicesIndex + 1 > m_SmoothedTrailSlicesCount) {
                     m_SmoothedTrailSlicesCount++;
                 }
@@ -254,12 +259,12 @@ namespace Opsive.UltimateCharacterController.Objects.ItemAssist
         /// <returns>The vertex of the centripetral catmull-rom curve.</returns>
         private Vector3 CentripetralCatmullRomValue(Vector3 v0, Vector3 v1, Vector3 v2, Vector3 v3, float t0, float t1, float t2, float t3, float t)
         {
-            var A1 = (t1 - t) / (t1 - t0) * v0 + (t - t0) / (t1 - t0) * v1;
-            var A2 = (t2 - t) / (t2 - t1) * v1 + (t - t1) / (t2 - t1) * v2;
-            var A3 = (t3 - t) / (t3 - t2) * v2 + (t - t2) / (t3 - t2) * v3;
-            var B1 = (t2 - t) / (t2 - t0) * A1 + (t - t0) / (t2 - t0) * A2;
-            var B2 = (t3 - t) / (t3 - t1) * A2 + (t - t1) / (t3 - t1) * A3;
-            return (t2 - t) / (t2 - t1) * B1 + (t - t1) / (t2 - t1) * B2;
+            var a1 = (t1 - t) / (t1 - t0) * v0 + (t - t0) / (t1 - t0) * v1;
+            var a2 = (t2 - t) / (t2 - t1) * v1 + (t - t1) / (t2 - t1) * v2;
+            var a3 = (t3 - t) / (t3 - t2) * v2 + (t - t2) / (t3 - t2) * v3;
+            var b1 = (t2 - t) / (t2 - t0) * a1 + (t - t0) / (t2 - t0) * a2;
+            var b2 = (t3 - t) / (t3 - t1) * a2 + (t - t1) / (t3 - t1) * a3;
+            return (t2 - t) / (t2 - t1) * b1 + (t - t1) / (t2 - t1) * b2;
         }
 
         /// <summary>

@@ -352,12 +352,24 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             if (startingAbility is Reload) {
                 // The Use ability has priority over the Reload ability. Prevent the reload ability from starting if the use ability is active.
                 if (startingAbility.InputIndex != -1) {
+                    // If the item isn't actively being used then it shouldn't block reload.
+                    var shouldBlock = false;
+                    for (int i = 0; i < m_UsableItems.Length; ++i) {
+                        if (m_UsableItems[i] != null && !m_UseCompleted[i]) {
+                            shouldBlock = true;
+                            break;
+                        }
+                    }
+                    if (!shouldBlock) {
+                        return false;
+                    }
+
                     var reloadAbility = startingAbility as Reload;
                     StopItemReload(reloadAbility);
 
                     // The ability should only be blocked if there aren't any items left to reload. An item may still be reloaded if it's parented to a different
                     // slot from what is being used.
-                    var shouldBlock = true;
+                    shouldBlock = true;
                     for (int i = 0; i < reloadAbility.ReloadableItems.Length; ++i) {
                         if (reloadAbility.ReloadableItems[i] != null) {
                             shouldBlock = false;
@@ -716,7 +728,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             var lookDirection = m_LookSource.LookDirection(m_LookSource.LookPosition(), true, m_CharacterLayerManager.IgnoreInvisibleCharacterLayers, false);
             var localLookDirection = m_Transform.InverseTransformDirection(lookDirection);
             localLookDirection.y = 0;
-            m_CharacterLocomotion.DeltaYawRotation = MathUtility.ClampInnerAngle(Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y);
+            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
+            deltaRotation.y = Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y;
+            m_CharacterLocomotion.DeltaRotation = deltaRotation;
 
             base.UpdateRotation();
         }

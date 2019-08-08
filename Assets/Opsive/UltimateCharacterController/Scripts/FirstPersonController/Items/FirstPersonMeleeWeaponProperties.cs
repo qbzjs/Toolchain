@@ -29,6 +29,10 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         {
             base.Awake();
 
+            if (m_Object == null) {
+                return;
+            }
+
             for (int i = 0; i < m_Hitboxes.Length; ++i) {
                 m_Hitboxes[i].Initialize(m_CharacterTransform);
             }

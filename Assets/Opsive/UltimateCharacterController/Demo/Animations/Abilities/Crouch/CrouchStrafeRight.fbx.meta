@@ -772,7 +772,7 @@ ModelImporter:
       wrapMode: 0
       orientationOffsetY: -87.25
       level: 0
-      cycleOffset: 0.17
+      cycleOffset: 0.2
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
@@ -798,7 +798,7 @@ ModelImporter:
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.009
+            time: 0.0099
             value: 1
             inSlope: 0
             outSlope: 0
@@ -810,13 +810,37 @@ ModelImporter:
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.5099
+            time: 0.24916038
             value: 0
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
-            time: 0.51
+            time: 0.25044855
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.49900004
+            value: 0.3
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.5
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.7493445
+            value: 0.7
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 0.75002325
             value: 1
             inSlope: 0
             outSlope: 0

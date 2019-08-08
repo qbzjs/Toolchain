@@ -36,6 +36,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public AnimationEventTrigger LandEvent { get { return m_LandEvent; } set { m_LandEvent = value; } }
 
         public override int AbilityIntData { get { return m_StateIndex; } }
+        public override float AbilityFloatData { get { return m_CharacterLocomotion.LocalLocomotionVelocity.y; } }
 
         private int m_StateIndex;
         private bool m_Landed;

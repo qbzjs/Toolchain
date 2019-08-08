@@ -6,7 +6,6 @@
 
 using UnityEngine;
 using Opsive.UltimateCharacterController.Events;
-using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Character.Abilities
 {
@@ -17,18 +16,20 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
     public class Slide : Ability
     {
         [Tooltip("Steepness (in degrees) above which the character can slide.")]
-        [SerializeField] protected float m_MinSlideLimit = 30;
+        [SerializeField] protected float m_MinSlideLimit = 40;
         [Tooltip("Steepness (in degrees) below which the character can slide.")]
         [SerializeField] protected float m_MaxSlideLimit = 89f;
         [Tooltip("Multiplier of the ground's slide value. The slide value is determined by (1 - dynamicFriction) of the ground's physic material.")]
-        [SerializeField] protected float m_Multiplier = 0.1f;
+        [SerializeField] protected float m_Multiplier = 0.4f;
+        [Tooltip("The maximum speed that the character can slide.")]
+        [SerializeField] protected float m_MaxSlideSpeed = 1;
 
         public float MinSlideLimit { get { return m_MinSlideLimit; } set { m_MinSlideLimit = value; } }
         public float MaxSlideLimit { get { return m_MaxSlideLimit; } set { m_MaxSlideLimit = value; } }
         public float Multiplier { get { return m_Multiplier; } set { m_Multiplier = value; } }
+        public float MaxSlideSpeed { get { return m_MaxSlideSpeed; } set { m_MaxSlideSpeed = value; } }
 
         private float m_SlideSpeed;
-        private float m_OnSteepGroundTime;
 
         public override bool IsConcurrent { get { return true; } }
 
@@ -84,7 +85,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         {
             base.AbilityStarted();
 
-            m_OnSteepGroundTime = 0;
+            m_SlideSpeed = 0;
         }
 
         /// <summary>
@@ -93,25 +94,20 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public override void LateUpdate()
         {
             var groundRaycastHit = m_CharacterLocomotion.GroundRaycastHit;
-            // Slide at a constant speed if the slope is within the slope limit.
-            var slope = Vector3.Angle(groundRaycastHit.normal, m_CharacterLocomotion.Up);
             // The slide value uses the ground's physic material to get the amount of friction of the material.
             var slide = (1 - groundRaycastHit.collider.material.dynamicFriction) * m_Multiplier;
+            // Slide at a constant speed if the slope is within the slope limit.
+            var slope = Vector3.Angle(groundRaycastHit.normal, m_CharacterLocomotion.Up);
             if (slope < m_CharacterLocomotion.SlopeLimit) {
-                m_OnSteepGroundTime = 0;
                 m_SlideSpeed = Mathf.Max(m_SlideSpeed, slide);
             } else { // The slope is steeper then the slope limit. Slide with an accelerating slide speed.
-                if (m_OnSteepGroundTime == 0) {
-                    m_OnSteepGroundTime = Time.time;
-                }
-                m_SlideSpeed += ((slide * ((Time.time - m_OnSteepGroundTime) * 0.125f)) * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
-                m_SlideSpeed = Mathf.Max(slide, m_SlideSpeed);
+                m_SlideSpeed += slide * (slope / m_MinSlideLimit);
             }
+            m_SlideSpeed = Mathf.Min(m_SlideSpeed, m_MaxSlideSpeed);
 
             // Add a force if the character should slide.
             if (m_SlideSpeed > 0) {
-                // Only add a horizontal force to the character - the controller will take care of adding any vertical forces based on gravity.
-                var direction = Vector3.ProjectOnPlane(Vector3.Cross(Vector3.Cross(groundRaycastHit.normal, -m_CharacterLocomotion.Up), groundRaycastHit.normal), m_CharacterLocomotion.Up);
+                var direction = Vector3.Cross(Vector3.Cross(groundRaycastHit.normal, -m_CharacterLocomotion.Up), groundRaycastHit.normal);
                 AddForce(direction.normalized * m_SlideSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime, 1, false, true);
             }
         }

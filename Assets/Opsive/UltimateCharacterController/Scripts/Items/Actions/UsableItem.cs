@@ -168,8 +168,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <summary>
         /// Sets the UsableItemType amount on the UsableItem.
         /// </summary>
-        /// <param name="amount">The amount to set the UsableItemType to.</param>
-        public virtual void SetConsumableItemTypeCount(float amount) { }
+        /// <param name="count">The amount to set the UsableItemType to.</param>
+        public virtual void SetConsumableItemTypeCount(float count) { }
 
         /// <summary>
         /// Removes the amount of UsableItemType which has been consumed by the UsableItem.
@@ -217,16 +217,21 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// </summary>
         public virtual void UseItem()
         {
-            m_NextAllowedUseTime = Time.time + m_UseRate;
-            if (m_UseAttribute != null) {
-                m_UseAttribute.Value -= m_UseAttributeAmount;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+#endif
+                m_NextAllowedUseTime = Time.time + m_UseRate;
+                if (m_UseAttribute != null) {
+                    m_UseAttribute.Value -= m_UseAttributeAmount;
+                }
+                if (m_CharacterUseAttribute != null) {
+                    m_CharacterUseAttribute.Value -= m_CharacterUseAttributeAmount;
+                }
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             }
-            if (m_CharacterUseAttribute != null) {
-                m_CharacterUseAttribute.Value -= m_CharacterUseAttributeAmount;
-            }
-
-            // Optionally play a use sound based upon the use animation.
-            if (!m_PlayAudioOnStartUse) {
+#endif
+             // Optionally play a use sound based upon the use animation.
+             if (!m_PlayAudioOnStartUse) {
                 var visibleObject = m_Item.GetVisibleObject() != null ? m_Item.GetVisibleObject() : m_Character;
                 m_UseAnimatorAudioStateSet.PlayAudioClip(visibleObject);
             }

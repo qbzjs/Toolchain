@@ -5,6 +5,10 @@
 /// ---------------------------------------------
 
 using UnityEngine;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Utility;
+using Opsive.UltimateCharacterController.Networking.Character;
+#endif
 
 namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 {
@@ -17,6 +21,20 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
         [SerializeField] protected int m_ItemStateIndex = -1;
 
         public virtual int ItemStateIndex { set { m_ItemStateIndex = value; } }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        protected INetworkCharacter m_NetworkCharacter;
+
+        /// <summary>
+        /// Initialize the default values.
+        /// </summary>
+        public override void Awake()
+        {
+            base.Awake();
+
+            m_NetworkCharacter = m_GameObject.GetCachedComponent<INetworkCharacter>();
+        }
+#endif
 
         /// <summary>
         /// Returns the Item State Index which corresponds to the slot ID.

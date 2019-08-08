@@ -205,11 +205,11 @@ namespace Opsive.UltimateCharacterController.UI
                 if (alpha <= 0) {
                     m_ActiveDamageIndicators[i].GameObject.SetActive(false);
                     ObjectPool.Return(m_ActiveDamageIndicators[i]);
+                    m_ActiveDamageIndicatorCount--;
                     // Sort the array so the complete indicators are at the end.
                     for (int j = i; j < m_ActiveDamageIndicatorCount; ++j) {
                         m_ActiveDamageIndicators[j] = m_ActiveDamageIndicators[j + 1];
                     }
-                    m_ActiveDamageIndicatorCount--;
                     continue;
                 }
                 var color = m_ActiveDamageIndicators[i].Image.color;

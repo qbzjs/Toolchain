@@ -17,6 +17,11 @@ namespace Opsive.UltimateCharacterController.StateSystem
     /// </summary>
     public class StateManager : MonoBehaviour
     {
+        [Tooltip("Should the OnStateChange event be sent when the state changes active status?")]
+        [SerializeField] protected bool m_SendStateChangeEvent;
+
+        public bool SendStateChangeEvent { get { return m_SendStateChangeEvent; } set { m_SendStateChangeEvent = value; } }
+
         private static StateManager s_Instance;
         private static StateManager Instance
         {
@@ -299,6 +304,12 @@ namespace Opsive.UltimateCharacterController.StateSystem
             if (!nameStateList.TryGetValue(stateName, out stateList)) {
                 SetLinkStateInternal(gameObject, stateName, active);
                 return;
+            }
+
+            // An event can be sent when the active status changes. This is useful for multiplayer in that it allows the networking implementation
+            // to send the state changes across the network.
+            if (m_SendStateChangeEvent) {
+                Events.EventHandler.ExecuteEvent("OnStateChange", gameObject, stateName, active);
             }
 
             // The states have been found, activate or deactivate the states.

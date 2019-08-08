@@ -15,7 +15,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
     /// <summary>
     /// Shows a custom inspector for the DemoManager component.
     /// </summary>
-    [CustomEditor(typeof(DemoManager))]
+    [CustomEditor(typeof(DemoManager), true)]
     public class DemoManagerInspector : InspectorBase
     {
         private const string c_EditorPrefsSelectedDemoZoneIndexKey = "Opsive.UltimateCharacterController.Editor.Inspectors.Demo.SelectedDemoZoneIndex";
@@ -46,6 +46,11 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
                 }
             }
             EditorGUILayout.EndHorizontal();
+#if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
+            if (PropertyFromName("m_PerspectiveSelection").objectReferenceValue == null) {
+                EditorGUILayout.PropertyField(PropertyFromName("m_DefaultFirstPersonStart"));
+            }
+#endif
             if (Foldout("Free Roam")) {
                 EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoam"));
@@ -66,7 +71,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
                 EditorGUILayout.LabelField("No Zone Description");
                 PropertyFromName("m_NoZoneDescription").stringValue = InspectorUtility.DrawEditorWithoutSelectAll(() =>
                                 EditorGUILayout.TextArea(PropertyFromName("m_NoZoneDescription").stringValue, InspectorStyles.WordWrapTextArea));
-                EditorGUILayout.PropertyField(PropertyFromName("m_AddonDemoManager"));
+                EditorGUILayout.PropertyField(PropertyFromName("m_AddOnDemoManager"));
                 EditorGUI.indentLevel--;
             }
 
@@ -107,7 +112,6 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
             var demoZoneProperty = demoZonesProperty.GetArrayElementAtIndex(m_DemoZonesList.index);
             EditorGUILayout.LabelField(demoZoneProperty.FindPropertyRelative("m_Header").stringValue + " Demo Zone", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(demoZoneProperty.FindPropertyRelative("m_Header"));
-            EditorGUILayout.PropertyField(demoZoneProperty.FindPropertyRelative("m_TeleportLocation"));
             EditorGUILayout.PropertyField(demoZoneProperty.FindPropertyRelative("m_DemoZoneTrigger"));
             EditorGUILayout.PropertyField(demoZoneProperty.FindPropertyRelative("m_EnableObjects"), true);
             EditorGUILayout.PropertyField(demoZoneProperty.FindPropertyRelative("m_ToggleObjects"), true);

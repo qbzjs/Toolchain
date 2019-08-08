@@ -367,6 +367,7 @@ ModelImporter:
     100718: upper_arm_hose_end_R
     100720: upper_arm_hose_L
     100722: upper_arm_hose_R
+    100724: referencebone
     400000: chest
     400002: elbow_target_ik_L
     400004: elbow_target_ik_R
@@ -729,6 +730,7 @@ ModelImporter:
     400718: upper_arm_hose_end_R
     400720: upper_arm_hose_L
     400722: upper_arm_hose_R
+    400724: referencebone
     7400000: RunFwdJumpStartRight
     7400002: RunFwdJumpUpRight
     7400004: MidAirRight
@@ -786,7 +788,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'FallRunFwd' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'ORG-forearm_R' has scale animation that will
+      be discarded.\n\t'ORG-hand_R' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -846,6 +851,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L
@@ -1596,6 +1603,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L
@@ -2863,13 +2872,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -5649,13 +5658,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -8635,13 +8644,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 1
+            value: 0.7
             inSlope: 0
             outSlope: 0
             tangentMode: 0

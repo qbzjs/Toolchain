@@ -38,6 +38,8 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         private int m_PathIndex;
         private bool m_InitialOrientation = true;
 
+        public override bool FirstPersonPerspective { get { return false; } }
+
         /// <summary>
         /// Initializes the MovementType.
         /// </summary>

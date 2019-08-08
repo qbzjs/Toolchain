@@ -37,9 +37,6 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
             var viewTypeObj = Activator.CreateInstance(viewType) as ViewType;
             viewTypes[viewTypes.Length - 1] = viewTypeObj;
             cameraController.ViewTypes = viewTypes;
-            if (string.IsNullOrEmpty(cameraController.ViewTypeFullName) && !(viewTypeObj is Transition)) {
-                cameraController.ViewTypeFullName = viewType.FullName;
-            }
 
 #if FIRST_PERSON_CONTROLLER
             if (viewTypeObj is FirstPersonController.Camera.ViewTypes.FirstPerson) {
@@ -104,7 +101,9 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
 #endif
 
             SerializeViewTypes(cameraController);
-            cameraController.SetViewType(viewType, false);
+            if (!(viewTypeObj is Transition)) {
+                cameraController.SetViewType(viewType, false);
+            }
             return viewTypeObj;
         }
 

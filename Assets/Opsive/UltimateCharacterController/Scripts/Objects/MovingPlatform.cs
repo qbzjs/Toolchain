@@ -141,27 +141,27 @@ namespace Opsive.UltimateCharacterController.Objects
         [NonSerialized] public bool DrawDebugLabels { get { return m_DrawDebugLabels; } set { m_DrawDebugLabels = value; } }
 #endif
 
-        private GameObject m_GameObject;
-        private Transform m_Transform;
+        protected GameObject m_GameObject;
+        protected Transform m_Transform;
         private Rigidbody m_Rigidbody;
 
         private int m_KinematicObjectIndex = -1;
-        private int m_NextWaypoint;
-        private int m_PreviousWaypoint;
-        private float m_NextWaypointDistance;
-        private Quaternion m_OriginalRotation;
-        private float m_MoveTime;
-        private Vector3 m_TargetPosition;
-        private Quaternion m_TargetRotation;
+        protected int m_NextWaypoint;
+        protected int m_PreviousWaypoint;
+        protected float m_NextWaypointDistance;
+        protected Quaternion m_OriginalRotation;
+        protected float m_MoveTime;
+        protected Vector3 m_TargetPosition;
+        protected Quaternion m_TargetRotation;
         private Vector3 m_MovePosition;
         private Quaternion m_MoveRotation;
         private AnimationCurve m_EaseInOutCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         private AnimationCurve m_LinearCurve = AnimationCurve.Linear(0, 0, 1, 1);
-        private ScheduledEventBase m_NextWaypointEvent;
-        private int m_ActiveCharacterCount;
+        protected ScheduledEventBase m_NextWaypointEvent;
+        protected int m_ActiveCharacterCount;
 
         public int NextWaypoint { get { return m_NextWaypoint; } }
-        public int KinematicObjectIndex { set { m_KinematicObjectIndex = value; } }
+        public int KinematicObjectIndex { get { return m_KinematicObjectIndex; } set { m_KinematicObjectIndex = value; } }
 
         /// <summary>
         /// Cache the component references and initialize the default values.
@@ -193,9 +193,9 @@ namespace Opsive.UltimateCharacterController.Objects
             m_Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
             // The GameObject must be on the MovingPlatform layer.
-            if (gameObject.layer != LayerManager.MovingPlatform) {
-                Debug.LogWarning("Warning: " + gameObject.name + " is a moving platform not using the MovingPlatform layer. Please change this layer.");
-                gameObject.layer = LayerManager.MovingPlatform;
+            if (m_GameObject.layer != LayerManager.MovingPlatform) {
+                Debug.LogWarning("Warning: " + m_GameObject.name + " is a moving platform not using the MovingPlatform layer. Please change this layer.");
+                m_GameObject.layer = LayerManager.MovingPlatform;
             }
 
             // The platform can rotate without any waypoints.
@@ -221,7 +221,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// Registers the object with the KinematicObjectManager.
         /// </summary>
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             m_KinematicObjectIndex = KinematicObjectManager.RegisterKinematicObject(this);
         }
@@ -265,7 +265,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// Updates the moving platform to move to the next waypoint.
         /// </summary>
-        private void UpdateWaypoint()
+        protected void UpdateWaypoint()
         {
             // The state should always reflect the state of the next waypoint. If moving in reverse then the state has to be updated before the index changes.
             if (m_Direction == PathDirection.Backwards) {
@@ -366,7 +366,6 @@ namespace Opsive.UltimateCharacterController.Objects
             }
             return m_NextWaypoint;
         }
-
 
         /// <summary>
         /// Updates platform angle according to the current rotation interpolation mode.
@@ -521,7 +520,7 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <summary>
         /// Unregisters the object with the KinematicObjectManager.
         /// </summary>
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             KinematicObjectManager.UnregisterKinematicObject(m_KinematicObjectIndex);
         }

@@ -1566,10 +1566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624654ff0a68ee844994f728ddf3d991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectAt: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  selectAt: 0
   distanceFrom: 0
   maxSelectionDistance: 30
   runRaycasts: 1
@@ -1677,6 +1677,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -1735,6 +1736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9481d631e872c45a9f702509a148ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagSpecificElements: []
+  layerSpecificElements: []
 --- !u!114 &11451330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,7 +1752,9 @@ MonoBehaviour:
   m_key: 
   m_appendSaverTypeToKey: 0
   m_saveAcrossSceneChanges: 0
+  m_restoreStateOnStart: 0
   m_usePlayerSpawnpoint: 1
+  m_multiscene: 0
 --- !u!114 &11466946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1812,6 +1817,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0

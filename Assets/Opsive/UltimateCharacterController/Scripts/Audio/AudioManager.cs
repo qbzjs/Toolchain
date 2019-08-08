@@ -208,7 +208,7 @@ namespace Opsive.UltimateCharacterController.Audio
             /// <param name="reservedIndex">The index of the component that should be stopped. -1 indicates all components.</param>
             public void Stop(int reservedIndex)
             {
-                if (reservedIndex != -1) {
+                if (reservedIndex == -1) {
                     for (int i = 0; i < m_AudioSources.Length; ++i) {
                         m_AudioSources[i].Stop();
                     }

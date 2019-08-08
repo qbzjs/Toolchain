@@ -280,6 +280,15 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
+        /// Resets the database to a default state, keeping all loaded databases.
+        /// </summary>
+        public static void ResetDatabase()
+        {
+            if (!hasInstance) return;
+            instance.ResetDatabase();
+        }
+
+        /// <summary>
         /// Preloads the master database. The Dialogue System delays loading of the dialogue database 
         /// until the data is needed. This avoids potentially long delays during Start(). If you want
         /// to load the database manually (for example to run Lua commands on its contents), call

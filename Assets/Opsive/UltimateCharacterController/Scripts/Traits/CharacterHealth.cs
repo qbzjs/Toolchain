@@ -87,7 +87,7 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <param name="radius">The radius of the explosive damage. If 0 then a non-explosive force will be used.</param>
         /// <param name="attacker">The GameObject that did the damage.</param>
         /// <param name="hitCollider">The Collider that was hit.</param>
-        protected override void OnDamage(float amount, Vector3 position, Vector3 direction, float forceMagnitude, int frames, float radius, GameObject attacker, Collider hitCollider)
+        public override void OnDamage(float amount, Vector3 position, Vector3 direction, float forceMagnitude, int frames, float radius, GameObject attacker, Collider hitCollider)
         {
             base.OnDamage(amount, position, direction, forceMagnitude, frames, radius, attacker, hitCollider);
 

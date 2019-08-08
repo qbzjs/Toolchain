@@ -9,6 +9,10 @@ using Opsive.UltimateCharacterController.Audio;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Game;
 using Opsive.UltimateCharacterController.Objects;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Traits;
+#endif
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
 using System.Collections.Generic;
@@ -107,6 +111,10 @@ namespace Opsive.UltimateCharacterController.Traits
         private AttributeManager m_AttributeManager;
         private Attribute m_HealthAttribute;
         private Attribute m_ShieldAttribute;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private INetworkHealthMonitor m_NetworkHealthMonitor;
+#endif
 
         private float m_SpawnTime;
         private int m_AliveLayer;
@@ -136,6 +144,13 @@ namespace Opsive.UltimateCharacterController.Traits
             if (!string.IsNullOrEmpty(m_ShieldAttributeName)) {
                 m_ShieldAttribute = m_AttributeManager.GetAttribute(m_ShieldAttributeName);
             }
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_GameObject.GetCachedComponent<INetworkInfo>();
+            m_NetworkHealthMonitor = m_GameObject.GetCachedComponent<INetworkHealthMonitor>();
+            if (m_NetworkInfo != null && m_NetworkHealthMonitor == null) {
+                Debug.LogError("Error: The object " + m_GameObject.name + " must have a NetworkHealthMonitor component.");
+            }
+#endif
 
             if (m_Hitboxes != null && m_Hitboxes.Length > 0) {
                 m_ColliderHitboxMap = new Dictionary<Collider, Hitbox>();
@@ -224,6 +239,12 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <param name="hitCollider">The Collider that was hit.</param>
         public void Damage(float amount, Vector3 position, Vector3 direction, float forceMagnitude, int frames, float radius, GameObject attacker, Collider hitCollider)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && !m_NetworkInfo.IsLocalPlayer()) {
+                return;
+            }
+#endif
+
             // Don't take any damage if the object is invincible, already dead, or just spawned and is invincible for a small amount of time.
             if (m_Invincible || !IsAlive() || m_SpawnTime + m_TimeInvincibleAfterSpawn > Time.time || amount == 0) {
                 return;
@@ -243,8 +264,14 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <param name="radius">The radius of the explosive damage. If 0 then a non-explosive force will be used.</param>
         /// <param name="attacker">The GameObject that did the damage.</param>
         /// <param name="hitCollider">The Collider that was hit.</param>
-        protected virtual void OnDamage(float amount, Vector3 position, Vector3 direction, float forceMagnitude, int frames, float radius, GameObject attacker, Collider hitCollider)
+        public virtual void OnDamage(float amount, Vector3 position, Vector3 direction, float forceMagnitude, int frames, float radius, GameObject attacker, Collider hitCollider)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsServer()) {
+                m_NetworkHealthMonitor.OnDamage(amount, position, direction, forceMagnitude, frames, radius, attacker, hitCollider);
+            }
+#endif
+
             // Add a multiplier if a particular collider was hit. Do not apply a multiplier if the damage is applied through a radius because multiple
             // collider are hit.
             if (radius == 0 && direction != Vector3.zero && hitCollider != null) {
@@ -435,6 +462,12 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <returns>True if the object was healed.</returns>
         public virtual bool Heal(float amount)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkHealthMonitor.Heal(amount);
+            }
+#endif
+
             var healed = false;
 
             // Contribute the amount of the health first.

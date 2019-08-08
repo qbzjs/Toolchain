@@ -44,6 +44,8 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         private bool m_AutoMove;
         private bool m_MovementTypeActive;
 
+        public override bool FirstPersonPerspective { get { return false; } }
+
         /// <summary>
         /// Initialize the default values.
         /// </summary>
@@ -147,7 +149,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         {
             var turnAmount = m_TurnValue;
             if (m_Rotate) {
-                turnAmount += MathUtility.InverseTransformQuaternion(m_Transform.rotation, m_LookSource.Transform.rotation).eulerAngles.y + cameraHorizontalMovement;
+                turnAmount += MathUtility.InverseTransformQuaternion(m_Transform.rotation, m_LookSource.Transform.rotation).eulerAngles.y;
             }
             var rotation = Quaternion.AngleAxis(turnAmount, m_CharacterLocomotion.Up) * m_Transform.rotation;
             return MathUtility.ClampInnerAngle(MathUtility.InverseTransformQuaternion(m_Transform.rotation, rotation).eulerAngles.y);

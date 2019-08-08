@@ -622,6 +622,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -838,6 +839,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -1278,12 +1281,32 @@ MonoBehaviour:
     trigger: Show
     animationDuration: 1
     minTransitionDuration: 1
+    onTransitionStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onTransitionEnd:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   loadingSceneName: 
   enterSceneTransition:
     animator: {fileID: 342010028}
     trigger: Hide
     animationDuration: 0
     minTransitionDuration: 0
+    onTransitionStart:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onTransitionEnd:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!114 &888978007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,6 +1498,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -1590,6 +1614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9481d631e872c45a9f702509a148ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagSpecificElements: []
+  layerSpecificElements: []
 --- !u!1 &1132238482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,6 +2213,10 @@ Prefab:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6f06dd98a5f62894a9f9c0ce7e700682, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8200000, guid: 6f06dd98a5f62894a9f9c0ce7e700682, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6f06dd98a5f62894a9f9c0ce7e700682, type: 2}
@@ -2724,6 +2754,7 @@ MonoBehaviour:
   conversation: 
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
+  startConversationEntryID: -1
   exclusive: 0
   skipIfNoValidEntries: 1
   stopConversationOnTriggerExit: 0
@@ -2758,6 +2789,22 @@ MonoBehaviour:
   overrideName: To DemoScene1
   overrideUseMessage: Spacebar to enter
   maxUseDistance: 3
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!65 &2006123372
 BoxCollider:
   m_ObjectHideFlags: 0

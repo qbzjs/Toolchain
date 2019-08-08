@@ -25,6 +25,8 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         [SerializeField] protected LayerMask m_LayerMask = 1 << LayerManager.Character;
         [Tooltip("The AudioClip that should play when the character is teleported.")]
         [SerializeField] protected AudioClip m_TeleportAudioClip;
+        [Tooltip("The name of the state that should activate when the character teleports.")]
+        [SerializeField] protected string m_StateName;
 #if UNITY_EDITOR
         [Tooltip("The color to draw the editor gizmo in (editor only).")]
         [SerializeField] protected Color m_GizmoColor = new Color(0, 0, 1, 0.3f);
@@ -70,6 +72,10 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
                 if (m_AudioSource != null && m_TeleportAudioClip != null) {
                     m_AudioSource.clip = m_TeleportAudioClip;
                     m_AudioSource.Play();
+                }
+
+                if (!string.IsNullOrEmpty(m_StateName)) {
+                    StateSystem.StateManager.SetState(characterLocomotion.gameObject, m_StateName, true);
                 }
             }
         }

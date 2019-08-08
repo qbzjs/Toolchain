@@ -74,7 +74,7 @@ namespace Opsive.UltimateCharacterController.Demo
                 }
 
                 // The movement type cannot be switched if ride is active.
-                if (m_CharacterLocomotion.IsAbilityTypeActive<Character.Abilities.Ride>()) {
+                if (m_CharacterLocomotion.IsAbilityTypeActive<UltimateCharacterController.Character.Abilities.Ride>()) {
                     return;
                 }
 

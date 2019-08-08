@@ -8,6 +8,11 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Items;
 using Opsive.UltimateCharacterController.Items.Actions;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Character;
+using Opsive.UltimateCharacterController.Utility;
+#endif
 using System.Collections.Generic;
 
 namespace Opsive.UltimateCharacterController.Inventory
@@ -50,7 +55,12 @@ namespace Opsive.UltimateCharacterController.Inventory
         public UnityItemIntEvent OnRemoveItemEvent { get { return m_OnRemoveItemEvent; } set { m_OnRemoveItemEvent = value; } }
 
         private GameObject m_GameObject;
-        protected int m_SlotCount;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private INetworkCharacter m_NetworkCharacter;
+#endif
+
+        protected int m_SlotCount = 1;
         private List<Item> m_AllItems = new List<Item>();
 #if UNITY_EDITOR
         private List<ItemType> m_AllItemTypes = new List<ItemType>();
@@ -61,7 +71,7 @@ namespace Opsive.UltimateCharacterController.Inventory
                 if (!Application.isPlaying) { DetermineSlotCount(); }
 #endif
                 return m_SlotCount;
-        } }
+            } }
 
         /// <summary>
         /// Initialize the default values.
@@ -69,6 +79,10 @@ namespace Opsive.UltimateCharacterController.Inventory
         protected virtual void Awake()
         {
             m_GameObject = gameObject;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_GameObject.GetCachedComponent<INetworkInfo>();
+            m_NetworkCharacter = m_GameObject.GetCachedComponent<INetworkCharacter>();
+#endif
 
             DetermineSlotCount();
 
@@ -95,13 +109,25 @@ namespace Opsive.UltimateCharacterController.Inventory
         /// </summary>
         private void Start()
         {
-            LoadDefaultLoadout();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo == null || m_NetworkInfo.IsLocalPlayer()) {
+                if (m_NetworkInfo != null) {
+                    // Load the default loadout on the network first to ensure it is received before any equip events.
+                    m_NetworkCharacter.LoadDefaultLoadout();
+                }
+#endif
+                LoadDefaultLoadout();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            }
+#endif
+
+            EventHandler.ExecuteEvent(m_GameObject, "OnCharacterSnapAnimator");
         }
 
         /// <summary>
         /// Pick up each ItemType within the DefaultLoadout.
         /// </summary>
-        private void LoadDefaultLoadout()
+        public void LoadDefaultLoadout()
         {
             if (m_DefaultLoadout != null) {
                 for (int i = 0; i < m_DefaultLoadout.Length; ++i) {
@@ -180,8 +206,8 @@ namespace Opsive.UltimateCharacterController.Inventory
         /// <returns>True if the ItemType was picked up.</returns>
         public bool PickupItemType(ItemType itemType, float count, int slotID, bool immediatePickup, bool forceEquip, bool notifyOnPickup)
         {
-            // The ItemType can't be picked up if the inventory isn't enabled or the ItemType is null.
-            if (!enabled || itemType == null || count <= 0) {
+            // Prevent pickup when the inventory isn't enabled.
+            if (itemType == null || !enabled) {
                 return false;
             }
 
@@ -193,16 +219,16 @@ namespace Opsive.UltimateCharacterController.Inventory
                     // Find the slot that the item belongs to (if any).
                     for (int i = 0; i < m_SlotCount; ++i) {
                         if (GetItem(i, itemType) != null) {
-                            ItemTypePickup(itemType, i, count, immediatePickup, forceEquip);
+                            ItemTypePickup(itemType, count, i, immediatePickup, forceEquip);
                             slotID = i;
                         }
                     }
                     if (slotID == -1) {
                         // The ItemType doesn't correspond to an item so execute the event once.
-                        ItemTypePickup(itemType, -1, count, immediatePickup, forceEquip);
+                        ItemTypePickup(itemType, count, -1, immediatePickup, forceEquip);
                     }
                 } else {
-                    ItemTypePickup(itemType, slotID, count, immediatePickup, forceEquip);
+                    ItemTypePickup(itemType, count, slotID, immediatePickup, forceEquip);
                 }
 
                 // If the slot ID isn't -1 then AddItem has already run. Add the item if it hasn't already been added. This will occur if the item is removed
@@ -213,25 +239,31 @@ namespace Opsive.UltimateCharacterController.Inventory
                         m_AllItems.Add(GetItem(slotID, itemType));
                     }
                 }
-#if UNITY_EDITOR
-                if (!m_AllItemTypes.Contains(itemType)) {
-                    m_AllItemTypes.Add(itemType);
-                }
-#endif
             }
+#if UNITY_EDITOR
+            if (!m_AllItemTypes.Contains(itemType)) {
+                m_AllItemTypes.Add(itemType);
+            }
+#endif
             return pickedUp;
         }
 
         /// <summary>
         /// The ItemType has been picked up. Notify interested objects.
         /// </summary>
-        /// <param name="itemType">The ItemType that was picked up. Can be null.</param>
-        /// <param name="slotID">The ID of the slot which the item belongs to.</param>
+        /// <param name="itemType">The ItemType that was picked up.</param>
         /// <param name="count">The number of ItemType picked up.</param>
+        /// <param name="slotID">The ID of the slot which the item belongs to.</param>
         /// <param name="immediatePickup">Was the item be picked up immediately?</param>
         /// <param name="forcePickup">Should the item be force equipped?</param>
-        private void ItemTypePickup(ItemType itemType, int slotID, float count, bool immediatePickup, bool forceEquip)
+        private void ItemTypePickup(ItemType itemType, float count, int slotID, bool immediatePickup, bool forceEquip)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.ItemTypePickup(itemType.ID, count, slotID, immediatePickup, forceEquip);
+            }
+#endif
+
             EventHandler.ExecuteEvent(m_GameObject, "OnInventoryPickupItemType", itemType, count, immediatePickup, forceEquip);
             if (m_OnPickupItemTypeEvent != null) {
                 m_OnPickupItemTypeEvent.Invoke(itemType, count, immediatePickup, forceEquip);
@@ -332,6 +364,12 @@ namespace Opsive.UltimateCharacterController.Inventory
                 if (m_OnEquipItemEvent != null) {
                     m_OnEquipItemEvent.Invoke(item, slotID);
                 }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                    m_NetworkCharacter.EquipUnequipItem(itemType.ID, slotID, true);
+                }
+#endif
             }
         }
 
@@ -380,6 +418,12 @@ namespace Opsive.UltimateCharacterController.Inventory
                 if (m_OnUnequipItemEvent != null) {
                     m_OnUnequipItemEvent.Invoke(item, slotID);
                 }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                    m_NetworkCharacter.EquipUnequipItem(item.ItemType.ID, slotID, false);
+                }
+#endif
             }
         }
 
@@ -517,14 +561,28 @@ namespace Opsive.UltimateCharacterController.Inventory
             enabled = false;
             // The item's drop method will call RemoveItem within the inventory.
             if (m_RemoveAllOnDeath) {
-                var allItems = GetAllItems();
-                for (int i = allItems.Count - 1; i >= 0; --i) {
-                    // Multiple items may be dropped at the same time.
-                    if (allItems.Count <= i) {
-                        continue;
-                    }
-                    allItems[i].Drop(false);
+                RemoveAllItems();
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+                if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                    m_NetworkCharacter.RemoveAllItems();
                 }
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Removes all of the items from the inventory.
+        /// </summary>
+        public void RemoveAllItems()
+        {
+            var allItems = GetAllItems();
+            for (int i = allItems.Count - 1; i >= 0; --i) {
+                // Multiple items may be dropped at the same time.
+                if (allItems.Count <= i) {
+                    continue;
+                }
+                allItems[i].Drop(false);
             }
         }
 

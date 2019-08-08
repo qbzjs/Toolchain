@@ -11,6 +11,10 @@ using Opsive.UltimateCharacterController.Character.MovementTypes;
 using Opsive.UltimateCharacterController.Character.Abilities;
 using Opsive.UltimateCharacterController.Character.Abilities.Items;
 using Opsive.UltimateCharacterController.Character.Effects;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+using Opsive.UltimateCharacterController.Networking;
+using Opsive.UltimateCharacterController.Networking.Character;
+#endif
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
 using System.Collections.Generic;
@@ -111,8 +115,11 @@ namespace Opsive.UltimateCharacterController.Character
 
         private GameObject m_GameObject;
         private Animator m_Animator;
-        private CharacterIKBase m_CharacterIK;
         private int m_KinematicObjectIndex = -1;
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        private INetworkInfo m_NetworkInfo;
+        private INetworkCharacter m_NetworkCharacter;
+#endif
 
         private float m_MaxHeight;
         private Vector3 m_MaxHeightPosition;
@@ -230,7 +237,7 @@ namespace Opsive.UltimateCharacterController.Character
 
         [NonSerialized] public Vector2 RawInputVector { get { return m_RawInputVector; } set { m_RawInputVector = value; } }
         [NonSerialized] public Vector2 InputVector { get { return m_InputVector; } set { m_InputVector = value; } }
-        [NonSerialized] public float DeltaYawRotation { get { return m_DeltaYawRotation; } set { m_DeltaYawRotation = value; } }
+        [NonSerialized] public Vector3 DeltaRotation { get { return m_DeltaRotation; } set { m_DeltaRotation = value; } }
         [NonSerialized] public bool Moving { get { return m_Moving || m_InputVector.sqrMagnitude > 0.001f; } set {
                 if (m_Moving != value) {
                     m_Moving = value;
@@ -253,7 +260,10 @@ namespace Opsive.UltimateCharacterController.Character
         {
             m_GameObject = gameObject;
             m_Animator = m_GameObject.GetCachedComponent<Animator>();
-            m_CharacterIK = m_GameObject.GetCachedComponent<CharacterIKBase>();
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            m_NetworkInfo = m_GameObject.GetCachedComponent<INetworkInfo>();
+            m_NetworkCharacter = m_GameObject.GetCachedComponent<INetworkCharacter>();
+#endif
 
             // Create any movement types, abilities, and effects from the serialized data.
             DeserializeMovementTypes();
@@ -303,6 +313,7 @@ namespace Opsive.UltimateCharacterController.Character
                 }
             }
             // The controller needs to start with a movement type.
+            m_FirstPersonPerspective = m_FirstPersonMovementTypeFullName == m_MovementTypeFullName;
             SetMovementType(m_MovementTypeFullName);
         }
 
@@ -552,7 +563,7 @@ namespace Opsive.UltimateCharacterController.Character
 
             // Notify the current movement type that is now active.
             if (Application.isPlaying) {
-                if (m_FirstPersonPerspective) {
+                if (m_MovementType.FirstPersonPerspective) {
                     m_FirstPersonMovementTypeFullName = m_MovementTypeFullName;
                 } else {
                     m_ThirdPersonMovementTypeFullName = m_MovementTypeFullName;
@@ -575,17 +586,17 @@ namespace Opsive.UltimateCharacterController.Character
         {
             m_LookSource = lookSource;
 
+#if THIRD_PERSON_CONTROLLER
+            var hasPerspectiveMonitor = m_GameObject.GetComponent<ThirdPersonController.Character.PerspectiveMonitor>() != null;
+#else
             var hasPerspectiveMonitor = false;
-            var perspectiveMonitorType = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.ThirdPersonController.Character.PerspectiveMonitor");
-            if (perspectiveMonitorType != null) {
-                hasPerspectiveMonitor = GetComponent(perspectiveMonitorType) != null;
-            }
+#endif
             // If the character doesn't have the PerspectiveMonitor then the perspective depends on the look source.
             if (!hasPerspectiveMonitor) {
                 if (lookSource != null) {
                     var cameraController = lookSource as Camera.CameraController;
                     if (cameraController != null) {
-                        m_FirstPersonPerspective = cameraController.ActiveViewType.GetType().FullName.Contains("FirstPerson");
+                        m_FirstPersonPerspective = cameraController.ActiveViewType.FirstPersonPerspective;
                     } else {
                         m_FirstPersonPerspective = false;
                     }
@@ -599,13 +610,11 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         protected override void OnEnable()
         {
-            var prevIndex = m_KinematicObjectIndex;
-
             // The KinematicObjectManager is responsible for calling the move method.
             m_KinematicObjectIndex = KinematicObjectManager.RegisterCharacter(this);
 
             // If the previous index is not -1 then the character has already been enabled. Send events so all of the components correctly reset.
-            if (prevIndex != -1) {
+            if (m_KinematicObjectIndex != -1) {
                 EventHandler.ExecuteEvent(m_GameObject, "OnCharacterMoving", false);
                 EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", true);
             }
@@ -616,7 +625,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// <summary>
         /// Call Start on all of the character's abilities and effects in addition to checking the TimeScale.
         /// </summary>
-        protected override void Start()
+        public override void Start()
         {
             base.Start();
 
@@ -679,7 +688,7 @@ namespace Opsive.UltimateCharacterController.Character
                 m_InputVector = Vector2.zero;
             }
             if (!allowRotationalInput) {
-                m_DeltaYawRotation = 0;
+                m_DeltaRotation = Vector3.zero;
             }
 
             // Start and update the abilities.
@@ -802,10 +811,6 @@ namespace Opsive.UltimateCharacterController.Character
             KinematicObjectManager.BeginCharacterMovement(m_KinematicObjectIndex);
 
             base.UpdatePositionAndRotation();
-            // Update IK after the character has moved.
-            if (m_CharacterIK != null && m_CharacterIK.enabled) {
-                m_CharacterIK.Move();
-            }
             LateUpdateUltimateLocomotion();
 
             KinematicObjectManager.EndCharacterMovement(m_KinematicObjectIndex);
@@ -1741,24 +1746,24 @@ namespace Opsive.UltimateCharacterController.Character
         {
             m_FirstPersonPerspective = firstPersonPerspective;
             if (firstPersonPerspective) {
-                if (!string.IsNullOrEmpty(m_FirstPersonMovementTypeFullName)) {
-                    SetMovementType(m_FirstPersonMovementTypeFullName);
-                }
                 if (!string.IsNullOrEmpty(m_ThirdPersonStateName)) {
                     StateManager.SetState(m_GameObject, m_ThirdPersonStateName, false);
                 }
                 if (!string.IsNullOrEmpty(m_FirstPersonStateName)) {
                     StateManager.SetState(m_GameObject, m_FirstPersonStateName, true);
                 }
-            } else {
-                if (!string.IsNullOrEmpty(m_ThirdPersonMovementTypeFullName)) {
-                    SetMovementType(m_ThirdPersonMovementTypeFullName);
+                if (!string.IsNullOrEmpty(m_FirstPersonMovementTypeFullName)) {
+                    SetMovementType(m_FirstPersonMovementTypeFullName);
                 }
+            } else {
                 if (!string.IsNullOrEmpty(m_FirstPersonStateName)) {
                     StateManager.SetState(m_GameObject, m_FirstPersonStateName, false);
                 }
                 if (!string.IsNullOrEmpty(m_ThirdPersonStateName)) {
                     StateManager.SetState(m_GameObject, m_ThirdPersonStateName, true);
+                }
+                if (!string.IsNullOrEmpty(m_ThirdPersonMovementTypeFullName)) {
+                    SetMovementType(m_ThirdPersonMovementTypeFullName);
                 }
             }
 
@@ -1766,6 +1771,25 @@ namespace Opsive.UltimateCharacterController.Character
                 SetMovementType(m_MovementTypeFullName);
             }
         }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+        /// <summary>
+        /// Pushes the target Rigidbody in the specified direction.
+        /// </summary>
+        /// <param name="targetRigidbody">The Rigidbody to push.</param>
+        /// <param name="moveDirection">The direction that the character is moving.</param>
+        /// <param name="point">The point at which to apply the push force.</param>
+        /// <param name="radius">The radius of the pushing collider.</param>
+        /// <returns>Was the rigidbody pushed?</returns>
+        protected override bool PushRigidbody(Rigidbody targetRigidbody, Vector3 moveDirection, Vector3 point, float radius)
+        {
+            var pushed = base.PushRigidbody(targetRigidbody, moveDirection, point, radius);
+            if (pushed && m_NetworkInfo != null) {
+                m_NetworkCharacter.PushRigidbody(targetRigidbody, (moveDirection / m_DeltaTime) * (m_Mass / targetRigidbody.mass) * 0.01f, point);
+            }
+            return pushed;
+        }
+#endif
 
         /// <summary>
         /// Sets the rotation of the character.
@@ -1795,9 +1819,18 @@ namespace Opsive.UltimateCharacterController.Character
                 StopAllAbilities(false);
             }
 
-            KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
+            // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
+            if (m_KinematicObjectIndex != -1) {
+                KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
+            }
 
             EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.SetRotation(rotation, snapAnimator);
+            }
+#endif
         }
 
         /// <summary>
@@ -1825,19 +1858,22 @@ namespace Opsive.UltimateCharacterController.Character
             m_MaxHeight = float.NegativeInfinity;
             m_MaxHeightPosition = position;
             base.SetPosition(position);
-
-            // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
-            if (m_KinematicObjectIndex == -1) {
-                return;
-            }
-
             if (snapAnimator) {
                 StopAllAbilities(false);
             }
 
-            KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
+            // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
+            if (m_KinematicObjectIndex != -1) {
+                KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
+            }
 
             EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.SetPosition(position, snapAnimator);
+            }
+#endif
         }
 
         /// <summary>
@@ -1859,6 +1895,12 @@ namespace Opsive.UltimateCharacterController.Character
 
             KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, m_Transform.rotation);
             KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, m_Transform.position);
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.ResetRotationPosition();
+            }
+#endif
         }
 
         /// <summary>
@@ -1888,19 +1930,23 @@ namespace Opsive.UltimateCharacterController.Character
             base.SetRotation(rotation);
             base.SetPosition(position);
 
-            // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
-            if (m_KinematicObjectIndex == -1) {
-                return;
-            }
-
             if (snapAnimator) {
                 StopAllAbilities(false);
             }
 
-            KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
-            KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
+            // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
+            if (m_KinematicObjectIndex != -1) {
+                KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
+                KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
+            }
 
             EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.SetPositionAndRotation(position, rotation, snapAnimator);
+            }
+#endif
         }
 
         /// <summary>
@@ -1933,6 +1979,12 @@ namespace Opsive.UltimateCharacterController.Character
             if (uiEvent) {
                 EventHandler.ExecuteEvent(m_GameObject, "OnShowUI", active);
             }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
+                m_NetworkCharacter.SetActive(active, uiEvent);
+            }
+#endif
         }
 
         /// <summary>
@@ -1952,15 +2004,15 @@ namespace Opsive.UltimateCharacterController.Character
                     Vector3 startEndCap, endEndCap;
                     var capsuleCollider = m_Colliders[i] as CapsuleCollider;
                     MathUtility.CapsuleColliderEndCaps(capsuleCollider, capsuleCollider.transform.position, capsuleCollider.transform.rotation, out startEndCap, out endEndCap);
-                    var radius = capsuleCollider.radius * MathUtility.ColliderRadiusMultiplier(capsuleCollider);
-                    if (Physics.CapsuleCast(startEndCap + offset, endEndCap + offset, radius, direction.normalized, out result, direction.magnitude, layers, QueryTriggerInteraction.Ignore)) {
+                    var radius = capsuleCollider.radius * MathUtility.ColliderRadiusMultiplier(capsuleCollider) - ColliderSpacing;
+                    if (Physics.CapsuleCast(startEndCap + offset, endEndCap + offset, radius, direction.normalized, out result, direction.magnitude + ColliderSpacing, layers, QueryTriggerInteraction.Ignore)) {
                         return true;
                     }
                 } else { // SphereCollider.
                     var sphereCollider = m_Colliders[i] as SphereCollider;
-                    var radius = sphereCollider.radius * MathUtility.ColliderRadiusMultiplier(sphereCollider);
+                    var radius = sphereCollider.radius * MathUtility.ColliderRadiusMultiplier(sphereCollider) - ColliderSpacing;
                     if (Physics.SphereCast(sphereCollider.transform.TransformPoint(sphereCollider.center) + offset, radius, direction.normalized,
-                                                                    out result, direction.magnitude, layers, QueryTriggerInteraction.Ignore)) {
+                                                                    out result, direction.magnitude + ColliderSpacing, layers, QueryTriggerInteraction.Ignore)) {
                         return true;
                     }
                 }
@@ -1997,13 +2049,13 @@ namespace Opsive.UltimateCharacterController.Character
                     Vector3 startEndCap, endEndCap;
                     var capsuleCollider = m_Colliders[i] as CapsuleCollider;
                     MathUtility.CapsuleColliderEndCaps(capsuleCollider, capsuleCollider.transform.position + offset, capsuleCollider.transform.rotation, out startEndCap, out endEndCap);
-                    var radius = capsuleCollider.radius * MathUtility.ColliderRadiusMultiplier(capsuleCollider);
-                    localHitCount = Physics.CapsuleCastNonAlloc(startEndCap, endEndCap, radius, direction.normalized, m_RaycastHits, direction.magnitude, m_CharacterLayerManager.SolidObjectLayers, QueryTriggerInteraction.Ignore);
+                    var radius = capsuleCollider.radius * MathUtility.ColliderRadiusMultiplier(capsuleCollider) - ColliderSpacing;
+                    localHitCount = Physics.CapsuleCastNonAlloc(startEndCap, endEndCap, radius, direction.normalized, m_RaycastHits, direction.magnitude + ColliderSpacing, m_CharacterLayerManager.SolidObjectLayers, QueryTriggerInteraction.Ignore);
                 } else { // SphereCollider.
                     var sphereCollider = m_Colliders[i] as SphereCollider;
-                    var radius = sphereCollider.radius * MathUtility.ColliderRadiusMultiplier(sphereCollider);
+                    var radius = sphereCollider.radius * MathUtility.ColliderRadiusMultiplier(sphereCollider) - ColliderSpacing;
                     localHitCount = Physics.SphereCastNonAlloc(sphereCollider.transform.TransformPoint(sphereCollider.center) + offset, radius, direction.normalized,
-                                                                    m_RaycastHits, direction.magnitude, m_CharacterLayerManager.SolidObjectLayers, QueryTriggerInteraction.Ignore);
+                                                                    m_RaycastHits, direction.magnitude + ColliderSpacing, m_CharacterLayerManager.SolidObjectLayers, QueryTriggerInteraction.Ignore);
                 }
 
                 if (localHitCount > 0) {
@@ -2111,14 +2163,19 @@ namespace Opsive.UltimateCharacterController.Character
             // All of the abilities should stop.
             StopAllAbilities(true);
 
-            // The character is no longer moving.
-            KinematicObjectManager.SetCharacterMovementInput(m_KinematicObjectIndex, 0, 0);
-            KinematicObjectManager.SetCharacterDeltaYawRotation(m_KinematicObjectIndex, 0);
-
             // The animator values should reset.
             m_YawAngle = 0;
             m_InputVector = Vector3.zero;
             Moving = false;
+
+            // Remote networked characters will not be registered with the KinematicObjectManager.
+            if (m_KinematicObjectIndex == -1) {
+                return;
+            }
+
+            // The character is no longer moving.
+            KinematicObjectManager.SetCharacterMovementInput(m_KinematicObjectIndex, 0, 0);
+            KinematicObjectManager.SetCharacterDeltaYawRotation(m_KinematicObjectIndex, 0);
         }
 
         /// <summary>
