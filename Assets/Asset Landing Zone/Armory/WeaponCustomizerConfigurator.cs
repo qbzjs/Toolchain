@@ -25,13 +25,14 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	{
 		[SerializeField]public GameObject m_Part;
 		[SerializeField]public string [] m_SubParts;
-		[SerializeField]public bool m_allowSightAttach;
-		[SerializeField]public bool m_allowScopeAttach;
-		[SerializeField]public bool m_allowBarrelAttach;
-		[SerializeField]public bool m_allowUnderBarrelAttach;
-		[SerializeField]public bool m_allowSideAttach;
-		[SerializeField]public bool m_allowPistolSightAttach;
-		[SerializeField]public bool m_allowPistolUnderBarrelAttach;
+		[SerializeField]public bool m_SightMount;
+		[SerializeField]public bool m_ScopeMount;
+		[SerializeField]public bool m_BarrelMount;
+		[SerializeField]public bool m_UnderMount;
+		[SerializeField]public bool m_SideMountL;
+		[SerializeField]public bool m_SideMountR;
+		[SerializeField]public bool m_SightMountPistol;
+		[SerializeField]public bool m_UnderMountPistol;
 	}
 	
 	[System.Serializable]
@@ -160,12 +161,14 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 					for(int j = 0; j < m_WeaponProfiles[settings.m_ProfileConfig].
 						m_AmmoSets[settings.m_AmmoConfig].m_AmmoParts.Length; j++)
 					{
-						partStatus = ValidatePart(current,"Weapon - Ammo",m_WeaponProfiles[settings.m_ProfileConfig].
+						partStatus = ValidatePart(current,"Weapon - Ammo",
+							m_WeaponProfiles[settings.m_ProfileConfig].
 							m_AmmoSets[settings.m_AmmoConfig].m_AmmoParts[j].m_Part);
-						// With AmmoSet, we don't want to delete any of the mags in the set, leave the default
+						// With AmmoSet, make the active mag visible, the rest invisible
 						if(partStatus == 1)
 						{
-							if(j != 0)
+							// set the active mag
+							if(j != settings.m_ActiveMag)
 							{
 								current.SetActive(false);
 							}

@@ -12,6 +12,7 @@ public class WeaponCustomizerActivator : MonoBehaviour
 	public int m_ForeConfig;
 	public int m_RearConfig;
 	public int m_AmmoConfig;
+	public int m_ActiveMag;
 	public int m_AccessoryConfig;
 	public bool m_ActivateOnStart;
 	
@@ -85,6 +86,7 @@ public class WeaponCustomizerActivator : MonoBehaviour
 			pickupActivator.m_ForeConfig = m_ForeConfig;
 			pickupActivator.m_RearConfig = m_RearConfig;
 			pickupActivator.m_AmmoConfig = m_AmmoConfig;
+			pickupActivator.m_ActiveMag = m_ActiveMag;
 			pickupActivator.m_ActivateOnStart = true;
 		}
 	}
