@@ -8,6 +8,9 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Camera.ViewTypes;
 using Opsive.UltimateCharacterController.Input;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 
 namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes
 {
@@ -54,6 +57,10 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         private float m_CharacterStartPosition;
         private int m_PathIndex;
 
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private bool m_VREnabled;
+#endif
+
         /// <summary>
         /// Initializes the default values.
         /// </summary>
@@ -62,6 +69,15 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
             base.Awake();
 
             m_Camera = m_CameraController.gameObject.GetCachedComponent<UnityEngine.Camera>();
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            VRCameraIdentifier vrCamera;
+            if ((vrCamera = m_GameObject.GetComponentInChildren<VRCameraIdentifier>()) != null) {
+                // The VR camera will be used as the main camera.
+                m_Camera.enabled = false;
+                m_Camera = vrCamera.GetComponent<UnityEngine.Camera>();
+                m_VREnabled = true;
+            }
+#endif
             m_LookDistance = m_LookDirectionDistance;
         }
 
@@ -110,10 +126,16 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// </summary>
         /// <param name="horizontalMovement">-1 to 1 value specifying the amount of horizontal movement.</param>
         /// <param name="verticalMovement">-1 to 1 value specifying the amount of vertical movement.</param>
-        /// <param name="immediatePosition">Should the camera be positioned immediately?</param>
+        /// <param name="immediateUpdate">Should the camera be updated immediately?</param>
         /// <returns>The updated rotation.</returns>
-        public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediatePosition)
+        public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediateUpdate)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VREnabled) {
+                UnityEngine.XR.InputTracking.Recenter();
+                Events.EventHandler.ExecuteEvent("OnRecenterTracking");
+            }
+#endif
             Quaternion targetRotation;
             var activeMovementType = m_CharacterLocomotion.ActiveMovementType as Character.MovementTypes.Pseudo3D;
             if (activeMovementType != null && activeMovementType.Path != null) {
@@ -122,15 +144,15 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
                 targetRotation = Quaternion.LookRotation(m_ForwardAxis);
             }
 
-            return immediatePosition ? targetRotation : Quaternion.Slerp(m_Transform.rotation, targetRotation, m_RotationSmoothing);
+            return immediateUpdate ? targetRotation : Quaternion.Slerp(m_Transform.rotation, targetRotation, m_RotationSmoothing);
         }
 
         /// <summary>
         /// Moves the camera to face the character.
         /// </summary>
-        /// <param name="immediatePosition">Should the camera be positioned immediately?</param>
+        /// <param name="immediateUpdate">Should the camera be updated immediately?</param>
         /// <returns>The updated position.</returns>
-        public override Vector3 Move(bool immediatePosition)
+        public override Vector3 Move(bool immediateUpdate)
         {
             // A vertical offset can be applied to prevent the character from changing positions when the character jumps.
             var offset = m_CharacterStartPosition - m_CharacterTransform.InverseTransformPoint(Vector3.zero).y;
@@ -140,7 +162,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
                 offset = -m_VerticalDeadZone * Mathf.Sign(offset);
             }
             var targetPosition = GetAnchorPosition() + m_CharacterTransform.up * offset - m_Transform.forward * m_ViewDistance;
-            return (immediatePosition ? targetPosition : Vector3.SmoothDamp(m_Transform.position, targetPosition, ref m_SmoothPositionVelocity, m_MoveSmoothing));
+            return (immediateUpdate ? targetPosition : Vector3.SmoothDamp(m_Transform.position, targetPosition, ref m_SmoothPositionVelocity, m_MoveSmoothing));
         }
 
         /// <summary>

@@ -16,6 +16,9 @@ using Opsive.UltimateCharacterController.Networking.Game;
 using Opsive.UltimateCharacterController.Objects;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 
 namespace Opsive.UltimateCharacterController.Items.Actions
 {
@@ -112,7 +115,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
         private TrajectoryObject m_TrajectoryObject;
         protected UltimateCharacterLocomotion m_CharacterLocomotion;
-        private Transform m_CharacterTransform;
+        protected Transform m_CharacterTransform;
         private GameObject m_Object;
         private Transform m_ObjectTransform;
         private MeshRenderer[] m_FirstPersonObjectMeshRenderers;
@@ -121,6 +124,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         private GameObject m_InstantiatedThrownObject;
         protected TrajectoryObject m_InstantiatedTrajectoryObject;
         private RaycastHit m_RaycastHit;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private IVRThrowableItem m_VRThrowableItem;
+#endif
 
         private bool m_Aiming;
         protected bool m_Throwing;
@@ -141,6 +147,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             m_TrajectoryObject = GetComponent<TrajectoryObject>();
             m_CharacterLocomotion = m_Character.GetCachedComponent<UltimateCharacterLocomotion>();
             m_CharacterTransform = m_CharacterLocomotion.transform;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            m_VRThrowableItem = GetComponent<IVRThrowableItem>();
+#endif
 
             if (m_ThrownObject != null && m_TrajectoryObject != null) {
                 // The object has to be instantiated for GetComponent to work.
@@ -178,11 +187,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             }
 
             if (m_ShowTrajectoryOnAim && m_TrajectoryObject == null) {
-                Debug.LogError("Error: A TrajectoryObject must be added in order for the trajectory to be shown.");
+                Debug.LogError("Error: A TrajectoryObject must be added to the " + m_GameObject.name + " GameObject in order for the trajectory to be shown.");
             }
 
             if (m_ThrownObject == null) {
-                Debug.LogError("Error: A ThrownObject must be assigned.");
+                Debug.LogError("Error: A ThrownObject must be assigned to the " + m_GameObject.name + " GameObject.");
             }
 
             EventHandler.RegisterEvent<bool, bool>(m_Character, "OnAimAbilityStart", OnAim);
@@ -262,6 +271,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             base.Equip();
 
             m_NextItemSet = false;
+            EnableObjectMeshRenderers(CanActivateVisibleObject());
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRThrowableItem != null) {
+                m_VRThrowableItem.Equip();
+            }
+#endif
         }
 
         /// <summary>
@@ -298,7 +313,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             if (m_Aiming && m_ShowTrajectoryOnAim && !m_Throwing && !m_Reequipping && !m_NextItemSet && m_TrajectoryObject != null) {
                 var trajectoryTransform = m_ThrowableItemPerpectiveProperties.TrajectoryLocation != null ? m_ThrowableItemPerpectiveProperties.TrajectoryLocation : m_CharacterTransform;
                 var lookDirection = m_LookSource.LookDirection(trajectoryTransform.TransformPoint(m_TrajectoryOffset), false, m_ImpactLayers, true);
-                var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection));
+                var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection, m_CharacterLocomotion.Up));
                 // Prevent the item from being thrown behind the character. This can happen if the character is looking straight up and there is a positive
                 // y velocity. Gravity will cause the thrown object to go in the opposite direction.
                 if (Vector3.Dot(velocity.normalized, m_CharacterTransform.forward) < 0) {
@@ -335,6 +350,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         public override bool CanUseItem(ItemAbility itemAbility, UseAbilityState abilityState)
         {
             if (!base.CanUseItem(itemAbility, abilityState)) {
+                return false;
+            }
+
+            // The item can't be used if it is already being used.
+            if (abilityState == UseAbilityState.Start && (m_Throwing || m_Reequipping)) {
                 return false;
             }
 
@@ -485,7 +505,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
 
                     var trajectoryTransform = m_ThrowableItemPerpectiveProperties.TrajectoryLocation != null ? m_ThrowableItemPerpectiveProperties.TrajectoryLocation : m_CharacterTransform;
                     var lookDirection = m_LookSource.LookDirection(trajectoryTransform.TransformPoint(m_TrajectoryOffset), false, m_ImpactLayers, true);
-                    var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection));
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                    if (m_VRThrowableItem != null && m_CharacterLocomotion.FirstPersonPerspective) {
+                        m_Velocity = m_VRThrowableItem.GetVelocity();
+                    }
+#endif
+                    var velocity = MathUtility.TransformDirection(m_Velocity, Quaternion.LookRotation(lookDirection, m_CharacterLocomotion.Up));
                     // Prevent the item from being thrown behind the character. This can happen if the character is looking straight up and there is a positive
                     // y velocity. Gravity will cause the thrown object to go in the opposite direction.
                     if (Vector3.Dot(velocity.normalized, m_CharacterTransform.forward) < 0) {
@@ -625,8 +650,13 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             if (m_ShowTrajectoryOnAim && m_TrajectoryObject != null) {
                 m_TrajectoryObject.ClearTrajectory();
             }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRThrowableItem != null) {
+                m_VRThrowableItem.Unequip();
+            }
+#endif
         }
-        
+
         /// <summary>
         /// The character perspective between first and third person has changed.
         /// </summary>

@@ -22,7 +22,7 @@ namespace Opsive.UltimateCharacterController.UI
         public GameObject Character { get { return m_Character; } set { OnAttachCharacter(value); } }
 
         protected bool m_ShowUI = true;
-        private GameObject m_CameraGameObject;
+        protected GameObject m_CameraGameObject;
 
         /// <summary>
         /// Initialize the default values.
@@ -31,13 +31,13 @@ namespace Opsive.UltimateCharacterController.UI
         {
             base.Awake();
 
-            if (m_Character == null) {
-                var camera = UnityEngineUtility.FindCamera(m_Character);
-                if (camera != null) {
-                    m_CameraGameObject = camera.gameObject;
+            var camera = UnityEngineUtility.FindCamera(m_Character);
+            if (camera != null) {
+                m_CameraGameObject = camera.gameObject;
+                if (m_Character == null) {
                     m_Character = m_CameraGameObject.GetCachedComponent<Camera.CameraController>().Character;
-                    EventHandler.RegisterEvent<GameObject>(m_CameraGameObject, "OnCameraAttachCharacter", OnAttachCharacter);
                 }
+                EventHandler.RegisterEvent<GameObject>(m_CameraGameObject, "OnCameraAttachCharacter", OnAttachCharacter);
             }
 
             // Start disabled - attaching the character will enabe the component.

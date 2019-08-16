@@ -27,7 +27,9 @@ namespace Opsive.UltimateCharacterController.Objects.CharacterAssist
         [Tooltip("Is the character required to be on the ground?")]
         [SerializeField] protected bool m_RequireGrounded = true;
         [Tooltip("Should the ability wait to start until all transitions are complete?")]
-        [SerializeField] private bool m_PrecisionStart = true;
+        [SerializeField] protected bool m_PrecisionStart = true;
+        [Tooltip("The multiplier to apply to the character's speed when moving to the start location.")]
+        [SerializeField] protected float m_MovementMultiplier = 1;
 
         public Vector3 Offset { get { return m_Offset; } set { m_Offset = value; } }
         public float YawOffset { get { return m_YawOffset; } set { m_YawOffset = value; } }
@@ -36,6 +38,7 @@ namespace Opsive.UltimateCharacterController.Objects.CharacterAssist
         public float Angle { get { return m_Angle; } set { m_Angle = value; } }
         public bool RequireGrounded { get { return m_RequireGrounded; } set { m_RequireGrounded = value; } }
         public bool PrecisionStart { get { return m_PrecisionStart; } set { m_PrecisionStart = value; } }
+        public float MovementMultiplier { get { return m_MovementMultiplier; } set { m_MovementMultiplier = value; } }
 
         private Transform m_Transform;
         private float m_StartYawOffset;

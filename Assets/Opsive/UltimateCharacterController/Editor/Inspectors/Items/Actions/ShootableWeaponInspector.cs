@@ -179,6 +179,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Items.Actions
                     EditorGUILayout.PropertyField(PropertyFromName("m_PositionCameraRecoil"), true);
                     EditorGUILayout.PropertyField(PropertyFromName("m_RotationCameraRecoil"), true);
                     EditorGUILayout.PropertyField(PropertyFromName("m_CameraRecoilAccumulation"));
+                    EditorGUILayout.PropertyField(PropertyFromName("m_LocalizeRecoilForce"));
                     EditorGUI.indentLevel--;
                 }
                 if (Foldout("Muzzle Flash")) {

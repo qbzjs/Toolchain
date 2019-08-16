@@ -148,6 +148,7 @@ namespace Opsive.UltimateCharacterController.Character
         private bool m_FirstPersonPerspective;
         private bool m_Alive;
         private bool m_Aiming;
+        private Vector3 m_AbilityMotor;
 
         private int[] m_ItemSlotStateIndex;
         private int[] m_ItemSlotSubstateIndex;
@@ -248,6 +249,7 @@ namespace Opsive.UltimateCharacterController.Character
                 }
             }
         }
+        [NonSerialized] public Vector3 AbilityMotor { get { return m_AbilityMotor; } set { m_AbilityMotor = value; } }
         [NonSerialized] public bool FirstPersonPerspective { get { return m_FirstPersonPerspective; } set { m_FirstPersonPerspective = value; } }
         public bool Alive { get { return m_Alive; } }
         public float DeltaTime { get { return m_DeltaTime; } }
@@ -313,8 +315,10 @@ namespace Opsive.UltimateCharacterController.Character
                 }
             }
             // The controller needs to start with a movement type.
-            m_FirstPersonPerspective = m_FirstPersonMovementTypeFullName == m_MovementTypeFullName;
             SetMovementType(m_MovementTypeFullName);
+            if (m_MovementType != null) {
+                m_FirstPersonPerspective = m_MovementType.FirstPersonPerspective;
+            }
         }
 
         /// <summary>
@@ -865,6 +869,11 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         protected override void UpdateRotation()
         {
+            // If using root motion rotation the animation will specify the rotation.
+            if (UsingRootMotionRotation) {
+                m_DeltaRotation = Vector3.zero;
+            }
+
             // Give the abilities a chance to update the rotation.
             for (int i = 0; i < m_ActiveAbilityCount; ++i) {
                 m_ActiveAbilities[i].UpdateRotation();
@@ -946,6 +955,16 @@ namespace Opsive.UltimateCharacterController.Character
         }
 
         /// <summary>
+        /// Updates the motor forces.
+        /// </summary>
+        protected override void UpdateMotorThrottle()
+        {
+            base.UpdateMotorThrottle();
+
+            MotorThrottle += m_AbilityMotor;
+        }
+
+        /// <summary>
         /// Applies the final move direction to the transform.
         /// </summary>
         protected override void ApplyPosition()
@@ -968,11 +987,9 @@ namespace Opsive.UltimateCharacterController.Character
         {
             if (m_DirtyAbilityParameter) {
                 UpdateAbilityAnimatorParameters(true);
-                m_DirtyAbilityParameter = false;
             }
             if (m_DirtyItemAbilityParameter) {
                 UpdateItemAbilityAnimatorParameters(true);
-                m_DirtyItemAbilityParameter = false;
             }
         }
 
@@ -1152,12 +1169,7 @@ namespace Opsive.UltimateCharacterController.Character
                 }
 
                 ability.StartAbility(index);
-
-                // If the AnimatorMonitor is enabled then the character is dead and the animator parameters should be updated immediately.
                 m_DirtyAbilityParameter = true;
-                if (m_AnimatorMonitor != null && m_AnimatorMonitor.enabled) {
-                    UpdateDirtyAbilityAnimatorParameters();
-                }
 
                 return true;
             }
@@ -1248,12 +1260,7 @@ namespace Opsive.UltimateCharacterController.Character
                 }
 
                 itemAbility.StartAbility(index);
-
-                // If the AnimatorMonitor is enabled then the character is dead and the animator parameters should be updated immediately.
                 m_DirtyItemAbilityParameter = true;
-                if (m_AnimatorMonitor != null && m_AnimatorMonitor.enabled) {
-                    UpdateDirtyAbilityAnimatorParameters();
-                }
 
                 return true;
             }
@@ -1283,6 +1290,7 @@ namespace Opsive.UltimateCharacterController.Character
                 m_DirtyAbilityParameter = true;
                 return;
             }
+            m_DirtyAbilityParameter = false;
 
             int abilityIndex = 0, intData = 0;
             var floatData = 0f;
@@ -1335,6 +1343,7 @@ namespace Opsive.UltimateCharacterController.Character
                 m_DirtyItemAbilityParameter = true;
                 return;
             }
+            m_DirtyItemAbilityParameter = false;
 
             // Reset the values.
             for (int i = 0; i < m_ItemSlotStateIndex.Length; ++i) {
@@ -2085,6 +2094,20 @@ namespace Opsive.UltimateCharacterController.Character
             }
 
             return hitCount;
+        }
+
+        /// <summary>
+        /// Returns the number of colliders that are overlapping the character's collider.
+        /// </summary>
+        /// <param name="offset">The offset to apply to the character's collider position.</param>
+        /// <returns>The number of objects which overlap the collider.</returns>
+        public int OverlapCount(Vector3 offset)
+        {
+            var count = 0;
+            for (int i = 0; i < m_ColliderCount; ++i) {
+                count += OverlapCount(m_Colliders[i], offset);
+            }
+            return count;
         }
 
         /// <summary>

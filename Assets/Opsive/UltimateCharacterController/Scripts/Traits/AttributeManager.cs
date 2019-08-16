@@ -55,7 +55,7 @@ namespace Opsive.UltimateCharacterController.Traits
                 m_Value = Mathf.Clamp(value, m_MinValue, m_MaxValue);
                 EventHandler.ExecuteEvent(m_GameObject, "OnAttributeUpdateValue", this);
 
-                ScheduleAutoUpdate(0.01f);
+                ScheduleAutoUpdate(m_AutoUpdateStartDelay);
             }
         }
         public AutoUpdateValue AutoUpdateValueType { get { return m_AutoUpdateValueType; } set { m_AutoUpdateValueType = value; ScheduleAutoUpdate(0.01f); } }
@@ -166,7 +166,7 @@ namespace Opsive.UltimateCharacterController.Traits
         /// </summary>
         public override void StateChange()
         {
-            ScheduleAutoUpdate(0.01f);
+            ScheduleAutoUpdate(m_AutoUpdateStartDelay);
         }
 
         /// <summary>

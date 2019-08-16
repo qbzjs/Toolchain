@@ -152,7 +152,6 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Character.Abiliti
                 RemoveRagdollColliders(animator.GetBoneTransform(HumanBodyBones.RightLowerArm), false);
                 RemoveRagdollColliders(animator.GetBoneTransform(HumanBodyBones.Spine), false);
                 RemoveRagdollColliders(animator.GetBoneTransform(HumanBodyBones.Head), false);
-
             } else {
                 RemoveRagdollColliders(character.transform, true);
             }

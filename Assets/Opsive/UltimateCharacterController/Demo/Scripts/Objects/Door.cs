@@ -25,6 +25,8 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         [SerializeField] protected bool m_Locked = false;
         [Tooltip("Should the door be permanently locked? A permanently locked door cannot be opened by the DemoManager.")]
         [SerializeField] protected bool m_PermantlyLocked;
+        [Tooltip("Should the door be opened at the start?")]
+        [SerializeField] protected bool m_OpenAtStart;
         [Tooltip("Should the door close when the character leaves the trigger?")]
         [SerializeField] protected bool m_CloseOnTriggerExit = true;
         [Tooltip("The material that can change colors when the door is locked or unlcoked.")]
@@ -104,6 +106,9 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
             if (m_PermantlyLocked) {
                 m_Locked = true;
             }
+            if (m_OpenAtStart) {
+                OpenClose(true, true, false);
+            }
             UpdateDoorStatus();
         }
 
@@ -119,6 +124,22 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
                     m_StatusMaterials[i].SetColor(c_EmissionColor, locked ? m_LockedColor : m_UnlockedColor);
                 }
             }
+        }
+
+        /// <summary>
+        /// Closes the door.
+        /// </summary>
+        public void Close()
+        {
+            OpenClose(false, false, false);
+        }
+
+        /// <summary>
+        /// Opens the door.
+        /// </summary>
+        public void Open()
+        {
+            OpenClose(true, false, false);
         }
 
         /// <summary>

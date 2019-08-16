@@ -914,7 +914,7 @@ MonoBehaviour:
   m_LocalSpawnRotation: {x: 83.44901, y: -55.824, z: -149.533}
   m_FirstPersonBaseObjectID: 0
   m_VisibleItem: {fileID: 1392196928108852}
-  m_ImmediateParentPivot: 0
+  m_VRHandParent: 0
   m_AdditionalControlObjects: []
   m_PositionSpring:
     m_Stiffness: 0.2

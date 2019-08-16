@@ -33,7 +33,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             Automatic,              // The ability will try to be started every update.
             Manual,                 // The ability must be started with TryStartAbility.
             ButtonDown,             // The ability will start when the specified button is down.
-            ButtonDownContinuous,   // The ability will continuously  check for a button down to determine if the ability should start.
+            ButtonDownContinuous,   // The ability will continuously check for a button down to determine if the ability should start.
             DoublePress,            // The ability will start when the specified button is pressed twice.
             LongPress,              // The ability will start when the specified button has been pressed for more than the specified duration.
             Tap,                    // The ability will start when the specified button is quickly tapped.
@@ -46,13 +46,13 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// </summary>
         public enum AbilityStopType
         {
-            Automatic,      // The ability will try to be stopped every update.
-            Manual,         // The ability must be stopped with TryStopAbility.
-            ButtonUp,       // The ability will stop when the specified button is up.
-            ButtonDown,     // The ability will stop when the specified button is down.
-            ButtonToggle,   // The ability will stop when the same button as been pressed again after the ability has started.
-            LongPress,      // The ability will stop when the specified button has been pressed for more than the specified duration.
-            Axis            // The ability will stop when the specified axis is a zero value.
+            Automatic,              // The ability will try to be stopped every update.
+            Manual,                 // The ability must be stopped with TryStopAbility.
+            ButtonUp,               // The ability will stop when the specified button is up.
+            ButtonDown,             // The ability will stop when the specified button is down.
+            ButtonToggle,           // The ability will stop when the same button as been pressed again after the ability has started.
+            LongPress,              // The ability will stop when the specified button has been pressed for more than the specified duration.
+            Axis                    // The ability will stop when the specified axis is a zero value.
         }
 
         /// <summary>
@@ -127,7 +127,25 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
 #endif
 
         public virtual bool Enabled { get { return m_Enabled; } set { m_Enabled = value; if (!m_Enabled && IsActive) { StopAbility(true, false); } } }
-        public AbilityStartType StartType { get { return m_StartType; } set { m_StartType = value; } }
+        public AbilityStartType StartType { get { return m_StartType; }
+            set {
+                if (m_CharacterLocomotion != null && m_StartType == AbilityStartType.Automatic && value != AbilityStartType.Automatic && value != AbilityStartType.Manual) {
+                    var stopAbility = true;
+                    if (m_ActiveInput != null) {
+                        for (int i = 0; i < m_ActiveInput.Length; ++i) {
+                            if (m_ActiveInput[i]) {
+                                stopAbility = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (stopAbility) {
+                        StopAbility();
+                    }
+                }
+                m_StartType = value;
+            }
+        }
         public AbilityStopType StopType { get { return m_StopType; } set { m_StopType = value; } }
         public string[] InputNames { get { return m_InputNames; } set { m_InputNames = value; } }
         public float LongPressDuration { get { return m_LongPressDuration; } set { m_LongPressDuration = value; } }
@@ -339,6 +357,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         {
             if (m_InputNames != null && m_InputNames.Length > 0) {
                 for (int i = 0; i < m_InputNames.Length; ++i) {
+                    if (!m_ActiveInput[i]) {
+                        continue;
+                    }
+
                     if (m_StopType == AbilityStopType.ButtonToggle) {
                         var inputButton = playerInput.GetButton(m_InputNames[i]);
                         // A toggled button means the button has to be pressed and released before the Ability can be stopped.

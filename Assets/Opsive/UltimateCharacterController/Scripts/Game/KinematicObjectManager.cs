@@ -944,6 +944,8 @@ namespace Opsive.UltimateCharacterController.Game
             s_Initialized = false;
             s_Instance = null;
             SceneManager.sceneUnloaded -= SceneUnloaded;
+
+            UnityEngineUtility.ClearCache();
         }
 
         /// <summary>

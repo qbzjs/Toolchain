@@ -158,7 +158,7 @@ namespace Opsive.UltimateCharacterController.Objects.CharacterAssist
                 }
                 for (int i = 0; i < m_ItemPickupSet.Length; ++i) {
                     // The Item must exist.
-                    if (m_ItemPickupSet[i].Item == null) {
+                    if (m_ItemPickupSet[i].Item == null || (slotID != -1 && (slotID >= m_ItemPickupSet[i].ItemSet.Slots.Length || m_ItemPickupSet[i].ItemSet.Slots[slotID] == null))) {
                         continue;
                     }
 

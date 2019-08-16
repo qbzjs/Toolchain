@@ -24,7 +24,7 @@ namespace Opsive.UltimateCharacterController.UI
         [Tooltip("The radius of the crosshair's collision sphere to detect if it is targetting an enemy.")]
         [SerializeField] protected float m_CollisionRadius = 0.05f;
         [Tooltip("The maximum number of colliders that the crosshairs can detect.")]
-        [SerializeField] protected int m_MaxCollisionCount = 5;
+        [SerializeField] protected int m_MaxCollisionCount = 40;
         [Tooltip("The crosshairs used when the item doesn't specify a crosshairs.")]
         [SerializeField] protected Sprite m_DefaultSprite;
         [Tooltip("The default color of the crosshairs.")]
@@ -172,6 +172,11 @@ namespace Opsive.UltimateCharacterController.UI
                 crosshairsRay.origin = crosshairsRay.GetPoint(direction.magnitude);
             }
             var hitCount = Physics.SphereCastNonAlloc(crosshairsRay, m_CollisionRadius, m_RaycastHits, m_CameraController.LookDirectionDistance, m_CharacterLayerManager.IgnoreInvisibleLayers, QueryTriggerInteraction.Ignore);
+#if UNITY_EDITOR
+            if (hitCount == m_MaxCollisionCount) {
+                Debug.LogWarning("Warning: The crosshairs detected the maximum number of objects. Consider increasing the Max Collision Count on the Crosshairs Monitor.");
+            }
+#endif
             if (hitCount > 0) {
                 for (int i = 0; i < hitCount; ++i) {
                     var closestRaycastHit = QuickSelect.SmallestK(m_RaycastHits, hitCount, i, m_RaycastHitComparer);

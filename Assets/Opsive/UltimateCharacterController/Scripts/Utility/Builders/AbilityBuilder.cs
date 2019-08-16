@@ -143,7 +143,7 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
         /// <param name="characterLocomotion">The character to serialize.</param>
         public static void SerializeAbilities(UltimateCharacterLocomotion characterLocomotion)
         {
-            var abilities = new List<Ability>(characterLocomotion.Abilities);
+            var abilities = characterLocomotion.Abilities == null ? new List<Ability>() : new List<Ability>(characterLocomotion.Abilities);
             characterLocomotion.AbilityData = Serialization.Serialize<Ability>(abilities);
             characterLocomotion.Abilities = abilities.ToArray();
 #if UNITY_EDITOR
@@ -157,7 +157,7 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
         /// <param name="characterLocomotion">The character to serialize.</param>
         public static void SerializeItemAbilities(UltimateCharacterLocomotion characterLocomotion)
         {
-            var itemAbilities = new List<ItemAbility>(characterLocomotion.ItemAbilities);
+            var itemAbilities = characterLocomotion.ItemAbilities == null ? new List<ItemAbility>() : new List<ItemAbility>(characterLocomotion.ItemAbilities);
             characterLocomotion.ItemAbilityData = Serialization.Serialize<ItemAbility>(itemAbilities);
             characterLocomotion.ItemAbilities = itemAbilities.ToArray();
 #if UNITY_EDITOR
@@ -184,6 +184,10 @@ namespace Opsive.UltimateCharacterController.Utility.Builders
         /// <param name="ability">The ability to remove.</param>
         public static void RemoveAbility(UltimateCharacterLocomotion characterLocomotion, Ability ability)
         {
+            if (ability == null) {
+                return;
+            }
+
             if (typeof(ItemAbility).IsAssignableFrom(ability.GetType())) {
                 RemoveItemAbility(characterLocomotion, ability);
                 return;

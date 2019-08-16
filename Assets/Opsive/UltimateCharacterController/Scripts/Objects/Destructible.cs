@@ -214,7 +214,7 @@ namespace Opsive.UltimateCharacterController.Objects
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator, hitValue.collider);
                 // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
-                EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator, this, hitValue.collider);
+                EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, object, Collider>(hitGameObject, "OnObjectImpact", damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator, this, hitValue.collider);
                 if (m_OnImpactEvent != null) {
                     m_OnImpactEvent.Invoke(damageAmount, hitValue.point, hitValue.normal * m_ImpactForce, m_Originator);
                 }

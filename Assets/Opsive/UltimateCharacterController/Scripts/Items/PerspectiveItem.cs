@@ -33,7 +33,8 @@ namespace Opsive.UltimateCharacterController.Items
         /// Initialize the perspective item.
         /// </summary>
         /// <param name="character">The character GameObject that the item is parented to.</param>
-        public virtual void Initialize(GameObject character)
+        /// <returns>True if the item was initialized successfully.</returns>
+        public virtual bool Initialize(GameObject character)
         {
             m_Character = character;
             if (m_Object != null) {
@@ -42,6 +43,9 @@ namespace Opsive.UltimateCharacterController.Items
                 if (item != null) {
                     var localScale = m_Object.transform.localScale;
                     var parent = GetSpawnParent(character, item.SlotID, false);
+                    if (parent == null) {
+                        return false;
+                    }
                     m_Object.transform.parent = parent;
                     m_Object.transform.localScale = localScale;
                     m_Object.transform.localPosition = m_LocalSpawnPosition;
@@ -54,6 +58,7 @@ namespace Opsive.UltimateCharacterController.Items
                 }
             }
             m_Item = gameObject.GetCachedComponent<Item>();
+            return true;
         }
 
         /// <summary>
@@ -117,9 +122,9 @@ namespace Opsive.UltimateCharacterController.Items
         public virtual void Unequip() { }
 
         /// <summary>
-        /// The item has been droppped.
+        /// The item has been removed.
         /// </summary>
-        public virtual void Drop()
+        public virtual void Remove()
         {
             if (m_Object != null) {
                 m_Object.SetActive(false);

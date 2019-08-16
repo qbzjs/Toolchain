@@ -65,10 +65,14 @@ namespace Opsive.UltimateCharacterController.Character
         [SerializeField] protected float m_HandAdjustmentSpeed = 10;
         [Tooltip("Specifies a local offset to add to the position of the hands.")]
         [SerializeField] protected Vector3 m_HandPositionOffset;
-        [Tooltip("The positional spring used for IK movement.")]
-        [SerializeField] protected Spring m_PositionSpring = new Spring();
-        [Tooltip("The rotational spring used for IK movement.")]
-        [SerializeField] protected Spring m_RotationSpring = new Spring(0.2f, 0.05f);
+        [Tooltip("The left hand positional spring used for IK movement.")]
+        [SerializeField] protected Spring m_LeftHandPositionSpring = new Spring();
+        [Tooltip("The left hand rotational spring used for IK movement.")]
+        [SerializeField] protected Spring m_LeftHandRotationSpring = new Spring(0.2f, 0.05f);
+        [Tooltip("The right hand positional spring used for IK movement.")]
+        [SerializeField] protected Spring m_RightHandPositionSpring = new Spring();
+        [Tooltip("The right hand rotational spring used for IK movement.")]
+        [SerializeField] protected Spring m_RightHandRotationSpring = new Spring(0.2f, 0.05f);
 
         public LayerMask LayerMask { get { return m_LayerMask; } set { m_LayerMask = value; } }
         public Vector3 LookAtOffset { get { return m_LookAtOffset; } set { m_LookAtOffset = value; } }
@@ -90,16 +94,34 @@ namespace Opsive.UltimateCharacterController.Character
         public float HandWeight { get { return m_HandWeight; } set { m_HandWeight = value; } }
         public float HandAdjustmentSpeed { get { return m_HandAdjustmentSpeed; } set { m_HandAdjustmentSpeed = value; } }
         public Vector3 HandPositionOffset { get { return m_HandPositionOffset; } set { m_HandPositionOffset = value; } }
-        public Spring PositionSpring { get { return m_PositionSpring; }
+        public Spring LeftHandPositionSpring { get { return m_LeftHandPositionSpring; }
             set {
-                m_PositionSpring = value;
-                if (m_PositionSpring != null) { m_PositionSpring.Initialize(false, true); }
+                m_LeftHandPositionSpring = value;
+                if (m_LeftHandPositionSpring != null) { m_LeftHandPositionSpring.Initialize(false, true); }
             }
         }
-        public Spring RotationSpring { get { return m_RotationSpring; }
+        public Spring LeftHandRotationSpring { get { return m_LeftHandRotationSpring; }
             set {
-                m_RotationSpring = value;
-                if (m_RotationSpring != null) { m_RotationSpring.Initialize(true, true); }
+                m_LeftHandRotationSpring = value;
+                if (m_LeftHandRotationSpring != null) { m_LeftHandRotationSpring.Initialize(true, true); }
+            }
+        }
+        public Spring RightHandPositionSpring
+        {
+            get { return m_RightHandPositionSpring; }
+            set
+            {
+                m_RightHandPositionSpring = value;
+                if (m_RightHandPositionSpring != null) { m_RightHandPositionSpring.Initialize(false, true); }
+            }
+        }
+        public Spring RightHandRotationSpring
+        {
+            get { return m_RightHandPositionSpring; }
+            set
+            {
+                m_RightHandPositionSpring = value;
+                if (m_RightHandPositionSpring != null) { m_RightHandPositionSpring.Initialize(true, true); }
             }
         }
 
@@ -171,10 +193,14 @@ namespace Opsive.UltimateCharacterController.Character
         private bool m_InterpolateIKTargets;
         private bool m_RequireSecondHandPositioning;
 
-        private Vector3 m_PrevPositionSpringValue;
-        private Vector3 m_PrevPositionSpringVelocity;
-        private Vector3 m_PrevRotationSpringValue;
-        private Vector3 m_PrevRotationSpringVelocity;
+        private Vector3 m_PrevLeftHandPositionSpringValue;
+        private Vector3 m_PrevLeftHandPositionSpringVelocity;
+        private Vector3 m_PrevLeftHandRotationSpringValue;
+        private Vector3 m_PrevLeftHandRotationSpringVelocity;
+        private Vector3 m_PrevRightHandPositionSpringValue;
+        private Vector3 m_PrevRightHandPositionSpringVelocity;
+        private Vector3 m_PrevRightHandRotationSpringValue;
+        private Vector3 m_PrevRightHandRotationSpringVelocity;
 
         private bool m_Enable;
 
@@ -236,7 +262,7 @@ namespace Opsive.UltimateCharacterController.Character
                 m_FootOffset[i] = m_Transform.InverseTransformPoint(foot.position).y - m_FootOffsetAdjustment;
                 m_MaxLegLength[i] = m_Transform.InverseTransformPoint(i == 0 ? m_LeftLowerLeg.position : m_RightLowerLeg.position).y - m_FootOffsetAdjustment;
             }
-            m_HipsPosition = m_Hips.position;
+            m_HipsPosition = m_Transform.InverseTransformPoint(m_Hips.position);
 
             // The slot IDs can be populated programmatically by finding a reference to the ItemSlot component.
             var itemSlot = m_LeftHand.GetComponentInChildren<ItemSlot>();
@@ -259,8 +285,10 @@ namespace Opsive.UltimateCharacterController.Character
                 m_StartInterpolation[i] = -1;
             }
 
-            m_PositionSpring.Initialize(false, true);
-            m_RotationSpring.Initialize(true, true);
+            m_LeftHandPositionSpring.Initialize(false, true);
+            m_LeftHandRotationSpring.Initialize(true, true);
+            m_RightHandPositionSpring.Initialize(false, true);
+            m_RightHandRotationSpring.Initialize(true, true);
 
             EventHandler.RegisterEvent<ILookSource>(m_GameObject, "OnCharacterAttachLookSource", OnAttachLookSource);
             EventHandler.RegisterEvent<Item, int>(m_GameObject, "OnInventoryEquipItem", OnEquipItem);
@@ -268,7 +296,7 @@ namespace Opsive.UltimateCharacterController.Character
             EventHandler.RegisterEvent<Item, int>(m_GameObject, "OnInventoryRemoveItem", OnUnequipItem);
             EventHandler.RegisterEvent<bool>(m_GameObject, "OnAimAbilityAim", OnAim);
             EventHandler.RegisterEvent<bool, Abilities.Items.Use>(m_GameObject, "OnUseAbilityStart", OnUseStart);
-            EventHandler.RegisterEvent<int, Vector3, Vector3>(m_GameObject, "OnAddSecondaryForce", OnAddForce);
+            EventHandler.RegisterEvent<int, Vector3, Vector3, bool>(m_GameObject, "OnAddSecondaryForce", OnAddForce);
             EventHandler.RegisterEvent(m_GameObject, "OnAnimatorWillSnap", ImmediatePosition);
             EventHandler.RegisterEvent(m_GameObject, "OnAnimatorSnapped", AnimatorSnapped);
             EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
@@ -468,10 +496,18 @@ namespace Opsive.UltimateCharacterController.Character
         /// <param name="slotID">The Slot ID that is adding the secondary force.</param>
         /// <param name="positionalForce">The positional force to add.</param>
         /// <param name="rotationalForce">The rotational force to add.</param>
-        private void OnAddForce(int slotID, Vector3 positionalForce, Vector3 rotationalForce)
+        /// <param name="globalForce">Is the force applied to the entire character?</param>
+        private void OnAddForce(int slotID, Vector3 positionalForce, Vector3 rotationalForce, bool globalForce)
         {
-            m_PositionSpring.AddForce(positionalForce);
-            m_RotationSpring.AddForce(rotationalForce);
+            if (globalForce || slotID == m_HandSlotID[0]) { // Left Hand.
+                m_LeftHandPositionSpring.AddForce(positionalForce);
+                m_LeftHandRotationSpring.AddForce(rotationalForce);
+            }
+
+            if (globalForce || slotID == m_HandSlotID[1]) { // Right Hand.
+                m_RightHandPositionSpring.AddForce(positionalForce);
+                m_RightHandRotationSpring.AddForce(rotationalForce);
+            }
         }
 
         /// <summary>
@@ -728,8 +764,8 @@ namespace Opsive.UltimateCharacterController.Character
                             }
                         }
                         var lookDirection = (m_LookSource.LookDirection(distantHand.position, false, 0, true) + m_Transform.TransformDirection(m_LookAtOffset)).normalized;
-                        targetRotation = Quaternion.LookRotation(lookDirection, m_CharacterLocomotion.Up) * Quaternion.Inverse(m_Transform.rotation) * Quaternion.Euler(m_RotationSpring.Value) *
-                                                        m_Animator.GetIKRotation(ikGoal);
+                        targetRotation = Quaternion.LookRotation(lookDirection, m_CharacterLocomotion.Up) * Quaternion.Inverse(m_Transform.rotation) * 
+                                            Quaternion.Euler(i == 0 ? m_LeftHandRotationSpring.Value : m_RightHandRotationSpring.Value) *m_Animator.GetIKRotation(ikGoal);
                     }
                 }
                 // Other objects have the chance of modifying the final rotation value.
@@ -889,7 +925,8 @@ namespace Opsive.UltimateCharacterController.Character
                         } else {
                             handPosition = ((hand == m_DominantHand || m_DominantHand == null) ? hand.position : m_DominantHand.TransformPoint(m_HandOffset));
                         }
-                        targetPosition = handPosition + m_Transform.TransformDirection(m_PositionSpring.Value) + m_Transform.TransformDirection(m_HandPositionOffset);
+                        targetPosition = handPosition + m_Transform.TransformDirection(i == 0 ? m_LeftHandPositionSpring.Value : m_RightHandPositionSpring.Value) + 
+                                            m_Transform.TransformDirection(m_HandPositionOffset);
                     }
                 }
                 // Other objects have the chance of modifying the final position value.
@@ -951,10 +988,14 @@ namespace Opsive.UltimateCharacterController.Character
         public override void StateWillChange()
         {
             // Remember the interal spring values so they can be restored if a new spring is applied during the state change.
-            m_PrevPositionSpringValue = m_PositionSpring.Value;
-            m_PrevPositionSpringVelocity = m_PositionSpring.Velocity;
-            m_PrevRotationSpringValue = m_RotationSpring.Value;
-            m_PrevRotationSpringVelocity = m_RotationSpring.Velocity;
+            m_PrevLeftHandPositionSpringValue = m_LeftHandPositionSpring.Value;
+            m_PrevLeftHandPositionSpringVelocity = m_LeftHandPositionSpring.Velocity;
+            m_PrevLeftHandRotationSpringValue = m_LeftHandRotationSpring.Value;
+            m_PrevLeftHandRotationSpringVelocity = m_LeftHandRotationSpring.Velocity;
+            m_PrevRightHandPositionSpringValue = m_RightHandPositionSpring.Value;
+            m_PrevRightHandPositionSpringVelocity = m_RightHandPositionSpring.Velocity;
+            m_PrevRightHandRotationSpringValue = m_RightHandRotationSpring.Value;
+            m_PrevRightHandRotationSpringVelocity = m_RightHandRotationSpring.Velocity;
         }
 
         /// <summary>
@@ -962,10 +1003,14 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         public override void StateChange()
         {
-            m_PositionSpring.Value = m_PrevPositionSpringValue;
-            m_PositionSpring.Velocity = m_PrevPositionSpringVelocity;
-            m_RotationSpring.Value = m_PrevRotationSpringValue;
-            m_RotationSpring.Velocity = m_PrevRotationSpringVelocity;
+            m_LeftHandPositionSpring.Value = m_PrevLeftHandPositionSpringValue;
+            m_LeftHandPositionSpring.Velocity = m_PrevLeftHandPositionSpringVelocity;
+            m_LeftHandRotationSpring.Value = m_PrevLeftHandRotationSpringValue;
+            m_LeftHandRotationSpring.Velocity = m_PrevLeftHandRotationSpringVelocity;
+            m_RightHandPositionSpring.Value = m_PrevRightHandPositionSpringValue;
+            m_RightHandPositionSpring.Velocity = m_PrevRightHandPositionSpringVelocity;
+            m_RightHandRotationSpring.Value = m_PrevRightHandRotationSpringValue;
+            m_RightHandRotationSpring.Velocity = m_PrevRightHandRotationSpringVelocity;
         }
 
         /// <summary>
@@ -973,8 +1018,10 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         private void OnDestroy()
         {
-            m_PositionSpring.Destroy();
-            m_RotationSpring.Destroy();
+            m_LeftHandPositionSpring.Destroy();
+            m_LeftHandRotationSpring.Destroy();
+            m_RightHandPositionSpring.Destroy();
+            m_RightHandRotationSpring.Destroy();
 
             EventHandler.UnregisterEvent<ILookSource>(m_GameObject, "OnCharacterAttachLookSource", OnAttachLookSource);
             EventHandler.UnregisterEvent<Item, int>(m_GameObject, "OnInventoryEquipItem", OnEquipItem);
@@ -982,7 +1029,7 @@ namespace Opsive.UltimateCharacterController.Character
             EventHandler.UnregisterEvent<Item, int>(m_GameObject, "OnInventoryRemoveItem", OnUnequipItem);
             EventHandler.UnregisterEvent<bool>(m_GameObject, "OnAimAbilityAim", OnAim);
             EventHandler.UnregisterEvent<bool, Abilities.Items.Use>(m_GameObject, "OnUseAbilityStart", OnUseStart);
-            EventHandler.UnregisterEvent<int, Vector3, Vector3>(m_GameObject, "OnAddSecondaryForce", OnAddForce);
+            EventHandler.UnregisterEvent<int, Vector3, Vector3, bool>(m_GameObject, "OnAddSecondaryForce", OnAddForce);
             EventHandler.UnregisterEvent(m_GameObject, "OnAnimatorWillSnap", ImmediatePosition);
             EventHandler.UnregisterEvent(m_GameObject, "OnAnimatorSnapped", AnimatorSnapped);
             EventHandler.UnregisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);

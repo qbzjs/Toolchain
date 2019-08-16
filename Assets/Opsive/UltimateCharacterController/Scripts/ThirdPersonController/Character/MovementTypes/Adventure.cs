@@ -68,10 +68,8 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         public override float GetDeltaYawRotation(float characterHorizontalMovement, float characterForwardMovement, float cameraHorizontalMovement, float cameraVerticalMovement)
         {
             if (characterHorizontalMovement != 0 || characterForwardMovement != 0) {
-                var inputVector = Vector3.zero;
-                inputVector.Set(characterHorizontalMovement, 0, characterForwardMovement);
-
-                var lookRotation = Quaternion.LookRotation(m_LookSource.Transform.rotation * inputVector.normalized);
+                var lookRotation = Quaternion.LookRotation(m_LookSource.Transform.rotation * 
+                    new Vector3(characterHorizontalMovement, 0, characterForwardMovement).normalized, m_CharacterLocomotion.Up);
                 return MathUtility.ClampInnerAngle(MathUtility.InverseTransformQuaternion(m_Transform.rotation, lookRotation).eulerAngles.y);
             }
             return 0;

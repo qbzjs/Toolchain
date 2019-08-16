@@ -16,6 +16,9 @@ using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.SurfaceSystem;
 using Opsive.UltimateCharacterController.Traits;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 using System.Collections.Generic;
 
 namespace Opsive.UltimateCharacterController.Items.Actions
@@ -243,6 +246,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         private UltimateCharacterLocomotion m_CharacterLocomotion;
         private Transform m_CharacterTransform;
         private IMeleeWeaponPerspectiveProperties m_MeleeWeaponPerspectiveProperties;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private IVRMeleeWeapon m_VRMeleeWeapon;
+#endif
 
         private Collider[] m_CollidersHit;
         private RaycastHit[] m_CollisionsHit;
@@ -281,6 +287,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             m_RecoilAnimatorAudioStateSet.Awake(m_Item.gameObject);
 
             m_MeleeWeaponPerspectiveProperties = m_ActivePerspectiveProperties as IMeleeWeaponPerspectiveProperties;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            m_VRMeleeWeapon = m_GameObject.GetComponent<IVRMeleeWeapon>();
+#endif
 
             EventHandler.RegisterEvent<bool, bool>(m_Character, "OnAimAbilityStart", OnAim);
             EventHandler.RegisterEvent(m_Character, "OnAnimatorStopTrail", AttackStopTrail);
@@ -442,6 +451,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             m_AttackTime = Time.time;
             m_Attacking = true;
             m_Used = false;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRMeleeWeapon != null) {
+                m_VRMeleeWeapon.StartItemUse();
+            }
+#endif
 
             if (m_TrailVisibility == TrailVisibilityType.Attack) {
                 StopTrail();
@@ -463,6 +477,12 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// </summary>
         public override void UseItemUpdate()
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRMeleeWeapon != null && !m_VRMeleeWeapon.CanUseItem()) {
+                return;
+            }
+#endif
+
             // No need to update if the weapon has already hit an object and it can only hit a single object or a solid object (such as a shield) was hit.
             if ((m_SingleHit && m_AttackHit) || m_SolidObjectHit) {
                 return;
@@ -736,7 +756,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             // Allow a custom event to be received.
             EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character, hitCollider);
             // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
-            EventHandler.ExecuteEvent(hitGameObject, "OnObjectImpact", damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character, this, hitCollider);
+            EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, object, Collider>(hitGameObject, "OnObjectImpact", damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character, this, hitCollider);
             if (m_OnImpactEvent != null) {
                 m_OnImpactEvent.Invoke(damageAmount, raycastHit.point, raycastHit.normal * m_ImpactForce, m_Character);
             }
@@ -821,6 +841,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             if (m_TrailVisibility == TrailVisibilityType.Attack) {
                 StopTrail();
             }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRMeleeWeapon != null) {
+                m_VRMeleeWeapon.StopItemUse();
+            }
+#endif
         }
 
         /// <summary>
@@ -830,6 +855,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.Unequip();
 
+            m_HasRecoil = false;
+            m_Attacking = false;
             StopTrail();
         }
 
@@ -907,6 +934,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.OnDestroy();
 
+            m_RecoilAnimatorAudioStateSet.OnDestroy();
             EventHandler.UnregisterEvent<bool, bool>(m_Character, "OnAimAbilityStart", OnAim);
             EventHandler.UnregisterEvent(m_Character, "OnAnimatorStopTrail", AttackStopTrail);
         }

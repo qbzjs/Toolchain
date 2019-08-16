@@ -102,7 +102,7 @@ namespace Opsive.UltimateCharacterController.Traits
         /// <param name="position">The position of the damage.</param>
         /// <param name="force">The amount of force applied to the object while taking the damage.</param>
         /// <param name="attacker">The GameObject that killed the character.</param>
-        protected override void Die(Vector3 position, Vector3 force, GameObject attacker)
+        public override void Die(Vector3 position, Vector3 force, GameObject attacker)
         {
             base.Die(position, force, attacker);
 

@@ -159,10 +159,18 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
             m_CharacterTransform = m_CharacterLocomotion.transform;
             m_Character = m_CharacterTransform.gameObject;
             var baseObjects = GetComponentsInChildren<FirstPersonBaseObject>();
+            var count = 0;
             m_FirstPersonBaseObjects = new GameObject[baseObjects.Length];
             for (int i = 0; i < baseObjects.Length; ++i) {
-                m_FirstPersonBaseObjects[i] = baseObjects[i].gameObject;
-                m_FirstPersonBaseObjects[i].SetActive(false);
+                if (baseObjects[i].AlwaysActive) {
+                    continue;
+                }
+                m_FirstPersonBaseObjects[count] = baseObjects[i].gameObject;
+                m_FirstPersonBaseObjects[count].SetActive(false);
+                count++;
+            }
+            if (count != baseObjects.Length) {
+                System.Array.Resize(ref m_FirstPersonBaseObjects, count);
             }
             var inventory = m_Character.GetCachedComponent<Inventory.InventoryBase>();
             m_EquippedItems = new Item[inventory.SlotCount];
@@ -183,11 +191,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
         private void OnAttachCamera(CameraController cameraController)
         {
             m_CameraController = cameraController;
-            m_Transform.parent = (m_CameraController != null ? m_CameraController.CameraTransform : m_CharacterTransform);
+            m_Transform.parent = (m_CameraController != null ? m_CameraController.Transform : m_CharacterTransform);
             m_Transform.localPosition = Vector3.zero;
             m_Transform.localRotation = Quaternion.identity;
             m_Pitch = m_Yaw = 0;
-            m_CameraTransform = (m_CameraController != null ? m_CameraController.CameraTransform : null);
+            m_CameraTransform = (m_CameraController != null ? m_CameraController.Transform : null);
             enabled = IsActive();
         }
 
@@ -199,7 +207,8 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
         {
             // The component should be active if any values can update the rotation.
             return m_CameraTransform != null && (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180 || m_LockPitch || 
-                Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360 ||m_LockYaw || m_RotateWithCrosshairs || m_IgnorePositionalLookOffset || m_Transform.localPosition != Vector3.zero);
+                Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360 || m_LockYaw || m_RotateWithCrosshairs || m_IgnorePositionalLookOffset || 
+                m_Transform.localPosition != Vector3.zero);
         }
 
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
@@ -244,7 +253,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character
         }
 
         /// <summary>
-        /// Rotates the transform so the object always faces in the locked orientation.
+        /// Adjusts the location of the transform according to the enabled toggles.
         /// </summary>
         private void LateUpdate()
         {

@@ -73,7 +73,6 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 
             m_ReloadableItems = new IReloadableItem[m_SlotID == -1 ? m_Inventory.SlotCount : 1];
             m_ReloadEvents = new ScheduledEventBase[m_ReloadableItems.Length];
-            m_CanReloadItems = new IReloadableItem[m_ReloadableItems.Length * 2];
             m_Reloaded = new bool[m_ReloadableItems.Length];
 
             EventHandler.RegisterEvent(m_GameObject, "OnItemPickupStartPickup", OnStartPickup);
@@ -135,49 +134,39 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             }
 
             var canReload = false;
-            if (InputIndex == -1) {
-                // If InputIndex is -1 then the ability was started manually.
+            // If the SlotID is -1 then the ability should reload every equipped item at the same time. If only one slot has a ReloadableItem then the 
+            // ability can start. If the SlotID is not -1 then the ability should reload the item in the specified slot.
+            if (m_SlotID == -1) {
                 for (int i = 0; i < m_ReloadableItems.Length; ++i) {
-                    if (m_ReloadableItems[i] != null) {
+                    var item = m_Inventory.GetItem(i);
+                    if (item == null) {
+                        continue;
+                    }
+
+                    var itemAction = item.GetItemAction(m_ActionID);
+                    if (itemAction == null) {
+                        Debug.LogWarning("Warning: The item " + item.name + " must have an ItemAction component attached to it in order to be reloaded.");
+                        continue;
+                    }
+
+                    m_ReloadableItems[i] = itemAction as IReloadableItem;
+                    // The item can't be reloaded if it isn't a reloadable item.
+                    if (m_ReloadableItems[i] != null && m_ReloadableItems[i].CanReloadItem(true)) {
                         canReload = true;
-                        break;
+                    } else {
+                        // The ability should not attempt to reload the item if IReloadableItem says that it cannot reload.
+                        m_ReloadableItems[i] = null;
                     }
                 }
             } else {
-                // If the SlotID is -1 then the ability should reload every equipped item at the same time. If only one slot has a ReloadableItem then the 
-                // ability can start. If the SlotID is not -1 then the ability should reload the item in the specified slot.
-                if (m_SlotID == -1) {
-                    for (int i = 0; i < m_ReloadableItems.Length; ++i) {
-                        var item = m_Inventory.GetItem(i);
-                        if (item == null) {
-                            continue;
-                        }
-
-                        var itemAction = item.GetItemAction(m_ActionID);
-                        if (itemAction == null) {
-                            Debug.LogWarning("Warning: The item " + item.name + " must have an ItemAction component attached to it in order to be reloaded.");
-                            continue;
-                        }
-
-                        m_ReloadableItems[i] = itemAction as IReloadableItem;
-                        // The item can't be reloaded if it isn't a reloadable item.
-                        if (m_ReloadableItems[i] != null && m_ReloadableItems[i].CanReloadItem(true)) {
-                            canReload = true;
-                        } else {
-                            // The ability should not attempt to reload the item if IReloadableItem says that it cannot reload.
-                            m_ReloadableItems[i] = null;
-                        }
-                    }
-                } else {
-                    var item = m_Inventory.GetItem(m_SlotID);
-                    if (item != null) {
-                        var itemAction = item.GetItemAction(m_ActionID);
-                        if (itemAction == null) {
-                            Debug.LogWarning("Warning: The item " + item.name + " must have an ItemAction component attached to it in order to be used.");
-                        } else {
-                            m_ReloadableItems[0] = itemAction as IReloadableItem;
-                            canReload = m_ReloadableItems[0] != null && m_ReloadableItems[0].CanReloadItem(true);
-                        }
+                var item = m_Inventory.GetItem(m_SlotID);
+                if (item != null) {
+                    var itemAction = item.GetItemAction(m_ActionID);
+                    if (itemAction == null) {
+                        Debug.LogWarning("Warning: The item " + item.name + " must have an ItemAction component attached to it in order to be used.");
+                    } else {
+                        m_ReloadableItems[0] = itemAction as IReloadableItem;
+                        canReload = m_ReloadableItems[0] != null && m_ReloadableItems[0].CanReloadItem(true);
                     }
                 }
             }
@@ -310,10 +299,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                     return m_ReloadableItems[slotID].ReloadAnimatorAudioStateSet.GetItemSubstateIndex();
                 }
             } else if (m_SlotID == slotID && m_ReloadableItems[0] != null) {
-                if (m_Reloaded[slotID]) {
+                if (m_Reloaded[0]) {
                     return 0;
                 }
-                return m_ReloadableItems[slotID].ReloadAnimatorAudioStateSet.GetItemSubstateIndex();
+                return m_ReloadableItems[0].ReloadAnimatorAudioStateSet.GetItemSubstateIndex();
             }
 
             return -1;
@@ -521,7 +510,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                 }
 
                 IReloadableItem reloadableItem;
-                if ((reloadableItem = ShouldReload(item, itemType)) != null) {
+                if ((reloadableItem = ShouldReload(item, itemType, slotID == -1)) != null) { // -1 indicates that the item is being picked up.
+                    if (m_CanReloadItems == null || m_CanReloadItems.Length == canReloadCount) {
+                        System.Array.Resize(ref m_CanReloadItems, canReloadCount + 1);
+                    }
                     m_CanReloadItems[canReloadCount] = reloadableItem;
                     canReloadCount++;
                 }
@@ -536,6 +528,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                     // - The item isn't currently equipped. Non-equipped items don't need to play an animation.
                     if (immediateReload || (equipCheck && !m_EquippedItems.Contains(reloadableItem.Item))) {
                         reloadableItem.ReloadItem(true);
+                        reloadableItem.ItemReloadComplete(true);
                     } else {
                         startAbility = true;
                         if (m_SlotID == -1) {
@@ -555,9 +548,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
         /// Should the item be reloaded? An IReloadableItem reference will be returned if the item can be reloaded.
         /// </summary>
         /// <param name="item">The item which may need to be reloaded.</param>
-        /// <param name="itemType">The ItemType that has been picked up.</param>
+        /// <param name="itemType">The ItemType that is being reloaded.</param>
+        /// <param name="fromPickup">Is the item being reloaded from a pickup?</param>
         /// <returns>A reference to the IReloadableItem if the item can be reloaded. Null if the item cannot be reloaded.</returns>
-        private IReloadableItem ShouldReload(Item item, ItemType itemType)
+        private IReloadableItem ShouldReload(Item item, ItemType itemType, bool fromPickup)
         {
             var itemAction = item.GetItemAction(m_ActionID);
 
@@ -576,7 +570,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             if ((reloadableItem.AutoReload & AutoReloadType.Empty) != 0 && (reloadableItem is IUsableItem && (reloadableItem as IUsableItem).GetConsumableItemTypeCount() == 0)) {
                 // The item is empty.
                 autoReload = true;
-            } else if ((reloadableItem.AutoReload & AutoReloadType.Pickup) != 0 && !m_InventoryItems.Contains(item)) {
+            } else if ((reloadableItem.AutoReload & AutoReloadType.Pickup) != 0 && fromPickup) {
                 // The item was just picked up for the first time.
                 autoReload = true;
             }

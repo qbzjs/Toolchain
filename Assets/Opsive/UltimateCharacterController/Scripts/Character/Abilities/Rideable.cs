@@ -122,9 +122,16 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
 
             // The character should ignore the rideable object's layers. This will prevent the character from detecting the rideable colliders.
             characterLocomotion.AddSubColliders(m_OriginalColliders);
+        }
 
-            // Finally enable input so the RideableObject can move.
+        /// <summary>
+        /// The character has mounted on the Rideable character.
+        /// </summary>
+        public void OnCharacterMount()
+        {
+            // Enable input so the RideableObject can move.
             EventHandler.ExecuteEvent<bool>(m_GameObject, "OnEnableGameplayInput", true);
+            m_CharacterLocomotion.UpdateAbilityAnimatorParameters();
         }
 
         /// <summary>

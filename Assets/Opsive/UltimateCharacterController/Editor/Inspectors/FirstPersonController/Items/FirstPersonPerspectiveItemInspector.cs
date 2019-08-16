@@ -53,7 +53,9 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.FirstPersonContro
                 EditorGUILayout.PropertyField(PropertyFromName("m_LocalSpawnPosition"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_LocalSpawnRotation"));
             }
-            EditorGUILayout.PropertyField(PropertyFromName("m_ImmediateParentPivot"));
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            EditorGUILayout.PropertyField(PropertyFromName("m_VRHandParent"));
+#endif
             EditorGUILayout.PropertyField(PropertyFromName("m_AdditionalControlObjects"), true);
         }
 

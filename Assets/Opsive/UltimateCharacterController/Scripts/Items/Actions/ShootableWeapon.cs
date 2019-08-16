@@ -188,6 +188,8 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         [SerializeField] protected MinMaxVector3 m_RotationCameraRecoil = new MinMaxVector3(new Vector3(-2f, -1f, 0), new Vector3(-1f, 1f, 0));
         [Tooltip("The percent of the recoil to accumulate to the camera's rest value.")]
         [Range(0, 1)] [SerializeField] protected float m_CameraRecoilAccumulation;
+        [Tooltip("Is the recoil force localized to the direct parent?")]
+        [SerializeField] protected bool m_LocalizeRecoilForce = false;
         [Tooltip("A reference to the muzzle flash prefab.")]
         [SerializeField] protected GameObject m_MuzzleFlash;
         [Tooltip("Should the muzzle flash be pooled? If false a single muzzle flash object will be used.")]
@@ -274,6 +276,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         public MinMaxVector3 PositionCameraRecoil { get { return m_PositionCameraRecoil; } set { m_PositionCameraRecoil = value; } }
         public MinMaxVector3 RotationCameraRecoil { get { return m_RotationCameraRecoil; } set { m_RotationCameraRecoil = value; } }
         public float CameraRecoilAccumulation { get { return m_CameraRecoilAccumulation; } set { m_CameraRecoilAccumulation = value; } }
+        public bool LocalizeRecoilForce { get { return m_LocalizeRecoilForce; } set { m_LocalizeRecoilForce = value; } }
         public GameObject MuzzleFlash { get { return m_MuzzleFlash; } set { m_MuzzleFlash = value; } }
         public bool PoolMuzzleFlash { get { return m_PoolMuzzleFlash; } set { m_PoolMuzzleFlash = value; } }
         public GameObject Shell { get { return m_Shell; } set { m_Shell = value; } }
@@ -510,11 +513,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         /// <returns>the substate index that the item should be in.</returns>
         public override int GetItemSubstateIndex()
         {
-            if (m_ConsumableItemType != null && m_CanPlayDryFireAnimation) {
-                return m_DryFireItemSubstateParameterValue;
-            }
             // A positive value should always be returned when the item is being fired.
             if (m_Firing) {
+                if (m_ConsumableItemType != null && m_CanPlayDryFireAnimation) {
+                    return m_DryFireItemSubstateParameterValue;
+                }
                 if (m_FireType == FireType.Instant) {
                     return Mathf.Max(1, base.GetItemSubstateIndex());
                 } else {
@@ -916,7 +919,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(closestRaycastHit.transform.gameObject, "OnObjectImpact", damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character, closestRaycastHit.collider);
                 // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
-                EventHandler.ExecuteEvent(closestRaycastHit.transform.gameObject, "OnObjectImpact", damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character, this, closestRaycastHit.collider);
+                EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, object, Collider>(closestRaycastHit.transform.gameObject, "OnObjectImpact", damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character, this, closestRaycastHit.collider);
                 if (m_OnHitscanImpactEvent != null) {
                     m_OnHitscanImpactEvent.Invoke(damageAmount, closestRaycastHit.point, fireDirection * m_ImpactForce * strength, m_Character);
                 }
@@ -1013,7 +1016,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             }
 
             // Apply the weapon recoil.
-            EventHandler.ExecuteEvent(m_Character, "OnAddSecondaryForce", m_Item.SlotID, m_PositionRecoil.RandomValue, m_RotationRecoil.RandomValue);
+            EventHandler.ExecuteEvent(m_Character, "OnAddSecondaryForce", m_Item.SlotID, m_PositionRecoil.RandomValue, m_RotationRecoil.RandomValue, !m_LocalizeRecoilForce);
             EventHandler.ExecuteEvent(m_Character, "OnAddSecondaryCameraForce", m_PositionCameraRecoil.RandomValue, m_RotationCameraRecoil.RandomValue, m_CameraRecoilAccumulation);
             EventHandler.ExecuteEvent(m_Character, "OnAddCrosshairsSpread", true, true);
         }
@@ -1769,9 +1772,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         }
 
         /// <summary>
-        /// The item has been dropped by the character.
+        /// The item has been removed by the character.
         /// </summary>
-        public override void Drop()
+        public override void Remove()
         {
             m_ReloadInitialized = false;
         }
@@ -1795,6 +1798,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.OnDestroy();
 
+            m_ReloadAnimatorAudioStateSet.OnDestroy();
             EventHandler.UnregisterEvent<bool, bool>(m_Character, "OnAimAbilityStart", OnAim);
             EventHandler.UnregisterEvent<Item>(m_Character, "OnInventoryAddItem", OnAddItem);
             EventHandler.UnregisterEvent<Item, int>(m_Character, "OnInventoryEquipItem", OnEquipItem);

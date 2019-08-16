@@ -195,7 +195,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             m_CharacterLocomotion.ForceRootMotionPosition = false;
             m_CharacterLocomotion.AllowRootMotionPosition = false;
             m_CharacterLocomotion.UpdateAbilityAnimatorParameters();
-            m_Rideable.CharacterLocomotion.UpdateAbilityAnimatorParameters();
+            m_Rideable.OnCharacterMount();
 
             m_PositionOffset = m_Rideable.Transform.InverseTransformPoint(m_Transform.position);
 

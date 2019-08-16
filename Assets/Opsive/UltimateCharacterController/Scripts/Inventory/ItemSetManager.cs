@@ -53,11 +53,6 @@ namespace Opsive.UltimateCharacterController.Inventory
         /// <param name="itemCollection">The ItemCollection to initialize.</param>
         private void InitializeItemCollection(ItemCollection itemCollection)
         {
-            if (!Application.isPlaying) {
-                m_ItemCollection = itemCollection;
-                return;
-            }
-
             // The ItemCollection has already been initialized.
             if (m_Inventory != null) {
                 return;
@@ -101,7 +96,9 @@ namespace Opsive.UltimateCharacterController.Inventory
                 itemTypes[i].CategoryIndices = indices;
             }
 
-            EventHandler.RegisterEvent<Item>(gameObject, "OnInventoryAddItem", OnAddItem);
+            if (Application.isPlaying) {
+                EventHandler.RegisterEvent<Item>(gameObject, "OnInventoryAddItem", OnAddItem);
+            }
         }
 
         /// <summary>

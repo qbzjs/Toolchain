@@ -117,7 +117,7 @@ namespace Opsive.UltimateCharacterController.Networking.Editor.Utility
 #endif
 
             // VRViewType will exist if the VR add-on is imported.
-            var VRExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.VR.Camera.ViewTypes.VRViewType") != null;
+            var VRExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.AddOns.VR.Editor.VRAddOnInspector") != null;
 #if ULTIMATE_CHARACTER_CONTROLLER_VR
             if (!VRExists) {
                 RemoveSymbol(s_VRSymbol);

@@ -76,10 +76,8 @@ namespace Opsive.UltimateCharacterController.Camera
                 EventHandler.RegisterEvent<bool>(character, "OnEnableGameplayInput", OnEnableGameplayInput);
                 EventHandler.RegisterEvent<bool>(character, "OnCharacterActivate", OnActivate);
                 m_AllowGameplayInput = true;
+                m_PlayerInput = character.GetComponent<PlayerInput>();
                 enabled = character.activeInHierarchy;
-                if (enabled) {
-                    m_PlayerInput = character.GetComponent<PlayerInput>();
-                }
             }
         }
 

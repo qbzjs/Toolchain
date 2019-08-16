@@ -77,7 +77,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             m_OnArriveAbility = onArriveAbility;
 
             // The movement speed will depend on the current speed the character is moving.
-            m_MovementMultiplier = 1;
+            m_MovementMultiplier = m_StartLocation.MovementMultiplier;
             if (m_SpeedChangeAbilities != null) {
                 for (int i = 0; i < m_SpeedChangeAbilities.Length; ++i) {
                     if (m_SpeedChangeAbilities[i].IsActive) {
@@ -174,14 +174,8 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         {
             base.Update();
 
-            // The input and target rotation values should move towards the target.
+            // The input avalues should move towards the target.
             var arrived = m_StartLocation.IsRotationValid(m_Transform.rotation);
-            var rotation = GetTargetRotation() * Quaternion.Inverse(m_Transform.rotation);
-            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
-            deltaRotation.y = Mathf.MoveTowards(0, MathUtility.ClampInnerAngle(rotation.eulerAngles.y),
-                                                        m_CharacterLocomotion.MotorRotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
-            m_CharacterLocomotion.DeltaRotation = deltaRotation;
-
             m_TargetDirection = m_StartLocation.GetTargetDirection(m_Transform.position, m_Transform.rotation);
             if (!m_StartLocation.IsPositionValid(m_Transform.position, m_Transform.rotation, m_CharacterLocomotion.Grounded)) {
                 m_CharacterLocomotion.InputVector = GetInputVector(m_TargetDirection);
@@ -241,6 +235,18 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             inputVector.x = direction.x;
             inputVector.y = direction.z;
             return inputVector.normalized * m_InputMultiplier * m_MovementMultiplier;
+        }
+
+        /// <summary>
+        /// Update the controller's rotation values.
+        /// </summary>
+        public override void UpdateRotation()
+        {
+            var rotation = GetTargetRotation() * Quaternion.Inverse(m_Transform.rotation);
+            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
+            deltaRotation.y = Mathf.MoveTowards(0, MathUtility.ClampInnerAngle(rotation.eulerAngles.y),
+                                                        m_CharacterLocomotion.MotorRotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
+            m_CharacterLocomotion.DeltaRotation = deltaRotation;
         }
 
         /// <summary>

@@ -571,9 +571,6 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         {
             UpdateShakes();
 
-            //  Update the rotation.
-            m_Pitch -= verticalMovement;
-
             // Rotate with the moving platform.
             if (m_CharacterLocomotion.Platform != null) {
                 m_PlatformRotation = MathUtility.InverseTransformQuaternion(m_CharacterLocomotion.Platform.rotation, m_CharacterPlatformRotationOffset) *
@@ -600,9 +597,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
                 UpdatePlatformRotationOffset(m_CharacterLocomotion.Platform);
             }
 
-            // Set limits on the pitch.
+            // Update the rotation. The pitch may have a limit.
             if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                m_Pitch = MathUtility.ClampAngle(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
+                m_Pitch = MathUtility.ClampAngle(m_Pitch, -verticalMovement, m_MinPitchLimit, m_MaxPitchLimit);
+            } else {
+                m_Pitch -= verticalMovement;
             }
 
             // Prevent the values from getting too large.

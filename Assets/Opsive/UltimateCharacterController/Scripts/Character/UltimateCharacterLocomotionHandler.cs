@@ -291,7 +291,9 @@ namespace Opsive.UltimateCharacterController.Character
 
             if (!m_InputEnabled) {
                 m_HorizontalMovement = m_ForwardMovement = 0;
-                KinematicObjectManager.SetCharacterMovementInput(m_CharacterLocomotion.KinematicObjectIndex, 0, 0);
+                if (m_CharacterLocomotion.KinematicObjectIndex != -1) {
+                    KinematicObjectManager.SetCharacterMovementInput(m_CharacterLocomotion.KinematicObjectIndex, 0, 0);
+                }
             }
         }
 

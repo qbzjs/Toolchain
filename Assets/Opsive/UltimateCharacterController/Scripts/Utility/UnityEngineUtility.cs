@@ -226,9 +226,10 @@ namespace Opsive.UltimateCharacterController.Utility
             if ((mainCamera = UnityEngine.Camera.main) != null && (cameraController = mainCamera.GetComponent<CameraController>()) != null && (character == null || cameraController.Character == character)) {
                 return mainCamera;
             }
-            for (int i = 0; i < UnityEngine.Camera.allCameras.Length; ++i) {
-                if ((cameraController = UnityEngine.Camera.allCameras[i].GetComponent<CameraController>()) != null && (character == null || cameraController.Character == character)) {
-                    return UnityEngine.Camera.allCameras[i];
+            var cameraControllers = UnityEngine.Object.FindObjectsOfType<CameraController>();
+            for (int i = 0; i < cameraControllers.Length; ++i) {
+                if (character == null || cameraControllers[i].Character == character) {
+                    return cameraControllers[i].GetComponent<UnityEngine.Camera>();
                 }
             }
             return null;
@@ -296,6 +297,25 @@ namespace Opsive.UltimateCharacterController.Utility
                 sizeDelta.x = sprite.textureRect.width;
                 sizeDelta.y = sprite.textureRect.height;
                 spriteRectTransform.sizeDelta = sizeDelta;
+            }
+        }
+
+        /// <summary>
+        /// Clears the Unity Engine Utility cache.
+        /// </summary>
+        public static void ClearCache()
+        {
+            s_TypeLookup.Clear();
+            s_GameObjectCameraMap.Clear();
+            s_ObjectUpdated.Clear();
+            if (s_LoadedAssemblies != null) {
+                s_LoadedAssemblies.Clear();
+            }
+            if (s_FieldAttributeMap != null) {
+                s_FieldAttributeMap.Clear();
+            }
+            if (s_PropertyAttributeMap != null) {
+                s_PropertyAttributeMap.Clear();
             }
         }
 

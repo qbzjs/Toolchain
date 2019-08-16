@@ -13,6 +13,9 @@ using Opsive.UltimateCharacterController.Input;
 using Opsive.UltimateCharacterController.Motion;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 
 namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes
 {
@@ -136,6 +139,9 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         private float m_PrevFieldOfViewDamping;
         private float m_PrevPositionSmoothing;
         private int m_StateChangeFrame = -1;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private bool m_VREnabled;
+#endif
 
         public override float Pitch { get { return m_Pitch; } }
         public override float Yaw { get { return m_Yaw; } }
@@ -149,7 +155,16 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         {
             base.Awake();
 
-            m_Camera = m_CameraController.gameObject.GetCachedComponent<UnityEngine.Camera>();
+            m_Camera = m_GameObject.GetCachedComponent<UnityEngine.Camera>();
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            VRCameraIdentifier vrCamera;
+            if ((vrCamera = m_GameObject.GetComponentInChildren<VRCameraIdentifier>()) != null) {
+                // The VR camera will be used as the main camera.
+                m_Camera.enabled = false;
+                m_Camera = vrCamera.GetComponent<UnityEngine.Camera>();
+                m_VREnabled = true;
+            }
+#endif
             m_AimAssist = m_GameObject.GetCachedComponent<AimAssist>();
             m_Handler = m_GameObject.GetCachedComponent<CameraControllerHandler>();
             m_CurrentLookOffset = m_LookOffset;
@@ -307,6 +322,11 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// <param name="immediateUpdate">Should the camera be updated immediately?</param>
         public override void UpdateFieldOfView(bool immediateUpdate)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VREnabled) {
+                return;
+            }
+#endif
             if (m_Camera.fieldOfView != m_FieldOfView) {
                 var zoom = (immediateUpdate || m_FieldOfViewDamping == 0) ? 1 : ((Time.time - m_FieldOfViewChangeTime) / (m_FieldOfViewDamping / m_CharacterLocomotion.TimeScale));
                 m_Camera.fieldOfView = Mathf.SmoothStep(m_Camera.fieldOfView, m_FieldOfView, zoom);
@@ -322,8 +342,13 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// <returns>The updated rotation.</returns>
         public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediateUpdate)
         {
-            //  Update the rotation.
-            m_Pitch -= verticalMovement;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VREnabled && immediateUpdate) {
+                m_CharacterRotation = m_CharacterTransform.rotation;
+                UnityEngine.XR.InputTracking.Recenter();
+                EventHandler.ExecuteEvent("OnRecenterTracking");
+            }
+#endif
 
             // Rotate with the moving platform.
             if (m_CharacterLocomotion.Platform != null) {
@@ -351,9 +376,11 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
                 UpdatePlatformRotationOffset(m_CharacterLocomotion.Platform);
             }
 
-            // Set limits on the pitch.
+            // Update the rotation. The pitch may have a limit.
             if (Mathf.Abs(m_MinPitchLimit - m_MaxPitchLimit) < 180) {
-                m_Pitch = MathUtility.ClampAngle(m_Pitch, m_MinPitchLimit, m_MaxPitchLimit);
+                m_Pitch = MathUtility.ClampAngle(m_Pitch, -verticalMovement, m_MinPitchLimit, m_MaxPitchLimit);
+            } else {
+                m_Pitch -= verticalMovement;
             }
 
             // Prevent the values from getting too large.
@@ -588,7 +615,11 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
                 m_AppendingZoomState = false;
             }
 
-            if (m_Camera.fieldOfView != m_FieldOfView) {
+            if (m_Camera.fieldOfView != m_FieldOfView
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                && !m_VREnabled
+#endif
+                ) {
                 m_FieldOfViewChangeTime = Time.time;
                 if (m_CameraController.ActiveViewType == this) {
                     // The field of view and location should get a head start if the damping was previously 0. This will allow the field of view and location

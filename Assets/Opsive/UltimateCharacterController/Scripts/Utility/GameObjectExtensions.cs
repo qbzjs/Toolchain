@@ -19,6 +19,7 @@ namespace Opsive.UltimateCharacterController.Utility
         private static Dictionary<GameObject, Dictionary<Type, object>> s_GameObjectParentComponentMap = new Dictionary<GameObject, Dictionary<Type, object>>();
         private static Dictionary<GameObject, Dictionary<Type, object>> s_GameObjectInactiveParentComponentMap = new Dictionary<GameObject, Dictionary<Type, object>>();
         private static Dictionary<GameObject, Dictionary<Type, object[]>> s_GameObjectComponentsMap = new Dictionary<GameObject, Dictionary<Type, object[]>>();
+        private static Dictionary<GameObject, Dictionary<Type, object[]>> s_GameObjectParentComponentsMap = new Dictionary<GameObject, Dictionary<Type, object[]>>();
 
         /// <summary>
         /// Returns a cached component reference for the specified type.
@@ -97,6 +98,33 @@ namespace Opsive.UltimateCharacterController.Utility
 
             // Find the component references and cache the results.
             var targetComponents = gameObject.GetComponents<T>() as T[];
+            typeComponentMap.Add(typeof(T), targetComponents as object[]);
+            return targetComponents;
+        }
+
+        /// <summary>
+        /// Returns a cached component references for the specified type.
+        /// </summary>
+        /// <param name="gameObject">The GameObject (or child GameObject) to get the component reference of.</param>
+        /// <param name="type">The type of component to get.</param>
+        /// <returns>The cached component references.</returns>
+        public static T[] GetCachedParentComponents<T>(this GameObject gameObject)
+        {
+            Dictionary<Type, object[]> typeComponentMap;
+            // Return the cached component if it exists.
+            if (s_GameObjectParentComponentsMap.TryGetValue(gameObject, out typeComponentMap)) {
+                object[] targetObject;
+                if (typeComponentMap.TryGetValue(typeof(T), out targetObject)) {
+                    return targetObject as T[];
+                }
+            } else {
+                // The cached component doesn't exist for the specified type.
+                typeComponentMap = new Dictionary<Type, object[]>();
+                s_GameObjectParentComponentsMap.Add(gameObject, typeComponentMap);
+            }
+
+            // Find the component references and cache the results.
+            var targetComponents = gameObject.GetComponentsInParent<T>() as T[];
             typeComponentMap.Add(typeof(T), targetComponents as object[]);
             return targetComponents;
         }

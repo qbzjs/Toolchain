@@ -37,7 +37,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         [Tooltip("Should the character rotate to face the target during use?")]
         [SerializeField] protected bool m_FaceTarget = true;
         [Tooltip("The amount of extra time it takes for the ability to stop after use.")]
-        [SerializeField] protected float m_StopUseAbilityDelay = 0.25f;
+        [SerializeField] protected float m_StopUseAbilityDelay = 1f;
         [Tooltip("Specifies if the item should wait for the OnAnimatorItemUse animation event or wait for the specified duration before being used.")]
         [SerializeField] protected AnimationEventTrigger m_UseEvent = new AnimationEventTrigger(true, 0.2f);
         [Tooltip("Specifies if the item should wait for the OnAnimatorItemUseComplete animation event or wait for the specified duration before completing the use.")]
@@ -317,6 +317,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.OnDestroy();
 
+            m_UseAnimatorAudioStateSet.OnDestroy();
             EventHandler.UnregisterEvent<ILookSource>(m_Character, "OnCharacterAttachLookSource", OnAttachLookSource);
             if (m_UseAttribute != null) {
                 EventHandler.UnregisterEvent(m_UseAttribute, "OnAttributeReachedDestinationValue", UseDepleted);

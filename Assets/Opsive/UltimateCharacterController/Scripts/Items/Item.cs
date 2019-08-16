@@ -191,7 +191,9 @@ namespace Opsive.UltimateCharacterController.Items
                 // Initialize the perspective item manually to ensure an Object GameObject exists. This is important because the Item component will execute
                 // before the FirstPersonPerspectiveItem component, but the FirstPersonPerspectiveItem component may not be completely initialized.
                 // The FirstPersonPerspectiveItem component must be initialized after Item so Item.Start can be called and add the item to the inventory.
-                perspectiveItems[i].Initialize(m_Character);
+                if (!perspectiveItems[i].Initialize(m_Character)) {
+                    continue;
+                }
 
                 if (perspectiveItems[i].FirstPersonItem) {
 #if FIRST_PERSON_CONTROLLER
@@ -635,30 +637,6 @@ namespace Opsive.UltimateCharacterController.Items
         }
 
         /// <summary>
-        /// Updates the Animator at a fixed rate.
-        /// </summary>
-        /// <param name="deltaTime">The rate to update the animator.</param>
-        public void UpdateAnimator(float deltaTime)
-        {
-#if FIRST_PERSON_CONTROLLER
-            if (m_FirstPersonObjectsAnimatorMonitor != null) {
-                for (int i = 0; i < m_FirstPersonObjectsAnimatorMonitor.Length; ++i) {
-                    if (!m_FirstPersonObjects[i].activeSelf) {
-                        continue;
-                    }
-                    m_FirstPersonObjectsAnimatorMonitor[i].UpdateAnimator(deltaTime);
-                }
-            }
-            if (m_FirstPersonPerspectiveItemAnimatorMonitor != null && m_FirstPersonPerspectiveItem.IsActive()) {
-                m_FirstPersonPerspectiveItemAnimatorMonitor.UpdateAnimator(deltaTime);
-            }
-#endif
-            if (m_ThirdPersonItemAnimatorMonitor != null && m_ThirdPersonPerspectiveItem.IsActive()) {
-                m_ThirdPersonItemAnimatorMonitor.UpdateAnimator(deltaTime);
-            }
-        }
-
-        /// <summary>
         /// Sets the Animator's Horizontal Movement parameter to the specified value.
         /// </summary>
         /// <param name="value">The new value.</param>
@@ -1057,18 +1035,16 @@ namespace Opsive.UltimateCharacterController.Items
         /// <summary>
         /// Drop the item from the character.
         /// </summary>
-        /// <returns>True if the item was dropped.</returns>
-        public bool Drop()
+        public void Drop()
         {
-            return Drop(false);
+            Drop(false);
         }
 
         /// <summary>
         /// Drop the item from the character.
         /// </summary>
         /// <param name="forceDrop">Should the item be dropped even if the inventory doesn't contain any count for the item?</param>
-        /// <returns>True if the item was dropped.</returns>
-        public bool Drop(bool forceDrop)
+        public void Drop(bool forceDrop)
         {
             // The item needs to first be unequipped before it can be dropped.
             if (m_VisibleObjectActive && m_CharacterLocomotion.FirstPersonPerspective) {
@@ -1076,7 +1052,7 @@ namespace Opsive.UltimateCharacterController.Items
                 var itemObject = GetVisibleObject().transform;
                 m_UnequpDropPosition = itemObject.position;
                 m_UnequipDropRotation = itemObject.rotation;
-                return false;
+                return;
             }
 
             ItemPickup itemPickup = null;
@@ -1109,7 +1085,7 @@ namespace Opsive.UltimateCharacterController.Items
                                 ObjectPool.Return(itemPickup.ItemTypeCounts[j]);
                             }
                             var itemTypeCount = ObjectPool.Get<ItemTypeCount>();
-                            itemTypeCount.Initialize(m_ItemType, Mathf.Min(count, 1)); // The count may be 0 if the item is force dropped.
+                            itemTypeCount.Initialize(m_ItemType, 1);
 
                             // If the dropped Item is a usable item then the array should be larger to be able to pick up the usable ItemType.
                             var consumableItemTypes = 0;
@@ -1173,22 +1149,7 @@ namespace Opsive.UltimateCharacterController.Items
 #endif
             }
             m_ShouldDropAfterUnequip = false;
-
-            SetVisibleObjectActive(false);
-#if FIRST_PERSON_CONTROLLER
-            if (m_FirstPersonPerspectiveItem != null) {
-                m_FirstPersonPerspectiveItem.Drop();
-            }
-#endif
-            if (m_ThirdPersonPerspectiveItem != null) {
-                m_ThirdPersonPerspectiveItem.Drop();
-            }
-            if (m_ItemActions != null) {
-                for (int i = 0; i < m_ItemActions.Length; ++i) {
-                    m_ItemActions[i].Drop();
-                }
-            }
-            m_Inventory.RemoveItem(m_ItemType, m_SlotID, false);
+            Remove();
 
             // The item can be removed from the inventory after it has been dropped. All corresponding DroppedItemTypes should also be dropped.
             if (m_ItemType.DroppedItemTypes != null) {
@@ -1208,7 +1169,27 @@ namespace Opsive.UltimateCharacterController.Items
             if (m_DropItemEvent != null) {
                 m_DropItemEvent.Invoke();
             }
-            return true;
+        }
+
+        /// <summary>
+        /// Removes the item from the character.
+        /// </summary>
+        public void Remove()
+        {
+            SetVisibleObjectActive(false);
+#if FIRST_PERSON_CONTROLLER
+            if (m_FirstPersonPerspectiveItem != null) {
+                m_FirstPersonPerspectiveItem.Remove();
+            }
+#endif
+            if (m_ThirdPersonPerspectiveItem != null) {
+                m_ThirdPersonPerspectiveItem.Remove();
+            }
+            if (m_ItemActions != null) {
+                for (int i = 0; i < m_ItemActions.Length; ++i) {
+                    m_ItemActions[i].Remove();
+                }
+            }
         }
 
         /// <summary>
@@ -1216,6 +1197,8 @@ namespace Opsive.UltimateCharacterController.Items
         /// </summary>
         protected virtual void OnDestroy()
         {
+            m_EquipAnimatorAudioStateSet.OnDestroy();
+            m_UnequipAnimatorAudioStateSet.OnDestroy();
             EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterChangePerspectives", OnChangePerspectives);
         }
     }

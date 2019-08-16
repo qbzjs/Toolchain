@@ -130,6 +130,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
                     if (ValidateObject(m_DetectedTriggerObjects[i], true)) {
                         m_DetectedObject = m_DetectedTriggerObjects[i];
                         return true;
+                    } else if (!m_DetectedTriggerObjects[i].activeInHierarchy) { // The OnTriggerExit callback doesn't occur when the object is deactivated. 
+                        if (TriggerExit(m_DetectedTriggerObjects[i])) {
+                            i--; // Subtract one so the newly replaced object will be evaluated.
+                        }
                     }
                 }
             }
@@ -262,10 +266,24 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// <returns>True if the object is valid. The object may not be valid if it doesn't have an ability-specific component attached.</returns>
         protected virtual bool ValidateObject(GameObject obj, bool withinTrigger)
         {
+            if (!obj.activeInHierarchy) {
+                return false;
+            }
+
             // If an object id is specified then the object must have the Object Identifier component attached with the specified ID.
             if (m_ObjectID != -1) {
-                var objectIdentifier = obj.GetCachedParentComponent<Objects.ObjectIdentifier>();
-                if (objectIdentifier == null || objectIdentifier.ID != m_ObjectID) {
+                var objectIdentifiers = obj.GetCachedParentComponents<Objects.ObjectIdentifier>();
+                if (objectIdentifiers == null) {
+                    return false;
+                }
+                var hasID = false;
+                for (int i = 0; i < objectIdentifiers.Length; ++i) {
+                    if (objectIdentifiers[i].ID == m_ObjectID) {
+                        hasID = true;
+                        break;
+                    }
+                }
+                if (!hasID) {
                     return false;
                 }
             }

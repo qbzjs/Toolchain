@@ -83,5 +83,10 @@ namespace Opsive.UltimateCharacterController.Items.AnimatorAudioStates
         /// </summary>
         /// <returns>An additional value that should be added to the Item Substate Index.</returns>
         public virtual int GetAdditionalItemSubstateIndex() { return 0; }
+
+        /// <summary>
+        /// The selector has been destroyed.
+        /// </summary>
+        public virtual void OnDestroy() { }
     }
 }

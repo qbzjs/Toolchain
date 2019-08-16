@@ -27,6 +27,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Input
             if (disableCursorProperty.boolValue) {
                 EditorGUILayout.PropertyField(PropertyFromName("m_PreventLookVectorChanges"));
             }
+            EditorGUILayout.PropertyField(PropertyFromName("m_JoystickUpThreshold"));
         }
     }
 }

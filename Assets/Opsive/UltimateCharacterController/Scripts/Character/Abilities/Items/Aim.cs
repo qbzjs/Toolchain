@@ -7,6 +7,7 @@
 using UnityEngine;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Input;
+using Opsive.UltimateCharacterController.Utility;
 
 namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 {
@@ -212,7 +213,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
         /// </summary>
         public override void UpdateRotation()
         {
-            // If the character can look indepdently then the character does not need to rotate to face the look direction.
+            // If the character can look independently then the character does not need to rotate to face the look direction.
             if (m_CharacterLocomotion.ActiveMovementType.UseIndependentLook(true)) {
                 return;
             }
@@ -224,13 +225,12 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
 
             // Determine the direction that the character should be facing.
             var lookDirection = m_LookSource.LookDirection(m_LookSource.LookPosition(), true, m_CharacterLayerManager.IgnoreInvisibleCharacterLayers, false);
-            var localLookDirection = m_Transform.InverseTransformDirection(lookDirection);
+            var rotation = m_Transform.rotation * Quaternion.Euler(m_CharacterLocomotion.DeltaRotation);
+            var localLookDirection = MathUtility.InverseTransformDirection(lookDirection, rotation);
             localLookDirection.y = 0;
-            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
-            deltaRotation.y = Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y;
-            m_CharacterLocomotion.DeltaRotation = deltaRotation;
-
-            base.UpdateRotation();
+            lookDirection = MathUtility.TransformDirection(localLookDirection, rotation);
+            var targetRotation = Quaternion.LookRotation(lookDirection, rotation * Vector3.up);
+            m_CharacterLocomotion.DeltaRotation = (Quaternion.Inverse(m_Transform.rotation) * targetRotation).eulerAngles;
         }
 
         /// <summary>

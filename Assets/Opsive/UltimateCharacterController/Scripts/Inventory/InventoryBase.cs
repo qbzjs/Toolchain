@@ -207,7 +207,7 @@ namespace Opsive.UltimateCharacterController.Inventory
         public bool PickupItemType(ItemType itemType, float count, int slotID, bool immediatePickup, bool forceEquip, bool notifyOnPickup)
         {
             // Prevent pickup when the inventory isn't enabled.
-            if (itemType == null || !enabled) {
+            if (itemType == null || !enabled || count == 0) {
                 return false;
             }
 
@@ -488,12 +488,17 @@ namespace Opsive.UltimateCharacterController.Inventory
             if (item != null) {
 
                 // The item should be dropped before unequipped so the drop position will be correct.
-                if (drop && item.Drop(false)) {
-                    return;
+                if (drop) {
+                    item.Drop(false);
                 }
 
                 // An equipped item needs to be unequipped.
                 UnequipItem(itemType, slotID);
+
+                // If the item isn't dropped then it is removed immediately.
+                if (!drop) {
+                    item.Remove();
+                }
 
                 var itemActions = item.ItemActions;
                 if (itemActions != null) {
@@ -512,9 +517,10 @@ namespace Opsive.UltimateCharacterController.Inventory
                             usableItem.RemoveConsumableItemTypeCount();
 
                             // Notify those interested of the removed count.
-                            EventHandler.ExecuteEvent(m_GameObject, "OnInventoryUseItemType", consumableItemType, 0f);
+                            var consumableCount = GetItemTypeCount(consumableItemType);
+                            EventHandler.ExecuteEvent(m_GameObject, "OnInventoryUseItemType", consumableItemType, consumableCount);
                             if (m_OnUseItemTypeEvent != null) {
-                                m_OnUseItemTypeEvent.Invoke(consumableItemType, 0f);
+                                m_OnUseItemTypeEvent.Invoke(consumableItemType, consumableCount);
                             }
 #if UNITY_EDITOR
                             if (GetItemTypeCount(itemType) == 0) {
