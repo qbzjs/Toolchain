@@ -2305,6 +2305,7 @@ MonoBehaviour:
     m_MaxValue: {x: -2, y: 1, z: 0}
     m_MinMagnitude: {x: 0, y: 0, z: 0}
   m_CameraRecoilAccumulation: 0
+  m_LocalizeRecoilForce: 0
   m_MuzzleFlash: {fileID: 0}
   m_PoolMuzzleFlash: 1
   m_Shell: {fileID: 0}
@@ -2359,7 +2360,7 @@ MonoBehaviour:
   m_AnimatorMovementSetID: 2
   m_DominantItem: 1
   m_AllowCameraZoom: 1
-  m_DropPrefab: {fileID: 1419454207511548, guid: 020e30a4db7b49742a4e1c8cc9b39e6b,
+  m_DropPrefab: {fileID: 1419454207511548, guid: c25c7cd77687e3e43a163ee66f5318ee,
     type: 2}
   m_EquipEvent:
     m_WaitForAnimationEvent: 1
@@ -2561,7 +2562,7 @@ MonoBehaviour:
   m_LocalSpawnRotation: {x: -0.085, y: -109.819, z: -7.269001}
   m_FirstPersonBaseObjectID: 0
   m_VisibleItem: {fileID: 1184007031525994}
-  m_ImmediateParentPivot: 0
+  m_VRHandParent: 0
   m_AdditionalControlObjects: []
   m_PositionSpring:
     m_Stiffness: 0.2

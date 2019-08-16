@@ -76,7 +76,22 @@ namespace Opsive.UltimateCharacterController.Objects
         [Tooltip("The audio that should be looped while the object is active.")]
         [SerializeField] protected AudioClipSet m_ActiveAudioClipSet = new AudioClipSet();
 
+        public float Mass { get { return m_Mass; } set { m_Mass = value; } }
+        public float StartVelocityMultiplier { get { return m_StartVelocityMultiplier; } set { m_StartVelocityMultiplier = value; } }
+        public float GravityMagnitude { get { return m_GravityMagnitude; } set { m_GravityMagnitude = value; } }
+        public float Speed { get { return m_Speed; } set { m_Speed = value; } }
+        public float RotationSpeed { get { return m_RotationSpeed; } set { m_RotationSpeed = value; } }
+        public float Damping { get { return m_Damping; } set { m_Damping = value; } }
+        public float RotationDamping { get { return m_RotationDamping; } set { m_RotationDamping = value; } }
+        public bool RotateInMoveDirection { get { return m_RotateInMoveDirection; } set { m_RotateInMoveDirection = value; } }
+        public float SettleThreshold { get { return m_SettleThreshold; } set { m_SettleThreshold = value; } }
+        public float SidewaysSettleThreshold { get { return m_SidewaysSettleThreshold; } set { m_SidewaysSettleThreshold = value; } }
+        public float StartSidewaysVelocityMagnitude { get { return m_StartSidewaysVelocityMagnitude; } set { m_StartSidewaysVelocityMagnitude = value; } }
         public LayerMask ImpactLayers { get { return m_ImpactLayers; } set { m_ImpactLayers = value; } }
+        public SurfaceImpact SurfaceImpact { get { return m_SurfaceImpact; } set { m_SurfaceImpact = value; } }
+        public float ForceMultiplier { get { return m_ForceMultiplier; } set { m_ForceMultiplier = value; } }
+        public BounceMode Bounce { get { return m_BounceMode; } set { m_BounceMode = value; } }
+        public float BounceMultiplier { get { return m_BounceMultiplier; } set { m_BounceMultiplier = value; } }
         public AudioClipSet ActiveAudioClipSet { get { return m_ActiveAudioClipSet; } set { m_ActiveAudioClipSet = value; } }
 
         protected GameObject m_GameObject;
@@ -113,6 +128,7 @@ namespace Opsive.UltimateCharacterController.Objects
         public GameObject Originator { get { return m_Originator; } }
         public Vector3 Velocity { get { return m_Velocity; } }
         public Vector3 Torque { get { return m_Torque; } }
+        public LineRenderer LineRenderer { get { return m_LineRenderer; } }
         protected bool AutoDisable { set { m_AutoDisable = value; } }
 
         /// <summary>

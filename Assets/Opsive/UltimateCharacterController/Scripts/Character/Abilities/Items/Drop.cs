@@ -108,10 +108,12 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
                 m_Items[0] = m_Inventory.GetItem(m_SlotID);
                 // Certain ItemTypes cannot be dropped.
                 var skipItemType = false;
-                for (int j = 0; j < m_NoDropItemTypes.Length; ++j) {
-                    if (m_Items[0].ItemType == m_NoDropItemTypes[j]) {
-                        skipItemType = true;
-                        break;
+                if (m_NoDropItemTypes != null) {
+                    for (int j = 0; j < m_NoDropItemTypes.Length; ++j) {
+                        if (m_Items[0].ItemType == m_NoDropItemTypes[j]) {
+                            skipItemType = true;
+                            break;
+                        }
                     }
                 }
                 canDrop = !skipItemType && m_Items[0] != null;

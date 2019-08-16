@@ -28,6 +28,8 @@ namespace Opsive.UltimateCharacterController.Input
         [SerializeField] protected bool m_EnableCursorWithEscape = true;
         [Tooltip("If the cursor is enabled with escape should the look vector be prevented from updating?")]
         [SerializeField] protected bool m_PreventLookVectorChanges = true;
+        [Tooltip("The joystick is considered up when the raw value is less than the specified threshold.")]
+        [Range(0, 1)] [SerializeField] protected float m_JoystickUpThreshold = 1;
 
         public bool DisableCursor { get { return m_DisableCursor; }
             set
@@ -47,12 +49,13 @@ namespace Opsive.UltimateCharacterController.Input
         }
         public bool EnableCursorWithEscape { get { return m_EnableCursorWithEscape; } set { m_EnableCursorWithEscape = value; } }
         public bool PreventLookMovementWithEscape { get { return m_PreventLookVectorChanges; } set { m_PreventLookVectorChanges = value; } }
+        public float JoystickUpThreshold { get { return m_JoystickUpThreshold; } set { m_JoystickUpThreshold = value; } }
 
         private InputBase m_Input;
         private bool m_UseVirtualInput;
         private HashSet<string> m_JoystickDownSet;
-        private List<string> m_ToAddJoystickDownList;
-        private List<string> m_JoystickDownList;
+        private HashSet<string> m_ToAddJoystickDownSet;
+        private HashSet<string> m_ToRemoveJoystickDownSet;
 
         /// <summary>
         /// Initialize the default values.
@@ -121,25 +124,28 @@ namespace Opsive.UltimateCharacterController.Input
             if (!m_UseVirtualInput) {
                 // The joystick is no longer down after the axis is 0.
                 if (IsControllerConnected()) {
-                    if (m_JoystickDownList != null) {
-                        for (int i = m_JoystickDownList.Count - 1; i > -1; --i) {
-                            if (m_Input.GetAxisRaw(m_JoystickDownList[i]) <= 0.1f) {
-                                m_JoystickDownSet.Remove(m_JoystickDownList[i]);
-                                m_JoystickDownList.RemoveAt(i);
+                    // GetButtonUp/Down doesn't immediately add the button name to the set to prevent the GetButtonUp/Down from returning false
+                    // if it is called twice within the same frame. Add it after the frame has ended.
+                    if (m_JoystickDownSet != null) {
+                        foreach (var item in m_JoystickDownSet) {
+                            if (Mathf.Abs(m_Input.GetAxisRaw(item)) < m_JoystickUpThreshold) {
+                                m_ToRemoveJoystickDownSet.Add(item);
                             }
                         }
+                        foreach (var item in m_ToRemoveJoystickDownSet) {
+                            m_JoystickDownSet.Remove(item);
+                        }
+                        m_ToRemoveJoystickDownSet.Clear();
                     }
-                    // GetButtonDown doesn't immediately add the button name to the set to prevent the GetButtonDown from returning false
-                    // if it is called twice within the same frame.
-                    if (m_ToAddJoystickDownList != null && m_ToAddJoystickDownList.Count > 0) {
-                        if (m_JoystickDownList == null) {
-                            m_JoystickDownList = new List<string>();
+                    if (m_ToAddJoystickDownSet != null && m_ToAddJoystickDownSet.Count > 0) {
+                        if (m_JoystickDownSet == null) {
+                            m_JoystickDownSet = new HashSet<string>();
+                            m_ToRemoveJoystickDownSet = new HashSet<string>();
                         }
-                        for (int i = 0; i < m_ToAddJoystickDownList.Count; ++i) {
-                            m_JoystickDownSet.Add(m_ToAddJoystickDownList[i]);
-                            m_JoystickDownList.Add(m_ToAddJoystickDownList[i]);
+                        foreach (var item in m_ToAddJoystickDownSet) {
+                            m_JoystickDownSet.Add(item);
                         }
-                        m_ToAddJoystickDownList.Clear();
+                        m_ToAddJoystickDownSet.Clear();
                     }
                 }
 
@@ -177,8 +183,16 @@ namespace Opsive.UltimateCharacterController.Input
             if (m_Input.GetButton(name, InputBase.ButtonAction.GetButton)) {
                 return true;
             }
-            if (IsControllerConnected() && Mathf.Abs(m_Input.GetAxisRaw(name)) == 1) {
-                return true;
+            if (IsControllerConnected()) {
+                if (Mathf.Abs(m_Input.GetAxisRaw(name)) == 1) {
+                    if (m_JoystickDownSet == null || !m_JoystickDownSet.Contains(name)) {
+                        if (m_ToAddJoystickDownSet == null) {
+                            m_ToAddJoystickDownSet = new HashSet<string>();
+                        }
+                        m_ToAddJoystickDownSet.Add(name);
+                    }
+                    return true;
+                }
             }
             return false;
         }
@@ -191,17 +205,14 @@ namespace Opsive.UltimateCharacterController.Input
         protected override bool GetButtonDownInternal(string name)
         {
             if (IsControllerConnected() && Mathf.Abs(m_Input.GetAxisRaw(name)) == 1) {
-                if (m_JoystickDownSet == null) {
-                    m_JoystickDownSet = new HashSet<string>();
-                }
                 // The button should only be considered down on the first frame.
-                if (m_JoystickDownSet.Contains(name)) {
+                if (m_JoystickDownSet != null && m_JoystickDownSet.Contains(name)) {
                     return false;
                 }
-                if (m_ToAddJoystickDownList == null) {
-                    m_ToAddJoystickDownList = new List<string>();
+                if (m_ToAddJoystickDownSet == null) {
+                    m_ToAddJoystickDownSet = new HashSet<string>();
                 }
-                m_ToAddJoystickDownList.Add(name);
+                m_ToAddJoystickDownSet.Add(name);
                 return true;
             }
             return m_Input.GetButton(name, InputBase.ButtonAction.GetButtonDown);
@@ -215,11 +226,14 @@ namespace Opsive.UltimateCharacterController.Input
         protected override bool GetButtonUpInternal(string name)
         {
             if (IsControllerConnected()) {
-                if (m_JoystickDownSet == null) {
-                    m_JoystickDownSet = new HashSet<string>();
+                if (Mathf.Abs(m_Input.GetAxisRaw(name)) == 1 && (m_JoystickDownSet == null || !m_JoystickDownSet.Contains(name))) {
+                    if (m_ToAddJoystickDownSet == null) {
+                        m_ToAddJoystickDownSet = new HashSet<string>();
+                    }
+                    m_ToAddJoystickDownSet.Add(name);
+                    return false;
                 }
-                if (m_JoystickDownSet.Contains(name) && m_Input.GetAxisRaw(name) <= 0.1f) {
-                    m_JoystickDownSet.Remove(name);
+                if (m_JoystickDownSet != null && m_JoystickDownSet.Contains(name) && m_Input.GetAxisRaw(name) < m_JoystickUpThreshold) {
                     return true;
                 }
                 return false;

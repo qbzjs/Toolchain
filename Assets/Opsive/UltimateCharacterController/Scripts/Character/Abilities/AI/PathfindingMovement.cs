@@ -25,11 +25,18 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.AI
         public abstract Vector3 DeltaRotation { get; }
 
         /// <summary>
-        /// Updates the character's input and target rotation values.
+        /// Updates the character's input values.
         /// </summary>
         public override void Update()
         {
             m_CharacterLocomotion.InputVector = InputVector;
+        }
+
+        /// <summary>
+        /// Updates the character's rotation values.
+        /// </summary>
+        public override void UpdateRotation()
+        {
             m_CharacterLocomotion.DeltaRotation = DeltaRotation;
         }
     }

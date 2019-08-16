@@ -88,20 +88,23 @@ namespace Opsive.UltimateCharacterController.Camera
 
         [NonSerialized] public int KinematicObjectIndex { get { return m_KinematicObjectIndex; } set { m_KinematicObjectIndex = value; } }
         public bool ZoomInput { get { return m_ZoomInput; } }
+        public GameObject GameObject { get { return m_ViewType.GameObject; } }
+        public Transform Transform { get { return m_ViewType.Transform; } }
+        public GameObject CameraGameObject { get { return m_ViewType.CameraGameObject; } }
         public Transform CameraTransform { get { return m_ViewType.CameraTransform; } }
-        public GameObject GameObject { get { return m_ViewType.CameraGameObject; } }
-        public Transform Transform { get { return m_ViewType.CameraTransform; } }
 
         public ViewType[] ViewTypes { get { return m_ViewTypes; }
             set
             {
                 m_ViewTypes = value;
                 m_ViewTypeNameMap.Clear();
-                for (int i = 0; i < m_ViewTypes.Length; ++i) {
-                    if (m_ViewTypes[i] == null) {
-                        continue;
+                if (m_ViewTypes != null) {
+                    for (int i = 0; i < m_ViewTypes.Length; ++i) {
+                        if (m_ViewTypes[i] == null) {
+                            continue;
+                        }
+                        m_ViewTypeNameMap.Add(m_ViewTypes[i].GetType().FullName, i);
                     }
-                    m_ViewTypeNameMap.Add(m_ViewTypes[i].GetType().FullName, i);
                 }
             }
         }

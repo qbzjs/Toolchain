@@ -47,9 +47,12 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Items
         /// Initialize the perspective item.
         /// </summary>
         /// <param name="character">The character GameObject that the item is parented to.</param>
-        public override void Initialize(GameObject character)
+        /// <returns>True if the item was initialized successfully.</returns>
+        public override bool Initialize(GameObject character)
         {
-            base.Initialize(character);
+            if (!base.Initialize(character)) {
+                return false;
+            }
 
             m_CharacterIK = m_Character.GetCachedComponent<CharacterIKBase>();
 
@@ -79,6 +82,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Items
 
             EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_Character, "OnDeath", OnDeath);
             EventHandler.RegisterEvent(m_Character, "OnRespawn", OnRespawn);
+            return true;
         }
 
         /// <summary>
@@ -113,10 +117,6 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Items
                         parent = itemSlots[i].transform;
                         break;
                     }
-                }
-                // If parent is still null throw an error.
-                if (parent == null) {
-                    Debug.LogError("Error: Unable to find parent Transform of character " + character);
                 }
             }
 
@@ -187,11 +187,11 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Items
         }
 
         /// <summary>
-        /// Drops the VisibleItem object from the character.
+        /// The item has been removed.
         /// </summary>
-        public override void Drop()
+        public override void Remove()
         {
-            base.Drop();
+            base.Remove();
 
             m_PickedUp = false;
 

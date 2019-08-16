@@ -24,8 +24,10 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         [SerializeField] protected int m_FirstPersonBaseObjectID;
         [Tooltip("The GameObject of the visible item.")]
         [SerializeField] protected GameObject m_VisibleItem;
-        [Tooltip("Should the pivot be positioned as the immediate parent of the VisibleItem? This is useful for touch VR.")]
-        [SerializeField] protected bool m_ImmediateParentPivot;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        [Tooltip("Should the pivot be positioned as the immediate parent of the VisibleItem? This is useful for VR.")]
+        [SerializeField] protected bool m_VRHandParent;
+#endif
         [Tooltip("Any additional objects that the item should control the location of. This is useful for dual wielding where the item should update the location of another base object.")]
         [UnityEngine.Serialization.FormerlySerializedAs("m_AdditionalObjects")]
         [SerializeField] protected GameObject[] m_AdditionalControlObjects;
@@ -132,7 +134,9 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
 
         public int FirstPersonBaseObjectID { get { return m_FirstPersonBaseObjectID; } set { m_FirstPersonBaseObjectID = value; } }
         [NonSerialized] public GameObject VisibleItem { get { return m_VisibleItem; } set { m_VisibleItem = value; } }
-        public bool ImmediateParentPivot { get { return m_ImmediateParentPivot; } }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        [NonSerialized] public bool VRHandParent { get { return m_VRHandParent; } set { m_VRHandParent = value; } }
+#endif
         public GameObject[] AdditionalControlObjects { get { return m_AdditionalControlObjects; } }
         public Spring PositionSpring { get { return m_PositionSpring; }
             set {
@@ -257,7 +261,8 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         /// Initialize the perspective item.
         /// </summary>
         /// <param name="character">The character GameObject that the item is parented to.</param>
-        public override void Initialize(GameObject character)
+        /// <returns>True if the item was initialized successfully.</returns>
+        public override bool Initialize(GameObject character)
         {
             m_Item = gameObject.GetCachedComponent<Item>();
             m_CharacterLocomotion = character.GetCachedComponent<UltimateCharacterLocomotion>();
@@ -277,7 +282,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
                 }
                 // The character may not have a first person perspective setup.
                 if (objTransform == null) {
-                    return;
+                    return false;
                 }
 
                 // A First Person Base Object ID can specified if there are multiple FirstPersonBaseObjects and the item should be spawned under a particular
@@ -313,19 +318,23 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
 
                 if (parentTransform == null) {
                     Debug.LogError("Error: Unable to find the parent FirstPersonObjects component");
-                    return;
+                    return false;
                 }
 
                 m_Object.transform.SetParentOrigin(parentTransform);
             }
             
-            base.Initialize(character);
+            if (!base.Initialize(character)) {
+                return false;
+            }
 
             // The object needs to have a pivot transform.
             m_ObjectTransform = m_Object.transform;
             var pivotParent = m_ObjectTransform.parent;
             var pivotChild = m_ObjectTransform;
-            if (!m_ImmediateParentPivot) {
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (!m_VRHandParent) {
+#endif
                 // Manually search for the parent so the child can be remembered.
                 while (pivotParent != null) {
                     if (pivotParent.GetComponent<FirstPersonObjects>() != null) {
@@ -334,7 +343,12 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
                     pivotChild = pivotParent;
                     pivotParent = pivotParent.parent;
                 }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            } else if (m_VisibleItem != null) {
+                pivotParent = m_VisibleItem.transform.parent;
+                pivotChild = m_VisibleItem.transform;
             }
+#endif
             // The child will already have a pivot if multiple items have been added to the first person hands.
             if (pivotChild.GetComponent<FirstPersonObjectPivot>() == null) {
                 // Create the pivot.
@@ -365,9 +379,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
             // Register for interested events.
             EventHandler.RegisterEvent<float>(m_Character, "OnCharacterLand", OnCharacterLand);
             EventHandler.RegisterEvent<float>(m_Character, "OnCharacterChangeTimeScale", OnChangeTimeScale);
-            EventHandler.RegisterEvent<int, Vector3, Vector3>(m_Character, "OnAddSecondaryForce", OnAddPivotForce);
+            EventHandler.RegisterEvent<int, Vector3, Vector3, bool>(m_Character, "OnAddSecondaryForce", OnAddPivotForce);
             EventHandler.RegisterEvent<float, float, float>(m_Character, "OnCharacterLean", OnCharacterLean);
             EventHandler.RegisterEvent<bool>(m_Character, "OnCharacterImmediateTransformChange", OnImmediateTransformChange);
+
+            return true;
         }
 
         /// <summary>
@@ -430,7 +446,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         /// <returns>True if the VisibleItem is active.</param>
         public override bool IsActive()
         {
-            if (m_IndependentItem) {
+            if (m_IndependentItem
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                && !m_VRHandParent
+#endif
+                ) {
                 return base.IsActive();
             } else {
                 if (m_VisibleItem == null) {
@@ -448,7 +468,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         {
             // An independent item will have its own pivot and object which has its own animator. If the item is not independent
             // then the pivot/object are shared with other items so only the visible object should be disabled.
-            if (m_IndependentItem) {
+            if (m_IndependentItem
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                && !m_VRHandParent
+#endif
+                ) {
                 base.SetActive(active);
 
                 m_PrevPlatformMovement = m_CharacterLocomotion.PlatformMovement;
@@ -670,10 +694,20 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
             m_PivotPositionSpring.AddForce(m_PositionForce);
             m_PivotRotationSpring.AddForce(m_RotationForce);
 
-            m_ObjectTransform.localPosition = m_PositionSpring.Value;
-            m_ObjectTransform.localEulerAngles = m_RotationSpring.Value;
-            m_PivotTransform.localPosition = m_PivotPositionSpring.Value;
-            m_PivotTransform.localEulerAngles = m_PivotRotationSpring.Value;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRHandParent) {
+                // The ObjectTransform will be controlled by the HandHandler.
+                m_PivotTransform.localPosition = m_PositionSpring.Value;
+                m_PivotTransform.localEulerAngles = m_RotationSpring.Value;
+            } else {
+#endif
+                m_ObjectTransform.localPosition = m_PositionSpring.Value;
+                m_ObjectTransform.localEulerAngles = m_RotationSpring.Value;
+                m_PivotTransform.localPosition = m_PivotPositionSpring.Value;
+                m_PivotTransform.localEulerAngles = m_PivotRotationSpring.Value;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            }
+#endif
 
             for (int i = 0; i < m_AdditionalControlObjectsTransform.Length; ++i) {
                 m_AdditionalControlObjectsTransform[i].position = m_ObjectTransform.position;
@@ -687,7 +721,8 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         /// <param name="slotID">The Slot ID that is adding the secondary force.</param>
         /// <param name="positionalForce">The positional force to add.</param>
         /// <param name="rotationalForce">The rotational force to add.</param>
-        private void OnAddPivotForce(int slotID, Vector3 positionalForce, Vector3 rotationalForce)
+        /// <param name="globalForce">Is the force applied to the entire character?</param>
+        private void OnAddPivotForce(int slotID, Vector3 positionalForce, Vector3 rotationalForce, bool globalForce)
         {
             // The pivot force may be added for another item.
             if (slotID != -1 && slotID != m_Item.SlotID) {
@@ -751,10 +786,19 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
             UnityEngineUtility.AddUpdatedObject(m_Object, true);
 
             // Apply the snapped spring value.
-            m_ObjectTransform.localPosition = m_PositionSpring.Value;
-            m_ObjectTransform.localEulerAngles = m_RotationSpring.Value;
-            m_PivotTransform.localPosition = m_PivotPositionSpring.Value;
-            m_PivotTransform.localEulerAngles = m_PivotRotationSpring.Value;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VRHandParent) {
+                m_PivotTransform.localPosition = m_PositionSpring.Value;
+                m_PivotTransform.localEulerAngles = m_RotationSpring.Value;
+            } else {
+#endif
+                m_ObjectTransform.localPosition = m_PositionSpring.Value;
+                m_ObjectTransform.localEulerAngles = m_RotationSpring.Value;
+                m_PivotTransform.localPosition = m_PivotPositionSpring.Value;
+                m_PivotTransform.localEulerAngles = m_PivotRotationSpring.Value;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            }
+#endif
         }
 
         /// <summary>
@@ -838,12 +882,16 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
         }
 
         /// <summary>
-        /// The item has been droppped.
+        /// The item has been removed.
         /// </summary>
-        public override void Drop()
+        public override void Remove()
         {
-            if (m_IndependentItem) {
-                base.Drop();
+            if (m_IndependentItem
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                && !m_VRHandParent
+#endif
+                ) {
+                base.Remove();
             } else if (m_VisibleItem != null) {
                 m_VisibleItem.SetActive(false);
             }
@@ -938,7 +986,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Items
 
             EventHandler.UnregisterEvent<float>(m_Character, "OnCharacterLand", OnCharacterLand);
             EventHandler.UnregisterEvent<float>(m_Character, "OnCharacterChangeTimeScale", OnChangeTimeScale);
-            EventHandler.UnregisterEvent<int, Vector3, Vector3>(m_Character, "OnAddSecondaryForce", OnAddPivotForce);
+            EventHandler.UnregisterEvent<int, Vector3, Vector3, bool>(m_Character, "OnAddSecondaryForce", OnAddPivotForce);
             EventHandler.UnregisterEvent<float, float, float>(m_Character, "OnCharacterLean", OnCharacterLean);
             EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterImmediateTransformChange", OnImmediateTransformChange);
             if (m_IndependentItem) {

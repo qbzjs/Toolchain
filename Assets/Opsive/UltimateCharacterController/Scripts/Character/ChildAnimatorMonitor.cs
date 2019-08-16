@@ -207,22 +207,6 @@ namespace Opsive.UltimateCharacterController.Character
         }
 
         /// <summary>
-        /// Updates the Animator at a fixed rate.
-        /// </summary>
-        /// <param name="deltaTime">The rate to update the animator.</param>
-        public void UpdateAnimator(float deltaTime)
-        {
-            // The same animator may be specified across multiple active items. Only update the animator once to prevent the animation from moving too quickly.
-            if (UnityEngineUtility.HasUpdatedObject(m_Animator)) {
-                return;
-            }
-            // The animator hasn't been updated this frame. The updated object set will be cleared by the AnimatorMonitor after the frame is complete.
-            UnityEngineUtility.AddUpdatedObject(m_Animator);
-
-            m_Animator.Update(deltaTime);
-        }
-
-        /// <summary>
         /// Sets the Horizontal Movement parameter to the specified value.
         /// </summary>
         /// <param name="value">The new value.</param>
@@ -499,7 +483,7 @@ namespace Opsive.UltimateCharacterController.Character
         {
             if (m_CharacterAnimatorMonitor != null) {
                 EventHandler.UnregisterEvent<bool>(m_Character, "OnCharacterImmediateTransformChange", OnImmediateTransformChange);
-                EventHandler.UnregisterEvent(m_Character, "OnSnapAnimator", SnapAnimator);
+                EventHandler.UnregisterEvent(m_Character, "OnCharacterSnapAnimator", SnapAnimator);
             }
         }
     }

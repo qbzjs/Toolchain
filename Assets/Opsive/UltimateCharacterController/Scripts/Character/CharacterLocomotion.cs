@@ -193,11 +193,13 @@ namespace Opsive.UltimateCharacterController.Character
 
         private Vector3 m_Up;
         private float m_Height;
+        private float m_Radius = float.MaxValue;
         private Vector3 m_MotorThrottle;
+        private Quaternion m_MotorRotation;
+        private Quaternion m_PrevMotorRotation;
         private Vector3 m_MoveDirection;
         protected Quaternion m_Torque = Quaternion.identity;
         private Vector3 m_PrevPosition;
-        private Quaternion m_PrevRotation;
         private Vector3 m_Velocity;
         private bool m_CheckRotationCollision;
         private bool m_AllowUseGravity = true;
@@ -268,6 +270,7 @@ namespace Opsive.UltimateCharacterController.Character
         public Vector3 LocalLocomotionVelocity { get { return m_Transform.InverseTransformDirection(m_Velocity - m_PlatformVelocity); } }
         [Snapshot] public Vector3 Up { get { return m_Up; } protected set { m_Up = value; } }
         public float Height { get { return m_Height; } }
+        public float Radius { get { return m_Radius; } }
         public Vector3 Center { get { return m_Transform.InverseTransformPoint(m_Transform.position + (m_Up * m_Height / 2)); } }
         [Snapshot] public bool Grounded { get { return m_Grounded; } protected set { m_Grounded = value; } }
         public Vector3 LocalExternalForce { get { return m_Transform.InverseTransformDirection(m_ExternalForce); } }
@@ -289,10 +292,11 @@ namespace Opsive.UltimateCharacterController.Character
         public Vector3 LocalVelocity { get { return m_Transform.InverseTransformDirection(m_Velocity); } }
 
         [Snapshot] public Vector3 MotorThrottle { get { return m_MotorThrottle; } set { m_MotorThrottle = value; } }
+        [Snapshot] public Quaternion MotorRotation { get { return m_MotorRotation; } set { m_MotorRotation = value; } }
+        [Snapshot] public Quaternion PrevMotorRotation { get { return m_PrevMotorRotation; } set { m_PrevMotorRotation = value; } }
         [Snapshot] public Vector3 ExternalForce { get { return m_ExternalForce; } protected set { m_ExternalForce = value; } }
         [Snapshot] protected float GravityForce { get { return m_GravityAmount; } set { m_GravityAmount = value; } }
         [Snapshot] protected Vector3 PrevPosition { get { return m_PrevPosition; } set { m_PrevPosition = value; } }
-        [Snapshot] protected Quaternion PrevRotation { get { return m_PrevRotation; } set { m_PrevRotation = value; } }
         [Snapshot] protected Vector3 PlatformRelativePosition { get { return m_PlatformRelativePosition; } set { m_PlatformRelativePosition = value; } }
 
         /// <summary>
@@ -308,7 +312,7 @@ namespace Opsive.UltimateCharacterController.Character
 
             m_Up = m_Transform.up;
             m_PrevPosition = m_Transform.position;
-            m_PrevRotation = m_Transform.rotation;
+            m_MotorRotation = m_PrevMotorRotation = m_Transform.rotation;
             m_GravityDirection = -m_Up;
             m_DeltaTime = Time.fixedDeltaTime;
 
@@ -340,6 +344,17 @@ namespace Opsive.UltimateCharacterController.Character
                 var height = MathUtility.LocalColliderHeight(m_Transform, colliders[i]);
                 if (height > m_Height) {
                     m_Height = height;
+                }
+
+                // Determine the mim radius of the character.
+                var radius = float.MaxValue;
+                if (colliders[i] is CapsuleCollider) {
+                    radius = (colliders[i] as CapsuleCollider).radius;
+                } else { // SphereCollider.
+                    radius = (colliders[i] as SphereCollider).radius;
+                }
+                if (radius < m_Radius) {
+                    m_Radius = radius;
                 }
 
                 // The rotation collider check only needs to be checked if the collider rotates on an axis other than the relative-y axis.
@@ -527,9 +542,6 @@ namespace Opsive.UltimateCharacterController.Character
             // Apply the resulting rotation changes.
             ApplyRotation();
 
-            // Update any base movement forces.
-            UpdateMotorThrottle();
-
             // Update all forces and check for collisions.
             UpdatePosition();
 
@@ -610,12 +622,14 @@ namespace Opsive.UltimateCharacterController.Character
         protected virtual void UpdateRotation()
         {
             // Rotate according to the root motion rotation or target rotation.
-            Quaternion rotationDelta;
-            if (UsingRootMotionRotation || m_LocalRootMotionRotation.eulerAngles.sqrMagnitude > 0) {
-                rotationDelta = m_LocalRootMotionRotation;
+            Quaternion rotationDelta, targetRotation;
+            var rotation = m_Transform.rotation * m_Torque;
+            if (UsingRootMotionRotation) {
+                targetRotation = rotation * m_LocalRootMotionRotation;
+                if (m_AlignToGravity) {
+                    targetRotation *= Quaternion.Euler(m_DeltaRotation);
+                }
             } else {
-                Quaternion targetRotation;
-                var rotation = m_Transform.rotation * m_Torque;
                 if (m_AlignToGravity) {
                     // When aligning to gravity the character should rotate immediately to the up direction.
                     m_DeltaRotation.y = Mathf.Lerp(0, MathUtility.ClampInnerAngle(m_DeltaRotation.y), m_MotorRotationSpeed * m_TimeScale * TimeUtility.FixedDeltaTimeScaled);
@@ -623,8 +637,8 @@ namespace Opsive.UltimateCharacterController.Character
                 } else {
                     targetRotation = Quaternion.Slerp(rotation, rotation * Quaternion.Euler(m_DeltaRotation), m_MotorRotationSpeed * m_TimeScale * TimeUtility.FixedDeltaTimeScaled);
                 }
-                rotationDelta = Quaternion.Inverse(rotation) * targetRotation;
             }
+            rotationDelta = Quaternion.Inverse(rotation) * targetRotation;
             m_LocalRootMotionRotation = Quaternion.identity;
             rotationDelta = CheckRotation(rotationDelta, false);
 
@@ -736,10 +750,10 @@ namespace Opsive.UltimateCharacterController.Character
         protected virtual void ApplyRotation()
         {
             // Apply the rotation.
-            m_PrevRotation = m_Transform.rotation;
             m_Transform.rotation *= m_Torque;
             m_Torque = Quaternion.identity;
             m_Up = m_Transform.up;
+            m_MotorRotation = m_Transform.rotation;
 
             if (m_Platform != null) {
                 m_PlatformRotationOffset = m_Transform.rotation * Quaternion.Inverse(m_Platform.rotation);
@@ -747,12 +761,28 @@ namespace Opsive.UltimateCharacterController.Character
         }
 
         /// <summary>
+        /// Move according to the forces.
+        /// </summary>
+        protected virtual void UpdatePosition()
+        {
+            // Update any base movement forces.
+            UpdateMotorThrottle();
+
+            var deltaTime = TimeScaleSquared * Time.timeScale * m_FramerateDeltaTime;
+            m_MoveDirection += m_ExternalForce * deltaTime + (m_MotorThrottle * (UsingRootMotionPosition ? 1 : deltaTime)) - m_GravityDirection * m_GravityAmount * deltaTime;
+
+            // After the character has moved update the collisions. This will prevent the character from moving through solid objects.
+            DeflectHorizontalCollisions();
+            DeflectVerticalCollisions();
+        }
+
+        /// <summary>
         /// Updates the motor forces.
         /// </summary>
         protected virtual void UpdateMotorThrottle()
         {
-            if (UsingRootMotionPosition || m_LocalRootMotionForce.sqrMagnitude > 0) {
-                m_MotorThrottle = m_Transform.TransformDirection(m_LocalRootMotionForce) * (m_Grounded ? 1 : m_RootMotionAirForceMultiplier) * m_SlopeFactor;
+            if (UsingRootMotionPosition) {
+                m_MotorThrottle = MathUtility.TransformDirection(m_LocalRootMotionForce, m_MotorRotation) * (m_Grounded ? 1 : m_RootMotionAirForceMultiplier) * m_SlopeFactor;
             } else {
                 // Apply a multiplier if the character is moving backwards.
                 var backwardsMultiplier = 1f;
@@ -762,30 +792,18 @@ namespace Opsive.UltimateCharacterController.Character
                 // As the character changes rotation the same local motor throttle force should be applied. This is most apparent when the character is being aligned to the ground
                 // and the local y direction changes.
                 var prevMotorThrottle = m_MotorThrottle;
-                var prevLocalMotorThrottle = MathUtility.InverseTransformDirection(m_MotorThrottle, m_PrevRotation) * m_PreviousAccelerationInfluence;
+                var prevLocalMotorThrottle = MathUtility.InverseTransformDirection(m_MotorThrottle, m_PrevMotorRotation) * m_PreviousAccelerationInfluence;
                 var acceleration = (m_Grounded ? m_MotorAcceleration : m_MotorAirborneAcceleration) * m_SlopeFactor * backwardsMultiplier * 0.1f;
                 // Convert input into motor forces. Normalize the input vector to prevent the diagonal from moving faster.
                 var normalizedInputVector = m_InputVector.normalized * Mathf.Max(Mathf.Abs(m_InputVector.x), Mathf.Abs(m_InputVector.y));
-                m_MotorThrottle = m_Transform.TransformDirection(prevLocalMotorThrottle.x + normalizedInputVector.x * acceleration.x,
-                                            prevLocalMotorThrottle.y, prevLocalMotorThrottle.z + normalizedInputVector.y * acceleration.z);
+                m_MotorThrottle = MathUtility.TransformDirection(new Vector3(prevLocalMotorThrottle.x + normalizedInputVector.x * acceleration.x,
+                                            prevLocalMotorThrottle.y, prevLocalMotorThrottle.z + normalizedInputVector.y * acceleration.z), m_MotorRotation);
                 m_MotorThrottle += prevMotorThrottle * (1 - m_PreviousAccelerationInfluence);
                 // Dampen motor forces.
                 m_MotorThrottle /= (1 + ((m_Grounded ? m_MotorDamping : m_MotorAirborneDamping) * m_TimeScale * Time.timeScale));
             }
+            m_PrevMotorRotation = m_MotorRotation;
             m_LocalRootMotionForce = Vector3.zero;
-        }
-
-        /// <summary>
-        /// Move according to the forces.
-        /// </summary>
-        protected virtual void UpdatePosition()
-        {
-            var deltaTime = TimeScaleSquared * Time.timeScale * m_FramerateDeltaTime;
-            m_MoveDirection += m_ExternalForce * deltaTime + (m_MotorThrottle * (UsingRootMotionPosition ? 1 : deltaTime)) - m_GravityDirection * m_GravityAmount * deltaTime;
-
-            // After the character has moved update the collisions. This will prevent the character from moving through solid objects.
-            DeflectHorizontalCollisions();
-            DeflectVerticalCollisions();
         }
 
         /// <summary>
@@ -888,7 +906,8 @@ namespace Opsive.UltimateCharacterController.Character
                         } else {
                             groundPoint.y = 0;
                             groundPoint = m_Transform.TransformPoint(groundPoint);
-                            if (OverlapCount(activeCollider, (groundPoint - m_Transform.position) + m_PlatformMovement + m_Up * (m_MaxStepHeight - c_ColliderSpacing)) == 0) {
+                            var direction = groundPoint - m_Transform.position;
+                            if (OverlapCount(activeCollider, (direction.normalized * (direction.magnitude + m_Radius * 0.5f)) + m_PlatformMovement + m_Up * (m_MaxStepHeight - c_ColliderSpacing)) == 0) {
                                 // Step over the object if there are no objects in the way.
                                 continue;
                             }
@@ -980,7 +999,8 @@ namespace Opsive.UltimateCharacterController.Character
                             } else {
                                 groundPoint.y = 0;
                                 groundPoint = m_Transform.TransformPoint(groundPoint);
-                                if (OverlapCount(activeCollider, (groundPoint - m_Transform.position) + m_PlatformMovement + m_Up * (m_MaxStepHeight - c_ColliderSpacing)) == 0) {
+                                var direction = groundPoint - m_Transform.position;
+                                if (OverlapCount(activeCollider, (direction.normalized * (direction.magnitude + m_Radius * 0.5f)) + m_PlatformMovement + m_Up * (m_MaxStepHeight - c_ColliderSpacing)) == 0) {
                                     // Step over the object if there are no objects in the way.
                                     continue;
                                 }
@@ -1046,7 +1066,7 @@ namespace Opsive.UltimateCharacterController.Character
 
             var accumulateGravity = UsingGravity;
             var verticalOffset = 0f;
-            if (UsingGravity && m_GroundRaycastHit.distance != 0) {
+            if (UsingVerticalCollisionDetection && m_GroundRaycastHit.distance != 0) {
                 verticalOffset = m_Transform.InverseTransformDirection(m_GroundRaycastHit.point - m_GroundRaycastOrigin).y + c_ColliderSpacing;
                 if (Mathf.Abs(verticalOffset) < 0.0001f) {
                     verticalOffset = 0;
@@ -1530,12 +1550,12 @@ namespace Opsive.UltimateCharacterController.Character
         }
 
         /// <summary>
-        /// Does a OverlapCapsule/Sphere to determine the number of colliders that are overlapping the character's collider.
+        /// Returns the number of colliders that are overlapping the character's collider.
         /// </summary>
         /// <param name="collider">The collider to check against.</param>
         /// <param name="offset">The offset to apply to the character's collider position.</param>
         /// <returns>The number of objects which overlap the collider. These objects will be populated within m_OverlapColliderHit.</returns>
-        private int OverlapCount(Collider collider, Vector3 offset)
+        protected int OverlapCount(Collider collider, Vector3 offset)
         {
             if (collider is CapsuleCollider) {
                 Vector3 startEndCap, endEndCap;
@@ -1993,7 +2013,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// <param name="rotation">The rotation to set.</param>
         public virtual void SetRotation(Quaternion rotation)
         {
-            m_Transform.rotation = m_PrevRotation = rotation;
+            m_Transform.rotation = m_MotorRotation = m_PrevMotorRotation = rotation;
             m_LocalRootMotionRotation = m_Torque = Quaternion.identity;
             m_Up = m_Transform.up;
             if (m_AlignToGravity) {
@@ -2023,7 +2043,7 @@ namespace Opsive.UltimateCharacterController.Character
         /// </summary>
         public virtual void ResetRotationPosition()
         {
-            m_PrevRotation = m_Transform.rotation;
+            m_MotorRotation = m_PrevMotorRotation = m_Transform.rotation;
             m_Up = m_Transform.up;
             m_LocalRootMotionRotation = m_Torque = Quaternion.identity;
             if (m_AlignToGravity) {

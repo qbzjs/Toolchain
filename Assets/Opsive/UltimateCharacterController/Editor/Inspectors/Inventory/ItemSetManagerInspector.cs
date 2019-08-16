@@ -399,6 +399,12 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Inventory
         private void OnItemSetStateListDraw(Rect rect, int index, bool isActive, bool isFocused)
         {
             EditorGUI.BeginChangeCheck();
+            if (m_ItemSetListIndex >= m_ItemSetManager.CategoryItemSets.Length || 
+                EditorPrefs.GetInt(SelectedItemSetIndexKey, -1) >= m_ItemSetManager.CategoryItemSets[m_ItemSetListIndex].ItemSetList.Count) {
+                m_ReorderableItemSetStateList[m_ItemSetListIndex].index = -1;
+                return;
+            }
+
             var itemSet = m_ItemSetManager.CategoryItemSets[m_ItemSetListIndex].ItemSetList[EditorPrefs.GetInt(SelectedItemSetIndexKey, -1)];
 
             // The index may be out of range if the component was copied.

@@ -147,9 +147,11 @@ namespace Opsive.UltimateCharacterController.Demo
                 m_DemoZones[i].Initialize(i);
                 m_DemoZoneTriggerDemoZoneMap.Add(m_DemoZones[i].DemoZoneTrigger, m_DemoZones[i]);
             }
-            
+
             // Enable the UI after the character has spawned.
-            m_TextPanel.SetActive(false);
+            if (m_TextPanel != null) {
+                m_TextPanel.SetActive(false);
+            }
             if (m_PreviousZoneArrow != null) {
                 m_PreviousZoneArrow.SetActive(false);
             }
@@ -166,15 +168,16 @@ namespace Opsive.UltimateCharacterController.Demo
         /// </summary>
         protected virtual void Start()
         {
-            InitializeCharacter(m_Character, true);
+            InitializeCharacter(m_Character, true, true);
         }
 
         /// <summary>
         /// Initializes the Demo Manager with the specified character.
         /// </summary>
         /// <param name="character">The character that should be initialized/</param>
+        /// <param name="selectStartingPerspective">Should the starting perspective be selected?</param>
         /// <param name="teleport">Should the character be teleported to the first demo zone?</param>
-        protected void InitializeCharacter(GameObject character, bool teleport)
+        protected void InitializeCharacter(GameObject character, bool selectStartingPerspective, bool teleport)
         {
             m_Character = character;
 
@@ -214,6 +217,7 @@ namespace Opsive.UltimateCharacterController.Demo
                 // The character needs to be assigned to the camera.
                 var camera = UnityEngineUtility.FindCamera(null);
                 var cameraController = camera.GetComponent<Camera.CameraController>();
+                cameraController.SetPerspective(m_CharacterLocomotion.FirstPersonPerspective, true);
                 cameraController.Character = m_Character;
 
                 // The character doesn't start out with any items.
@@ -229,7 +233,9 @@ namespace Opsive.UltimateCharacterController.Demo
                     }
                 }
 
-                EventHandler.ExecuteEvent(m_Character, "OnCharacterSnapAnimator");
+                if (m_Character.activeInHierarchy) {
+                    EventHandler.ExecuteEvent(m_Character, "OnCharacterSnapAnimator");
+                }
                 enabled = false;
                 return;
             }
@@ -238,6 +244,9 @@ namespace Opsive.UltimateCharacterController.Demo
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            if (!selectStartingPerspective) {
+                return;
+            }
 #if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
             // Show the perspective selection menu.
             if (m_PerspectiveSelection != null) {
@@ -389,8 +398,7 @@ namespace Opsive.UltimateCharacterController.Demo
         /// Sets the starting perspective on the character.
         /// </summary>
         /// <param name="firstPersonPerspective">Should the character start in a first person perspective?</param>
-        /// <param name="teleport">Should the character be teleported to the demo zone?</param>
-        public void SelectStartingPerspective(bool firstPersonPerspective)
+        public virtual void SelectStartingPerspective(bool firstPersonPerspective)
         {
             SelectStartingPerspective(firstPersonPerspective, true);
         }
@@ -408,8 +416,8 @@ namespace Opsive.UltimateCharacterController.Demo
             var camera = UnityEngineUtility.FindCamera(null);
             var cameraController = camera.GetComponent<Camera.CameraController>();
             // Ensure the camera starts with the correct view type.
-            cameraController.FirstPersonViewTypeFullName = "Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTypes.Combat";
-            cameraController.ThirdPersonViewTypeFullName = "Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes.Adventure";
+            cameraController.FirstPersonViewTypeFullName = GetViewTypeFullName(true);
+            cameraController.ThirdPersonViewTypeFullName = GetViewTypeFullName(false);
             cameraController.SetPerspective(firstPersonPerspective, true);
             cameraController.Character = m_Character;
 
@@ -429,6 +437,17 @@ namespace Opsive.UltimateCharacterController.Demo
         }
 
         /// <summary>
+        /// Returns the full name of the view type for the specified perspective.
+        /// </summary>
+        /// <param name="firstPersonPerspective">Should the first person perspective be returned?</param>
+        /// <returns>The full name of the view type for the specified perspective.</returns>
+        protected virtual string GetViewTypeFullName(bool firstPersonPerspective)
+        {
+            return firstPersonPerspective ? "Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTypes.Combat" :
+                                            "Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes.Adventure";
+        }
+
+        /// <summary>
         /// Shows the text in the UI with the specified header and description.
         /// </summary>
         /// <param name="header">The header that should be shown.</param>
@@ -436,6 +455,10 @@ namespace Opsive.UltimateCharacterController.Demo
         /// <param name="action">The action that should be shown.</param>
         private void ShowText(string header, string description, string action)
         {
+            if (m_TextPanel == null) {
+                return;
+            }
+
             if (string.IsNullOrEmpty(header)) {
                 m_TextPanel.SetActive(false);
                 return;

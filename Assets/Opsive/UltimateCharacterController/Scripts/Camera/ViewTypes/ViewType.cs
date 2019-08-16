@@ -31,6 +31,8 @@ namespace Opsive.UltimateCharacterController.Camera.ViewTypes
         public abstract Quaternion CharacterRotation { get; }
         public abstract float LookDirectionDistance { get; }
         public virtual bool RotatePriority { get { return true; } }
+        public virtual GameObject GameObject { get { return m_GameObject; } }
+        public virtual Transform Transform { get { return m_Transform; } }
         public virtual GameObject CameraGameObject { get { return m_GameObject; } }
         public virtual Transform CameraTransform { get { return m_Transform; } }
 

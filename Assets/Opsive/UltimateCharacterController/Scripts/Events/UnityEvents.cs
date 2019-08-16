@@ -82,7 +82,7 @@ namespace Opsive.UltimateCharacterController.Events
     /// <summary>
     /// (float, Vector3, Vector3, GameObject) UnityEvent subclass so the event will appear in the inspector.
     /// </summary>
-    [System.Serializable] public class UnityFloatVector3Vector3GameObjectEvent : UnityEvent<float, Vector3, Vector3, Object> { }
+    [System.Serializable] public class UnityFloatVector3Vector3GameObjectEvent : UnityEvent<float, Vector3, Vector3, GameObject> { }
 
     /// <summary>
     /// (ViewType, bool) UnityEvent subclass so the event will appear in the inspector.

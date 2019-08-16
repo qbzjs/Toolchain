@@ -98,7 +98,11 @@ namespace Opsive.UltimateCharacterController.Items.AnimatorAudioStates
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public AnimatorAudioStateSet() { }
+        public AnimatorAudioStateSet()
+        {
+            var animatorAudioOutputSelector = System.Activator.CreateInstance(typeof(Sequence)) as AnimatorAudioStateSelector;
+            m_AnimatorAudioStateSelectorData = Serialization.Serialize(animatorAudioOutputSelector);
+        }
 
         /// <summary>
         /// Constructor with one parameter.
@@ -209,6 +213,18 @@ namespace Opsive.UltimateCharacterController.Items.AnimatorAudioStates
             }
 
             return m_AnimatorAudioStateSelector.NextState();
+        }
+
+        /// <summary>
+        /// The object has been destroyed.
+        /// </summary>
+        public void OnDestroy()
+        {
+            if (m_AnimatorAudioStateSelector == null) {
+                return;
+            }
+
+            m_AnimatorAudioStateSelector.OnDestroy();
         }
     }
 }

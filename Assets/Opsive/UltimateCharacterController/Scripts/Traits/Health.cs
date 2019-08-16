@@ -363,13 +363,19 @@ namespace Opsive.UltimateCharacterController.Traits
         }
 
         /// <summary>
-        /// The object is no longer alive
+        /// The object is no longer alive.
         /// </summary>
         /// <param name="position">The position of the damage.</param>
         /// <param name="force">The amount of force applied to the object while taking the damage.</param>
         /// <param name="attacker">The GameObject that killed the character.</param>
-        protected virtual void Die(Vector3 position, Vector3 force, GameObject attacker)
+        public virtual void Die(Vector3 position, Vector3 force, GameObject attacker)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
+            if (m_NetworkInfo != null && m_NetworkInfo.IsServer()) {
+                m_NetworkHealthMonitor.Die(position, force, attacker);
+            }
+#endif
+
             // Spawn any objects on death, such as an explosion if the object is an explosive barrel.
             if (m_SpawnedObjectsOnDeath != null) {
                 for (int i = 0; i < m_SpawnedObjectsOnDeath.Length; ++i) {

@@ -62,10 +62,10 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Items.AnimatorAud
                                 break;
                             }
                         }
-                        InspectorUtility.SetDirty(target);
                     }
                     var animatorAudioOutputSelector = Activator.CreateInstance(s_SelectorTypeCache[newSelected]) as AnimatorAudioStateSelector;
                     animatorAudioStateSet.AnimatorAudioStateSelectorData = Serialization.Serialize(animatorAudioOutputSelector);
+                    InspectorUtility.SetDirty(target);
                 }
             }
 
@@ -73,8 +73,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Items.AnimatorAud
                 EditorGUI.indentLevel++;
                 InspectorUtility.DrawObject(animatorAudioStateSet.AnimatorAudioStateSelector, false, true, target, false, () => {
                     animatorAudioStateSet.AnimatorAudioStateSelectorData = Serialization.Serialize(animatorAudioStateSet.AnimatorAudioStateSelector);
-                    PrefabUtility.RecordPrefabInstancePropertyModifications(target);
-                    } );
+                    InspectorUtility.SetDirty(target);
+                });
                 EditorGUI.indentLevel--;
             }
 

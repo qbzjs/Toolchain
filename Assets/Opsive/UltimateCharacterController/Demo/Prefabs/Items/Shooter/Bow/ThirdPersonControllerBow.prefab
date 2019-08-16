@@ -1270,6 +1270,7 @@ MonoBehaviour:
     m_MaxValue: {x: -2, y: 1, z: 0}
     m_MinMagnitude: {x: 0, y: 0, z: 0}
   m_CameraRecoilAccumulation: 0
+  m_LocalizeRecoilForce: 0
   m_MuzzleFlash: {fileID: 0}
   m_PoolMuzzleFlash: 1
   m_Shell: {fileID: 0}
@@ -1320,7 +1321,7 @@ MonoBehaviour:
   m_AnimatorMovementSetID: 2
   m_DominantItem: 1
   m_AllowCameraZoom: 1
-  m_DropPrefab: {fileID: 1419454207511548, guid: 979b5112127a3f443ac595fcf81986f4,
+  m_DropPrefab: {fileID: 1419454207511548, guid: 0a3aa408134459d498db814043926d04,
     type: 2}
   m_EquipEvent:
     m_WaitForAnimationEvent: 1

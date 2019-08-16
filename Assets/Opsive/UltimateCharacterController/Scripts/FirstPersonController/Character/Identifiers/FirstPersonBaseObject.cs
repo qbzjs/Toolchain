@@ -15,7 +15,10 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Character.Ide
     {
         [Tooltip("The unique ID of the first person base object.")]
         [SerializeField] protected int m_ID;
+        [Tooltip("Should the base object always stay active? This is useful for first person VR.")]
+        [SerializeField] protected bool m_AlwaysActive;
 
         [Utility.NonSerialized] public int ID { get { return m_ID; } set { m_ID = value; } }
+        [Utility.NonSerialized] public bool AlwaysActive { get { return m_AlwaysActive; } set { m_AlwaysActive = value; } }
     }
 }

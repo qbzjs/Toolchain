@@ -28,9 +28,11 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public bool m_SightMount;
 		[SerializeField]public bool m_ScopeMount;
 		[SerializeField]public bool m_BarrelMount;
+		[SerializeField]public bool m_GripMount;
 		[SerializeField]public bool m_UnderMount;
 		[SerializeField]public bool m_SideMountL;
 		[SerializeField]public bool m_SideMountR;
+		[SerializeField]public bool m_BarrelMountPistol;
 		[SerializeField]public bool m_SightMountPistol;
 		[SerializeField]public bool m_UnderMountPistol;
 	}

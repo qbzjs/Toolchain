@@ -322,28 +322,22 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             }
 
             if (startingAbility is Use && startingAbility != this) {
-                // The ability should be able to be used unless the dominant item state doesn't match. This will prevent a secondary grenade throw 
-                // from being started when the primary item is being used. It will not prevent two independent items from being used at the same time.
-                var dominantItem = true;
+                // The same item should not be able to be used by multiple use abilities at the same time. Different items can be used at the same time, such as
+                // a primary item and a secondary grenade throw or dual pistols.
+                var startingUseAbility = startingAbility as Use;
                 for (int i = 0; i < m_UsableItems.Length; ++i) {
                     if (m_UsableItems[i] == null) {
                         continue;
                     }
 
-                    if (!m_UsableItems[i].Item.DominantItem) {
-                        dominantItem = false;
-                        break;
-                    }
-                }
+                    for (int j = 0; j < startingUseAbility.UsableItems.Length; ++j) {
+                        if (startingUseAbility.UsableItems[j] == null) {
+                            continue;
+                        }
 
-                var useAbility = startingAbility as Use;
-                for (int i = 0; i < useAbility.UsableItems.Length; ++i) {
-                    if (useAbility.UsableItems[i] == null) {
-                        continue;
-                    }
-
-                    if (dominantItem != useAbility.UsableItems[i].Item.DominantItem) {
-                        return true;
+                        if (m_UsableItems[i].Item == startingUseAbility.UsableItems[j].Item) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -723,16 +717,15 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             if (m_FaceTargetItem == null) {
                 return;
             }
-
+            
             // Determine the direction that the character should be facing.
             var lookDirection = m_LookSource.LookDirection(m_LookSource.LookPosition(), true, m_CharacterLayerManager.IgnoreInvisibleCharacterLayers, false);
-            var localLookDirection = m_Transform.InverseTransformDirection(lookDirection);
+            var rotation = m_Transform.rotation * Quaternion.Euler(m_CharacterLocomotion.DeltaRotation);
+            var localLookDirection = MathUtility.InverseTransformDirection(lookDirection, rotation);
             localLookDirection.y = 0;
-            var deltaRotation = m_CharacterLocomotion.DeltaRotation;
-            deltaRotation.y = Quaternion.LookRotation(localLookDirection.normalized, m_CharacterLocomotion.Up).eulerAngles.y;
-            m_CharacterLocomotion.DeltaRotation = deltaRotation;
-
-            base.UpdateRotation();
+            lookDirection = MathUtility.TransformDirection(localLookDirection, rotation);
+            var targetRotation = Quaternion.LookRotation(lookDirection, rotation * Vector3.up);
+            m_CharacterLocomotion.DeltaRotation = (Quaternion.Inverse(m_Transform.rotation) * targetRotation).eulerAngles;
         }
 
         /// <summary>

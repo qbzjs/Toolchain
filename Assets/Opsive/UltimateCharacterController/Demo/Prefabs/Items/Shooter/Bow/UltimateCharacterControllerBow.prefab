@@ -2306,6 +2306,7 @@ MonoBehaviour:
     m_MaxValue: {x: -2, y: 1, z: 0}
     m_MinMagnitude: {x: 0, y: 0, z: 0}
   m_CameraRecoilAccumulation: 0
+  m_LocalizeRecoilForce: 0
   m_MuzzleFlash: {fileID: 0}
   m_PoolMuzzleFlash: 1
   m_Shell: {fileID: 0}
@@ -2580,7 +2581,7 @@ MonoBehaviour:
   m_LocalSpawnRotation: {x: -0.085, y: -109.819, z: -7.269001}
   m_FirstPersonBaseObjectID: 0
   m_VisibleItem: {fileID: 1184007031525994}
-  m_ImmediateParentPivot: 0
+  m_VRHandParent: 0
   m_AdditionalControlObjects: []
   m_PositionSpring:
     m_Stiffness: 0.2

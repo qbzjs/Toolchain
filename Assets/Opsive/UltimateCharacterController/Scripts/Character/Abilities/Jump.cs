@@ -326,7 +326,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         }
 
         /// <summary>
-        /// Allows for the Jump ability to add 
+        /// Allows for the Jump ability to add an extra force.
         /// </summary>
         public override void UpdatePosition()
         {

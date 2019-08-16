@@ -913,7 +913,7 @@ MonoBehaviour:
   m_LocalSpawnRotation: {x: 83.44901, y: -55.824, z: -149.533}
   m_FirstPersonBaseObjectID: 0
   m_VisibleItem: {fileID: 1392196928108852}
-  m_ImmediateParentPivot: 0
+  m_VRHandParent: 0
   m_AdditionalControlObjects: []
   m_PositionSpring:
     m_Stiffness: 0.2
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_AnimatorMovementSetID: 1
   m_DominantItem: 1
   m_AllowCameraZoom: 0
-  m_DropPrefab: {fileID: 1801393450085596, guid: 6b6c6e2e51a9ded459b8d5e95548a5ec,
+  m_DropPrefab: {fileID: 1801393450085596, guid: a2367cdf67a95684ab7571c9a2e85e7e,
     type: 2}
   m_EquipEvent:
     m_WaitForAnimationEvent: 1

@@ -32,6 +32,7 @@ namespace Opsive.UltimateCharacterController.Character.MovementTypes
             m_CharacterLocomotion = characterLocomotion;
             m_GameObject = characterLocomotion.gameObject;
             m_Transform = characterLocomotion.transform;
+            m_LookSource = m_CharacterLocomotion.LookSource;
 
             // The StateObject class needs to initialize itself.
             Initialize(m_GameObject);

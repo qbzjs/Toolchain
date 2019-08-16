@@ -371,7 +371,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.StateSystem
                 path = string.Format("Assets/{0}", path.Substring(Application.dataPath.Length + 1));
                 var preset = AssetDatabase.LoadAssetAtPath<PersistablePreset>(path);
                 if (preset == null) {
-                    Debug.LogError("Error: Unable to add preset " + System.IO.Path.GetFileName(path) + " - the present isn't located within the same project directory.");
+                    Debug.LogError("Error: Unable to add preset " + System.IO.Path.GetFileName(path) + " - the preset isn't located within the same project directory.");
                     return states;
                 }
                 // The preset object type has to belong to the same object type.

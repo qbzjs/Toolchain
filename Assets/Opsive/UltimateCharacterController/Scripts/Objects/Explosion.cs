@@ -185,7 +185,7 @@ namespace Opsive.UltimateCharacterController.Objects
                 // Allow a custom event to be received.
                 EventHandler.ExecuteEvent(m_CollidersHit[i].transform.gameObject, "OnObjectImpact", hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator, m_CollidersHit[i]);
                 // TODO: Version 2.1.5 adds another OnObjectImpact parameter. Remove the above event later once there has been a chance to migrate over.
-                EventHandler.ExecuteEvent(m_CollidersHit[i].transform.gameObject, "OnObjectImpact", hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator, this, m_CollidersHit[i]);
+                EventHandler.ExecuteEvent<float, Vector3, Vector3, GameObject, object, Collider>(m_CollidersHit[i].transform.gameObject, "OnObjectImpact", hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator, this, m_CollidersHit[i]);
                 if (m_OnImpactEvent != null) {
                     m_OnImpactEvent.Invoke(hitDamageAmount, closestPoint, hitDirection * m_ImpactForce, originator);
                 }
@@ -200,7 +200,7 @@ namespace Opsive.UltimateCharacterController.Objects
                         health.Damage(hitDamageAmount * damageModifier, m_Transform.position, hitDirection.normalized, impactForce * damageModifier, impactForceFrames, m_Radius, originator);
                     } else if (forceObject != null) {
                         var damageModifier = Mathf.Max(1 - (hitDirection.magnitude / m_Radius), 0.01f);
-                        forceObject.AddForce(hitDirection.normalized * -impactForce * damageModifier);
+                        forceObject.AddForce(hitDirection.normalized * impactForce * damageModifier);
                     } else if ((colliderRigidbody = m_CollidersHit[i].gameObject.GetCachedComponent<Rigidbody>()) != null) {
                         colliderRigidbody.AddExplosionForce(impactForce * MathUtility.RigidbodyForceMultiplier, m_Transform.position, m_Radius);
                     }

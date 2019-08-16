@@ -187,6 +187,7 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         {
             base.OnDestroy();
 
+            m_ImpactAnimatorAudioStateSet.OnDestroy();
             EventHandler.UnregisterEvent<bool, bool>(m_Character, "OnBlockAbilityStart", OnAim);
             if (m_DurabilityAttribute != null) {
                 EventHandler.UnregisterEvent(m_DurabilityAttribute, "OnAttributeReachedDestinationValue", DurabilityDepleted);

@@ -26,6 +26,8 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
     {
         [Tooltip("The ID of the Interactable. A value of -1 indicates no ID.")]
         [SerializeField] protected int m_InteractableID = -1;
+        [Tooltip("Can the Height Change ability stay active while interacting?")]
+        [SerializeField] protected bool m_AllowActiveHeightChange;
         [Tooltip("The value of the AbilityIntData animator parameter.")]
         [SerializeField] protected int m_AbilityIntDataValue;
         [Tooltip("Specifies if the ability should wait for the OnAnimatorInteract animation event or wait for the specified duration before interacting with the item.")]
@@ -34,6 +36,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         [SerializeField] protected AnimationEventTrigger m_InteractCompleteEvent = new AnimationEventTrigger(false, 0.2f);
 
         public int InteractableID { get { return m_InteractableID; } set { m_InteractableID = value; } }
+        public bool AllowActiveHeightChange { get { return m_AllowActiveHeightChange; } set { m_AllowActiveHeightChange = value; } }
         public int AbilityIntDataValue { get { return m_AbilityIntDataValue; } set { m_AbilityIntDataValue = value; } }
         public AnimationEventTrigger InteractEvent { get { return m_InteractEvent; } set { m_InteractEvent = value; } }
         public AnimationEventTrigger InteractCompleteEvent { get { return m_InteractCompleteEvent; } set { m_InteractCompleteEvent = value; } }
@@ -152,7 +155,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// <returns>True if the ability should be stopped.</returns>
         public override bool ShouldStopActiveAbility(Ability activeAbility)
         {
-            return activeAbility is HeightChange || activeAbility is StoredInputAbilityBase;
+            return (!m_AllowActiveHeightChange && activeAbility is HeightChange) || activeAbility is StoredInputAbilityBase;
         }
 
         /// <summary>

@@ -248,7 +248,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             var prevAddAnimator = m_AddAnimator;
             var canBuild = DrawAnimator(m_AddCharacter, m_AddPerspective != Perspective.First, validCharacter, ref m_AddAnimator, ref m_AddModelType, ref m_AddAnimatorController);
             if (prevAddAnimator && !m_AddAnimator) {
-                m_AddUnityIK = m_AddRagdoll = false;
+                m_AddUnityIK = m_AddFootEffects = m_AddRagdoll = false;
             }
             GUI.enabled = validCharacter && canBuild;
 
@@ -262,13 +262,16 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 EditorGUI.indentLevel += 2;
                 // Abilities are added and removed through the inspector after the character has been built.
                 m_AddStandardAbilities = EditorGUILayout.Toggle("Standard Abilities", m_AddStandardAbilities);
-                DrawAdvancedComponents(ref m_AddAIAgent, ref m_AddNavMeshAgent, ref m_AddItems, ref m_AddItemCollection, ref m_AddHealth, ref m_AddUnityIK, ref m_AddFootEffects, true,
-                                        canBuild, m_AddCharacter);
+                DrawAdvancedComponents(m_AddAnimator, ref m_AddAIAgent, ref m_AddNavMeshAgent, ref m_AddItems, ref m_AddItemCollection, ref m_AddHealth, ref m_AddUnityIK, 
+                                        ref m_AddFootEffects, true, canBuild, m_AddCharacter);
                 DrawProfileFields(ref m_AddStateConfiguration, ref m_AddProfileIndex, ref m_AddProfileName, null);
                 if (m_AddItems && m_AddItemCollection == null) {
                     canBuild = false;
                 }
                 if (m_AddUnityIK && !IsValidHumanoid(character)) {
+                    canBuild = false;
+                }
+                if (m_AddFootEffects && !m_AddAnimator) {
                     canBuild = false;
                 }
                 if (m_AddRagdoll && !IsValidHumanoid(character)) {
@@ -489,7 +492,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
         /// <summary>
         /// Draws the controls for the advanced character components.
         /// </summary>
-        private void DrawAdvancedComponents(ref bool aiAgent, ref bool navMeshAgent, ref bool items, ref Inventory.ItemCollection itemCollection, ref bool health,ref bool unityIK,
+        private void DrawAdvancedComponents(bool addAnimator, ref bool aiAgent, ref bool navMeshAgent, ref bool items, ref Inventory.ItemCollection itemCollection, ref bool health,ref bool unityIK,
                                                 ref bool footEffects, bool drawRagdoll, bool showError, GameObject character)
         {
             aiAgent = EditorGUILayout.Toggle("AI Agent", aiAgent);
@@ -513,6 +516,9 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 EditorGUILayout.HelpBox("The Unity IK component requires a humanoid character with an Animator.", MessageType.Error);
             }
             footEffects = EditorGUILayout.Toggle("Foot Effects", footEffects);
+            if (footEffects && !addAnimator && showError) {
+                EditorGUILayout.HelpBox("The foot effects component requires an Animator.", MessageType.Error);
+            }
             if (drawRagdoll) {
                 m_AddRagdoll = EditorGUILayout.Toggle("Ragdoll", m_AddRagdoll);
                 if (m_AddRagdoll && !IsValidHumanoid(character) && showError) {
@@ -632,8 +638,8 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 DrawFristPersonHiddenObjects(ref m_ExistingFirstPersonHiddenObjects);
             }
 
-            DrawAdvancedComponents(ref m_ExistingAIAgent, ref m_ExistingNavMeshAgent, ref m_ExistingItems, ref m_ExistingItemCollection, ref m_ExistingHealth, ref m_ExistingUnityIK, 
-                                        ref m_ExistingFootEffects, false, validCharacter, m_ExistingCharacter);
+            DrawAdvancedComponents(m_ExistingAnimator, ref m_ExistingAIAgent, ref m_ExistingNavMeshAgent, ref m_ExistingItems, ref m_ExistingItemCollection, 
+                                    ref m_ExistingHealth, ref m_ExistingUnityIK, ref m_ExistingFootEffects, false, validCharacter, m_ExistingCharacter);
             DrawProfileFields(ref m_ExistingStateConfiguration, ref m_ExistingProfileIndex, ref m_ExistingProfileName, m_ExistingCharacter);
 
             GUILayout.Space(5);

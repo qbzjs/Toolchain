@@ -273,6 +273,9 @@ namespace Opsive.UltimateCharacterController.Character
         /// <param name="snapAnimator">Should the animator be snapped?</param>
         private void OnImmediateTransformChange(bool snapAnimator)
         {
+            if (!enabled) {
+                return;
+            }
             UpdateRotationHeight();
         }
 

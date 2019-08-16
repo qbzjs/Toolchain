@@ -136,9 +136,9 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         public virtual void Unequip() { }
 
         /// <summary>
-        /// The item has been dropped by the character.
+        /// The item has been removed by the character.
         /// </summary>
-        public virtual void Drop() { }
+        public virtual void Remove() { }
 
         /// <summary>
         /// The GameObject has been destroyed.

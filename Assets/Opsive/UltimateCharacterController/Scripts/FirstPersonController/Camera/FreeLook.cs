@@ -86,17 +86,16 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         /// <returns>The updated rotation.</returns>
         public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediatePosition)
         {
-            // Update the rotation.
-            m_Yaw += horizontalMovement;
-
-            // Set limits on the yaw.
+            // Update the rotation. The yaw may have a limit.
             if (Mathf.Abs(m_MinYawLimit - m_MaxYawLimit) < 360) {
                 // Determine the new rotation with the updated yaw.
                 var targetRotation = MathUtility.TransformQuaternion(m_CharacterRotation, Quaternion.Euler(m_Pitch, m_Yaw, 0));
                 var diff = MathUtility.InverseTransformQuaternion(Quaternion.LookRotation(Vector3.forward, m_CharacterLocomotion.Up), targetRotation * Quaternion.Inverse(m_CharacterTransform.rotation));
                 // The rotation shouldn't extend beyond the min and max yaw limit.
-                var targetYaw = MathUtility.ClampAngle(diff.eulerAngles.y, m_MinYawLimit, m_MaxYawLimit);
+                var targetYaw = MathUtility.ClampAngle(diff.eulerAngles.y, horizontalMovement, m_MinYawLimit, m_MaxYawLimit);
                 m_Yaw += Mathf.Lerp(0, Mathf.DeltaAngle(diff.eulerAngles.y, targetYaw), m_YawLimitLerpSpeed);
+            } else {
+                m_Yaw += horizontalMovement;
             }
 
             // Return the rotation.

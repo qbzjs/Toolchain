@@ -31,21 +31,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
             base.OnInspectorGUI();
 
             EditorGUI.BeginChangeCheck();
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PropertyField(PropertyFromName("m_Character"));
-            if (PropertyFromName("m_Character").objectReferenceValue == null) {
-                if (GUILayout.Button("Find", GUILayout.Width(50))) {
-                    var characterLocomotion = FindObjectOfType<UltimateCharacterController.Character.UltimateCharacterLocomotion>();
-                    if (characterLocomotion != null) {
-                        PropertyFromName("m_Character").objectReferenceValue = characterLocomotion.gameObject;
-                    }
-                }
-            } else {
-                if (GUILayout.Button("Clear", GUILayout.Width(50))) {
-                    PropertyFromName("m_Character").objectReferenceValue = null;
-                }
-            }
-            EditorGUILayout.EndHorizontal();
+            DrawCharacterField();
 #if FIRST_PERSON_CONTROLLER && THIRD_PERSON_CONTROLLER
             if (PropertyFromName("m_PerspectiveSelection").objectReferenceValue == null) {
                 EditorGUILayout.PropertyField(PropertyFromName("m_DefaultFirstPersonStart"));
@@ -53,25 +39,12 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
 #endif
             if (Foldout("Free Roam")) {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoam"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoamPickupItemTypes"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoamItemTypeCounts"), true);
+                DrawFreeRoamFields();
                 EditorGUI.indentLevel--;
             }
             if (Foldout("UI")) {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(PropertyFromName("m_PerspectiveSelection"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_TextPanel"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_Header"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_Description"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_Action"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_NextZoneArrow"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_PreviousZoneArrow"));
-                EditorGUILayout.PropertyField(PropertyFromName("m_NoZoneTitle"));
-                EditorGUILayout.LabelField("No Zone Description");
-                PropertyFromName("m_NoZoneDescription").stringValue = InspectorUtility.DrawEditorWithoutSelectAll(() =>
-                                EditorGUILayout.TextArea(PropertyFromName("m_NoZoneDescription").stringValue, InspectorStyles.WordWrapTextArea));
-                EditorGUILayout.PropertyField(PropertyFromName("m_AddOnDemoManager"));
+                DrawUIFields();
                 EditorGUI.indentLevel--;
             }
 
@@ -97,6 +70,57 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Demo
                 InspectorUtility.RecordUndoDirtyObject(target, "Change Value");
                 serializedObject.ApplyModifiedProperties();
             }
+        }
+
+        /// <summary>
+        /// Draws the inspected character field.
+        /// </summary>
+        protected virtual void DrawCharacterField()
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(PropertyFromName("m_Character"));
+            if (PropertyFromName("m_Character").objectReferenceValue == null) {
+                if (GUILayout.Button("Find", GUILayout.Width(50))) {
+                    var characterLocomotion = FindObjectOfType<UltimateCharacterController.Character.UltimateCharacterLocomotion>();
+                    if (characterLocomotion != null) {
+                        PropertyFromName("m_Character").objectReferenceValue = characterLocomotion.gameObject;
+                    }
+                }
+            } else {
+                if (GUILayout.Button("Clear", GUILayout.Width(50))) {
+                    PropertyFromName("m_Character").objectReferenceValue = null;
+                }
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// Draws the free roam fields.
+        /// </summary>
+        protected virtual void DrawFreeRoamFields()
+        {
+            EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoam"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoamPickupItemTypes"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_FreeRoamItemTypeCounts"), true);
+        }
+
+        /// <summary>
+        /// Draws the UI fields.
+        /// </summary>
+        protected virtual void DrawUIFields()
+        {
+            EditorGUILayout.PropertyField(PropertyFromName("m_PerspectiveSelection"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_TextPanel"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_Header"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_Description"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_Action"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_NextZoneArrow"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_PreviousZoneArrow"));
+            EditorGUILayout.PropertyField(PropertyFromName("m_NoZoneTitle"));
+            EditorGUILayout.LabelField("No Zone Description");
+            PropertyFromName("m_NoZoneDescription").stringValue = InspectorUtility.DrawEditorWithoutSelectAll(() =>
+                            EditorGUILayout.TextArea(PropertyFromName("m_NoZoneDescription").stringValue, InspectorStyles.WordWrapTextArea));
+            EditorGUILayout.PropertyField(PropertyFromName("m_AddOnDemoManager"));
         }
 
         /// <summary>

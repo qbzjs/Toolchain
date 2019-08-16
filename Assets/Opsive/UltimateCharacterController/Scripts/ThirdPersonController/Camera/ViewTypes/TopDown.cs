@@ -8,6 +8,9 @@ using UnityEngine;
 using Opsive.UltimateCharacterController.Camera.ViewTypes;
 using Opsive.UltimateCharacterController.Input;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 
 namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTypes
 {
@@ -68,6 +71,10 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         private Vector3 m_SmoothPositionVelocity;
         private float m_LookDistance;
 
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private bool m_VREnabled;
+#endif
+
         /// <summary>
         /// Initializes the default values.
         /// </summary>
@@ -76,6 +83,15 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
             base.Awake();
 
             m_Camera = m_CameraController.gameObject.GetCachedComponent<UnityEngine.Camera>();
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            VRCameraIdentifier vrCamera;
+            if ((vrCamera = m_GameObject.GetComponentInChildren<VRCameraIdentifier>()) != null) {
+                // The VR camera will be used as the main camera.
+                m_Camera.enabled = false;
+                m_Camera = vrCamera.GetComponent<UnityEngine.Camera>();
+                m_VREnabled = true;
+            }
+#endif
             m_ObjectFader = m_CameraController.gameObject.GetComponent<ObjectFader>();
             m_LookDistance = m_LookDirectionDistance;
         }
@@ -124,20 +140,26 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
         /// </summary>
         /// <param name="horizontalMovement">-1 to 1 value specifying the amount of horizontal movement.</param>
         /// <param name="verticalMovement">-1 to 1 value specifying the amount of vertical movement.</param>
-        /// <param name="immediatePosition">Should the camera be positioned immediately?</param>
+        /// <param name="immediateUpdate">Should the camera be updated immediately?</param>
         /// <returns>The updated rotation.</returns>
-        public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediatePosition)
+        public override Quaternion Rotate(float horizontalMovement, float verticalMovement, bool immediateUpdate)
         {
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            if (m_VREnabled && immediateUpdate) {
+                UnityEngine.XR.InputTracking.Recenter();
+                Events.EventHandler.ExecuteEvent("OnRecenterTracking");
+            }
+#endif
             var rotation = Quaternion.LookRotation(-m_Ray.direction, m_UpAxis);
-            return immediatePosition ? rotation : Quaternion.Slerp(m_Transform.rotation, rotation, m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
+            return immediateUpdate ? rotation : Quaternion.Slerp(m_Transform.rotation, rotation, m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime);
         }
 
         /// <summary>
         /// Moves the camera to face the character.
         /// </summary>
-        /// <param name="immediatePosition">Should the camera be positioned immediately?</param>
+        /// <param name="immediateUpdate">Should the camera be updated immediately?</param>
         /// <returns>The updated position.</returns>
-        public override Vector3 Move(bool immediatePosition)
+        public override Vector3 Move(bool immediateUpdate)
         {
             var step = 0f;
             m_Ray.origin = GetAnchorPosition();
@@ -178,7 +200,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Camera.ViewTy
             }
             m_CharacterLocomotion.EnableColliderCollisionLayer(true);
             var targetPosition = m_Ray.origin + m_Ray.direction * m_ViewDistance;
-            return immediatePosition ? targetPosition : Vector3.SmoothDamp(m_Transform.position, targetPosition, ref m_SmoothPositionVelocity, m_MoveSmoothing);
+            return immediateUpdate ? targetPosition : Vector3.SmoothDamp(m_Transform.position, targetPosition, ref m_SmoothPositionVelocity, m_MoveSmoothing);
         }
 
         /// <summary>

@@ -60,7 +60,6 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character
             m_GameObject = gameObject;
             m_CharacterLocomotion = m_GameObject.GetCachedComponent<UltimateCharacterLocomotion>();
 
-            m_FirstPersonPerspective = m_CharacterLocomotion.FirstPersonPerspective;
             EventHandler.RegisterEvent<bool>(m_GameObject, "OnCameraChangePerspectives", OnChangePerspectives);
             EventHandler.RegisterEvent<Item>(m_GameObject, "OnInventoryAddItem", OnAddItem);
             EventHandler.RegisterEvent<Vector3, Vector3, GameObject>(m_GameObject, "OnDeath", OnDeath);
@@ -73,6 +72,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character
         private void Start()
         {
             m_Inventory = m_GameObject.GetCachedComponent<Inventory.InventoryBase>();
+            m_FirstPersonPerspective = m_CharacterLocomotion.FirstPersonPerspective;
 
             // The third person objects will be hidden with the invisible shadow caster while in first person view.
             var characterRenderers = m_GameObject.GetComponentsInChildren<Renderer>(true);

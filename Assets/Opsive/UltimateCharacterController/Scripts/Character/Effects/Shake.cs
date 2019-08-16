@@ -127,7 +127,7 @@ namespace Opsive.UltimateCharacterController.Character.Effects
                 var positionalForce = Vector3.forward * force.x * 0.015f;
                 var rotationalForce = positionalForce;
                 rotationalForce.Set(force.y * 2, -force.x, force.x * 2);
-                EventHandler.ExecuteEvent(m_GameObject, "OnAddSecondaryForce", -1, positionalForce, rotationalForce);
+                EventHandler.ExecuteEvent(m_GameObject, "OnAddSecondaryForce", -1, positionalForce, rotationalForce, true);
             }
 
             // Add the horizontal force to the character.

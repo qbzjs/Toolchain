@@ -74,6 +74,18 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
                 return false;
             }
 
+            // Don't slide if the character is moving and can step over the object.
+            if (m_CharacterLocomotion.Moving) {
+                var groundPoint = m_Transform.InverseTransformPoint(m_CharacterLocomotion.GroundRaycastHit.point);
+                groundPoint.y = 0;
+                groundPoint = m_Transform.TransformPoint(groundPoint);
+                var direction = groundPoint - m_Transform.position;
+                if (m_CharacterLocomotion.OverlapCount((direction.normalized * (direction.magnitude + m_CharacterLocomotion.Radius)) +
+                    m_CharacterLocomotion.PlatformMovement + m_CharacterLocomotion.Up * (m_CharacterLocomotion.MaxStepHeight - m_CharacterLocomotion.ColliderSpacing)) == 0) {
+                    return false;
+                }
+            }
+
             // The character can slide.
             return true;
         }
