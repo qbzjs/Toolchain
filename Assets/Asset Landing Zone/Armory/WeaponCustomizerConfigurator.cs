@@ -151,8 +151,6 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public AccessoryPart [] m_AccessoryParts;
 		
 		// Item variables
-		[Tooltip("A reference to the object used to identify the item.")]
-		[SerializeField]public Opsive.UltimateCharacterController.Inventory.ItemType m_BaseItemType;
 		[Tooltip("Specifies the inventory slot/spawn location of the item.")]
 		[SerializeField]public int m_SlotID;
 		[Tooltip("Unique ID used for item identification within the animator.")]

@@ -5382,14 +5382,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weapon: {fileID: 4685020363073579165}
-  m_ProfileConfig: 3
+  m_ProfileConfig: 0
   m_CoreConfig: 0
   m_ForeConfig: 0
   m_RearConfig: 0
   m_AmmoConfig: 0
   m_ActiveMag: 0
   m_AccessoryConfig: 0
-  m_ActivateOnStart: 1
+  m_ActivateOnStart: 0
 --- !u!1 &3922394591511158680
 GameObject:
   m_ObjectHideFlags: 0

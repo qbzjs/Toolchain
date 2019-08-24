@@ -44,7 +44,7 @@ public class WeaponCustomizerActivator : MonoBehaviour
 		{
 			m_Configurator.SetActiveConfig(m_Weapon,this);
 			m_Weapon.name = m_Configurator.m_BaseName + " " + m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_ProfileName;
-			//this.name = m_Weapon.name;
+
 			m_Item = GetComponent<Opsive.UltimateCharacterController.Items.Item>();
 			if(m_Item != null)
 			{
@@ -86,7 +86,6 @@ public class WeaponCustomizerActivator : MonoBehaviour
     
 	void SetItem()
 	{
-		m_Item.ItemType = m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_BaseItemType;
 		m_Item.SlotID = m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_SlotID;
 		m_Item.AnimatorItemID = m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_AnimatorID;
 		m_Item.AnimatorMovementSetID = m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_AnimatorMovementSetID;
