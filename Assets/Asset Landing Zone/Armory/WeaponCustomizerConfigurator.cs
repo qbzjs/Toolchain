@@ -9,8 +9,8 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	{
 		Shootable1h,
 		Shootable2h,
-		Gunblade1h,
-		Gunblade2h,
+		GunbladeRifleStance,
+		GunbladeMeleeStance,
 		MeleeCutter1h,
 		MeleeStriker1h,
 		MeleeCutter2h,
@@ -43,8 +43,26 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public string m_PartName;
 		[SerializeField]public Part m_Part;
 		// Include gameplay stuff here, not important yet
-		[SerializeField]public GameObject m_ScopeCam;
 		//[SerializeField]public Transform m_ShellOffset;
+		[Tooltip("The mode in which the weapon fires multiple shots.")]
+		[SerializeField] 
+		public Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.FireMode m_FireMode = 
+			Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.FireMode.SemiAuto;
+		[Tooltip("Specifies when the weapon should be fired.")]
+		[SerializeField] 
+		public Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.FireType m_FireType = 
+			Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.FireType.Instant;
+		[Tooltip("If using a charge FireType, the minimum amount of time that the weapon must be charged for in order to be fired.")]
+		[SerializeField] public float m_MinChargeLength;
+		[Tooltip("If using a charge FireType, the amount of time that the weapon must be charged for in order to be fully fired.")]
+		[SerializeField] public float m_FullChargeLength;
+		[Tooltip("The number of rounds to fire in a single shot.")]
+		[SerializeField] public int m_FireCount = 1;
+		[Tooltip("If using the Burst FireMode, specifies the number of bursts the weapon can fire.")]
+		[SerializeField] public int m_BurstCount = 5;
+		[Tooltip("If using the Burst FireMode, specifies the delay before the next burst can occur.")]
+		[SerializeField] public float m_BurstDelay = 0.25f;
+		
 	}
 	
 	[System.Serializable]
@@ -57,6 +75,14 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public Transform m_MuzzleFlashOffset;
 		//[SerializeField]public Transform m_SmokeOffset;
 		//[SerializeField]public Transform m_TracerOffset;
+		[Tooltip("The random spread of the bullets once they are fired.")]
+		[Range(0, 360)] [SerializeField] public float m_Spread = 0.01f;
+		[Tooltip("The maximum distance in which the hitscan fire can reach.")]
+		[SerializeField] public float m_HitscanFireRange = float.MaxValue;
+		[Tooltip("A reference to the muzzle flash prefab.")]
+		[SerializeField] public GameObject m_MuzzleFlash;
+		//store Minimum Recoil vector here
+		//store Melee main attack values here
 	}
 	
 	[System.Serializable]
@@ -65,6 +91,8 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public string m_PartName;
 		[SerializeField]public Part m_Part;
 		// Include gameplay stuff here, not important yet
+		//store Maximum Recoil vector here
+		//store Melee rear attack values here
 	}
 	
 	[System.Serializable]
@@ -85,6 +113,19 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	{
 		[SerializeField]public string m_SetName;
 		[SerializeField]public AmmoPart [] m_AmmoParts;
+		[Tooltip("The ItemType that is consumed by the item.")]
+		[SerializeField]public Opsive.UltimateCharacterController.Inventory.ItemType m_ConsumableItemType;
+		[Tooltip("The amount of damage to apply to the hit object.")]
+		[SerializeField]public float m_DamageAmount = 10;
+		[Tooltip("The amount of force to apply to the hit object.")]
+		[SerializeField]public float m_ImpactForce = 2;
+		[Tooltip("Specifies when the item should be automatically reloaded.")]
+		[SerializeField]public Opsive.UltimateCharacterController.Character.Abilities.Items.Reload.AutoReloadType m_AutoReload = 
+			Opsive.UltimateCharacterController.Character.Abilities.Items.Reload.AutoReloadType.Pickup | 
+			Opsive.UltimateCharacterController.Character.Abilities.Items.Reload.AutoReloadType.Empty;
+		[Tooltip("Specifies how the clip should be reloaded.")]
+		[SerializeField] public Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.ReloadClipType m_ReloadType = 
+			Opsive.UltimateCharacterController.Items.Actions.ShootableWeapon.ReloadClipType.Full;
 	}
 	
 	[System.Serializable]
@@ -101,6 +142,7 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public string m_ProfileName;
 		[SerializeField]public GameObject m_ProfileRoot;
 		[SerializeField]public WeaponType m_WeaponType;
+		[Tooltip("Unique ID used for item identification within the animator.")]
 		[SerializeField]public int m_AnimatorID;
 		[SerializeField]public CorePart [] m_CoreParts;
 		[SerializeField]public ForePart [] m_ForeParts;
@@ -108,7 +150,20 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public AmmoSet [] m_AmmoSets;
 		[SerializeField]public AccessoryPart [] m_AccessoryParts;
 		
-		// Include gameplay stuff here, not important yet
+		// Item variables
+		[Tooltip("Specifies the inventory slot/spawn location of the item.")]
+		[SerializeField]public int m_SlotID;
+		[Tooltip("Unique ID used for item identification within the animator.")]
+		[SerializeField]public int m_AnimatorItemID;
+		[Tooltip("The movement set ID used for within the animator.")]
+		[SerializeField]public int m_AnimatorMovementSetID;
+		[Tooltip("Does the item control the movement and the UI shown?")]
+		[SerializeField]public bool m_DominantItem = true;
+		[Tooltip("The ID of the UI Monitor that the item should use.")]
+		[SerializeField]public int m_UIMonitorID;
+		[Tooltip("Should the crosshairs be shown when the item aims?")]
+		[SerializeField]public bool m_ShowCrosshairsOnAim = true;
+		
 	}
 	
 	[SerializeField]public string m_BaseName;
