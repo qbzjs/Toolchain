@@ -7,6 +7,9 @@
 using UnityEngine;
 using Opsive.UltimateCharacterController.Events;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 
 namespace Opsive.UltimateCharacterController.Character
 {
@@ -33,6 +36,10 @@ namespace Opsive.UltimateCharacterController.Character
         private static int[] s_ItemSlotStateIndexHash;
         private static int[] s_ItemSlotStateIndexChangeHash;
         private static int[] s_ItemSlotSubstateIndexHash;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private static int s_HandStateIndexHash;
+        private static int s_HandGripStrengthHash;
+#endif
 
         private GameObject m_GameObject;
         private Animator m_Animator;
@@ -58,6 +65,11 @@ namespace Opsive.UltimateCharacterController.Character
         private int[] m_ItemSlotID;
         private int[] m_ItemSlotStateIndex;
         private int[] m_ItemSlotSubstateIndex;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private bool m_HasVRParameters;
+        private int m_HandStateIndex;
+        private float m_HandGripStrength;
+#endif
 
         /// <summary>
         /// Cache the default values.
@@ -99,6 +111,14 @@ namespace Opsive.UltimateCharacterController.Character
                     }
                 }
             }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR && FIRST_PERSON_CONTROLLER
+            var handHandler = m_CharacterAnimatorMonitor.GetComponent<IVRHandHandler>();
+            m_HasVRParameters = handHandler != null && m_GameObject.GetComponent<FirstPersonController.Character.Identifiers.FirstPersonBaseObject>() != null;
+            if (m_HasVRParameters) {
+                s_HandStateIndexHash = Animator.StringToHash("HandStateIndex");
+                s_HandGripStrengthHash = Animator.StringToHash("HandGripStrength");
+            }
+#endif
 
             m_Animator.updateMode = AnimatorUpdateMode.AnimatePhysics;
             m_Animator.applyRootMotion = false;
@@ -164,6 +184,7 @@ namespace Opsive.UltimateCharacterController.Character
                     m_Animator.SetInteger(s_ItemSlotSubstateIndexHash[i], m_ItemSlotSubstateIndex[i]);
                 }
             }
+
             // The change triggers should be enabled so the animator will snap to the idle position.
             SetAbilityChangeParameter(true);
             if (m_CharacterAnimatorMonitor.HasItemParameters) {
@@ -381,7 +402,7 @@ namespace Opsive.UltimateCharacterController.Character
             if (m_AbilityFloatData != value) {
                 m_Animator.SetFloat(s_AbilityFloatDataHash, value, dampingTime,
                     (m_Animator.updateMode == AnimatorUpdateMode.AnimatePhysics ? TimeUtility.FixedDeltaTimeScaled : TimeUtility.DeltaTimeScaled) / timeScale);
-                m_AbilityFloatData = MathUtility.Round(m_Animator.GetFloat(s_AbilityFloatDataHash), 6);
+                m_AbilityFloatData = MathUtility.Round(m_Animator.GetFloat(s_AbilityFloatDataHash), 1000000);
             }
         }
 
@@ -442,6 +463,63 @@ namespace Opsive.UltimateCharacterController.Character
                 m_ItemSlotSubstateIndex[slotID] = value;
             }
         }
+
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        /// <summary>
+        /// Sets the Hand State Index parameter to the specified value.
+        /// </summary>
+        /// <param name="value">The new value.</param>
+        public void SetHandStateIndexParameter(int value)
+        {
+            if (!m_Animator.isActiveAndEnabled) {
+                return;
+            }
+
+            if (m_HandStateIndex != value) {
+                if (m_Animator.isActiveAndEnabled) {
+                    m_Animator.SetInteger(s_HandStateIndexHash, value);
+                }
+                m_HandStateIndex = value;
+            }
+        }
+
+        /// <summary>
+        /// Sets the Hand Grip parameter to the specified value.
+        /// </summary>
+        /// <param name="value">The new value.</param>
+        /// <param name="timeScale">The time scale of the character.</param>
+        public void SetHandGripStrengthParameter(float value, float timeScale)
+        {
+            if (m_HandGripStrength != value) {
+                if (m_Animator.isActiveAndEnabled) {
+                    m_Animator.SetFloat(s_HandGripStrengthHash, value, 0,
+                        (m_Animator.updateMode == AnimatorUpdateMode.AnimatePhysics ? TimeUtility.FixedDeltaTimeScaled : TimeUtility.DeltaTimeScaled) / timeScale);
+                    m_HandGripStrength = m_Animator.GetFloat(s_HandGripStrengthHash);
+                } else {
+                    m_HandGripStrength = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The animator has been enabled.
+        /// </summary>
+        public void OnEnable()
+        {
+            if (!m_HasVRParameters) {
+                return;
+            }
+
+            m_Animator.SetInteger(s_HandStateIndexHash, m_HandStateIndex);
+            m_Animator.SetFloat(s_HandGripStrengthHash, m_HandGripStrength, 0, 0);
+
+            // Snap the animator to the new parameter values.
+            m_Animator.Update(0);
+            while (IsInTrasition()) {
+                m_Animator.Update(Time.fixedDeltaTime);
+            }
+        }
+#endif
 
         /// <summary>
         /// Executes an event on the EventHandler.

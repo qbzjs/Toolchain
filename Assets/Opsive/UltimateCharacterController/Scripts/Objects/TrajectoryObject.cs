@@ -244,6 +244,11 @@ namespace Opsive.UltimateCharacterController.Objects
             }
 
             m_LineRenderer.positionCount = 0;
+            if (m_OriginatorCharacterLocomotion != null) {
+                EventHandler.UnregisterEvent<float>(m_Originator, "OnCharacterChangeTimeScale", OnChangeTimeScale);
+                m_Originator = null;
+                m_OriginatorCharacterLocomotion = null;
+            }
         }
 
         /// <summary>
@@ -343,8 +348,8 @@ namespace Opsive.UltimateCharacterController.Objects
 
             m_Velocity = velocity / m_Mass * m_StartVelocityMultiplier;
             m_Torque = torque;
-            m_Originator = originator;
-            if (m_Originator != null) {
+            if (originator != null && originator != m_Originator) {
+                m_Originator = originator;
                 m_OriginatorTransform = m_Originator.transform;
                 m_OriginatorCharacterLocomotion = m_Originator.GetCachedComponent<UltimateCharacterLocomotion>();
                 if (m_OriginatorCharacterLocomotion != null) {

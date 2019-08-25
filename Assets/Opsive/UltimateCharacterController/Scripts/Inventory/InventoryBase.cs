@@ -588,7 +588,11 @@ namespace Opsive.UltimateCharacterController.Inventory
                 if (allItems.Count <= i) {
                     continue;
                 }
-                allItems[i].Drop(false);
+                var itemType = allItems[i].ItemType;
+                var slotID = allItems[i].SlotID;
+                while (GetItemTypeCount(itemType) > 0) {
+                    RemoveItem(itemType, slotID, true);
+                }
             }
         }
 

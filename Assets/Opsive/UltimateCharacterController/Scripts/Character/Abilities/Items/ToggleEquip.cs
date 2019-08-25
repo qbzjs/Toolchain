@@ -66,6 +66,10 @@ namespace Opsive.UltimateCharacterController.Character.Abilities.Items
             var defaultItemSetIndex = m_ItemSetManager.GetDefaultItemSetIndex(m_ItemSetCategoryIndex);
             m_ShouldEquipItem = itemSetIndex == defaultItemSetIndex;
             if (itemSetIndex == defaultItemSetIndex) {
+                // The previous ItemSet may have been removed.
+                if (!m_ItemSetManager.IsItemSetValid(m_ItemSetCategoryIndex, m_PrevItemSetIndex, false)) {
+                    m_PrevItemSetIndex = -1;
+                }
                 return;
             }
             m_PrevItemSetIndex = itemSetIndex;

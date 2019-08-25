@@ -68,10 +68,9 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// </summary>
         public override void UpdateRotation()
         {
-            var targetNormal = m_Stopping ? -m_CharacterLocomotion.GravityDirection : Vector3.zero;
+            var targetNormal = m_Stopping ? (m_StopGravityDirection.sqrMagnitude > 0 ? -m_StopGravityDirection : -m_CharacterLocomotion.GravityDirection) : Vector3.zero;
             if (!m_Stopping) {
                 var position = m_Transform.position;
-
                 for (int i = 0; i < m_GravityZoneCount; ++i) {
                     // If the character is on the ground then only one gravity zone can influence the character. This will prevent the character from orienting to a different direction
                     // while on the ground.

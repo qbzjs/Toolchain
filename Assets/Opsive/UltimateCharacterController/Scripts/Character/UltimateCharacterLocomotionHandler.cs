@@ -215,7 +215,7 @@ namespace Opsive.UltimateCharacterController.Character
         public void UnregisterInputEvent(ActiveInputEvent inputEvent)
         {
             // The input list may be null when the object is being destroyed.
-            if (m_ActiveInputList == null) {
+            if (m_ActiveInputList == null || inputEvent == null) {
                 return;
             }
             m_ActiveInputList.Remove(inputEvent);

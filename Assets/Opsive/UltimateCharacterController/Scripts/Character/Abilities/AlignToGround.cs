@@ -16,7 +16,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
     public class AlignToGround : AlignToGravity
     {
         [Tooltip("The distance from the ground that the character should align itself to.")]
-        [SerializeField] protected float m_Distance = 2;
+        [SerializeField] protected float m_Distance = 4;
         [Tooltip("The depth offset when checking the ground normal.")]
         [SerializeField] protected float m_DepthOffset = 0.05f;
         [Tooltip("Should the direction from the align to ground depth offset be normalized? This is useful for generic characters whose length is long.")]
@@ -36,7 +36,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public override void UpdateRotation()
         {
             var updateNormalRotation = m_Stopping;
-            var targetNormal = m_Stopping ? -m_CharacterLocomotion.GravityDirection : m_CharacterLocomotion.Up;
+            var targetNormal = m_Stopping ? (m_StopGravityDirection.sqrMagnitude >  0 ? -m_StopGravityDirection : -m_CharacterLocomotion.GravityDirection) : m_CharacterLocomotion.Up;
             if (!m_Stopping) {
                 // If the depth offset isn't zero then use two raycasts to determine the ground normal. This will allow a long character (such as a horse) to correctly
                 // adjust to a slope.

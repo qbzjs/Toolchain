@@ -146,7 +146,8 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
             }
         }
 
-        private Vector2 m_ScrollPosition;
+        private Vector2 m_InstalledScrollPosition;
+        private Vector2 m_AvailableScrollPosition;
 #if UNITY_2018_3_OR_NEWER
         private UnityEngine.Networking.UnityWebRequest m_AddOnsReqest;
 #else
@@ -190,6 +191,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                 return;
             }
 
+            m_InstalledScrollPosition = EditorGUILayout.BeginScrollView(m_InstalledScrollPosition);
             for (int i = 0; i < m_AddOnInspectors.Length; ++i) {
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
                 GUILayout.Label(m_AddOnNames[i], InspectorStyles.LargeBoldLabel);
@@ -200,6 +202,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
                     GUILayout.Space(20);
                 }
             }
+            EditorGUILayout.EndScrollView();
         }
 
         /// <summary>
@@ -305,7 +308,7 @@ namespace Opsive.UltimateCharacterController.Editor.Managers
 
             // Draw the add-ons once they are loaded.
             if (m_AvailableAddOns != null && m_AvailableAddOns.Length > 0) {
-                m_ScrollPosition = EditorGUILayout.BeginScrollView(m_ScrollPosition);
+                m_AvailableScrollPosition = EditorGUILayout.BeginScrollView(m_AvailableScrollPosition);
                 // Draw each add-on.
                 for (int i = 0; i < m_AvailableAddOns.Length; ++i) {
                     m_AvailableAddOns[i].DrawAddOn();

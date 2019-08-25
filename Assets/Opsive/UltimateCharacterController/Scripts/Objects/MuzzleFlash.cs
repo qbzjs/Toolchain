@@ -96,6 +96,11 @@ namespace Opsive.UltimateCharacterController.Objects
         /// <param name="characterLocomotion">The character that the muzzle flash is attached to.</param>
         public void Show(Item item, int itemActionID, bool pooled, UltimateCharacterLocomotion characterLocomotion)
         {
+            // The muzzle flash may be inactive if the object isn't pooled.
+            if (!m_Pooled) {
+                m_GameObject.SetActive(true);
+            }
+
             if (m_Character == null && characterLocomotion != null) {
                 m_Character = characterLocomotion.gameObject;
 

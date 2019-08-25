@@ -238,7 +238,8 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Inventory
             var elementTitleRect = rowRect;
             elementTitleRect.y += 2;
             elementTitleRect.height = 19;
-            var itemSetActive = Application.isPlaying && m_ItemSetManager.GetInstanceID() < 0 && m_ItemSetManager.gameObject.activeSelf && 
+            var itemSetActive = Application.isPlaying && m_ItemSetManager.GetInstanceID() < 0 && m_ItemSetManager.gameObject.activeSelf &&
+                                        m_ItemSetManager.ActiveItemSetIndex != null &&
                                         m_ItemSetListIndex < m_ItemSetManager.ActiveItemSetIndex.Length && m_ItemSetManager.ActiveItemSetIndex[m_ItemSetListIndex] == index;
             GUI.Label(elementTitleRect, "Item Set " + index + (itemSetActive ? " (Active)" : ""), InspectorStyles.CenterBoldLabel);
 

@@ -75,6 +75,11 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Items
                 EditorGUILayout.PropertyField(PropertyFromName("m_DominantItem"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_AllowCameraZoom"));
                 EditorGUILayout.PropertyField(PropertyFromName("m_DropPrefab"));
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                if (PropertyFromName("m_DropPrefab").objectReferenceValue != null) {
+                    EditorGUILayout.PropertyField(PropertyFromName("m_DropVelocityMultiplier"));
+                }
+#endif
                 if (Foldout("Equip")) {
                     EditorGUI.indentLevel++;
                     InspectorUtility.DrawAnimationEventTrigger(target, "Equip Event", PropertyFromName("m_EquipEvent"));

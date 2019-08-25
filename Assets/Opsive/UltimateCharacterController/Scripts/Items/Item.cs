@@ -20,6 +20,9 @@ using Opsive.UltimateCharacterController.Networking.Character;
 using Opsive.UltimateCharacterController.Objects.CharacterAssist;
 using Opsive.UltimateCharacterController.StateSystem;
 using Opsive.UltimateCharacterController.Utility;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+using Opsive.UltimateCharacterController.VR;
+#endif
 using System.Collections.Generic;
 
 namespace Opsive.UltimateCharacterController.Items
@@ -43,6 +46,10 @@ namespace Opsive.UltimateCharacterController.Items
         [SerializeField] protected bool m_AllowCameraZoom = true;
         [Tooltip("The GameObject that is dropped when the item is removed from the character.")]
         [SerializeField] protected GameObject m_DropPrefab;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        [Tooltip("The multiplier to apply to the velocity when the item is dropped.")]
+        [SerializeField] protected float m_DropVelocityMultiplier = 4;
+#endif
         [Tooltip("Specifies if the item should wait for the OnAnimatorItemEquip animation event or wait for the specified duration before equipping.")]
         [SerializeField] protected AnimationEventTrigger m_EquipEvent = new AnimationEventTrigger(true, 0.3f);
         [Tooltip("Specifies if the item should wait for the OnAnimatorItemEquipComplete animation event or wait for the specified duration before stopping the equip ability.")]
@@ -100,6 +107,9 @@ namespace Opsive.UltimateCharacterController.Items
             } }
         public bool AllowCameraZoom { get { return m_AllowCameraZoom; } set { m_AllowCameraZoom = value; } }
         public GameObject DropPrefab { get { return m_DropPrefab; } }
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        public float DropVelocityMultiplier { get { return m_DropVelocityMultiplier; } set { m_DropVelocityMultiplier = value; } }
+#endif
         public AnimationEventTrigger EquipEvent { get { return m_EquipEvent; } set { m_EquipEvent = value; } }
         public AnimationEventTrigger EquipCompleteEvent { get { return m_EquipCompleteEvent; } set { m_EquipCompleteEvent = value; } }
         public AnimatorAudioStateSet EquipAnimatorAudioStateSet { get { return m_EquipAnimatorAudioStateSet; } set { m_EquipAnimatorAudioStateSet = value; } }
@@ -150,6 +160,9 @@ namespace Opsive.UltimateCharacterController.Items
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
         private INetworkInfo m_NetworkInfo;
 #endif
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+        private IVRHandHandler m_HandHandler;
+#endif
 
         private bool m_Started;
         private bool m_VisibleObjectActive;
@@ -181,6 +194,9 @@ namespace Opsive.UltimateCharacterController.Items
             m_Inventory = m_Character.GetCachedComponent<InventoryBase>();
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             m_NetworkInfo = m_Character.GetCachedComponent<INetworkInfo>();
+#endif
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+            m_HandHandler = m_Character.GetCachedComponent<IVRHandHandler>();
 #endif
 
             base.Awake();
@@ -1136,7 +1152,13 @@ namespace Opsive.UltimateCharacterController.Items
                         // The ItemPickup may have a TrajectoryObject attached instead of a Rigidbody.
                         var trajectoryObject = spawnedObject.GetCachedComponent<Objects.TrajectoryObject>();
                         if (trajectoryObject != null) {
-                            trajectoryObject.Initialize(m_CharacterLocomotion.Velocity, m_CharacterLocomotion.Torque.eulerAngles, m_Character);
+                            var velocity = m_CharacterLocomotion.Velocity;
+#if ULTIMATE_CHARACTER_CONTROLLER_VR
+                            if (m_HandHandler != null) {
+                                velocity += m_HandHandler.GetVelocity(m_SlotID) * m_DropVelocityMultiplier;
+                            }
+#endif
+                            trajectoryObject.Initialize(velocity, m_CharacterLocomotion.Torque.eulerAngles, m_Character);
                         }
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
                         if (m_NetworkInfo != null) {

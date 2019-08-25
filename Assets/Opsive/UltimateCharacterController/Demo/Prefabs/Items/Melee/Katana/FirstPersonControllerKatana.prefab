@@ -1231,8 +1231,9 @@ MonoBehaviour:
   m_AnimatorMovementSetID: 1
   m_DominantItem: 1
   m_AllowCameraZoom: 0
-  m_DropPrefab: {fileID: 1801393450085596, guid: a2367cdf67a95684ab7571c9a2e85e7e,
+  m_DropPrefab: {fileID: 1801393450085596, guid: adbefd10ea25c9d418a4f69a37fbf8d4,
     type: 2}
+  m_DropVelocityMultiplier: 4
   m_EquipEvent:
     m_WaitForAnimationEvent: 1
     m_Duration: 0.3

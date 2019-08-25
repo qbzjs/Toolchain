@@ -44807,9 +44807,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Slot0ItemStateIndexChange
-    m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Slot0ItemID
     m_EventTreshold: 41
@@ -66539,9 +66536,6 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Slot1ItemStateIndexChange
-    m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Slot1ItemID
     m_EventTreshold: 41
@@ -77126,9 +77120,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: AbilityIndex
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: Slot0ItemStateIndexChange
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Slot0ItemID

@@ -19,7 +19,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
     public class Adventure : MovementType
     {
         private bool m_AimActive;
-        private bool m_FaceUseTarget;
+        private int m_FaceUseTargetCount;
 
         public override bool FirstPersonPerspective { get { return false; } }
 
@@ -54,7 +54,9 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         /// <param name="useAbility">The Use ability that has started or stopped.</param>
         private void OnUseStart(bool start, Use useAbility)
         {
-            m_FaceUseTarget = start && useAbility.FaceTargetItem != null;
+            if (useAbility.FaceTargetItem != null) {
+                m_FaceUseTargetCount += start ? 1 : -1;
+            }
         }
 
         /// <summary>
@@ -84,7 +86,7 @@ namespace Opsive.UltimateCharacterController.ThirdPersonController.Character.Mov
         {
             // The character will be facing the target while the aim ability is active or the use ability is facing the target. During this time the character should be
             // able to strafe or move backwards.
-            if (m_AimActive || m_FaceUseTarget) {
+            if (m_AimActive || m_FaceUseTargetCount > 0) {
                 return inputVector;
             }
 
