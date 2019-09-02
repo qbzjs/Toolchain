@@ -18,6 +18,58 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		MeleePolearm,
 		MeleeOversized,
 	}
+	
+	public enum AccessoryType
+	{
+		Sight,
+		Barrel,
+		Utility,
+		Under,
+	}
+	
+	public enum SightType
+	{
+		Standard,
+		Pistol_Dot,
+		Red_Dot,
+		ACOG,
+		Scope16x,
+		ScopeEnhanced,
+	}
+	
+	public enum UtilityType
+	{
+		None,
+		Light,
+		Pistol_Light,
+		Laser,
+		Pistol_Laser,
+		Light_Laser
+	}
+	
+	public enum BarrelType
+	{
+		Standard,
+		Suppressor,
+		Suppressor_Pistol,
+		Bayonet_Modern,
+		Bayonet_Classic,
+		Bayonet_Wedge,
+		Bayonet_Spike,
+	}
+	
+	public enum UnderType
+	{
+		None,
+		Foregrip,
+		Grenade,
+		Energy_Biochem,
+		Energy_Fission,
+		Chemical,
+	}
+	
+	
+	
 
 	
 	[System.Serializable]
@@ -30,8 +82,7 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public bool m_BarrelMount;
 		[SerializeField]public bool m_GripMount;
 		[SerializeField]public bool m_UnderMount;
-		[SerializeField]public bool m_SideMountL;
-		[SerializeField]public bool m_SideMountR;
+		[SerializeField]public bool m_SideMount;
 		[SerializeField]public bool m_BarrelMountPistol;
 		[SerializeField]public bool m_SightMountPistol;
 		[SerializeField]public bool m_UnderMountPistol;
@@ -113,8 +164,6 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	{
 		[SerializeField]public string m_SetName;
 		[SerializeField]public AmmoPart [] m_AmmoParts;
-		[Tooltip("The ItemType that is consumed by the item.")]
-		[SerializeField]public Opsive.UltimateCharacterController.Inventory.ItemType m_ConsumableItemType;
 		[Tooltip("The amount of damage to apply to the hit object.")]
 		[SerializeField]public float m_DamageAmount = 10;
 		[Tooltip("The amount of force to apply to the hit object.")]
@@ -129,7 +178,7 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	}
 	
 	[System.Serializable]
-	public class AccessoryPart
+	public class AccessoryRack
 	{
 		[SerializeField]public string m_PartName;
 		[SerializeField]public Part m_Part;
@@ -148,13 +197,11 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		[SerializeField]public ForePart [] m_ForeParts;
 		[SerializeField]public RearPart [] m_RearParts;
 		[SerializeField]public AmmoSet [] m_AmmoSets;
-		[SerializeField]public AccessoryPart [] m_AccessoryParts;
+		[SerializeField]public AccessoryRack m_AccessoryRack;
 		
 		// Item variables
 		[Tooltip("Specifies the inventory slot/spawn location of the item.")]
 		[SerializeField]public int m_SlotID;
-		[Tooltip("Unique ID used for item identification within the animator.")]
-		[SerializeField]public int m_AnimatorItemID;
 		[Tooltip("The movement set ID used for within the animator.")]
 		[SerializeField]public int m_AnimatorMovementSetID;
 		[Tooltip("Does the item control the movement and the UI shown?")]
@@ -269,12 +316,12 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 						currentPart = m_WeaponProfiles[settings.m_ProfileConfig].m_RearParts[settings.m_RearConfig].m_Part;
 						checkRear = false;
 					}
-					else if(checkAccessory && m_WeaponProfiles[settings.m_ProfileConfig].m_AccessoryParts.Length > 0)
-					{
-						currentTag = "Weapon - Accessory";
-						currentPart = m_WeaponProfiles[settings.m_ProfileConfig].m_AccessoryParts[settings.m_AccessoryConfig].m_Part;
-						checkAccessory = false;
-					}
+					//else if(checkAccessory && m_WeaponProfiles[settings.m_ProfileConfig].m_AccessoryRack.Length > 0)
+					//{
+					//	currentTag = "Weapon - Accessory";
+					//	currentPart = m_WeaponProfiles[settings.m_ProfileConfig].m_AccessoryRack[settings.m_AccessoryConfig].m_Part;
+					//	checkAccessory = false;
+					//}
 					else
 					{
 						isLoading = false;

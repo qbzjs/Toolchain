@@ -119,8 +119,6 @@ public class WeaponCustomizerActivator : MonoBehaviour
 		m_Shootable.MuzzleFlash = m_Configurator.m_WeaponProfiles[m_ProfileConfig].
 			m_ForeParts[m_ForeConfig].m_MuzzleFlash;
 		
-		m_Shootable.ConsumableItemType = m_Configurator.m_WeaponProfiles[m_ProfileConfig].
-			m_AmmoSets[m_AmmoConfig].m_ConsumableItemType;
 		m_Shootable.AutoReload = m_Configurator.m_WeaponProfiles[m_ProfileConfig].
 			m_AmmoSets[m_AmmoConfig].m_AutoReload;
 		m_Shootable.ReloadType = m_Configurator.m_WeaponProfiles[m_ProfileConfig].

@@ -17080,6 +17080,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f9d0ee2a4b4394c9cc7e7fba677cc8, type: 3}
+--- !u!21 &476492732
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Nature/Terrain/Diffuse
+  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &478446834
 GameObject:
   m_ObjectHideFlags: 0
@@ -19587,7 +19613,7 @@ MonoBehaviour:
     legacyShininess: 0.7812
     legacySpecular: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     terrainSettingsScript: {fileID: 2037884347}
-    materialTemplate: {fileID: 1312656408}
+    materialTemplate: {fileID: 476492732}
     drawHeightmap: 1
     collectDetailPatches: 1
     wavingGrassSpeed: 0.5
@@ -41996,7 +42022,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   m_Locked: 0
-  m_PermantlyLocked: 0
+  m_PermanentlyLocked: 0
   m_OpenAtStart: 0
   m_CloseOnTriggerExit: 1
   m_StatusMaterial: {fileID: 0}
@@ -46150,32 +46176,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 839178135}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1312656408
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Nature/Terrain/Diffuse
-  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1312896394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60133,7 +60133,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   m_Locked: 0
-  m_PermantlyLocked: 0
+  m_PermanentlyLocked: 0
   m_OpenAtStart: 0
   m_CloseOnTriggerExit: 1
   m_StatusMaterial: {fileID: 0}
@@ -61423,7 +61423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!4 &1730910698
 Transform:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -72317,7 +72317,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 0
-  m_MaterialTemplate: {fileID: 1312656408}
+  m_MaterialTemplate: {fileID: 476492732}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -77139,7 +77139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BaseObjectList:
-  - {fileID: 7031958721626368789, guid: 3024325355205294dae5a1958d03fbca, type: 3}
+  - {fileID: 1122200931190045405, guid: 2ce8910cd710c7b4b90557c32899ead1, type: 3}
   m_ActiveWeaponLocation: {fileID: 1691425857}
   m_PartSlotPrefab: {fileID: 4087611235407658626, guid: 9b0897c2b239d9a4f937850b2b89013a,
     type: 3}
