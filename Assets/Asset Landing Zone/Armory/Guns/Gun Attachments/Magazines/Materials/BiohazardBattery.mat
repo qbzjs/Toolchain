@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: BiohazardBattery
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 3435c509f3c88794494b6b74e735e532, type: 3}
+        m_Texture: {fileID: 2800000, guid: a8fccf256cc20ec48aa929c648f6b319, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,19 +40,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f5caefe349ca90248a2292fa00c13f7a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d2b999894e54ff439d0272942543dbd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 715f6c17e7fbb3f4c9566421aae3498b, type: 3}
+        m_Texture: {fileID: 2800000, guid: dfb4520663100c049b75243230b954b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 9913ecb85fc53be4b8ca591284b2bd72, type: 3}
+        m_Texture: {fileID: 2800000, guid: ba7509cd134a1e54dbbe169b4b929e9b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: a8dede463b315f34faa2a24d89cf8a4c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2685293f758c5984ebc0e68a97066611, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

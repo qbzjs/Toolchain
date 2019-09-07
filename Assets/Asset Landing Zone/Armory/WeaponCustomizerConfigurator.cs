@@ -39,7 +39,7 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	
 	public enum UtilityType
 	{
-		None,
+		Standard,
 		Light,
 		Pistol_Light,
 		Laser,
@@ -60,17 +60,13 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	
 	public enum UnderType
 	{
-		None,
+		Standard,
 		Foregrip,
 		Grenade,
 		Energy_Biochem,
 		Energy_Fission,
 		Chemical,
 	}
-	
-	
-	
-
 	
 	[System.Serializable]
 	public class Part
@@ -180,9 +176,12 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 	[System.Serializable]
 	public class AccessoryRack
 	{
-		[SerializeField]public string m_PartName;
-		[SerializeField]public Part m_Part;
-		// Include gameplay stuff here, not important yet
+		[SerializeField]public SightType m_ActiveSight = SightType.Standard;
+		[SerializeField]public BarrelType m_ActiveBarrel = BarrelType.Standard;
+		[SerializeField]public UtilityType m_ActiveSideL = UtilityType.Standard;
+		[SerializeField]public UtilityType m_ActiveSideR = UtilityType.Standard;
+		[SerializeField]public UnderType m_ActiveUnder = UnderType.Standard;
+		
 	}
 	
 	[System.Serializable]
