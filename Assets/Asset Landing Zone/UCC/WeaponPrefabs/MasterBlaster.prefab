@@ -199,7 +199,7 @@ MonoBehaviour:
     m_Default: 1
   m_Object: {fileID: 272065395871597096}
   m_LocalSpawnPosition: {x: -0.089, y: 0.0912, z: -0.0286}
-  m_LocalSpawnRotation: {x: 0, y: -84, z: 0}
+  m_LocalSpawnRotation: {x: 0, y: -77, z: 0}
   m_UseParentHumanoidBone: 1
   m_ParentHumanoidBone: 18
   m_NonDominantHandIKTarget: {fileID: 0}
@@ -443,10 +443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Weapon: {fileID: 272065395871597096}
-  m_ProfileConfig: 0
-  m_CoreConfig: 1
-  m_ForeConfig: 1
-  m_RearConfig: 0
+  m_ProfileConfig: 1
+  m_CoreConfig: 0
+  m_ForeConfig: 0
+  m_RearConfig: 2
   m_AmmoConfig: 0
   m_ActiveMag: 0
   m_AccessoryConfig: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   - m_ProfileName: Master Blaster 2H
     m_ProfileRoot: {fileID: 272065395871597096}
     m_WeaponType: 1
-    m_AnimatorID: 2
+    m_AnimatorID: 5
     m_CoreParts:
     - m_PartName: Semi Auto
       m_Part:
