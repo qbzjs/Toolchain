@@ -753,10 +753,6 @@ namespace Opsive.UltimateCharacterController.Character
         {
             if (abilities != null) {
                 for (int i = 0; i < abilities.Length; ++i) {
-                    if (!abilities[i].Enabled) {
-                        continue;
-                    }
-
                     if (!abilities[i].IsActive) {
                         if (abilities[i].StartType == Ability.AbilityStartType.Automatic) {
                             TryStartAbility(abilities[i]);
@@ -770,7 +766,7 @@ namespace Opsive.UltimateCharacterController.Character
                     }
                     if (abilities[i].IsActive) {
                         abilities[i].Update();
-                    } else {
+                    } else if (abilities[i].Enabled) {
                         abilities[i].InactiveUpdate();
                     }
                 }
@@ -2286,7 +2282,9 @@ namespace Opsive.UltimateCharacterController.Character
             EventHandler.UnregisterEvent(m_GameObject, "OnAnimatorSnapped", AnimatorSnapped);
 
             // The current movement type is no longer active when the object is destroyed.
-            m_MovementType.ChangeMovementType(false);
+            if (m_MovementType != null) {
+                m_MovementType.ChangeMovementType(false);
+            }
 
             // Call OnDestroy to notify all of the abilities and effects that the GameObject has been destroyed.
             if (m_Abilities != null) {

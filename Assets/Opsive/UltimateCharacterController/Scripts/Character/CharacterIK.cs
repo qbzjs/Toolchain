@@ -320,8 +320,13 @@ namespace Opsive.UltimateCharacterController.Character
         /// <param name="lookSource">The ILookSource object attached to the character.</param>
         private void OnAttachLookSource(ILookSource lookSource)
         {
+            var prevEnabled = enabled;
             m_LookSource = lookSource;
             enabled = m_Enable && m_LookSource != null;
+            // If the component is enabled update the animator so OnAnimatorIK will run.
+            if (enabled && !prevEnabled) {
+                m_Animator.Update(0);
+            }
         }
 
         /// <summary>

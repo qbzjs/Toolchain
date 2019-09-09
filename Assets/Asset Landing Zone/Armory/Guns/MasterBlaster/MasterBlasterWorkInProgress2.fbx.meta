@@ -1,999 +1,2981 @@
 fileFormatVersion: 2
 guid: 7d79302a52322b74989717467c295e2f
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Barrel.002
-    100002: Battery.001
-    100004: Battery.007
-    100006: Battery.008
-    100008: Folding Stock
-    100010: Folding Stock Arm
-    100012: Folding Stock Arm.001
-    100014: gun.001
-    100016: Mag Compartment.001
-    100018: MasterBlaster
-    100020: //RootNode
-    100022: Pistol_Rail.001
-    100024: Pistol_Rail.006
-    100026: Sights.001
-    100028: Trigger.001
-    100030: TriggerGuard
-    100032: Rail Top
-    100034: Rail Side
-    100036: Rail Side.001
-    100038: Barrel Long
-    100040: Barrel Mid
-    100042: Barrel Short
-    100044: Mag Compartment
-    100046: Rails
-    100048: Battery.000
-    100050: Trigger.000
-    100052: Stock Adjustable
-    100054: Stock Folding
-    100056: StockAdjust
-    100058: Barrel Carbine
-    100060: Barrel Carbine_MeshPart0
-    100062: Barrel Carbine_MeshPart1
-    100064: Barrel PDW
-    100066: Barrel Rifle
-    100068: Barrel Rifle_MeshPart0
-    100070: Barrel Rifle_MeshPart1
-    100072: BarrelLong
-    100074: BarrelLong_MeshPart0
-    100076: BarrelLong_MeshPart1
-    100078: BarrelLong_MeshPart2
-    100080: BarrelStandard
-    100082: BarrelSubcompact
-    100084: Battery
-    100086: Battery.002
-    100088: BatteryContainer
-    100090: BatteryContainer.001
-    100092: Blast Core Large
-    100094: Blast Core Small
-    100096: Grip Full
-    100098: Grip Full Adjustable
-    100100: Grip Full Folding
-    100102: Grip Subcompact
-    100104: IntegralParts
-    100106: Sights
-    100108: Trigger
-    100110: Trigger Guard
-    100112: Barrel Long_MeshPart0
-    100114: Barrel Long_MeshPart1
-    100116: Barrel Long_MeshPart2
-    100118: Barrel Standard
-    100120: Barrel Subcompact
-    100122: BatteryContainer.003
-    100124: Blast Coil Carbine
-    100126: Blast Coil Carbine.001
-    100128: Blast Coil PDW
-    100130: Frame Carbine
-    100132: Frame Extension
-    100134: Frame PDW
-    100136: Blast Coil Rifle
-    100138: Frame Magnum
-    100140: Frame Magnum_MeshPart0
-    100142: Frame Magnum_MeshPart1
-    100144: Frame Pistol
-    100146: Frame Rifle
-    100148: Frame Rifle_MeshPart0
-    100150: Frame Rifle_MeshPart1
-    100152: Frame Subcompact
-    100154: Blast Coil Magnum
-    100156: Blast Coil Pistol
-    100158: Blast Coil Subcompact
-    100160: Canister
-    100162: Nozzle Charge
-    100164: Nozzle Charge.001
-    100166: Nozzle Charge.002
-    100168: Nozzle Charge.003
-    100170: Nozzle Charge.004
-    100172: Nozzle Charge.005
-    100174: Nozzle Spray
-    100176: Nozzle Spray.001
-    100178: Nozzle Spray.002
-    100180: Nozzle Spray.003
-    100182: Nozzle Spray.004
-    100184: Nozzle Spray.005
-    100186: Nozzle Stream
-    100188: Nozzle Stream.001
-    100190: Nozzle Stream.002
-    100192: Nozzle Stream.003
-    100194: Nozzle Stream.004
-    100196: Nozzle Stream.005
-    100198: Pressure Core
-    100200: Pressurizer
-    100202: 'Pressurizer '
-    100204: Pressurizer .001
-    100206: Pressurizer Carbine
-    100208: Pressurizer Magnum
-    100210: Pressurizer PDW
-    100212: Pressurizer Pistol
-    100214: Pressurizer Rifle
-    100216: Pressurizer Subcompact
-    100218: Pressurizer.001
-    100220: Pressurizer.002
-    100222: Pressurizer.003
-    100224: Core Energy Large
-    100226: Core Energy Small
-    100228: Core Pressurizer
-    100230: Grip Shootist
-    100232: Axe_Long
-    100234: Axe_Long.001
-    100236: Axe_Mid
-    100238: Axe_Mid.001
-    100240: Axe_Short
-    100242: Axe_Short.002
-    100244: Barrel Reinforcement Long
-    100246: Barrel Reinforcement Mid
-    100248: Barrel Reinforcement Short
-    100250: Base Gunblade
-    100252: Base Pistol
-    100254: Base Rifle
-    100256: Blade Long
-    100258: Blade Long.001
-    100260: Blade Mid
-    100262: Blade Short
-    100264: Blade_Mid.001
-    100266: Blade_Short.000
-    100268: BladeGuardBase.000
-    100270: BladeGuardBase.001
-    100272: BladeGuardBase.002
-    100274: BladeGuardBase.003
-    100276: BladeGuardBase.004
-    100278: BladeGuardBase.005
-    100280: Control Nozzle Spray
-    100282: Control Nozzle Spray.001
-    100284: Control Nozzle Spray.002
-    100286: Control Nozzle Stream
-    100288: Control Nozzle Stream.001
-    100290: Control Nozzle Stream.002
-    100292: Discharge Port Long
-    100294: Discharge Port Long_MeshPart0
-    100296: Discharge Port Long_MeshPart1
-    100298: Discharge Port Mid
-    100300: Discharge Port Mid_MeshPart0
-    100302: Discharge Port Mid_MeshPart1
-    100304: Discharge Port Small
-    100306: Extended.000
-    100308: Extended.001
-    100310: Extended.002
-    100312: Extended.003
-    100314: Extended.004
-    100316: Extended.005
-    100318: Fore Carbine
-    100320: Fore Energy Gunblade
-    100322: Fore Magnum
-    100324: Fore Magnum_MeshPart0
-    100326: Fore Magnum_MeshPart1
-    100328: Fore PDW
-    100330: Fore Pistol
-    100332: Fore Pressure Gunblade
-    100334: Fore Rifle
-    100336: Fore Rifle_MeshPart0
-    100338: Fore Rifle_MeshPart1
-    100340: Fore Subcompact
-    100342: Grip Base
-    100344: Grip Long
-    100346: Grip Short
-    100348: IntegralParts.001
-    100350: IntegralParts.002
-    100352: Mace Long
-    100354: Mace Mid
-    100356: Mace Short
-    100358: Mace_Long
-    100360: Mace_Mid.001
-    100362: Mace_Short
-    100364: Pressure Chamber Long
-    100366: Pressure Chamber Mid
-    100368: Pressure Chamber Short
-    100370: Rail
-    100372: Retracted.000
-    100374: Retracted.001
-    100376: Retracted.002
-    100378: Retracted.003
-    100380: Retracted.004
-    100382: Retracted.005
-    100384: Trigger Guard.001
-    100386: Trigger.002
-    100388: Control Nozzle Charge
-    100390: Control Nozzle Charge.001
-    100392: Control Nozzle Charge.002
-    100394: Fore Carbine_MeshPart0
-    100396: Fore Carbine_MeshPart1
-    100398: Sight Carbine
-    100400: Sight PDW
-    100402: Sight Rifle
-    100404: Scope Housing
-    100406: Sight Scope
-    400000: Barrel.002
-    400002: Battery.001
-    400004: Battery.007
-    400006: Battery.008
-    400008: Folding Stock
-    400010: Folding Stock Arm
-    400012: Folding Stock Arm.001
-    400014: gun.001
-    400016: Mag Compartment.001
-    400018: MasterBlaster
-    400020: //RootNode
-    400022: Pistol_Rail.001
-    400024: Pistol_Rail.006
-    400026: Sights.001
-    400028: Trigger.001
-    400030: TriggerGuard
-    400032: Rail Top
-    400034: Rail Side
-    400036: Rail Side.001
-    400038: Barrel Long
-    400040: Barrel Mid
-    400042: Barrel Short
-    400044: Mag Compartment
-    400046: Rails
-    400048: Battery.000
-    400050: Trigger.000
-    400052: Stock Adjustable
-    400054: Stock Folding
-    400056: StockAdjust
-    400058: Barrel Carbine
-    400060: Barrel Carbine_MeshPart0
-    400062: Barrel Carbine_MeshPart1
-    400064: Barrel PDW
-    400066: Barrel Rifle
-    400068: Barrel Rifle_MeshPart0
-    400070: Barrel Rifle_MeshPart1
-    400072: BarrelLong
-    400074: BarrelLong_MeshPart0
-    400076: BarrelLong_MeshPart1
-    400078: BarrelLong_MeshPart2
-    400080: BarrelStandard
-    400082: BarrelSubcompact
-    400084: Battery
-    400086: Battery.002
-    400088: BatteryContainer
-    400090: BatteryContainer.001
-    400092: Blast Core Large
-    400094: Blast Core Small
-    400096: Grip Full
-    400098: Grip Full Adjustable
-    400100: Grip Full Folding
-    400102: Grip Subcompact
-    400104: IntegralParts
-    400106: Sights
-    400108: Trigger
-    400110: Trigger Guard
-    400112: Barrel Long_MeshPart0
-    400114: Barrel Long_MeshPart1
-    400116: Barrel Long_MeshPart2
-    400118: Barrel Standard
-    400120: Barrel Subcompact
-    400122: BatteryContainer.003
-    400124: Blast Coil Carbine
-    400126: Blast Coil Carbine.001
-    400128: Blast Coil PDW
-    400130: Frame Carbine
-    400132: Frame Extension
-    400134: Frame PDW
-    400136: Blast Coil Rifle
-    400138: Frame Magnum
-    400140: Frame Magnum_MeshPart0
-    400142: Frame Magnum_MeshPart1
-    400144: Frame Pistol
-    400146: Frame Rifle
-    400148: Frame Rifle_MeshPart0
-    400150: Frame Rifle_MeshPart1
-    400152: Frame Subcompact
-    400154: Blast Coil Magnum
-    400156: Blast Coil Pistol
-    400158: Blast Coil Subcompact
-    400160: Canister
-    400162: Nozzle Charge
-    400164: Nozzle Charge.001
-    400166: Nozzle Charge.002
-    400168: Nozzle Charge.003
-    400170: Nozzle Charge.004
-    400172: Nozzle Charge.005
-    400174: Nozzle Spray
-    400176: Nozzle Spray.001
-    400178: Nozzle Spray.002
-    400180: Nozzle Spray.003
-    400182: Nozzle Spray.004
-    400184: Nozzle Spray.005
-    400186: Nozzle Stream
-    400188: Nozzle Stream.001
-    400190: Nozzle Stream.002
-    400192: Nozzle Stream.003
-    400194: Nozzle Stream.004
-    400196: Nozzle Stream.005
-    400198: Pressure Core
-    400200: Pressurizer
-    400202: 'Pressurizer '
-    400204: Pressurizer .001
-    400206: Pressurizer Carbine
-    400208: Pressurizer Magnum
-    400210: Pressurizer PDW
-    400212: Pressurizer Pistol
-    400214: Pressurizer Rifle
-    400216: Pressurizer Subcompact
-    400218: Pressurizer.001
-    400220: Pressurizer.002
-    400222: Pressurizer.003
-    400224: Core Energy Large
-    400226: Core Energy Small
-    400228: Core Pressurizer
-    400230: Grip Shootist
-    400232: Axe_Long
-    400234: Axe_Long.001
-    400236: Axe_Mid
-    400238: Axe_Mid.001
-    400240: Axe_Short
-    400242: Axe_Short.002
-    400244: Barrel Reinforcement Long
-    400246: Barrel Reinforcement Mid
-    400248: Barrel Reinforcement Short
-    400250: Base Gunblade
-    400252: Base Pistol
-    400254: Base Rifle
-    400256: Blade Long
-    400258: Blade Long.001
-    400260: Blade Mid
-    400262: Blade Short
-    400264: Blade_Mid.001
-    400266: Blade_Short.000
-    400268: BladeGuardBase.000
-    400270: BladeGuardBase.001
-    400272: BladeGuardBase.002
-    400274: BladeGuardBase.003
-    400276: BladeGuardBase.004
-    400278: BladeGuardBase.005
-    400280: Control Nozzle Spray
-    400282: Control Nozzle Spray.001
-    400284: Control Nozzle Spray.002
-    400286: Control Nozzle Stream
-    400288: Control Nozzle Stream.001
-    400290: Control Nozzle Stream.002
-    400292: Discharge Port Long
-    400294: Discharge Port Long_MeshPart0
-    400296: Discharge Port Long_MeshPart1
-    400298: Discharge Port Mid
-    400300: Discharge Port Mid_MeshPart0
-    400302: Discharge Port Mid_MeshPart1
-    400304: Discharge Port Small
-    400306: Extended.000
-    400308: Extended.001
-    400310: Extended.002
-    400312: Extended.003
-    400314: Extended.004
-    400316: Extended.005
-    400318: Fore Carbine
-    400320: Fore Energy Gunblade
-    400322: Fore Magnum
-    400324: Fore Magnum_MeshPart0
-    400326: Fore Magnum_MeshPart1
-    400328: Fore PDW
-    400330: Fore Pistol
-    400332: Fore Pressure Gunblade
-    400334: Fore Rifle
-    400336: Fore Rifle_MeshPart0
-    400338: Fore Rifle_MeshPart1
-    400340: Fore Subcompact
-    400342: Grip Base
-    400344: Grip Long
-    400346: Grip Short
-    400348: IntegralParts.001
-    400350: IntegralParts.002
-    400352: Mace Long
-    400354: Mace Mid
-    400356: Mace Short
-    400358: Mace_Long
-    400360: Mace_Mid.001
-    400362: Mace_Short
-    400364: Pressure Chamber Long
-    400366: Pressure Chamber Mid
-    400368: Pressure Chamber Short
-    400370: Rail
-    400372: Retracted.000
-    400374: Retracted.001
-    400376: Retracted.002
-    400378: Retracted.003
-    400380: Retracted.004
-    400382: Retracted.005
-    400384: Trigger Guard.001
-    400386: Trigger.002
-    400388: Control Nozzle Charge
-    400390: Control Nozzle Charge.001
-    400392: Control Nozzle Charge.002
-    400394: Fore Carbine_MeshPart0
-    400396: Fore Carbine_MeshPart1
-    400398: Sight Carbine
-    400400: Sight PDW
-    400402: Sight Rifle
-    400404: Scope Housing
-    400406: Sight Scope
-    2300000: Barrel.002
-    2300002: Battery.001
-    2300004: Battery.007
-    2300006: Battery.008
-    2300008: Folding Stock
-    2300010: Folding Stock Arm
-    2300012: Folding Stock Arm.001
-    2300014: gun.001
-    2300016: Mag Compartment.001
-    2300018: MasterBlaster
-    2300020: Pistol_Rail.001
-    2300022: Pistol_Rail.006
-    2300024: Sights.001
-    2300026: Trigger.001
-    2300028: TriggerGuard
-    2300030: Rail Top
-    2300032: Rail Side
-    2300034: Rail Side.001
-    2300036: Barrel Long
-    2300038: Barrel Mid
-    2300040: Barrel Short
-    2300042: Mag Compartment
-    2300044: Rails
-    2300046: Battery.000
-    2300048: Trigger.000
-    2300050: Stock Adjustable
-    2300052: Stock Folding
-    2300054: StockAdjust
-    2300056: Barrel Carbine_MeshPart0
-    2300058: Barrel Carbine_MeshPart1
-    2300060: Barrel PDW
-    2300062: Barrel Rifle_MeshPart0
-    2300064: Barrel Rifle_MeshPart1
-    2300066: BarrelLong_MeshPart0
-    2300068: BarrelLong_MeshPart1
-    2300070: BarrelLong_MeshPart2
-    2300072: BarrelStandard
-    2300074: BarrelSubcompact
-    2300076: Battery
-    2300078: Battery.002
-    2300080: BatteryContainer
-    2300082: BatteryContainer.001
-    2300084: Blast Core Large
-    2300086: Blast Core Small
-    2300088: Grip Full
-    2300090: Grip Full Adjustable
-    2300092: Grip Full Folding
-    2300094: Grip Subcompact
-    2300096: IntegralParts
-    2300098: Sights
-    2300100: Trigger
-    2300102: Trigger Guard
-    2300104: Barrel Long_MeshPart0
-    2300106: Barrel Long_MeshPart1
-    2300108: Barrel Long_MeshPart2
-    2300110: Barrel Standard
-    2300112: Barrel Subcompact
-    2300114: BatteryContainer.003
-    2300116: Blast Coil Carbine
-    2300118: Blast Coil Carbine.001
-    2300120: Blast Coil PDW
-    2300122: Frame Carbine
-    2300124: Frame Extension
-    2300126: Frame PDW
-    2300128: Blast Coil Rifle
-    2300130: Frame Magnum_MeshPart0
-    2300132: Frame Magnum_MeshPart1
-    2300134: Frame Pistol
-    2300136: Frame Rifle_MeshPart0
-    2300138: Frame Rifle_MeshPart1
-    2300140: Frame Subcompact
-    2300142: Blast Coil Magnum
-    2300144: Blast Coil Pistol
-    2300146: Blast Coil Subcompact
-    2300148: Canister
-    2300150: Nozzle Charge
-    2300152: Nozzle Charge.001
-    2300154: Nozzle Charge.002
-    2300156: Nozzle Charge.003
-    2300158: Nozzle Charge.004
-    2300160: Nozzle Charge.005
-    2300162: Nozzle Spray
-    2300164: Nozzle Spray.001
-    2300166: Nozzle Spray.002
-    2300168: Nozzle Spray.003
-    2300170: Nozzle Spray.004
-    2300172: Nozzle Spray.005
-    2300174: Nozzle Stream
-    2300176: Nozzle Stream.001
-    2300178: Nozzle Stream.002
-    2300180: Nozzle Stream.003
-    2300182: Nozzle Stream.004
-    2300184: Nozzle Stream.005
-    2300186: Pressure Core
-    2300188: Pressurizer
-    2300190: 'Pressurizer '
-    2300192: Pressurizer .001
-    2300194: Pressurizer Carbine
-    2300196: Pressurizer Magnum
-    2300198: Pressurizer PDW
-    2300200: Pressurizer Pistol
-    2300202: Pressurizer Rifle
-    2300204: Pressurizer Subcompact
-    2300206: Pressurizer.001
-    2300208: Pressurizer.002
-    2300210: Pressurizer.003
-    2300212: Core Energy Large
-    2300214: Core Energy Small
-    2300216: Core Pressurizer
-    2300218: Grip Shootist
-    2300220: Axe_Long
-    2300222: Axe_Long.001
-    2300224: Axe_Mid
-    2300226: Axe_Mid.001
-    2300228: Axe_Short
-    2300230: Axe_Short.002
-    2300232: Barrel Reinforcement Long
-    2300234: Barrel Reinforcement Mid
-    2300236: Barrel Reinforcement Short
-    2300238: Base Gunblade
-    2300240: Base Pistol
-    2300242: Base Rifle
-    2300244: Blade Long
-    2300246: Blade Long.001
-    2300248: Blade Mid
-    2300250: Blade Short
-    2300252: Blade_Mid.001
-    2300254: Blade_Short.000
-    2300256: BladeGuardBase.000
-    2300258: BladeGuardBase.001
-    2300260: BladeGuardBase.002
-    2300262: BladeGuardBase.003
-    2300264: BladeGuardBase.004
-    2300266: BladeGuardBase.005
-    2300268: Control Nozzle Spray
-    2300270: Control Nozzle Spray.001
-    2300272: Control Nozzle Spray.002
-    2300274: Control Nozzle Stream
-    2300276: Control Nozzle Stream.001
-    2300278: Control Nozzle Stream.002
-    2300280: Discharge Port Long_MeshPart0
-    2300282: Discharge Port Long_MeshPart1
-    2300284: Discharge Port Mid_MeshPart0
-    2300286: Discharge Port Mid_MeshPart1
-    2300288: Discharge Port Small
-    2300290: Extended.000
-    2300292: Extended.001
-    2300294: Extended.002
-    2300296: Extended.003
-    2300298: Extended.004
-    2300300: Extended.005
-    2300302: Fore Carbine
-    2300304: Fore Energy Gunblade
-    2300306: Fore Magnum_MeshPart0
-    2300308: Fore Magnum_MeshPart1
-    2300310: Fore PDW
-    2300312: Fore Pistol
-    2300314: Fore Pressure Gunblade
-    2300316: Fore Rifle_MeshPart0
-    2300318: Fore Rifle_MeshPart1
-    2300320: Fore Subcompact
-    2300322: Grip Base
-    2300324: Grip Long
-    2300326: Grip Short
-    2300328: IntegralParts.001
-    2300330: IntegralParts.002
-    2300332: Mace Long
-    2300334: Mace Mid
-    2300336: Mace Short
-    2300338: Mace_Long
-    2300340: Mace_Mid.001
-    2300342: Mace_Short
-    2300344: Pressure Chamber Long
-    2300346: Pressure Chamber Mid
-    2300348: Pressure Chamber Short
-    2300350: Rail
-    2300352: Retracted.000
-    2300354: Retracted.001
-    2300356: Retracted.002
-    2300358: Retracted.003
-    2300360: Retracted.004
-    2300362: Retracted.005
-    2300364: Trigger Guard.001
-    2300366: Trigger.002
-    2300368: Control Nozzle Charge
-    2300370: Control Nozzle Charge.001
-    2300372: Control Nozzle Charge.002
-    2300374: Fore Carbine_MeshPart0
-    2300376: Fore Carbine_MeshPart1
-    2300378: Sight Carbine
-    2300380: Sight PDW
-    2300382: Sight Rifle
-    2300384: Scope Housing
-    2300386: Sight Scope
-    3300000: Barrel.002
-    3300002: Battery.001
-    3300004: Battery.007
-    3300006: Battery.008
-    3300008: Folding Stock
-    3300010: Folding Stock Arm
-    3300012: Folding Stock Arm.001
-    3300014: gun.001
-    3300016: Mag Compartment.001
-    3300018: MasterBlaster
-    3300020: Pistol_Rail.001
-    3300022: Pistol_Rail.006
-    3300024: Sights.001
-    3300026: Trigger.001
-    3300028: TriggerGuard
-    3300030: Rail Top
-    3300032: Rail Side
-    3300034: Rail Side.001
-    3300036: Barrel Long
-    3300038: Barrel Mid
-    3300040: Barrel Short
-    3300042: Mag Compartment
-    3300044: Rails
-    3300046: Battery.000
-    3300048: Trigger.000
-    3300050: Stock Adjustable
-    3300052: Stock Folding
-    3300054: StockAdjust
-    3300056: Barrel Carbine_MeshPart0
-    3300058: Barrel Carbine_MeshPart1
-    3300060: Barrel PDW
-    3300062: Barrel Rifle_MeshPart0
-    3300064: Barrel Rifle_MeshPart1
-    3300066: BarrelLong_MeshPart0
-    3300068: BarrelLong_MeshPart1
-    3300070: BarrelLong_MeshPart2
-    3300072: BarrelStandard
-    3300074: BarrelSubcompact
-    3300076: Battery
-    3300078: Battery.002
-    3300080: BatteryContainer
-    3300082: BatteryContainer.001
-    3300084: Blast Core Large
-    3300086: Blast Core Small
-    3300088: Grip Full
-    3300090: Grip Full Adjustable
-    3300092: Grip Full Folding
-    3300094: Grip Subcompact
-    3300096: IntegralParts
-    3300098: Sights
-    3300100: Trigger
-    3300102: Trigger Guard
-    3300104: Barrel Long_MeshPart0
-    3300106: Barrel Long_MeshPart1
-    3300108: Barrel Long_MeshPart2
-    3300110: Barrel Standard
-    3300112: Barrel Subcompact
-    3300114: BatteryContainer.003
-    3300116: Blast Coil Carbine
-    3300118: Blast Coil Carbine.001
-    3300120: Blast Coil PDW
-    3300122: Frame Carbine
-    3300124: Frame Extension
-    3300126: Frame PDW
-    3300128: Blast Coil Rifle
-    3300130: Frame Magnum_MeshPart0
-    3300132: Frame Magnum_MeshPart1
-    3300134: Frame Pistol
-    3300136: Frame Rifle_MeshPart0
-    3300138: Frame Rifle_MeshPart1
-    3300140: Frame Subcompact
-    3300142: Blast Coil Magnum
-    3300144: Blast Coil Pistol
-    3300146: Blast Coil Subcompact
-    3300148: Canister
-    3300150: Nozzle Charge
-    3300152: Nozzle Charge.001
-    3300154: Nozzle Charge.002
-    3300156: Nozzle Charge.003
-    3300158: Nozzle Charge.004
-    3300160: Nozzle Charge.005
-    3300162: Nozzle Spray
-    3300164: Nozzle Spray.001
-    3300166: Nozzle Spray.002
-    3300168: Nozzle Spray.003
-    3300170: Nozzle Spray.004
-    3300172: Nozzle Spray.005
-    3300174: Nozzle Stream
-    3300176: Nozzle Stream.001
-    3300178: Nozzle Stream.002
-    3300180: Nozzle Stream.003
-    3300182: Nozzle Stream.004
-    3300184: Nozzle Stream.005
-    3300186: Pressure Core
-    3300188: Pressurizer
-    3300190: 'Pressurizer '
-    3300192: Pressurizer .001
-    3300194: Pressurizer Carbine
-    3300196: Pressurizer Magnum
-    3300198: Pressurizer PDW
-    3300200: Pressurizer Pistol
-    3300202: Pressurizer Rifle
-    3300204: Pressurizer Subcompact
-    3300206: Pressurizer.001
-    3300208: Pressurizer.002
-    3300210: Pressurizer.003
-    3300212: Core Energy Large
-    3300214: Core Energy Small
-    3300216: Core Pressurizer
-    3300218: Grip Shootist
-    3300220: Axe_Long
-    3300222: Axe_Long.001
-    3300224: Axe_Mid
-    3300226: Axe_Mid.001
-    3300228: Axe_Short
-    3300230: Axe_Short.002
-    3300232: Barrel Reinforcement Long
-    3300234: Barrel Reinforcement Mid
-    3300236: Barrel Reinforcement Short
-    3300238: Base Gunblade
-    3300240: Base Pistol
-    3300242: Base Rifle
-    3300244: Blade Long
-    3300246: Blade Long.001
-    3300248: Blade Mid
-    3300250: Blade Short
-    3300252: Blade_Mid.001
-    3300254: Blade_Short.000
-    3300256: BladeGuardBase.000
-    3300258: BladeGuardBase.001
-    3300260: BladeGuardBase.002
-    3300262: BladeGuardBase.003
-    3300264: BladeGuardBase.004
-    3300266: BladeGuardBase.005
-    3300268: Control Nozzle Spray
-    3300270: Control Nozzle Spray.001
-    3300272: Control Nozzle Spray.002
-    3300274: Control Nozzle Stream
-    3300276: Control Nozzle Stream.001
-    3300278: Control Nozzle Stream.002
-    3300280: Discharge Port Long_MeshPart0
-    3300282: Discharge Port Long_MeshPart1
-    3300284: Discharge Port Mid_MeshPart0
-    3300286: Discharge Port Mid_MeshPart1
-    3300288: Discharge Port Small
-    3300290: Extended.000
-    3300292: Extended.001
-    3300294: Extended.002
-    3300296: Extended.003
-    3300298: Extended.004
-    3300300: Extended.005
-    3300302: Fore Carbine
-    3300304: Fore Energy Gunblade
-    3300306: Fore Magnum_MeshPart0
-    3300308: Fore Magnum_MeshPart1
-    3300310: Fore PDW
-    3300312: Fore Pistol
-    3300314: Fore Pressure Gunblade
-    3300316: Fore Rifle_MeshPart0
-    3300318: Fore Rifle_MeshPart1
-    3300320: Fore Subcompact
-    3300322: Grip Base
-    3300324: Grip Long
-    3300326: Grip Short
-    3300328: IntegralParts.001
-    3300330: IntegralParts.002
-    3300332: Mace Long
-    3300334: Mace Mid
-    3300336: Mace Short
-    3300338: Mace_Long
-    3300340: Mace_Mid.001
-    3300342: Mace_Short
-    3300344: Pressure Chamber Long
-    3300346: Pressure Chamber Mid
-    3300348: Pressure Chamber Short
-    3300350: Rail
-    3300352: Retracted.000
-    3300354: Retracted.001
-    3300356: Retracted.002
-    3300358: Retracted.003
-    3300360: Retracted.004
-    3300362: Retracted.005
-    3300364: Trigger Guard.001
-    3300366: Trigger.002
-    3300368: Control Nozzle Charge
-    3300370: Control Nozzle Charge.001
-    3300372: Control Nozzle Charge.002
-    3300374: Fore Carbine_MeshPart0
-    3300376: Fore Carbine_MeshPart1
-    3300378: Sight Carbine
-    3300380: Sight PDW
-    3300382: Sight Rifle
-    3300384: Scope Housing
-    3300386: Sight Scope
-    4300000: gun.001
-    4300002: Pistol_Rail.001
-    4300004: Pistol_Rail.006
-    4300006: MasterBlaster
-    4300008: Mag Compartment.001
-    4300010: Trigger.001
-    4300012: TriggerGuard
-    4300014: Sights.001
-    4300016: Barrel.002
-    4300018: Battery.001
-    4300020: Battery.007
-    4300022: Battery.008
-    4300024: Folding Stock
-    4300026: Folding Stock Arm.001
-    4300028: Folding Stock Arm
-    4300030: Rail Top
-    4300032: Rail Side
-    4300034: Rail Side.001
-    4300036: Barrel Long
-    4300038: Barrel Short
-    4300040: Barrel Mid
-    4300042: Rails
-    4300044: Mag Compartment
-    4300046: Battery.000
-    4300048: Trigger.000
-    4300050: Stock Adjustable
-    4300052: StockAdjust
-    4300054: Stock Folding
-    4300056: Grip Full Folding
-    4300058: Grip Full Adjustable
-    4300060: Barrel Rifle_MeshPart0
-    4300062: Barrel Rifle_MeshPart1
-    4300064: Barrel PDW
-    4300066: Barrel Carbine_MeshPart0
-    4300068: Barrel Carbine_MeshPart1
-    4300070: Blast Core Large
-    4300072: BatteryContainer.001
-    4300074: Battery.002
-    4300076: IntegralParts
-    4300078: Trigger Guard
-    4300080: Trigger
-    4300082: Grip Full
-    4300084: BarrelLong_MeshPart0
-    4300086: BarrelLong_MeshPart1
-    4300088: BarrelLong_MeshPart2
-    4300090: Grip Subcompact
-    4300092: BarrelStandard
-    4300094: BarrelSubcompact
-    4300096: Blast Core Small
-    4300098: BatteryContainer
-    4300100: Battery
-    4300102: Sights
-    4300104: Barrel Long_MeshPart0
-    4300106: Barrel Long_MeshPart1
-    4300108: Barrel Long_MeshPart2
-    4300110: Barrel Standard
-    4300112: Barrel Subcompact
-    4300114: Blast Coil Carbine.001
-    4300116: Frame PDW
-    4300118: Blast Coil PDW
-    4300120: Frame Carbine
-    4300122: Blast Coil Carbine
-    4300124: BatteryContainer.003
-    4300126: Frame Extension
-    4300128: Frame Magnum_MeshPart0
-    4300130: Frame Magnum_MeshPart1
-    4300132: Frame Pistol
-    4300134: Frame Rifle_MeshPart0
-    4300136: Frame Rifle_MeshPart1
-    4300138: Blast Coil Rifle
-    4300140: Frame Subcompact
-    4300142: Pressure Core
-    4300144: Canister
-    4300146: Blast Coil Magnum
-    4300148: Pressurizer Magnum
-    4300150: Pressurizer .001
-    4300152: Nozzle Stream.002
-    4300154: Nozzle Charge.002
-    4300156: Nozzle Spray.002
-    4300158: Blast Coil Pistol
-    4300160: Pressurizer Pistol
-    4300162: Nozzle Spray.001
-    4300164: Nozzle Charge.001
-    4300166: Nozzle Stream.001
-    4300168: 'Pressurizer '
-    4300170: Pressurizer Rifle
-    4300172: Nozzle Spray.005
-    4300174: Nozzle Charge.005
-    4300176: Nozzle Stream.005
-    4300178: Pressurizer.003
-    4300180: Pressurizer PDW
-    4300182: Nozzle Spray.003
-    4300184: Nozzle Charge.003
-    4300186: Nozzle Stream.003
-    4300188: Pressurizer.001
-    4300190: Pressurizer Carbine
-    4300192: Pressurizer.002
-    4300194: Nozzle Stream.004
-    4300196: Nozzle Charge.004
-    4300198: Nozzle Spray.004
-    4300200: Pressurizer Subcompact
-    4300202: Pressurizer
-    4300204: Nozzle Stream
-    4300206: Nozzle Charge
-    4300208: Nozzle Spray
-    4300210: Blast Coil Subcompact
-    4300212: Core Pressurizer
-    4300214: Core Energy Large
-    4300216: Core Energy Small
-    4300218: Grip Shootist
-    4300220: Base Rifle
-    4300222: IntegralParts.001
-    4300224: Trigger.002
-    4300226: Trigger Guard.001
-    4300228: Fore Rifle_MeshPart0
-    4300230: Fore Rifle_MeshPart1
-    4300232: Fore PDW
-    4300234: Fore Carbine
-    4300236: Base Gunblade
-    4300238: Rail
-    4300240: Fore Energy Gunblade
-    4300242: Discharge Port Small
-    4300244: Blade Short
-    4300246: BladeGuardBase.003
-    4300248: Extended.003
-    4300250: Retracted.003
-    4300252: Barrel Reinforcement Short
-    4300254: Axe_Short
-    4300256: Mace Short
-    4300258: Discharge Port Mid_MeshPart0
-    4300260: Discharge Port Mid_MeshPart1
-    4300262: Blade Mid
-    4300264: BladeGuardBase.004
-    4300266: Retracted.004
-    4300268: Extended.004
-    4300270: Barrel Reinforcement Mid
-    4300272: Mace Mid
-    4300274: Axe_Mid
-    4300276: Discharge Port Long_MeshPart0
-    4300278: Discharge Port Long_MeshPart1
-    4300280: Blade Long
-    4300282: BladeGuardBase.005
-    4300284: Extended.005
-    4300286: Retracted.005
-    4300288: Barrel Reinforcement Long
-    4300290: Axe_Long
-    4300292: Mace Long
-    4300294: Fore Pressure Gunblade
-    4300296: Pressure Chamber Short
-    4300298: Blade_Short.000
-    4300300: BladeGuardBase.002
-    4300302: Retracted.002
-    4300304: Extended.002
-    4300306: Mace_Short
-    4300308: Axe_Short.002
-    4300310: Control Nozzle Stream.002
-    4300312: Control Nozzle Spray.002
-    4300314: Pressure Chamber Mid
-    4300316: Blade_Mid.001
-    4300318: BladeGuardBase.000
-    4300320: Extended.000
-    4300322: Retracted.000
-    4300324: Control Nozzle Spray.001
-    4300326: Control Nozzle Stream.001
-    4300328: Axe_Mid.001
-    4300330: Mace_Mid.001
-    4300332: Pressure Chamber Long
-    4300334: Mace_Long
-    4300336: Axe_Long.001
-    4300338: Control Nozzle Stream
-    4300340: Blade Long.001
-    4300342: BladeGuardBase.001
-    4300344: Retracted.001
-    4300346: Extended.001
-    4300348: Control Nozzle Spray
-    4300350: Grip Base
-    4300352: Grip Long
-    4300354: Grip Short
-    4300356: Base Pistol
-    4300358: Fore Magnum_MeshPart0
-    4300360: Fore Magnum_MeshPart1
-    4300362: Fore Pistol
-    4300364: IntegralParts.002
-    4300366: Fore Subcompact
-    4300368: Control Nozzle Charge.002
-    4300370: Control Nozzle Charge.001
-    4300372: Control Nozzle Charge
-    4300374: Sight Rifle
-    4300376: Fore Carbine_MeshPart0
-    4300378: Fore Carbine_MeshPart1
-    4300380: Sight Carbine
-    4300382: Sight PDW
-    4300384: Scope Housing
-    4300386: Sight Scope
-    2186277476908879412: ImportLogs
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Barrel.002
+  - first:
+      1: 100002
+    second: Battery.001
+  - first:
+      1: 100004
+    second: Battery.007
+  - first:
+      1: 100006
+    second: Battery.008
+  - first:
+      1: 100008
+    second: Folding Stock
+  - first:
+      1: 100010
+    second: Folding Stock Arm
+  - first:
+      1: 100012
+    second: Folding Stock Arm.001
+  - first:
+      1: 100014
+    second: gun.001
+  - first:
+      1: 100016
+    second: Mag Compartment.001
+  - first:
+      1: 100018
+    second: MasterBlaster
+  - first:
+      1: 100020
+    second: //RootNode
+  - first:
+      1: 100022
+    second: Pistol_Rail.001
+  - first:
+      1: 100024
+    second: Pistol_Rail.006
+  - first:
+      1: 100026
+    second: Sights.001
+  - first:
+      1: 100028
+    second: Trigger.001
+  - first:
+      1: 100030
+    second: TriggerGuard
+  - first:
+      1: 100032
+    second: Rail Top
+  - first:
+      1: 100034
+    second: Rail Side
+  - first:
+      1: 100036
+    second: Rail Side.001
+  - first:
+      1: 100038
+    second: Barrel Long
+  - first:
+      1: 100040
+    second: Barrel Mid
+  - first:
+      1: 100042
+    second: Barrel Short
+  - first:
+      1: 100044
+    second: Mag Compartment
+  - first:
+      1: 100046
+    second: Rails
+  - first:
+      1: 100048
+    second: Battery.000
+  - first:
+      1: 100050
+    second: Trigger.000
+  - first:
+      1: 100052
+    second: Stock Adjustable
+  - first:
+      1: 100054
+    second: Stock Folding
+  - first:
+      1: 100056
+    second: StockAdjust
+  - first:
+      1: 100058
+    second: Barrel Carbine
+  - first:
+      1: 100060
+    second: Barrel Carbine_MeshPart0
+  - first:
+      1: 100062
+    second: Barrel Carbine_MeshPart1
+  - first:
+      1: 100064
+    second: Barrel PDW
+  - first:
+      1: 100066
+    second: Barrel Rifle
+  - first:
+      1: 100068
+    second: Barrel Rifle_MeshPart0
+  - first:
+      1: 100070
+    second: Barrel Rifle_MeshPart1
+  - first:
+      1: 100072
+    second: BarrelLong
+  - first:
+      1: 100074
+    second: BarrelLong_MeshPart0
+  - first:
+      1: 100076
+    second: BarrelLong_MeshPart1
+  - first:
+      1: 100078
+    second: BarrelLong_MeshPart2
+  - first:
+      1: 100080
+    second: BarrelStandard
+  - first:
+      1: 100082
+    second: BarrelSubcompact
+  - first:
+      1: 100084
+    second: Battery
+  - first:
+      1: 100086
+    second: Battery.002
+  - first:
+      1: 100088
+    second: BatteryContainer
+  - first:
+      1: 100090
+    second: BatteryContainer.001
+  - first:
+      1: 100092
+    second: Blast Core Large
+  - first:
+      1: 100094
+    second: Blast Core Small
+  - first:
+      1: 100096
+    second: Grip Full
+  - first:
+      1: 100098
+    second: Grip Full Adjustable
+  - first:
+      1: 100100
+    second: Grip Full Folding
+  - first:
+      1: 100102
+    second: Grip Subcompact
+  - first:
+      1: 100104
+    second: IntegralParts
+  - first:
+      1: 100106
+    second: Sights
+  - first:
+      1: 100108
+    second: Trigger
+  - first:
+      1: 100110
+    second: Trigger Guard
+  - first:
+      1: 100112
+    second: Barrel Long_MeshPart0
+  - first:
+      1: 100114
+    second: Barrel Long_MeshPart1
+  - first:
+      1: 100116
+    second: Barrel Long_MeshPart2
+  - first:
+      1: 100118
+    second: Barrel Standard
+  - first:
+      1: 100120
+    second: Barrel Subcompact
+  - first:
+      1: 100122
+    second: BatteryContainer.003
+  - first:
+      1: 100124
+    second: Blast Coil Carbine
+  - first:
+      1: 100126
+    second: Blast Coil Carbine.001
+  - first:
+      1: 100128
+    second: Blast Coil PDW
+  - first:
+      1: 100130
+    second: Frame Carbine
+  - first:
+      1: 100132
+    second: Frame Extension
+  - first:
+      1: 100134
+    second: Frame PDW
+  - first:
+      1: 100136
+    second: Blast Coil Rifle
+  - first:
+      1: 100138
+    second: Frame Magnum
+  - first:
+      1: 100140
+    second: Frame Magnum_MeshPart0
+  - first:
+      1: 100142
+    second: Frame Magnum_MeshPart1
+  - first:
+      1: 100144
+    second: Frame Pistol
+  - first:
+      1: 100146
+    second: Frame Rifle
+  - first:
+      1: 100148
+    second: Frame Rifle_MeshPart0
+  - first:
+      1: 100150
+    second: Frame Rifle_MeshPart1
+  - first:
+      1: 100152
+    second: Frame Subcompact
+  - first:
+      1: 100154
+    second: Blast Coil Magnum
+  - first:
+      1: 100156
+    second: Blast Coil Pistol
+  - first:
+      1: 100158
+    second: Blast Coil Subcompact
+  - first:
+      1: 100160
+    second: Canister
+  - first:
+      1: 100162
+    second: Nozzle Charge
+  - first:
+      1: 100164
+    second: Nozzle Charge.001
+  - first:
+      1: 100166
+    second: Nozzle Charge.002
+  - first:
+      1: 100168
+    second: Nozzle Charge.003
+  - first:
+      1: 100170
+    second: Nozzle Charge.004
+  - first:
+      1: 100172
+    second: Nozzle Charge.005
+  - first:
+      1: 100174
+    second: Nozzle Spray
+  - first:
+      1: 100176
+    second: Nozzle Spray.001
+  - first:
+      1: 100178
+    second: Nozzle Spray.002
+  - first:
+      1: 100180
+    second: Nozzle Spray.003
+  - first:
+      1: 100182
+    second: Nozzle Spray.004
+  - first:
+      1: 100184
+    second: Nozzle Spray.005
+  - first:
+      1: 100186
+    second: Nozzle Stream
+  - first:
+      1: 100188
+    second: Nozzle Stream.001
+  - first:
+      1: 100190
+    second: Nozzle Stream.002
+  - first:
+      1: 100192
+    second: Nozzle Stream.003
+  - first:
+      1: 100194
+    second: Nozzle Stream.004
+  - first:
+      1: 100196
+    second: Nozzle Stream.005
+  - first:
+      1: 100198
+    second: Pressure Core
+  - first:
+      1: 100200
+    second: Pressurizer
+  - first:
+      1: 100202
+    second: 'Pressurizer '
+  - first:
+      1: 100204
+    second: Pressurizer .001
+  - first:
+      1: 100206
+    second: Pressurizer Carbine
+  - first:
+      1: 100208
+    second: Pressurizer Magnum
+  - first:
+      1: 100210
+    second: Pressurizer PDW
+  - first:
+      1: 100212
+    second: Pressurizer Pistol
+  - first:
+      1: 100214
+    second: Pressurizer Rifle
+  - first:
+      1: 100216
+    second: Pressurizer Subcompact
+  - first:
+      1: 100218
+    second: Pressurizer.001
+  - first:
+      1: 100220
+    second: Pressurizer.002
+  - first:
+      1: 100222
+    second: Pressurizer.003
+  - first:
+      1: 100224
+    second: Core Energy Large
+  - first:
+      1: 100226
+    second: Core Energy Small
+  - first:
+      1: 100228
+    second: Core Pressurizer
+  - first:
+      1: 100230
+    second: Grip Shootist
+  - first:
+      1: 100232
+    second: Axe_Long
+  - first:
+      1: 100234
+    second: Axe_Long.001
+  - first:
+      1: 100236
+    second: Axe_Mid
+  - first:
+      1: 100238
+    second: Axe_Mid.001
+  - first:
+      1: 100240
+    second: Axe_Short
+  - first:
+      1: 100242
+    second: Axe_Short.002
+  - first:
+      1: 100244
+    second: Barrel Reinforcement Long
+  - first:
+      1: 100246
+    second: Barrel Reinforcement Mid
+  - first:
+      1: 100248
+    second: Barrel Reinforcement Short
+  - first:
+      1: 100250
+    second: Base Gunblade
+  - first:
+      1: 100252
+    second: Base Pistol
+  - first:
+      1: 100254
+    second: Base Rifle
+  - first:
+      1: 100256
+    second: Blade Long
+  - first:
+      1: 100258
+    second: Blade Long.001
+  - first:
+      1: 100260
+    second: Blade Mid
+  - first:
+      1: 100262
+    second: Blade Short
+  - first:
+      1: 100264
+    second: Blade_Mid.001
+  - first:
+      1: 100266
+    second: Blade_Short.000
+  - first:
+      1: 100268
+    second: BladeGuardBase.000
+  - first:
+      1: 100270
+    second: BladeGuardBase.001
+  - first:
+      1: 100272
+    second: BladeGuardBase.002
+  - first:
+      1: 100274
+    second: BladeGuardBase.003
+  - first:
+      1: 100276
+    second: BladeGuardBase.004
+  - first:
+      1: 100278
+    second: BladeGuardBase.005
+  - first:
+      1: 100280
+    second: Control Nozzle Spray
+  - first:
+      1: 100282
+    second: Control Nozzle Spray.001
+  - first:
+      1: 100284
+    second: Control Nozzle Spray.002
+  - first:
+      1: 100286
+    second: Control Nozzle Stream
+  - first:
+      1: 100288
+    second: Control Nozzle Stream.001
+  - first:
+      1: 100290
+    second: Control Nozzle Stream.002
+  - first:
+      1: 100292
+    second: Discharge Port Long
+  - first:
+      1: 100294
+    second: Discharge Port Long_MeshPart0
+  - first:
+      1: 100296
+    second: Discharge Port Long_MeshPart1
+  - first:
+      1: 100298
+    second: Discharge Port Mid
+  - first:
+      1: 100300
+    second: Discharge Port Mid_MeshPart0
+  - first:
+      1: 100302
+    second: Discharge Port Mid_MeshPart1
+  - first:
+      1: 100304
+    second: Discharge Port Small
+  - first:
+      1: 100306
+    second: Extended.000
+  - first:
+      1: 100308
+    second: Extended.001
+  - first:
+      1: 100310
+    second: Extended.002
+  - first:
+      1: 100312
+    second: Extended.003
+  - first:
+      1: 100314
+    second: Extended.004
+  - first:
+      1: 100316
+    second: Extended.005
+  - first:
+      1: 100318
+    second: Fore Carbine
+  - first:
+      1: 100320
+    second: Fore Energy Gunblade
+  - first:
+      1: 100322
+    second: Fore Magnum
+  - first:
+      1: 100324
+    second: Fore Magnum_MeshPart0
+  - first:
+      1: 100326
+    second: Fore Magnum_MeshPart1
+  - first:
+      1: 100328
+    second: Fore PDW
+  - first:
+      1: 100330
+    second: Fore Pistol
+  - first:
+      1: 100332
+    second: Fore Pressure Gunblade
+  - first:
+      1: 100334
+    second: Fore Rifle
+  - first:
+      1: 100336
+    second: Fore Rifle_MeshPart0
+  - first:
+      1: 100338
+    second: Fore Rifle_MeshPart1
+  - first:
+      1: 100340
+    second: Fore Subcompact
+  - first:
+      1: 100342
+    second: Grip Base
+  - first:
+      1: 100344
+    second: Grip Long
+  - first:
+      1: 100346
+    second: Grip Short
+  - first:
+      1: 100348
+    second: IntegralParts.001
+  - first:
+      1: 100350
+    second: IntegralParts.002
+  - first:
+      1: 100352
+    second: Mace Long
+  - first:
+      1: 100354
+    second: Mace Mid
+  - first:
+      1: 100356
+    second: Mace Short
+  - first:
+      1: 100358
+    second: Mace_Long
+  - first:
+      1: 100360
+    second: Mace_Mid.001
+  - first:
+      1: 100362
+    second: Mace_Short
+  - first:
+      1: 100364
+    second: Pressure Chamber Long
+  - first:
+      1: 100366
+    second: Pressure Chamber Mid
+  - first:
+      1: 100368
+    second: Pressure Chamber Short
+  - first:
+      1: 100370
+    second: Rail
+  - first:
+      1: 100372
+    second: Retracted.000
+  - first:
+      1: 100374
+    second: Retracted.001
+  - first:
+      1: 100376
+    second: Retracted.002
+  - first:
+      1: 100378
+    second: Retracted.003
+  - first:
+      1: 100380
+    second: Retracted.004
+  - first:
+      1: 100382
+    second: Retracted.005
+  - first:
+      1: 100384
+    second: Trigger Guard.001
+  - first:
+      1: 100386
+    second: Trigger.002
+  - first:
+      1: 100388
+    second: Control Nozzle Charge
+  - first:
+      1: 100390
+    second: Control Nozzle Charge.001
+  - first:
+      1: 100392
+    second: Control Nozzle Charge.002
+  - first:
+      1: 100394
+    second: Fore Carbine_MeshPart0
+  - first:
+      1: 100396
+    second: Fore Carbine_MeshPart1
+  - first:
+      1: 100398
+    second: Sight Carbine
+  - first:
+      1: 100400
+    second: Sight PDW
+  - first:
+      1: 100402
+    second: Sight Rifle
+  - first:
+      1: 100404
+    second: Scope Housing
+  - first:
+      1: 100406
+    second: Sight Scope
+  - first:
+      4: 400000
+    second: Barrel.002
+  - first:
+      4: 400002
+    second: Battery.001
+  - first:
+      4: 400004
+    second: Battery.007
+  - first:
+      4: 400006
+    second: Battery.008
+  - first:
+      4: 400008
+    second: Folding Stock
+  - first:
+      4: 400010
+    second: Folding Stock Arm
+  - first:
+      4: 400012
+    second: Folding Stock Arm.001
+  - first:
+      4: 400014
+    second: gun.001
+  - first:
+      4: 400016
+    second: Mag Compartment.001
+  - first:
+      4: 400018
+    second: MasterBlaster
+  - first:
+      4: 400020
+    second: //RootNode
+  - first:
+      4: 400022
+    second: Pistol_Rail.001
+  - first:
+      4: 400024
+    second: Pistol_Rail.006
+  - first:
+      4: 400026
+    second: Sights.001
+  - first:
+      4: 400028
+    second: Trigger.001
+  - first:
+      4: 400030
+    second: TriggerGuard
+  - first:
+      4: 400032
+    second: Rail Top
+  - first:
+      4: 400034
+    second: Rail Side
+  - first:
+      4: 400036
+    second: Rail Side.001
+  - first:
+      4: 400038
+    second: Barrel Long
+  - first:
+      4: 400040
+    second: Barrel Mid
+  - first:
+      4: 400042
+    second: Barrel Short
+  - first:
+      4: 400044
+    second: Mag Compartment
+  - first:
+      4: 400046
+    second: Rails
+  - first:
+      4: 400048
+    second: Battery.000
+  - first:
+      4: 400050
+    second: Trigger.000
+  - first:
+      4: 400052
+    second: Stock Adjustable
+  - first:
+      4: 400054
+    second: Stock Folding
+  - first:
+      4: 400056
+    second: StockAdjust
+  - first:
+      4: 400058
+    second: Barrel Carbine
+  - first:
+      4: 400060
+    second: Barrel Carbine_MeshPart0
+  - first:
+      4: 400062
+    second: Barrel Carbine_MeshPart1
+  - first:
+      4: 400064
+    second: Barrel PDW
+  - first:
+      4: 400066
+    second: Barrel Rifle
+  - first:
+      4: 400068
+    second: Barrel Rifle_MeshPart0
+  - first:
+      4: 400070
+    second: Barrel Rifle_MeshPart1
+  - first:
+      4: 400072
+    second: BarrelLong
+  - first:
+      4: 400074
+    second: BarrelLong_MeshPart0
+  - first:
+      4: 400076
+    second: BarrelLong_MeshPart1
+  - first:
+      4: 400078
+    second: BarrelLong_MeshPart2
+  - first:
+      4: 400080
+    second: BarrelStandard
+  - first:
+      4: 400082
+    second: BarrelSubcompact
+  - first:
+      4: 400084
+    second: Battery
+  - first:
+      4: 400086
+    second: Battery.002
+  - first:
+      4: 400088
+    second: BatteryContainer
+  - first:
+      4: 400090
+    second: BatteryContainer.001
+  - first:
+      4: 400092
+    second: Blast Core Large
+  - first:
+      4: 400094
+    second: Blast Core Small
+  - first:
+      4: 400096
+    second: Grip Full
+  - first:
+      4: 400098
+    second: Grip Full Adjustable
+  - first:
+      4: 400100
+    second: Grip Full Folding
+  - first:
+      4: 400102
+    second: Grip Subcompact
+  - first:
+      4: 400104
+    second: IntegralParts
+  - first:
+      4: 400106
+    second: Sights
+  - first:
+      4: 400108
+    second: Trigger
+  - first:
+      4: 400110
+    second: Trigger Guard
+  - first:
+      4: 400112
+    second: Barrel Long_MeshPart0
+  - first:
+      4: 400114
+    second: Barrel Long_MeshPart1
+  - first:
+      4: 400116
+    second: Barrel Long_MeshPart2
+  - first:
+      4: 400118
+    second: Barrel Standard
+  - first:
+      4: 400120
+    second: Barrel Subcompact
+  - first:
+      4: 400122
+    second: BatteryContainer.003
+  - first:
+      4: 400124
+    second: Blast Coil Carbine
+  - first:
+      4: 400126
+    second: Blast Coil Carbine.001
+  - first:
+      4: 400128
+    second: Blast Coil PDW
+  - first:
+      4: 400130
+    second: Frame Carbine
+  - first:
+      4: 400132
+    second: Frame Extension
+  - first:
+      4: 400134
+    second: Frame PDW
+  - first:
+      4: 400136
+    second: Blast Coil Rifle
+  - first:
+      4: 400138
+    second: Frame Magnum
+  - first:
+      4: 400140
+    second: Frame Magnum_MeshPart0
+  - first:
+      4: 400142
+    second: Frame Magnum_MeshPart1
+  - first:
+      4: 400144
+    second: Frame Pistol
+  - first:
+      4: 400146
+    second: Frame Rifle
+  - first:
+      4: 400148
+    second: Frame Rifle_MeshPart0
+  - first:
+      4: 400150
+    second: Frame Rifle_MeshPart1
+  - first:
+      4: 400152
+    second: Frame Subcompact
+  - first:
+      4: 400154
+    second: Blast Coil Magnum
+  - first:
+      4: 400156
+    second: Blast Coil Pistol
+  - first:
+      4: 400158
+    second: Blast Coil Subcompact
+  - first:
+      4: 400160
+    second: Canister
+  - first:
+      4: 400162
+    second: Nozzle Charge
+  - first:
+      4: 400164
+    second: Nozzle Charge.001
+  - first:
+      4: 400166
+    second: Nozzle Charge.002
+  - first:
+      4: 400168
+    second: Nozzle Charge.003
+  - first:
+      4: 400170
+    second: Nozzle Charge.004
+  - first:
+      4: 400172
+    second: Nozzle Charge.005
+  - first:
+      4: 400174
+    second: Nozzle Spray
+  - first:
+      4: 400176
+    second: Nozzle Spray.001
+  - first:
+      4: 400178
+    second: Nozzle Spray.002
+  - first:
+      4: 400180
+    second: Nozzle Spray.003
+  - first:
+      4: 400182
+    second: Nozzle Spray.004
+  - first:
+      4: 400184
+    second: Nozzle Spray.005
+  - first:
+      4: 400186
+    second: Nozzle Stream
+  - first:
+      4: 400188
+    second: Nozzle Stream.001
+  - first:
+      4: 400190
+    second: Nozzle Stream.002
+  - first:
+      4: 400192
+    second: Nozzle Stream.003
+  - first:
+      4: 400194
+    second: Nozzle Stream.004
+  - first:
+      4: 400196
+    second: Nozzle Stream.005
+  - first:
+      4: 400198
+    second: Pressure Core
+  - first:
+      4: 400200
+    second: Pressurizer
+  - first:
+      4: 400202
+    second: 'Pressurizer '
+  - first:
+      4: 400204
+    second: Pressurizer .001
+  - first:
+      4: 400206
+    second: Pressurizer Carbine
+  - first:
+      4: 400208
+    second: Pressurizer Magnum
+  - first:
+      4: 400210
+    second: Pressurizer PDW
+  - first:
+      4: 400212
+    second: Pressurizer Pistol
+  - first:
+      4: 400214
+    second: Pressurizer Rifle
+  - first:
+      4: 400216
+    second: Pressurizer Subcompact
+  - first:
+      4: 400218
+    second: Pressurizer.001
+  - first:
+      4: 400220
+    second: Pressurizer.002
+  - first:
+      4: 400222
+    second: Pressurizer.003
+  - first:
+      4: 400224
+    second: Core Energy Large
+  - first:
+      4: 400226
+    second: Core Energy Small
+  - first:
+      4: 400228
+    second: Core Pressurizer
+  - first:
+      4: 400230
+    second: Grip Shootist
+  - first:
+      4: 400232
+    second: Axe_Long
+  - first:
+      4: 400234
+    second: Axe_Long.001
+  - first:
+      4: 400236
+    second: Axe_Mid
+  - first:
+      4: 400238
+    second: Axe_Mid.001
+  - first:
+      4: 400240
+    second: Axe_Short
+  - first:
+      4: 400242
+    second: Axe_Short.002
+  - first:
+      4: 400244
+    second: Barrel Reinforcement Long
+  - first:
+      4: 400246
+    second: Barrel Reinforcement Mid
+  - first:
+      4: 400248
+    second: Barrel Reinforcement Short
+  - first:
+      4: 400250
+    second: Base Gunblade
+  - first:
+      4: 400252
+    second: Base Pistol
+  - first:
+      4: 400254
+    second: Base Rifle
+  - first:
+      4: 400256
+    second: Blade Long
+  - first:
+      4: 400258
+    second: Blade Long.001
+  - first:
+      4: 400260
+    second: Blade Mid
+  - first:
+      4: 400262
+    second: Blade Short
+  - first:
+      4: 400264
+    second: Blade_Mid.001
+  - first:
+      4: 400266
+    second: Blade_Short.000
+  - first:
+      4: 400268
+    second: BladeGuardBase.000
+  - first:
+      4: 400270
+    second: BladeGuardBase.001
+  - first:
+      4: 400272
+    second: BladeGuardBase.002
+  - first:
+      4: 400274
+    second: BladeGuardBase.003
+  - first:
+      4: 400276
+    second: BladeGuardBase.004
+  - first:
+      4: 400278
+    second: BladeGuardBase.005
+  - first:
+      4: 400280
+    second: Control Nozzle Spray
+  - first:
+      4: 400282
+    second: Control Nozzle Spray.001
+  - first:
+      4: 400284
+    second: Control Nozzle Spray.002
+  - first:
+      4: 400286
+    second: Control Nozzle Stream
+  - first:
+      4: 400288
+    second: Control Nozzle Stream.001
+  - first:
+      4: 400290
+    second: Control Nozzle Stream.002
+  - first:
+      4: 400292
+    second: Discharge Port Long
+  - first:
+      4: 400294
+    second: Discharge Port Long_MeshPart0
+  - first:
+      4: 400296
+    second: Discharge Port Long_MeshPart1
+  - first:
+      4: 400298
+    second: Discharge Port Mid
+  - first:
+      4: 400300
+    second: Discharge Port Mid_MeshPart0
+  - first:
+      4: 400302
+    second: Discharge Port Mid_MeshPart1
+  - first:
+      4: 400304
+    second: Discharge Port Small
+  - first:
+      4: 400306
+    second: Extended.000
+  - first:
+      4: 400308
+    second: Extended.001
+  - first:
+      4: 400310
+    second: Extended.002
+  - first:
+      4: 400312
+    second: Extended.003
+  - first:
+      4: 400314
+    second: Extended.004
+  - first:
+      4: 400316
+    second: Extended.005
+  - first:
+      4: 400318
+    second: Fore Carbine
+  - first:
+      4: 400320
+    second: Fore Energy Gunblade
+  - first:
+      4: 400322
+    second: Fore Magnum
+  - first:
+      4: 400324
+    second: Fore Magnum_MeshPart0
+  - first:
+      4: 400326
+    second: Fore Magnum_MeshPart1
+  - first:
+      4: 400328
+    second: Fore PDW
+  - first:
+      4: 400330
+    second: Fore Pistol
+  - first:
+      4: 400332
+    second: Fore Pressure Gunblade
+  - first:
+      4: 400334
+    second: Fore Rifle
+  - first:
+      4: 400336
+    second: Fore Rifle_MeshPart0
+  - first:
+      4: 400338
+    second: Fore Rifle_MeshPart1
+  - first:
+      4: 400340
+    second: Fore Subcompact
+  - first:
+      4: 400342
+    second: Grip Base
+  - first:
+      4: 400344
+    second: Grip Long
+  - first:
+      4: 400346
+    second: Grip Short
+  - first:
+      4: 400348
+    second: IntegralParts.001
+  - first:
+      4: 400350
+    second: IntegralParts.002
+  - first:
+      4: 400352
+    second: Mace Long
+  - first:
+      4: 400354
+    second: Mace Mid
+  - first:
+      4: 400356
+    second: Mace Short
+  - first:
+      4: 400358
+    second: Mace_Long
+  - first:
+      4: 400360
+    second: Mace_Mid.001
+  - first:
+      4: 400362
+    second: Mace_Short
+  - first:
+      4: 400364
+    second: Pressure Chamber Long
+  - first:
+      4: 400366
+    second: Pressure Chamber Mid
+  - first:
+      4: 400368
+    second: Pressure Chamber Short
+  - first:
+      4: 400370
+    second: Rail
+  - first:
+      4: 400372
+    second: Retracted.000
+  - first:
+      4: 400374
+    second: Retracted.001
+  - first:
+      4: 400376
+    second: Retracted.002
+  - first:
+      4: 400378
+    second: Retracted.003
+  - first:
+      4: 400380
+    second: Retracted.004
+  - first:
+      4: 400382
+    second: Retracted.005
+  - first:
+      4: 400384
+    second: Trigger Guard.001
+  - first:
+      4: 400386
+    second: Trigger.002
+  - first:
+      4: 400388
+    second: Control Nozzle Charge
+  - first:
+      4: 400390
+    second: Control Nozzle Charge.001
+  - first:
+      4: 400392
+    second: Control Nozzle Charge.002
+  - first:
+      4: 400394
+    second: Fore Carbine_MeshPart0
+  - first:
+      4: 400396
+    second: Fore Carbine_MeshPart1
+  - first:
+      4: 400398
+    second: Sight Carbine
+  - first:
+      4: 400400
+    second: Sight PDW
+  - first:
+      4: 400402
+    second: Sight Rifle
+  - first:
+      4: 400404
+    second: Scope Housing
+  - first:
+      4: 400406
+    second: Sight Scope
+  - first:
+      23: 2300000
+    second: Barrel.002
+  - first:
+      23: 2300002
+    second: Battery.001
+  - first:
+      23: 2300004
+    second: Battery.007
+  - first:
+      23: 2300006
+    second: Battery.008
+  - first:
+      23: 2300008
+    second: Folding Stock
+  - first:
+      23: 2300010
+    second: Folding Stock Arm
+  - first:
+      23: 2300012
+    second: Folding Stock Arm.001
+  - first:
+      23: 2300014
+    second: gun.001
+  - first:
+      23: 2300016
+    second: Mag Compartment.001
+  - first:
+      23: 2300018
+    second: MasterBlaster
+  - first:
+      23: 2300020
+    second: Pistol_Rail.001
+  - first:
+      23: 2300022
+    second: Pistol_Rail.006
+  - first:
+      23: 2300024
+    second: Sights.001
+  - first:
+      23: 2300026
+    second: Trigger.001
+  - first:
+      23: 2300028
+    second: TriggerGuard
+  - first:
+      23: 2300030
+    second: Rail Top
+  - first:
+      23: 2300032
+    second: Rail Side
+  - first:
+      23: 2300034
+    second: Rail Side.001
+  - first:
+      23: 2300036
+    second: Barrel Long
+  - first:
+      23: 2300038
+    second: Barrel Mid
+  - first:
+      23: 2300040
+    second: Barrel Short
+  - first:
+      23: 2300042
+    second: Mag Compartment
+  - first:
+      23: 2300044
+    second: Rails
+  - first:
+      23: 2300046
+    second: Battery.000
+  - first:
+      23: 2300048
+    second: Trigger.000
+  - first:
+      23: 2300050
+    second: Stock Adjustable
+  - first:
+      23: 2300052
+    second: Stock Folding
+  - first:
+      23: 2300054
+    second: StockAdjust
+  - first:
+      23: 2300056
+    second: Barrel Carbine_MeshPart0
+  - first:
+      23: 2300058
+    second: Barrel Carbine_MeshPart1
+  - first:
+      23: 2300060
+    second: Barrel PDW
+  - first:
+      23: 2300062
+    second: Barrel Rifle_MeshPart0
+  - first:
+      23: 2300064
+    second: Barrel Rifle_MeshPart1
+  - first:
+      23: 2300066
+    second: BarrelLong_MeshPart0
+  - first:
+      23: 2300068
+    second: BarrelLong_MeshPart1
+  - first:
+      23: 2300070
+    second: BarrelLong_MeshPart2
+  - first:
+      23: 2300072
+    second: BarrelStandard
+  - first:
+      23: 2300074
+    second: BarrelSubcompact
+  - first:
+      23: 2300076
+    second: Battery
+  - first:
+      23: 2300078
+    second: Battery.002
+  - first:
+      23: 2300080
+    second: BatteryContainer
+  - first:
+      23: 2300082
+    second: BatteryContainer.001
+  - first:
+      23: 2300084
+    second: Blast Core Large
+  - first:
+      23: 2300086
+    second: Blast Core Small
+  - first:
+      23: 2300088
+    second: Grip Full
+  - first:
+      23: 2300090
+    second: Grip Full Adjustable
+  - first:
+      23: 2300092
+    second: Grip Full Folding
+  - first:
+      23: 2300094
+    second: Grip Subcompact
+  - first:
+      23: 2300096
+    second: IntegralParts
+  - first:
+      23: 2300098
+    second: Sights
+  - first:
+      23: 2300100
+    second: Trigger
+  - first:
+      23: 2300102
+    second: Trigger Guard
+  - first:
+      23: 2300104
+    second: Barrel Long_MeshPart0
+  - first:
+      23: 2300106
+    second: Barrel Long_MeshPart1
+  - first:
+      23: 2300108
+    second: Barrel Long_MeshPart2
+  - first:
+      23: 2300110
+    second: Barrel Standard
+  - first:
+      23: 2300112
+    second: Barrel Subcompact
+  - first:
+      23: 2300114
+    second: BatteryContainer.003
+  - first:
+      23: 2300116
+    second: Blast Coil Carbine
+  - first:
+      23: 2300118
+    second: Blast Coil Carbine.001
+  - first:
+      23: 2300120
+    second: Blast Coil PDW
+  - first:
+      23: 2300122
+    second: Frame Carbine
+  - first:
+      23: 2300124
+    second: Frame Extension
+  - first:
+      23: 2300126
+    second: Frame PDW
+  - first:
+      23: 2300128
+    second: Blast Coil Rifle
+  - first:
+      23: 2300130
+    second: Frame Magnum_MeshPart0
+  - first:
+      23: 2300132
+    second: Frame Magnum_MeshPart1
+  - first:
+      23: 2300134
+    second: Frame Pistol
+  - first:
+      23: 2300136
+    second: Frame Rifle_MeshPart0
+  - first:
+      23: 2300138
+    second: Frame Rifle_MeshPart1
+  - first:
+      23: 2300140
+    second: Frame Subcompact
+  - first:
+      23: 2300142
+    second: Blast Coil Magnum
+  - first:
+      23: 2300144
+    second: Blast Coil Pistol
+  - first:
+      23: 2300146
+    second: Blast Coil Subcompact
+  - first:
+      23: 2300148
+    second: Canister
+  - first:
+      23: 2300150
+    second: Nozzle Charge
+  - first:
+      23: 2300152
+    second: Nozzle Charge.001
+  - first:
+      23: 2300154
+    second: Nozzle Charge.002
+  - first:
+      23: 2300156
+    second: Nozzle Charge.003
+  - first:
+      23: 2300158
+    second: Nozzle Charge.004
+  - first:
+      23: 2300160
+    second: Nozzle Charge.005
+  - first:
+      23: 2300162
+    second: Nozzle Spray
+  - first:
+      23: 2300164
+    second: Nozzle Spray.001
+  - first:
+      23: 2300166
+    second: Nozzle Spray.002
+  - first:
+      23: 2300168
+    second: Nozzle Spray.003
+  - first:
+      23: 2300170
+    second: Nozzle Spray.004
+  - first:
+      23: 2300172
+    second: Nozzle Spray.005
+  - first:
+      23: 2300174
+    second: Nozzle Stream
+  - first:
+      23: 2300176
+    second: Nozzle Stream.001
+  - first:
+      23: 2300178
+    second: Nozzle Stream.002
+  - first:
+      23: 2300180
+    second: Nozzle Stream.003
+  - first:
+      23: 2300182
+    second: Nozzle Stream.004
+  - first:
+      23: 2300184
+    second: Nozzle Stream.005
+  - first:
+      23: 2300186
+    second: Pressure Core
+  - first:
+      23: 2300188
+    second: Pressurizer
+  - first:
+      23: 2300190
+    second: 'Pressurizer '
+  - first:
+      23: 2300192
+    second: Pressurizer .001
+  - first:
+      23: 2300194
+    second: Pressurizer Carbine
+  - first:
+      23: 2300196
+    second: Pressurizer Magnum
+  - first:
+      23: 2300198
+    second: Pressurizer PDW
+  - first:
+      23: 2300200
+    second: Pressurizer Pistol
+  - first:
+      23: 2300202
+    second: Pressurizer Rifle
+  - first:
+      23: 2300204
+    second: Pressurizer Subcompact
+  - first:
+      23: 2300206
+    second: Pressurizer.001
+  - first:
+      23: 2300208
+    second: Pressurizer.002
+  - first:
+      23: 2300210
+    second: Pressurizer.003
+  - first:
+      23: 2300212
+    second: Core Energy Large
+  - first:
+      23: 2300214
+    second: Core Energy Small
+  - first:
+      23: 2300216
+    second: Core Pressurizer
+  - first:
+      23: 2300218
+    second: Grip Shootist
+  - first:
+      23: 2300220
+    second: Axe_Long
+  - first:
+      23: 2300222
+    second: Axe_Long.001
+  - first:
+      23: 2300224
+    second: Axe_Mid
+  - first:
+      23: 2300226
+    second: Axe_Mid.001
+  - first:
+      23: 2300228
+    second: Axe_Short
+  - first:
+      23: 2300230
+    second: Axe_Short.002
+  - first:
+      23: 2300232
+    second: Barrel Reinforcement Long
+  - first:
+      23: 2300234
+    second: Barrel Reinforcement Mid
+  - first:
+      23: 2300236
+    second: Barrel Reinforcement Short
+  - first:
+      23: 2300238
+    second: Base Gunblade
+  - first:
+      23: 2300240
+    second: Base Pistol
+  - first:
+      23: 2300242
+    second: Base Rifle
+  - first:
+      23: 2300244
+    second: Blade Long
+  - first:
+      23: 2300246
+    second: Blade Long.001
+  - first:
+      23: 2300248
+    second: Blade Mid
+  - first:
+      23: 2300250
+    second: Blade Short
+  - first:
+      23: 2300252
+    second: Blade_Mid.001
+  - first:
+      23: 2300254
+    second: Blade_Short.000
+  - first:
+      23: 2300256
+    second: BladeGuardBase.000
+  - first:
+      23: 2300258
+    second: BladeGuardBase.001
+  - first:
+      23: 2300260
+    second: BladeGuardBase.002
+  - first:
+      23: 2300262
+    second: BladeGuardBase.003
+  - first:
+      23: 2300264
+    second: BladeGuardBase.004
+  - first:
+      23: 2300266
+    second: BladeGuardBase.005
+  - first:
+      23: 2300268
+    second: Control Nozzle Spray
+  - first:
+      23: 2300270
+    second: Control Nozzle Spray.001
+  - first:
+      23: 2300272
+    second: Control Nozzle Spray.002
+  - first:
+      23: 2300274
+    second: Control Nozzle Stream
+  - first:
+      23: 2300276
+    second: Control Nozzle Stream.001
+  - first:
+      23: 2300278
+    second: Control Nozzle Stream.002
+  - first:
+      23: 2300280
+    second: Discharge Port Long_MeshPart0
+  - first:
+      23: 2300282
+    second: Discharge Port Long_MeshPart1
+  - first:
+      23: 2300284
+    second: Discharge Port Mid_MeshPart0
+  - first:
+      23: 2300286
+    second: Discharge Port Mid_MeshPart1
+  - first:
+      23: 2300288
+    second: Discharge Port Small
+  - first:
+      23: 2300290
+    second: Extended.000
+  - first:
+      23: 2300292
+    second: Extended.001
+  - first:
+      23: 2300294
+    second: Extended.002
+  - first:
+      23: 2300296
+    second: Extended.003
+  - first:
+      23: 2300298
+    second: Extended.004
+  - first:
+      23: 2300300
+    second: Extended.005
+  - first:
+      23: 2300302
+    second: Fore Carbine
+  - first:
+      23: 2300304
+    second: Fore Energy Gunblade
+  - first:
+      23: 2300306
+    second: Fore Magnum_MeshPart0
+  - first:
+      23: 2300308
+    second: Fore Magnum_MeshPart1
+  - first:
+      23: 2300310
+    second: Fore PDW
+  - first:
+      23: 2300312
+    second: Fore Pistol
+  - first:
+      23: 2300314
+    second: Fore Pressure Gunblade
+  - first:
+      23: 2300316
+    second: Fore Rifle_MeshPart0
+  - first:
+      23: 2300318
+    second: Fore Rifle_MeshPart1
+  - first:
+      23: 2300320
+    second: Fore Subcompact
+  - first:
+      23: 2300322
+    second: Grip Base
+  - first:
+      23: 2300324
+    second: Grip Long
+  - first:
+      23: 2300326
+    second: Grip Short
+  - first:
+      23: 2300328
+    second: IntegralParts.001
+  - first:
+      23: 2300330
+    second: IntegralParts.002
+  - first:
+      23: 2300332
+    second: Mace Long
+  - first:
+      23: 2300334
+    second: Mace Mid
+  - first:
+      23: 2300336
+    second: Mace Short
+  - first:
+      23: 2300338
+    second: Mace_Long
+  - first:
+      23: 2300340
+    second: Mace_Mid.001
+  - first:
+      23: 2300342
+    second: Mace_Short
+  - first:
+      23: 2300344
+    second: Pressure Chamber Long
+  - first:
+      23: 2300346
+    second: Pressure Chamber Mid
+  - first:
+      23: 2300348
+    second: Pressure Chamber Short
+  - first:
+      23: 2300350
+    second: Rail
+  - first:
+      23: 2300352
+    second: Retracted.000
+  - first:
+      23: 2300354
+    second: Retracted.001
+  - first:
+      23: 2300356
+    second: Retracted.002
+  - first:
+      23: 2300358
+    second: Retracted.003
+  - first:
+      23: 2300360
+    second: Retracted.004
+  - first:
+      23: 2300362
+    second: Retracted.005
+  - first:
+      23: 2300364
+    second: Trigger Guard.001
+  - first:
+      23: 2300366
+    second: Trigger.002
+  - first:
+      23: 2300368
+    second: Control Nozzle Charge
+  - first:
+      23: 2300370
+    second: Control Nozzle Charge.001
+  - first:
+      23: 2300372
+    second: Control Nozzle Charge.002
+  - first:
+      23: 2300374
+    second: Fore Carbine_MeshPart0
+  - first:
+      23: 2300376
+    second: Fore Carbine_MeshPart1
+  - first:
+      23: 2300378
+    second: Sight Carbine
+  - first:
+      23: 2300380
+    second: Sight PDW
+  - first:
+      23: 2300382
+    second: Sight Rifle
+  - first:
+      23: 2300384
+    second: Scope Housing
+  - first:
+      23: 2300386
+    second: Sight Scope
+  - first:
+      33: 3300000
+    second: Barrel.002
+  - first:
+      33: 3300002
+    second: Battery.001
+  - first:
+      33: 3300004
+    second: Battery.007
+  - first:
+      33: 3300006
+    second: Battery.008
+  - first:
+      33: 3300008
+    second: Folding Stock
+  - first:
+      33: 3300010
+    second: Folding Stock Arm
+  - first:
+      33: 3300012
+    second: Folding Stock Arm.001
+  - first:
+      33: 3300014
+    second: gun.001
+  - first:
+      33: 3300016
+    second: Mag Compartment.001
+  - first:
+      33: 3300018
+    second: MasterBlaster
+  - first:
+      33: 3300020
+    second: Pistol_Rail.001
+  - first:
+      33: 3300022
+    second: Pistol_Rail.006
+  - first:
+      33: 3300024
+    second: Sights.001
+  - first:
+      33: 3300026
+    second: Trigger.001
+  - first:
+      33: 3300028
+    second: TriggerGuard
+  - first:
+      33: 3300030
+    second: Rail Top
+  - first:
+      33: 3300032
+    second: Rail Side
+  - first:
+      33: 3300034
+    second: Rail Side.001
+  - first:
+      33: 3300036
+    second: Barrel Long
+  - first:
+      33: 3300038
+    second: Barrel Mid
+  - first:
+      33: 3300040
+    second: Barrel Short
+  - first:
+      33: 3300042
+    second: Mag Compartment
+  - first:
+      33: 3300044
+    second: Rails
+  - first:
+      33: 3300046
+    second: Battery.000
+  - first:
+      33: 3300048
+    second: Trigger.000
+  - first:
+      33: 3300050
+    second: Stock Adjustable
+  - first:
+      33: 3300052
+    second: Stock Folding
+  - first:
+      33: 3300054
+    second: StockAdjust
+  - first:
+      33: 3300056
+    second: Barrel Carbine_MeshPart0
+  - first:
+      33: 3300058
+    second: Barrel Carbine_MeshPart1
+  - first:
+      33: 3300060
+    second: Barrel PDW
+  - first:
+      33: 3300062
+    second: Barrel Rifle_MeshPart0
+  - first:
+      33: 3300064
+    second: Barrel Rifle_MeshPart1
+  - first:
+      33: 3300066
+    second: BarrelLong_MeshPart0
+  - first:
+      33: 3300068
+    second: BarrelLong_MeshPart1
+  - first:
+      33: 3300070
+    second: BarrelLong_MeshPart2
+  - first:
+      33: 3300072
+    second: BarrelStandard
+  - first:
+      33: 3300074
+    second: BarrelSubcompact
+  - first:
+      33: 3300076
+    second: Battery
+  - first:
+      33: 3300078
+    second: Battery.002
+  - first:
+      33: 3300080
+    second: BatteryContainer
+  - first:
+      33: 3300082
+    second: BatteryContainer.001
+  - first:
+      33: 3300084
+    second: Blast Core Large
+  - first:
+      33: 3300086
+    second: Blast Core Small
+  - first:
+      33: 3300088
+    second: Grip Full
+  - first:
+      33: 3300090
+    second: Grip Full Adjustable
+  - first:
+      33: 3300092
+    second: Grip Full Folding
+  - first:
+      33: 3300094
+    second: Grip Subcompact
+  - first:
+      33: 3300096
+    second: IntegralParts
+  - first:
+      33: 3300098
+    second: Sights
+  - first:
+      33: 3300100
+    second: Trigger
+  - first:
+      33: 3300102
+    second: Trigger Guard
+  - first:
+      33: 3300104
+    second: Barrel Long_MeshPart0
+  - first:
+      33: 3300106
+    second: Barrel Long_MeshPart1
+  - first:
+      33: 3300108
+    second: Barrel Long_MeshPart2
+  - first:
+      33: 3300110
+    second: Barrel Standard
+  - first:
+      33: 3300112
+    second: Barrel Subcompact
+  - first:
+      33: 3300114
+    second: BatteryContainer.003
+  - first:
+      33: 3300116
+    second: Blast Coil Carbine
+  - first:
+      33: 3300118
+    second: Blast Coil Carbine.001
+  - first:
+      33: 3300120
+    second: Blast Coil PDW
+  - first:
+      33: 3300122
+    second: Frame Carbine
+  - first:
+      33: 3300124
+    second: Frame Extension
+  - first:
+      33: 3300126
+    second: Frame PDW
+  - first:
+      33: 3300128
+    second: Blast Coil Rifle
+  - first:
+      33: 3300130
+    second: Frame Magnum_MeshPart0
+  - first:
+      33: 3300132
+    second: Frame Magnum_MeshPart1
+  - first:
+      33: 3300134
+    second: Frame Pistol
+  - first:
+      33: 3300136
+    second: Frame Rifle_MeshPart0
+  - first:
+      33: 3300138
+    second: Frame Rifle_MeshPart1
+  - first:
+      33: 3300140
+    second: Frame Subcompact
+  - first:
+      33: 3300142
+    second: Blast Coil Magnum
+  - first:
+      33: 3300144
+    second: Blast Coil Pistol
+  - first:
+      33: 3300146
+    second: Blast Coil Subcompact
+  - first:
+      33: 3300148
+    second: Canister
+  - first:
+      33: 3300150
+    second: Nozzle Charge
+  - first:
+      33: 3300152
+    second: Nozzle Charge.001
+  - first:
+      33: 3300154
+    second: Nozzle Charge.002
+  - first:
+      33: 3300156
+    second: Nozzle Charge.003
+  - first:
+      33: 3300158
+    second: Nozzle Charge.004
+  - first:
+      33: 3300160
+    second: Nozzle Charge.005
+  - first:
+      33: 3300162
+    second: Nozzle Spray
+  - first:
+      33: 3300164
+    second: Nozzle Spray.001
+  - first:
+      33: 3300166
+    second: Nozzle Spray.002
+  - first:
+      33: 3300168
+    second: Nozzle Spray.003
+  - first:
+      33: 3300170
+    second: Nozzle Spray.004
+  - first:
+      33: 3300172
+    second: Nozzle Spray.005
+  - first:
+      33: 3300174
+    second: Nozzle Stream
+  - first:
+      33: 3300176
+    second: Nozzle Stream.001
+  - first:
+      33: 3300178
+    second: Nozzle Stream.002
+  - first:
+      33: 3300180
+    second: Nozzle Stream.003
+  - first:
+      33: 3300182
+    second: Nozzle Stream.004
+  - first:
+      33: 3300184
+    second: Nozzle Stream.005
+  - first:
+      33: 3300186
+    second: Pressure Core
+  - first:
+      33: 3300188
+    second: Pressurizer
+  - first:
+      33: 3300190
+    second: 'Pressurizer '
+  - first:
+      33: 3300192
+    second: Pressurizer .001
+  - first:
+      33: 3300194
+    second: Pressurizer Carbine
+  - first:
+      33: 3300196
+    second: Pressurizer Magnum
+  - first:
+      33: 3300198
+    second: Pressurizer PDW
+  - first:
+      33: 3300200
+    second: Pressurizer Pistol
+  - first:
+      33: 3300202
+    second: Pressurizer Rifle
+  - first:
+      33: 3300204
+    second: Pressurizer Subcompact
+  - first:
+      33: 3300206
+    second: Pressurizer.001
+  - first:
+      33: 3300208
+    second: Pressurizer.002
+  - first:
+      33: 3300210
+    second: Pressurizer.003
+  - first:
+      33: 3300212
+    second: Core Energy Large
+  - first:
+      33: 3300214
+    second: Core Energy Small
+  - first:
+      33: 3300216
+    second: Core Pressurizer
+  - first:
+      33: 3300218
+    second: Grip Shootist
+  - first:
+      33: 3300220
+    second: Axe_Long
+  - first:
+      33: 3300222
+    second: Axe_Long.001
+  - first:
+      33: 3300224
+    second: Axe_Mid
+  - first:
+      33: 3300226
+    second: Axe_Mid.001
+  - first:
+      33: 3300228
+    second: Axe_Short
+  - first:
+      33: 3300230
+    second: Axe_Short.002
+  - first:
+      33: 3300232
+    second: Barrel Reinforcement Long
+  - first:
+      33: 3300234
+    second: Barrel Reinforcement Mid
+  - first:
+      33: 3300236
+    second: Barrel Reinforcement Short
+  - first:
+      33: 3300238
+    second: Base Gunblade
+  - first:
+      33: 3300240
+    second: Base Pistol
+  - first:
+      33: 3300242
+    second: Base Rifle
+  - first:
+      33: 3300244
+    second: Blade Long
+  - first:
+      33: 3300246
+    second: Blade Long.001
+  - first:
+      33: 3300248
+    second: Blade Mid
+  - first:
+      33: 3300250
+    second: Blade Short
+  - first:
+      33: 3300252
+    second: Blade_Mid.001
+  - first:
+      33: 3300254
+    second: Blade_Short.000
+  - first:
+      33: 3300256
+    second: BladeGuardBase.000
+  - first:
+      33: 3300258
+    second: BladeGuardBase.001
+  - first:
+      33: 3300260
+    second: BladeGuardBase.002
+  - first:
+      33: 3300262
+    second: BladeGuardBase.003
+  - first:
+      33: 3300264
+    second: BladeGuardBase.004
+  - first:
+      33: 3300266
+    second: BladeGuardBase.005
+  - first:
+      33: 3300268
+    second: Control Nozzle Spray
+  - first:
+      33: 3300270
+    second: Control Nozzle Spray.001
+  - first:
+      33: 3300272
+    second: Control Nozzle Spray.002
+  - first:
+      33: 3300274
+    second: Control Nozzle Stream
+  - first:
+      33: 3300276
+    second: Control Nozzle Stream.001
+  - first:
+      33: 3300278
+    second: Control Nozzle Stream.002
+  - first:
+      33: 3300280
+    second: Discharge Port Long_MeshPart0
+  - first:
+      33: 3300282
+    second: Discharge Port Long_MeshPart1
+  - first:
+      33: 3300284
+    second: Discharge Port Mid_MeshPart0
+  - first:
+      33: 3300286
+    second: Discharge Port Mid_MeshPart1
+  - first:
+      33: 3300288
+    second: Discharge Port Small
+  - first:
+      33: 3300290
+    second: Extended.000
+  - first:
+      33: 3300292
+    second: Extended.001
+  - first:
+      33: 3300294
+    second: Extended.002
+  - first:
+      33: 3300296
+    second: Extended.003
+  - first:
+      33: 3300298
+    second: Extended.004
+  - first:
+      33: 3300300
+    second: Extended.005
+  - first:
+      33: 3300302
+    second: Fore Carbine
+  - first:
+      33: 3300304
+    second: Fore Energy Gunblade
+  - first:
+      33: 3300306
+    second: Fore Magnum_MeshPart0
+  - first:
+      33: 3300308
+    second: Fore Magnum_MeshPart1
+  - first:
+      33: 3300310
+    second: Fore PDW
+  - first:
+      33: 3300312
+    second: Fore Pistol
+  - first:
+      33: 3300314
+    second: Fore Pressure Gunblade
+  - first:
+      33: 3300316
+    second: Fore Rifle_MeshPart0
+  - first:
+      33: 3300318
+    second: Fore Rifle_MeshPart1
+  - first:
+      33: 3300320
+    second: Fore Subcompact
+  - first:
+      33: 3300322
+    second: Grip Base
+  - first:
+      33: 3300324
+    second: Grip Long
+  - first:
+      33: 3300326
+    second: Grip Short
+  - first:
+      33: 3300328
+    second: IntegralParts.001
+  - first:
+      33: 3300330
+    second: IntegralParts.002
+  - first:
+      33: 3300332
+    second: Mace Long
+  - first:
+      33: 3300334
+    second: Mace Mid
+  - first:
+      33: 3300336
+    second: Mace Short
+  - first:
+      33: 3300338
+    second: Mace_Long
+  - first:
+      33: 3300340
+    second: Mace_Mid.001
+  - first:
+      33: 3300342
+    second: Mace_Short
+  - first:
+      33: 3300344
+    second: Pressure Chamber Long
+  - first:
+      33: 3300346
+    second: Pressure Chamber Mid
+  - first:
+      33: 3300348
+    second: Pressure Chamber Short
+  - first:
+      33: 3300350
+    second: Rail
+  - first:
+      33: 3300352
+    second: Retracted.000
+  - first:
+      33: 3300354
+    second: Retracted.001
+  - first:
+      33: 3300356
+    second: Retracted.002
+  - first:
+      33: 3300358
+    second: Retracted.003
+  - first:
+      33: 3300360
+    second: Retracted.004
+  - first:
+      33: 3300362
+    second: Retracted.005
+  - first:
+      33: 3300364
+    second: Trigger Guard.001
+  - first:
+      33: 3300366
+    second: Trigger.002
+  - first:
+      33: 3300368
+    second: Control Nozzle Charge
+  - first:
+      33: 3300370
+    second: Control Nozzle Charge.001
+  - first:
+      33: 3300372
+    second: Control Nozzle Charge.002
+  - first:
+      33: 3300374
+    second: Fore Carbine_MeshPart0
+  - first:
+      33: 3300376
+    second: Fore Carbine_MeshPart1
+  - first:
+      33: 3300378
+    second: Sight Carbine
+  - first:
+      33: 3300380
+    second: Sight PDW
+  - first:
+      33: 3300382
+    second: Sight Rifle
+  - first:
+      33: 3300384
+    second: Scope Housing
+  - first:
+      33: 3300386
+    second: Sight Scope
+  - first:
+      43: 4300000
+    second: gun.001
+  - first:
+      43: 4300002
+    second: Pistol_Rail.001
+  - first:
+      43: 4300004
+    second: Pistol_Rail.006
+  - first:
+      43: 4300006
+    second: MasterBlaster
+  - first:
+      43: 4300008
+    second: Mag Compartment.001
+  - first:
+      43: 4300010
+    second: Trigger.001
+  - first:
+      43: 4300012
+    second: TriggerGuard
+  - first:
+      43: 4300014
+    second: Sights.001
+  - first:
+      43: 4300016
+    second: Barrel.002
+  - first:
+      43: 4300018
+    second: Battery.001
+  - first:
+      43: 4300020
+    second: Battery.007
+  - first:
+      43: 4300022
+    second: Battery.008
+  - first:
+      43: 4300024
+    second: Folding Stock
+  - first:
+      43: 4300026
+    second: Folding Stock Arm.001
+  - first:
+      43: 4300028
+    second: Folding Stock Arm
+  - first:
+      43: 4300030
+    second: Rail Top
+  - first:
+      43: 4300032
+    second: Rail Side
+  - first:
+      43: 4300034
+    second: Rail Side.001
+  - first:
+      43: 4300036
+    second: Barrel Long
+  - first:
+      43: 4300038
+    second: Barrel Short
+  - first:
+      43: 4300040
+    second: Barrel Mid
+  - first:
+      43: 4300042
+    second: Rails
+  - first:
+      43: 4300044
+    second: Mag Compartment
+  - first:
+      43: 4300046
+    second: Battery.000
+  - first:
+      43: 4300048
+    second: Trigger.000
+  - first:
+      43: 4300050
+    second: Stock Adjustable
+  - first:
+      43: 4300052
+    second: StockAdjust
+  - first:
+      43: 4300054
+    second: Stock Folding
+  - first:
+      43: 4300056
+    second: Grip Full Folding
+  - first:
+      43: 4300058
+    second: Grip Full Adjustable
+  - first:
+      43: 4300060
+    second: Barrel Rifle_MeshPart0
+  - first:
+      43: 4300062
+    second: Barrel Rifle_MeshPart1
+  - first:
+      43: 4300064
+    second: Barrel PDW
+  - first:
+      43: 4300066
+    second: Barrel Carbine_MeshPart0
+  - first:
+      43: 4300068
+    second: Barrel Carbine_MeshPart1
+  - first:
+      43: 4300070
+    second: Blast Core Large
+  - first:
+      43: 4300072
+    second: BatteryContainer.001
+  - first:
+      43: 4300074
+    second: Battery.002
+  - first:
+      43: 4300076
+    second: IntegralParts
+  - first:
+      43: 4300078
+    second: Trigger Guard
+  - first:
+      43: 4300080
+    second: Trigger
+  - first:
+      43: 4300082
+    second: Grip Full
+  - first:
+      43: 4300084
+    second: BarrelLong_MeshPart0
+  - first:
+      43: 4300086
+    second: BarrelLong_MeshPart1
+  - first:
+      43: 4300088
+    second: BarrelLong_MeshPart2
+  - first:
+      43: 4300090
+    second: Grip Subcompact
+  - first:
+      43: 4300092
+    second: BarrelStandard
+  - first:
+      43: 4300094
+    second: BarrelSubcompact
+  - first:
+      43: 4300096
+    second: Blast Core Small
+  - first:
+      43: 4300098
+    second: BatteryContainer
+  - first:
+      43: 4300100
+    second: Battery
+  - first:
+      43: 4300102
+    second: Sights
+  - first:
+      43: 4300104
+    second: Barrel Long_MeshPart0
+  - first:
+      43: 4300106
+    second: Barrel Long_MeshPart1
+  - first:
+      43: 4300108
+    second: Barrel Long_MeshPart2
+  - first:
+      43: 4300110
+    second: Barrel Standard
+  - first:
+      43: 4300112
+    second: Barrel Subcompact
+  - first:
+      43: 4300114
+    second: Blast Coil Carbine.001
+  - first:
+      43: 4300116
+    second: Frame PDW
+  - first:
+      43: 4300118
+    second: Blast Coil PDW
+  - first:
+      43: 4300120
+    second: Frame Carbine
+  - first:
+      43: 4300122
+    second: Blast Coil Carbine
+  - first:
+      43: 4300124
+    second: BatteryContainer.003
+  - first:
+      43: 4300126
+    second: Frame Extension
+  - first:
+      43: 4300128
+    second: Frame Magnum_MeshPart0
+  - first:
+      43: 4300130
+    second: Frame Magnum_MeshPart1
+  - first:
+      43: 4300132
+    second: Frame Pistol
+  - first:
+      43: 4300134
+    second: Frame Rifle_MeshPart0
+  - first:
+      43: 4300136
+    second: Frame Rifle_MeshPart1
+  - first:
+      43: 4300138
+    second: Blast Coil Rifle
+  - first:
+      43: 4300140
+    second: Frame Subcompact
+  - first:
+      43: 4300142
+    second: Pressure Core
+  - first:
+      43: 4300144
+    second: Canister
+  - first:
+      43: 4300146
+    second: Blast Coil Magnum
+  - first:
+      43: 4300148
+    second: Pressurizer Magnum
+  - first:
+      43: 4300150
+    second: Pressurizer .001
+  - first:
+      43: 4300152
+    second: Nozzle Stream.002
+  - first:
+      43: 4300154
+    second: Nozzle Charge.002
+  - first:
+      43: 4300156
+    second: Nozzle Spray.002
+  - first:
+      43: 4300158
+    second: Blast Coil Pistol
+  - first:
+      43: 4300160
+    second: Pressurizer Pistol
+  - first:
+      43: 4300162
+    second: Nozzle Spray.001
+  - first:
+      43: 4300164
+    second: Nozzle Charge.001
+  - first:
+      43: 4300166
+    second: Nozzle Stream.001
+  - first:
+      43: 4300168
+    second: 'Pressurizer '
+  - first:
+      43: 4300170
+    second: Pressurizer Rifle
+  - first:
+      43: 4300172
+    second: Nozzle Spray.005
+  - first:
+      43: 4300174
+    second: Nozzle Charge.005
+  - first:
+      43: 4300176
+    second: Nozzle Stream.005
+  - first:
+      43: 4300178
+    second: Pressurizer.003
+  - first:
+      43: 4300180
+    second: Pressurizer PDW
+  - first:
+      43: 4300182
+    second: Nozzle Spray.003
+  - first:
+      43: 4300184
+    second: Nozzle Charge.003
+  - first:
+      43: 4300186
+    second: Nozzle Stream.003
+  - first:
+      43: 4300188
+    second: Pressurizer.001
+  - first:
+      43: 4300190
+    second: Pressurizer Carbine
+  - first:
+      43: 4300192
+    second: Pressurizer.002
+  - first:
+      43: 4300194
+    second: Nozzle Stream.004
+  - first:
+      43: 4300196
+    second: Nozzle Charge.004
+  - first:
+      43: 4300198
+    second: Nozzle Spray.004
+  - first:
+      43: 4300200
+    second: Pressurizer Subcompact
+  - first:
+      43: 4300202
+    second: Pressurizer
+  - first:
+      43: 4300204
+    second: Nozzle Stream
+  - first:
+      43: 4300206
+    second: Nozzle Charge
+  - first:
+      43: 4300208
+    second: Nozzle Spray
+  - first:
+      43: 4300210
+    second: Blast Coil Subcompact
+  - first:
+      43: 4300212
+    second: Core Pressurizer
+  - first:
+      43: 4300214
+    second: Core Energy Large
+  - first:
+      43: 4300216
+    second: Core Energy Small
+  - first:
+      43: 4300218
+    second: Grip Shootist
+  - first:
+      43: 4300220
+    second: Base Rifle
+  - first:
+      43: 4300222
+    second: IntegralParts.001
+  - first:
+      43: 4300224
+    second: Trigger.002
+  - first:
+      43: 4300226
+    second: Trigger Guard.001
+  - first:
+      43: 4300228
+    second: Fore Rifle_MeshPart0
+  - first:
+      43: 4300230
+    second: Fore Rifle_MeshPart1
+  - first:
+      43: 4300232
+    second: Fore PDW
+  - first:
+      43: 4300234
+    second: Fore Carbine
+  - first:
+      43: 4300236
+    second: Base Gunblade
+  - first:
+      43: 4300238
+    second: Rail
+  - first:
+      43: 4300240
+    second: Fore Energy Gunblade
+  - first:
+      43: 4300242
+    second: Discharge Port Small
+  - first:
+      43: 4300244
+    second: Blade Short
+  - first:
+      43: 4300246
+    second: BladeGuardBase.003
+  - first:
+      43: 4300248
+    second: Extended.003
+  - first:
+      43: 4300250
+    second: Retracted.003
+  - first:
+      43: 4300252
+    second: Barrel Reinforcement Short
+  - first:
+      43: 4300254
+    second: Axe_Short
+  - first:
+      43: 4300256
+    second: Mace Short
+  - first:
+      43: 4300258
+    second: Discharge Port Mid_MeshPart0
+  - first:
+      43: 4300260
+    second: Discharge Port Mid_MeshPart1
+  - first:
+      43: 4300262
+    second: Blade Mid
+  - first:
+      43: 4300264
+    second: BladeGuardBase.004
+  - first:
+      43: 4300266
+    second: Retracted.004
+  - first:
+      43: 4300268
+    second: Extended.004
+  - first:
+      43: 4300270
+    second: Barrel Reinforcement Mid
+  - first:
+      43: 4300272
+    second: Mace Mid
+  - first:
+      43: 4300274
+    second: Axe_Mid
+  - first:
+      43: 4300276
+    second: Discharge Port Long_MeshPart0
+  - first:
+      43: 4300278
+    second: Discharge Port Long_MeshPart1
+  - first:
+      43: 4300280
+    second: Blade Long
+  - first:
+      43: 4300282
+    second: BladeGuardBase.005
+  - first:
+      43: 4300284
+    second: Extended.005
+  - first:
+      43: 4300286
+    second: Retracted.005
+  - first:
+      43: 4300288
+    second: Barrel Reinforcement Long
+  - first:
+      43: 4300290
+    second: Axe_Long
+  - first:
+      43: 4300292
+    second: Mace Long
+  - first:
+      43: 4300294
+    second: Fore Pressure Gunblade
+  - first:
+      43: 4300296
+    second: Pressure Chamber Short
+  - first:
+      43: 4300298
+    second: Blade_Short.000
+  - first:
+      43: 4300300
+    second: BladeGuardBase.002
+  - first:
+      43: 4300302
+    second: Retracted.002
+  - first:
+      43: 4300304
+    second: Extended.002
+  - first:
+      43: 4300306
+    second: Mace_Short
+  - first:
+      43: 4300308
+    second: Axe_Short.002
+  - first:
+      43: 4300310
+    second: Control Nozzle Stream.002
+  - first:
+      43: 4300312
+    second: Control Nozzle Spray.002
+  - first:
+      43: 4300314
+    second: Pressure Chamber Mid
+  - first:
+      43: 4300316
+    second: Blade_Mid.001
+  - first:
+      43: 4300318
+    second: BladeGuardBase.000
+  - first:
+      43: 4300320
+    second: Extended.000
+  - first:
+      43: 4300322
+    second: Retracted.000
+  - first:
+      43: 4300324
+    second: Control Nozzle Spray.001
+  - first:
+      43: 4300326
+    second: Control Nozzle Stream.001
+  - first:
+      43: 4300328
+    second: Axe_Mid.001
+  - first:
+      43: 4300330
+    second: Mace_Mid.001
+  - first:
+      43: 4300332
+    second: Pressure Chamber Long
+  - first:
+      43: 4300334
+    second: Mace_Long
+  - first:
+      43: 4300336
+    second: Axe_Long.001
+  - first:
+      43: 4300338
+    second: Control Nozzle Stream
+  - first:
+      43: 4300340
+    second: Blade Long.001
+  - first:
+      43: 4300342
+    second: BladeGuardBase.001
+  - first:
+      43: 4300344
+    second: Retracted.001
+  - first:
+      43: 4300346
+    second: Extended.001
+  - first:
+      43: 4300348
+    second: Control Nozzle Spray
+  - first:
+      43: 4300350
+    second: Grip Base
+  - first:
+      43: 4300352
+    second: Grip Long
+  - first:
+      43: 4300354
+    second: Grip Short
+  - first:
+      43: 4300356
+    second: Base Pistol
+  - first:
+      43: 4300358
+    second: Fore Magnum_MeshPart0
+  - first:
+      43: 4300360
+    second: Fore Magnum_MeshPart1
+  - first:
+      43: 4300362
+    second: Fore Pistol
+  - first:
+      43: 4300364
+    second: IntegralParts.002
+  - first:
+      43: 4300366
+    second: Fore Subcompact
+  - first:
+      43: 4300368
+    second: Control Nozzle Charge.002
+  - first:
+      43: 4300370
+    second: Control Nozzle Charge.001
+  - first:
+      43: 4300372
+    second: Control Nozzle Charge
+  - first:
+      43: 4300374
+    second: Sight Rifle
+  - first:
+      43: 4300376
+    second: Fore Carbine_MeshPart0
+  - first:
+      43: 4300378
+    second: Fore Carbine_MeshPart1
+  - first:
+      43: 4300380
+    second: Sight Carbine
+  - first:
+      43: 4300382
+    second: Sight PDW
+  - first:
+      43: 4300384
+    second: Scope Housing
+  - first:
+      43: 4300386
+    second: Sight Scope
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -1005,6 +2987,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Battery
     second: {fileID: 2100000, guid: 78251d5de40f50c48934de5df45a13f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Battery.001
+    second: {fileID: 2100000, guid: 23183cec05d7bd84d8bc9e78eb60e7a5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -1114,6 +3101,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
@@ -1121,18 +3109,19 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -1141,10 +3130,11 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -1154,6 +3144,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

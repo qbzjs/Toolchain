@@ -27,7 +27,7 @@ namespace Opsive.UltimateCharacterController.Editor.Utility
         /// </summary>
         public enum AxisNumber
         {
-            X, Y, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven, Twelve, Thirteen, Fourteen, Fifteen
+            X, Y, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven, Twelve, Thirteen, Fourteen, Fifteen, Sixteen, Seventeen, Eighteen, Nineteen, Twenty
         }
 
         private static Dictionary<string, int> s_FoundAxes;

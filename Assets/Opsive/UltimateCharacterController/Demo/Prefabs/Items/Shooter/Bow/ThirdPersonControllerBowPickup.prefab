@@ -119,7 +119,7 @@ MonoBehaviour:
   m_PickupMessageText: PICKED UP BOW AND ARROW
   m_PickupMessageIcon: {fileID: 0}
   m_ItemPickupSet:
-  - m_Item: {fileID: 1834043069192340, guid: 051cfe57e1f1da948900f22e2dfba5a4, type: 2}
+  - m_Item: {fileID: 1834043069192340, guid: f2c1a95cdd1f9ce40850f875e5a448cd, type: 2}
     m_ItemSet:
       m_States:
       - m_Name: Default

@@ -24,7 +24,8 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         [Tooltip("Is the door locked?")]
         [SerializeField] protected bool m_Locked = false;
         [Tooltip("Should the door be permanently locked? A permanently locked door cannot be opened by the DemoManager.")]
-        [SerializeField] protected bool m_PermantlyLocked;
+        [UnityEngine.Serialization.FormerlySerializedAs("m_PermantlyLocked")]
+        [SerializeField] protected bool m_PermanentlyLocked;
         [Tooltip("Should the door be opened at the start?")]
         [SerializeField] protected bool m_OpenAtStart;
         [Tooltip("Should the door close when the character leaves the trigger?")]
@@ -55,7 +56,7 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
                 }
             }
         }
-        public bool PermantlyLocked { get { return m_PermantlyLocked; } set { m_PermantlyLocked = value; } }
+        public bool PermanentlyLocked { get { return m_PermanentlyLocked; } set { m_PermanentlyLocked = value; } }
         public bool CloseOnTriggerExit { get { return m_CloseOnTriggerExit; } set { m_CloseOnTriggerExit = value; } }
 
         private static int s_OpenHash = Animator.StringToHash("Open");
@@ -103,7 +104,7 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
             }
 
             // Permantly locked doors cannot be opened.
-            if (m_PermantlyLocked) {
+            if (m_PermanentlyLocked) {
                 m_Locked = true;
             }
             if (m_OpenAtStart) {
@@ -119,7 +120,7 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         {
             if (m_StatusMaterials != null) {
                 for (int i = 0; i < m_StatusMaterials.Length; ++i) {
-                    var locked = m_Locked || m_PermantlyLocked;
+                    var locked = m_Locked || m_PermanentlyLocked;
                     m_StatusMaterials[i].SetColor(c_ColorText, locked ? m_LockedColor : m_UnlockedColor);
                     m_StatusMaterials[i].SetColor(c_EmissionColor, locked ? m_LockedColor : m_UnlockedColor);
                 }
@@ -150,8 +151,8 @@ namespace Opsive.UltimateCharacterController.Demo.Objects
         /// <param name="playAudio">Should the door open/close audio be played?</param>
         public void OpenClose(bool open, bool fromManager, bool playAudio)
         {
-            // Permantly locked doors cannot be opened.
-            if (m_PermantlyLocked && open) {
+            // Permanently locked doors cannot be opened.
+            if (m_PermanentlyLocked && open) {
                 return;
             }
 

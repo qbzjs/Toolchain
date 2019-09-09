@@ -233,6 +233,7 @@ namespace Opsive.UltimateCharacterController.Character
         protected bool m_Grounded = true;
         private bool m_CollisionLayerEnabled = true;
         private bool m_AlignToGravity;
+        private bool m_SmoothGravityYawDelta = true;
         private bool m_ManualMove;
 
         protected Transform m_Platform;
@@ -282,6 +283,7 @@ namespace Opsive.UltimateCharacterController.Character
         public Quaternion PlatformTorque { get { return m_PlatformTorque; } }
         public bool CollisionLayerEnabled { get { return m_CollisionLayerEnabled; } }
         [Utility.NonSerialized] public bool AlignToGravity { get { return m_AlignToGravity; } set { m_AlignToGravity = value; } }
+        [Utility.NonSerialized] public bool SmoothGravityYawDelta { get { return m_SmoothGravityYawDelta; } set { m_SmoothGravityYawDelta = value; } }
         [Utility.NonSerialized] public bool ManualMove { get { return m_ManualMove; } set { m_ManualMove = value; } }
         [Snapshot] public Vector3 PlatformVelocity { get { return m_PlatformVelocity; } set { m_PlatformVelocity = value; } }
         [Snapshot] protected float SlopeFactor { get { return m_SlopeFactor; } set { m_SlopeFactor = value; } }
@@ -632,7 +634,9 @@ namespace Opsive.UltimateCharacterController.Character
             } else {
                 if (m_AlignToGravity) {
                     // When aligning to gravity the character should rotate immediately to the up direction.
-                    m_DeltaRotation.y = Mathf.Lerp(0, MathUtility.ClampInnerAngle(m_DeltaRotation.y), m_MotorRotationSpeed * m_TimeScale * TimeUtility.FixedDeltaTimeScaled);
+                    if (m_SmoothGravityYawDelta) {
+                        m_DeltaRotation.y = Mathf.Lerp(0, MathUtility.ClampInnerAngle(m_DeltaRotation.y), m_MotorRotationSpeed * m_TimeScale * TimeUtility.FixedDeltaTimeScaled);
+                    }
                     targetRotation = rotation * Quaternion.Euler(m_DeltaRotation);
                 } else {
                     targetRotation = Quaternion.Slerp(rotation, rotation * Quaternion.Euler(m_DeltaRotation), m_MotorRotationSpeed * m_TimeScale * TimeUtility.FixedDeltaTimeScaled);
@@ -750,10 +754,10 @@ namespace Opsive.UltimateCharacterController.Character
         protected virtual void ApplyRotation()
         {
             // Apply the rotation.
-            m_Transform.rotation *= m_Torque;
-            m_Torque = Quaternion.identity;
+            m_Transform.rotation = MathUtility.Round(m_Transform.rotation * m_Torque, 10000);
             m_Up = m_Transform.up;
             m_MotorRotation = m_Transform.rotation;
+            m_Torque = Quaternion.identity;
 
             if (m_Platform != null) {
                 m_PlatformRotationOffset = m_Transform.rotation * Quaternion.Inverse(m_Platform.rotation);
@@ -1076,7 +1080,7 @@ namespace Opsive.UltimateCharacterController.Character
                 // from moving through the floor. Add the collider spacing constant to prevent the character's collider from overlapping the ground.
                 // Use the verticalOffset if the local move direction is negative (ignoring the platform) and less than the vertical offset (plus an offset if sticking to the ground).
                 var localPlatformVerticalDirection = m_Platform != null ? m_Transform.InverseTransformDirection(m_PlatformMovement).y : 0;
-                if ((m_Grounded || grounded) && (localMoveDirection.y - localPlatformVerticalDirection) < c_ColliderSpacing && verticalOffset > -c_ColliderSpacing -
+                if ((m_Grounded || grounded) && (localMoveDirection.y - localPlatformVerticalDirection) < m_SkinWidth && verticalOffset > -c_ColliderSpacing -
                                                                                     ((m_Grounded && m_StickToGround) ? m_Stickiness : 0)) {
                     localMoveDirection.y += verticalOffset;
                     // Don't allow the character to go through the ground.

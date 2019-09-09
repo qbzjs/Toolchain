@@ -511,12 +511,26 @@ namespace Opsive.UltimateCharacterController.Utility
         /// Rounds the specified value according to the number of decimals.
         /// </summary>
         /// <param name="value">The value to round.</param>
-        /// <param name="decimals">The number of decimals to round to.</param>
+        /// <param name="factor">The factor to round to.</param>
         /// <returns>The roudned value.</returns>
-        public static float Round(float value, int decimals)
+        public static float Round(float value, int factor)
         {
-            var magnitude = Mathf.Pow(10, decimals);
-            return Mathf.Round(value * magnitude) / magnitude;
+            return Mathf.Round(value * factor) / factor;
+        }
+
+        /// <summary>
+        /// Rounds the specified value according to the number of decimals.
+        /// </summary>
+        /// <param name="value">The value to round.</param>
+        /// <param name="factor">The factor to round to.</param>
+        /// <returns>The roudned value.</returns>
+        public static Quaternion Round(Quaternion value, int factor)
+        {
+            value.x = Round(value.x, factor);
+            value.y = Round(value.y, factor);
+            value.z = Round(value.z, factor);
+            value.w = Round(value.w, factor);
+            return value;
         }
 
         /// <summary>

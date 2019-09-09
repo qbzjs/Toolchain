@@ -112,7 +112,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.StateSystem
             if (GUILayout.Button(InspectorStyles.AddIcon, InspectorStyles.NoPaddingButtonStyle, GUILayout.Width(18))) {
                 // Add a new profile.
                 var profiles = m_StateConfiguration.Profiles;
-                Array.Resize(ref profiles, profiles.Length + 1);
+                Array.Resize(ref profiles, profiles != null ? profiles.Length + 1 : 1);
                 var profile = new StateConfiguration.Profile();
 
                 var count = profiles.Length;
@@ -153,7 +153,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.StateSystem
             if (GUILayout.Button(InspectorStyles.DuplicateIcon, InspectorStyles.NoPaddingButtonStyle, GUILayout.Width(20))) {
                 // Duplicates the current profile.
                 var profiles = m_StateConfiguration.Profiles;
-                Array.Resize(ref profiles, profiles.Length + 1);
+                Array.Resize(ref profiles, profiles != null ? profiles.Length + 1 : 1);
 
                 var duplicateProfile = profiles[selectedProfileIndex];
                 var count = 1;

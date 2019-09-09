@@ -26,6 +26,8 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public override bool CanStayActivatedOnDeath { get { return true; } }
 
         protected bool m_Stopping;
+        private bool m_StoppingFromUpdate;
+        private float m_Epsilon = 1f - Mathf.Epsilon;
 
         /// <summary>
         /// The ability has started.
@@ -36,18 +38,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
 
             m_CharacterLocomotion.AlignToGravity = true;
             m_Stopping = false;
-        }
-
-        /// <summary>
-        /// Stops the ability if it needs to be stopped.
-        /// </summary>
-        public override void Update()
-        {
-            base.Update();
-
-            if (m_Stopping) {
-                StopAbility();
-            }
+            m_StoppingFromUpdate = false;
         }
 
         /// <summary>
@@ -60,10 +51,30 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             var rotation = m_Transform.rotation * deltaRotation;
             var proj = (rotation * Vector3.forward) - (Vector3.Dot((rotation * Vector3.forward), targetNormal)) * targetNormal;
             if (proj.sqrMagnitude > 0.0001f) {
-                var alignToGroundSpeed = m_CharacterLocomotion.Platform == null && !m_Stopping ? m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime : 1;
-                var targetRotation = Quaternion.Slerp(rotation, Quaternion.LookRotation(proj, targetNormal), alignToGroundSpeed);
+                Quaternion targetRotation;
+                if (m_CharacterLocomotion.Platform == null && !m_Stopping) {
+                    var alignToGroundSpeed = m_RotationSpeed * m_CharacterLocomotion.TimeScale * Time.timeScale * m_CharacterLocomotion.DeltaTime;
+                    targetRotation = Quaternion.Slerp(rotation, Quaternion.LookRotation(proj, targetNormal), alignToGroundSpeed);
+                } else {
+                    targetRotation = Quaternion.LookRotation(proj, targetNormal);
+                }
                 var rotationDelta = deltaRotation * (Quaternion.Inverse(rotation) * targetRotation);
                 m_CharacterLocomotion.DeltaRotation = rotationDelta.eulerAngles;
+            }
+        }
+
+        /// <summary>
+        /// Stops the ability if it needs to be stopped.
+        /// </summary>
+        public override void LateUpdate()
+        {
+            base.LateUpdate();
+
+            // The ability should be stopped within LateUpdate so the character has a chance to be rotated.
+            if (m_Stopping) {
+                m_StoppingFromUpdate = true;
+                StopAbility();
+                m_StoppingFromUpdate = false;
             }
         }
 
@@ -78,6 +89,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
                 m_CharacterLocomotion.GravityDirection = m_StopGravityDirection.normalized;
             }
             m_Stopping = true;
+            m_CharacterLocomotion.SmoothGravityYawDelta = false;
         }
 
         /// <summary>
@@ -87,7 +99,7 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         public override bool CanStopAbility()
         {
             // Don't stop until the character is oriented in the correct direction.
-            if (m_StopGravityDirection.sqrMagnitude == 0 || Vector3.Dot(m_CharacterLocomotion.Up, -m_StopGravityDirection) > 0.9999f) {
+            if (m_StoppingFromUpdate && (m_StopGravityDirection.sqrMagnitude == 0 || Vector3.Dot(m_Transform.rotation * Vector3.up, -m_StopGravityDirection) >= m_Epsilon)) {
                 return true;
             }
 
@@ -99,10 +111,21 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
         /// </summary>
         protected void ResetAlignToGravity()
         {
-            if (m_StopGravityDirection != Vector3.zero) {
+            if (m_StopGravityDirection.sqrMagnitude > 0) {
                 m_CharacterLocomotion.GravityDirection = m_StopGravityDirection.normalized;
             }
             m_CharacterLocomotion.AlignToGravity = false;
+        }
+
+        /// <summary>
+        /// The ability has stopped running.
+        /// </summary>
+        /// <param name="force">Was the ability force stopped?</param>
+        protected override void AbilityStopped(bool force)
+        {
+            base.AbilityStopped(force);
+
+            m_CharacterLocomotion.SmoothGravityYawDelta = true;
         }
     }
 }

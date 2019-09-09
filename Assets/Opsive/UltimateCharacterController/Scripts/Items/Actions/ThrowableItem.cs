@@ -552,12 +552,13 @@ namespace Opsive.UltimateCharacterController.Items.Actions
         public override void ItemUseComplete()
         {
             base.ItemUseComplete();
+            m_Throwing = false;
+            m_CharacterLocomotion.UpdateItemAbilityAnimatorParameters();
 
             // The item can be reequipped with an animation event or timer. The item should not be reequipped if it is disabled - the starting throw animation will
             // reequip a disabled item.
             if (!m_DisableVisibleObject && m_Inventory.GetItemTypeCount(m_ConsumableItemType) > 0) {
                 m_Reequipping = true;
-                m_CharacterLocomotion.UpdateItemAbilityAnimatorParameters();
                 if (!m_ReequipEvent.WaitForAnimationEvent) {
                     m_ReequipEventBase = Scheduler.ScheduleFixed(m_ReequipEvent.Duration, ReequipThrowableItem);
                 }
@@ -602,7 +603,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
             }
 
             m_Thrown = false;
-            m_Throwing = false;
             m_Reequipped = false;
             m_ActivateVisibleObject = false;
             m_InstantiatedThrownObject = null;

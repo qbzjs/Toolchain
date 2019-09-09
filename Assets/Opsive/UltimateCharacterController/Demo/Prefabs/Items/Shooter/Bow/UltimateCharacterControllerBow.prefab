@@ -2363,6 +2363,7 @@ MonoBehaviour:
   m_AllowCameraZoom: 1
   m_DropPrefab: {fileID: 1419454207511548, guid: 1f29c326cd986de4691336fbaf924bab,
     type: 2}
+  m_DropVelocityMultiplier: 4
   m_EquipEvent:
     m_WaitForAnimationEvent: 1
     m_Duration: 0.3

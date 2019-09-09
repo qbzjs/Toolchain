@@ -17,6 +17,25 @@ MonoBehaviour:
   m_Description: Can use .357mag
   m_Capacity: 3.4028235e+38
   m_DroppedItemTypes: []
+--- !u!114 &-240655434439985185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Battery Power
+  m_EditorClassIdentifier: 
+  m_ID: 5
+  m_CategoryIDs: 00000000
+  m_Description: 'Consumable type for Energy Weapons
+
+'
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,11 +55,9 @@ MonoBehaviour:
   - {fileID: 5694302346885615034}
   - {fileID: 7108031455733742899}
   - {fileID: -3960382162399091859}
-  - {fileID: 6933023767811286485}
-  - {fileID: 4350811617079311664}
-  - {fileID: 5653116037040233699}
-  - {fileID: 8399629277727554691}
   - {fileID: 1888496083275608775}
+  - {fileID: 8164904078309562913}
+  - {fileID: -240655434439985185}
 --- !u!114 &1888496083275608775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,43 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
   m_Name: WeaponBase
   m_EditorClassIdentifier: 
-  m_ID: 7
+  m_ID: 3
   m_CategoryIDs: 00000000
   m_Description: Base Item Type to load into Basic Item Setups
-  m_Capacity: 3.4028235e+38
-  m_DroppedItemTypes: []
---- !u!114 &4350811617079311664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
-  m_Name: 9x19mm
-  m_EditorClassIdentifier: 
-  m_ID: 4
-  m_CategoryIDs: 00000000
-  m_Description: 
-  m_Capacity: 3.4028235e+38
-  m_DroppedItemTypes: []
---- !u!114 &5653116037040233699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
-  m_Name: .45acp
-  m_EditorClassIdentifier: 
-  m_ID: 5
-  m_CategoryIDs: 00000000
-  m_Description: 
   m_Capacity: 3.4028235e+38
   m_DroppedItemTypes: []
 --- !u!114 &5694302346885615034
@@ -109,23 +92,6 @@ MonoBehaviour:
   m_Description: Hand to Hand Combat Item
   m_Capacity: 3.4028235e+38
   m_DroppedItemTypes: []
---- !u!114 &6933023767811286485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
-  m_Name: Sword 1h/2h
-  m_EditorClassIdentifier: 
-  m_ID: 3
-  m_CategoryIDs: 00000000
-  m_Description: 
-  m_Capacity: 3.4028235e+38
-  m_DroppedItemTypes: []
 --- !u!114 &7108031455733742899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +109,7 @@ MonoBehaviour:
   m_Description: Can Use 9x19mm or .45acp
   m_Capacity: 3.4028235e+38
   m_DroppedItemTypes: []
---- !u!114 &8399629277727554691
+--- !u!114 &8164904078309562913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,10 +119,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
-  m_Name: .357mag
+  m_Name: MasterBlaster
   m_EditorClassIdentifier: 
-  m_ID: 6
+  m_ID: 4
   m_CategoryIDs: 00000000
-  m_Description: 
+  m_Description: Energy Weapon, can be 1H Shootable, 2H Shootable, or Gunblade
   m_Capacity: 3.4028235e+38
   m_DroppedItemTypes: []

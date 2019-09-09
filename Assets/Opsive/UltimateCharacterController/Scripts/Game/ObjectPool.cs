@@ -380,6 +380,10 @@ namespace Opsive.UltimateCharacterController.Game
         /// <param name="obj">The object to return.</param>
         private void ReturnInternal<T>(T obj)
         {
+            if (obj == null) {
+                return;
+            }
+
             object value;
             if (m_GenericPool.TryGetValue(typeof(T), out value)) {
                 var pooledObjects = value as Stack<T>;

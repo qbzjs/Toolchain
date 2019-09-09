@@ -51,8 +51,6 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                     } else {
                         Scheduler.ScheduleFixed(m_RemovePinEvent.Duration, RemovePin);
                     }
-                } else {
-                    RemovePin();
                 }
             }
         }
