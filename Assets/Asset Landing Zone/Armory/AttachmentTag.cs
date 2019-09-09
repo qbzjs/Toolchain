@@ -4,12 +4,31 @@ using UnityEngine;
 
 public class AttachmentTag : MonoBehaviour
 {
-	[SerializeField]public WeaponCustomizerConfigurator.AccessoryType m_Type;
-	[SerializeField]public WeaponCustomizerConfigurator.SightType m_SightType;
-	[SerializeField]public WeaponCustomizerConfigurator.UtilityType m_UtilityType;
-	[SerializeField]public WeaponCustomizerConfigurator.BarrelType m_BarrelType;
-	[SerializeField]public WeaponCustomizerConfigurator.UnderType m_UnderType;
-	[SerializeField]public bool m_UseBase = false;
+	public enum AccessoryType
+	{
+		Sight,
+		Barrel,
+		Utility,
+		Under,
+	}
+	
+	public enum BayonetType
+	{
+		Classic,
+		K98,
+		M9,
+		Rail
+	}
+	
+	[SerializeField]public AccessoryType m_Type;
+	[SerializeField]public BayonetType m_BayonetType;
+	[SerializeField]public AccessoryRack.SightType m_SightType;
+	[SerializeField]public AccessoryRack.UtilityType m_UtilityType;
+	[SerializeField]public AccessoryRack.BarrelType m_BarrelType;
+	[SerializeField]public AccessoryRack.UnderType m_UnderType;
+	[SerializeField]public GameObject m_AttachBase;
+	[SerializeField]public Transform m_SightPoint;
+	
     // Start is called before the first frame update
     void Start()
     {

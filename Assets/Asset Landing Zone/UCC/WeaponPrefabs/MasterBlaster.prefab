@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8214329463042469374}
   - component: {fileID: 3883579255958594538}
   - component: {fileID: 5783299135340393479}
-  - component: {fileID: 8637360128938130990}
+  - component: {fileID: 272770253570542077}
   m_Layer: 0
   m_Name: MasterBlaster
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_ItemType: {fileID: 8164904078309562913, guid: da9a97946d8378d4ca465cee7db08f1d,
     type: 2}
   m_SlotID: 0
-  m_AnimatorItemID: 2
+  m_AnimatorItemID: 0
   m_AnimatorMovementSetID: 0
   m_DominantItem: 1
   m_AllowCameraZoom: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
     m_Default: 1
   m_Object: {fileID: 272065395871597096}
   m_LocalSpawnPosition: {x: -0.089, y: 0.0912, z: -0.0286}
-  m_LocalSpawnRotation: {x: 0, y: -77, z: 0}
+  m_LocalSpawnRotation: {x: 0, y: -78, z: 0}
   m_UseParentHumanoidBone: 1
   m_ParentHumanoidBone: 18
   m_NonDominantHandIKTarget: {fileID: 0}
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_ReloadProjectileAttachment: {fileID: 0}
   m_ReloadProjectileAttachmentID: -1
   m_ScopeCamera: {fileID: 0}
---- !u!114 &8637360128938130990
+--- !u!114 &272770253570542077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,10 +447,10 @@ MonoBehaviour:
   m_CoreConfig: 0
   m_ForeConfig: 0
   m_RearConfig: 2
-  m_AmmoConfig: 0
+  m_AmmoConfig: 1
   m_ActiveMag: 0
   m_AccessoryConfig: 0
-  m_ActivateOnStart: 1
+  m_ActivateOnStart: 0
 --- !u!1 &52905288719404600
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,13 +716,13 @@ MonoBehaviour:
         m_SightMountPistol: 0
         m_UnderMountPistol: 0
     m_AmmoSets:
-    - m_SetName: Biochemical
+    - m_SetName: Energy Core
       m_AmmoParts:
-      - m_PartName: BioBatteries
+      - m_PartName: Batteries
         m_Part:
           m_Part: {fileID: 7581600712926518887}
           m_SubParts:
-          - BioBatteries
+          - Batteries
           - 
           m_SightMount: 0
           m_ScopeMount: 0
@@ -742,43 +742,12 @@ MonoBehaviour:
       m_ImpactForce: 0
       m_AutoReload: 0
       m_ReloadType: 0
-    - m_SetName: Fission
-      m_AmmoParts:
-      - m_PartName: FissionBatteries
-        m_Part:
-          m_Part: {fileID: 7581600712926518887}
-          m_SubParts:
-          - FissionBatteries
-          - 
-          m_SightMount: 0
-          m_ScopeMount: 0
-          m_BarrelMount: 0
-          m_GripMount: 0
-          m_UnderMount: 0
-          m_SideMount: 0
-          m_BarrelMountPistol: 0
-          m_SightMountPistol: 0
-          m_UnderMountPistol: 0
-        m_MaxAmmo: 500
-        m_ClipOffset: {fileID: 0}
-        m_ClipParent: {fileID: 0}
-        m_Projectile: {fileID: 0}
-        m_ProjectileParent: {fileID: 0}
-      m_DamageAmount: 0
-      m_ImpactForce: 0
-      m_AutoReload: 0
-      m_ReloadType: 0
-    m_AccessoryRack:
-      m_ActiveSight: 0
-      m_ActiveBarrel: 0
-      m_ActiveSideL: 0
-      m_ActiveSideR: 0
-      m_ActiveUnder: 0
+    m_AccessoryRack: {fileID: 0}
     m_SlotID: 0
     m_AnimatorMovementSetID: 0
     m_DominantItem: 1
     m_UIMonitorID: 0
-    m_ShowCrosshairsOnAim: 0
+    m_ShowCrosshairsOnAim: 1
   - m_ProfileName: Master Blaster 2H
     m_ProfileRoot: {fileID: 272065395871597096}
     m_WeaponType: 1
@@ -866,6 +835,8 @@ MonoBehaviour:
       m_Part:
         m_Part: {fileID: 2887782758384421660}
         m_SubParts:
+        - Stock Collapsible Energy
+        - Stock Extension.003
         - 
         m_SightMount: 0
         m_ScopeMount: 0
@@ -892,30 +863,14 @@ MonoBehaviour:
         m_BarrelMountPistol: 0
         m_SightMountPistol: 0
         m_UnderMountPistol: 0
-    - m_PartName: Open Stock
-      m_Part:
-        m_Part: {fileID: 2887782758384421660}
-        m_SubParts:
-        - Stock Collapsible Energy
-        - Stock Extension.003
-        - 
-        m_SightMount: 0
-        m_ScopeMount: 0
-        m_BarrelMount: 0
-        m_GripMount: 0
-        m_UnderMount: 0
-        m_SideMount: 0
-        m_BarrelMountPistol: 0
-        m_SightMountPistol: 0
-        m_UnderMountPistol: 0
     m_AmmoSets:
-    - m_SetName: Biochemical
+    - m_SetName: Energy Core
       m_AmmoParts:
-      - m_PartName: BioBatteries
+      - m_PartName: Batteries
         m_Part:
           m_Part: {fileID: 7581600712926518887}
           m_SubParts:
-          - BioBatteries
+          - Batteries
           - 
           m_SightMount: 0
           m_ScopeMount: 0
@@ -935,43 +890,12 @@ MonoBehaviour:
       m_ImpactForce: 0
       m_AutoReload: 0
       m_ReloadType: 0
-    - m_SetName: Fission
-      m_AmmoParts:
-      - m_PartName: FissionBatteries
-        m_Part:
-          m_Part: {fileID: 7581600712926518887}
-          m_SubParts:
-          - FissionBatteries
-          - 
-          m_SightMount: 0
-          m_ScopeMount: 0
-          m_BarrelMount: 0
-          m_GripMount: 0
-          m_UnderMount: 0
-          m_SideMount: 0
-          m_BarrelMountPistol: 0
-          m_SightMountPistol: 0
-          m_UnderMountPistol: 0
-        m_MaxAmmo: 500
-        m_ClipOffset: {fileID: 0}
-        m_ClipParent: {fileID: 0}
-        m_Projectile: {fileID: 0}
-        m_ProjectileParent: {fileID: 0}
-      m_DamageAmount: 0
-      m_ImpactForce: 0
-      m_AutoReload: 2
-      m_ReloadType: 0
-    m_AccessoryRack:
-      m_ActiveSight: 0
-      m_ActiveBarrel: 0
-      m_ActiveSideL: 0
-      m_ActiveSideR: 0
-      m_ActiveUnder: 0
+    m_AccessoryRack: {fileID: 0}
     m_SlotID: 0
     m_AnimatorMovementSetID: 0
     m_DominantItem: 1
     m_UIMonitorID: 0
-    m_ShowCrosshairsOnAim: 0
+    m_ShowCrosshairsOnAim: 1
 --- !u!114 &85349841080519583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,84 +1011,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &402702149861105455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6607076676541528371}
-  - component: {fileID: 8492438167506231991}
-  - component: {fileID: 7504888397309762346}
-  m_Layer: 30
-  m_Name: BatteryLowPoly.004
-  m_TagString: Weapon - Integral
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6607076676541528371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402702149861105455}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6828753639732011906}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8492438167506231991
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402702149861105455}
-  m_Mesh: {fileID: -8848110608649683074, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
---- !u!23 &7504888397309762346
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402702149861105455}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f433c9c38037cf04581eb2a26b07c4c3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &501184299923374554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,84 +1312,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &3779096980435515533
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4550478108472690559}
-  - component: {fileID: 5298398217394495734}
-  - component: {fileID: 4696279539853570361}
-  m_Layer: 30
-  m_Name: BatteryLowPoly.005
-  m_TagString: Weapon - Integral
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4550478108472690559
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779096980435515533}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6828753639732011906}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5298398217394495734
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779096980435515533}
-  m_Mesh: {fileID: -1013311789788499679, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
---- !u!23 &4696279539853570361
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3779096980435515533}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f433c9c38037cf04581eb2a26b07c4c3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &4077565516496165898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,86 +1393,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &4435676308245692921
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1808414017329212509}
-  - component: {fileID: 7888281844821744852}
-  - component: {fileID: 2248146436384329402}
-  m_Layer: 30
-  m_Name: BioBatteries
-  m_TagString: Weapon - Ammo
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1808414017329212509
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435676308245692921}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4141600125774493844}
-  - {fileID: 1492077141321358900}
-  m_Father: {fileID: 12887772456916614}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7888281844821744852
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435676308245692921}
-  m_Mesh: {fileID: 1054215087272127235, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
---- !u!23 &2248146436384329402
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4435676308245692921}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: bb3e3a2f3bab2ea4983ceadea53535cd, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &4570000567628445050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,86 +1453,6 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: a6a794e4e468b504f904bdf3e4e6953e, type: 2}
   - {fileID: 2100000, guid: d17b26d94d81aa14699f57155f575cb0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!1 &4900050369081777794
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6828753639732011906}
-  - component: {fileID: 966186730921577111}
-  - component: {fileID: 694197753615111784}
-  m_Layer: 30
-  m_Name: FissionBatteries
-  m_TagString: Weapon - Ammo
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6828753639732011906
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4900050369081777794}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6607076676541528371}
-  - {fileID: 4550478108472690559}
-  m_Father: {fileID: 12887772456916614}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &966186730921577111
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4900050369081777794}
-  m_Mesh: {fileID: -2904282989634321801, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
---- !u!23 &694197753615111784
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4900050369081777794}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: bb3e3a2f3bab2ea4983ceadea53535cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2083,7 +1691,7 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1808414017329212509}
+  m_Father: {fileID: 455818297210667180}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8007529199868215562
@@ -2380,7 +1988,7 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1808414017329212509}
+  m_Father: {fileID: 455818297210667180}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3339003618609476392
@@ -2537,8 +2145,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1808414017329212509}
-  - {fileID: 6828753639732011906}
+  - {fileID: 455818297210667180}
   m_Father: {fileID: 9197545952592778543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -2650,6 +2257,86 @@ MeshRenderer:
   - {fileID: 2100000, guid: d17b26d94d81aa14699f57155f575cb0, type: 2}
   - {fileID: 2100000, guid: bb3e3a2f3bab2ea4983ceadea53535cd, type: 2}
   - {fileID: 2100000, guid: 90b01957de418a940b6fe89093cdb158, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &8505314456972154579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455818297210667180}
+  - component: {fileID: 3960776931261071073}
+  - component: {fileID: 6596712986688067775}
+  m_Layer: 30
+  m_Name: Batteries
+  m_TagString: Weapon - Ammo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455818297210667180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505314456972154579}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4141600125774493844}
+  - {fileID: 1492077141321358900}
+  m_Father: {fileID: 12887772456916614}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3960776931261071073
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505314456972154579}
+  m_Mesh: {fileID: -1492196828186865917, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
+--- !u!23 &6596712986688067775
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505314456972154579}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bb3e3a2f3bab2ea4983ceadea53535cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

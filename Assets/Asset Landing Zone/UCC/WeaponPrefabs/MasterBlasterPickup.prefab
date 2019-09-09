@@ -60,6 +60,36 @@ Transform:
   m_Father: {fileID: 7234860855930228901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &3096187794970277690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4191485026310863758}
+  m_Layer: 0
+  m_Name: FirePointMBP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4191485026310863758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096187794970277690}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.002567, z: 0.000059}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 985070207552933760}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!135 &3997117599529685983
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -185,13 +215,13 @@ MonoBehaviour:
         m_SightMountPistol: 0
         m_UnderMountPistol: 0
     m_AmmoSets:
-    - m_SetName: Biochemical
+    - m_SetName: Energy Core
       m_AmmoParts:
-      - m_PartName: BioBatteries
+      - m_PartName: Batteries
         m_Part:
           m_Part: {fileID: 7523960140052316041}
           m_SubParts:
-          - BioBatteries
+          - Batteries
           - 
           m_SightMount: 0
           m_ScopeMount: 0
@@ -211,38 +241,7 @@ MonoBehaviour:
       m_ImpactForce: 0
       m_AutoReload: 0
       m_ReloadType: 0
-    - m_SetName: Fission
-      m_AmmoParts:
-      - m_PartName: FissionBatteries
-        m_Part:
-          m_Part: {fileID: 7523960140052316041}
-          m_SubParts:
-          - FissionBatteries
-          - 
-          m_SightMount: 0
-          m_ScopeMount: 0
-          m_BarrelMount: 0
-          m_GripMount: 0
-          m_UnderMount: 0
-          m_SideMount: 0
-          m_BarrelMountPistol: 0
-          m_SightMountPistol: 0
-          m_UnderMountPistol: 0
-        m_MaxAmmo: 500
-        m_ClipOffset: {fileID: 0}
-        m_ClipParent: {fileID: 0}
-        m_Projectile: {fileID: 0}
-        m_ProjectileParent: {fileID: 0}
-      m_DamageAmount: 0
-      m_ImpactForce: 0
-      m_AutoReload: 0
-      m_ReloadType: 0
-    m_AccessoryRack:
-      m_ActiveSight: 0
-      m_ActiveBarrel: 0
-      m_ActiveSideL: 0
-      m_ActiveSideR: 0
-      m_ActiveUnder: 0
+    m_AccessoryRack: {fileID: 0}
     m_SlotID: 0
     m_AnimatorMovementSetID: 0
     m_DominantItem: 1
@@ -335,6 +334,8 @@ MonoBehaviour:
       m_Part:
         m_Part: {fileID: 5725070394726023027}
         m_SubParts:
+        - Stock Collapsible Energy
+        - Stock Extension.003
         - 
         m_SightMount: 0
         m_ScopeMount: 0
@@ -361,30 +362,14 @@ MonoBehaviour:
         m_BarrelMountPistol: 0
         m_SightMountPistol: 0
         m_UnderMountPistol: 0
-    - m_PartName: Open Stock
-      m_Part:
-        m_Part: {fileID: 5725070394726023027}
-        m_SubParts:
-        - Stock Collapsible Energy
-        - Stock Extension.003
-        - 
-        m_SightMount: 0
-        m_ScopeMount: 0
-        m_BarrelMount: 0
-        m_GripMount: 0
-        m_UnderMount: 0
-        m_SideMount: 0
-        m_BarrelMountPistol: 0
-        m_SightMountPistol: 0
-        m_UnderMountPistol: 0
     m_AmmoSets:
-    - m_SetName: Biochemical
+    - m_SetName: Energy Core
       m_AmmoParts:
-      - m_PartName: BioBatteries
+      - m_PartName: Batteries
         m_Part:
           m_Part: {fileID: 7523960140052316041}
           m_SubParts:
-          - BioBatteries
+          - Batteries
           - 
           m_SightMount: 0
           m_ScopeMount: 0
@@ -404,38 +389,7 @@ MonoBehaviour:
       m_ImpactForce: 0
       m_AutoReload: 0
       m_ReloadType: 0
-    - m_SetName: Fission
-      m_AmmoParts:
-      - m_PartName: FissionBatteries
-        m_Part:
-          m_Part: {fileID: 7523960140052316041}
-          m_SubParts:
-          - FissionBatteries
-          - 
-          m_SightMount: 0
-          m_ScopeMount: 0
-          m_BarrelMount: 0
-          m_GripMount: 0
-          m_UnderMount: 0
-          m_SideMount: 0
-          m_BarrelMountPistol: 0
-          m_SightMountPistol: 0
-          m_UnderMountPistol: 0
-        m_MaxAmmo: 500
-        m_ClipOffset: {fileID: 0}
-        m_ClipParent: {fileID: 0}
-        m_Projectile: {fileID: 0}
-        m_ProjectileParent: {fileID: 0}
-      m_DamageAmount: 0
-      m_ImpactForce: 0
-      m_AutoReload: 2
-      m_ReloadType: 0
-    m_AccessoryRack:
-      m_ActiveSight: 0
-      m_ActiveBarrel: 0
-      m_ActiveSideL: 0
-      m_ActiveSideR: 0
-      m_ActiveUnder: 0
+    m_AccessoryRack: {fileID: 0}
     m_SlotID: 0
     m_AnimatorMovementSetID: 0
     m_DominantItem: 1
@@ -507,36 +461,6 @@ MonoBehaviour:
   m_ActiveMag: 0
   m_AccessoryConfig: 0
   m_ActivateOnStart: 0
---- !u!1 &3096187794970277690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4191485026310863758}
-  m_Layer: 0
-  m_Name: FirePointMBP
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4191485026310863758
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3096187794970277690}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.002567, z: 0.000059}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 985070207552933760}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &8427565049912555667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1043,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67947bc76e8e7b2418ed209cc98c8f6b, type: 2}
+    - target: {fileID: 108449466702545362, guid: 8b46cbe06bb87ec45b2551dc82d99013,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bb3e3a2f3bab2ea4983ceadea53535cd, type: 2}
+    - target: {fileID: 6830711370905384617, guid: 8b46cbe06bb87ec45b2551dc82d99013,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Ammo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b46cbe06bb87ec45b2551dc82d99013, type: 3}
 --- !u!1 &2838872148526540268 stripped
