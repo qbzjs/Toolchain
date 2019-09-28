@@ -8,8 +8,6 @@ namespace MalbersAnimations.Utilities
     public class EffectManager : MonoBehaviour, IAnimatorListener
     {
         public List<Effect> Effects;
-
-
         void Awake()
         {
             foreach (var e in Effects)
@@ -89,6 +87,11 @@ namespace MalbersAnimations.Utilities
 
         public virtual void StopEffect(int ID)
         {
+            Effect_Stop(ID);
+        }
+
+        public virtual void Effect_Stop(int ID)
+        {
             List<Effect> effects = Effects.FindAll(effect => effect.ID == ID && effect.active == true);
 
             if (effects != null)
@@ -96,9 +99,9 @@ namespace MalbersAnimations.Utilities
             {
                 foreach (var e in effects)
                 {
-                    if (e.Modifier) e.Modifier.StopEffect(e);              //Play Modifier when the effect play
+                    if (e.Modifier)   e.Modifier.StopEffect(e);              //Play Modifier when the effect play
                     e.OnStop.Invoke();
-                    e.On = false;
+                  //  e.On = false;
                 }
             }
         }
@@ -129,29 +132,27 @@ namespace MalbersAnimations.Utilities
           
             if (effect.Modifier) effect.Modifier.AwakeEffect(effect);        //Execute the Method PreStart Effect if it has a modifier
 
-            if (effect.toggleable)
-            {
-                effect.On = !effect.On;
+            //if (effect.toggleable)
+            //{
+            //    effect.On = !effect.On;
 
-                if (effect.On)
-                {
-                    StartCoroutine(IPlayEffect(effect));
-                }
-                else
-                {
-                    effect.OnStop.Invoke();
-                }
-            }
-            else
-            {
+            //    if (effect.On)
+            //    {
+            //        StartCoroutine(IPlayEffect(effect));
+            //    }
+            //    else
+            //    {
+            //        effect.OnStop.Invoke();
+            //    }
+            //}
+            //else
+            //{
                 StartCoroutine(IPlayEffect(effect));
-            }
+            //}
         }
 
 
-        /// <summary>
-        /// IAnimatorListener function
-        /// </summary>
+        /// <summary>IAnimatorListener function </summary>
         public virtual void OnAnimatorBehaviourMessage(string message, object value)
         {
             this.InvokeWithParams(message, value);
@@ -159,10 +160,8 @@ namespace MalbersAnimations.Utilities
 
         //─────────────────────────────────CALLBACKS METHODS───────────────────────────────────────────────────────────────────
 
-        /// <summary>
-        /// Disables all effects using their name
-        /// </summary>
-        public virtual void _DisableEffect(string name)
+        /// <summary>Disables all effects using their name </summary>
+        public virtual void Effect_Disable(string name)
         {
             List<Effect> effects = Effects.FindAll(effect => effect.Name.ToUpper() == name.ToUpper());
 
@@ -176,10 +175,8 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-        /// <summary>
-        /// Disables all effects using their ID
-        /// </summary>
-        public virtual void _DisableEffect(int ID)
+        /// <summary> Disables all effects using their ID</summary>
+        public virtual void Effect_Disable(int ID)
         {
             List<Effect> effects = Effects.FindAll(effect => effect.ID == ID);
 
@@ -193,7 +190,8 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-        public virtual void _EnableEffect(string name)
+        /// <summary>Enable all effects using their name</summary>
+        public virtual void Effect_Enable(string name)
         {
             List<Effect> effects = Effects.FindAll(effect => effect.Name.ToUpper() == name.ToUpper());
 
@@ -207,7 +205,9 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-        public virtual void _EnableEffect(int ID)
+
+        /// <summary> Enable all effects using their ID</summary>
+        public virtual void Effect_Enable(int ID)
         {
             List<Effect> effects = Effects.FindAll(effect => effect.ID == ID);
 
@@ -221,7 +221,7 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-        public virtual void _EnableEffectPrefab(int ID)
+        public virtual void Effect_Enable_Prefab(int ID)
         {
             Effect e = Effects.Find(item => item.ID == ID);
 
@@ -231,7 +231,7 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-        public virtual void _DisableEffectPrefab(int ID)
+        public virtual void Effect_Disable_Prefab(int ID)
         {
             Effect e = Effects.Find(item => item.ID == ID);
 
@@ -258,32 +258,20 @@ namespace MalbersAnimations.Utilities
         public Vector3 ScaleMultiplier = Vector3.one;
 
 
-        /// <summary>
-        /// Life of the Effect  
-        /// </summary>
+        /// <summary>Life of the Effect</summary>
         public float life = 10f;
 
-        /// <summary>
-        /// Delay Time to execute the effect after is called.
-        /// </summary>
+        /// <summary>Delay Time to execute the effect after is called.</summary>
         public float delay;
-        /// <summary>
-        /// Is the Effect an Instance?
-        /// </summary>
+        /// <summary> Is the Effect an Instance?</summary>
         public bool instantiate = true;
-        /// <summary>
-        /// When Toggleable is on the Effect will not be destroy or instantiated.. instead you can use the events for enabling/disabling options on the effect
-        /// </summary>
-        public bool toggleable = false;
+        ///// <summary>When Toggleable is on the Effect will not be destroy or instantiated.. instead you can use the events for enabling/disabling options on the effect </summary>
+        //public bool toggleable = false;
        
-        /// <summary>
-        /// Is the Effect Active?
-        /// </summary>
-        public bool On;
+        ///// <summary>Is the Effect Active?</summary>
+        //public bool On;
 
-        /// <summary>
-        /// Scriptable Object to Modify anything you want before, during or after the effect is invoked
-        /// </summary>
+        /// <summary>Scriptable Object to Modify anything you want before, during or after the effect is invoked</summary>
         public EffectModifier Modifier;
 
 
@@ -292,12 +280,15 @@ namespace MalbersAnimations.Utilities
 
         protected Transform owner;
 
+
+        /// <summary>Returns the Owner of the Effect </summary>
         public Transform Owner
         {
             get { return owner; }
             set { owner = value; }
         }
 
+        /// <summary>Returns the Instance of the Effect Prefab </summary>
         public GameObject Instance
         {
             get { return instance; }

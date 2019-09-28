@@ -414,19 +414,15 @@ namespace PixelCrushers.DialogueSystem
             checkedActorIDs.Add(actorID);
             var actor = DialogueManager.MasterDatabase.GetActor(actorID);
             if (actor == null) return;
-            var actorTransform = CharacterInfo.GetRegisteredActorTransform(actor.Name);
-            if (actorTransform == null)
-            {
-                var go = GameObject.Find(actor.Name);
-                if (go != null) actorTransform = go.transform;
-            }
+            var actorTransform = GetActorTransform(actor.Name);
             DialogueActor dialogueActor;
             var panel = GetActorTransformPanel(actorTransform, actor.IsPlayer ? m_defaultPCPanel : m_defaultNPCPanel, out dialogueActor);
             if (m_actorIdOverridePanel.ContainsKey(actor.id))
             {
                 panel = m_actorIdOverridePanel[actor.id];
             }
-            if (checkedPanels.Contains(panel)) return;
+            if (panel == null && Debug.isDebugBuild) Debug.LogWarning("Dialogue System: Can't determine what subtitle panel to use for " + actor.Name, actorTransform);
+            if (panel == null || checkedPanels.Contains(panel)) return;
             checkedPanels.Add(panel);
             if (panel.visibility == UIVisibility.AlwaysFromStart)
             {
@@ -436,6 +432,45 @@ namespace PixelCrushers.DialogueSystem
 
                 m_lastActorToUsePanel[panel] = actorID;
                 m_lastPanelUsedByActor[actorID] = panel;
+            }
+        }
+
+        protected Transform GetActorTransform(string actorName)
+        {
+            var actorTransform = CharacterInfo.GetRegisteredActorTransform(actorName);
+            if (actorTransform == null)
+            {
+                var go = GameObject.Find(actorName);
+                if (go != null) actorTransform = go.transform;
+            }
+            return actorTransform;
+        }
+
+        public void OpenSubtitlePanelLikeStart(SubtitlePanelNumber subtitlePanelNumber)
+        {
+            var panel = GetPanelFromNumber(subtitlePanelNumber, null);
+            if (panel == null || panel.isOpen) return;
+            var conversation = DialogueManager.MasterDatabase.GetConversation(DialogueManager.lastConversationStarted);
+            if (conversation == null) return;
+
+            for (int i = 0; i < conversation.dialogueEntries.Count; i++)
+            {
+                var actorID = conversation.dialogueEntries[i].ActorID;
+                var actor = DialogueManager.MasterDatabase.GetActor(actorID);
+                var actorTransform = GetActorTransform(actor.Name);
+                DialogueActor dialogueActor;
+                var actorPanel = GetActorTransformPanel(actorTransform, actor.IsPlayer ? m_defaultPCPanel : m_defaultNPCPanel, out dialogueActor);
+                if (m_actorIdOverridePanel.ContainsKey(actor.id))
+                {
+                    panel = m_actorIdOverridePanel[actor.id];
+                }
+                if (actorPanel == panel)
+                {
+                    var actorPortrait = (dialogueActor != null && dialogueActor.GetPortraitSprite() != null) ? dialogueActor.GetPortraitSprite() : actor.GetPortraitSprite();
+                    var actorName = CharacterInfo.GetLocalizedDisplayNameInDatabase(actor.Name);
+                    panel.OpenOnStartConversation(actorPortrait, actorName, dialogueActor);
+                    return;
+                }
             }
         }
 

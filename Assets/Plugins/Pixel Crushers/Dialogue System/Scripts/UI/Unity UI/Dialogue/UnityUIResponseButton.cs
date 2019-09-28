@@ -121,6 +121,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (button == null) button = GetComponent<UnityEngine.UI.Button>();
             if (button == null) Debug.LogWarning("Dialogue System: Response button '" + name + "' is missing a Unity UI Button component!", this);
+            Tools.DeprecationWarning(this);
         }
 
         /// <summary>

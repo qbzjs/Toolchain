@@ -72,6 +72,8 @@ namespace PixelCrushers
             set { m_panelState = value; }
         }
 
+        public virtual bool waitForShowAnimation { get { return false; } }
+
         public bool isOpen
         {
             get { return panelState == PanelState.Opening || panelState == PanelState.Open || (panelState == PanelState.Uninitialized && gameObject.activeInHierarchy); }
@@ -176,7 +178,7 @@ namespace PixelCrushers
             panelState = PanelState.Opening;
             gameObject.SetActive(true);
             onOpen.Invoke();
-            animatorMonitor.SetTrigger(showAnimationTrigger, OnVisible, false);
+            animatorMonitor.SetTrigger(showAnimationTrigger, OnVisible, waitForShowAnimation);
 
             // With quick panel changes, panel may not reach OnEnable/OnDisable before being reused.
             // Update panelStack here also to handle this case:
@@ -199,12 +201,12 @@ namespace PixelCrushers
             }
         }
 
-        public void SetOpen(bool value)
+        public virtual void SetOpen(bool value)
         {
             if (value == true) Open(); else Close();
         }
 
-        public void Toggle()
+        public virtual void Toggle()
         {
             if (isOpen) Close(); else Open();
         }
@@ -252,7 +254,7 @@ namespace PixelCrushers
             }
         }
 
-        public void CheckFocus()
+        public virtual void CheckFocus()
         {
             if (!monitorSelection) return;
             if (!InputDeviceManager.autoFocus) return;

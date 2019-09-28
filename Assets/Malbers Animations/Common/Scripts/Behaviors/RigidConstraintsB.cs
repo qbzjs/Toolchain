@@ -4,7 +4,7 @@ namespace MalbersAnimations
 {
     public class RigidConstraintsB : StateMachineBehaviour
     {
-        public bool PosX, PosY = true, PosZ, RotX = true, RotY = true, RotZ = true;
+        public bool PosX, PosY, PosZ, RotX = true, RotY = true, RotZ = true;
         public bool OnEnter = true, OnExit;
         protected int Amount = 0;
         Rigidbody rb;

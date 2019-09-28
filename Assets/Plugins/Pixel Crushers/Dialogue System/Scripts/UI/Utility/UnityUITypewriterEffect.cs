@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
-using UnityEngine;
-using UnityEngine.Events;
-using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace PixelCrushers.DialogueSystem
 {
@@ -220,7 +220,7 @@ namespace PixelCrushers.DialogueSystem
             if (coroutineController == null || !coroutineController.gameObject.activeInHierarchy)
             {
                 // This MonoBehaviour might not be enabled yet, so use one that's guaranteed to be enabled:
-                MonoBehaviour controller = GetComponentInParent<UnityUIDialogueUI>();
+                MonoBehaviour controller = GetComponentInParent<AbstractDialogueUI>();
                 if (controller == null) controller = DialogueManager.instance;
                 coroutineController = controller;
                 if (coroutineController == null) coroutineController = this;
@@ -246,17 +246,54 @@ namespace PixelCrushers.DialogueSystem
                 float elapsed = 0;
                 int charactersTyped = 0;
                 if (original == null) original = control.text;
-                frontSkippedText = string.Empty;
-                if (fromIndex > 0)
-                {
-                    frontSkippedText = original.Substring(0, fromIndex);
-                    original = original.Substring(fromIndex);
-                }
                 tokens = Tokenize(original);
                 openTokenTypes = new List<TokenType>();
                 current = new StringBuilder();
+                frontSkippedText = string.Empty;
+                var preTyped = 0;
+                if (fromIndex > 0)
+                {
+                    // Add characters to skip ahead:
+                    int frontSafeguard = 0;
+                    while (preTyped < fromIndex && tokens.Count > 0 && frontSafeguard < 65535)
+                    {
+                        frontSafeguard++;
+                        var frontToken = GetNextToken(tokens);
+                        switch (frontToken.tokenType)
+                        {
+                            case TokenType.Character:
+                                preTyped++;
+                                if (rightToLeft)
+                                {
+                                    current.Insert(0, frontToken.character);
+                                }
+                                else
+                                {
+                                    current.Append(frontToken.character);
+                                }
+                                break;
+                            case TokenType.BoldOpen:
+                            case TokenType.ItalicOpen:
+                            case TokenType.ColorOpen:
+                            case TokenType.SizeOpen:
+                                OpenRichText(current, frontToken, openTokenTypes);
+                                break;
+                            case TokenType.BoldClose:
+                            case TokenType.ItalicClose:
+                            case TokenType.ColorClose:
+                            case TokenType.SizeClose:
+                                CloseRichText(current, frontToken, openTokenTypes);
+                                break;
+                            case TokenType.Quad:
+                                current.Append(frontToken.code);
+                                break;
+                        }
+                    }
+                    control.text = GetCurrentText(current, openTokenTypes, tokens);
+                    charactersTyped = preTyped;
+                }
                 int safeguard = 0;
-                while (tokens.Count > 0 && safeguard < 10000)
+                while (tokens.Count > 0 && safeguard < 65535)
                 {
                     safeguard++;
                     if (!paused)
@@ -264,7 +301,7 @@ namespace PixelCrushers.DialogueSystem
                         var deltaTime = DialogueTime.time - lastTime;
 
                         elapsed += deltaTime;
-                        var goal = elapsed * charactersPerSecond;
+                        var goal = preTyped + (elapsed * charactersPerSecond);
                         var isCodeNext = false;
                         while (((charactersTyped < goal) || isCodeNext) && (tokens.Count > 0))
                         {
@@ -323,13 +360,13 @@ namespace PixelCrushers.DialogueSystem
                         }
                     }
                     // Set the text:
-                    control.text = frontSkippedText + GetCurrentText(current, openTokenTypes, tokens);
+                    control.text = GetCurrentText(current, openTokenTypes, tokens);
 
                     // Handle auto-scrolling:
                     HandleAutoScroll();
 
                     //---Uncomment the line below to debug: 
-                    //Debug.Log(control.text.Replace("<", "[").Replace(">", "]") + " " + name, this);
+                    //Debug.Log(control.text.Replace("<", "[").Replace(">", "]") + " " + name + " " + Time.frameCount, this);
 
                     lastTime = DialogueTime.time;
                     var delayTime = DialogueTime.time + delay;

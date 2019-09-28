@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System;
 
 namespace PixelCrushers.DialogueSystem
 {
@@ -33,6 +34,9 @@ namespace PixelCrushers.DialogueSystem
 
         [Tooltip("Each subtitle adds to Subtitle Text instead of replacing it.")]
         public bool accumulateText = false;
+
+        [Tooltip("If panel has a typewriter effect, don't start typing until panel's Show animation has completed.")]
+        public bool delayTypewriterUntilOpen = false;
 
         [Tooltip("(Optional) Continue button. Only shown if Dialogue Manager's Continue Button mode uses continue button.")]
         public UnityEngine.UI.Button continueButton;
@@ -66,12 +70,15 @@ namespace PixelCrushers.DialogueSystem
 
         #region Public Properties
 
+        [SerializeField, Tooltip("Panel is currently in focused state.")]
         private bool m_hasFocus = true;
-        public virtual bool hasFocus
+        public bool hasFocus
         {
             get { return m_hasFocus; }
-            protected set { m_hasFocus = value; }
+            set { m_hasFocus = value; }
         }
+
+        public override bool waitForShowAnimation { get { return true; } }
 
         private Subtitle m_currentSubtitle = null;
         public virtual Subtitle currentSubtitle
@@ -96,6 +103,8 @@ namespace PixelCrushers.DialogueSystem
         public bool isDefaultPCPanel { get { return m_isDefaultPCPanel; } set { m_isDefaultPCPanel = value; } }
         private int m_panelNumber = -1;
         public int panelNumber { get { return m_panelNumber; } set { m_panelNumber = value; } }
+
+        private Coroutine m_focusWhenOpenCoroutine = null;
 
         #endregion
 
@@ -171,6 +180,7 @@ namespace PixelCrushers.DialogueSystem
         public virtual void ShowSubtitle(Subtitle subtitle)
         {
             SetUIElementsActive(true);
+            if (!isOpen) hasFocus = false;
             Open();
             Focus();
             SetContent(subtitle);
@@ -194,6 +204,12 @@ namespace PixelCrushers.DialogueSystem
             DeactivateUIElements();
         }
 
+        protected override void OnHidden()
+        {
+            base.OnHidden();
+            DeactivateUIElements();
+        }
+
         /// <summary>
         /// Opens the panel.
         /// </summary>
@@ -209,7 +225,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (isOpen) base.Close();
             m_accumulatedText = string.Empty;
-            hasFocus = true;
+            hasFocus = false;
         }
 
         /// <summary>
@@ -217,10 +233,46 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void Focus()
         {
+            if (panelState == PanelState.Opening)
+            {
+                if (m_focusWhenOpenCoroutine != null) StopCoroutine(m_focusWhenOpenCoroutine);
+                m_focusWhenOpenCoroutine = StartCoroutine(FocusWhenOpen());
+            }
+            else
+            {
+                FocusNow();
+            }
+        }
+
+        protected IEnumerator FocusWhenOpen()
+        {
+            float timeout = Time.realtimeSinceStartup + 5f;
+            while (panelState != PanelState.Open && Time.realtimeSinceStartup < timeout)
+            {
+                yield return null;
+            }
+            m_focusWhenOpenCoroutine = null;
+            FocusNow();
+        }
+
+        protected virtual void FocusNow()
+        {
+            panelState = PanelState.Open;
             if (hasFocus) return;
-            hasFocus = true;
-            animatorMonitor.SetTrigger(focusAnimationTrigger, null, false);
+            if (string.IsNullOrEmpty(focusAnimationTrigger))
+            {
+                OnFocused();
+            }
+            else
+            {
+                animatorMonitor.SetTrigger(focusAnimationTrigger, OnFocused, true);
+            }
             onFocus.Invoke();
+        }
+
+        private void OnFocused()
+        {
+            hasFocus = true;
         }
 
         /// <summary>
@@ -228,7 +280,14 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void Unfocus()
         {
-            if (!hasFocus) return;
+            var isPlayingFocusAnimation = (m_focusWhenOpenCoroutine != null);
+            if (isPlayingFocusAnimation)
+            {
+                StopCoroutine(m_focusWhenOpenCoroutine);
+                m_focusWhenOpenCoroutine = null;
+            }
+            if (!(hasFocus || isPlayingFocusAnimation)) return;
+            if (panelState == PanelState.Opening) panelState = PanelState.Open;
             hasFocus = false;
             animatorMonitor.SetTrigger(unfocusAnimationTrigger, null, false);
             onUnfocus.Invoke();
@@ -256,6 +315,7 @@ namespace PixelCrushers.DialogueSystem
 
         public virtual void ClearText()
         {
+            m_accumulatedText = string.Empty;
             subtitleText.text = string.Empty;
         }
 
@@ -332,9 +392,29 @@ namespace PixelCrushers.DialogueSystem
             }
             TypewriterUtility.StopTyping(subtitleText);
             var previousText = accumulateText ? m_accumulatedText : string.Empty;
+            var previousChars = accumulateText ? UITools.StripRPGMakerCodes(Tools.StripTextMeshProTags(Tools.StripRichTextCodes(previousText))).Length : 0;
             SetFormattedText(subtitleText, previousText, subtitle.formattedText);
             if (accumulateText) m_accumulatedText = subtitleText.text + "\n";
-            TypewriterUtility.StartTyping(subtitleText, subtitleText.text, previousText.Length);
+            if (delayTypewriterUntilOpen && !hasFocus)
+            {
+                StartCoroutine(StartTypingWhenFocused(subtitleText, subtitleText.text, previousChars));
+            }
+            else
+            {
+                TypewriterUtility.StartTyping(subtitleText, subtitleText.text, previousChars);
+            }
+        }
+
+        protected IEnumerator StartTypingWhenFocused(UITextField subtitleText, string text, int fromIndex)
+        {
+            subtitleText.text = string.Empty;
+            float timeout = Time.realtimeSinceStartup + 5f;
+            while (!hasFocus && panelState != PanelState.Open && Time.realtimeSinceStartup < timeout)
+            {
+                yield return null;
+            }
+            subtitleText.text = text;
+            TypewriterUtility.StartTyping(subtitleText, text, fromIndex);
         }
 
         protected virtual void SetFormattedText(UITextField textField, string previousText, FormattedText formattedText)

@@ -20,6 +20,18 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
     /// </summary>
     public abstract class FirstPerson : ViewType
     {
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+        /// <summary>
+        /// Specifies how the overlay objects are rendered.
+        /// </summary>
+        public enum ObjectOverlayRenderType
+        {
+            SecondCamera,   // Use a second stacked camera to ensure the overlay objects do no clip with any other objects.
+            RenderPipeline, // Use the LWRP/URP render pipeline to ensure the overlay objects do no clip with any other objects.
+            None            // No special rendering for the overlay objects.
+        }
+#endif
+
         [Tooltip("The distance that the character should look ahead.")]
         [SerializeField] protected float m_LookDirectionDistance = 100;
         
@@ -37,12 +49,17 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         [SerializeField] protected Vector3 m_FirstPersonPositionOffset;
         [Tooltip("Specifies the rotation offset from the camera that the first person objects should render.")]
         [SerializeField] protected Vector3 m_FirstPersonRotationOffset;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+        [Tooltip("Specifies how the overlay objects are rendered.")]
+        [SerializeField] protected ObjectOverlayRenderType m_OverlayRenderType = ObjectOverlayRenderType.SecondCamera;
+#else
         [Tooltip("Should the first person camera be used?")]
         [SerializeField] protected bool m_UseFirstPersonCamera = true;
+#endif
         [Tooltip("A reference to the first person camera.")]
         [SerializeField] protected UnityEngine.Camera m_FirstPersonCamera;
-        [Tooltip("The culling mask of the first person camera.")]
-        [SerializeField] protected LayerMask m_FirstPersonCullingMask = (1 << LayerManager.Overlay);
+        [Tooltip("The culling mask of the first person objects.")]
+        [SerializeField] protected LayerMask m_FirstPersonCullingMask = 1 << LayerManager.Overlay;
         [Tooltip("Should the first person camera's field of view be synchronized with the main camera?")]
         [SerializeField] protected bool m_SynchronizeFieldOfView = true;
         [Tooltip("Specifies the field of view for the first person camera.")]
@@ -145,6 +162,9 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
             }
         }
         public override float LookDirectionDistance { get { return m_LookDirectionDistance; } }
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+        [NonSerialized] public ObjectOverlayRenderType OverlayRenderType { get { return m_OverlayRenderType; } set { m_OverlayRenderType = value; } }
+#else
         public bool UseFirstPersonCamera { get { return m_UseFirstPersonCamera; }
             set
             {
@@ -155,6 +175,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
                 UpdateFirstPersonCamera(m_CharacterLocomotion.FirstPersonPerspective);
             }
         }
+#endif
         [NonSerialized] public UnityEngine.Camera FirstPersonCamera { get { return m_FirstPersonCamera; } set { m_FirstPersonCamera = value; } }
         public LayerMask FirstPersonCullingMask { get { return m_FirstPersonCullingMask; }
             set {
@@ -274,7 +295,11 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
             m_AimAssist = m_GameObject.GetCachedComponent<AimAssist>();
 
             m_Camera.depth = 0;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+            if (m_OverlayRenderType != ObjectOverlayRenderType.None) {
+#else
             if (m_UseFirstPersonCamera) {
+#endif
                 m_Camera.cullingMask &= m_CullingMask;
             }
 
@@ -332,7 +357,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
             // Unregister from any events on the previous character.
             if (m_Character != null) {
                 EventHandler.UnregisterEvent<Transform>(m_Character, "OnCharacterChangeMovingPlatforms", OnCharacterChangeMovingPlatforms);
-                EventHandler.UnregisterEvent<bool>(m_Character, "OnCameraChangePerspectives", OnChangePerspectives);
+                EventHandler.UnregisterEvent<bool>(m_Character, "OnCameraChangePerspectives", UpdateFirstPersonCamera);
                 EventHandler.UnregisterEvent<float>(m_Character, "OnCharacterLand", OnCharacterLand);
                 EventHandler.UnregisterEvent<float, float, float>(m_Character, "OnCharacterLean", OnCharacterLean);
                 EventHandler.UnregisterEvent<float>(m_Character, "OnHeightChangeAdjustHeight", AdjustVerticalOffset);
@@ -360,7 +385,7 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
                 m_SmoothHeadBufferCount = 0;
 
                 EventHandler.RegisterEvent<Transform>(m_Character, "OnCharacterChangeMovingPlatforms", OnCharacterChangeMovingPlatforms);
-                EventHandler.RegisterEvent<bool>(m_Character, "OnCameraChangePerspectives", OnChangePerspectives);
+                EventHandler.RegisterEvent<bool>(m_Character, "OnCameraChangePerspectives", UpdateFirstPersonCamera);
                 EventHandler.RegisterEvent<float>(m_Character, "OnCharacterLand", OnCharacterLand);
                 EventHandler.RegisterEvent<float, float, float>(m_Character, "OnCharacterLean", OnCharacterLean);
             }
@@ -488,18 +513,33 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
         /// <param name="firstPersonPerspective">Is the character in a first person perspective?</param>
         private void UpdateFirstPersonCamera(bool firstPersonPerspective)
         {
-            if (m_UseFirstPersonCamera) {
-                if (firstPersonPerspective) {
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+            if (m_OverlayRenderType == ObjectOverlayRenderType.None) {
+#else
+            if (!m_UseFirstPersonCamera) {
+#endif
+                return;
+            }
+
+
+            if (firstPersonPerspective) {
+                if (m_FirstPersonCamera != null) {
                     m_FirstPersonCamera.gameObject.SetActive(true);
                 }
-                m_Camera.cullingMask &= m_CullingMask;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+                if (m_OverlayRenderType == ObjectOverlayRenderType.RenderPipeline) {
+                    m_Camera.cullingMask |= m_FirstPersonCullingMask;
+                }
+#endif
             } else {
                 if (m_FirstPersonCamera != null) {
                     m_FirstPersonCamera.gameObject.SetActive(false);
                 }
-                if (firstPersonPerspective) {
-                    m_Camera.cullingMask |= ~m_CullingMask;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+                if (m_OverlayRenderType == ObjectOverlayRenderType.RenderPipeline) {
+                    m_Camera.cullingMask &= ~m_FirstPersonCullingMask;
                 }
+#endif
             }
         }
 
@@ -522,21 +562,6 @@ namespace Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTy
                 m_RotationSpring.Value = firstPersonViewType.RotationSpring.Value;
                 m_RotationSpring.Velocity = firstPersonViewType.RotationSpring.Velocity;
                 m_Shake = firstPersonViewType.Shake;
-            }
-        }
-
-        /// <summary>
-        /// The camera perspective between first and third person has changed.
-        /// </summary>
-        /// <param name="firstPersonPerspective">Is the camera in a first person perspective?</param>
-        private void OnChangePerspectives(bool firstPersonPerspective)
-        {
-            if (m_FirstPersonCamera != null) {
-                if (firstPersonPerspective) {
-                    UpdateFirstPersonCamera(true);
-                } else {
-                    m_FirstPersonCamera.gameObject.SetActive(false);
-                }
             }
         }
 

@@ -412,10 +412,6 @@ namespace Opsive.UltimateCharacterController.Demo
         {
             m_CharacterLocomotion.SetActive(true, true);
 
-            // Set the starting position.
-            m_LastZoneIndex = -1;
-            ActiveDemoZone(m_DemoZones[0], teleport);
-
             // Set the perspective on the camera.
             var camera = UnityEngineUtility.FindCamera(null);
             var cameraController = camera.GetComponent<Camera.CameraController>();
@@ -424,6 +420,10 @@ namespace Opsive.UltimateCharacterController.Demo
             cameraController.ThirdPersonViewTypeFullName = GetViewTypeFullName(false);
             cameraController.SetPerspective(firstPersonPerspective, true);
             cameraController.Character = m_Character;
+
+            // Set the starting position.
+            m_LastZoneIndex = -1;
+            ActiveDemoZone(m_DemoZones[0], teleport);
 
             // The cursor should be hidden to start the demo.
             Cursor.lockState = CursorLockMode.Locked;

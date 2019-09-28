@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace PixelCrushers.DialogueSystem
@@ -79,12 +80,15 @@ namespace PixelCrushers.DialogueSystem
 
         #region Public Properties
 
+        [SerializeField, Tooltip("Panel is currently in focused state.")]
         private bool m_hasFocus = false;
         public virtual bool hasFocus
         {
             get { return m_hasFocus; }
             protected set { m_hasFocus = value; }
         }
+
+        public override bool waitForShowAnimation { get { return true; } }
 
         /// <summary>
         /// The instantiated buttons. These are only valid during a specific response menu,
@@ -162,10 +166,46 @@ namespace PixelCrushers.DialogueSystem
         public virtual void Focus()
         {
             if (hasFocus) return;
-            hasFocus = true;
+            if (panelState == PanelState.Opening)
+            {
+                StartCoroutine(FocusWhenOpen());
+            }
+            else
+            {
+                FocusNow();
+            }
+        }
+
+        protected IEnumerator FocusWhenOpen()
+        {
+            float timeout = Time.realtimeSinceStartup + 5f;
+            while (panelState != PanelState.Open && Time.realtimeSinceStartup < timeout)
+            {
+                yield return null;
+            }
+            FocusNow();
+        }
+
+        protected virtual void FocusNow()
+        {
+            panelState = PanelState.Open;
             animatorMonitor.SetTrigger(focusAnimationTrigger, null, false);
             UITools.EnableInteractivity(gameObject);
+            if (hasFocus) return;
+            if (string.IsNullOrEmpty(focusAnimationTrigger))
+            {
+                OnFocused();
+            }
+            else
+            {
+                animatorMonitor.SetTrigger(focusAnimationTrigger, OnFocused, true);
+            }
             onFocus.Invoke();
+        }
+
+        private void OnFocused()
+        {
+            hasFocus = true;
         }
 
         public virtual void Unfocus()

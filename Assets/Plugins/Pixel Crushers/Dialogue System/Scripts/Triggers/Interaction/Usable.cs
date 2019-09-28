@@ -62,7 +62,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (string.IsNullOrEmpty(overrideName))
             {
-                return name;
+                return DialogueActor.GetActorName(transform);
             }
             else if (overrideName.Contains("[lua") || overrideName.Contains("[var"))
             {

@@ -15,6 +15,12 @@ namespace PixelCrushers.DialogueSystem
     public static class Tools
     {
 
+        public static void DeprecationWarning(MonoBehaviour mb, string extraInfo = null)
+        {
+            if (mb == null) return;
+            Debug.LogWarning("Dialogue System: " + mb.GetType().Name + " is deprecated and will be removed in the next version. " + extraInfo, mb);
+        }
+
         /// <summary>
         /// Determines if a GameObject reference is a non-instantiated prefab or a scene object.
         /// If `go` is `null`, active in the scene, or its parent is active in the scene, it's
@@ -324,6 +330,18 @@ namespace PixelCrushers.DialogueSystem
             return Regex.Replace(s, @"<b>|</b>|<i>|</i>|<color=[#]\w+>|</color>", string.Empty);
         }
 
+        public static string StripTextMeshProTags(string s)
+        {
+            if (!s.Contains("<")) return s;
+            return Regex.Replace(s, @"<b>|</b>|<i>|</i>|<color=#\w+>|<color=""\w+"">|</color>|" +
+                @"<align=\w+>|</align>|<font=\w+>|</font>|<indent=\w+[%]>|</indent>|" +
+                @"<line-height=\w+[%]>|</line-height>|<line-indent=\w+[%]>|</line-ident>|" +
+                @"<link=""[^""]+"">|</link>|<lowercase>|</lowercase>|<uppercase>|</uppercase>|" +
+                @"<smallcaps>|</smallcaps>|<margin=.+>|</margin>|<mark=#\w+>|</mark>|" +
+                @"<nobr>|</nobr>|<size=\w+[%]>|</size>|<sprite=.+>|<s>|</s>|<u>|</u>|" +
+                @"<sup>|</sup>|<sub>|</sub>", string.Empty);
+        }
+
         /// <summary>
         /// Determines whether an animation clip is in the animation list.
         /// </summary>
@@ -349,90 +367,49 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
-        /// Specifies how deep to recurse in GameObjectHardFind.
+        /// Finds an in-scene GameObject even if it's inactive.
         /// </summary>
-        public static int maxHardFindRecursion = 256;
+        /// <param name="goName">Name of the GameObject.</param>
+        /// <returns>The GameObject, or null if not found.</returns>
+        public static GameObject GameObjectHardFind(string goName)
+        {
+            return GameObjectUtility.GameObjectHardFind(goName);
+        }
 
         /// <summary>
-        /// Finds an in-scene GameObject even if it's inactive, as long as the inactive
-        /// GameObject is a child of an active GameObject.
+        /// Finds an in-scene GameObject matching a name and tag even if it's inactive.
         /// </summary>
-        /// <returns>The GameObject.</returns>
-        /// <param name="str">Name of the GameObject.</param>
-        /// <remarks>Based on code by cawas: http://answers.unity3d.com/questions/48252/how-to-find-inactive-gameobject.html</remarks>
-        static public GameObject GameObjectHardFind(string str)
+        /// <param name="goName">Name of the GameObject.</param>
+        /// <param name="tag">Tag.</param>
+        /// <returns>The GameObject, or null if not found.</returns>
+        public static GameObject GameObjectHardFind(string goName, string tag)
         {
-            //Debug.Log("<color=magenta>GameObjectHardFind(" + str + ")</color>");//[DEBUG]
-            GameObject result = GameObject.Find(str);
-            if (result != null) return result;
-            var gameObjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-            for (int i = 0; i < gameObjects.Length; i++)
-            {
-                GameObject root = gameObjects[i];
-                if (root.transform.parent == null)
-                { // means it's a root GO
-                    result = GameObjectHardFind(root, str, 0, 0);
-                    if (result != null) break;
-                }
-            }
-            return result;
-        }
-        static public GameObject GameObjectHardFind(string str, string tag)
-        {
-            //Debug.Log("<color=magenta>GameObjectHardFind(" + str + ", tag=" + tag + ")</color>");//[DEBUG]
-            GameObject result = null;
-            var gameObjects = GameObject.FindGameObjectsWithTag(tag);
-            for (int i = 0; i < gameObjects.Length; i++)
-            {
-                var parent = gameObjects[i];
-                result = GameObjectHardFind(parent, str, 0, 0);
-                if (result != null) break;
-            }
-            return result;
-        }
-        static private GameObject GameObjectHardFind(GameObject item, string str, int index, int recursionDepth)
-        {
-            //Debug.Log("<color=magenta>GameObjectHardFind(" + (item != null ? item.name : "null") + ", " + str + ", index=" + index + ", recursionDepth=" + recursionDepth + ")</color>");//[DEBUG]
-            if (recursionDepth > maxHardFindRecursion) return null;
-            if (index == 0 && item.name == str) return item;
-            if (index < item.transform.childCount)
-            {
-                GameObject result = GameObjectHardFind(item.transform.GetChild(index).gameObject, str, 0, recursionDepth + 1);
-                if (result == null)
-                {
-                    return GameObjectHardFind(item, str, ++index, recursionDepth + 1);
-                }
-                else
-                {
-                    return result;
-                }
-            }
-            return null;
+            return GameObjectUtility.GameObjectHardFind(goName, tag);
         }
 
+        /// <summary>
+        /// Finds all GameObjects with a specified tag, even inactive GameObjects.
+        /// </summary>
+        /// <param name="tag">Tag.</param>
+        /// <returns>Array of GameObjects with a tag.</returns>
         public static GameObject[] FindGameObjectsWithTagHard(string tag)
         {
-            var result = new List<GameObject>();
-            var gameObjects = GameObject.FindObjectsOfType(typeof(GameObject)) as GameObject[];
-            for (int i = 0; i < gameObjects.Length; i++)
+            var list = new List<GameObject>();
+            var rootGameObjects = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+            for (int i = 0; i < rootGameObjects.Length; i++)
             {
-                var root = gameObjects[i];
-                if (root.transform.parent == null)
-                {
-                    AddGameObjectsWithTagHard(root.transform, tag, 0, result);
-                }
+                GameObjectSearchForTags(rootGameObjects[i].transform, tag, list);
             }
-            return result.ToArray();
+            return list.ToArray();
         }
 
-        static private void AddGameObjectsWithTagHard(Transform t, string tag, int recursionDepth, List<GameObject> result)
+        private static void GameObjectSearchForTags(Transform t, string tag, List<GameObject> list)
         {
             if (t == null) return;
-            if (t.CompareTag(tag)) result.Add(t.gameObject);
-            if (recursionDepth > maxHardFindRecursion) return;
+            if (string.Equals(t.tag, tag)) list.Add(t.gameObject);
             foreach (Transform child in t)
             {
-                AddGameObjectsWithTagHard(child, tag, recursionDepth + 1, result);
+                GameObjectSearchForTags(child, tag, list);
             }
         }
 

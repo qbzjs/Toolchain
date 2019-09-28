@@ -10,7 +10,7 @@ namespace MalbersAnimations
 
         [Tooltip("Deactivate the Inputs of the other targets to keep them from moving")]
         public bool NoInputs = false;
-        MFreeLookCamera m;
+        private MFreeLookCamera m;
 
         // Update is called once per frame
 
@@ -18,21 +18,22 @@ namespace MalbersAnimations
         {
             if (NoInputs)
             {
-                MalbersInput input = null;
+                IInputSource input = null;
+
                 for (int i = 0; i < targets.Length; i++)
                 {
                     if (targets[i])
                     {
-                        input = targets[i].GetComponent<MalbersInput>();
-                        if (input) input.enabled = false;
+                        input = targets[i].GetComponent<IInputSource>();
+                        if (input != null)input.Enable(false);
                     }
                 }
 
                 m = GetComponent<MFreeLookCamera>();
                 if (m && m.Target)
                 {
-                    input = m.Target.GetComponent<MalbersInput>();
-                    if (input) input.enabled = true;
+                    input = m.Target.GetComponent<IInputSource>();
+                    if (input != null) input.Enable(true);
 
                     for (int i = 0; i < targets.Length; i++)
                     {
@@ -55,8 +56,8 @@ namespace MalbersAnimations
             {
                 if (NoInputs)
                 {
-                    MalbersInput input = targets[current].GetComponent<MalbersInput>();
-                    if (input) input.enabled = false;
+                    IInputSource input = targets[current].GetComponent<IInputSource>();
+                    if (input != null) input.Enable(false);
                 }
 
                 current++;
@@ -65,8 +66,8 @@ namespace MalbersAnimations
 
                 if (NoInputs)
                 {
-                    MalbersInput input = targets[current].GetComponent<MalbersInput>();
-                    if (input) input.enabled = true;
+                    IInputSource input = targets[current].GetComponent<IInputSource>();
+                    if (input != null) input.Enable(true);
                 }
             }
         }

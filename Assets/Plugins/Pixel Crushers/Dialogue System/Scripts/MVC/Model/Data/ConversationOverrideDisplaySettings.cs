@@ -21,8 +21,11 @@ namespace PixelCrushers.DialogueSystem
         public DisplaySettings.SubtitleSettings.ContinueButtonMode continueButton;
 
         public bool overrideSequenceSettings = false;
+        [TextArea]
         public string defaultSequence;
+        [TextArea]
         public string defaultPlayerSequence;
+        [TextArea]
         public string defaultResponseMenuSequence;
 
         public bool overrideInputSettings = false;

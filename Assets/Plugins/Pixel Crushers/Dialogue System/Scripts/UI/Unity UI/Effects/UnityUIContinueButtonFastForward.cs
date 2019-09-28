@@ -36,6 +36,7 @@ namespace PixelCrushers.DialogueSystem
                 typewriterEffect = GetComponentInChildren<UnityUITypewriterEffect>();
             }
             continueButton = GetComponent<UnityEngine.UI.Button>();
+            Tools.DeprecationWarning(this);
         }
 
         public virtual void OnFastForward()

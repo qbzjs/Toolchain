@@ -186,12 +186,15 @@ namespace PixelCrushers.DialogueSystem
                             if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}' can't find a valid dialogue entry", new System.Object[] { DialogueDebug.Prefix, speaker, listener, conversationTitle }), speaker);
                             yield break;
                         }
-                        if (firstState.hasNPCResponse)
-                        {
-                            CharacterInfo tempInfo = barkState.subtitle.speakerInfo;
-                            barkState.subtitle.speakerInfo = barkState.subtitle.listenerInfo;
-                            barkState.subtitle.listenerInfo = tempInfo;
-                        }
+
+                        //--- Was: (swapping speaker & listener no longer appropriate)
+                        //if (firstState.hasNPCResponse)
+                        //{
+                        //    CharacterInfo tempInfo = barkState.subtitle.speakerInfo;
+                        //    barkState.subtitle.speakerInfo = barkState.subtitle.listenerInfo;
+                        //    barkState.subtitle.listenerInfo = tempInfo;
+                        //}
+
                         if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}'", new System.Object[] { DialogueDebug.Prefix, speaker, listener, barkState.subtitle.formattedText.text }), speaker);
                         InformParticipantsLine(DialogueSystemMessages.OnBarkLine, speaker, barkState.subtitle);
 

@@ -176,6 +176,10 @@ namespace PixelCrushers.DialogueSystem
                         subtitleText = string.Format("{0}: {1}", subtitleText, subtitle.formattedText.text);
                     }
                 }
+                else
+                {
+                    if (nameText != null && nameText.gameObject != null) nameText.gameObject.SetActive(false);
+                }
                 if (showPortraitImage && subtitle.speakerInfo.portrait != null)
                 {
                     Tools.SetGameObjectActive(portraitImage, true);
@@ -195,13 +199,13 @@ namespace PixelCrushers.DialogueSystem
                 var barkDuration = Mathf.Approximately(0, duration) ? DialogueManager.GetBarkDuration(subtitleText) : duration;
                 if (!(waitUntilSequenceEnds || waitForContinueButton)) Invoke("Hide", barkDuration);
                 if (waitUntilSequenceEnds) numSequencesActive++;
-                doneTime = DialogueTime.time + barkDuration;
+                doneTime = waitForContinueButton ? Mathf.Infinity : (DialogueTime.time + barkDuration);
             }
         }
 
         private void SetUIElementsActive(bool value)
         {
-            if (nameText.gameObject != this.gameObject) nameText.SetActive(value);
+            if (nameText.gameObject != this.gameObject && includeName) nameText.SetActive(value);
             if (barkText.gameObject != this.gameObject) barkText.SetActive(value);
             if (canvas != null && canvas.gameObject != this.gameObject) canvas.gameObject.SetActive(value);
             if (value == true && canvas != null) canvas.enabled = true;
@@ -224,22 +228,19 @@ namespace PixelCrushers.DialogueSystem
         public override void Hide()
         {
             numSequencesActive = 0;
-            if (canvas != null)
+            if (CanTriggerAnimations() && !string.IsNullOrEmpty(animationTransitions.hideTrigger))
             {
-                if (canvas.enabled && CanTriggerAnimations() && !string.IsNullOrEmpty(animationTransitions.hideTrigger))
+                if (!string.IsNullOrEmpty(animationTransitions.hideTrigger))
                 {
-                    if (!string.IsNullOrEmpty(animationTransitions.hideTrigger))
-                    {
-                        animator.ResetTrigger(animationTransitions.showTrigger);
-                    }
-                    animator.SetTrigger(animationTransitions.hideTrigger);
+                    animator.ResetTrigger(animationTransitions.showTrigger);
                 }
-                else
-                {
-                    canvas.enabled = false;
-                }
-                canvas.GetComponent<RectTransform>().localPosition = originalCanvasLocalPosition;
+                animator.SetTrigger(animationTransitions.hideTrigger);
             }
+            else if (canvas != null)
+            {
+                canvas.enabled = false;
+            }
+            if (canvas != null) canvas.GetComponent<RectTransform>().localPosition = originalCanvasLocalPosition;
             doneTime = 0;
         }
 

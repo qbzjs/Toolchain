@@ -2,128 +2,78 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MalbersAnimations.Utilities;
+using MalbersAnimations.Scriptables;
 
 namespace MalbersAnimations
 {
     [CreateAssetMenu(menuName = "Malbers Animations/Camera/FreeLook Camera Manager")]
     public class FreeLockCameraManager : ScriptableObject
-    {
-        public float transition = 1f;                   //Transitions time from one state to another
-
-        public FreeLookCameraState Default;
+    { 
+        [Header("Rider Aim States")]
         public FreeLookCameraState AimRight;
         public FreeLookCameraState AimLeft;
-        public FreeLookCameraState Mounted;
 
-        MFreeLookCamera mCamera;
-        Camera cam;
+        internal MFreeLookCamera mCamera;
 
-        private FreeLookCameraState NextState;
-        protected FreeLookCameraState currentState;
+        public void SetCamera(MFreeLookCamera Freecamera) { mCamera = Freecamera; }
 
-        IEnumerator ChangeStates;
-
-        protected Transform MountedTarget;
-        protected Transform RiderTarget;
-
-        public void SetCamera(MFreeLookCamera Freecamera)
-        {
-            mCamera = Freecamera;
-            if (mCamera) cam = mCamera.Cam.GetComponent<Camera>();
-            ChangeStates = StateTransition(transition);
-
-            currentState = null;
-            NextState = null;
-            Mounted = null;
-            MountedTarget = null;
-        }
+        public void SetAimLeft(FreeLookCameraState state) { AimLeft = state; }
+        public void SetAimRight(FreeLookCameraState state) { AimRight = state; }
 
         public void ChangeTarget(Transform tranform)
         {
-            if (mCamera == null) return;
             mCamera.SetTarget(tranform);
+        }  
+
+
+        public void ChangeFOV(float newFOV)
+        {
+            mCamera.ChangeFOV(newFOV); 
+        } 
+
+        public void ToggleFOV(bool val)
+        {
+            ChangeFOV(val ? mCamera.SprintFOV.Value : mCamera.ActiveFOV);
+        } 
+
+       
+        /// <summary> When the Rider is Aiming is necesary to change the Update Mode to Late Update</summary>
+        public virtual void ForceUpdateMode(bool val)
+        {
+            mCamera.updateType = val ? MFreeLookCamera.UpdateType.LateUpdate : mCamera.defaultUpdate;
         }
 
-        public void SetRiderTarget(Transform tranform)
+        public virtual void SetAim(int ID)
         {
-            RiderTarget = tranform;
-        }
-
-        public void SetMountedTarget(Transform tranform)
-        {
-            MountedTarget = tranform;
-            if (mCamera == null) return;
-            ChangeTarget(tranform);
-        }
-
-        public void SetMountedState(FreeLookCameraState state)
-        {
-            Mounted = state;
-            SetCameraState(state);
-        }
-
-
-        void UpdateState(FreeLookCameraState state)
-        {
-            if (mCamera == null) return;
-            if (state == null) return;
-
-            mCamera.Pivot.localPosition = state.PivotPos;
-            mCamera.Cam.localPosition = state.CamPos;
-            cam.fieldOfView = state.CamFOV;
-        }
-
-        public void SetAim(int ID)
-        {
-            if (mCamera == null) return;
-
-            if (ID == -1 && AimLeft)
-            {
-                SetCameraState(AimLeft);
-                mCamera.SetTarget(RiderTarget);
-            }
-            else if (ID == 1 && AimRight)
-            {
-                SetCameraState(AimRight);
-                mCamera.SetTarget(RiderTarget);
-            }
+            if (ID == -1)
+                SetTemporalState(AimLeft);
+            else if (ID == 1)
+                SetTemporalState(AimRight);
             else
-            {
-                SetCameraState(Mounted ?? Default);
-                if (MountedTarget) mCamera.SetTarget(MountedTarget);
-            }
+                SetState(mCamera.DefaultState);
         }
 
-        public void SetCameraState(FreeLookCameraState state)
+        public virtual void SetState(FreeLookCameraState state) { SetState(state, false); }
+
+        public virtual void SetTemporalState(FreeLookCameraState state) { SetState(state, true); }
+
+        public virtual void MobileMovement(Vector2 input)
         {
-            if (mCamera == null) return;
+            mCamera.XCam = input.x;
+            mCamera.YCam = input.y;
+        }
+
+        public virtual void CameraDefaultInput(bool enabled)
+        {
+            mCamera.Vertical.active = enabled;
+            mCamera.Horizontal.active = enabled;
+        }
+
+        private void SetState(FreeLookCameraState state, bool temporal)
+        {
             if (state == null) return;
-
-            NextState = state;
-
-            if (currentState && NextState == currentState) return;
-
-            mCamera.StopCoroutine(ChangeStates);
-            ChangeStates = StateTransition(transition);
-            mCamera.StartCoroutine(ChangeStates);
-        }
-
-
-        IEnumerator StateTransition(float time)
-        {
-            float elapsedTime = 0;
-            currentState = NextState;
-            while (elapsedTime < time)
-            {
-                mCamera.Pivot.localPosition = Vector3.Lerp(mCamera.Pivot.localPosition, NextState.PivotPos, Mathf.SmoothStep(0, 1, elapsedTime / time));
-                mCamera.Cam.localPosition = Vector3.Lerp(mCamera.Cam.localPosition, NextState.CamPos, Mathf.SmoothStep(0, 1, elapsedTime / time));
-                cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, NextState.CamFOV, Mathf.SmoothStep(0, 1, elapsedTime / time));
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            UpdateState(NextState);
-
-            NextState = null;
+            if (mCamera == null) return;
+            mCamera.SetState(state, temporal);
         }
     }
 }

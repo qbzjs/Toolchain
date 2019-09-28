@@ -1182,6 +1182,11 @@ namespace Opsive.UltimateCharacterController.Items.Actions
                 return false;
             }
 
+            // Can't reload if the weapon hasn't been added to the inventory yet.
+            if (m_Inventory.GetItemTypeCount(m_Item.ItemType) == 0) {
+                return false;
+            }
+
             return true;
         }
 

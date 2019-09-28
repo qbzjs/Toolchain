@@ -575,13 +575,17 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 EditorGUI.BeginChangeCheck();
 
                 // Menu text (including localized if defined in template):
-                EditorGUILayout.LabelField(new GUIContent("Menu Text", "Response menu text (e.g., short paraphrase). If blank, uses Dialogue Text"));
-                entry.MenuText = EditorGUILayout.TextArea(entry.MenuText);
+                var menuText = entry.MenuText;
+                var menuTextLabel = string.IsNullOrEmpty(menuText) ? "Menu Text" : ("Menu Text (" + menuText.Length + " chars)");
+                EditorGUILayout.LabelField(new GUIContent(menuTextLabel, "Response menu text (e.g., short paraphrase). If blank, uses Dialogue Text"));
+                entry.MenuText = EditorGUILayout.TextArea(menuText);
                 DrawLocalizedVersions(entry.fields, "Menu Text {0}", false, FieldType.Text);
 
                 // Dialogue text (including localized):
-                EditorGUILayout.LabelField(new GUIContent("Dialogue Text", "Line spoken by actor. If blank, uses Menu Text."));
-                entry.DialogueText = EditorGUILayout.TextArea(entry.DialogueText);
+                var dialogueText = entry.DialogueText;
+                var dialogueTextLabel = string.IsNullOrEmpty(dialogueText) ? "Dialogue Text" : ("Dialogue Text (" + dialogueText.Length + " chars)");
+                EditorGUILayout.LabelField(new GUIContent(dialogueTextLabel, "Line spoken by actor. If blank, uses Menu Text."));
+                entry.DialogueText = EditorGUILayout.TextArea(dialogueText);
                 DrawLocalizedVersions(entry.fields, "{0}", true, FieldType.Localization);
 
                 if (EditorGUI.EndChangeCheck())

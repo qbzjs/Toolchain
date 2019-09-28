@@ -82,6 +82,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             DrawUseTechnicalNamesToggle();
             DrawDirectConversationLinksToEntry1Toggle();
             DrawConvertMarkupToggle();
+            DrawSplitPipesToggle();
             DrawDocumentsSubmenu();
             DrawVoiceOverOptions();
             DrawPortraitFolderField();
@@ -248,6 +249,13 @@ namespace PixelCrushers.DialogueSystem.Articy
         {
             prefs.ConvertMarkupToRichText = EditorGUILayout.Toggle(new GUIContent("Convert Markup",
                 "Convert articy markup to rich text codes that Unity can display."),
+                prefs.ConvertMarkupToRichText);
+        }
+
+        private void DrawSplitPipesToggle()
+        {
+            prefs.SplitTextOnPipes = EditorGUILayout.Toggle(new GUIContent("Split Text On Pipes",
+                "When dialogue text contains pipe characters ( | ), split into separate dialogue entry nodes."),
                 prefs.ConvertMarkupToRichText);
         }
 

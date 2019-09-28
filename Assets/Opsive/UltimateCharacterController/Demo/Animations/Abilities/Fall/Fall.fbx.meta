@@ -801,6 +801,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L
@@ -1532,6 +1534,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L

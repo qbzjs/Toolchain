@@ -46,22 +46,22 @@ namespace PixelCrushers
             set { m_debug = value; }
         }
 
-        public void Start()
+        public virtual void Start()
         {
             LoadSavedGameInfoFromFile();
         }
 
-        public string GetSaveGameFilename(int slotNumber)
+        public virtual string GetSaveGameFilename(int slotNumber)
         {
             return Application.persistentDataPath + "/save_" + slotNumber + ".dat";
         }
 
-        public string GetSavedGameInfoFilename()
+        public virtual string GetSavedGameInfoFilename()
         {
             return Application.persistentDataPath + "/saveinfo.dat";
         }
 
-        public void LoadSavedGameInfoFromFile()
+        public virtual void LoadSavedGameInfoFromFile()
         {
             var filename = GetSavedGameInfoFilename();
             if (string.IsNullOrEmpty(filename) || !File.Exists(filename)) return;
@@ -86,7 +86,7 @@ namespace PixelCrushers
             }
         }
 
-        public void UpdateSavedGameInfoToFile(int slotNumber, SavedGameData savedGameData)
+        public virtual void UpdateSavedGameInfoToFile(int slotNumber, SavedGameData savedGameData)
         {
             var slotIndex = slotNumber;
             for (int i = m_savedGameInfo.Count; i <= slotIndex; i++)

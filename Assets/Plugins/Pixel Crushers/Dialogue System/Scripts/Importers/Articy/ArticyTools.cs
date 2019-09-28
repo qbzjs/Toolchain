@@ -81,6 +81,8 @@ namespace PixelCrushers.DialogueSystem.Articy
                 s = s.Replace("&#39;", "'");
                 s = s.Replace("&quot;", "\"");
                 s = s.Replace("&amp;", "&");
+                s = s.Replace("&lt;", "<");
+                s = s.Replace("&gt;", ">");
                 s = s.Trim();
             }
             return s;

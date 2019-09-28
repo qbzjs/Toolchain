@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 namespace MalbersAnimations
 {
+    [RequireComponent(typeof(MFreeLookCamera))]
     public class CameraWallStop : MonoBehaviour
     {
         public float clipMoveTime = 0.05f;              // time taken to move when avoiding cliping (low value = fast, which it should be)
@@ -24,15 +25,25 @@ namespace MalbersAnimations
         private RayHitComparer m_RayHitComparer;        // variable to compare raycast hit distances
 
 
+
+
         private void Start()
         {
-            
-            m_Cam = GetComponentInChildren<Camera>().transform;     //find the camera in the object hierarchy
-            m_Pivot = m_Cam.parent;
+            var MFreeLookCamera = GetComponent<MFreeLookCamera>();
+
+            m_Cam = MFreeLookCamera.CamT;     //find the camera in the object hierarchy
+            m_Pivot = MFreeLookCamera.Pivot;
             m_OriginalDist = m_Cam.localPosition.magnitude;
             m_CurrentDist = m_OriginalDist;
 
             m_RayHitComparer = new RayHitComparer();         // create a new RayHitComparer
+
+            MFreeLookCamera.OnStateChange.AddListener(SetOriginalDist);
+        }
+
+        public virtual void SetOriginalDist()
+        {
+            m_OriginalDist = m_Cam.localPosition.magnitude;
         }
 
 
@@ -93,8 +104,8 @@ namespace MalbersAnimations
 
             // hit something so move the camera to a better position
             protecting = hitSomething;
-            m_CurrentDist = Mathf.SmoothDamp(m_CurrentDist, targetDist, ref m_MoveVelocity,
-                                           m_CurrentDist > targetDist ? clipMoveTime : returnTime);
+            m_CurrentDist = Mathf.SmoothDamp(m_CurrentDist, targetDist, ref m_MoveVelocity,  m_CurrentDist > targetDist ? clipMoveTime : returnTime);
+                                         
             m_CurrentDist = Mathf.Clamp(m_CurrentDist, closestDistance, m_OriginalDist);
             m_Cam.localPosition = -Vector3.forward * m_CurrentDist;
         }

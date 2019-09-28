@@ -1606,22 +1606,23 @@ namespace Opsive.UltimateCharacterController.Character
             }
             m_CollisionLayerEnabled = enable;
 
-            for (int i = 0; i < m_ColliderCount; ++i) {
-                if (enable) {
-                    m_ColliderGameObjects[i].layer = m_ColliderLayers[i];
-                } else {
-                    m_ColliderLayers[i] = m_ColliderGameObjects[i].layer;
-                    m_ColliderGameObjects[i].layer = LayerManager.IgnoreRaycast;
-                }
-            }
-            for (int i = 0; i < m_SubColliderCount; ++i) {
-                if (enable) {
-                    m_SubColliderGameObjects[i].layer = m_SubColliderLayers[i];
-                } else {
-                    m_SubColliderLayers[i] = m_SubColliderGameObjects[i].layer;
-                    m_SubColliderGameObjects[i].layer = LayerManager.IgnoreRaycast;
-                }
-            }
+	        if (enable) {
+		        for (int i = 0; i < m_ColliderCount; ++i) {
+			        m_ColliderGameObjects[i].layer = m_ColliderLayers[i];
+		        }
+		        for (int i = 0; i < m_SubColliderCount; ++i) {
+			        m_SubColliderGameObjects[i].layer = m_SubColliderLayers[i];
+		        }
+	        } else {
+		        for (int i = 0; i < m_ColliderCount; ++i) {
+			        m_ColliderLayers[i] = m_ColliderGameObjects[i].layer;
+			        m_ColliderGameObjects[i].layer = LayerManager.IgnoreRaycast;
+		        }
+				for (int i = 0; i < m_SubColliderCount; ++i) {
+					m_SubColliderLayers[i] = m_SubColliderGameObjects[i].layer;
+					m_SubColliderGameObjects[i].layer = LayerManager.IgnoreRaycast;
+				}
+			}
         }
 
         /// <summary>

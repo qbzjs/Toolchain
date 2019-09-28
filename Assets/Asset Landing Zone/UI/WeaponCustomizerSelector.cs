@@ -67,20 +67,17 @@ public class WeaponCustomizerSelector : MonoBehaviour
 		Cleanup();
 		if(m_ActiveWeapon != null)
 		{
-			foreach(WeaponCustomizerActivator weaponBase in m_BaseObjectList)
+			var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
+			var configurator = activator.GetBaseConfigurator();
+			var cores = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_CoreParts;
+			foreach(var core in cores)
 			{
-				var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
-				var configurator = activator.GetBaseConfigurator();
-				var cores = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_CoreParts;
-				foreach(var core in cores)
-				{
-					GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
-					PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
-					monitor.Setup(PartSlotMonitor.PartSlotType.Core,m_ActiveCoreDisplay,this);
-					Text txt = go.GetComponentInChildren<Text>();
-					txt.text = core.m_PartName;
-					go.transform.SetParent(m_PartSlotPanel.transform);
-				}
+				GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
+				PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
+				monitor.Setup(PartSlotMonitor.PartSlotType.Core,m_ActiveCoreDisplay,this);
+				Text txt = go.GetComponentInChildren<Text>();
+				txt.text = core.m_PartName;
+				go.transform.SetParent(m_PartSlotPanel.transform);
 			}
 		}
 	}
@@ -90,21 +87,18 @@ public class WeaponCustomizerSelector : MonoBehaviour
 		Cleanup();
 		if(m_ActiveWeapon != null)
 		{
-			foreach(WeaponCustomizerActivator weaponBase in m_BaseObjectList)
+			var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
+			var configurator = activator.GetBaseConfigurator();
+			var fores = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_ForeParts;
+			foreach(var fore in fores)
 			{
-				var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
-				var configurator = activator.GetBaseConfigurator();
-				var fores = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_ForeParts;
-				foreach(var fore in fores)
-				{
-					GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
-					PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
-					monitor.Setup(PartSlotMonitor.PartSlotType.Fore,m_ActiveForeDisplay,this);
-					Text txt = go.GetComponentInChildren<Text>();
-					txt.text = fore.m_PartName;
-					go.transform.SetParent(m_PartSlotPanel.transform);
-				}
-			}
+				GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
+				PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
+				monitor.Setup(PartSlotMonitor.PartSlotType.Fore,m_ActiveForeDisplay,this);
+				Text txt = go.GetComponentInChildren<Text>();
+				txt.text = fore.m_PartName;
+				go.transform.SetParent(m_PartSlotPanel.transform);
+			}		
 		}
 	}
 	
@@ -113,20 +107,17 @@ public class WeaponCustomizerSelector : MonoBehaviour
 		Cleanup();
 		if(m_ActiveWeapon != null)
 		{
-			foreach(WeaponCustomizerActivator weaponBase in m_BaseObjectList)
+			var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
+			var configurator = activator.GetBaseConfigurator();
+			var rears = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_RearParts;
+			foreach(var rear in rears)
 			{
-				var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
-				var configurator = activator.GetBaseConfigurator();
-				var rears = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_RearParts;
-				foreach(var rear in rears)
-				{
-					GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
-					PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
-					monitor.Setup(PartSlotMonitor.PartSlotType.Rear,m_ActiveRearDisplay,this);
-					Text txt = go.GetComponentInChildren<Text>();
-					txt.text = rear.m_PartName;
-					go.transform.SetParent(m_PartSlotPanel.transform);
-				}
+				GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
+				PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
+				monitor.Setup(PartSlotMonitor.PartSlotType.Rear,m_ActiveRearDisplay,this);
+				Text txt = go.GetComponentInChildren<Text>();
+				txt.text = rear.m_PartName;
+				go.transform.SetParent(m_PartSlotPanel.transform);
 			}
 		}
 	}
@@ -137,23 +128,20 @@ public class WeaponCustomizerSelector : MonoBehaviour
 		Cleanup();
 		if(m_ActiveWeapon != null)
 		{
-			foreach(WeaponCustomizerActivator weaponBase in m_BaseObjectList)
+			var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
+			var configurator = activator.GetBaseConfigurator();
+			var ammoSets = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_AmmoSets;
+			foreach(var ammoSet in ammoSets)
 			{
-				var activator = m_ActiveWeapon.GetComponent<WeaponCustomizerActivator>();
-				var configurator = activator.GetBaseConfigurator();
-				var ammoSets = configurator.m_WeaponProfiles[activator.m_ProfileConfig].m_AmmoSets;
-				foreach(var ammoSet in ammoSets)
+				var ammos = ammoSet.m_AmmoParts;
+				foreach(var ammo in ammos)
 				{
-					var ammos = ammoSet.m_AmmoParts;
-					foreach(var ammo in ammos)
-					{
-						GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
-						PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
-						monitor.Setup(PartSlotMonitor.PartSlotType.Ammo,m_ActiveAmmoDisplay,this);
-						Text txt = go.GetComponentInChildren<Text>();
-						txt.text = ammo.m_PartName;
-						go.transform.SetParent(m_PartSlotPanel.transform);
-					}
+					GameObject go = GameObject.Instantiate(m_PartSlotPrefab);
+					PartSlotMonitor monitor = go.GetComponent<PartSlotMonitor>();
+					monitor.Setup(PartSlotMonitor.PartSlotType.Ammo,m_ActiveAmmoDisplay,this);
+					Text txt = go.GetComponentInChildren<Text>();
+					txt.text = ammo.m_PartName;
+					go.transform.SetParent(m_PartSlotPanel.transform);
 				}
 			}
 		}
@@ -234,8 +222,11 @@ public class WeaponCustomizerSelector : MonoBehaviour
 						else
 						{
 							m_AmmoButton.SetActive(false);
-							var text = m_ActiveForeDisplay.GetComponentInChildren<Text>();
-							text.text = configurator.m_WeaponProfiles[i].m_AmmoSets[0].m_AmmoParts[0].m_PartName;
+							if(configurator.m_WeaponProfiles[i].m_AmmoSets[0].m_AmmoParts.Length > 0)
+							{
+								var text = m_ActiveForeDisplay.GetComponentInChildren<Text>();
+								text.text = configurator.m_WeaponProfiles[i].m_AmmoSets[0].m_AmmoParts[0].m_PartName;
+							}
 						}
 					}
 				}

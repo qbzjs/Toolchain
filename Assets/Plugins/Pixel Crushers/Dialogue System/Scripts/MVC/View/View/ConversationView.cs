@@ -502,12 +502,23 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
-        /// <returns>A duration based on the text length and the Dialogue Manager's Subtitle Settings > Min Subtitle Seconds and Subtitle Chars Per Second.</returns>
+        /// <returns>
+        /// A duration based on the text length and the Dialogue Manager's 
+        /// Subtitle Settings > Min Subtitle Seconds and Subtitle Chars Per Second.
+        /// Also factors in time for RPGMaker-style pause codes.
+        /// </returns>
         public float GetDefaultSubtitleDuration(string text)
         {
             if (overrideGetDefaultSubtitleDuration != null) return overrideGetDefaultSubtitleDuration(text);
             int numCharacters = string.IsNullOrEmpty(text) ? 0 : Tools.StripRichTextCodes(text).Length;
-            return Mathf.Max(settings.GetMinSubtitleSeconds(), numCharacters / Mathf.Max(1, settings.GetSubtitleCharsPerSecond()));
+            float numRPGMakerPauses = 0;
+            if (text.Contains("\\"))
+            {
+                var numFullPauses = (text.Length - text.Replace("\\.", string.Empty).Length) / 2;
+                var numQuarterPauses = (text.Length - text.Replace("\\,", string.Empty).Length) / 2;
+                numRPGMakerPauses = (1.0f * numFullPauses) + (0.25f * numQuarterPauses);
+            }
+            return Mathf.Max(settings.GetMinSubtitleSeconds(), numRPGMakerPauses + (numCharacters / Mathf.Max(1, settings.GetSubtitleCharsPerSecond())));
         }
 
         private string PreprocessSequence(Subtitle subtitle)

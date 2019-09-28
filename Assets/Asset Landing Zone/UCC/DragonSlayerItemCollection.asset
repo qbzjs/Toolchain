@@ -27,11 +27,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
-  m_Name: Battery Power
+  m_Name: MasterBlaster Power
   m_EditorClassIdentifier: 
   m_ID: 5
   m_CategoryIDs: 00000000
-  m_Description: 'Consumable type for Energy Weapons
+  m_Description: 'Ammo tracker for Masterblaster
+
 
 '
   m_Capacity: 3.4028235e+38
@@ -58,6 +59,26 @@ MonoBehaviour:
   - {fileID: 1888496083275608775}
   - {fileID: 8164904078309562913}
   - {fileID: -240655434439985185}
+  - {fileID: 1395511484476280423}
+--- !u!114 &1395511484476280423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e74c32144565264eb86dc7514aca7f7, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  m_ID: 6
+  m_CategoryIDs: 00000000
+  m_Description: 'Item Tracker for Standard Swords
+
+'
+  m_Capacity: 3.4028235e+38
+  m_DroppedItemTypes: []
 --- !u!114 &1888496083275608775
 MonoBehaviour:
   m_ObjectHideFlags: 0

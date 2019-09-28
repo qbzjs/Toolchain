@@ -25,6 +25,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         private class LocalizationLanguages
         {
             public List<string> languages = new List<string>();
+            public int importMainTextIndex = -1;
             public string outputFolder;
         }
 
@@ -50,6 +51,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             exportLanguageList.DoLayoutList();
 
             EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("Checkbox also imports updated main text from file.");
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Find Languages", GUILayout.Width(120)))
             {
@@ -85,7 +87,16 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         private void OnDrawExportLanguageListElement(Rect rect, int index, bool isActive, bool isFocused)
         {
             if (!(0 <= index && index < localizationLanguages.languages.Count)) return;
-            localizationLanguages.languages[index] = EditorGUI.TextField(rect, localizationLanguages.languages[index]);
+            var toggleWidth = 18f;
+            var langRect = new Rect(rect.x, rect.y, rect.width - toggleWidth - 4, rect.height);
+            var mainRect = new Rect(rect.x + rect.width - toggleWidth, rect.y, toggleWidth, rect.height);
+            localizationLanguages.languages[index] = EditorGUI.TextField(langRect, localizationLanguages.languages[index]);
+            EditorGUI.BeginChangeCheck();
+            var newValue = EditorGUI.Toggle(mainRect, GUIContent.none, localizationLanguages.importMainTextIndex == index);
+            if (EditorGUI.EndChangeCheck())
+            {
+                localizationLanguages.importMainTextIndex = newValue ? index : -1;
+            }
         }
 
         private void OnAddExportLanguageListElement(ReorderableList list)
@@ -99,7 +110,6 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             EditorUtility.DisplayProgressBar("Finding Languages", "Scanning database. Please wait...", 0);
             try
             {
-                // database.items.ForEach(item => FindLanguagesInFields(item.fields, true));
                 database.conversations.ForEach(conversation => conversation.dialogueEntries.ForEach(entry => FindLanguagesInFields(entry.fields, false)));
             }
             finally
@@ -310,6 +320,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 {
                     var progress = (float)i / (float)numLanguages;
                     var language = localizationLanguages.languages[i];
+                    var alsoImportMainText = localizationLanguages.importMainTextIndex == i;
                     if (EditorUtility.DisplayCancelableProgressBar("Importing Localization CSV", "Importing CSV files for " + language, progress))
                     {
                         return;
@@ -339,6 +350,13 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                             {
                                 Field.SetValue(entry.fields, language, columns[3], FieldType.Localization);
                                 Field.SetValue(entry.fields, "Menu Text " + language, columns[5], FieldType.Localization);
+
+                                // Check if we also need to import updated main text.
+                                if (alsoImportMainText)
+                                {
+                                    entry.DialogueText = columns[2];
+                                    entry.MenuText = columns[4];
+                                }
                             }
                         }
                     }
@@ -361,7 +379,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                 var quest = database.GetItem(columns[0]);
                                 if (quest == null)
                                 {
-
+                                    // Skip if quest is not present.
                                 }
                                 else
                                 {
@@ -385,6 +403,18 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                     for (int k = 0; k < entryCount; k++)
                                     {
                                         Field.SetValue(quest.fields, "Entry " + (k + 1) + " " + language, columns[12 + 2 * k], FieldType.Localization);
+                                    }
+                                    if (alsoImportMainText)
+                                    {
+                                        if (quest.FieldExists("Display Name")) Field.SetValue(quest.fields, "Display Name", displayName);
+                                        if (quest.FieldExists("Group")) Field.SetValue(quest.fields, "Group", group, FieldType.Text);
+                                        Field.SetValue(quest.fields, "Description", columns[5], FieldType.Text);
+                                        Field.SetValue(quest.fields, "Success Description", columns[7], FieldType.Text);
+                                        Field.SetValue(quest.fields, "Failure Description", columns[9], FieldType.Text);
+                                        for (int k = 0; k < entryCount; k++)
+                                        {
+                                            Field.SetValue(quest.fields, "Entry " + (k + 1), columns[11 + 2 * k], FieldType.Text);
+                                        }
                                     }
                                 }
                             }

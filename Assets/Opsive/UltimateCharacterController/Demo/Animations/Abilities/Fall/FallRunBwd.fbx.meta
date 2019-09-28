@@ -1545,7 +1545,7 @@ ModelImporter:
       name: FallRunBwdEndRight
       takeName: Combat_Jump
       firstFrame: 12
-      lastFrame: 26
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1584,7 +1584,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.9
+      - time: 0.62852234
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -2838,7 +2838,7 @@ ModelImporter:
       name: FallRunBwdEndLeft
       takeName: JumpWalk
       firstFrame: 42
-      lastFrame: 63
+      lastFrame: 52
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2877,7 +2877,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.618
+      - time: 0.5801993
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -4131,7 +4131,7 @@ ModelImporter:
       name: FallRunBwdTurnLeftEndRight
       takeName: FallRunBwd
       firstFrame: 80
-      lastFrame: 94
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: -45
       level: 0
@@ -4170,7 +4170,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.9
+      - time: 0.6285223
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -5624,7 +5624,7 @@ ModelImporter:
       name: FallRunBwdTurnLeftEndLeft
       takeName: FallRunBwd
       firstFrame: 110
-      lastFrame: 132
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: -45
       level: 0
@@ -5663,7 +5663,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.618
+      - time: 0.5801993
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -7117,7 +7117,7 @@ ModelImporter:
       name: FallRunBwdTurnRightEndRight
       takeName: FallRunBwd
       firstFrame: 148
-      lastFrame: 162
+      lastFrame: 158
       wrapMode: 0
       orientationOffsetY: 45
       level: 0
@@ -7156,7 +7156,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.9
+      - time: 0.63024056
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -8610,7 +8610,7 @@ ModelImporter:
       name: FallRunBwdTurnRightEndLeft
       takeName: FallRunBwd
       firstFrame: 180
-      lastFrame: 201
+      lastFrame: 190
       wrapMode: 0
       orientationOffsetY: 45
       level: 0
@@ -8649,7 +8649,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.618
+      - time: 0.5801993
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}

@@ -79,8 +79,8 @@ namespace Opsive.UltimateCharacterController.Character
             get { return m_FirstPersonMovementTypeFullName; }
             set
             {
-                if (!string.IsNullOrEmpty(value) && m_FirstPersonMovementTypeFullName != value) {
-                    if (Application.isPlaying && m_FirstPersonPerspective) {
+                if (m_FirstPersonMovementTypeFullName != value) {
+                    if (!string.IsNullOrEmpty(value) && Application.isPlaying && m_FirstPersonPerspective) {
                         SetMovementType(value);
                     } else {
                         m_FirstPersonMovementTypeFullName = value;
@@ -93,8 +93,8 @@ namespace Opsive.UltimateCharacterController.Character
             get { return m_ThirdPersonMovementTypeFullName; }
             set
             {
-                if (!string.IsNullOrEmpty(value) && m_ThirdPersonMovementTypeFullName != value) {
-                    if (Application.isPlaying && !m_FirstPersonPerspective) {
+                if (m_ThirdPersonMovementTypeFullName != value) {
+                    if (!string.IsNullOrEmpty(value) && Application.isPlaying && !m_FirstPersonPerspective) {
                         SetMovementType(value);
                     } else {
                         m_ThirdPersonMovementTypeFullName = value;
@@ -547,7 +547,7 @@ namespace Opsive.UltimateCharacterController.Character
 
             int index;
             if (!m_MovementTypeNameMap.TryGetValue(type.FullName, out index)) {
-                Debug.LogError("Error: Unable to find the movement type with name " + type.FullName);
+                Debug.LogError("Error: Unable to find the movement type with name " + type.FullName, this);
                 return;
             }
 
@@ -1827,9 +1827,9 @@ namespace Opsive.UltimateCharacterController.Character
             // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
             if (m_KinematicObjectIndex != -1) {
                 KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
-            }
 
-            EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+                EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+            }
 
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
@@ -1870,9 +1870,9 @@ namespace Opsive.UltimateCharacterController.Character
             // If the index is -1 then the character isn't registered with the Kinematic Object Manager.
             if (m_KinematicObjectIndex != -1) {
                 KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
-            }
 
-            EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+                EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+            }
 
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {
@@ -1943,9 +1943,9 @@ namespace Opsive.UltimateCharacterController.Character
             if (m_KinematicObjectIndex != -1) {
                 KinematicObjectManager.SetCharacterRotation(m_KinematicObjectIndex, rotation);
                 KinematicObjectManager.SetCharacterPosition(m_KinematicObjectIndex, position);
-            }
 
-            EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+                EventHandler.ExecuteEvent(m_GameObject, "OnCharacterImmediateTransformChange", snapAnimator);
+            }
 
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
             if (m_NetworkInfo != null && m_NetworkInfo.IsLocalPlayer()) {

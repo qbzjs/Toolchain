@@ -9,6 +9,7 @@ namespace MalbersAnimations
 
         public bool playOnEnter = true;
         public bool playOnTime;
+        public bool stopOnExit;
         [Range(0, 1)]
         public float NormalizedTime = 0.5f;
         [Space]
@@ -29,25 +30,29 @@ namespace MalbersAnimations
                 _audio = animator.gameObject.AddComponent<AudioSource>();
             }
             _audio.spatialBlend = 1; //Make it 3D
-            if (playOnEnter && _audio)
+
+            if (playOnEnter)
                 PlaySound();
+
+            playOnTime = true;
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (playOnTime && _audio)
+            if (playOnTime)
             {
                 if (stateInfo.normalizedTime > NormalizedTime && !_audio.isPlaying && !animator.IsInTransition(layerIndex))
                 {
                     PlaySound();
+                    playOnTime = false;
                 }
             }
         }
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //if (_audio) _audio.Stop();
+            if (stopOnExit && _audio) _audio.Stop();
         }
 
         public virtual void PlaySound()

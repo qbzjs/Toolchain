@@ -23,8 +23,10 @@ namespace Opsive.UltimateCharacterController.Networking.Editor.Utility
         private static string s_FirstPersonMeleeSymbol = "FIRST_PERSON_MELEE";
         private static string s_MultiplayerSymbol = "ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER";
         private static string s_VRSymbol = "ULTIMATE_CHARACTER_CONTROLLER_VR";
-#if ULTIMATE_CHARACTER_CONTROLLER_CINEMACHINE
-        private static string s_CinemachineSymbol = "ULTIMATE_CHARACTER_CONTROLLER_CINEMACHINE";
+#if UNITY_2019_2
+        private static string s_LWRPSymbol = "ULTIMATE_CHARACTER_CONTROLLER_LWRP";
+#elif UNITY_2019_3_OR_NEWER
+        private static string s_URPSymbol = "ULTIMATE_CHARACTER_CONTROLLER_URP";
 #endif
 
         /// <summary>
@@ -117,23 +119,40 @@ namespace Opsive.UltimateCharacterController.Networking.Editor.Utility
 #endif
 
             // VRViewType will exist if the VR add-on is imported.
-            var VRExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.AddOns.VR.Editor.VRAddOnInspector") != null;
+            var vrExists = UnityEngineUtility.GetType("Opsive.UltimateCharacterController.AddOns.VR.Editor.VRAddOnInspector") != null;
 #if ULTIMATE_CHARACTER_CONTROLLER_VR
-            if (!VRExists) {
+            if (!vrExists) {
                 RemoveSymbol(s_VRSymbol);
             }
 #else
-            if (VRExists) {
+            if (vrExists) {
                 AddSymbol(s_VRSymbol);
             }
 #endif
 
-#if ULTIMATE_CHARACTER_CONTROLLER_CINEMACHINE
-            // TODO: CinemachineBrain will exist if Cinemachine is imported. As of 2.1.2 Cinemachine is a separate integration so this can be removed later.
-            var cinemachineExists = UnityEngineUtility.GetType("Cinemachine.CinemachineBrain") != null;
-            if (!cinemachineExists) {
-                RemoveSymbol(s_CinemachineSymbol);
+            // The LWRP/URP data will exists when the LWRP or URP is imported. This assembly definition must be added to the Opsive.UltimateCaracterController.Editor assembly definition.
+#if UNITY_2019_2
+            var lwrpExists = UnityEngineUtility.GetType("UnityEngine.Rendering.LWRP.ForwardRendererData") != null;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP
+            if (!lwrpExists) {
+                RemoveSymbol(s_LWRPSymbol);
             }
+#else
+            if (lwrpExists) {
+                AddSymbol(s_LWRPSymbol);
+            }
+#endif
+#elif UNITY_2019_3_OR_NEWER
+            var urpExists = UnityEngineUtility.GetType("UnityEngine.Rendering.URP.ForwardRendererData") != null;
+#if ULTIMATE_CHARACTER_CONTROLLER_URP
+            if (!urpExists) {
+                RemoveSymbol(s_URPSymbol);
+            }
+#else
+            if (urpExists) {
+                AddSymbol(s_URPSymbol);
+            }
+#endif
 #endif
         }
 

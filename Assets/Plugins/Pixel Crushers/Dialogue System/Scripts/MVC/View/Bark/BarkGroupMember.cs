@@ -60,6 +60,11 @@ namespace PixelCrushers.DialogueSystem
             m_currentIdValue = groupId;
         }
 
+        protected virtual void Start()
+        {
+            if (!string.IsNullOrEmpty(groupId)) BarkGroupManager.instance.AddToGroup(groupId, this);
+        }
+
         private void OnApplicationQuit()
         {
             m_ignoreOnDisable = true;

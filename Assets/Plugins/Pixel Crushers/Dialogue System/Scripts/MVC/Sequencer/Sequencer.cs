@@ -4,10 +4,8 @@ using PixelCrushers.DialogueSystem.SequencerCommands;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
-#if UNITY_5_5_OR_NEWER || UNITY_2017_OR_NEWER
-using UnityEngine.AI;
-#endif
 
 namespace PixelCrushers.DialogueSystem
 {
@@ -260,6 +258,17 @@ namespace PixelCrushers.DialogueSystem
                 sequence = sequence.Replace(kvp.Key, kvp.Value);
             }
             return sequence;
+        }
+
+        private static Regex ShortcutRegex = null;
+
+        private static void ReportUnrecognizedShortcuts(string sequence)
+        {
+            if (ShortcutRegex == null) ShortcutRegex = new Regex(@"{{.+}}");
+            foreach (Match match in ShortcutRegex.Matches(sequence))
+            {
+                Debug.LogWarning("Dialogue System: Unrecognized shortcut " + match.Value);
+            }
         }
 
         public void UseCamera(Camera sequencerCamera, GameObject cameraAngles)
@@ -535,6 +544,7 @@ namespace PixelCrushers.DialogueSystem
 
             // Replace shortcuts:
             sequence = ReplaceShortcuts(sequence);
+            if (DialogueDebug.logWarnings && sequence.Contains("{{")) ReportUnrecognizedShortcuts(sequence);
 
             // Substitute entrytaglocal and entrytag:
             if (!string.IsNullOrEmpty(entrytag) && sequence.Contains(SequencerKeywords.Entrytag))
@@ -935,6 +945,10 @@ namespace PixelCrushers.DialogueSystem
             {
                 return HandleAudioInternally(commandName, args);
             }
+            else if (string.Equals(commandName, "AudioStop"))
+            {
+                return HandleAudioStopInternally(commandName, args);
+            }
             else if (string.Equals(commandName, "ClearSubtitleText"))
             {
                 return HandleClearSubtitleText(commandName, args);
@@ -951,9 +965,17 @@ namespace PixelCrushers.DialogueSystem
             {
                 return HandleNavMeshAgentInternally(commandName, args);
             }
+            else if (string.Equals(commandName, "OpenPanel"))
+            {
+                return HandleOpenPanelInternally(commandName, args);
+            }
             else if (string.Equals(commandName, "SendMessage"))
             {
-                return HandleSendMessageInternally(commandName, args);
+                return HandleSendMessageInternally(commandName, false, args);
+            }
+            else if (string.Equals(commandName, "SendMessageUpwards"))
+            {
+                return HandleSendMessageInternally(commandName, true, args);
             }
             else if (string.Equals(commandName, "SetActive"))
             {
@@ -1443,6 +1465,23 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
+        /// Handles the "AudioStop([gameobject|speaker|listener])" action. This action stops the
+        /// subject's Audio Source.
+        /// 
+        /// Arguments:
+        /// -# (Optional) The subject; can be speaker, listener, or the name of a game object. 
+        /// Default: speaker.
+        /// </summary>
+        private bool HandleAudioStopInternally(string commandName, string[] args)
+        {
+            Transform subject = SequencerTools.GetSubject(SequencerTools.GetParameter(args, 0), m_speaker, m_listener);
+            if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: AudioStop({1})", new System.Object[] { DialogueDebug.Prefix, subject }));
+            var audioSource = SequencerTools.GetAudioSource(subject);
+            if (audioSource != null) audioSource.Stop();
+            return true;
+        }
+
+        /// <summary>
         /// Tries to handle the "MoveTo(target, [, subject[, duration]])" action. This action matches the 
         /// subject to the target's position and rotation.
         /// 
@@ -1467,11 +1506,7 @@ namespace PixelCrushers.DialogueSystem
                 if (subject != null && target != null)
                 {
                     var subjectRigidbody = subject.GetComponent<Rigidbody>();
-#if UNITY_5_3 || UNITY_5_4
-                    var navMeshAgent = subject.GetComponent<NavMeshAgent>();
-#else
                     var navMeshAgent = subject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-#endif
                     if (navMeshAgent != null)
                     {
                         navMeshAgent.Warp(target.position);
@@ -1614,7 +1649,7 @@ namespace PixelCrushers.DialogueSystem
         /// -# (Optional) A string argument to pass to the method.
         /// -# (Optional) The subject; can be speaker, listener, or the name of a game object. Default: speaker.
         /// </summary>
-        private bool HandleSendMessageInternally(string commandName, string[] args)
+        private bool HandleSendMessageInternally(string commandName, bool upwards, string[] args)
         {
             string methodName = SequencerTools.GetParameter(args, 0);
             string arg = SequencerTools.GetParameter(args, 1);
@@ -1623,22 +1658,31 @@ namespace PixelCrushers.DialogueSystem
             Transform subject = everyone ? DialogueManager.instance.transform
                 : SequencerTools.GetSubject(SequencerTools.GetParameter(args, 2), m_speaker, m_listener);
             bool broadcast = string.Equals(SequencerTools.GetParameter(args, 3), "broadcast", StringComparison.OrdinalIgnoreCase);
-            if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: SendMessage({1}, {2}, {3}, {4})", new System.Object[] { DialogueDebug.Prefix, methodName, arg, subject, SequencerTools.GetParameter(args, 3) }));
-            if ((subject == null) && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: SendMessage() command: subject is null.", new System.Object[] { DialogueDebug.Prefix }));
-            if (string.IsNullOrEmpty(methodName) && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: SendMessage() command: message is blank.", new System.Object[] { DialogueDebug.Prefix }));
+            if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: {1}({2}, {3}, {4}, {5})", new System.Object[] { DialogueDebug.Prefix, commandName, methodName, arg, subject, SequencerTools.GetParameter(args, 3) }));
+            if ((subject == null) && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: {1}() command: subject is null.", new System.Object[] { DialogueDebug.Prefix, commandName }));
+            if (string.IsNullOrEmpty(methodName) && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: {1}() command: message is blank.", new System.Object[] { DialogueDebug.Prefix, commandName }));
+            if (upwards && broadcast && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: {1}() command: 'broadcast' is ignored by SendCommandUpwards.", new System.Object[] { DialogueDebug.Prefix, commandName }));
+            if (upwards && everyone && DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: {1}() command: 'everyone' is ignored by SendCommandUpwards.", new System.Object[] { DialogueDebug.Prefix, commandName }));
             if (subject != null && !string.IsNullOrEmpty(methodName))
             {
-                if (everyone)
+                if (upwards)
                 {
-                    Tools.SendMessageToEveryone(methodName, arg);
-                }
-                else if (broadcast)
-                {
-                    subject.BroadcastMessage(methodName, arg, SendMessageOptions.DontRequireReceiver);
+                    subject.SendMessageUpwards(methodName, arg, SendMessageOptions.DontRequireReceiver);
                 }
                 else
                 {
-                    subject.SendMessage(methodName, arg, SendMessageOptions.DontRequireReceiver);
+                    if (everyone)
+                    {
+                        Tools.SendMessageToEveryone(methodName, arg);
+                    }
+                    else if (broadcast)
+                    {
+                        subject.BroadcastMessage(methodName, arg, SendMessageOptions.DontRequireReceiver);
+                    }
+                    else
+                    {
+                        subject.SendMessage(methodName, arg, SendMessageOptions.DontRequireReceiver);
+                    }
                 }
             }
             return true;
@@ -1874,6 +1918,64 @@ namespace PixelCrushers.DialogueSystem
                     // Then hide dialogue panel:
                     dialogueUI.dialogueControls.Hide();
                 }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Handles the "OpenPanel(panelNum, [open|close|focus|unfocus])" action.
+        /// 
+        /// Arguments:
+        /// -# The panel number or 'default' or 'bark'.
+        /// -# The state to put the panel in. Default: open.
+        /// </summary>
+        private bool HandleOpenPanelInternally(string commandName, string[] args)
+        {
+            string panelID = SequencerTools.GetParameter(args, 0);
+            var subtitlePanelNumber = string.Equals(panelID, "default", StringComparison.OrdinalIgnoreCase) ? SubtitlePanelNumber.Default
+                            : string.Equals(panelID, "bark", StringComparison.OrdinalIgnoreCase) ? SubtitlePanelNumber.UseBarkUI
+                            : PanelNumberUtility.IntToSubtitlePanelNumber(Tools.StringToInt(panelID));
+            var mode = SequencerTools.GetParameter(args, 1);
+            if (string.IsNullOrEmpty(mode)) mode = "open";
+            if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: OpenPanel({1}, {2})", new System.Object[] { DialogueDebug.Prefix, subtitlePanelNumber, mode }));
+            var standardDialogueUI = DialogueManager.dialogueUI as StandardDialogueUI;
+            if (standardDialogueUI != null)
+            {
+                var panels = standardDialogueUI.conversationUIElements.subtitlePanels;
+                var i = PanelNumberUtility.GetSubtitlePanelIndex(subtitlePanelNumber);
+                if (0 <= i && i < panels.Length)
+                {
+                    var panel = panels[i];
+                    if (string.Equals("open", mode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        standardDialogueUI.conversationUIElements.standardSubtitleControls.OpenSubtitlePanelLikeStart(subtitlePanelNumber);
+                    }
+                    else if(string.Equals("close", mode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        panel.Close();
+                    }
+                    else if (string.Equals("focus", mode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (!panel.isOpen) panel.Open();
+                        panel.Focus();
+                    }
+                    else if (string.Equals("unfocus", mode, StringComparison.OrdinalIgnoreCase))
+                    {
+                        panel.Unfocus();
+                    }
+                    else
+                    {
+                        if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: OpenPanel({1}, {2}): Unrecognized mode.", new System.Object[] { DialogueDebug.Prefix, subtitlePanelNumber, mode }));
+                    }
+                }
+                else
+                {
+                    if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: OpenPanel({1}, {2}): Invalid panel number.", new System.Object[] { DialogueDebug.Prefix, subtitlePanelNumber, mode }));
+                }
+            }
+            else
+            {
+                if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: OpenPanel({1}, {2}): Current dialogue UI is not a Standard Dialogue UI.", new System.Object[] { DialogueDebug.Prefix, subtitlePanelNumber, mode }));
             }
             return true;
         }

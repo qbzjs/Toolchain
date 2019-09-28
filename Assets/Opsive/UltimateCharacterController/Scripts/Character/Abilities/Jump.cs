@@ -149,8 +149,8 @@ namespace Opsive.UltimateCharacterController.Character.Abilities
             } else {
                 // Allow the ability to start if the character is in the air before the grounded grace period. This allows the character to run off a ledge but still
                 // be able to jump. The character may also be able to do a repeated jump even if the character isn't grounded.
-                if ((!m_JumpApplied && m_InAirTime + m_GroundedGracePeriod > Time.time) || 
-                    (m_RepeatedJumpCount != -1 && m_RepeatedJumpCount >= m_MaxRepeatedJumpCount) || m_JumpTime + m_RecurrenceDelay > Time.time) {
+                if ((!m_JumpApplied && m_InAirTime + m_GroundedGracePeriod <= Time.time) || 
+                    (m_RepeatedJumpCount != -1 && m_RepeatedJumpCount > m_MaxRepeatedJumpCount) || (m_JumpTime != -1 && m_JumpTime + m_RecurrenceDelay > Time.time)) {
                     return false;
                 }
             }

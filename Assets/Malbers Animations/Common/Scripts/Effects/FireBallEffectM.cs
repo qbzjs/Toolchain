@@ -4,25 +4,25 @@ using UnityEngine;
 
 namespace MalbersAnimations.Utilities
 {
-    [CreateAssetMenu(menuName = "Malbers Animations/Effect Modifiers/FireBall")]
+    [CreateAssetMenu(menuName = "Malbers Animations/Scriptables/Effect Modifiers/FireBall")]
     public class FireBallEffectM : EffectModifier
     {
         public float velocity = 300;
-        Rigidbody rb;
-        LookAt hasLookAt;
+        Rigidbody rb;  
+        IAim aim;
 
         public override void AwakeEffect(Effect effect){}
         
         public override void StartEffect(Effect effect)
         {
             rb = effect.Instance.GetComponent<Rigidbody>();         //Get the riggidbody of the effect
-            hasLookAt = effect.Owner.GetComponent<LookAt>();        //Check if the owner has lookAt
+            aim = effect.Owner.GetComponent<IAim>();                //Check if the owner has lookAt
 
-            effect.Instance.SendMessage("SetOwner", effect.Owner.gameObject, SendMessageOptions.DontRequireReceiver);
-           
-            if (hasLookAt && hasLookAt.Active && hasLookAt.IsAiming)
+            effect.Instance.SendMessage("SetOwner", effect.Owner, SendMessageOptions.DontRequireReceiver);
+
+            if (aim != null && aim.Active && !aim.Limited)
             {
-                rb.AddForce(hasLookAt.Direction.normalized * velocity); //If it has look at take the direction from te lookat
+                rb.AddForce(aim.AimDirection.normalized * velocity);     //If it has look at take the direction from te lookat
             }
             else
             {

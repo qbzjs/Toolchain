@@ -1,7 +1,10 @@
 ﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
+using UnityEngine;
 
 namespace PixelCrushers
 {
@@ -10,47 +13,135 @@ namespace PixelCrushers
     {
 
         /// <summary>
-        /// Try to add a symbol to the project's Scripting Define Symbols for the current build target.
+        /// Checks if a symbol exists in the project's Scripting Define Symbols for the current build target.
         /// </summary>
-        public static void TryAddScriptingDefineSymbols(string newDefine)
+        public static bool DoesScriptingDefineSymbolExist(string symbol)
         {
-            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
-            if (!string.IsNullOrEmpty(defines)) defines += ";";
-            defines += newDefine;
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Split(';');
+            for (int i = 0; i < defines.Length; i++)
+            {
+                if (string.Equals(symbol, defines[i].Trim())) return true;
+            }
+            return false;
+        }
+
+        public static HashSet<BuildTargetGroup> GetInstalledBuildTargetGroups()
+        {
+#if UNITY_2017
+            Debug.Log("Updating all build targets. Please ignore messages about build targets not installed.");
+#endif
+            var result = new HashSet<BuildTargetGroup>();
+            foreach (BuildTarget target in (BuildTarget[])Enum.GetValues(typeof(BuildTarget)))
+            {
+                BuildTargetGroup group = BuildPipeline.GetBuildTargetGroup(target);
+#if UNITY_2018_1_OR_NEWER
+                if (BuildPipeline.IsBuildTargetSupported(group, target))
+#endif
+                {
+                    result.Add(group);
+                }
+            }
+            return result;
         }
 
         /// <summary>
-        /// Try to remove a symbol from the project's Scripting Define Symbols for the current build target.
+        /// Try to add a symbol to the project's Scripting Define Symbols for all build targets.
         /// </summary>
-        public static void TryRemoveScriptingDefineSymbols(string define)
+        public static void TryAddScriptingDefineSymbols(string symbol, bool touchFiles = false)
         {
-            var symbols = new List<string>(PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Split(';'));
-            symbols.Remove(define);
-            var defines = string.Join(";", symbols.ToArray());
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, defines);
+            foreach (var group in GetInstalledBuildTargetGroups())
+            {
+                try
+                {
+                    var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+                    if (!string.IsNullOrEmpty(defines)) defines += ";";
+                    defines += symbol;
+                    PlayerSettings.SetScriptingDefineSymbolsForGroup(group, defines);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+            if (touchFiles) TouchScriptsWithScriptingSymbol(symbol);
+            RecompileScripts();
+        }
+
+        /// <summary>
+        /// Try to remove a symbol from the project's Scripting Define Symbols for all build targets.
+        /// </summary>
+        public static void TryRemoveScriptingDefineSymbols(string symbol)
+        {
+            foreach (var group in GetInstalledBuildTargetGroups())
+            {
+                try
+                {
+                    var symbols = new List<string>(PlayerSettings.GetScriptingDefineSymbolsForGroup(group).Split(';'));
+                    symbols.Remove(symbol);
+                    var defines = string.Join(";", symbols.ToArray());
+                    PlayerSettings.SetScriptingDefineSymbolsForGroup(group, defines);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogException(e);
+                }
+            }
+            RecompileScripts();
         }
 
         /// <summary>
         /// Add or remove a scripting define symbol.
         /// </summary>
-        public static void ToggleScriptingDefineSymbol(string define, bool value)
+        public static void ToggleScriptingDefineSymbol(string define, bool value, bool touchFiles = false)
         {
-            if (value == true) TryAddScriptingDefineSymbols(define);
+            if (value == true) TryAddScriptingDefineSymbols(define, touchFiles);
             else TryRemoveScriptingDefineSymbols(define);
         }
 
         /// <summary>
-        /// Checks if a symbol exists in the project's Scripting Define Symbols.
+        /// Triggers a script recompile.
         /// </summary>
-        public static bool DoesScriptingDefineSymbolExist(string define)
+        public static void RecompileScripts()
         {
-            var defines = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup).Split(';');
-            for (int i = 0; i < defines.Length; i++)
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            UnityEditorInternal.InternalEditorUtility.RequestScriptReload();
+        }
+
+        /// <summary>
+        /// The only reliable way to force a recompile and get the editor to recognize
+        /// MonoBehaviour scripts and wrappers in Plugins is to actually change those
+        /// files. :/
+        /// </summary>
+        /// <param name="symbol">Touch files that cehck this scripting symbol.</param>
+        public static void TouchScriptsWithScriptingSymbol(string symbol)
+        {
+            var path = Application.dataPath + "/Plugins/Pixel Crushers/";
+            path = path.Replace("/", "\\");
+            string[] filenames = Directory.GetFiles(path, "*.cs", SearchOption.AllDirectories);
+            var found = string.Empty;
+            var recompileAtText = "// Recompile at " + DateTime.Now + "\r\n";
+            var searchString = "#if " + symbol;
+            foreach (string filename in filenames)
             {
-                if (string.Equals(define, defines[i].Trim())) return true;
+                var text = File.ReadAllText(filename);
+                if (text.Contains(searchString))
+                {
+                    found += filename + "\n";
+                    if (text.StartsWith("// Recompile at "))
+                    {
+                        var lines = File.ReadAllLines(filename);
+                        lines[0] = recompileAtText;
+                        File.WriteAllLines(filename, lines);
+                    }
+                    else
+                    {
+                        text = recompileAtText + text;
+                        File.WriteAllText(filename, text);
+                    }
+                }
             }
-            return false;
+            //Debug.Log("Touched: " + found);
         }
 
     }

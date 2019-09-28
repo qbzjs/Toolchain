@@ -2,20 +2,23 @@
 using UnityEngine.Events;
 using System.Collections;
 using MalbersAnimations.HAP;
+using MalbersAnimations.Scriptables;
 
 namespace MalbersAnimations.Weapons
 {
     [System.Serializable] public class WeaponEvent : UnityEvent<IMWeapon> { }
-    [System.Serializable] public class WeaponActionEvent : UnityEvent<WeaponActions> { }
+    [System.Serializable] public class WeaponActionEvent : UnityEvent<WA> { }
 
-    public abstract class MWeapon : MonoBehaviour, IMWeapon
+    public abstract class MWeapon : MonoBehaviour, IMWeapon 
     {
         public int weaponID;                                                  //Weapon ID unique Number
-        [SerializeField] private bool active = true;                          //is the animal
-        [SerializeField] private float minDamage = 10;                        //Weapon minimum Damage
-        [SerializeField] private float maxDamage = 20;                        //Weapon Max Damage
-        [SerializeField] private float minForce = 500;                        //Weapon min Force to push rigid bodies;
-        [SerializeField] private float maxForce = 1000;                       //Weapon max Force to push rigid bodies;
+        [SerializeField] private BoolReference active = new BoolReference( true);                          //is the animal
+        [SerializeField] private FloatReference minDamage = new FloatReference (10);                       //Weapon minimum Damage
+        [SerializeField] private FloatReference maxDamage = new FloatReference(20);                        //Weapon Max Damage
+        [SerializeField] private FloatReference minForce = new FloatReference(500);                        //Weapon min Force to push rigid bodies;
+        [SerializeField] private FloatReference maxForce = new FloatReference(1000);                       //Weapon max Force to push rigid bodies;
+        [SerializeField] public StatModifier AffectStat;                                                   //Affect Stat
+        public WeaponID weaponType;                      
 
         private bool isEquiped = false;
 
@@ -27,7 +30,9 @@ namespace MalbersAnimations.Weapons
                positionOffset,                              //Position Offset
                rotationOffset;                              //Rotation Offset
 
-        protected DamageValues DV;                          //Direction and DamageAmount for the Weapon
+        //protected DamageValues DV;                          //Direction and DamageAmount for the Weapon
+
+        /// <summary> Weapon Sounds</summary>
         public AudioClip[] Sounds;                          //Sounds for the weapon
         public AudioSource WeaponSound;                     //Reference for the audio Source;
 
@@ -58,26 +63,32 @@ namespace MalbersAnimations.Weapons
                 else
                 {
                     Owner = null;
-                    HitMask = new LayerMask();      //Clean the Layer Mask
+                    HitLayer = new LayerMask();      //Clean the Layer Mask
                     OnUnequiped.Invoke(this);
                 }
             }
         }
 
+
+        /// <summary>Enables the Main Attack</summary>
+        public virtual bool MainAttack { get; set; }
+
+        /// <summary>Enables the Secondary Attack or Aiming</summary>
+        public virtual bool SecondAttack { get; set; }
+
         public float MinDamage
         {
-            set { minDamage = value; }
+            set { minDamage.Value = value; }
             get { return minDamage; }
         }
 
         public float MaxDamage
         {
-            set { maxDamage = value; }
+            set { maxDamage.Value = value; }
             get { return maxDamage; }
         }
 
-        /// <summary>
-        /// Is the weapon used on the Right hand(True) or left hand (False)</summary>
+        /// <summary>Is the weapon used on the Right hand(True) or left hand (False)</summary>
         public bool RightHand
         {
             set { rightHand = value; }
@@ -97,34 +108,39 @@ namespace MalbersAnimations.Weapons
         public float MinForce
         {
             get { return minForce; }
-            set { minForce = value; }
+            set { minForce.Value = value; }
         }
 
         public float MaxForce
         {
             get { return maxForce; }
-            set { maxForce = value; }
+            set { maxForce.Value = value; }
         }
 
         /// <summary>The rider using this weapon while this weapon is equiped</summary>
-        public Rider Owner { get; set; }
+        public Transform Owner { get; set; }
 
-        public LayerMask HitMask { get; set; }
+        public LayerMask HitLayer { get; set; }
 
         /// <summary>Enable or Disable the weapon to "block it"</summary>
         public bool Active
         {
             get { return active; }
-            set { active = value; }
+            set { active.Value = value; }
         }
+
+        public WeaponID WeaponType
+        {
+            get { return weaponType; }
+        }
+
+        public QueryTriggerInteraction TriggerInteraction { get; set; }
         #endregion
 
         public WeaponEvent OnEquiped = new WeaponEvent();
         public WeaponEvent OnUnequiped = new WeaponEvent();
 
-        /// <summary>
-        /// Returns True if the Weapons has the same ID
-        /// </summary>
+        /// <summary>Returns True if the Weapons has the same ID</summary>
         public override bool Equals(object a)
         {
             if (a is IMWeapon)
@@ -140,24 +156,14 @@ namespace MalbersAnimations.Weapons
             return base.GetHashCode();
         }
 
-        public virtual void Equiped()
-        {
-            Debug.Log(name + Owner);
-            OnEquiped.Invoke(this);
-        }
-
-        public virtual void Unequiped()
-        {
-            OnUnequiped.Invoke(this);
-            Owner = null;
-            Debug.Log(name + Owner);
-        }
+        public abstract void ResetWeapon(); 
+        
 
         public virtual void InitializeWeapon()
         {
-            WeaponSound = GetComponent<AudioSource>();
             isEquiped = false;
 
+            WeaponSound = GetComponent<AudioSource>();
             if (!WeaponSound)
                 WeaponSound = gameObject.AddComponent<AudioSource>(); //Create an AudioSourse if theres no Audio Source on the weapon
 

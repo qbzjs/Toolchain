@@ -28,7 +28,7 @@ namespace Opsive.UltimateCharacterController.Input.VirtualControls
         /// <summary>
         /// Initialize the default values.
         /// </summary>
-        private void Awake()
+        protected virtual void Awake()
         {
             m_GameObject = gameObject;
             if (m_Character == null) {
@@ -137,7 +137,7 @@ namespace Opsive.UltimateCharacterController.Input.VirtualControls
         /// <summary>
         /// The object has been destroyed.
         /// </summary>
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (m_CameraGameObject != null) {
                 EventHandler.UnregisterEvent<GameObject>(m_CameraGameObject, "OnCameraAttachCharacter", OnAttachCharacter);

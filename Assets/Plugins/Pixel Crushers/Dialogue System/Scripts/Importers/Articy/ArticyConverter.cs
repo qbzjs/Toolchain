@@ -496,7 +496,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             ProcessHierarchy();
             onProgressCallback("Sorting links by position", 0.7f);
             SortAllLinksByPosition();
-            SplitPipesIntoEntries();
+            if (prefs.SplitTextOnPipes) SplitPipesIntoEntries();
             onProgressCallback("Converting VoiceOver properties", 0.9f);
             ConvertVoiceOverProperties();
         }

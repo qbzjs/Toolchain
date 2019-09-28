@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace MalbersAnimations
 {
+    /// <summary>
+    /// Recieve messages from the Animator State Machine Behaviours using MessageBehaviour
+    /// </summary>
     public interface IAnimatorListener
     {
-        /// <summary>
-        /// Recieve messages from the Animator State Machine Behaviours
-        /// </summary>
+        /// <summary> Recieve messages from the Animator State Machine Behaviours </summary>
         /// <param name="message">The name of the method</param>
         /// <param name="value">the parameter</param>
         void OnAnimatorBehaviourMessage(string message, object value);
@@ -73,7 +74,9 @@ namespace MalbersAnimations
             {
                 if (onTimeM.Active && onTimeM.message != string.Empty)
                 {
-                    if (!onTimeM.sent && (stateInfo.normalizedTime % 1) >= onTimeM.time) 
+                    float stateTime = stateInfo.loop ? stateInfo.normalizedTime % 1 : stateInfo.normalizedTime;
+
+                    if (!onTimeM.sent && (stateTime >= onTimeM.time))
                     {
                         onTimeM.sent = true;
 
@@ -111,6 +114,9 @@ namespace MalbersAnimations
                 case TypeMessage.IntVar:
                     anim.SendMessage(m.message,(int) m.intVarValue, SendMessageOptions.DontRequireReceiver);
                     break;
+                case TypeMessage.Transform:
+                    anim.SendMessage(m.message, m.transformValue, SendMessageOptions.DontRequireReceiver);
+                    break;
                 default:
                     break;
             }
@@ -143,6 +149,9 @@ namespace MalbersAnimations
                 case TypeMessage.IntVar:
                     listener.OnAnimatorBehaviourMessage(m.message, (int) m.intVarValue);
                     break;
+                case TypeMessage.Transform:
+                    listener.OnAnimatorBehaviourMessage(m.message, m.transformValue);
+                    break;
                 default:
                     break;
             }
@@ -158,6 +167,7 @@ namespace MalbersAnimations
         public float floatValue;
         public string stringValue;
         public IntVar intVarValue;
+        public Transform transformValue;
 
         public float time;
         public bool sent;

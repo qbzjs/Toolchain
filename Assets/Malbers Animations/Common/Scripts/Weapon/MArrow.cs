@@ -6,7 +6,7 @@ using MalbersAnimations.Events;
 
 namespace MalbersAnimations.Weapons
 {
-    [AddComponentMenu("Malbers/Weapons/MArrow")]
+    [AddComponentMenu("Malbers/Weapons/Arrow")]
     public class MArrow : MonoBehaviour, IArrow
     {
         #region Variables
@@ -23,6 +23,8 @@ namespace MalbersAnimations.Weapons
         public float tailOffset = 1;                                //Offset from the Tip to the End of the arrow 
         public bool useGravity = true;
         public bool AffectRigidBodies = true;
+
+        public StatModifier AffectStat;
 
         [Space]
         [Header("Events")]
@@ -69,23 +71,25 @@ namespace MalbersAnimations.Weapons
             set { tailOffset = value; }
         }
 
+        public QueryTriggerInteraction TriggerInteraction { get; set; }
+
         public float Damage
         {
             get { return damage; }
-            set { damage = value; }
+            set
+            {
+                damage = value;
+                AffectStat.Value = value;
+            }
         }
 
 
-        public bool isFlying
+        public bool IsFlying
         {
             get { return isflying; }
         }
 
-        /// <summary>
-        /// Shoots the Arrow in a given direciton
-        /// </summary>
-        /// <param name="force"></param>
-        /// <param name="direction"></param>
+        /// <summary>Shoots the Arrow in a given direction</summary>
         public virtual void ShootArrow(float force, Vector3 direction)
         {
             this.force = force;
@@ -101,20 +105,20 @@ namespace MalbersAnimations.Weapons
                     _Rigidbody.useGravity = false;
 
                 _Rigidbody.AddForce(direction * force);
+
                 // mRigidbody.velocity = direction * force;
                 isflying = true;
                 StartCoroutine(FlyingArrow());
             }
-            StartCoroutine(FlyingAge());
+
+            Invoke("FlyingAge", AgeFlying);
+
             OnFireArrow.Invoke();
         }
 
-        /// <summary>
-        /// To avoid that the arrow flyies for all eternity
-        /// </summary>
-        IEnumerator FlyingAge()
+        /// <summary>To avoid that the arrow flyies for all eternity</summary>
+        private void FlyingAge()
         {
-            yield return new WaitForSeconds(AgeFlying);
             if (isflying)
             {
                 isflying = false;
@@ -124,14 +128,12 @@ namespace MalbersAnimations.Weapons
         }
 
 
-        /// <summary>
-        /// Call This if some else Shoot the Arrow, if the arrow is already flying check for collision to invoke ONHIT
-        /// </summary>
+        /// <summary>Call This if some else Shoot the Arrow, if the arrow is already flying check for collision to invoke ONHIT</summary>
         public virtual void TestFlyingArrow()
         {
             StopAllCoroutines();
             StartCoroutine(TestFly());
-            StartCoroutine(FlyingAge());
+            Invoke("FlyingAge", AgeFlying);
         }
 
 
@@ -147,7 +149,7 @@ namespace MalbersAnimations.Weapons
             {
                 float Prediction = Mathf.Abs((transform.position - DeltaPos).magnitude) + 0.3f; //Prediction to Hit something in the way
 
-                if (Physics.Raycast(transform.position, _Rigidbody.velocity.normalized, out hit, Prediction, hitmask))
+                if (Physics.Raycast(transform.position, _Rigidbody.velocity.normalized, out hit, Prediction, hitmask, TriggerInteraction))
                 {
                     isflying = false;
                 }
@@ -171,25 +173,24 @@ namespace MalbersAnimations.Weapons
 
             Debug.DrawRay(transform.position, direction * Prediction, Color.red);
 
-            //  UnityEditor.EditorApplication.isPaused = true;
-
-            if (Physics.Raycast(transform.position, direction, out hit, Prediction, hitmask))
+            if (Physics.Raycast(transform.position, direction, out hit, Prediction, hitmask ,TriggerInteraction))
             {
                 OnHit(hit);
                 isflying = false;
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return WfeoF;
 
 
             while (isflying)
             {
                 Prediction = Mathf.Abs((transform.position - DeltaPos).magnitude) + 0.3f; //Prediction to Hit something in the way
 
-                if (Physics.Raycast(transform.position, _Rigidbody.velocity, out hit, Prediction, hitmask))
+                if (Physics.Raycast(transform.position, _Rigidbody.velocity, out hit, Prediction, hitmask, TriggerInteraction))
                 {
                     OnHit(hit);
                     isflying = false;
+
                 }
                 else
                 {
@@ -207,18 +208,11 @@ namespace MalbersAnimations.Weapons
         }
 
 
-        /// <summary>
-        /// Will Send
-        /// </summary>
-        /// <param name="other"></param>
+        /// <summary>Will Send Damage to the Hit</summary>
         public virtual void TestHit(RaycastHit other)
         {
-            DamageValues DV = new DamageValues(-transform.forward, damage);
-
             if (other.transform)
             {
-                other.transform.SendMessageUpwards("getDamaged", DV, SendMessageOptions.DontRequireReceiver);
-
                 if (other.rigidbody && AffectRigidBodies)
                 {
                     other.rigidbody.AddForceAtPosition(transform.forward * force, other.point);
@@ -229,18 +223,22 @@ namespace MalbersAnimations.Weapons
 
         public virtual void OnHit(RaycastHit other)
         {
-            DamageValues DV = new DamageValues(-transform.forward, damage);
-
             if (other.transform)
             {
-                other.transform.SendMessageUpwards("getDamaged", DV, SendMessageOptions.DontRequireReceiver);
-
-                if (other.rigidbody && AffectRigidBodies)
+                if (AffectRigidBodies)
                 {
-                    other.rigidbody.AddForceAtPosition(transform.forward * force, other.point);
+                    other.rigidbody?.AddForceAtPosition(transform.forward * force, other.point);
                 }
-            }
 
+                AffectStat.Value = Damage;
+
+                AffectStat.ModifyStat(other.transform.GetComponentInParent<Stats>());
+
+                var interactable = other.transform.GetComponent<IInteractable>();
+                interactable?.Interact();
+
+                Damager.SetDamage(DeltaPos.normalized, other.transform);
+            }
 
 
           //  _Rigidbody.isKinematic = true;

@@ -84,7 +84,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             {
                 SelectObject(Selection.activeObject);
             }
-            else
+            else if (EditorWindow.focusedWindow == this)
             {
                 SelectObject(database);
             }
@@ -98,6 +98,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             EditorApplication.playmodeStateChanged += OnPlaymodeStateChanged;
 #endif
             nodeStyle = null;
+            showQuickDialogueTextEntry = false;
             LoadEditorSettings();
         }
 
@@ -160,6 +161,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             currentRuntimeEntry = null;
             ResetWatchSection();
             SetReorderableListInspectorSelection();
+            SelectObject(database);
         }
 
         private void SetReorderableListInspectorSelection()

@@ -272,7 +272,7 @@ namespace PixelCrushers.DialogueSystem
                 }
                 else if (isSequence && putEndSequenceOnLastSplit && !containsPipes)
                 {
-                    if (field.value.Contains(SequencerKeywords.End))
+                    if (!string.IsNullOrEmpty(field.value) && field.value.Contains(SequencerKeywords.End))
                     {
                         PutEndSequenceOnLastSplit(entries, field);
                     }

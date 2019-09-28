@@ -49,6 +49,7 @@ namespace PixelCrushers.DialogueSystem
         private void Awake()
         {
             instance = this;
+            Tools.DeprecationWarning(this);
         }
     }
 

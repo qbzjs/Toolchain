@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using MalbersAnimations.Scriptables;
+using System.Collections;
+using UnityEngine.Events;
 
 /// <summary>
 /// This is the same Camera FreeLookCam of the Stardard Assets Modify to Fit My Needs
@@ -11,7 +14,6 @@ namespace MalbersAnimations
         {
             FixedUpdate,                                            // Update in FixedUpdate (for tracking rigidbodies).
             LateUpdate,                                             // Update in LateUpdate. (for tracking objects that are moved in Update)
-            Update
         }
 
 #if REWIRED
@@ -25,19 +27,17 @@ namespace MalbersAnimations
 
         public Transform m_Target;                                  // The target object to follow
         public UpdateType updateType = UpdateType.FixedUpdate;      // stores the selected update type
-
-        private Transform cam;                                      // the transform of the camera
-        private Transform pivot;                                    // the point at which the camera pivots around
+        /// <summary>Stores the Update type when the game starts </summary>
+        internal UpdateType defaultUpdate;
 
         public float m_MoveSpeed = 10f;                             // How fast the rig will move to keep up with the target's position.
-        //public float smoothTime = 0.5f;                             // How fast the rig will move to keep up with the target's position.
         [Range(0f, 10f)]
         public float m_TurnSpeed = 10f;                             // How fast the rig will rotate from user input.
         public float m_TurnSmoothing = 10f;                         // How much smoothing to apply to the turn input, to reduce mouse-turn jerkiness
         public float m_TiltMax = 75f;                               // The maximum value of the x axis rotation of the pivot.
         public float m_TiltMin = 45f;                               // The minimum value of the x axis rotation of the pivot.
 
-        //[Header("Camera Axis")]
+        [Header("Camera Input Axis")]
         public InputAxis Vertical = new InputAxis("Mouse Y", true, false);
         public InputAxis Horizontal = new InputAxis("Mouse X", true, false);
 
@@ -45,44 +45,68 @@ namespace MalbersAnimations
         public bool m_LockCursor = false;                           // Whether the cursor should be hidden and locked.
         [Space]
         public FreeLockCameraManager manager;
-        public FreeLookCameraState startState;
+        public FreeLookCameraState DefaultState;
+
+       [HideInInspector]  public UnityEvent OnStateChange = new UnityEvent();
+
+        /// <summary>Additional FOV when Sprinting</summary>
+        [Space,Header("Sprint Field of View"), Tooltip("Additional FOV when Sprinting")]
+        public FloatReference SprintFOV = new FloatReference(10f);
+        /// <summary>Duration of the Transition when Sprinting </summary>
+        [Tooltip("Additional FOV when Sprinting")]
+        public FloatReference FOVTransition = new FloatReference(1f);
 
         private float m_LookAngle;                                  // The rig's y axis rotation.
         private float m_TiltAngle;                                  // The pivot's x axis rotation.
-        private const float k_LookDistance = 100f;                  // How far in front of the pivot the character's look target is.
         private Vector3 m_PivotEulers;
         private Quaternion m_PivotTargetRot;
         private Quaternion m_TransformTargetRot;
 
-        float x,  y;
+        /// <summary>Next Camera State to Go to</summary>
+        protected FreeLookCameraState NextState;
+        /// <summary> Current Camera State </summary>
+        protected FreeLookCameraState currentState;
+
+        IEnumerator IChangeStates;
+        IEnumerator IChange_FOV;
 
         public Transform Target
         {
             get { return m_Target; }
         }
 
-        public Transform Cam
-        {
-            get { return cam; }
-            set { cam = value; }
-        }
+        /// <summary>Main Camera</summary>
+        public Camera Cam { get; private set; }
 
-        public Transform Pivot
-        {
-            get { return pivot; }
-            set { pivot = value; }
-        }
+        /// <summary>Main Camera Transform</summary>
+        public Transform CamT { get; private set; }
 
-        IInputSystem inputSystem;
+        public Transform Pivot { get; private set; }
+
+
+        /// <summary>Camera Horizontal Input Value</summary>
+        public float XCam { get; set; }
+
+        /// <summary>Camera Vertical Input Value</summary>
+        public float YCam { get; set; }
+
+        /// <summary> Stores the Current FOV of the Camera</summary>
+        public float ActiveFOV { get; internal set; }
+
+        private IInputSystem inputSystem;
             
         protected void Awake()
         {
-            Cam = GetComponentInChildren<Camera>().transform;
-            Pivot = Cam.parent;
+            Cam = GetComponentInChildren<Camera>();
+            CamT = GetComponentInChildren<Camera>().transform;
+            Pivot = Cam.transform.parent;
+
+            currentState = null;
+            NextState = null;
 
             if (manager)  manager.SetCamera(this);
         
-            if (startState) SetState(startState);
+            if (DefaultState) Set_State(DefaultState);
 
             Cursor.lockState = m_LockCursor ? CursorLockMode.Locked : CursorLockMode.None;  // Lock or unlock the cursor.
             Cursor.visible = !m_LockCursor;
@@ -91,18 +115,60 @@ namespace MalbersAnimations
             m_PivotTargetRot = Pivot.transform.localRotation;
             m_TransformTargetRot = transform.localRotation;
 
+
+            ActiveFOV = Cam.fieldOfView;
+
             inputSystem = DefaultInput.GetInputSystem(PlayerID);
 
             Horizontal.InputSystem = Vertical.InputSystem = inputSystem;        //Update the Input System on the Axis
+            defaultUpdate = updateType;
+
+            if (DefaultState == null)
+            {
+               // FreeLookCameraState defaault = ScriptableObject.CreateInstance< new FreeLookCameraState(Cam.fieldOfView, Pivot.localPosition, CamT.localPosition);
+
+                DefaultState = ScriptableObject.CreateInstance<FreeLookCameraState>();
+
+                DefaultState.CamFOV = Cam.fieldOfView;
+                DefaultState.PivotPos = Pivot.localPosition;
+                DefaultState.CamPos = CamT.localPosition;
+
+
+                DefaultState.name = "Default State";
+
+                OnStateChange.Invoke();
+            }
         }
 
-        public virtual void SetState(FreeLookCameraState profile)
+        public virtual void Set_State(FreeLookCameraState profile)
         {
             Pivot.localPosition = profile.PivotPos;
-            Cam.localPosition = profile.CamPos;
-            Cam.GetComponent<Camera>().fieldOfView = profile.CamFOV;
+            Cam.transform.localPosition = profile.CamPos;
+            Cam.fieldOfView = ActiveFOV = profile.CamFOV;
+            OnStateChange.Invoke();
         }
 
+
+        //public void SetAim(int ID)
+        //{
+            //if (ID == -1 && AimLeft)
+            //{
+            //    SetCameraState(AimLeft);
+            //    mCamera.SetTarget(RiderTarget);
+            //}
+            //else if (ID == 1 && AimRight)
+            //{
+            //    SetCameraState(AimRight);
+            //    mCamera.SetTarget(RiderTarget);
+            //}
+            //else
+            //{
+            //    SetCameraState(Mounted ?? Default);
+            //    if (MountedTarget) mCamera.SetTarget(MountedTarget);
+            //}
+        //}
+
+        #region Private Methods
         protected void FollowTarget(float deltaTime)
         {
             if (m_Target == null) return;
@@ -110,17 +176,27 @@ namespace MalbersAnimations
             transform.position = Vector3.Lerp(transform.position, m_Target.position, deltaTime * m_MoveSpeed);  // Move the rig towards target position.
         }
 
+        private void UpdateState(FreeLookCameraState state)
+        {
+            if (state == null) return;
+
+            Pivot.localPosition = state.PivotPos;
+            CamT.localPosition = state.CamPos;
+            Cam.fieldOfView = ActiveFOV = state.CamFOV;
+            OnStateChange.Invoke();
+        }
+
         private void HandleRotationMovement()
         {
             if (Time.timeScale < float.Epsilon) return;
 
-            x = Horizontal.GetAxis;
-            y = Vertical.GetAxis;
+            if (Horizontal.active) XCam = Horizontal.GetAxis;
+            if (Vertical.active) YCam = Vertical.GetAxis;
 
-            m_LookAngle += x * m_TurnSpeed;                                                     // Adjust the look angle by an amount proportional to the turn speed and horizontal input.
+            m_LookAngle += XCam * m_TurnSpeed;                                                     // Adjust the look angle by an amount proportional to the turn speed and horizontal input.
             m_TransformTargetRot = Quaternion.Euler(0f, m_LookAngle, 0f);                       // Rotate the rig (the root object) around Y axis only:
 
-            m_TiltAngle -= y * m_TurnSpeed;                                                 // on platforms with a mouse, we adjust the current angle based on Y mouse input and turn speed
+            m_TiltAngle -= YCam * m_TurnSpeed;                                                 // on platforms with a mouse, we adjust the current angle based on Y mouse input and turn speed
             m_TiltAngle = Mathf.Clamp(m_TiltAngle, -m_TiltMin, m_TiltMax);                  // and make sure the new value is within the tilt range
 
             m_PivotTargetRot = Quaternion.Euler(m_TiltAngle, m_PivotEulers.y, m_PivotEulers.z); // Tilt input around X is applied to the pivot (the child of this object)
@@ -136,11 +212,9 @@ namespace MalbersAnimations
                 transform.localRotation = m_TransformTargetRot;
             }
         }
-        void Update()
-        {
-            HandleRotationMovement();
-            if (updateType == UpdateType.Update) FollowTarget(Time.deltaTime);
-        }
+
+        void Update() { HandleRotationMovement(); }
+   
 
         void FixedUpdate()
         {
@@ -151,6 +225,86 @@ namespace MalbersAnimations
         {
             if (updateType == UpdateType.LateUpdate) FollowTarget(Time.deltaTime);
         }
+        #endregion
+
+        public void Set_State_Smooth(FreeLookCameraState state) { SetState(state, false); }
+
+        public void Set_State_Temporal(FreeLookCameraState state) { SetState(state, true); }
+
+        internal void SetState(FreeLookCameraState state, bool temporal)
+        {
+            if (state == null) return;
+
+            NextState = state;
+
+            if (currentState && NextState == currentState) return;
+
+            if (IChangeStates != null) StopCoroutine(IChangeStates);
+
+            if (!temporal) DefaultState = state; //Changes wth this
+
+            IChangeStates = StateTransition(state.transition);
+            StartCoroutine(IChangeStates);
+        }
+
+        public virtual void Set_State_Default_Smooth() { SetState(DefaultState, true); }
+
+        public virtual void Set_State_Default() { Set_State(DefaultState); }
+
+        public virtual void ToggleSprintFOV(bool val)
+        {
+            ChangeFOV(val ? SprintFOV.Value : ActiveFOV);
+        }
+
+
+        public void ChangeFOV(float newFOV)
+        {
+            if (IChange_FOV != null) StopCoroutine(IChange_FOV);
+
+            IChange_FOV = C_SprintFOV(ActiveFOV + newFOV, FOVTransition);
+            StartCoroutine(IChange_FOV);
+        }
+
+
+        #region Coroutines
+        private IEnumerator StateTransition(float time)
+        {
+            float elapsedTime = 0;
+            currentState = NextState;
+
+            while (elapsedTime < time)
+            {
+                Pivot.localPosition = Vector3.Lerp(Pivot.localPosition, NextState.PivotPos, Mathf.SmoothStep(0, 1, elapsedTime / time));
+                CamT.localPosition = Vector3.Lerp(CamT.localPosition, NextState.CamPos, Mathf.SmoothStep(0, 1, elapsedTime / time));
+                Cam.fieldOfView = ActiveFOV = Mathf.Lerp(Cam.fieldOfView, NextState.CamFOV, Mathf.SmoothStep(0, 1, elapsedTime / time));
+                OnStateChange.Invoke();
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            UpdateState(NextState);
+
+            NextState = null;
+            yield return null;
+        }
+        private IEnumerator C_SprintFOV(float newFOV, float time)
+        {
+            float elapsedTime = 0f;
+
+            while (elapsedTime < time)
+            {
+                Cam.fieldOfView = Mathf.Lerp(Cam.fieldOfView, newFOV, Mathf.SmoothStep(0, 1, elapsedTime / time));
+
+                elapsedTime += Time.deltaTime;
+
+                yield return null;
+            }
+            yield return null;
+        }
+        #endregion
+
+
+       
 
 
         public virtual void SetTarget(Transform newTransform)
@@ -161,6 +315,12 @@ namespace MalbersAnimations
         public virtual void SetTarget(GameObject newGO)
         {
             m_Target = newGO.transform;
+        }
+
+        /// <summary> When the Rider is Aiming is necesary to change the Update Mode to Late Update</summary>
+        public virtual void ForceUpdateMode(bool val)
+        {
+            updateType = val ? UpdateType.LateUpdate : defaultUpdate;
         }
     }
 }

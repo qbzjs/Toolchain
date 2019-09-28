@@ -5148,7 +5148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputs:
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Jump
     type: 0
     input: Jump
@@ -5180,7 +5183,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5193,7 +5195,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Shift
     type: 0
     input: Fire3
@@ -5225,7 +5230,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5238,7 +5242,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Attack1
     type: 0
     input: Fire1
@@ -5270,7 +5277,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5283,7 +5289,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Attack2
     type: 0
     input: Fire2
@@ -5315,7 +5324,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5328,7 +5336,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 0
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: SpeedDown
     type: 1
     input: SpeedDown
@@ -5360,7 +5371,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5373,7 +5383,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 0
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: SpeedUp
     type: 1
     input: SpeedUp
@@ -5405,7 +5418,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5418,7 +5430,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed1
     type: 1
     input: Speed1
@@ -5450,7 +5465,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5463,7 +5477,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed2
     type: 1
     input: Speed2
@@ -5495,7 +5512,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5508,7 +5524,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed3
     type: 1
     input: Speed3
@@ -5540,7 +5559,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5553,7 +5571,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Action
     type: 1
     input: Action
@@ -5585,7 +5606,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5598,7 +5618,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Fly
     type: 1
     input: Fly
@@ -5630,7 +5653,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5643,7 +5665,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Dodge
     type: 1
     input: Dodge
@@ -5675,7 +5700,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5688,7 +5712,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Down
     type: 1
     input: Down
@@ -5720,7 +5747,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5733,7 +5759,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Up
     type: 0
     input: Jump
@@ -5765,7 +5794,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5778,7 +5806,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Stun
     type: 1
     input: Stun
@@ -5810,7 +5841,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5823,7 +5853,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Damaged
     type: 1
     input: Damaged
@@ -5855,7 +5888,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5868,7 +5900,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Death
     type: 1
     input: Death
@@ -5900,7 +5935,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -5913,6 +5947,18 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  showInputEvents: 0
+  OnInputEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnInputDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  PlayerID: Player0
   Horizontal:
     active: 1
     name: Horizontal
@@ -5933,20 +5979,17 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  cameraBaseInput: 0
+  UpDown:
+    active: 1
+    name: UpDown
+    raw: 1
+    input: UpDown
+    OnAxisValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   alwaysForward: 0
-  showInputEvents: 0
-  OnInputEnabled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnInputDisabled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  PlayerID: Player0
 --- !u!54 &110910062
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5981,203 +6024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3a10fa46510904caf0d339cac28562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalTypeID: 0
-  stance: 0
-  JumpPress: 0
-  JumpHeightMultiplier: 0
-  AirForwardMultiplier: 0
-  CanDoubleJump: 0
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  StartSpeed: 1
-  height: 1.3
-  walkSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  trotSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 4
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  runSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 2
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  m_Vertical: Vertical
-  m_Horizontal: Horizontal
-  m_UpDown: UpDown
-  m_Stand: Stand
-  m_Jump: _Jump
-  m_Fly: Fly
-  m_Fall: Fall
-  m_Attack1: Attack1
-  m_Attack2: Attack2
-  m_Stunned: Stunned
-  m_Damaged: Damaged
-  m_Shift: Shift
-  m_Death: Death
-  m_Dodge: Dodge
-  m_Underwater: Underwater
-  m_Swim: Swim
-  m_Action: Action
-  m_IDAction: IDAction
-  m_IDFloat: IDFloat
-  m_IDInt: IDInt
-  m_Slope: Slope
-  m_Type: Type
-  m_SpeedMultiplier: SpeedMultiplier
-  m_StateTime: StateTime
-  m_Stance: Stance
-  airRotation: 100
-  AirControl: 0
-  airSmoothness: 2
-  movementS1: 1
-  movementS2: 2
-  movementS3: 3
-  maxAngleSlope: 45
-  SlowSlopes: 1
-  GotoSleep: 0
-  SnapToGround: 20
-  AlingToGround: 30
-  FallRayDistance: 0.1
-  BackFallRayDistance: 0.5
-  FallRayMultiplier: 1
-  SmoothVertical: 1
-  IgnoreYDir: 0
-  TurnMultiplier: 100
-  waterLine: 0
-  swimSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  canSwim: 0
-  CanGoUnderWater: 0
-  bank: 0
-  underWaterSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  flySpeed:
-    name: 
-    position: 0
-    animator: 0
-    lerpPosition: 0
-    lerpAnimator: 0
-    rotation: 0
-    lerpRotation: 0
-  StartFlying: 0
-  canFly: 0
-  land: 1
-  LockUp: 0
-  life: 100
-  defense: 0
-  damageDelay: 0.75
-  damageInterrupt: 0.5
-  TotalAttacks: 3
-  activeAttack: -1
-  attackStrength: 10
-  attackDelay: 0.5
-  inmune: 0
-  animatorSpeed: 1
-  upDownSmoothness: 2
-  debug: 1
-  PivotsRayInterval: 1
-  FallRayInterval: 3
-  WaterRayInterval: 5
-  OnJump:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnGetDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDeathE:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnSwim:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnFly:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnUnderWater:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAnimationChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnStanceChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnSyncAnimator:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  FrameCounter: 0
-  OnMovementReleased:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  useShift: 1
-  CurrentAnimState: 0
-  NextAnimState: 0
-  EditorGeneral: 1
-  EditorGround: 1
-  EditorWater: 1
-  EditorAir: 1
-  EditorAdvanced: 1
-  EditorAirControl: 1
-  EditorAttributes: 1
-  EditorEvents: 1
-  EditorAnimatorParameters: 1
 --- !u!1 &112205904
 GameObject:
   m_ObjectHideFlags: 0
@@ -19549,11 +19395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9deb6e7717bd59489eda60ab51b81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1.4
-  debug: 1
-  debugSize: 0.03
-  DebugColor: {r: 0, g: 0, b: 1, a: 1}
-  drawRay: 1
 --- !u!1001 &505649101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19735,11 +19576,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9deb6e7717bd59489eda60ab51b81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
-  debug: 1
-  debugSize: 0.03
-  DebugColor: {r: 0, g: 0, b: 1, a: 1}
-  drawRay: 1
 --- !u!1001 &514401085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21127,7 +20963,7 @@ MonoBehaviour:
     legacyShininess: 0.7812
     legacySpecular: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     terrainSettingsScript: {fileID: 2037884347}
-    materialTemplate: {fileID: 884330135}
+    materialTemplate: {fileID: 1044518643}
     drawHeightmap: 1
     collectDetailPatches: 1
     wavingGrassSpeed: 0.5
@@ -23121,6 +22957,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 100236, guid: bef5950f3cc3371428dad423e158bab0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: bef5950f3cc3371428dad423e158bab0, type: 3}
       propertyPath: m_Layer
       value: 20
@@ -24582,12 +24422,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a7f9d0ee2a4b4394c9cc7e7fba677cc8,
     type: 3}
   m_PrefabInstance: {fileID: 344397857}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &638639604 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4173125255195984, guid: c67f6f78cf12af94db94f700b0d36632,
-    type: 3}
-  m_PrefabInstance: {fileID: 1312896394}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &640197460
 GameObject:
@@ -30844,6 +30678,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 100242, guid: 50b5201bef34dcd4ba99668da6ab8e9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 50b5201bef34dcd4ba99668da6ab8e9e, type: 3}
       propertyPath: m_Layer
       value: 20
@@ -32678,32 +32516,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee82821915d78044f931ba9d5e17272d, type: 3}
---- !u!21 &884330135
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Nature/Terrain/Diffuse
-  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &885629028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37404,6 +37216,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6297ace47f48b5f4fb35759706fd94b5, type: 3}
+--- !u!21 &1044518643
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Nature/Terrain/Diffuse
+  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1048004473
 GameObject:
   m_ObjectHideFlags: 0
@@ -37493,11 +37331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba6a0c4ae41dba499b324d6ba760f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
-  damageMultiplier: 1
-  PushForce: 0
-  debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
 --- !u!65 &1048593237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42096,9 +41929,14 @@ MonoBehaviour:
     m_BlockList: []
     m_Default: 1
   m_RotateCollider: 0
+  m_EndCapRotation: 1
+  m_RotationBone: {fileID: 0}
+  m_RotationBoneOffset: {x: 0, y: 0, z: 0}
+  m_AdjustHeight: 1
   m_FirstEndCapTarget: {fileID: 45275284}
   m_SecondEndCapTarget: {fileID: 443421762}
   m_SecondEndCapPadding: 0
+  m_PositionBone: {fileID: 0}
   m_CenterOffset: {x: 0, y: 0, z: 0}
 --- !u!136 &1140204350
 CapsuleCollider:
@@ -43627,11 +43465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba6a0c4ae41dba499b324d6ba760f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
-  damageMultiplier: 1
-  PushForce: 0
-  debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
 --- !u!65 &1194286521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48083,11 +47916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9deb6e7717bd59489eda60ab51b81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1.4
-  debug: 1
-  debugSize: 0.03
-  DebugColor: {r: 0, g: 0, b: 1, a: 1}
-  drawRay: 1
 --- !u!4 &1326742307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a7f9d0ee2a4b4394c9cc7e7fba677cc8,
@@ -52424,11 +52252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba6a0c4ae41dba499b324d6ba760f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
-  damageMultiplier: 1
-  PushForce: 0
-  debug: 1
-  DebugColor: {r: 1, g: 0.25, b: 0, a: 0.15}
 --- !u!65 &1447280490
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58114,12 +57937,6 @@ CapsuleCollider:
   m_Height: 0.97190225
   m_Direction: 0
   m_Center: {x: -0.3764273, y: -0.0071285632, z: -0.0010401}
---- !u!4 &1596888590 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4098086370117480, guid: c67f6f78cf12af94db94f700b0d36632,
-    type: 3}
-  m_PrefabInstance: {fileID: 1312896394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599270292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e5a2e002eb42765408bd2a8ede532373,
@@ -59601,12 +59418,6 @@ Transform:
   m_Father: {fileID: 378395399}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1621762726 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4830700213669600, guid: c67f6f78cf12af94db94f700b0d36632,
-    type: 3}
-  m_PrefabInstance: {fileID: 1312896394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1627776726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62571,11 +62382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9deb6e7717bd59489eda60ab51b81bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 1
-  debug: 1
-  debugSize: 0.03
-  DebugColor: {r: 0, g: 0, b: 1, a: 1}
-  drawRay: 1
 --- !u!1 &1724850960
 GameObject:
   m_ObjectHideFlags: 0
@@ -62925,12 +62731,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a7f9d0ee2a4b4394c9cc7e7fba677cc8,
     type: 3}
   m_PrefabInstance: {fileID: 890865991}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1728415498 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4959598136298150, guid: c67f6f78cf12af94db94f700b0d36632,
-    type: 3}
-  m_PrefabInstance: {fileID: 1312896394}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730910696
 GameObject:
@@ -66534,7 +66334,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputs:
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Shift
     type: 0
     input: Fire3
@@ -66566,7 +66369,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66579,7 +66381,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Attack1
     type: 0
     input: Fire1
@@ -66611,7 +66416,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66624,7 +66428,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Attack2
     type: 0
     input: Fire2
@@ -66656,7 +66463,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66669,7 +66475,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed1
     type: 1
     input: Speed1
@@ -66701,7 +66510,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66714,7 +66522,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed2
     type: 1
     input: Speed2
@@ -66746,7 +66557,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66759,7 +66569,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Speed3
     type: 1
     input: Speed3
@@ -66791,7 +66604,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66804,7 +66616,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Action
     type: 1
     input: Action
@@ -66836,7 +66651,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66849,7 +66663,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Stun
     type: 1
     input: Stun
@@ -66881,7 +66698,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66894,7 +66710,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Damaged
     type: 1
     input: Damaged
@@ -66926,7 +66745,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66939,7 +66757,10 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - active: 1
+  - active:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
     name: Death
     type: 1
     input: Death
@@ -66971,7 +66792,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-    ShowEvents: 0
     DoubleTapTime: 0.3
     LongPressTime: 0.5
     OnInputPressed:
@@ -66984,6 +66804,18 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
+  showInputEvents: 0
+  OnInputEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnInputDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  PlayerID: Player0
   Horizontal:
     active: 1
     name: Horizontal
@@ -67004,20 +66836,17 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  cameraBaseInput: 0
+  UpDown:
+    active: 1
+    name: UpDown
+    raw: 1
+    input: UpDown
+    OnAxisValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
   alwaysForward: 0
-  showInputEvents: 0
-  OnInputEnabled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnInputDisabled:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  PlayerID: Player0
 --- !u!114 &1844222241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67030,203 +66859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3a10fa46510904caf0d339cac28562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animalTypeID: 0
-  stance: 0
-  JumpPress: 0
-  JumpHeightMultiplier: 0
-  AirForwardMultiplier: 0
-  CanDoubleJump: 0
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  StartSpeed: 1
-  height: 0.9
-  walkSpeed:
-    name: 
-    position: 5
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 60
-    lerpRotation: 6
-  trotSpeed:
-    name: 
-    position: 10
-    animator: 1
-    lerpPosition: 4
-    lerpAnimator: 4
-    rotation: 90
-    lerpRotation: 6
-  runSpeed:
-    name: 
-    position: 15
-    animator: 1
-    lerpPosition: 2
-    lerpAnimator: 4
-    rotation: 120
-    lerpRotation: 6
-  m_Vertical: Vertical
-  m_Horizontal: Horizontal
-  m_UpDown: UpDown
-  m_Stand: Stand
-  m_Jump: _Jump
-  m_Fly: Fly
-  m_Fall: Fall
-  m_Attack1: Attack1
-  m_Attack2: Attack2
-  m_Stunned: Stunned
-  m_Damaged: Damaged
-  m_Shift: Shift
-  m_Death: Death
-  m_Dodge: Dodge
-  m_Underwater: Underwater
-  m_Swim: Swim
-  m_Action: Action
-  m_IDAction: IDAction
-  m_IDFloat: IDFloat
-  m_IDInt: IDInt
-  m_Slope: Slope
-  m_Type: Type
-  m_SpeedMultiplier: SpeedMultiplier
-  m_StateTime: StateTime
-  m_Stance: Stance
-  airRotation: 100
-  AirControl: 0
-  airSmoothness: 2
-  movementS1: 1
-  movementS2: 2
-  movementS3: 3
-  maxAngleSlope: 45
-  SlowSlopes: 1
-  GotoSleep: 0
-  SnapToGround: 20
-  AlingToGround: 30
-  FallRayDistance: 0.1
-  BackFallRayDistance: 0.5
-  FallRayMultiplier: 1
-  SmoothVertical: 1
-  IgnoreYDir: 0
-  TurnMultiplier: 100
-  waterLine: 0
-  swimSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  canSwim: 0
-  CanGoUnderWater: 0
-  bank: 0
-  underWaterSpeed:
-    name: 
-    position: 0
-    animator: 1
-    lerpPosition: 8
-    lerpAnimator: 4
-    rotation: 0
-    lerpRotation: 6
-  flySpeed:
-    name: 
-    position: 0
-    animator: 0
-    lerpPosition: 0
-    lerpAnimator: 0
-    rotation: 0
-    lerpRotation: 0
-  StartFlying: 0
-  canFly: 0
-  land: 1
-  LockUp: 0
-  life: 100
-  defense: 0
-  damageDelay: 0.75
-  damageInterrupt: 0.5
-  TotalAttacks: 3
-  activeAttack: -1
-  attackStrength: 10
-  attackDelay: 0.5
-  inmune: 0
-  animatorSpeed: 1
-  upDownSmoothness: 2
-  debug: 1
-  PivotsRayInterval: 1
-  FallRayInterval: 3
-  WaterRayInterval: 5
-  OnJump:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnGetDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDeathE:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnSwim:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnFly:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnUnderWater:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnAnimationChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnStanceChange:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnSyncAnimator:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  FrameCounter: 0
-  OnMovementReleased:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  useShift: 1
-  CurrentAnimState: 0
-  NextAnimState: 0
-  EditorGeneral: 1
-  EditorGround: 1
-  EditorWater: 1
-  EditorAir: 1
-  EditorAdvanced: 1
-  EditorAirControl: 1
-  EditorAttributes: 1
-  EditorEvents: 0
-  EditorAnimatorParameters: 0
 --- !u!114 &1844222242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67239,67 +66871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcca5b6ee6006244aadf2a9c6f75f0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
-  mountLayer: Mounted
-  instantMount: 0
-  mountIdle: Idle01
-  straightSpine: 1
-  pointOffset: {x: 0, y: 0, z: 0}
-  LowLimit: 45
-  HighLimit: 135
-  smoothSM: 0.5
-  syncAnimators: 1
-  WalkASpeed: 1
-  TrotASpeed: 1
-  RunASpeed: 1
-  FlyASpeed: 1
-  SwimASpeed: 1
-  DebugSync: 0
-  ridersLink: {fileID: 1596888590}
-  leftIK: {fileID: 638639604}
-  rightIK: {fileID: 1728415498}
-  leftKnee: {fileID: 1621762726}
-  rightKnee: {fileID: 1936175081}
-  OnMounted:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDismounted:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnCanBeMounted:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 6ed281c2bd473cb498c896cd0466278c, type: 2}
-        m_MethodName: Invoke
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1596888590}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 6ed281c2bd473cb498c896cd0466278c, type: 2}
-        m_MethodName: Invoke
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  ShowLinks: 1
-  ShowAnimatorSpeeds: 0
-  ShowEvents: 0
 --- !u!1001 &1844288564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70213,12 +69784,6 @@ MonoBehaviour:
   splatCustomTotal: 0
   globalListIndex: -1
   placed: 0
---- !u!4 &1936175081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4205123602071206, guid: c67f6f78cf12af94db94f700b0d36632,
-    type: 3}
-  m_PrefabInstance: {fileID: 1312896394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1936885394 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9596216, guid: 57901d8399fd6e74fbabbc9956f39557,
@@ -73857,7 +73422,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 0
-  m_MaterialTemplate: {fileID: 884330135}
+  m_MaterialTemplate: {fileID: 1044518643}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -78679,7 +78244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BaseObjectList:
-  - {fileID: 2010911446861417458, guid: 44f5e4db518822b409bbfca0ddf9267f, type: 3}
+  - {fileID: -4846384151580013395, guid: 492bbab83a36b5a438be38f219a742e0, type: 3}
+  - {fileID: -4792548231009723907, guid: 7ac1166c2d1c2cd47adffa4912284d51, type: 3}
   m_ActiveWeaponLocation: {fileID: 1691425857}
   m_PartSlotPrefab: {fileID: 4087611235407658626, guid: 9b0897c2b239d9a4f937850b2b89013a,
     type: 3}

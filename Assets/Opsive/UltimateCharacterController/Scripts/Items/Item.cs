@@ -313,6 +313,9 @@ namespace Opsive.UltimateCharacterController.Items
 
             // Set the correct visible object for the current perspective.
             if (m_CharacterLocomotion.FirstPersonPerspective
+#if FIRST_PERSON_CONTROLLER
+                && m_FirstPersonPerspectiveItem != null
+#endif
 #if ULTIMATE_CHARACTER_CONTROLLER_MULTIPLAYER
                 && !remotePlayer
 #endif

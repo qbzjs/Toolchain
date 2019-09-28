@@ -1,29 +1,30 @@
 ﻿using System.Collections.Generic;
 using MalbersAnimations.Events;
+using MalbersAnimations.Scriptables;
+using MalbersAnimations.Utilities;
 using UnityEngine;
 
 namespace MalbersAnimations.SA
 {
-    /// <summary>
-    /// Modified SA Third Person Character Controler
-    /// </summary>
+    /// <summary>Modified SA Third Person Character Controller</summary>
 	[RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animator))]
-    public class MThirdPersonCharacter : MonoBehaviour , ICharacterMove
+    public class MThirdPersonCharacter : MonoBehaviour, ICharacterMove
     {
         [SerializeField] float m_MovingTurnSpeed = 360;
         [SerializeField] float m_StationaryTurnSpeed = 180;
         [SerializeField] float m_JumpPower = 12f;
-        [Range(1f, 4f)] 
+        [Range(1f, 4f)]
         [SerializeField] float m_GravityMultiplier = 2f;
-        [SerializeField]
-        float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
-        [SerializeField]
-        float m_MoveSpeedMultiplier = 1f;
-        [SerializeField]
-        float m_AnimSpeedMultiplier = 1f;
-        [SerializeField]
-        float m_GroundCheckDistance = 0.1f;
+        [SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
+        [SerializeField] float m_MoveSpeedMultiplier = 1f;
+        [SerializeField] float m_AnimSpeedMultiplier = 1f;
+        [SerializeField] float m_GroundCheckDistance = 0.1f;
+
+        [SerializeField] BoolReference m_SmoothVertical =  new BoolReference( true);
+       
+
+        private Transform MainCamera;
 
         Rigidbody m_Rigidbody;
         Animator m_Animator;
@@ -37,22 +38,37 @@ namespace MalbersAnimations.SA
         public bool Jump { get; set; }
         public bool Shift { get; set; }
 
-        void Start()
+
+        void Awake()
         {
             m_Animator = GetComponent<Animator>();
             m_Rigidbody = GetComponent<Rigidbody>();
+        }
 
+        void Start()
+        {
             m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             m_OrigGroundCheckDistance = m_GroundCheckDistance;
+
+            MainCamera = MalbersTools.FindMainCamera()?.transform;
         }
 
 
-        public void Move(Vector3 move, bool directional)
+
+        public virtual void SetInputAxis(Vector2 move)
+        {
+            Vector3 move3 = new Vector3(move.x, 0, move.y);
+
+            SetInputAxis(move3);
+        }
+
+
+        public void Move(Vector3 move)
         {
             if (!isActiveAndEnabled) return;
 
-            if (Shift)  move *= 0.5f;
-         
+            if (Shift) move *= 0.5f;
+
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
@@ -62,9 +78,13 @@ namespace MalbersAnimations.SA
             CheckGroundStatus();
             move = Vector3.ProjectOnPlane(move, m_GroundNormal);
             m_TurnAmount = Mathf.Atan2(move.x, move.z);
+
+
             m_ForwardAmount = move.z;
 
-           
+            
+         
+
 
             ApplyExtraTurnRotation();
 
@@ -73,8 +93,15 @@ namespace MalbersAnimations.SA
             else HandleAirborneMovement();
 
 
+            if (!m_SmoothVertical && m_ForwardAmount > 0)                       //It will remove slowing Stick push when rotating and going Forward
+            {
+                m_ForwardAmount = 1;
+            }
+
+
             // send input and other state parameters to the animator
             UpdateAnimator(move);
+
         }
 
 
@@ -82,16 +109,16 @@ namespace MalbersAnimations.SA
         void UpdateAnimator(Vector3 move)
         {
             if (!m_Animator.isActiveAndEnabled) return;
-          
 
             // update the animator parameters
-            m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-            m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+            m_Animator.SetFloat("Vertical", m_ForwardAmount, 0.1f, Time.deltaTime);
+            m_Animator.SetFloat("Horizontal", m_TurnAmount, 0.1f, Time.deltaTime);
 
-            m_Animator.SetBool("OnGround", m_IsGrounded);
+            m_Animator.SetBool("Grounded", m_IsGrounded);
+
             if (!m_IsGrounded)
             {
-                m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+                m_Animator.SetFloat("JumpHeight", m_Rigidbody.velocity.y);
             }
 
             // calculate which leg is behind, so as to leave that leg trailing in the jump animation
@@ -100,6 +127,7 @@ namespace MalbersAnimations.SA
             float runCycle =
                 Mathf.Repeat(
                     m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
+
             float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
             if (m_IsGrounded)
             {
@@ -151,12 +179,13 @@ namespace MalbersAnimations.SA
 
         public void OnAnimatorMove()
         {
+            var time = m_Animator.updateMode == AnimatorUpdateMode.AnimatePhysics ? Time.fixedDeltaTime : Time.deltaTime;
 
             // we implement this function to override the default root motion.
             // this allows us to modify the positional speed before it's applied.
-            if (m_IsGrounded && Time.deltaTime > 0)
+            if (m_IsGrounded && time > 0)
             {
-                Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+                Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / time;
 
                 // we preserve the existing y part of the current velocity.
                 v.y = m_Rigidbody.velocity.y;
@@ -182,6 +211,17 @@ namespace MalbersAnimations.SA
                 m_GroundNormal = Vector3.up;
                 m_Animator.applyRootMotion = false;
             }
+        }
+
+        public void SetInputAxis(Vector3 inputAxis)
+        {
+            var Cam_Forward = Vector3.ProjectOnPlane(MainCamera.forward, Vector3.up).normalized; //Normalize the Camera Forward Depending the Up Vector IMPORTANT!
+            var Cam_Right = Vector3.ProjectOnPlane(MainCamera.right, Vector3.up).normalized;
+            // var Cam_Up = Vector3.ProjectOnPlane(mainCamera.up, Forward).normalized;
+
+            var m_Move = (inputAxis.z * Cam_Forward) + (inputAxis.x * Cam_Right);
+
+            Move(m_Move);
         }
     }
 }

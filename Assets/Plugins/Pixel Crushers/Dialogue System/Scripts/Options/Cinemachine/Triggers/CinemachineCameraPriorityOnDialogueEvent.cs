@@ -1,10 +1,9 @@
-﻿#if USE_CINEMACHINE
-#if UNITY_2017_1_OR_NEWER
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PixelCrushers.DialogueSystem
 {
 
+#if USE_CINEMACHINE
     [AddComponentMenu("")] // Use wrapper.
     public class CinemachineCameraPriorityOnDialogueEvent : ActOnDialogueEvent
     {
@@ -30,6 +29,16 @@ namespace PixelCrushers.DialogueSystem
             virtualCamera.Priority = onEnd;
         }
     }
+
+#else
+
+    [AddComponentMenu("")] // Use wrapper.
+    public class CinemachineCameraPriorityOnDialogueEvent : ActOnDialogueEvent
+    {
+        public override void TryStartActions(Transform actor) { }
+        public override void TryEndActions(Transform actor) { }
+    }
+
+#endif
+
 }
-#endif
-#endif

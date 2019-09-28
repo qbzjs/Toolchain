@@ -6,6 +6,9 @@
 
 using UnityEngine;
 using UnityEditor;
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+using Opsive.UltimateCharacterController.Camera;
+#endif
 using Opsive.UltimateCharacterController.FirstPersonController.Camera.ViewTypes;
 using Opsive.UltimateCharacterController.Editor.Inspectors.Camera;
 using Opsive.UltimateCharacterController.Editor.Inspectors.Utility;
@@ -40,9 +43,49 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.FirstPersonContro
                 InspectorUtility.DrawField(target, "m_CullingMask");
                 InspectorUtility.DrawFieldSlider(target, "m_FieldOfView", 1, 179);
                 InspectorUtility.DrawFieldSlider(target, "m_FieldOfViewDamping", 0, 5);
-                if (InspectorUtility.Foldout(target, "First Person Camera")) {
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+                var prevRenderType = InspectorUtility.GetFieldValue<FirstPerson.ObjectOverlayRenderType>(target, "m_OverlayRenderType");
+                InspectorUtility.DrawField(target, "m_OverlayRenderType");
+                var renderType = InspectorUtility.GetFieldValue<FirstPerson.ObjectOverlayRenderType>(target, "m_OverlayRenderType");
+                // Ensure the render type has been switched for all first person view types.
+                if (prevRenderType != renderType) {
+                    if (renderType == FirstPerson.ObjectOverlayRenderType.SecondCamera) {
+                        UltimateCharacterController.Utility.Builders.ViewTypeBuilder.AddFirstPersonCamera(parent as CameraController, target as FirstPerson);
+                    } else if (prevRenderType == FirstPerson.ObjectOverlayRenderType.SecondCamera) {
+                        var firstPersonCamera = InspectorUtility.GetFieldValue<UnityEngine.Camera>(target, "m_FirstPersonCamera");
+                        if (firstPersonCamera != null) {
+                            if (PrefabUtility.IsPartOfPrefabInstance(firstPersonCamera.gameObject)) {
+                                PrefabUtility.UnpackPrefabInstance(PrefabUtility.GetOutermostPrefabInstanceRoot(firstPersonCamera.gameObject), PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
+                            }
+                            GameObject.DestroyImmediate(firstPersonCamera.gameObject, true);
+                            (target as FirstPerson).FirstPersonCamera = null;
+                        }
+                    }
+                    // All first person view types need to be switched to the currently active render type.
+                    var viewTypes = (parent as CameraController).ViewTypes;
+                    for (int i = 0; i < viewTypes.Length; ++i) {
+                        var firstPersonViewType = viewTypes[i] as FirstPerson;
+                        if (firstPersonViewType == null) {
+                            continue;
+                        }
+
+                        if (renderType == FirstPerson.ObjectOverlayRenderType.RenderPipeline && firstPersonViewType.OverlayRenderType == FirstPerson.ObjectOverlayRenderType.SecondCamera) {
+                            firstPersonViewType.FirstPersonCamera = null;
+                            firstPersonViewType.OverlayRenderType = renderType;
+                        } else if (renderType == FirstPerson.ObjectOverlayRenderType.SecondCamera && firstPersonViewType.OverlayRenderType == FirstPerson.ObjectOverlayRenderType.RenderPipeline) {
+                            firstPersonViewType.FirstPersonCamera = (target as FirstPerson).FirstPersonCamera;
+                            firstPersonViewType.OverlayRenderType = renderType;
+                        }
+                    }
+                    UltimateCharacterController.Utility.Builders.ViewTypeBuilder.SerializeViewTypes(parent as CameraController);
+                }
+                var drawFirstPersonCamera = renderType == FirstPerson.ObjectOverlayRenderType.SecondCamera;
+#else
+                InspectorUtility.DrawField(target, "m_UseFirstPersonCamera");
+                var drawFirstPersonCamera = InspectorUtility.GetFieldValue<bool>(target, "m_UseFirstPersonCamera");
+#endif
+                if (drawFirstPersonCamera && InspectorUtility.Foldout(target, "First Person Camera")) {
                     EditorGUI.indentLevel++;
-                    InspectorUtility.DrawField(target, "m_UseFirstPersonCamera");
                     InspectorUtility.DrawField(target, "m_FirstPersonCamera");
                     InspectorUtility.DrawField(target, "m_FirstPersonCullingMask");
                     InspectorUtility.DrawField(target, "m_SynchronizeFieldOfView");
@@ -67,6 +110,13 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.FirstPersonContro
                     }
                     EditorGUI.indentLevel--;
                 }
+#if ULTIMATE_CHARACTER_CONTROLLER_LWRP || ULTIMATE_CHARACTER_CONTROLLER_URP
+                else if (renderType == FirstPerson.ObjectOverlayRenderType.RenderPipeline) {
+                    EditorGUI.indentLevel++;
+                    InspectorUtility.DrawField(target, "m_FirstPersonCullingMask");
+                    EditorGUI.indentLevel--;
+                }
+#endif
                 EditorGUI.indentLevel--;
             }
             if (InspectorUtility.Foldout(target, "Primary Spring")) {

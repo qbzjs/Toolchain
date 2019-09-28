@@ -367,6 +367,7 @@ ModelImporter:
     100718: upper_arm_hose_end_R
     100720: upper_arm_hose_L
     100722: upper_arm_hose_R
+    100724: referencebone
     400000: chest
     400002: elbow_target_ik_L
     400004: elbow_target_ik_R
@@ -729,6 +730,7 @@ ModelImporter:
     400718: upper_arm_hose_end_R
     400720: upper_arm_hose_L
     400722: upper_arm_hose_R
+    400724: referencebone
     7400000: RunStrafeLeftJumpStartRight
     7400002: RunStrafeLeftJumpUpRight
     7400004: MidAirRight
@@ -758,7 +760,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'FallRunStrafeLeft' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'ORG-forearm_R' has scale animation that
+      will be discarded.\n\t'ORG-hand_R' has scale animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -818,6 +823,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L
@@ -1517,7 +1524,7 @@ ModelImporter:
       name: FallRunStrafeLeftEndRight
       takeName: Combat_Jump
       firstFrame: 12
-      lastFrame: 21
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 90
       level: 0
@@ -1556,7 +1563,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.6314433
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -1568,6 +1575,8 @@ ModelImporter:
         weight: 1
       - path: rig
         weight: 1
+      - path: rig/referencebone
+        weight: 0
       - path: rig/root
         weight: 1
       - path: rig/root/foot_ik_L
@@ -2810,7 +2819,7 @@ ModelImporter:
       name: FallRunStrafeLeftEndLeft
       takeName: JumpWalk
       firstFrame: 40
-      lastFrame: 57
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 90
       level: 0
@@ -2849,7 +2858,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.45
+      - time: 0.5805842
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}

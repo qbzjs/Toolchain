@@ -117,6 +117,12 @@ namespace PixelCrushers.DialogueSystem
 
         private float nextAutoFocusCheckTime = 0;
 
+        public override void Awake()
+        {
+            base.Awake();
+            Tools.DeprecationWarning(this);
+        }
+
         /// <summary>
         /// Hide the main panel and all of the templates on start.
         /// </summary>

@@ -109,7 +109,10 @@ namespace PixelCrushers.DialogueSystem
 
         /// <summary>
         /// Gets the current actor in the last conversation started (or <c>null</c> if no 
-        /// conversation is active or the last converstion started has ended).
+        /// conversation is active or the last conversation started has ended).
+        /// See https://www.pixelcrushers.com/dialogue_system/manual2x/html/triggers_and_interaction.html#interactionDialogueSystemTriggerGameObjectAssignments
+        /// for an explanation of how a conversation's actor and conversant are assigned
+        /// at runtime.
         /// </summary>
         /// <value>
         /// The actor in the current conversation.
@@ -119,6 +122,9 @@ namespace PixelCrushers.DialogueSystem
         /// <summary>
         /// Gets the current conversant in the last conversation started (or <c>null</c> if no 
         /// conversation is active or the last conversation started has ended).
+        /// See https://www.pixelcrushers.com/dialogue_system/manual2x/html/triggers_and_interaction.html#interactionDialogueSystemTriggerGameObjectAssignments
+        /// for an explanation of how a conversation's actor and conversant are assigned
+        /// at runtime.
         /// </summary>
         /// <value>
         /// The conversant in the current conversation.

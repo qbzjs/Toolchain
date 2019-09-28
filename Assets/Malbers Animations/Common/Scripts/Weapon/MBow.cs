@@ -18,8 +18,13 @@ namespace MalbersAnimations.Weapons
         public GameObject arrow;                                //Arrow to Release Prefab
         protected GameObject arrowInstance;                      //Current arrow in Load Instance
 
-        public float MaxTension;
 
+        /// <summary>Max Bending the Bow can do</summary>
+        public float MaxTension;
+        ///// <summary>Max Bending the Bow can do normalized</summary>
+        //[SerializeField] private float tensionLimit = 1;
+
+        /// <summary>Time to Tense the Bow</summary>
         public float holdTime = 2f;
 
         /// <summary> Normalized Bow Tension </summary>
@@ -83,6 +88,12 @@ namespace MalbersAnimations.Weapons
             get { return arrowInstance; }
             set { arrowInstance = value; }
         }
+
+        //public float TensionLimit
+        //{
+        //    get { return tensionLimit; }
+        //    set { tensionLimit = value; }
+        //}
         #endregion
 
         void Start()
@@ -145,30 +156,28 @@ namespace MalbersAnimations.Weapons
         }
 
 
-        /// <summary>
-        /// Create an arrow ready to shooot
-        /// </summary>
+        /// <summary> Create an arrow ready to shooot </summary>
         public virtual void EquipArrow()
         {
             if (ArrowInstance != null)
-            { Destroy(ArrowInstance.gameObject); } //return;                           //If there is no arrow in the game object slot ignore
-           
-            ArrowInstance = Instantiate(Arrow, KNot) as GameObject;                      //Instantiate the Arrow in the Knot of the Bow
+            { Destroy(ArrowInstance.gameObject); } //return;                             //If there is no arrow in the game object slot ignore
+
+            ArrowInstance = Instantiate(Arrow, KNot);                                    //Instantiate the Arrow in the Knot of the Bow
             ArrowInstance.transform.localPosition = Vector3.zero;                        //Reset Position
             ArrowInstance.transform.localRotation = Quaternion.identity;                 //Reset Rotation
 
-            IArrow arrow = ArrowInstance.GetComponent<IArrow>();        //Get the IArrow Component
+            var arrow = ArrowInstance.GetComponent<MArrow>();        //Get the IArrow Component
 
             if (arrow != null)
+            {
                 ArrowInstance.transform.Translate(0, 0, arrow.TailOffset, Space.Self);  //Translate in the offset of the arrow to put it on the hand
-
+                arrow.AffectStat = AffectStat;
+            }
             OnLoadArrow.Invoke(ArrowInstance);
 
         }
 
-        /// <summary>
-        /// Destroy the Active Arrow , used when is Stored the Weapon again and it has an arrow ready
-        /// </summary>
+        /// <summary> Destroy the Active Arrow , used when is Stored the Weapon again and it has an arrow ready</summary>
         public virtual void DestroyArrow()
         {
             if (ArrowInstance != null)
@@ -177,9 +186,7 @@ namespace MalbersAnimations.Weapons
             ArrowInstance = null; //Clean the Arrow Instance
         }
 
-        /// <summary>
-        /// Rotate and modify the bow Bones to bend it from Min = 0 to Max = 1
-        /// </summary>
+        /// <summary>Rotate and modify the bow Bones to bend it from Min = 0 to Max = 1</summary>
         /// <param name="normalizedTime">0 = Relax, 1 = Stretch</param>
         public virtual void BendBow(float normalizedTime)
         {
@@ -202,7 +209,7 @@ namespace MalbersAnimations.Weapons
                 if (LowerBn[i] != null)
                 {
                     LowerBn[i].localRotation =
-                        Quaternion.Lerp(LowerBnInitRotation[i], Quaternion.Euler(RotLowerDir * MaxTension) * LowerBnInitRotation[i], BowTension);  //Bend the Lower Chain of the Bow
+                        Quaternion.Lerp(LowerBnInitRotation[i], Quaternion.Euler(RotLowerDir * MaxTension) * LowerBnInitRotation[i],  BowTension);  //Bend the Lower Chain of the Bow
                 }
             }
 
@@ -224,15 +231,15 @@ namespace MalbersAnimations.Weapons
 
             if (ArrowInstance == null) return;
 
-
             ArrowInstance.transform.parent = null;
 
             IArrow arrow = ArrowInstance.GetComponent<IArrow>();
 
-            arrow.HitMask = HitMask; //Transfer the same Hit Mask
+            arrow.HitMask = HitLayer;                                   //Transfer the same Hit Mask to the Arrow
+            arrow.TriggerInteraction = TriggerInteraction;              //Link the Trigger Interatction 
 
-            arrow.ShootArrow(Mathf.Lerp(MinForce, MaxForce, BowTension), direction);
             arrow.Damage = Mathf.Lerp(MinDamage, MaxDamage, BowTension);
+            arrow.ShootArrow(Mathf.Lerp(MinForce, MaxForce, BowTension), direction.normalized);
 
             OnReleaseArrow.Invoke(ArrowInstance);
 
@@ -275,6 +282,12 @@ namespace MalbersAnimations.Weapons
             while (BowTension == 0) yield return null;
 
             WeaponSound.PlayOneShot(Sounds[ID]);
+        }
+
+        public override void ResetWeapon()
+        {
+            RestoreKnot();
+            BendBow(0);
         }
 
         //Editor variables

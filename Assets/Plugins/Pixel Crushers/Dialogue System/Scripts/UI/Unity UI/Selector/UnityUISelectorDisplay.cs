@@ -77,6 +77,11 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
+        private void Awake()
+        {
+            Tools.DeprecationWarning(this);
+        }
+
         public void Start()
         {
             started = true;

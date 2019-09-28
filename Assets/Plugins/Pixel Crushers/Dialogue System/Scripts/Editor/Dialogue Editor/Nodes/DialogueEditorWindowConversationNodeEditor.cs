@@ -86,6 +86,9 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         private List<DialogueEntry> nodeClipboard = null;
         private Vector2 contextMenuPosition;
 
+        private bool showQuickDialogueTextEntry = false;
+        private Rect quickDialogueTextEntryRect;
+
         private Vector2 ConvertScreenCoordsToZoomCoords(Rect _zoomArea, Vector2 screenCoords)
         {
             return (screenCoords - _zoomArea.TopLeft()) / _zoom + _zoomCoordsOrigin;
@@ -161,6 +164,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             DrawAllNodes();
             DrawLasso();
             CheckNewSelectedLink();
+            if (showQuickDialogueTextEntry) DrawQuickDialogueTextEntry();
             newSelectedLink = null;
         }
 
@@ -353,6 +357,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         {
             if (Event.current.type == EventType.ScrollWheel)
             {
+                CloseQuickDialogueTextEntry();
                 if (!zoomLocked)
                 {
                     var prevZoom = _zoom;
@@ -391,6 +396,10 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                         newSelectedLink = link;
                         currentEntry = null;
                         inspectorSelection = newSelectedLink;
+                        if (showQuickDialogueTextEntry && !GetQuickDialogueTextRect().Contains(Event.current.mousePosition))
+                        {
+                            CloseQuickDialogueTextEntry();
+                        }
                     }
                     break;
             }
@@ -469,7 +478,10 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             }
             if (Event.current.type == EventType.Repaint && currentHoverGUIContent != null)
             {
-                GUI.Label(currentHoverRect, currentHoverGUIContent, GUI.skin.textField);
+                if (!(showQuickDialogueTextEntry && currentHoveredEntry == currentEntry))
+                {
+                    GUI.Label(currentHoverRect, currentHoverGUIContent, GUI.skin.textField);
+                }
             }
         }
 
@@ -498,6 +510,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             }
 
             string nodeLabel = GetDialogueEntryNodeText(entry);
+            if (showQuickDialogueTextEntry && entry == currentEntry) nodeLabel = string.Empty;
 
             var guicolor_backup = GUI.backgroundColor;
             GUI.backgroundColor = nodeColor;
@@ -525,6 +538,38 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                     GUI.DrawTexture(new Rect(boxRect.x - 30, boxRect.y, 30, 30), portrait);
                 }
             }
+        }
+
+        private void DrawQuickDialogueTextEntry()
+        {
+            if (currentEntry == null) return;
+            GUI.SetNextControlName("QuickDialogueText");
+            EditorGUI.BeginChangeCheck();
+            currentEntry.DialogueText = GUI.TextArea(GetQuickDialogueTextRect(), currentEntry.DialogueText);
+            if (EditorGUI.EndChangeCheck())
+            {
+                dialogueEntryNodeText[currentEntry.id] = BuildDialogueEntryNodeText(currentEntry);
+            }
+            GUI.FocusControl("QuickDialogueText");
+        }
+
+        private void OpenQuickDialogueTextEntry()
+        {
+            if (currentEntry == null) return;
+            if (multinodeSelection.nodes.Count > 1) return;
+            showQuickDialogueTextEntry = true;
+            var rect = currentEntry.canvasRect;
+            quickDialogueTextEntryRect = new Rect(rect.x, rect.y, rect.width + DialogueEntry.CanvasRectWidth, rect.height + DialogueEntry.CanvasRectHeight);
+        }
+
+        private void CloseQuickDialogueTextEntry()
+        {
+            showQuickDialogueTextEntry = false;
+        }
+
+        private Rect GetQuickDialogueTextRect()
+        {
+            return quickDialogueTextEntryRect;
         }
 
         private Texture2D GetActorPortrait(int actorID)
@@ -609,7 +654,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
         {
             if (Event.current.isKey && Event.current.type == EventType.KeyDown)
             {
-                if (Event.current.keyCode == KeyCode.Home)
+                if (Event.current.keyCode == KeyCode.Home && !showQuickDialogueTextEntry)
                 {
                     // Home (top of canvas):
                     GotoCanvasHomePosition();
@@ -629,7 +674,11 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 }
                 else if (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter)
                 {
-                    if (string.Equals(GUI.GetNameOfFocusedControl(), "SearchTextField"))
+                    if (showQuickDialogueTextEntry)
+                    {
+                        CloseQuickDialogueTextEntry();
+                    }
+                    else if (string.Equals(GUI.GetNameOfFocusedControl(), "SearchTextField"))
                     {
                         // Find next search result if press enter in search text field:
                         SearchDialogueTree(1);
@@ -638,7 +687,11 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 else if (Event.current.keyCode == KeyCode.Delete || Event.current.keyCode == KeyCode.Backspace)
                 {
                     // Delete/backspace key:
-                    if (string.Equals(GUI.GetNameOfFocusedControl(), "SearchTextField"))
+                    if (showQuickDialogueTextEntry)
+                    {
+                        // Do nothing; using quick Dialogue Text entry.
+                    }
+                    else if (string.Equals(GUI.GetNameOfFocusedControl(), "SearchTextField"))
                     {
                         // Do nothing; is editing search bar text.
                     }
@@ -663,7 +716,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 else if (Event.current.keyCode == KeyCode.D && (Event.current.command || Event.current.control) && Event.current.alt)
                 {
                     // Ctrl/Cmd+Alt+D (Duplicate) key:
-                    if (currentEntry != null)
+                    if (currentEntry != null && !showQuickDialogueTextEntry)
                     {
                         Event.current.Use();
                         DuplicateMultipleEntries();
@@ -673,7 +726,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 {
                     wasShiftDown = Event.current.shift;
                     // Ctrl/Cmd+Alt+N (New) key:
-                    if (currentEntry != null)
+                    if (currentEntry != null && !showQuickDialogueTextEntry)
                     {
                         AddChildCallback(currentEntry);
                     }
@@ -686,7 +739,11 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 else if (Event.current.keyCode == KeyCode.C && (Event.current.command || Event.current.control) && Event.current.alt)
                 {
                     // Ctrl/Cmd+Alt+C (Copy) key:
-                    if (multinodeSelection.nodes.Count > 1)
+                    if (showQuickDialogueTextEntry)
+                    {
+                        // Do nothing; in quick dialogue text entry.
+                    }
+                    else if (multinodeSelection.nodes.Count > 1)
                     {
                         CopyMultipleEntriesCallback(null);
                     }
@@ -699,6 +756,10 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                 else if (Event.current.keyCode == KeyCode.V && (Event.current.command || Event.current.control) && Event.current.alt)
                 {
                     // Ctrl/Cmd+Alt+V (Paste) key:
+                    if (showQuickDialogueTextEntry)
+                    {
+                        // Do nothing; in quick dialogue text entry.
+                    }
                     if (!IsNodeClipboardEmpty())
                     {
                         PasteMultipleEntriesCallback(currentEntry);
@@ -717,17 +778,23 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
             switch (Event.current.type)
             {
                 case EventType.MouseDown:
-                    GUI.FocusControl("SearchClearButton"); // Deselect search bar text input field.
-                    if (entry.canvasRect.Contains(Event.current.mousePosition))
+                    if (!showQuickDialogueTextEntry) GUI.FocusControl("SearchClearButton"); // Deselect search bar text input field.
+                    if (showQuickDialogueTextEntry && GetQuickDialogueTextRect().Contains(Event.current.mousePosition))
+                    {
+                        // Do nothing; clicked in quick dialogue text entry.
+                    }
+                    else if (entry.canvasRect.Contains(Event.current.mousePosition))
                     {
                         if (IsRightMouseButtonEvent())
                         {
                             currentEntry = entry;
                             ShowNodeContextMenu(entry);
                             Event.current.Use();
+                            CloseQuickDialogueTextEntry();
                         }
                         else if (Event.current.button == LeftMouseButton)
                         {
+                            CloseQuickDialogueTextEntry();
                             newSelectedLink = null;
                             if (isMakingLink)
                             {
@@ -746,6 +813,10 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                         FinishMakingLink();
                                     }
                                     SetCurrentEntry(entry);
+                                    if (Event.current.clickCount == 2 && !IsAltDown())
+                                    {
+                                        OpenQuickDialogueTextEntry();
+                                    }
                                 }
                             }
                             Event.current.Use();
@@ -762,6 +833,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                             if (isLassoing)
                             {
                                 FinishLasso();
+                                CloseQuickDialogueTextEntry();
                             }
                             else if (IsShiftDown())
                             {
@@ -773,6 +845,7 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                 {
                                     AddEntryToSelection(entry);
                                 }
+                                CloseQuickDialogueTextEntry();
                             }
                             else
                             {
@@ -954,12 +1027,20 @@ namespace PixelCrushers.DialogueSystem.DialogueEditor
                                 ShowEmptyCanvasContextMenu();
                             }
                         }
+                        CloseQuickDialogueTextEntry();
                     }
                     else if (Event.current.button == LeftMouseButton)
                     {
                         nodeToDrag = null;
-                        isLassoing = true;
-                        lassoRect = new Rect(Event.current.mousePosition.x + canvasScrollPosition.x, Event.current.mousePosition.y + canvasScrollPosition.y, 1, 1);
+                        //if (Event.current.clickCount == 2) // On second thought, I'm not a fan of double-clicking canvas to create a new node.
+                        //{
+                        //    AddChildCallback(null);
+                        //}
+                        //else
+                        {
+                            isLassoing = true;
+                            lassoRect = new Rect(Event.current.mousePosition.x + canvasScrollPosition.x, Event.current.mousePosition.y + canvasScrollPosition.y, 1, 1);
+                        }
                     }
                     break;
                 case EventType.MouseUp:

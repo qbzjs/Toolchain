@@ -1591,7 +1591,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.6331615
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -2847,7 +2847,7 @@ ModelImporter:
       name: FallRunFwdEndLeft
       takeName: JumpWalk
       firstFrame: 40
-      lastFrame: 57
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2886,7 +2886,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.45
+      - time: 0.58230233
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -4179,7 +4179,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.63316154
         functionName: ExecuteEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -5633,7 +5633,7 @@ ModelImporter:
       name: FallRunFwdTurnLeftEndLeft
       takeName: FallRunFwd
       firstFrame: 105
-      lastFrame: 121
+      lastFrame: 115
       wrapMode: 0
       orientationOffsetY: 45
       level: 0
@@ -5672,7 +5672,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.45
+      - time: 0.5805842
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -7165,7 +7165,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.6297251
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -8619,7 +8619,7 @@ ModelImporter:
       name: FallRunFwdTurnRightEndLeft
       takeName: FallRunFwd
       firstFrame: 168
-      lastFrame: 185
+      lastFrame: 178
       wrapMode: 0
       orientationOffsetY: -45
       level: 0
@@ -8658,7 +8658,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.45
+      - time: 0.58058417
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}

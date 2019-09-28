@@ -11,6 +11,11 @@ namespace PixelCrushers.DialogueSystem
     [AddComponentMenu("")] // Use wrapper.
     public class UnityUIBarkSubtitleDialogueUI : UnityUIDialogueUI
     {
+        public override void Awake()
+        {
+            base.Awake();
+            Tools.DeprecationWarning(this);
+        }
 
         public override void ShowSubtitle(Subtitle subtitle)
         {

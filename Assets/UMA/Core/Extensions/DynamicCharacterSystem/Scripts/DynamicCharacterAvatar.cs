@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 //For loading a recipe directly from the web @2465
 using UnityEngine.Networking;
-#if UNITY_EDITOR
+#if UNITY_EDITOR 
 using UnityEditor;
 using UnityEditor.SceneManagement;//for marking converted colors as needing saving
 #endif
@@ -72,6 +72,9 @@ namespace UMA.CharacterSystem
 
         [Tooltip("If true, then the meshcombiner will merge blendshapes found on slots that are part of this umaData")]
         public bool loadBlendShapes = false;
+
+		[Tooltip("If true, will reuse the mecanim avatar if it exists.")]
+		public bool keepAvatar;
 
         //This will generate itself from a list available Races and set itself to the current value of activeRace.name
         [Tooltip("Selects the race to used. When initialized, the Avatar will use the base recipe from the RaceData selected.")]
@@ -317,11 +320,13 @@ namespace UMA.CharacterSystem
         {
             get
             {
-                if (loadString == "" && loadFilename == "" && umaRecipe == null)
-                    return true;
-                else
-                    return false;
-            }
+				bool startRecipeEmpty = (loadString == "" && loadFilename == "" && umaRecipe == null);
+
+				if (loadFileOnStart && !startRecipeEmpty)
+					return false;
+				else
+					return true;
+			}
         }
 
         #endregion
@@ -443,7 +448,7 @@ namespace UMA.CharacterSystem
                 if (!Application.isPlaying && previewMesh)
                 {
                     Quaternion rotation = Quaternion.Euler(-90, 180, 0);
-	                Vector3 scale = new Vector3(1.0f, 1.0f, 1.0f);
+                    Vector3 scale = new Vector3(0.88f, 0.88f, 0.88f);
                     if (previewModel == PreviewModel.Custom)
                     {
                         rotation = Quaternion.Euler(customRotation);
@@ -816,12 +821,19 @@ namespace UMA.CharacterSystem
         /// <returns></returns>
         public string GetWardrobeItemName(string SlotName)
         {
+            UMATextRecipe utr = GetWardrobeItem(SlotName);
+            if (utr != null) return utr.name;
+
+            return "";
+        }
+
+        public UMATextRecipe GetWardrobeItem(string SlotName)
+        {
             if (WardrobeRecipes.ContainsKey(SlotName))
             {
-                UMATextRecipe utr = WardrobeRecipes[SlotName];
-                if (utr != null) return utr.name;
+                return WardrobeRecipes[SlotName];
             }
-            return "";
+            return null;
         }
 
         /// <summary>
@@ -2488,6 +2500,7 @@ namespace UMA.CharacterSystem
                     {
                         if (Debug.isDebugBuild)
                             Debug.LogWarning("[CharacterAvatar.DoLoad] No filename specified to load!");
+						BuildFromComponentSettingsCO();
                         yield break;
                     }
                     else
@@ -2518,8 +2531,9 @@ namespace UMA.CharacterSystem
             {
                 if (Debug.isDebugBuild)
                     Debug.LogWarning("[CharacterAvatar.DoLoad] No TextRecipe found with filename " + loadFilename);
-            }
-            yield break;
+				BuildFromComponentSettingsCO();
+			}
+			yield break;
         }
         #endregion
 
@@ -2862,6 +2876,7 @@ namespace UMA.CharacterSystem
             ApplyPredefinedDNA();
             UpdateAssetBundlesUsedbyCharacter();
 
+			umaData.KeepAvatar = keepAvatar;
             return false;
         }
 
@@ -2990,9 +3005,13 @@ namespace UMA.CharacterSystem
                                     esd.AddOverlay(overlaysToAdd[oi]);
                             }
                         }
-                        if (!HiddenSlots.Contains(sd.slotName))
-                            HiddenSlots.Add(sd.slotName);
-                    }
+						//09072019 if the equivalent slot is the same as the slot we are checking, then the user has added an unnecessary entry to the compatibility settings
+						//but its very easy to do when base races share things like the inner mouth and eyes, so just skip it.
+						if (!HiddenSlots.Contains(sd.slotName) && equivalentSlot != sd.slotName)
+						{
+							HiddenSlots.Add(sd.slotName);
+						}
+					}
                 }
             }
             //if we make this happen after RemoveHiddenSlots() we need to call it again

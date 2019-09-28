@@ -74,12 +74,11 @@ namespace MalbersAnimations.Weapons
 
         public virtual void ReduceAmmo(int amount)
         {
-            ammoInChamber-=amount;
+            ammoInChamber -= amount;
         }
 
         public virtual void FireProyectile(RaycastHit AimRay)
         {
-
             float percent = Random.Range(0, 1);
 
             Vector3 AimDirection = (AimRay.point - transform.position).normalized;
@@ -87,17 +86,21 @@ namespace MalbersAnimations.Weapons
 
             OnFire.Invoke(AimDirection);
 
-            DamageValues PistolDamage =
-                        new DamageValues(AimRay.normal, Mathf.Lerp(MinDamage, MaxDamage, percent));                           //Set the Direction and Damage value
-
             if (AimRay.transform)                                                                                       //If the AIM Ray hit something 
             {
-                AimRay.transform.root.SendMessage("getDamaged", PistolDamage, SendMessageOptions.DontRequireReceiver);  //Send to the thing that we hit the Damage Values
+                var interactable = AimRay.transform.GetComponent<IInteractable>();
+                interactable?.Interact();
+
+                AffectStat.Value = Random.Range(MinDamage, MaxDamage);
+                AffectStat.ModifyStat(AimRay.transform.GetComponentInParent<Stats>());
+
+                Damager.SetDamage(AimRay.normal, AimRay.transform);               
 
                 if (AimRay.rigidbody)                                                                                       //If the thing we hit has a rigidbody
                 {
                     AimRay.rigidbody.AddForceAtPosition(AimDirection * Mathf.Lerp(MinForce, MaxForce, percent), AimRay.point);                                //Apply the force to it
                 }
+
                 BulletHole(AimRay);
 
                 OnHit.Invoke(AimRay.transform);  //Invoke OnHitSomething Event
@@ -155,7 +158,8 @@ namespace MalbersAnimations.Weapons
 
 
             Destroy(Hlper, BulletHoleTime);
-            Destroy(Hlper, BulletHoleTime);
         }
+
+        public override void ResetWeapon()  { }
     }
 }

@@ -27,6 +27,11 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public string languagePlayerPrefsKey = "Language";
 
+        private void Awake()
+        {
+            Tools.DeprecationWarning(this, "Use UILocalizationManager and LocalizeUI instead.");
+        }
+
         IEnumerator Start()
         {
             yield return null; // Wait for Text components to start.

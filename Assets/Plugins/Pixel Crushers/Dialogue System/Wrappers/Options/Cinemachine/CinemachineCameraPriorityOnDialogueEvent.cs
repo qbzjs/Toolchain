@@ -1,11 +1,11 @@
-﻿#if USE_CINEMACHINE
-#if UNITY_2017_1_OR_NEWER
-// Copyright (c) Pixel Crushers. All rights reserved.
+﻿// Copyright (c) Pixel Crushers. All rights reserved.
 
 using UnityEngine;
 
 namespace PixelCrushers.DialogueSystem.Wrappers
 {
+
+#if USE_CINEMACHINE
 
     /// <summary>
     /// This wrapper class keeps references intact if you switch between the 
@@ -17,6 +17,17 @@ namespace PixelCrushers.DialogueSystem.Wrappers
     {
     }
 
+#else
+
+    [AddComponentMenu("")]
+    public class CinemachineCameraPriorityOnDialogueEvent : PixelCrushers.DialogueSystem.CinemachineCameraPriorityOnDialogueEvent
+    {
+        private void Reset()
+        {
+            Debug.LogWarning("Support for " + GetType().Name + " must be enabled using Tools > Pixel Crushers > Dialogue System > Welcome Window.", this);
+        }
+    }
+
+#endif
+
 }
-#endif
-#endif

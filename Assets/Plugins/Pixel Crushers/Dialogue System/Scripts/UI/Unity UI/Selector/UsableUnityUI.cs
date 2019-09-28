@@ -55,6 +55,7 @@ namespace PixelCrushers.DialogueSystem
         {
             canvas = GetComponent<Canvas>();
             animator = GetComponent<Animator>();
+            Tools.DeprecationWarning(this);
         }
 
         public void Start()

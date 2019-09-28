@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
-#if UNITY_5_5_OR_NEWER || UNITY_2017_OR_NEWER
 using UnityEngine.AI;
-#endif
 
 namespace PixelCrushers
 {
@@ -29,6 +27,7 @@ namespace PixelCrushers
         [Serializable]
         public class PositionData
         {
+            public int scene = -1;
             public Vector3 position;
             public Quaternion rotation;
         }
@@ -75,9 +74,9 @@ namespace PixelCrushers
 
         public override string RecordData()
         {
+            var currentScene = SceneManager.GetActiveScene().buildIndex;
             if (multiscene)
             {
-                var currentScene = SceneManager.GetActiveScene().buildIndex;
                 var found = false;
                 for (int i = 0; i < m_multisceneData.positions.Count; i++)
                 {
@@ -97,6 +96,7 @@ namespace PixelCrushers
             }
             else
             {
+                m_data.scene = currentScene;
                 m_data.position = transform.position;
                 m_data.rotation = transform.rotation;
                 return SaveSystem.Serialize(m_data);
@@ -111,9 +111,12 @@ namespace PixelCrushers
             }
             else if (!string.IsNullOrEmpty(s))
             {
+                var currentScene = SceneManager.GetActiveScene().buildIndex;
                 if (multiscene)
                 {
-                    var currentScene = SceneManager.GetActiveScene().buildIndex;
+                    var multisceneData = SaveSystem.Deserialize<MultiscenePositionData>(s, m_multisceneData);
+                    if (multisceneData == null) return;
+                    m_multisceneData = multisceneData;
                     for (int i = 0; i < m_multisceneData.positions.Count; i++)
                     {
                         if (m_multisceneData.positions[i].scene == currentScene)
@@ -128,7 +131,10 @@ namespace PixelCrushers
                     var data = SaveSystem.Deserialize<PositionData>(s, m_data);
                     if (data == null) return;
                     m_data = data;
-                    SetPosition(data.position, data.rotation);
+                    if (data.scene == currentScene || data.scene == -1)
+                    {
+                        SetPosition(data.position, data.rotation);
+                    }
                 }
             }
         }

@@ -4,6 +4,7 @@
 /// https://www.opsive.com
 /// ---------------------------------------------
 
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
@@ -103,7 +104,7 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Traits
                 var transform = collider.transform;
                 Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
 
-                // Box and sphere colliders can be drawn.
+                // Box, sphere, and capsule colliders can be drawn.
                 if (collider is BoxCollider) {
                     Gizmos.DrawCube((collider as BoxCollider).center, (collider as BoxCollider).size);
 
@@ -114,8 +115,65 @@ namespace Opsive.UltimateCharacterController.Editor.Inspectors.Traits
 
                     Gizmos.color = InspectorUtility.GetContrastColor(color);
                     Gizmos.DrawWireSphere((collider as SphereCollider).center, (collider as SphereCollider).radius);
-                }
-            }
+                } else if (collider is CapsuleCollider) {
+                    DrawCapsuleColliderGizmo(collider as CapsuleCollider, color);
+				}
+			}
         }
-    }
+
+        /// <summary>
+        /// Draws the gizmo for the capsule collider.
+        /// </summary>
+	    public static void DrawCapsuleColliderGizmo(CapsuleCollider collider, Color color = default(Color))
+	    {
+			if (collider == null) {
+				return;
+			}
+
+            var capsulePosition = collider.transform.position + collider.center;
+            var capsuleRotation = Quaternion.identity;
+
+            switch (collider.direction) // X = 0, Y = 1, Z = 2
+            {
+                case 0: { capsuleRotation = Quaternion.LookRotation(collider.transform.rotation * Vector3.forward, collider.transform.rotation * Vector3.right); break; }
+                case 1: { capsuleRotation = collider.transform.rotation; break; }
+                case 2: { capsuleRotation = Quaternion.LookRotation(collider.transform.rotation * Vector3.up, collider.transform.rotation * Vector3.forward); break; }
+                default: throw new ArgumentOutOfRangeException();
+            }
+
+            DrawWireCapsule(capsulePosition, capsuleRotation, collider.radius, collider.height, color);
+        }
+
+        /// <summary>
+        /// Draws the wire capsule using the Handles class.
+        /// </summary>
+		public static void DrawWireCapsule(Vector3 pos, Quaternion rot, float radius, float height, Color color = default(Color))
+	    {
+		    if (color != default(Color)) {
+			    Handles.color = color;
+		    }
+
+			var angleMatrix = Matrix4x4.TRS(pos, rot, Handles.matrix.lossyScale);
+
+			using (new Handles.DrawingScope(angleMatrix)) {
+			    var pointOffset = (height - (radius * 2)) / 2;
+
+			    // Draw sideways.
+			    Handles.DrawWireArc(Vector3.up * pointOffset, Vector3.left, Vector3.back, -180, radius);
+			    Handles.DrawLine(new Vector3(0, pointOffset, -radius), new Vector3(0, -pointOffset, -radius));
+			    Handles.DrawLine(new Vector3(0, pointOffset, radius), new Vector3(0, -pointOffset, radius));
+			    Handles.DrawWireArc(Vector3.down * pointOffset, Vector3.left, Vector3.back, 180, radius);
+
+			    // Draw frontways.
+			    Handles.DrawWireArc(Vector3.up * pointOffset, Vector3.back, Vector3.left, 180, radius);
+			    Handles.DrawLine(new Vector3(-radius, pointOffset, 0), new Vector3(-radius, -pointOffset, 0));
+			    Handles.DrawLine(new Vector3(radius, pointOffset, 0), new Vector3(radius, -pointOffset, 0));
+			    Handles.DrawWireArc(Vector3.down * pointOffset, Vector3.back, Vector3.left, -180, radius);
+
+			    // Draw center.
+			    Handles.DrawWireDisc(Vector3.up * pointOffset, Vector3.up, radius);
+			    Handles.DrawWireDisc(Vector3.down * pointOffset, Vector3.up, radius);
+		    }
+	    }
+	}
 }

@@ -59,6 +59,11 @@ namespace PixelCrushers.DialogueSystem
 
         private TouchScreenKeyboard touchScreenKeyboard = null;
 
+        private void Awake()
+        {
+            Tools.DeprecationWarning(this);
+        }
+
         void Start()
         {
             if (DialogueDebug.logWarnings && (textField == null)) Debug.LogWarning(string.Format("{0}: No InputField is assigned to the text field UI {1}. TextInput() sequencer commands or [var?=] won't work.", new object[] { DialogueDebug.Prefix, name }));

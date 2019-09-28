@@ -65,7 +65,7 @@ namespace Opsive.UltimateCharacterController.Input
             base.Awake();
 
             m_UseVirtualInput = m_ForceInput == ForceInputType.Virtual;
-#if !UNITYEDITOR && (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP_8_1 || UNITY_BLACKBERRY)
+#if !UNITY_EDITOR && (UNITY_IPHONE || UNITY_ANDROID || UNITY_WP_8_1 || UNITY_BLACKBERRY)
             if (m_ForceInput != ForceInputType.Standalone) {
                 var virtualControlsManager = FindObjectOfType<VirtualControlsManager>();
                 m_UseVirtualInput = virtualControlsManager != null;

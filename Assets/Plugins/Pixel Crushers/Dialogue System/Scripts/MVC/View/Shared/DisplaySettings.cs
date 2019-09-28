@@ -228,12 +228,15 @@ namespace PixelCrushers.DialogueSystem
             /// duration for the subtitle being displayed.
             /// </summary>
             [Tooltip("Used when a dialogue entry doesn't define its own Sequence. Set to Delay({{end}}) to leave the camera untouched.")]
+            [TextArea]
             public string defaultSequence = "Delay({{end}})";
 
             [Tooltip("If defined, overrides Default Sequence for player (PC) lines only.")]
+            [TextArea]
             public string defaultPlayerSequence = string.Empty;
 
             [Tooltip("Used when a dialogue entry doesn't define its own Response Menu Sequence.")]
+            [TextArea]
             public string defaultResponseMenuSequence = string.Empty;
 
             /// <summary>

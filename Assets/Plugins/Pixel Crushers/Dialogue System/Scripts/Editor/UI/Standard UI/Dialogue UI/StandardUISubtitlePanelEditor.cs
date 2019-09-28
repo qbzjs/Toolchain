@@ -25,6 +25,7 @@ namespace PixelCrushers.DialogueSystem
             EditorGUILayout.PropertyField(serializedObject.FindProperty("accumulateText"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("addSpeakerName"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("addSpeakerNameFormat"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("delayTypewriterUntilOpen"), true);
 
             EditorGUILayout.LabelField(new GUIContent("Navigation", "Joystick/keyboard navigation settings."), EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("firstSelected"), true);
@@ -40,6 +41,7 @@ namespace PixelCrushers.DialogueSystem
             EditorGUILayout.PropertyField(serializedObject.FindProperty("hideAnimationTrigger"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("focusAnimationTrigger"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("unfocusAnimationTrigger"), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_hasFocus"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onOpen"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onClose"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onFocus"), true);

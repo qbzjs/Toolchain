@@ -97,6 +97,7 @@ namespace PixelCrushers.DialogueSystem
             canvas = GetComponentInChildren<Canvas>();
             animator = GetComponentInChildren<Animator>();
             if ((animator == null) && (canvasGroup != null)) animator = canvasGroup.GetComponentInChildren<Animator>();
+            Tools.DeprecationWarning(this, "Use StandardBarkUI instead.");
         }
 
         public void Start()

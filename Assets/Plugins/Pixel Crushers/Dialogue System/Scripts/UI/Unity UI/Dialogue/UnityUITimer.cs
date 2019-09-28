@@ -20,6 +20,7 @@ namespace PixelCrushers.DialogueSystem
         public virtual void Awake()
         {
             slider = GetComponent<UnityEngine.UI.Slider>();
+            Tools.DeprecationWarning(this);
         }
 
         /// <summary>

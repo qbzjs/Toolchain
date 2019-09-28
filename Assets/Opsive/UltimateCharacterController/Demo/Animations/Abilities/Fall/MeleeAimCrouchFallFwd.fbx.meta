@@ -814,13 +814,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -828,7 +828,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.830756
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -1564,13 +1564,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -2114,13 +2114,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -2128,7 +2128,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.830756
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -2864,13 +2864,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -3614,13 +3614,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0
+            value: 0.3
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -3628,7 +3628,7 @@ ModelImporter:
           postInfinity: 3
           rotationOrder: 0
       events:
-      - time: 0.75
+      - time: 0.830756
         functionName: ExecuteEvent
         data: OnAnimatorFallComplete
         objectReferenceParameter: {instanceID: 0}
@@ -4364,13 +4364,13 @@ ModelImporter:
           curve:
           - serializedVersion: 2
             time: 0
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
           - serializedVersion: 2
             time: 1
-            value: 0.7
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0

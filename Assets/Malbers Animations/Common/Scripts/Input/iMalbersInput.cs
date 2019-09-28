@@ -4,10 +4,14 @@ using UnityEngine;
 
 namespace MalbersAnimations
 {
-    /// <summary>
-    /// Basic Entries needed to use Malbers Input Component
-    /// </summary>
-    public interface IInputSource {}
+    /// <summary>Basic Entries needed to use Malbers Input Component</summary>
+    public interface IInputSource
+    {
+        void Enable(bool val);
+        InputRow GetInput(string input);
+        void EnableInput(string input);
+        void DisableInput(string input);
+    }
    
     
 
@@ -22,45 +26,20 @@ namespace MalbersAnimations
         bool GetButtonUp(string button);
         bool GetButton(string button);
     }
-
-    /// <summary>
-    /// New Subtitute for the IMalbersInput
-    /// </summary>
-    public interface IMCharacter
-    {
-        void Move(Vector3 move, bool direction = true);
-
-        /// <summary>
-        /// The Character recieve the Input Key and the value for it true/false
-        /// </summary>
-        void SetInput(string key, bool inputvalue);
-
-
-        void AddInput(string key, BoolEvent NewBool);
-
-        /// <summary>
-        /// Initialize the inputs to the Character inputs Dictionary
-        /// </summary>
-        void InitializeInputs(Dictionary<string, BoolEvent> keys);
-    }
-
-    /// <summary>
-    /// Function Needed for moving Characters
-    /// </summary>
+     
+    /// <summary>Function Needed for moving Characters</summary>
     public interface ICharacterMove
     {
-        /// <summary>
-        /// Sends to the Character a Direction to move
-        /// </summary>
-        void Move(Vector3 move, bool direction = true);
+        /// <summary>Move the Character using a Direction</summary>
+        void Move(Vector3 move);
+
+        /// <summary>Sends to the the Raw Input Axis </summary>
+        void SetInputAxis(Vector3 inputAxis);
     }
 
 
-        //----------------------------------------------------------------------------
-        /// <summary>
-        /// Default Unity Input
-        /// </summary>
-        public class DefaultInput : IInputSystem
+    /// <summary> Default Unity Input</summary>
+    public class DefaultInput : IInputSystem
     {
         public float GetAxis(string Axis)
         {

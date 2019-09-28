@@ -218,7 +218,9 @@ namespace PixelCrushers.DialogueSystem
         /// <summary>
         /// The conversant of the conversation. If not set, this game object. The actor is usually
         /// the entity that caused the trigger (for example, the player that hits the "Use" button
-        /// on the conversant, thereby triggering OnUse).
+        /// on the conversant, thereby triggering OnUse). 
+        /// See https://www.pixelcrushers.com/dialogue_system/manual2x/html/triggers_and_interaction.html
+        /// for an explanation of how GameObjects are assigned at runtime.
         /// </summary>
         [Tooltip("Other actor (e.g., NPC). If unassigned, this GameObject.")]
         public Transform conversationConversant;

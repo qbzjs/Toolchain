@@ -12442,7 +12442,7 @@ BlendTree:
     m_Motion: {fileID: 7400068, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.53333336
     m_Position: {x: -2, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12450,7 +12450,7 @@ BlendTree:
     m_Motion: {fileID: 7400008, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.6
     m_Position: {x: 0, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12458,7 +12458,7 @@ BlendTree:
     m_Motion: {fileID: 7400076, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: 2, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12466,7 +12466,7 @@ BlendTree:
     m_Motion: {fileID: 7400008, guid: fd11da2b15c8be9428d46e8b7ef4eb0d, type: 3}
     m_Threshold: 0.73333335
     m_Position: {x: -2, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12474,7 +12474,7 @@ BlendTree:
     m_Motion: {fileID: 7400008, guid: 7d6dd17170877f64d9807e88989209e0, type: 3}
     m_Threshold: 0.8
     m_Position: {x: 2, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12482,7 +12482,7 @@ BlendTree:
     m_Motion: {fileID: 7400068, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 0.8666667
     m_Position: {x: -2, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12490,7 +12490,7 @@ BlendTree:
     m_Motion: {fileID: 7400008, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 0.93333334
     m_Position: {x: 0, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -12498,7 +12498,7 @@ BlendTree:
     m_Motion: {fileID: 7400076, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 1
     m_Position: {x: 2, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16100,7 +16100,7 @@ BlendTree:
     m_Motion: {fileID: 7400072, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.53333336
     m_Position: {x: -2, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16108,7 +16108,7 @@ BlendTree:
     m_Motion: {fileID: 7400022, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.6
     m_Position: {x: 0, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16116,7 +16116,7 @@ BlendTree:
     m_Motion: {fileID: 7400080, guid: 2864ea6f6198b274eaf9dc2258a8a733, type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: 2, y: 2}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16124,7 +16124,7 @@ BlendTree:
     m_Motion: {fileID: 7400022, guid: fd11da2b15c8be9428d46e8b7ef4eb0d, type: 3}
     m_Threshold: 0.73333335
     m_Position: {x: -2, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16132,7 +16132,7 @@ BlendTree:
     m_Motion: {fileID: 7400022, guid: 7d6dd17170877f64d9807e88989209e0, type: 3}
     m_Threshold: 0.8
     m_Position: {x: 2, y: 0}
-    m_TimeScale: 2
+    m_TimeScale: 2.25
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16140,7 +16140,7 @@ BlendTree:
     m_Motion: {fileID: 7400072, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 0.8666667
     m_Position: {x: -2, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16148,7 +16148,7 @@ BlendTree:
     m_Motion: {fileID: 7400022, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 0.93333334
     m_Position: {x: 0, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0
@@ -16156,7 +16156,7 @@ BlendTree:
     m_Motion: {fileID: 7400080, guid: 3a3b9801b5be1db479444222e3ea5799, type: 3}
     m_Threshold: 1
     m_Position: {x: 2, y: -2}
-    m_TimeScale: 1.7
+    m_TimeScale: 1.75
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardMovement
     m_Mirror: 0

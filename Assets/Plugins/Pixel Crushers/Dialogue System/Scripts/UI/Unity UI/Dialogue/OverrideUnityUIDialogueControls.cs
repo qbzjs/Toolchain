@@ -25,6 +25,11 @@ namespace PixelCrushers.DialogueSystem
 
         private bool checkedContinueButton = false;
 
+        private void Awake()
+        {
+            Tools.DeprecationWarning(this, "Use StandardDialogueUI and DialogueActor, which make this script unnecessary.");
+        }
+
         public virtual void Start()
         {
             if (subtitle != null) subtitle.SetActive(false);

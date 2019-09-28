@@ -8,6 +8,7 @@ using MalbersAnimations.HAP;
 
 namespace MalbersAnimations.Weapons
 {
+    [AddComponentMenu("Malbers/Weapons/Melee Weapon")]
     public class MMelee : MWeapon, IMelee
     {
         protected bool isOnAtackingState;                         //If the weapon is attacking
@@ -18,8 +19,19 @@ namespace MalbersAnimations.Weapons
 
         public GameObjectEvent OnHit;
         public BoolEvent OnCauseDamage;
+        public Color DebugColor = new Color(1, 0.25f, 0, 0.5f);
 
-        
+
+        public override bool MainAttack
+        {
+            get { return base.MainAttack; }
+            set
+            {
+                base.MainAttack = value;
+                CanCauseDamage = false;
+            }
+        }
+
         public bool CanCauseDamage
         {
             get { return canCauseDamage; }
@@ -30,10 +42,7 @@ namespace MalbersAnimations.Weapons
                 canCauseDamage = value;
                 AlreadyHitted = new List<Transform>();  //Reset the list of transform that I already Hit
 
-                if (!meleeCollider.isTrigger)
-                {
-                    meleeCollider.enabled = canCauseDamage;
-                }
+                meleeCollider.enabled = value;
             }
         }
 
@@ -44,18 +53,17 @@ namespace MalbersAnimations.Weapons
         {
             CanCauseDamage = value;
             OnCauseDamage.Invoke(value);
-            meleeCollider.enabled = value;
         }
 
         void Start()
         {
-            Invoke("InitializeWeapon",0.01f); //Next Frame
-            //InitializeWeapon();
+             InitializeWeapon();
         }
 
         public override void InitializeWeapon()
         {
             base.InitializeWeapon();
+            CanCauseDamage = false;
 
             if (meleeCollider)
             {
@@ -63,7 +71,7 @@ namespace MalbersAnimations.Weapons
 
                 if (meleeCollider.isTrigger)
                 {
-                    meleeColliderProxy.OnTrigger_Stay.AddListener(WeaponTriggerStay);
+                    meleeColliderProxy.OnTrigger_Enter.AddListener(WeaponOnTriggerEnter);
                 }
                 else
                 {
@@ -72,12 +80,9 @@ namespace MalbersAnimations.Weapons
                 meleeCollider.enabled = false;
             }
         }
-        
 
-        ///──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-        /// <summary>
-        /// Send Damage
-        /// </summary>
+
+        /// <summary>If the Collider is not a Trigger</summary>
         protected virtual void WeaponCollisionEnter(Collision other)
         {
             if (!IsEquiped) return;
@@ -86,45 +91,59 @@ namespace MalbersAnimations.Weapons
             SetDamageStuff(other.contacts[0].point, other.transform);
         }
 
-        ///──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-        /// <summary>
-        /// Set Damage if you're using triggers
-        /// </summary>
-        protected virtual void WeaponTriggerStay(Collider other)
+        /// <summary>Set Damage if you're using triggers </summary>
+        protected virtual void WeaponOnTriggerEnter(Collider other)
         {
             if (!IsEquiped) return;
+            if (other.isTrigger) return;
+
             SetDamageStuff(other.ClosestPointOnBounds(meleeCollider.bounds.center), other.transform);
         }
 
 
         internal void SetDamageStuff(Vector3 OtherHitPoint, Transform other)
         {
-            if (other.root == transform.root) return; //if Im hitting myself
-            Mountable montura = other.GetComponentInParent<Mountable>();
-            if (montura == Owner.Montura) return; //if Im hitting my horse **New
-            if (!MalbersTools.Layer_in_LayerMask(other.gameObject.layer, HitMask)) return;//Just hit what is on the HitMask Layer
-         
+            var Root = other.root;
 
+            if (Root == transform.root) return;                       //if Im hitting myself
 
-            DV = new DamageValues(meleeCollider.bounds.center - OtherHitPoint, Random.Range(MinDamage, MaxDamage));
+            Mount montura = other.GetComponentInParent<Mount>();
+            Mount OwnerMount = Owner.GetComponent<MRider>()?.Montura;
+            if (OwnerMount != null && montura ==  OwnerMount) return;          //Do not Hit your Mount   
+            
+            //Do not Hit my Mount
+            if (!MalbersTools.Layer_in_LayerMask(other.gameObject.layer, HitLayer)) return;          //Just hit what is on the HitMask Layer
 
             Debug.DrawLine(OtherHitPoint, meleeCollider.bounds.center, Color.red, 3f);
 
-
-            if (canCauseDamage && !AlreadyHitted.Find(item => item == other.transform.root))                        //If can cause damage and If I didnt hit the same transform twice
+            if (canCauseDamage && !AlreadyHitted.Find(item => item == Root))                        //If can cause damage and If I didnt hit the same transform twice
             {
-                AlreadyHitted.Add(other.transform.root);
-                other.transform.root.SendMessage("getDamaged", DV, SendMessageOptions.DontRequireReceiver);         //To everybody who has GetDamaged()
+                AlreadyHitted.Add(Root);
 
+                Rigidbody OtherRB = other.GetComponentInParent<Rigidbody>();
 
-                Rigidbody OtherRB = other.transform.root.GetComponent<Rigidbody>();
+                var interactable = other.GetComponent<IInteractable>();
+                interactable?.Interact();
 
-                if (OtherRB && other.gameObject.layer != 20)                                                        //Apply Force if the game object has a RigidBody && if is not an Animal
+                if (OtherRB)                                                             
                 {
-                    OtherRB.AddExplosionForce(MinForce * 50, OtherHitPoint, 20);
+                    OtherRB.AddExplosionForce(MinForce * 50, OtherHitPoint, 5);
                 }
 
-                PlaySound(3);                                                                                       //Play Hit Sound when get something
+
+                var mesh = Root.GetComponentInChildren<Renderer>();
+                var TargetPos = Root.position;
+                if (mesh == null) TargetPos = mesh.bounds.center;
+
+                Vector3 direction = (OtherHitPoint - TargetPos).normalized;
+
+                AffectStat.Value = Random.Range(MinDamage, MaxDamage);
+                AffectStat.ModifyStat(Root.GetComponentInChildren<Stats>());                     //Affect Stats
+
+
+                Damager.SetDamage(direction, Root);
+
+                PlaySound(3);     //Play Hit Sound when get something                                                                                  
 
                 OnHit.Invoke(other.gameObject);
 
@@ -136,19 +155,29 @@ namespace MalbersAnimations.Weapons
         }
 
 
-        /// <summary>
-        /// Disable Listeners
-        /// </summary>
+        /// <summary>Disable Listeners </summary>
         void OnDisable()
         {
             if (meleeColliderProxy)
             {
                 if (meleeCollider.isTrigger)
 
-                    meleeColliderProxy.OnTrigger_Stay.RemoveListener(WeaponTriggerStay);
+                    meleeColliderProxy.OnTrigger_Stay.RemoveListener(WeaponOnTriggerEnter);
                 else
                     meleeColliderProxy.OnCollision_Enter.RemoveListener(WeaponCollisionEnter);
             }
         }
+
+        public override void ResetWeapon()
+        {
+            meleeCollider.enabled = false;   
+        }
+
+#if UNITY_EDITOR
+        void OnDrawGizmos()
+        {
+            MalbersTools.DrawTriggers(transform, meleeCollider, DebugColor);
+        }
+#endif
     }
 }
