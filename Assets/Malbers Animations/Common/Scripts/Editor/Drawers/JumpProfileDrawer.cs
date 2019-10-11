@@ -13,8 +13,8 @@ namespace MalbersAnimations.Controller
         {
             var name = property.FindPropertyRelative("name");
             var VerticalSpeed = property.FindPropertyRelative("VerticalSpeed");
-            var fallRay = property.FindPropertyRelative("fallRay");
-            var stepHeight = property.FindPropertyRelative("stepHeight");
+           // var fallRay = property.FindPropertyRelative("fallRay");
+          //  var stepHeight = property.FindPropertyRelative("stepHeight");
             var JumpLandDistance = property.FindPropertyRelative("JumpLandDistance");
             var fallingTime = property.FindPropertyRelative("fallingTime");
             var CliffTime = property.FindPropertyRelative("CliffTime");
@@ -70,34 +70,34 @@ namespace MalbersAnimations.Controller
                 float Division = line.width / 2;
                 var lineSplitted = line;
 
-                lineSplitted.width = Division + 30;
+                lineSplitted.width = Division + 20;
 
 
                 EditorGUI.PropertyField(lineSplitted, VerticalSpeed, new GUIContent("Vertical Speed", "Root Motion:\nEnable/Disable the Root Motion on the Animator"));
 
-                lineSplitted.x += Division + 35;
-                lineSplitted.width -= 65;
+                lineSplitted.x += Division + 42;
+                lineSplitted.width -= 62;
 
-                EditorGUIUtility.labelWidth = 55;
-                EditorGUI.PropertyField(lineSplitted, fallRay, new GUIContent("Fall Ray", "Ray Length to check if the ground is at the same level of the beginning of the jump"));
+                EditorGUIUtility.labelWidth = 65;
+                EditorGUI.PropertyField(lineSplitted, JumpLandDistance, new GUIContent("Jump Ray", "Ray Length to check if the ground is at the same level of the beginning of the jump and it allows to complete the Jump End Animation"));
                 EditorGUIUtility.labelWidth = 0;
 
 
-                ///NEW LINE
-                line.y += height + 2;
+                /////NEW LINE
+                //line.y += height + 2;
 
-                lineSplitted = line;
+                //lineSplitted = line;
 
-                lineSplitted.width = Division + 30;
+                //lineSplitted.width = Division + 30;
 
-                EditorGUI.PropertyField(lineSplitted, JumpLandDistance, new GUIContent("Jump Min Distance", "Minimun Distance to Complete the Jump Exit when the Jump is on the Highest Point"));
+                //EditorGUI.PropertyField(lineSplitted, JumpLandDistance, new GUIContent("Jump Min Distance", "Minimun Distance to Complete the Jump Exit when the Jump is on the Highest Point"));
 
-                lineSplitted.x += Division + 35;
-                lineSplitted.width -= 65;
+                //lineSplitted.x += Division + 35;
+                //lineSplitted.width -= 65;
 
-                EditorGUIUtility.labelWidth = 55;
-                EditorGUI.PropertyField(lineSplitted, stepHeight, new GUIContent("     Step", "Step Height:\nTerrain minimum difference to be sure the animal will fall"));
-                EditorGUIUtility.labelWidth = 0;
+                //EditorGUIUtility.labelWidth = 55;
+                //EditorGUI.PropertyField(lineSplitted, stepHeight, new GUIContent("     Step", "Step Height:\nTerrain minimum difference to be sure the animal will fall"));
+                //EditorGUIUtility.labelWidth = 0;
 
                 ///NEW LINE
                 line.y += height + 2;

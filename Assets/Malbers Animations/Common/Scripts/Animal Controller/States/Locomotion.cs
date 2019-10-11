@@ -14,6 +14,8 @@ namespace MalbersAnimations.Controller
         {
             if (animal.Grounded)
             {
+                if (animal.TerrainSlope > animal.maxAngleSlope) return false;
+
                 if (IsIdle) return true; //Return true if is grounded
 
                 var move = animal.MovementAxisSmoothed;
@@ -24,6 +26,11 @@ namespace MalbersAnimations.Controller
                 }
             }
             return false;
+        }
+
+        public override void OnStateMove(float deltatime)
+        {
+            if (animal.TerrainSlope > animal.maxAngleSlope)  animal.MovementAxis.z = 0;
         }
 
 

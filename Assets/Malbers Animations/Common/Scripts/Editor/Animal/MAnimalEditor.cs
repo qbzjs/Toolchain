@@ -17,10 +17,10 @@ namespace MalbersAnimations.Controller
         private ReorderableList Reo_List_Speeds;
 
         SerializedProperty
-            S_StateList, S_PivotsList, Height, S_Mode_List, Editor_Tabs1, Editor_Tabs2, /*ModeIndexSelected,*/ ModeShowAbilities, OnEnterExitStates,
+            S_StateList, S_PivotsList, Height, S_Mode_List, Editor_Tabs1, Editor_Tabs2, /*ModeIndexSelected,*/ ModeShowAbilities, OnEnterExitStates, RB,Anim,
             m_Vertical, m_Horizontal, m_IDFloat, m_IDInt, m_State, m_LastState, m_Mode, m_Grounded, m_Movement, m_SpeedMultiplier, m_UpDown, OnMainPlayer,
             m_Stance, m_Slope, m_Type, m_StateTime, m_DeltaAngle, lockInput, lockMovement, Rotator, animalType, RayCastRadius, /*AnimatorUpdatePhysics,*/
-            /*UpdateParameters,*/   /*mainCamera,*/ AnimatorSpeed, OnMovementLocked, OnInputLocked, OnSprintEnabled, OnGrounded, OnStanceChange, OnStateChange, OnModeChange,
+            /*UpdateParameters,*/ triggerInteraction, AnimatorSpeed, OnMovementLocked, OnInputLocked, OnSprintEnabled, OnGrounded, OnStanceChange, OnStateChange, OnModeChange,
             OnSpeedChange, OnAnimationChange, showPivots, ShowpivotColor, GroundLayer, maxAngleSlope, AlignPosLerp, AlignRotLerp, gravityDirection, GravityForce, useCameraUp,
             GravityMultiplier,useSprintGlobal, hitLayer, SmoothVertical, TurnMultiplier, UpDownLerp, rootMotion, Player,OverrideStartState, CloneStates, S_Speed_List, UseCameraInput;
            
@@ -34,7 +34,11 @@ namespace MalbersAnimations.Controller
             S_PivotsList = serializedObject.FindProperty("pivots");
             S_Mode_List = serializedObject.FindProperty("modes");
             S_Speed_List = serializedObject.FindProperty("speedSets");
+
             hitLayer = serializedObject.FindProperty("hitLayer");
+            triggerInteraction = serializedObject.FindProperty("triggerInteraction");
+            RB = serializedObject.FindProperty("RB");
+            Anim = serializedObject.FindProperty("Anim");
 
             // mainCamera = serializedObject.FindProperty("MainCamera");
             UseCameraInput = serializedObject.FindProperty("useCameraInput");
@@ -202,6 +206,9 @@ namespace MalbersAnimations.Controller
         {
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             EditorGUILayout.LabelField("Animator", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(Anim, new GUIContent("Animator"));
+            EditorGUILayout.PropertyField(RB, new GUIContent("RigidBody"));
+
             EditorGUILayout.PropertyField(rootMotion, G_rootMotion);
             //EditorGUILayout.PropertyField(AnimatorUpdatePhysics, G_AnimatorUpdatePhysics);
             //EditorGUILayout.PropertyField(UpdateParameters, G_UpdateParameters);
@@ -286,14 +293,18 @@ namespace MalbersAnimations.Controller
             if (Application.isPlaying)
             {
                 EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.LabelField("RB Speed: " + m.Inertia.magnitude / m.ScaleFactor);
+                EditorGUILayout.LabelField("RB Speed: " + m.HorizontalSpeed.ToString("F4"));
                 EditorGUILayout.LabelField("Current Speed Modifier: " + m.CurrentSpeedModifier.name);
                 EditorGUILayout.LabelField("Current Speed Index: " + m.CurrentSpeedIndex);
                 EditorGUILayout.ToggleLeft("Grounded", m.Grounded);
                 EditorGUILayout.ToggleLeft("RootMotion", m.RootMotion);
                 EditorGUILayout.ToggleLeft("Use Custom Rotation", m.UseCustomAlign);
                 EditorGUILayout.ToggleLeft("Orient To Ground", m.UseOrientToGround);
+                EditorGUILayout.Space();
                 EditorGUILayout.ToggleLeft("Gravity", m.UseGravity);
+                EditorGUILayout.Vector3Field("Gravity Vel", m.GravityStoredVelocity);
+                EditorGUILayout.FloatField("Gravity Acel", m.GravityStoredAceleration);
+                EditorGUILayout.Space();
                 EditorGUILayout.ToggleLeft("Sprint", m.Sprint);
                 EditorGUILayout.ToggleLeft("Free Movement", m.FreeMovement);
                 EditorGUILayout.ToggleLeft("Input Locked", m.LockInput);
@@ -307,6 +318,7 @@ namespace MalbersAnimations.Controller
                 EditorGUILayout.Space();
                 EditorGUILayout.Vector3Field("Movement" , m.MovementAxis);
                 EditorGUILayout.Vector3Field("Movement Smooth" ,m.MovementAxisSmoothed);
+                EditorGUILayout.Vector3Field("Additive Pos " ,m.AdditivePosition);
                 EditorGUILayout.FloatField("Delta Angle" ,m.DeltaAngle);
                 EditorGUILayout.Space();
                 EditorGUILayout.FloatField("Current Anim Tag", m.AnimStateTag);
@@ -330,11 +342,11 @@ namespace MalbersAnimations.Controller
             //showModes.boolValue = EditorGUILayout.Foldout(showModes.boolValue, "Modes");
             //EditorGUI.indentLevel--;
 
-            if (Application.isPlaying)
-            {
-                EditorGUILayout.LabelField(m.ActiveMode == null ? "Active Mode: Null" : ("Active Mode: " + m.ActiveMode.ID.name));
-                EditorGUILayout.LabelField(m.InputMode == null ? "Input Mode: Null" : ("Input Mode: " + m.InputMode.ID.name));
-            }
+            //if (Application.isPlaying)
+            //{
+            //    EditorGUILayout.LabelField(m.ActiveMode == null ? "Active Mode: Null" : ("Active Mode: " + m.ActiveMode.ID.name));
+            //    EditorGUILayout.LabelField(m.InputMode == null ? "Input Mode: Null" : ("Input Mode: " + m.InputMode.ID.name));
+            //}
 
             {
                 EditorGUILayout.BeginVertical(EditorStyles.helpBox);
@@ -356,6 +368,7 @@ namespace MalbersAnimations.Controller
                     var AbilityIndex = SelectedMode.FindPropertyRelative("abilityIndex");
                     var OnAbilityIndex = SelectedMode.FindPropertyRelative("OnAbilityIndex");
                     var DefaultIndex = SelectedMode.FindPropertyRelative("DefaultIndex");
+                    var allowRotation = SelectedMode.FindPropertyRelative("allowRotation");
                     // var TotalAbilities = SelectedMode.FindPropertyRelative("TotalAbilities");
                     var ResetToDefault = SelectedMode.FindPropertyRelative("ResetToDefault");
                     var Abilities = SelectedMode.FindPropertyRelative("Abilities");
@@ -369,6 +382,7 @@ namespace MalbersAnimations.Controller
                     EditorGUILayout.PropertyField(Input);
                     EditorGUILayout.PropertyField(animationTag);
                     EditorGUILayout.PropertyField(CoolDown, G_CoolDown);
+                    EditorGUILayout.PropertyField(allowRotation, new GUIContent("Allow Rotation","Allows rotate while is on the Mode"));
                     EditorGUILayout.PropertyField(modifier, G_Modifier);
 
                     //   if (InterruptTime.floatValue < 0) InterruptTime.floatValue = 0;
@@ -535,6 +549,7 @@ namespace MalbersAnimations.Controller
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
             {
                 EditorGUILayout.PropertyField(hitLayer, new GUIContent("Hit Layer","What the Animal can hit using the Attack Triggers"));
+                EditorGUILayout.PropertyField(triggerInteraction, new GUIContent("Hit Colliders","Does the Attack Triggers Interact with triggers?"));
             }
             EditorGUILayout.EndVertical();
 
@@ -622,7 +637,6 @@ namespace MalbersAnimations.Controller
             //// Convert the list to an array and store it.
             //StateTypeNames = reactionTypeNameList.ToArray();
         }
-
 
         private void Draw_Header_Speed(Rect rect)
         {
@@ -1042,9 +1056,17 @@ namespace MalbersAnimations.Controller
 
             EditorUtility.SetDirty(m);
         }
+
+
+        public void SetPivots()
+        {
+            m.Pivot_Hip = m.pivots.Find(item => item.name.ToUpper() == "HIP");
+            m.Pivot_Chest = m.pivots.Find(item => item.name.ToUpper() == "CHEST");
+        }
+
         private bool CalculateHeight()
         {
-            m.SetPivots();
+            SetPivots();
             MPivots pivot = m.Pivot_Hip;
             if (pivot == null) return false;
 

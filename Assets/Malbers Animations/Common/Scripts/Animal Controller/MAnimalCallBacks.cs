@@ -68,7 +68,6 @@ namespace MalbersAnimations.Controller
         }
         #endregion
 
-
         #region Gravity
         /// <summary>Resets the gravity to the default Vector.Down value</summary>
         public void ResetGravityDirection() { GravityDirection = Vector3.down; }
@@ -76,18 +75,11 @@ namespace MalbersAnimations.Controller
         public void ResetGravity() { ResetGravityDirection(); }
 
         /// <summary>The Ground</summary>
-        public void GroundChangesGravity(bool value)
-        {
-            ground_Changes_Gravity = value;
-        }
-
-
-
+        public void GroundChangesGravity(bool value) { ground_Changes_Gravity = value; }
 
         /// <summary>Aling with no lerp to the Gravity Direction</summary>
-        public virtual void AlignGravity()
+        public void AlignGravity()
         {
-            //Debug.Log(gravityDirection);
             Quaternion AlignRot = Quaternion.FromToRotation(_transform.up, UpVector) * _transform.rotation;  //Calculate the orientation to Terrain 
             transform.rotation = AlignRot;
         }
@@ -95,27 +87,21 @@ namespace MalbersAnimations.Controller
 
         #region Stances
         /// <summary>Toogle the New Stance with the Default Stance▼▲ </summary>
-        public virtual void StanceToggle(int NewStance)
+        public void StanceToggle(int NewStance)
         {
             Stance = Stance == NewStance ? 0 : NewStance;
         }
 
         /// <summary>Toogle the New Stance with the Default Stance▼▲ </summary>
-        public virtual void StanceToggle(StanceID NewStance)
-        { StanceToggle(NewStance.ID); }
+        public void StanceToggle(StanceID NewStance) { StanceToggle(NewStance.ID); }
 
+        public void StanceSet(StanceID id) { Stance = id; }
 
-        public void StanceSet(StanceID id)
-        { Stance = id; }
-
-        public void StanceReset()
-        { Stance = 0; }
+        public void StanceReset() { Stance = 0; }
 
         #endregion
 
         #region Animator Methods
-
-
         /// <summary>
         /// Method required for the Interface IAnimator Listener to send messages From the Animator to any class who uses this Interface
         /// </summary>
@@ -130,37 +116,29 @@ namespace MalbersAnimations.Controller
             }
         }
 
-
-
         /// <summary>Set a Int on the Animator</summary>
-        public void SetAnimParameter(int hash, int value)
-        {
-            Anim.SetInteger(hash, value);
-        }
+        internal void SetAnimParameter(int hash, int value) { Anim.SetInteger(hash, value); }
 
         /// <summary>Set a float on the Animator</summary>
-        public void SetAnimParameter(int hash, float value)
-        {
-            Anim.SetFloat(hash, value);
-        }
+        internal void SetAnimParameter(int hash, float value) { Anim.SetFloat(hash, value); }
 
         /// <summary>Set a Bool on the Animator</summary>
-        public void SetAnimParameter(int hash, bool value)
-        {
-            Anim.SetBool(hash, value);
-        }
+        internal void SetAnimParameter(int hash, bool value) { Anim.SetBool(hash, value); }
 
         /// <summary>Set a Trigger to the Animator</summary>
-        public void SetAnimParameter(int hash) { Anim.SetTrigger(hash); }
+        internal void SetAnimParameter(int hash) { Anim.SetTrigger(hash); }
 
         /// <summary> Set the Parameter Int ID to a value and pass it also to the Animator </summary>
-        public void SetIntID(int value) { SetAnimParameter(hash_IDInt, IntID = value); }
+        public void SetIntID(int value)
+        {
+            SetAnimParameter(hash_IDInt, IntID = value);
+        }
 
         /// <summary> Set the Parameter Float ID to a value and pass it also to the Animator </summary>
         public void SetFloatID(float value) { SetAnimParameter(hash_IDFloat, IDFloat = value); }
 
-        /// <summary>Set a Random number to ID Int , that work great for randomly Play More animations</summary>
-        protected void SetIntIDRandom(int range) { SetIntID(IntID = Random.Range(1, range + 1)); }
+        ///// <summary>Set a Random number to ID Int , that work great for randomly Play More animations</summary>
+        //protected void SetIntIDRandom(int range) { SetIntID(IntID = Random.Range(1, range + 1)); }
 
         /// <summary>Used by Animator Events </summary>
         public virtual void EnterTag(string tag) { AnimStateTag = Animator.StringToHash(tag); }
@@ -338,6 +316,10 @@ namespace MalbersAnimations.Controller
             }
         }
 
+        public void UseCameraBasedInput()
+        {
+            UseCameraInput = true;
+        }
 
         public virtual void Mode_Activate_Endless(ModeID ModeID)
         {
@@ -375,11 +357,7 @@ namespace MalbersAnimations.Controller
         public virtual void Mode_Disable(int id)
         {
             var mod = Mode_Get(id);
-            if (mod != null)
-            {
-                mod.active = false;
-                if (mod.PlayingMode) Mode_Stop_Endless();
-            }
+            if (mod != null) mod.Disable();  
         }
 
 
@@ -490,11 +468,10 @@ namespace MalbersAnimations.Controller
 
         #endregion
 
-
         #region Movement
 
         /// <summary> Get the Inputs for the Source to add it to the States </summary>
-        public virtual void GetInputs(bool add)
+        internal virtual void GetInputs(bool add)
         {
             InputSource = GetComponentInParent<IInputSource>();
 
@@ -541,8 +518,6 @@ namespace MalbersAnimations.Controller
             MoveDirection(move);
         }
 
-        
-
         /// <summary>Gets the movement from the Input using a 2 Vector  (ex UI Axis Joystick)</summary>
         public virtual void Move(Vector2 move)
         {
@@ -571,28 +546,12 @@ namespace MalbersAnimations.Controller
             Inertia = Vector3.Lerp(Inertia, Vector3.zero, deltatime);
         }
 
-        /// <summary> Resets Additive Rotation and Additive Position to their default</summary>
-        public virtual void ResetValues()
-        {
-            AdditivePosition = RootMotion ? Anim.deltaPosition : Vector3.zero;
-            AdditiveRotation = RootMotion ? Anim.deltaRotation : Quaternion.identity;
-
-            SurfaceNormal = UpVector;
-           // TerrainSlope = 0;
-        }
-
 
         /// <summary>Change the Speed Up</summary>
-        public virtual void SpeedUp()
-        {
-            AddSpeed(+1);
-        }
+        public virtual void SpeedUp() { AddSpeed(+1); }
 
         /// <summary> Changes the Speed Down </summary>
-        public virtual void SpeedDown()
-        {
-            AddSpeed(-1);
-        }
+        public virtual void SpeedDown() { AddSpeed(-1); }
 
         public virtual void SetCustomSpeed(MSpeed customSpeed, bool keepInertiaSpeed = false)
         {
@@ -636,20 +595,18 @@ namespace MalbersAnimations.Controller
 
         /// <summary> Set an specific Speed for a State using IntVars </summary>
         public virtual void SetSpeed(IntVar speedIndex) { CurrentSpeedIndex = speedIndex; }
-
-
-
         #endregion
 
-
         #region Extras
+
+        /// <summary>Method for the IDamagable Interface</summary>
         public virtual void Damage()
         {
             Mode_Activate(ModeEnum.Damage);
         }
 
         /// <summary>Activate Attack triggers  </summary>
-        public virtual void AttackTrigger(int triggerIndex)
+        internal virtual void AttackTrigger(int triggerIndex)
         {
             if (triggerIndex == -1)                         //Enable all Attack Triggers
             {

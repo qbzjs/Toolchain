@@ -3096,6 +3096,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
         type: 3}
+      propertyPath: m_States.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
       propertyPath: m_AnchorOffset.z
       value: 0
       objectReference: {fileID: 0}
@@ -4593,6 +4598,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ViewTypeData.Array.data[0].m_Values.Array.data[42]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
+      propertyPath: m_States.Array.data[0].m_Name
+      value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
+      propertyPath: m_States.Array.data[0].m_Default
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
+      propertyPath: m_States.Array.data[0].m_Preset
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
+      propertyPath: m_States.Array.data[1].m_Name
+      value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875722768369321827, guid: 5b92b0fab4157f245ab7c92b17d7e534,
+        type: 3}
+      propertyPath: m_States.Array.data[1].m_Default
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b92b0fab4157f245ab7c92b17d7e534, type: 3}
@@ -11948,6 +11978,32 @@ Transform:
   m_Father: {fileID: 7134568}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &321998276
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Nature/Terrain/Diffuse
+  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &325188379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20963,7 +21019,7 @@ MonoBehaviour:
     legacyShininess: 0.7812
     legacySpecular: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     terrainSettingsScript: {fileID: 2037884347}
-    materialTemplate: {fileID: 1044518643}
+    materialTemplate: {fileID: 321998276}
     drawHeightmap: 1
     collectDetailPatches: 1
     wavingGrassSpeed: 0.5
@@ -37216,32 +37272,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6297ace47f48b5f4fb35759706fd94b5, type: 3}
---- !u!21 &1044518643
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Nature/Terrain/Diffuse
-  m_Shader: {fileID: 10505, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1048004473
 GameObject:
   m_ObjectHideFlags: 0
@@ -37763,7 +37793,7 @@ MonoBehaviour:
   m_AnimatorItemID: 21
   m_AnimatorMovementSetID: 0
   m_DominantItem: 1
-  m_AllowCameraZoom: 1
+  m_AllowCameraZoom: 0
   m_DropPrefab: {fileID: 0}
   m_EquipEvent:
     m_WaitForAnimationEvent: 0
@@ -66856,9 +66886,241 @@ MonoBehaviour:
   m_GameObject: {fileID: 1844222236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3a10fa46510904caf0d339cac28562, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee1fbf4dd84c7d4faf7900812b348a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showPivots: 1
+  ShowpivotColor: {r: 0, g: 0, b: 1, a: 1}
+  showStates: 1
+  ModeShowAbilities: 0
+  Editor_Tabs1: 0
+  Editor_Tabs2: 4
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  triggerInteraction: 2
+  CloneStates: 1
+  states: []
+  OnEnterExitStates: []
+  OverrideStartState: {fileID: 0}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  height: 1
+  isPlayer:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  AnimatorSpeed:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  MovementAxis: {x: 0, y: 0, z: 0}
+  MovementAxisSmoothed: {x: 0, y: 0, z: 0}
+  useCameraInput:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  useCameraUp:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  AdditivePosition: {x: 0, y: 0, z: 0}
+  AdditiveRotation: {x: 0, y: 0, z: 0, w: 0}
+  SmoothVertical:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  TurnMultiplier:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  UpDownLerp:
+    UseConstant: 1
+    ConstantValue: 10
+    Variable: {fileID: 0}
+  AlignPosLerp:
+    UseConstant: 1
+    ConstantValue: 15
+    Variable: {fileID: 0}
+  AlignRotLerp:
+    UseConstant: 1
+    ConstantValue: 15
+    Variable: {fileID: 0}
+  maxAngleSlope: 45
+  Rotator: {fileID: 0}
+  Anim: {fileID: 0}
+  RB: {fileID: 0}
+  modes: []
+  pivots:
+  - name: Hip
+    position: {x: 0, y: 0.7, z: -0.7}
+    multiplier: 1
+    interval: 1
+    EditorModify: 0
+  - name: Chest
+    position: {x: 0, y: 0.7, z: 0.7}
+    multiplier: 1
+    interval: 1
+    EditorModify: 0
+  - name: Water
+    position: {x: 0, y: 1, z: 0}
+    multiplier: 0.05
+    interval: 1
+    EditorModify: 0
+  Pivot_Hip:
+    name: 
+    position: {x: 0, y: 0, z: 0}
+    multiplier: 0
+    interval: 0
+    EditorModify: 0
+  Pivot_Chest:
+    name: 
+    position: {x: 0, y: 0, z: 0}
+    multiplier: 0
+    interval: 0
+    EditorModify: 0
+  speedSets: []
+  CustomSpeed: 0
+  currentSpeedModifier:
+    name: Default
+    nameHash: -728703673
+    Vertical:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
+    position:
+      UseConstant: 1
+      ConstantValue: 0
+      Variable: {fileID: 0}
+    lerpPosition:
+      UseConstant: 1
+      ConstantValue: 4
+      Variable: {fileID: 0}
+    animator:
+      UseConstant: 1
+      ConstantValue: 1
+      Variable: {fileID: 0}
+    lerpAnimator:
+      UseConstant: 1
+      ConstantValue: 4
+      Variable: {fileID: 0}
+    rotation:
+      UseConstant: 1
+      ConstantValue: 0
+      Variable: {fileID: 0}
+    sprint: 1
+    lerpRotation:
+      UseConstant: 1
+      ConstantValue: 4
+      Variable: {fileID: 0}
+  gravityDirection:
+    UseConstant: 1
+    ConstantValue: {x: -0, y: -1, z: -0}
+    Variable: {fileID: 0}
+  GravityForce:
+    UseConstant: 1
+    ConstantValue: 3
+    Variable: {fileID: 0}
+  GravityMultiplier:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  rootMotion:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  RayCastRadius:
+    UseConstant: 1
+    ConstantValue: 0.05
+    Variable: {fileID: 0}
+  animalType:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  lockInput:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  lockMovement:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  useSprintGlobal:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  currentAnimTag: 0
+  OnAnimationChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnInputLocked:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnMovementLocked:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSprintEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGrounded:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnStateChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnModeChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnStanceChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSpeedChange:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Controller.SpeedModifierEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnMainPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: MalbersAnimations.Events.BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_Vertical: Vertical
+  m_Horizontal: Horizontal
+  m_UpDown: UpDown
+  m_IDFloat: IDFloat
+  m_IDInt: IDInt
+  m_Grounded: Grounded
+  m_Movement: Movement
+  m_State: State
+  m_LastState: LastState
+  m_Mode: Mode
+  m_Status: Status
+  m_Stance: Stance
+  m_Slope: Slope
+  m_Type: Type
+  m_SpeedMultiplier: SpeedMultiplier
+  m_StateTime: StateTime
+  m_DeltaAngle: DeltaAngle
+  debugStates: 1
+  debugModes: 1
+  debugGizmos: 1
 --- !u!114 &1844222242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73422,7 +73684,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 0
-  m_MaterialTemplate: {fileID: 1044518643}
+  m_MaterialTemplate: {fileID: 321998276}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1

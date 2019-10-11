@@ -81,7 +81,7 @@ namespace PixelCrushers
         private static GameObject GameObjectSearchHierarchy(Transform t, string goName, string tag)
         {
             if (t == null) return null;
-            if (string.Equals(t.name, goName) && string.Equals(t.tag, tag)) return t.gameObject;
+            if (string.Equals(t.name, goName) && (string.IsNullOrEmpty(tag) || string.Equals(t.tag, tag))) return t.gameObject;
             foreach (Transform child in t)
             {
                 var result = GameObjectSearchHierarchy(child, goName, tag);

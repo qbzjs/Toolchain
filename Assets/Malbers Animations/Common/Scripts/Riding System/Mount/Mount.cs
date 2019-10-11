@@ -6,6 +6,7 @@ using MalbersAnimations.Controller;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using MalbersAnimations.Utilities;
 
 namespace MalbersAnimations.HAP
 {
@@ -52,28 +53,16 @@ namespace MalbersAnimations.HAP
 
         #region Straight Mount
         public BoolReference straightSpine;                              //Activate this only for other animals but the horse 
-
+        public BoolReference UseSpeedModifiers;
         public Vector3 pointOffset = new Vector3(0, 0, 3);
-        public Vector3 MonturaSpineOffset => transform.TransformPoint(pointOffset);
+        public Vector3 MonturaSpineOffset => StraightSpineOffsetTransform.TransformPoint(pointOffset);
 
         //public float LowLimit = 45;
         //public float HighLimit = 135;
 
         public float smoothSM = 0.5f;
-
-      //  public  Quaternion straightRotation { get; set; }
-      //  private float SP_Weight;
         #endregion
 
-        #region Animator Stuff
-
-        /// <summary>If both rider and animal animator should be synced on the Locomotion state..</summary>
-        public bool syncAnimators = true;
-
-        public bool DebugSync = false;
-
-        #endregion
- 
         #region Events
         public UnityEvent OnMounted = new UnityEvent();
         public UnityEvent OnDismounted = new UnityEvent();
@@ -85,6 +74,8 @@ namespace MalbersAnimations.HAP
 
         #region Properties
         public Transform MountPoint;     // Reference for the RidersLink Bone  
+
+
         public Transform FootLeftIK;     // Reference for the LeftFoot correct position on the mount
         public Transform FootRightIK;    // Reference for the RightFoot correct position on the mount
         public Transform KneeLeftIK;     // Reference for the LeftKnee correct position on the mount
@@ -96,6 +87,10 @@ namespace MalbersAnimations.HAP
             get { return straightSpine; }
             set { straightSpine.Value = value; }
         }
+
+
+        /// <summary>Straighen the Spine bone while mounted depends on the Mount</summary>
+        public Transform StraightSpineOffsetTransform;    
 
         private bool defaultStraightSpine;
 
@@ -197,6 +192,11 @@ namespace MalbersAnimations.HAP
             CanBeDismountedByState = CanBeMountedByState = true; //Set as true can be mounted and canbe dismounted by state
             defaultStraightSpine = StraightSpine;
            if (Anim) DefaultAnimUpdateMode = Anim.updateMode;
+
+            if (!StraightSpineOffsetTransform)
+            {
+                StraightSpineOffsetTransform = transform;
+            }
         }
 
         /// <summary>Used for Aiming while on the horse.... Straight Spine needs to be pause </summary>
@@ -243,16 +243,9 @@ namespace MalbersAnimations.HAP
                 var speed = SpeedMultipliers.Find(s => s.name == SpeedModifier.name);
 
                 float TargetAnimSpeed = speed != null ? speed.AnimSpeed * SpeedModifier.animator * Animal.AnimatorSpeed : 1f;
-
-                Rider.SpeedMultiplier = Mathf.Lerp(Rider.SpeedMultiplier, TargetAnimSpeed, Time.deltaTime * 5f);
+                Rider.TargetSpeedMultiplier = TargetAnimSpeed;
             }
         }
-
-        void Reset()
-        {
-            Animal = GetComponent<MAnimal>();
-        }
-
 
         /// <summary>Enable/Disable the StraightMount Feature </summary>
         public virtual void StraightMount(bool value)
@@ -260,102 +253,45 @@ namespace MalbersAnimations.HAP
             StraightSpine = value;
         }
 
-        public virtual void OnAnimatorBehaviourMessage(string message, object value)
-        {
-            this.InvokeWithParams(message, value);
-        }
-         
-
-        //private void SolveStraightMount()
-        //{
-        //    var Spine = Rider.Spine;
-
-        //   // SP_Weight = Mathf.MoveTowards(SP_Weight, Rider.IsRiding ? 1 : 0, Time.deltaTime * smoothSM);
-
-        //    if (Rider.IsRiding && StraightSpine)
-        //    {
-        //        SP_Weight = Mathf.MoveTowards(SP_Weight,1, Animal.DeltaTime * smoothSM);
-
-        //        var TargetRotation = Quaternion.FromToRotation(MountPoint.up, Animal.UpVector) * MountPoint.rotation;       //Calculate the orientation to the Up Vector  
-
-        //        float angle = Vector3.Angle(Vector3.up, MountPoint.forward);            //Check limits
-
-        //        if (angle < LowLimit)
-        //        {
-        //            TargetRotation *= Quaternion.Euler(new Vector3(angle - LowLimit, 0));
-        //        }
-        //        else if (angle > HighLimit)
-        //        {
-        //            TargetRotation *= Quaternion.Euler(new Vector3(angle - HighLimit, 0));
-        //        }
+        public virtual void OnAnimatorBehaviourMessage(string message, object value) { this.InvokeWithParams(message, value); }
 
 
-        //        TargetRotation *= PointOffset;
-
-        //        straightRotation = Quaternion.Lerp(straightRotation, TargetRotation, SP_Weight);
-        //    }
-        //    else if (Rider.IsDismounting || !StraightSpine)
-        //    {
-        //        SP_Weight = Mathf.MoveTowards(SP_Weight, 0, Animal.DeltaTime * smoothSM);
-        //        straightRotation = Quaternion.Lerp(Spine.rotation, straightRotation, SP_Weight);
-        //    }
-
-        //    if (SP_Weight != 0)
-        //    {
-        //        Spine.rotation = straightRotation;
-        //    }
-        //}
-
-
-
-        //UnityEditor
-
-
-        [HideInInspector] public bool ShowLinks = true;
-        [HideInInspector] public bool UseSpeedModifiers;
-        [HideInInspector] public bool ShowEvents;
+        [HideInInspector] public int Editor_Tabs1;
+        [HideInInspector] public int Editor_Tabs2;
 
 
 #if UNITY_EDITOR
+        private void Reset()
+        {
+            Animal = GetComponent<MAnimal>();
+            StraightSpineOffsetTransform = transform;
+
+            MEvent RiderMountUIE = MalbersTools.GetInstance<MEvent>("Rider Mount UI");
+
+            OnCanBeMounted = new BoolEvent();
+
+            if (RiderMountUIE != null)
+            {
+                UnityEditor.Events.UnityEventTools.AddObjectPersistentListener<Transform>(OnCanBeMounted, RiderMountUIE.Invoke, transform);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(OnCanBeMounted, RiderMountUIE.Invoke);
+            }
+        }
+
         /// <summary> Debug Options </summary>
         void OnDrawGizmos()
         {
             if (!debug) return;
 
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(MonturaSpineOffset, 0.1f);
-
-            if (DebugSync && Application.isPlaying && Rider != null && Rider.IsRiding)
+            if (StraightSpineOffsetTransform)
             {
-
-                if (headbone == null)
-                    headbone = transform.FindGrandChild("Head");
-
-//                if (Animal.AnimState == AnimTag.Locomotion || Animal.AnimState == AnimTag.Swim || Animal.AnimState == AnimTag.Fly)    //Search for sync the locomotion state on the animal
-                {
-                    Gizmos.color = ((int)Anim.GetCurrentAnimatorStateInfo(0).normalizedTime) % 2 == 0 ? Color.white : Color.yellow;
-                    Gizmos.DrawSphere(headbone != null ? headbone.position + (Vector3.up * 0.2f * Animal.ScaleFactor) : transform.position, 0.05f * Animal.ScaleFactor);
-                    Gizmos.DrawWireSphere(headbone != null ? headbone.position + (Vector3.up * 0.2f * Animal.ScaleFactor) : transform.position, 0.05f * Animal.ScaleFactor);
-
-                    if (Rider.Anim)
-                    {
-                        AnimatorStateInfo RiderStateInfo = Rider.Anim.GetCurrentAnimatorStateInfo(Rider.MountLayerIndex);
-
-                        Transform RiderHead = Rider.Anim.GetBoneTransform(HumanBodyBones.Head);
-
-                        if ((RiderStateInfo.tagHash == AnimTag.Locomotion)
-                           || (RiderStateInfo.tagHash == AnimTag.Swim)
-                              || (RiderStateInfo.tagHash == AnimTag.Fly))  //Search for syncron the locomotion state on the animal
-                        {
-                            Gizmos.color = ((int)RiderStateInfo.normalizedTime) % 2 == 0 ? Color.white : Color.red;
-                            Gizmos.DrawSphere(RiderHead.position + (Vector3.up * 0.2f), 0.05f);
-                            Gizmos.DrawWireSphere(RiderHead.position + (Vector3.up * 0.2f), 0.05f);
-                        }
-                    }
-                }
+                Gizmos.DrawSphere(MonturaSpineOffset, 0.125f);
+            }
+            else
+            {
+                StraightSpineOffsetTransform = transform;
             }
         }
-        [HideInInspector] Transform headbone;
 #endif
     }
 

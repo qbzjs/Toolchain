@@ -2212,7 +2212,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896911364057756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2.3582827e-17, z: -27.12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4931364613858592}
@@ -4328,8 +4328,8 @@ MonoBehaviour:
   ShowpivotColor: {r: 0, g: 0, b: 1, a: 1}
   showStates: 1
   ModeShowAbilities: 1
-  Editor_Tabs1: 4
-  Editor_Tabs2: 3
+  Editor_Tabs1: 0
+  Editor_Tabs2: 4
   hitLayer:
     serializedVersion: 2
     m_Bits: 2148532224
@@ -4389,6 +4389,8 @@ MonoBehaviour:
     Variable: {fileID: 0}
   maxAngleSlope: 40
   Rotator: {fileID: 0}
+  Anim: {fileID: 95121905731630888}
+  RB: {fileID: 54863958749141722}
   modes:
   - active: 1
     AnimationTag: Attack1
@@ -4433,6 +4435,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Front Legs
       Index:
@@ -4555,6 +4558,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Front Right
       Index:
@@ -4755,6 +4759,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Eat
       Index:

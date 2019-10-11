@@ -1808,32 +1808,31 @@ namespace PixelCrushers.DialogueSystem
         }
 
 #if EVALUATION_VERSION
-		private GUIStyle evaluationWatermarkStyle = null;
-		private Rect watermarkRect1;
-		private Rect watermarkRect2;
-		
-		public void OnGUI() {
-			if (Camera.main == null) return;
-			if (Camera.main.GetComponent<GUILayer>() == null) Camera.main.gameObject.AddComponent<GUILayer>();
-			if (evaluationWatermarkStyle == null) {
-				evaluationWatermarkStyle = new GUIStyle(GUI.skin.label);
-				evaluationWatermarkStyle.fontSize = 20;
-				evaluationWatermarkStyle.fontStyle = FontStyle.Bold;
-				evaluationWatermarkStyle.alignment = TextAnchor.MiddleCenter;
-				evaluationWatermarkStyle.normal.textColor = new Color(1, 1, 1, 0.5f);
-				Vector2 size = evaluationWatermarkStyle.CalcSize(new GUIContent("Evaluation Version"));
-                if (Random.value < 0.5f) {
-                    watermarkRect1 = new Rect(Screen.width - size.x - 20, 0, size.x + 20, size.y);
-                    watermarkRect2 = new Rect(Screen.width - size.x - 20, size.y - 8, size.x + 20, size.y);
-                } else {
-                    watermarkRect1 = new Rect(20, Screen.height - 2 * size.y - 8 , size.x + 20, size.y);
-                    watermarkRect2 = new Rect(20, Screen.height - size.y - 8, size.x + 20, size.y);
-                }
-            }
-			GUI.Label(watermarkRect1, "Dialogue System", evaluationWatermarkStyle);
-			GUI.Label(watermarkRect2, "Evaluation Version", evaluationWatermarkStyle);
-		}
+
+        private GameObject watermark = null;
+
+        protected virtual void LateUpdate()
+        {
+            if (watermark != null) return;
+            watermark = new GameObject("Eval");
+            watermark.transform.SetParent(transform);
+            var canvas = watermark.AddComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 16383;
+            Destroy(watermark.GetComponent<UnityEngine.UI.GraphicRaycaster>());
+            Destroy(watermark.GetComponent<UnityEngine.UI.CanvasScaler>());
+            var text = watermark.AddComponent<UnityEngine.UI.Text>();
+            text.text = "Dialogue System\nEvaluation Version";
+            text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            text.fontSize = 24;
+            text.fontStyle = FontStyle.Bold;
+            text.color = new Color(1, 1, 1, 0.75f);
+            text.alignment = (Random.value < 0.5f) ? TextAnchor.UpperLeft: TextAnchor.LowerRight;
+            text.raycastTarget = false;
+        }
+
 #endif
+
 
     }
 

@@ -33,7 +33,7 @@ namespace MalbersAnimations
 
         public void ToggleFOV(bool val)
         {
-            ChangeFOV(val ? mCamera.SprintFOV.Value : mCamera.ActiveFOV);
+            mCamera.ToggleSprintFOV(val);
         } 
 
        

@@ -19,6 +19,7 @@ namespace PixelCrushers.DialogueSystem.Articy
         private const string ArticyPortraitFolderKey = "PixelCrushers.DialogueSystem.ArticyPortraitFolder";
         private const string ArticyStageDirectionsAreSequencesKey = "PixelCrushers.DialogueSystem.StageDirectionsAreSequences";
         private const string ArticyFlowFragmentModeKey = "PixelCrushers.DialogueSystem.FlowFragmentMode";
+        private const string ArticyOtherScriptFieldsKey = "PixelCrushers.DialogueSystem.OtherScriptFields";
         private const string ArticyDocumentsSubmenuKey = "PixelCrushers.DialogueSystem.ArticyDocumentsSubmenu";
         private const string ArticyTextTableDocumentKey = "PixelCrushers.DialogueSystem.ArticyTextTableDocument";
         private const string ArticyOutputFolderKey = "PixelCrushers.DialogueSystem.ArticyOutput";
@@ -44,6 +45,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             converterPrefs.PortraitFolder = EditorPrefs.GetString(ArticyPortraitFolderKey);
             converterPrefs.StageDirectionsAreSequences = EditorPrefs.HasKey(ArticyStageDirectionsAreSequencesKey) ? EditorPrefs.GetBool(ArticyStageDirectionsAreSequencesKey) : true;
             converterPrefs.FlowFragmentMode = (ConverterPrefs.FlowFragmentModes)(EditorPrefs.HasKey(ArticyFlowFragmentModeKey) ? EditorPrefs.GetInt(ArticyFlowFragmentModeKey) : 0);
+            converterPrefs.OtherScriptFields = EditorPrefs.GetString(ArticyOtherScriptFieldsKey, string.Empty);
             converterPrefs.DocumentsSubmenu = EditorPrefs.GetString(ArticyDocumentsSubmenuKey);
             converterPrefs.TextTableDocument = EditorPrefs.GetString(ArticyTextTableDocumentKey);
             converterPrefs.OutputFolder = EditorPrefs.GetString(ArticyOutputFolderKey, "Assets");
@@ -70,6 +72,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             EditorPrefs.SetString(ArticyPortraitFolderKey, converterPrefs.PortraitFolder);
             EditorPrefs.SetBool(ArticyStageDirectionsAreSequencesKey, converterPrefs.StageDirectionsAreSequences);
             EditorPrefs.SetInt(ArticyFlowFragmentModeKey, (int)converterPrefs.FlowFragmentMode);
+            EditorPrefs.SetString(ArticyOtherScriptFieldsKey, converterPrefs.OtherScriptFields);
             EditorPrefs.SetString(ArticyDocumentsSubmenuKey, converterPrefs.DocumentsSubmenu);
             EditorPrefs.SetString(ArticyTextTableDocumentKey, converterPrefs.TextTableDocument);
             EditorPrefs.SetString(ArticyOutputFolderKey, converterPrefs.OutputFolder);
@@ -95,6 +98,7 @@ namespace PixelCrushers.DialogueSystem.Articy
             EditorPrefs.DeleteKey(ArticyPortraitFolderKey);
             EditorPrefs.DeleteKey(ArticyStageDirectionsAreSequencesKey);
             EditorPrefs.DeleteKey(ArticyFlowFragmentModeKey);
+            EditorPrefs.DeleteKey(ArticyOtherScriptFieldsKey);
             EditorPrefs.DeleteKey(ArticyDocumentsSubmenuKey);
             EditorPrefs.DeleteKey(ArticyTextTableDocumentKey);
             EditorPrefs.DeleteKey(ArticyOutputFolderKey);

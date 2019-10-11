@@ -24,6 +24,7 @@ namespace MalbersAnimations.Utilities
         public BoolReference active = new BoolReference(true);     //For Activating and Deactivating the HeadTrack
 
         private IGravity a_UpVector;
+        private Animator Anim;
         private IAim aimer;
 
         [Space]
@@ -33,6 +34,9 @@ namespace MalbersAnimations.Utilities
         /// <summary>Smoothness between Enabled and Disable</summary>
         [Tooltip("Smoothness between Enabled and Disable")]
         public FloatReference Smoothness = new FloatReference(5f);
+
+        [Tooltip("Uses Quaternion.Lerp for the Bones... (Experimental)")]
+        public BoolReference UseLerp;
         /// <summary>Smoothness between Enabled and Disable</summary>
         [Tooltip("Use the LookAt only when there's a Force Target on the Aim... use this when the Animal is AI Controlled")]
         public BoolReference OnlyTargets;
@@ -68,7 +72,8 @@ namespace MalbersAnimations.Utilities
             get { return active; }
             set
             {
-                active.Value = aimer.Active = value; //enable disable also the Aimer
+                active.Value = value;  //enable disable also the Aimer
+                if (aimer != null) aimer.Active = value;//enable disable also the Aimer
             }
         }
 
@@ -76,6 +81,7 @@ namespace MalbersAnimations.Utilities
         {
             a_UpVector = GetComponent<IGravity>();     //Get the main camera
             aimer = GetComponent<IAim>();              //Get the main camera
+            Anim = GetComponent<Animator>();              //Get the main camera
             aimer.IgnoreTransform = transform;
         }
 
@@ -88,40 +94,62 @@ namespace MalbersAnimations.Utilities
 
         void LateUpdate()
         {
+            if (Time.time < float.Epsilon) return;
+
+            if (OnlyTargets) Active = aimer.ForcedTarget != null;
+
+            angle = Vector3.Angle(transform.forward, AimDirection);
+            SP_Weight = Mathf.MoveTowards(SP_Weight, IsAiming ? 1 : 0, Time.deltaTime * Smoothness / 2);
+            aimer.Limited = !IsAiming;
+
+
+            if (UseLerp)
+            LookAtBoneSet_AnimatePhysics_Lerp();            //Rotate the bones
+            else
             LookAtBoneSet_AnimatePhysics();            //Rotate the bones
+
         }
 
         /// <summary>Enable or Disable this script functionality by the Animator </summary>
         public void EnableLookAt(bool value)
         {
-            Active = value;
+            if (!OverridePriority)
+            {
+                Active = value;
+            }
+            lastActivation = value;
+        }
+
+        bool OverridePriority;
+        bool lastActivation;
+
+        public void DisableLookAt(bool value)
+        {
+            OverridePriority = value;
+
+            if (OverridePriority)
+            {
+                Active = false;
+            }
+            else
+            {
+                Active = lastActivation;
+            }
         }
 
         /// <summary>Rotates the bones to the Look direction for FIXED UPTADE ANIMALS</summary>
         void LookAtBoneSet_AnimatePhysics()
         {
-            if (Time.time < float.Epsilon) return;
-
-            if (OnlyTargets)
-            {
-                Active = aimer.ForcedTarget != null;
-            }
-
-            angle = Vector3.Angle(transform.forward, AimDirection);
-
             for (int i = 0; i < Bones.Length; i++)
             {
                 var bn = Bones[i];
 
                 if (!bn.bone) continue;
 
-                aimer.Limited = !IsAiming;
-
-                SP_Weight = Mathf.MoveTowards(SP_Weight, IsAiming ? 1 : 0, Time.deltaTime * Smoothness/2);
-
                 if (IsAiming)
                 {
-                    var TargetTotation = Quaternion.LookRotation(AimDirection, UpVector) * Quaternion.Euler(bn.offset);
+                    var BoneAim = Vector3.Slerp(transform.forward, AimDirection, bn.weight).normalized;
+                    var TargetTotation = Quaternion.LookRotation(BoneAim, UpVector) * Quaternion.Euler(bn.offset);
                     bn.nextRotation = Quaternion.Lerp(bn.nextRotation, TargetTotation, SP_Weight);
                 }
                 else
@@ -134,7 +162,30 @@ namespace MalbersAnimations.Utilities
                     bn.bone.rotation = bn.nextRotation;
                 }
             }
-        } 
+        }
+
+        void LookAtBoneSet_AnimatePhysics_Lerp()
+        {
+            Anim.Update(0);
+
+            for (int i = 0; i < Bones.Length; i++)
+            {
+                var bn = Bones[i];
+
+                if (!bn.bone) continue;
+             
+                if (IsAiming)
+                {
+                    var TargetTotation = Quaternion.LookRotation(AimDirection, UpVector) * Quaternion.Euler(bn.offset);
+                    bn.nextRotation = Quaternion.Lerp(bn.bone.rotation, TargetTotation, bn.weight);
+                }
+
+                if (SP_Weight != 0)
+                {
+                    bn.bone.rotation = Quaternion.Lerp(bn.bone.rotation, bn.nextRotation,SP_Weight);
+                }
+            }
+        }
 
         /// <summary>This is used to listen the Animator asociated to this gameObject </summary>
         public virtual void OnAnimatorBehaviourMessage(string message, object value)
@@ -144,7 +195,7 @@ namespace MalbersAnimations.Utilities
 
         void OnValidate()
         {
-            if (Bones != null)
+            if (Bones != null && Bones.Length>0)
             {
                 EndBone = Bones[Bones.Length - 1].bone;
             }

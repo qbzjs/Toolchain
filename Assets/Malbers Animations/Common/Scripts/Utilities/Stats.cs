@@ -31,12 +31,8 @@ namespace MalbersAnimations
         }
 
 
-        private void OnDisable()
-        {
-            StopAllCoroutines();
-
-           
-        }
+        private void OnDisable() { StopAllCoroutines(); }
+   
 
         public virtual void _UpdateStats()
         {
@@ -122,6 +118,14 @@ namespace MalbersAnimations
         {
             if (PinnedStat != null)
                 PinnedStat.Modify(value);
+            else Debug.Log("There's no Pinned Stat");
+        }
+
+        /// <summary>Modify Stat Value instantly (Add/Remove to the Value)</summary>
+        public virtual void _PinStatModifyValue(FloatVar value)
+        {
+            if (PinnedStat != null)
+                PinnedStat.Modify(value.Value);
             else Debug.Log("There's no Pinned Stat");
         }
 
@@ -571,11 +575,7 @@ namespace MalbersAnimations
             {
                 Coroutine.StartCoroutine(C_RegenerateOverTime(time));
             }
-        }
-
-
-
-
+        } 
 
         protected virtual void StartRegeneration()
         {
@@ -586,7 +586,6 @@ namespace MalbersAnimations
             Coroutine.StartCoroutine(I_Regeneration);
         }
 
-      
 
         protected virtual void StartDegeneration()
         {

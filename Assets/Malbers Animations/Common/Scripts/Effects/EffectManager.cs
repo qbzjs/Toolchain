@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MalbersAnimations.Events;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -85,17 +86,14 @@ namespace MalbersAnimations.Utilities
             yield return null;
         }
 
-        public virtual void StopEffect(int ID)
-        {
-            Effect_Stop(ID);
-        }
+        public virtual void StopEffect(int ID) { Effect_Stop(ID); }
+       
 
         public virtual void Effect_Stop(int ID)
         {
             List<Effect> effects = Effects.FindAll(effect => effect.ID == ID && effect.active == true);
 
             if (effects != null)
-
             {
                 foreach (var e in effects)
                 {
@@ -126,29 +124,13 @@ namespace MalbersAnimations.Utilities
             yield return null;
         }
 
-       protected virtual void Play(Effect effect)
+        protected virtual void Play(Effect effect)
         {
             if (effect.effect == null) return;  //There's no effect available
-          
+
             if (effect.Modifier) effect.Modifier.AwakeEffect(effect);        //Execute the Method PreStart Effect if it has a modifier
+            StartCoroutine(IPlayEffect(effect));
 
-            //if (effect.toggleable)
-            //{
-            //    effect.On = !effect.On;
-
-            //    if (effect.On)
-            //    {
-            //        StartCoroutine(IPlayEffect(effect));
-            //    }
-            //    else
-            //    {
-            //        effect.OnStop.Invoke();
-            //    }
-            //}
-            //else
-            //{
-                StartCoroutine(IPlayEffect(effect));
-            //}
         }
 
 
@@ -240,6 +222,54 @@ namespace MalbersAnimations.Utilities
                 e.Instance.SetActive(false);
             }
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Create Event Listeners")]
+        void CreateListeners()
+        {
+            MEventListener listener = GetComponent<MEventListener>();
+
+            if (listener == null) listener = gameObject.AddComponent<MEventListener>();
+            if (listener.Events == null) listener.Events = new List<MEventItemListener>();
+
+            MEvent effectEnable = MalbersTools.GetInstance<MEvent>("Effect Enable");
+            MEvent effectDisable = MalbersTools.GetInstance<MEvent>("Effect Disable");
+
+            if (listener.Events.Find(item => item.Event == effectEnable) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = effectEnable,
+                    useVoid = false, useString = true, useInt = true
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseInt, Effect_Enable);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseString, Effect_Enable);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Effect Enable</B> Added to the Event Listeners");
+            }
+
+            if (listener.Events.Find(item => item.Event == effectDisable) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = effectDisable,
+                    useVoid = false,
+                    useString = true,
+                    useInt = true
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseInt, Effect_Disable);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseString, Effect_Disable);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Effect Disable</B> Added to the Event Listeners");
+            }
+        }
+#endif
+
+
     }
 
     [System.Serializable]

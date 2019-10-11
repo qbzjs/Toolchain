@@ -259,20 +259,23 @@ namespace PixelCrushers.DialogueSystem.Articy
                     {
                         var subtableTitle = field.title.Substring(SubtableFieldPrefix.Length);
                         var code = tableName + "[\"" + DialogueLua.StringToTableIndex(asset.Name) + "\"]." + DialogueLua.StringToTableIndex(subtableTitle) + " = { ";
-                        var articyIds = field.value.Split(';');
-                        for (int k = 0; k < articyIds.Length; k++)
+                        if (!string.IsNullOrEmpty(field.value.Trim()))
                         {
-                            var articyId = articyIds[k];
-                            var elementItem = FindAssetByArticyId(articyId);
-                            if (elementItem != null)
+                            var articyIds = field.value.Split(';');
+                            for (int k = 0; k < articyIds.Length; k++)
                             {
-                                code += ((elementItem is Actor) ? "Actor" : "Item") + "[\"" + DialogueLua.StringToTableIndex(elementItem.Name) + "\"]";
+                                var articyId = articyIds[k];
+                                var elementItem = FindAssetByArticyId(articyId);
+                                if (elementItem != null)
+                                {
+                                    code += ((elementItem is Actor) ? "Actor" : "Item") + "[\"" + DialogueLua.StringToTableIndex(elementItem.Name) + "\"]";
+                                }
+                                else
+                                {
+                                    code += articyId;
+                                }
+                                code += ", ";
                             }
-                            else
-                            {
-                                code += articyId;
-                            }
-                            code += ", ";
                         }
                         code += "}";
                         Lua.Run(code, DialogueDebug.logInfo);

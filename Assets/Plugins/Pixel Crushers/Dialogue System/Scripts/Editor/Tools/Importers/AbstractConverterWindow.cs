@@ -435,7 +435,9 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
-        /// Sets a conversation's START entry's Sequence to None().
+        /// Sets a conversation's START entry's Sequence to Continue().
+        /// Formerly set to None(), but now uses Continue() in case dialogue UI
+        /// uses a continue button.
         /// </summary>
         /// <param name="conversation">Conversation.</param>
         protected virtual void SetConversationStartCutsceneToNone(Conversation conversation)
@@ -451,11 +453,11 @@ namespace PixelCrushers.DialogueSystem
                 {
                     if (Field.FieldExists(entry.fields, "Sequence"))
                     {
-                        entry.currentSequence = "None()";
+                        entry.currentSequence = "Continue()";
                     }
                     else
                     {
-                        entry.fields.Add(new Field("Sequence", "None()", FieldType.Text));
+                        entry.fields.Add(new Field("Sequence", "Continue()", FieldType.Text));
                     }
                 }
             }

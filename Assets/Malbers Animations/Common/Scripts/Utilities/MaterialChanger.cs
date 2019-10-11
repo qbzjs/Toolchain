@@ -209,6 +209,36 @@ namespace MalbersAnimations.Utilities
             return materialList[index].current;
         }
 
+#if UNITY_EDITOR
+        [ContextMenu("Create Event Listeners")]
+        void CreateListeners()
+        {
+
+            MEventListener listener = GetComponent<MEventListener>();
+
+            if (listener == null) listener = gameObject.AddComponent<MEventListener>();
+            if (listener.Events == null) listener.Events = new List<MEventItemListener>();
+
+            MEvent BlendS = MalbersTools.GetInstance<MEvent>("Material Changer");
+
+
+            if (listener.Events.Find(item => item.Event == BlendS) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = BlendS,
+                    useVoid = false, useString = true, useInt = true
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseInt, NextMaterialItem);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseString, NextMaterialItem);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Material Changer</B> Added to the Event Listeners");
+            }
+        }
+#endif
+
     }
 
     /// <summary>Slot on the List of Materials Items</summary>
@@ -416,6 +446,8 @@ namespace MalbersAnimations.Utilities
             else
                 PreviousMaterial();
         }
+
+
 
     }
 }

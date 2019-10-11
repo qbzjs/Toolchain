@@ -18,9 +18,7 @@ namespace MalbersAnimations.Controller
 
         protected Vector3 Inertia;
         protected Swim SwimState;
-
-
-       
+         
 
         public override void StartState()
         {
@@ -54,12 +52,7 @@ namespace MalbersAnimations.Controller
             return false;
         }
 
-
-        //public override void JustWakeUp()
-        //{
-        //    SwimState.CheckWater(); //Find if there's water
-        //} 
-
+         
         public override void OnStateMove(float deltatime)
         {
             animal.FreeMovementRotator(Ylimit, Bank, deltatime);
@@ -70,10 +63,9 @@ namespace MalbersAnimations.Controller
         public override void TryExitState(float DeltaTime)
         {
             SwimState.CheckWater();
-           // SwimState.FindWaterLevel();
+            SwimState.FindWaterLevel();
 
-            if (!SwimState.IsInWater)
-          //  if (SwimState.PivotAboveWater)
+            if (SwimState.PivotAboveWater || !SwimState.IsInWater)
             {
                 AllowExit();
             }
@@ -113,7 +105,7 @@ namespace MalbersAnimations.Controller
         public override void DebugState()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(SwimState.WaterPivotPoint, SwimState.Radius);
+            Gizmos.DrawSphere(SwimState.WaterPivotPoint, SwimState.Radius*animal.ScaleFactor);
         }
 #endif
     }

@@ -70,7 +70,7 @@ namespace MalbersAnimations.Utilities
 
                                 EditorGUILayout.PropertyField(Element.FindPropertyRelative("instantiate"), new GUIContent("Instantiate", "True you want to make a copy of the effect, or if the effect is a Prefab!"));
 
-                                if (!Element.FindPropertyRelative("instantiate").boolValue)
+                                if (Element.FindPropertyRelative("instantiate").boolValue)
 
                                     //{
                                     //    EditorGUILayout.PropertyField(Element.FindPropertyRelative("toggleable"), new GUIContent("Toggleable", "Everytime this effect is called it will turn on and off"));

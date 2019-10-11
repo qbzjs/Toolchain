@@ -12,7 +12,7 @@ namespace MalbersAnimations.Controller
     {
 
         MonoScript script;
-        SerializedProperty SelfStatEnter, Trigger, PushForce, index, SelfStatExit, EnemyStatEnter, EnemyStatExit, debug, DebugColor;
+        SerializedProperty SelfStatEnter, Trigger, PushForce, index, SelfStatExit, EnemyStatEnter, EnemyStatExit, debug, DebugColor, hitLayer, triggerInteraction;
 
         private void OnEnable()
         {
@@ -30,6 +30,8 @@ namespace MalbersAnimations.Controller
             EnemyStatExit = serializedObject.FindProperty("EnemyStatExit");
             debug = serializedObject.FindProperty("debug");
             DebugColor = serializedObject.FindProperty("DebugColor");
+            hitLayer = serializedObject.FindProperty("hitLayer");
+            triggerInteraction = serializedObject.FindProperty("triggerInteraction");
 
         }
 
@@ -51,6 +53,13 @@ namespace MalbersAnimations.Controller
                     EditorGUILayout.PropertyField(index);
                     EditorGUILayout.PropertyField(Trigger);
                     EditorGUILayout.PropertyField(PushForce);
+                }
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+                {
+                    EditorGUILayout.PropertyField(hitLayer);
+                    EditorGUILayout.PropertyField(triggerInteraction);
                 }
                 EditorGUILayout.EndVertical();
 

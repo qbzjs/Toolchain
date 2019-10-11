@@ -15,16 +15,7 @@ namespace MalbersAnimations.HAP
     {
         #region Reset Awake Start Update LateUpdate
 
-        private void Reset()
-        {
-#if UNITY_EDITOR
-            UnityEditor.Events.UnityEventTools.AddStringPersistentListener(OnEquipWeapon, DisableMountInput, "Attack1");
-            UnityEditor.Events.UnityEventTools.AddStringPersistentListener(OnEquipWeapon, DisableMountInput, "Attack2");
 
-            UnityEditor.Events.UnityEventTools.AddStringPersistentListener(OnUnequipWeapon, EnableMountInput, "Attack1");
-            UnityEditor.Events.UnityEventTools.AddStringPersistentListener(OnUnequipWeapon, EnableMountInput, "Attack2");
-#endif
-        }
 
         void Awake() { InitRiderCombat(); }
 

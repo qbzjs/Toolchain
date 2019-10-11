@@ -25,7 +25,7 @@ namespace MalbersAnimations.Controller
         {
             if (horizontal)
             {
-                var Horizontal = mode.animal.MovementAxis.x;
+                var Horizontal = mode.Animal.MovementAxis.x;
                 left = Horizontal < 0;
                 mode.AbilityIndex = left ? 1 : 2;
                // Debug.Log(mode.AbilityIndex.Value);
@@ -36,7 +36,7 @@ namespace MalbersAnimations.Controller
         {
             if (MoveDodge/* && !anim.IsInTransition(LayerIndex)*/)
             {
-                var animal = mode.animal;
+                var animal = mode.Animal;
 
                 if (horizontal)
                 {

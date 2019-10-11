@@ -3,8 +3,9 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 2
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -56,7 +57,7 @@ MonoBehaviour:
       RootMotion: 1
       Sprint: 1
       Gravity: 0
-      Grounded: 1
+      Grounded: 0
       OrientToGround: 0
       CustomRotation: 0
       FreeMovement: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
       LockMovement: 0
       LockInput: 0
       Colliders: 1
-  debug: 1
+  debug: 0
   AirControl:
     UseConstant: 1
     ConstantValue: 1

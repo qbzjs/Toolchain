@@ -877,8 +877,8 @@ namespace PixelCrushers.DialogueSystem
             {
                 if (command != null)
                 {
-                    if (!string.IsNullOrEmpty(command.endMessage)) Sequencer.Message(command.endMessage);
-                    Destroy(command, 0.1f);
+                    if (!string.IsNullOrEmpty(command.endMessage)) Sequencer.Message(command.endMessage);                    
+                    Destroy(command); //---Was: Destroy(command, 0.1f);
                 }
             }
             m_activeCommands.Clear();

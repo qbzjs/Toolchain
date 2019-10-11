@@ -99,7 +99,7 @@ namespace MalbersAnimations.HAP
         public WeaponEvent OnAttack = new WeaponEvent();
         public BoolEvent OnAiming = new BoolEvent();
         public IntEvent OnAimSide = new IntEvent();
-        public TransformEvent OnTarget = new TransformEvent();
+      //  public TransformEvent OnTarget = new TransformEvent();
         #endregion
 
         protected Transform
@@ -166,7 +166,7 @@ namespace MalbersAnimations.HAP
             }
         }
 
-         public BoolReference toggleAim;
+        public BoolReference toggleAim;
         /// <summary>Set the Aim to Toggle</summary>
         public bool ToggleAim
         {

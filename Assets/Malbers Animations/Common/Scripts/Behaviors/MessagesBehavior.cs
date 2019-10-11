@@ -70,15 +70,20 @@ namespace MalbersAnimations
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (stateInfo.fullPathHash == animator.GetNextAnimatorStateInfo(layerIndex).fullPathHash) return; //means is transitioning to itself
+
             foreach (MesssageItem onTimeM in onTimeMessage)
             {
                 if (onTimeM.Active && onTimeM.message != string.Empty)
                 {
-                    float stateTime = stateInfo.loop ? stateInfo.normalizedTime % 1 : stateInfo.normalizedTime;
+                    // float stateTime = stateInfo.loop ? stateInfo.normalizedTime % 1 : stateInfo.normalizedTime;
+                    float stateTime = stateInfo.normalizedTime % 1;
 
                     if (!onTimeM.sent && (stateTime >= onTimeM.time))
                     {
                         onTimeM.sent = true;
+
+                      //  Debug.Log(onTimeM.message + ": "+stateTime);
 
                         if (UseSendMessage)
                             DeliverMessage(onTimeM, animator);

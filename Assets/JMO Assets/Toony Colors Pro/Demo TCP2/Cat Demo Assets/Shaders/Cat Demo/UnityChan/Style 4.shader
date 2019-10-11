@@ -24,12 +24,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4"
 		[TCP2Gradient] _Ramp			("Toon Ramp (RGB)", 2D) = "gray" {}
 	[TCP2Separator]
 
-	[TCP2HeaderHelp(NORMAL MAPPING, Normal Bump Map)]
-		//BUMP
-		_BumpMap ("Normal map (RGB)", 2D) = "bump" {}
-		_BumpScale ("Scale", Float) = 1.0
-	[TCP2Separator]
-
 	[TCP2HeaderHelp(OUTLINE, Outline)]
 		//OUTLINE
 		_OutlineColor ("Outline Color", Color) = (0.2, 0.2, 0.2, 1.0)
@@ -152,7 +146,7 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4"
 
 	#ifdef TCP2_OUTLINE_CONST_SIZE
 			//Camera-independent outline size
-			float dist = distance(mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 0)).xyz, v.vertex.xyz);
+			float dist = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld, v.vertex));
 			#define SIZE	dist
 	#else
 			#define SIZE	1.0
@@ -202,15 +196,12 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4"
 		fixed4 _Color;
 		sampler2D _MainTex;
 		sampler2D _STexture;
-		sampler2D _BumpMap;
-		half _BumpScale;
 
 		#define UV_MAINTEX uv_MainTex
 
 		struct Input
 		{
 			half2 uv_MainTex;
-			half2 uv_BumpMap;
 			float vFace : VFACE;
 		};
 
@@ -306,10 +297,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4"
 			o.ShadowColorTex = shadowTex.rgb;
 			o.Albedo = mainTex.rgb * _Color.rgb;
 			o.Alpha = mainTex.a * _Color.a;
-
-			//Normal map
-			half4 normalMap = tex2D(_BumpMap, IN.uv_BumpMap.xy);
-			o.Normal = UnpackScaleNormal(normalMap, _BumpScale);
 
 			//VFace Register (backface lighting)
 			o.vFace = IN.vFace;

@@ -18,17 +18,21 @@ namespace MalbersAnimations.Controller
         public float Bounce = 5;
         [Tooltip("If the Animal Enters the water time elapsed to try exiting the water")]
         public float TryExitTime = 1;
+        /// <summary>Last Time the Animal enters the Water</summary>
         protected float EnterWaterTime;
         [Tooltip("Means the Water does not change the shape. Less RayCasting")]
         public bool WaterIsStatic = true;
+        /// <summary>Gives an extra impulse when entering the sate using the acumulated inertia</summary>
+        [Tooltip("Gives an extra impulse when entering the sate using the acumulated inertia")]
         public bool KeepInertia = true;
+        /// <summary>Spherecast radius to find water using the Water Pivot</summary>
+        [Tooltip("Spherecast radius to find water using the Water Pivot")]
         public float Radius = 0.025f;
-
-        //True: Pivot above the water, False: Pivot Below the water.
-        public bool PivotAboveWater { get; set; }
+        /// <summary>True: Pivot above the water, False: Pivot Below the water.</summary>
+        public bool PivotAboveWater { get; private set; }
 
         /// <summary>Has the animal found Water</summary>
-        public bool IsInWater { get; set; }
+        public bool IsInWater { get; private set; }
         protected int WaterLayer;
         protected MPivots WaterPivot;
         protected Vector3 WaterNormal = Vector3.up;
@@ -66,14 +70,19 @@ namespace MalbersAnimations.Controller
             Inertia = Vector3.ProjectOnPlane(animal.DeltaPos, animal.UpVector);
             UpImpulse = MalbersTools.CleanUpVector(animal.DeltaPos, animal.Forward, animal.Right);   //Clean the Vector from Forward and Horizontal Influence    
             IgnoreLowerStates = true;                                                           //Ignore Falling, Idle and Locomotion while swimming 
-                                                                                                //animal.InertiaPositionSpeed = Inertia; //THIS MOTHER F!#$ER was messing with the water entering
 
             animal.InertiaPositionSpeed = Vector3.zero; //THIS MOTHER F!#$ER was messing with the water entering
         }
 
         public override bool TryActivate()
         {
+            if (animal.ActiveStateID == StateEnum.UndweWater && animal.Sprint && animal.Smooth_UpDown > 0)
+                return false; //If we are underwater and we are sprinting Upwards ... dont enter this state.. go to fall directly
+
+
             CheckWater();
+
+           
 
             if (IsInWater)
             {
@@ -107,23 +116,20 @@ namespace MalbersAnimations.Controller
 
         public override void TryExitState(float DeltaTime)
         {
-            //if (MainTagHash == CurrentAnimTag)
+            if (Time.time - EnterWaterTime < TryExitTime) return; //do not try to exit if the animal just enter the water
+
+            CheckWater();
+
+            if (!IsInWater)
             {
-                if (Time.time - EnterWaterTime < TryExitTime) return; //do not try to exit if the animal just enter the water
-
-                CheckWater();
-
-                if (!IsInWater)
-                {
-                    AllowExit();
-                }
+                AllowExit();
             }
         }
 
 
         public override void OnStateMove(float deltatime)
         {
-            //  Vector3 AnimalPos = animal.transform.position + animal.AdditivePosition;
+            //Vector3 AnimalPos = animal.transform.position + animal.AdditivePosition;
             //WaterUPAnimalPos = AnimalPos + (animal.UpVector * UpMult);   //Set the Up Point
             WaterUPPivot = WaterPivotPoint + animal.AdditivePosition + (animal.UpVector * UpMult);   //Set the Up Point
 
@@ -137,7 +143,6 @@ namespace MalbersAnimations.Controller
                 {
                     animal.AddInertia(ref UpImpulse, deltatime * Bounce);
                 }
-
 
                 var waterCol = WaterCollider[0];                                                //Get the Water Collider
                                                                                                 // var WaterUPSurface = waterCol.ClosestPoint(WaterUPAnimalPos);
@@ -156,18 +161,10 @@ namespace MalbersAnimations.Controller
                 //Find the Water Level
                 FindWaterLevel();
 
-                //  Debug.Log(WaterPivot_Dist_from_Water);
                 if (WaterPivot_Dist_from_Water.magnitude > 0.001f)
                 {
                     animal.AdditivePosition += WaterPivot_Dist_from_Water * (deltatime * AlignSmooth);
                 }
-
-
-                //  animal.AlignPositionDistance(WaterPivot_Dist_from_Water,  deltatime, AlignSmooth);         //Align to Water Level
-
-                //  float Animal_Dist_from_Water = (WaterUPSurface - AnimalPos).magnitude;// + WaterLine;
-                // animal.AlignPositionInverse(Animal_Dist_from_Water + WaterLine, deltatime, AlignSmooth);         //Align to Water Level
-
             }
         }
 

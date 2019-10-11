@@ -424,13 +424,18 @@ namespace PixelCrushers.DialogueSystem.Articy.Articy_3_1
             else if (type == typeof(ReferenceSlotPropertyType))
             {
                 ReferenceSlotPropertyType slotProperty = (ReferenceSlotPropertyType)item;
-                if (_convertSlotsAs == ConverterPrefs.ConvertSlotsModes.DisplayName)
+                switch (_convertSlotsAs)
                 {
-                    fields.Add(new Field(slotProperty.Name, GetDisplayName(slotProperty.IdRef), FieldType.Text));
-                }
-                else
-                {
-                    fields.Add(new Field(slotProperty.Name, slotProperty.IdRef, FieldType.Text));
+                    case ConverterPrefs.ConvertSlotsModes.ID:
+                        fields.Add(new Field(slotProperty.Name, slotProperty.IdRef, FieldType.Text));
+                        break;
+                    case ConverterPrefs.ConvertSlotsModes.TechnicalName:
+                        fields.Add(new Field(slotProperty.Name, GetTechnicalName(slotProperty.IdRef), FieldType.Text));
+                        break;
+                    default:
+                    case ConverterPrefs.ConvertSlotsModes.DisplayName:
+                        fields.Add(new Field(slotProperty.Name, GetDisplayName(slotProperty.IdRef), FieldType.Text));
+                        break;
                 }
             }
             else if (type == typeof(NumberPropertyType))
@@ -483,6 +488,25 @@ namespace PixelCrushers.DialogueSystem.Articy.Articy_3_1
                 }
             }
             return enumIndex.ToString();
+        }
+
+        private static string GetTechnicalName(string idRef)
+        {
+            foreach (var item in _currentExport.Content.Items)
+            {
+                if (item is EntityType && string.Equals((item as EntityType).Id, idRef)) return (item as EntityType).TechnicalName;
+                if (item is FlowFragmentType && string.Equals((item as FlowFragmentType).Id, idRef)) return (item as FlowFragmentType).TechnicalName;
+                else if (item is DialogueFragmentType && string.Equals((item as DialogueFragmentType).Id, idRef)) return (item as DialogueFragmentType).TechnicalName;
+                else if (item is HubType && string.Equals((item as HubType).Id, idRef)) return (item as HubType).TechnicalName;
+                else if (item is JumpType && string.Equals((item as JumpType).Id, idRef)) return (item as JumpType).DisplayName;
+                else if (item is ZoneType && string.Equals((item as ZoneType).Id, idRef)) return (item as ZoneType).TechnicalName;
+                else if (item is LocationType && string.Equals((item as LocationType).Id, idRef)) return (item as LocationType).TechnicalName;
+                else if (item is SpotType && string.Equals((item as SpotType).Id, idRef)) return (item as SpotType).TechnicalName;
+                else if (item is JourneyType && string.Equals((item as JourneyType).Id, idRef)) return (item as JourneyType).TechnicalName;
+                else if (item is AssetType && string.Equals((item as AssetType).Id, idRef)) return (item as AssetType).TechnicalName;
+                else if (item is DialogueType && string.Equals((item as DialogueType).Id, idRef)) return (item as DialogueType).TechnicalName;
+            }
+            return string.Equals("0x0000000000000000", idRef) ? string.Empty : idRef;
         }
 
         private static string GetDisplayName(string idRef)

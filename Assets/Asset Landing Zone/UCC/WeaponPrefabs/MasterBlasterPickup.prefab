@@ -151,9 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf325443b720c3944b75efe31f6b380f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BaseName: MasterBlaster
   m_WeaponProfiles:
-  - m_ProfileName: Master Blaster 1H
+  - m_ProfileName: One Handed Masterblaster
     m_ProfileRoot: {fileID: 273621486710115467}
     m_WeaponType: 0
     m_AnimatorID: 2
@@ -218,25 +217,6 @@ MonoBehaviour:
       m_Spread: 0
       m_HitscanFireRange: 0
       m_MuzzleFlash: {fileID: 0}
-    - m_PartName: Heavy
-      m_Part:
-        m_Part: {fileID: 2067206863549059541}
-        m_SubParts:
-        - 
-        m_SightMount: 0
-        m_ScopeMount: 0
-        m_BarrelMount: 0
-        m_GripMount: 0
-        m_UnderMount: 0
-        m_SideMount: 0
-        m_BarrelMountPistol: 0
-        m_SightMountPistol: 0
-        m_UnderMountPistol: 0
-      m_FirePointOffset: {fileID: 9096568982659115745}
-      m_MuzzleFlashOffset: {fileID: 9096568982659115745}
-      m_Spread: 0
-      m_HitscanFireRange: 0
-      m_MuzzleFlash: {fileID: 0}
     m_RearParts:
     - m_PartName: Standard
       m_Part:
@@ -283,7 +263,7 @@ MonoBehaviour:
     m_DominantItem: 1
     m_UIMonitorID: 0
     m_ShowCrosshairsOnAim: 1
-  - m_ProfileName: Master Blaster 2H
+  - m_ProfileName: Two Handed Masterblaster
     m_ProfileRoot: {fileID: 273621486710115467}
     m_WeaponType: 1
     m_AnimatorID: 5
@@ -770,12 +750,37 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon - Fore
       objectReference: {fileID: 0}
+    - target: {fileID: 1096467902663002877, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 1096467902663002877, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -9025114588086610240, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Fore
       objectReference: {fileID: 0}
     - target: {fileID: -9025114588086610240, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7294047831777130640, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: -7847080881628468172, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: -7847080881628468172, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -785,6 +790,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon - Rear
       objectReference: {fileID: 0}
+    - target: {fileID: -8679012219992704059, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679012219992704059, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -844912139441070942, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
@@ -794,6 +809,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638371222993013194, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638371222993013194, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108835869426899599, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108835869426899599, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075208478544893727, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Accessory
       objectReference: {fileID: 0}
     - target: {fileID: 3501423166815770560, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
@@ -809,6 +849,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 8185781138783759004, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: -4843653431702782094, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: -3572821258628605513, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
       objectReference: {fileID: 0}
     - target: {fileID: 3168496494889409194, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
@@ -1109,70 +1164,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: -7847080881628468172, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Fore
-      objectReference: {fileID: 0}
-    - target: {fileID: -7847080881628468172, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7638371222993013194, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Fore
-      objectReference: {fileID: 0}
-    - target: {fileID: 7638371222993013194, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7294047831777130640, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679012219992704059, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Fore
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679012219992704059, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -8355162663144474003, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Integral
       objectReference: {fileID: 0}
-    - target: {fileID: 1096467902663002877, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Fore
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096467902663002877, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -7294960837645058134, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Integral
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108835869426899599, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Fore
-      objectReference: {fileID: 0}
-    - target: {fileID: 7108835869426899599, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3720617866457041557, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
@@ -1229,16 +1229,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8185781138783759004, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
-      objectReference: {fileID: 0}
-    - target: {fileID: 4075208478544893727, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Accessory
-      objectReference: {fileID: 0}
     - target: {fileID: -3936365022509184022, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
@@ -1259,20 +1249,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon - Integral
       objectReference: {fileID: 0}
-    - target: {fileID: -7837542980546957716, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
-      objectReference: {fileID: 0}
     - target: {fileID: -841466880855325849, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Integral
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604313475853621067, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
       objectReference: {fileID: 0}
     - target: {fileID: -5910850624799606332, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
@@ -1295,11 +1275,6 @@ PrefabInstance:
       value: Weapon - Integral
       objectReference: {fileID: 0}
     - target: {fileID: -2258802752700964565, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
-      objectReference: {fileID: 0}
-    - target: {fileID: -4843653431702782094, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Rear
@@ -1364,11 +1339,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Weapon - Fore
       objectReference: {fileID: 0}
-    - target: {fileID: -3572821258628605513, guid: 7d79302a52322b74989717467c295e2f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Weapon - Rear
-      objectReference: {fileID: 0}
     - target: {fileID: -2747133816401841104, guid: 7d79302a52322b74989717467c295e2f,
         type: 3}
       propertyPath: m_TagString
@@ -1383,6 +1353,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Weapon - Fore
+      objectReference: {fileID: 0}
+    - target: {fileID: -7837542980546957716, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604313475853621067, guid: 7d79302a52322b74989717467c295e2f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Weapon - Rear
       objectReference: {fileID: 0}
     - target: {fileID: 100228, guid: 7d79302a52322b74989717467c295e2f, type: 3}
       propertyPath: m_IsActive

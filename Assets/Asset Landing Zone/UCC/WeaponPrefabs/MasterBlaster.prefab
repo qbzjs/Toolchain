@@ -700,25 +700,6 @@ MonoBehaviour:
       m_Spread: 0
       m_HitscanFireRange: 0
       m_MuzzleFlash: {fileID: 0}
-    - m_PartName: Heavy
-      m_Part:
-        m_Part: {fileID: 220985400955093884}
-        m_SubParts:
-        - 
-        m_SightMount: 0
-        m_ScopeMount: 0
-        m_BarrelMount: 0
-        m_GripMount: 0
-        m_UnderMount: 0
-        m_SideMount: 0
-        m_BarrelMountPistol: 0
-        m_SightMountPistol: 0
-        m_UnderMountPistol: 0
-      m_FirePointOffset: {fileID: 8030736555956792735}
-      m_MuzzleFlashOffset: {fileID: 8030736555956792735}
-      m_Spread: 0
-      m_HitscanFireRange: 0
-      m_MuzzleFlash: {fileID: 0}
     m_RearParts:
     - m_PartName: Standard
       m_Part:

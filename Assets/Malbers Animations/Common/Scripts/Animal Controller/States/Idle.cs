@@ -14,7 +14,6 @@ namespace MalbersAnimations.Controller
         [Tooltip("The Idle will be activated while the Animal is moving. Use this only when there's no Locomotion State")]
         public BoolReference IsLocomotion = new BoolReference(false);
 
-
         public override bool TryActivate()
         {
             //Activate when the animal is not moving andis grounded
@@ -28,7 +27,10 @@ namespace MalbersAnimations.Controller
                 return (General.Grounded == animal.Grounded); //This enables that you can be on idle if you are not grounded too
             }
         }
-
+        public override void OnStateMove(float deltatime)
+        {
+            if (animal.TerrainSlope > animal.maxAngleSlope) animal.MovementAxis.z = 0;
+        }
 
 
 

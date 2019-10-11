@@ -122,6 +122,7 @@ namespace MalbersAnimations.HAP
 
         /// <summary> Speed Multiplier for the Speeds Changes while using other Animals</summary>
         public float SpeedMultiplier { get; set; }
+        public float TargetSpeedMultiplier { get; set; }
 
         public bool ForceLateUpdateLink { get; set; }
 
@@ -227,6 +228,7 @@ namespace MalbersAnimations.HAP
                 Default_Anim_UpdateMode = Anim.updateMode;             //Gets the Update Mode of the Animator to restore later when dismounted.
             }
             SpeedMultiplier = 1f;
+            TargetSpeedMultiplier = 1f;
         }
 
         void Start()
@@ -273,11 +275,21 @@ namespace MalbersAnimations.HAP
             }
             else
             {
+                Anim?.Play(Montura.MountIdle, MountLayerIndex);                //Ingore the Mounting Animations
+               Anim.Update(Time.fixedDeltaTime);
+                // StartCoroutine(nextFrameInstantMount());
                 Start_Mounting();
                 End_Mounting();
-                Anim?.Play(Montura.MountIdle, MountLayerIndex);                //Ingore the Mounting Animations
             }
         }
+
+        //IEnumerator nextFrameInstantMount()
+        //{
+        //    yield return null;
+        //    yield return null;
+        //    Start_Mounting();
+        //    End_Mounting();
+        //}
 
         public virtual void DismountAnimal()
         {
@@ -619,7 +631,8 @@ namespace MalbersAnimations.HAP
         protected virtual void Animators_ReSync()
         {
             if (!Anim) return;
-            if (!Montura.syncAnimators) return;                                                                     //Don't Sync animators when that parameter is disabled
+            if (Montura.Animal.Stance != 0) return; //Skip if the we are not on the default stance                                                            
+            if (Montura.ID != 0) return; // if is not the Horse (Wagon do not sync )                                                        
 
             if (Montura.Animal.ActiveStateID == StateEnum.Locomotion)                                               //Search for syncron the locomotion state on the animal
             {
@@ -753,8 +766,8 @@ namespace MalbersAnimations.HAP
             Anim.SetFloat(animal.hash_Horizontal, animal.Smooth_Horizontal);
             Anim.SetFloat(animal.hash_Slope, animal.SlopeNormalized);
 
-            // Anim.SetBool(animal.hash_Grounded, animal.Grounded);
-            // Anim.SetInteger(animal.hash_State, animal.ActiveStateID);
+            Anim.SetBool(animal.hash_Grounded, animal.Grounded);
+           // Anim.SetInteger(animal.hash_State, animal.ActiveStateID);
             // Anim.SetInteger(animal.hash_Mode, animal.ModeID);
 
 
@@ -762,37 +775,31 @@ namespace MalbersAnimations.HAP
             Anim.SetFloat(animal.hash_IDFloat, animal.IDFloat);
 
             if (!Montura.UseSpeedModifiers) SpeedMultiplier = animal.SpeedMultiplier; //In case the Mount is not using Speed Modifiers
-            Anim.SetFloat(animal.hash_SpeedMultiplier, SpeedMultiplier/*,100,Time.deltaTime*/);
+
+            SpeedMultiplier =  Mathf.MoveTowards(SpeedMultiplier, TargetSpeedMultiplier, Time.deltaTime * 5f);
+            Anim.SetFloat(animal.hash_SpeedMultiplier, SpeedMultiplier);
         }
 
         void AnimalGrounded(bool grounded)
         {
-            try
-            { Anim.SetBool(Montura.Animal.hash_Grounded, grounded); }
-            catch { }
+            Anim?.SetBool(Montura.Animal.hash_Grounded, grounded);  
         }
 
         void AnimalState(int State)
         {
-            try
-            { Anim.SetInteger(Montura.Animal.hash_State, State); }
-            catch { }
+            Anim?.SetInteger(Montura.Animal.hash_State, State);
+            // Anim?.SetInteger(Montura.Animal.hash_LastState, Montura.Animal.LastState.ID); 
         }
 
 
         void AnimalStance(int stance)
         {
             if (Montura.ID != 0) return; //Skip if the Mount ID is Not  the Default
-
-            try
-            { Anim.SetInteger(Montura.Animal.hash_Stance, stance); }
-            catch { }
+            Anim?.SetInteger(Montura.Animal.hash_Stance, stance);
         }
         void AnimalMode(int mode)
         {
-            try
-            { Anim.SetInteger(Montura.Animal.hash_Mode, mode); }
-            catch { }
+            Anim?.SetInteger(Montura.Animal.hash_Mode, mode);
         }
 
         #endregion
@@ -981,10 +988,8 @@ namespace MalbersAnimations.HAP
             this.InvokeWithParams(message, value);
         }
 
-
-
-
 #if UNITY_EDITOR
+
         private void Reset()
         {
             BoolVar CanMountV = MalbersTools.GetInstance<BoolVar>("Can Mount");
@@ -992,7 +997,6 @@ namespace MalbersAnimations.HAP
 
 
             MEvent CanMountE = MalbersTools.GetInstance<MEvent>("Rider Can Mount");
-
             MEvent CanDismountE = MalbersTools.GetInstance<MEvent>("Rider Can Dismount");
 
             BoolVar CanCallMountV = MalbersTools.GetInstance<BoolVar>("Can Call Mount");
@@ -1000,7 +1004,7 @@ namespace MalbersAnimations.HAP
 
             MEvent RiderisRiding = MalbersTools.GetInstance<MEvent>("Rider is Riding");
             MEvent SetCameraSettings = MalbersTools.GetInstance<MEvent>("Set Camera Settings");
-            BoolVar RiderCHolderKeys = MalbersTools.GetInstance<BoolVar>("RiderC Weapon Keys");
+            BoolVar RCWeaponInput = MalbersTools.GetInstance<BoolVar>("RC Weapon Input");
 
             OnCanMount = new BoolEvent();
             OnCanDismount = new BoolEvent();
@@ -1028,10 +1032,10 @@ namespace MalbersAnimations.HAP
 
             if (SetCameraSettings != null) UnityEditor.Events.UnityEventTools.AddObjectPersistentListener<Transform>(OnStartDismounting, SetCameraSettings.Invoke, transform);
 
-            if (RiderCHolderKeys != null)
+            if (RCWeaponInput != null)
             {
-                UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(OnStartDismounting, RiderCHolderKeys.SetValue, false);
-                UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(OnEndMounting, RiderCHolderKeys.SetValue, true);
+                UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(OnStartDismounting, RCWeaponInput.SetValue, false);
+                UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(OnEndMounting, RCWeaponInput.SetValue, true);
             }
 
 
@@ -1043,17 +1047,145 @@ namespace MalbersAnimations.HAP
                 UnityEditor.Events.UnityEventTools.AddBoolPersistentListener(OnEndDismounting, malbersinput.SetMoveCharacter, true);
             }
         }
-#endif
 
         ///Editor Variables
         [HideInInspector] public int Editor_Tabs1;
+
+        [ContextMenu("Create Mount Inputs")] 
+        void ConnectToInput()
+        {
+            MInput input = GetComponent<MInput>();
+
+            if (input == null)
+            { input = gameObject.AddComponent<MInput>(); }
+
+
+            #region Mount Input
+            var mountInput = input.FindInput("Mount");
+
+            if (mountInput == null)
+            {
+                mountInput = new InputRow("Mount", "Mount", KeyCode.F, InputButton.Down, InputType.Key);
+                input.inputs.Add(mountInput);
+
+                mountInput.active.Variable = MalbersTools.GetInstance<BoolVar>("Can Mount");
+                mountInput.active.UseConstant = false;
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(mountInput.OnInputDown,MountAnimal);
+
+
+                Debug.Log("<B>Mount</B> Input created and connected to Rider.MountAnimal");
+            }
+            #endregion
+
+            #region Dismount Input
+
+          
+            var DismountInput = input.FindInput("Dismount");
+
+            if (DismountInput == null)
+            {
+                DismountInput = new InputRow("Dismount", "Dismount", KeyCode.F, InputButton.LongPress, InputType.Key);
+
+                DismountInput.LongPressTime = 0.2f;
+
+                input.inputs.Add(DismountInput);
+
+                DismountInput.active.Variable = MalbersTools.GetInstance<BoolVar>("Can Dismount");
+                DismountInput.active.UseConstant = false;
+
+                var RiderDismountUI = MalbersTools.GetInstance<MEvent>("Rider Dismount UI");
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(DismountInput.OnLongPress, DismountAnimal);
+
+                if (RiderDismountUI != null)
+                {
+                    UnityEditor.Events.UnityEventTools.AddPersistentListener(DismountInput.OnLongPress, RiderDismountUI.Invoke);
+                    UnityEditor.Events.UnityEventTools.AddPersistentListener(DismountInput.OnPressedNormalized, RiderDismountUI.Invoke);
+                    UnityEditor.Events.UnityEventTools.AddPersistentListener(DismountInput.OnInputUp, RiderDismountUI.Invoke);
+                    UnityEditor.Events.UnityEventTools.AddFloatPersistentListener(DismountInput.OnInputDown, RiderDismountUI.Invoke,0f);
+                }
+
+
+                Debug.Log("<B>Dismount</B> Input created and connected to Rider.DismountAnimal");
+            }
+
+            #endregion
+
+            #region CanCallMount Input
+
+          
+            var CanCallMount = input.FindInput("Call Mount");
+
+            if (CanCallMount == null)
+            {
+                CanCallMount = new InputRow("Call Mount", "Call Mount", KeyCode.F, InputButton.Down, InputType.Key);
+                input.inputs.Add(CanCallMount);
+
+                CanCallMount.active.Variable = MalbersTools.GetInstance<BoolVar>("Can Call Mount");
+                CanCallMount.active.UseConstant = false;
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(CanCallMount.OnInputDown, CallAnimalToggle);
+
+
+                Debug.Log("<B>Call Mount</B> Input created and connected to Rider.CallAnimalToggle");
+            }
+
+            #endregion
+        }
+
+        [ContextMenu("Create Event Listeners")]
+        void CreateEventListeners()
+        {
+            MEvent RiderSetMount = MalbersTools.GetInstance<MEvent>("Rider Set Mount");
+            MEvent RiderSetDismount = MalbersTools.GetInstance<MEvent>("Rider Set Dismount");
+
+            MEventListener listener = GetComponent<MEventListener>();
+
+            if (listener == null)
+            {
+                listener = gameObject.AddComponent<MEventListener>();
+            }
+
+            if (listener.Events == null) listener.Events = new List<MEventItemListener>();
+
+            if (listener.Events.Find(item => item.Event == RiderSetMount) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = RiderSetMount,
+                    useVoid = true,
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.Response, MountAnimal);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Rider Set Mount</B> Added to the Event Listeners");
+            }
+
+            if (listener.Events.Find(item => item.Event == RiderSetDismount) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = RiderSetDismount,
+                    useVoid = true,
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.Response, DismountAnimal);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Rider Set Dismount</B> Added to the Event Listeners");
+            }
+
+        }
+#endif
 
         void OnDrawGizmos()
         {
             if (!debug) return;
             if (!Anim) return;
             
-            if (syncronize && Mounted)
+            if (syncronize && Mounted && Montura.debug)
             {
                 Transform head = Anim.GetBoneTransform(HumanBodyBones.Head);
 
@@ -1070,7 +1202,7 @@ namespace MalbersAnimations.HAP
 
                 if ((int)HorseNormalizedTime % 2 == 0)
                 {
-                    Gizmos.color = Color.red;
+                    Gizmos.color =  new Color (0.11f,1f,0.25f); //Orange
                 }
                 else
                 {

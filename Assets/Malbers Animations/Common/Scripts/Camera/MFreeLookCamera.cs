@@ -253,7 +253,7 @@ namespace MalbersAnimations
 
         public virtual void ToggleSprintFOV(bool val)
         {
-            ChangeFOV(val ? SprintFOV.Value : ActiveFOV);
+            ChangeFOV(val ? ActiveFOV + SprintFOV.Value : ActiveFOV);
         }
 
 
@@ -261,7 +261,7 @@ namespace MalbersAnimations
         {
             if (IChange_FOV != null) StopCoroutine(IChange_FOV);
 
-            IChange_FOV = C_SprintFOV(ActiveFOV + newFOV, FOVTransition);
+            IChange_FOV = C_SprintFOV(newFOV, FOVTransition);
             StartCoroutine(IChange_FOV);
         }
 
@@ -290,16 +290,16 @@ namespace MalbersAnimations
         private IEnumerator C_SprintFOV(float newFOV, float time)
         {
             float elapsedTime = 0f;
+            float startFOV = Cam.fieldOfView;
 
             while (elapsedTime < time)
             {
-                Cam.fieldOfView = Mathf.Lerp(Cam.fieldOfView, newFOV, Mathf.SmoothStep(0, 1, elapsedTime / time));
-
+                Cam.fieldOfView = Mathf.Lerp(startFOV, newFOV, Mathf.SmoothStep(0, 1, elapsedTime / time));
                 elapsedTime += Time.deltaTime;
-
                 yield return null;
             }
-            yield return null;
+            Cam.fieldOfView = newFOV;
+           yield return null;
         }
         #endregion
 

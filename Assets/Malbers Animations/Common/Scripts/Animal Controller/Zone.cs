@@ -163,7 +163,7 @@ namespace MalbersAnimations.Controller
 
                 CurrentAnimal = newAnimal;                                             //Set a new Animal
                 AnimalStats = CurrentAnimal.GetComponentInParent<Stats>();
-
+                OnEnter.Invoke();
                 ActivateZone();
             }
         }

@@ -112,11 +112,7 @@ namespace MalbersAnimations
         /// <summary>Check if an Input Row  exist  and returns it</summary>
         public virtual InputRow FindInput(string name)
         {
-            InputRow input = inputs.Find(item => item.name.ToUpper() == name.ToUpper());
-
-            if (input != null) return input;
-
-            return null;
+            return inputs.Find(item => item.name == name);
         }
 
         /// <summary>Convert the List of Inputs into a Dictionary</summary>

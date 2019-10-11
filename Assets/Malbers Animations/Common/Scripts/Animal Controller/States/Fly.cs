@@ -21,6 +21,7 @@ namespace MalbersAnimations.Controller
 
         [Tooltip("When the Animal is close to the Ground it will automatically Land")]
         public BoolReference canLand = new BoolReference( true);
+        [Tooltip("Ray Length multiplier to check for ground and automatically land (increases or decreases the MainPivot Lenght for the Fall Ray")]
         public FloatReference LandMultiplier = new FloatReference(1f);
         
         
@@ -68,6 +69,11 @@ namespace MalbersAnimations.Controller
                 }
 
                 Activate();
+            }
+            else if (InputValue && ActiveState && (flyInput == FlyInput.Toggle))
+            {
+                AllowExit();
+                InputValue = false; 
             }
         }
 
@@ -182,55 +188,50 @@ namespace MalbersAnimations.Controller
 
         public override void TryExitState(float DeltaTime)
         {
-            if (CurrentAnimTag == MainTagHash) //Only try to exit when we are on flying
+            if (CheckforWater)
             {
-                //Debug.Log("Try Exit Fly");
-
-                if (CheckforWater)
+                SwimState.CheckWater();
+                if (SwimState.IsInWater)
                 {
-                    SwimState.CheckWater();
-                    if (SwimState.IsInWater)
+                    AllowExit();  //Let the other states to awake (Water)
+                    return;
+                }
+            }
+
+            if (canLand)
+            {
+                var MainPivot = animal.Main_Pivot_Point + animal.AdditivePosition;
+
+                if (debug) Debug.DrawRay(MainPivot, animal.GravityDirection * animal.Height * LandMultiplier, Color.yellow);
+
+                int Hit = Physics.RaycastNonAlloc(MainPivot, animal.GravityDirection, LandHit, animal.Height * LandMultiplier, animal.GroundLayer, QueryTriggerInteraction.Ignore);
+
+                if (Hit > 0)
+                {
+                    if (LandHit[0].distance < animal.Height) animal.Grounded = true; //Means the animal is touching the ground
+
+                    AllowExit();  //Let the other states to awake (Ground)
+                    return;
+                }
+            }
+
+            switch (flyInput)
+            {
+                case FlyInput.Toggle:
+                    if (ActiveState && InputValue)
                     {
-                        AllowExit();  //Let the other states to awake (Water)
-                        return;
+                        AllowExit();
+                        InputValue = false;
                     }
-                }
-
-                if (canLand)
-                {
-                    var MainPivot = animal.Main_Pivot_Point + animal.AdditivePosition;
-
-                    if (debug) Debug.DrawRay(MainPivot, animal.GravityDirection * animal.Height * LandMultiplier, Color.magenta);
-
-                    int Hit = Physics.RaycastNonAlloc(MainPivot, animal.GravityDirection, LandHit, animal.Height * LandMultiplier, animal.GroundLayer, QueryTriggerInteraction.Ignore);
-
-                    if (Hit > 0)
+                    break;
+                case FlyInput.Press:
+                    if (ActiveState && !InputValue)
                     {
-                        if (LandHit[0].distance < animal.Height)  animal.Grounded = true; //Means the animal is touching the ground
-                        
-                        AllowExit();  //Let the other states to awake (Ground)
-                        return;
+                        AllowExit();
                     }
-                }
-
-                switch (flyInput)
-                {
-                    case FlyInput.Toggle:
-                        if (ActiveState && InputValue)
-                        {
-                            AllowExit();
-                            InputValue = false;
-                        }
-                        break;
-                    case FlyInput.Press:
-                        if (ActiveState && !InputValue)
-                        {
-                            AllowExit();
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                    break;
+                default:
+                    break;
             }
         }
 

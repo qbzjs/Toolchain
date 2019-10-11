@@ -36,12 +36,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 6"
 		_HSV_V ("Value", Range(-1,1)) = 0
 	[TCP2Separator]
 
-	[TCP2HeaderHelp(NORMAL MAPPING, Normal Bump Map)]
-		//BUMP
-		_BumpMap ("Normal map (RGB)", 2D) = "bump" {}
-		_BumpScale ("Scale", Float) = 1.0
-	[TCP2Separator]
-
 
 		//Avoid compile error if the properties are ending with a drawer
 		[HideInInspector] __dummy__ ("unused", Float) = 0
@@ -65,15 +59,12 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 6"
 		float _HSV_H;
 		float _HSV_S;
 		float _HSV_V;
-		sampler2D _BumpMap;
-		half _BumpScale;
 
 		#define UV_MAINTEX uv_MainTex
 
 		struct Input
 		{
 			half2 uv_MainTex;
-			half2 uv_BumpMap;
 		};
 
 		//================================================================
@@ -199,10 +190,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 6"
 			mainTex.rgb = hsv2rgb(mainTexHSV);
 			o.Albedo = mainTex.rgb * _Color.rgb;
 			o.Alpha = mainTex.a * _Color.a;
-
-			//Normal map
-			half4 normalMap = tex2D(_BumpMap, IN.uv_BumpMap.xy);
-			o.Normal = UnpackScaleNormal(normalMap, _BumpScale);
 			o.DiffTintMask = mainTex.a;
 		}
 

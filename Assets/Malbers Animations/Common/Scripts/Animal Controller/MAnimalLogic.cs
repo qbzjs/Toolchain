@@ -20,11 +20,11 @@ namespace MalbersAnimations.Controller
                 MainCamera = MalbersTools.FindMainCamera().transform;
             }
 
-            Anim = GetComponent<Animator>();            //Cache the Animator
-            RB = GetComponent<Rigidbody>();             //Catche the Rigid Body  
+            if (Anim ==null) Anim = GetComponentInParent<Animator>();            //Cache the Animator
+            if (RB == null) RB = GetComponentInParent<Rigidbody>();             //Catche the Rigid Body  
             SpeedMultiplier = 1;
             GetHashIDs();
-            OptionalAnimatorParameters();                                                   //Enable Optional Animator Parameters on the Animator Controller;
+            OptionalAnimatorParameters();                                       //Enable Optional Animator Parameters on the Animator Controller;
 
             _transform = transform;         //Cache the Transform
             activeMode = null;
@@ -38,7 +38,6 @@ namespace MalbersAnimations.Controller
             {
                 RB.useGravity = false;
                 RB.constraints = RigidbodyConstraints.FreezeRotation;
-              //  RB.constraints = RigidbodyConstraints.None;
             }
 
             //DefaultAnimatorUpdate = Anim.updateMode;//Cache the Update Mode on the Animator to Physics or Normal
@@ -76,7 +75,7 @@ namespace MalbersAnimations.Controller
             HitDirection = Vector3.zero; //Reset the Damage Direction;
         }
 
-        public void SetPivots()
+        private void SetPivots()
         {
             Pivot_Hip = pivots.Find(item => item.name.ToUpper() == "HIP");
             Pivot_Chest = pivots.Find(item => item.name.ToUpper() == "CHEST");
@@ -86,7 +85,8 @@ namespace MalbersAnimations.Controller
         }
 
 
-        void Start() { SetStart(); }
+        void Start()
+        { SetStart(); }
 
         void OnEnable()
         {
@@ -95,10 +95,7 @@ namespace MalbersAnimations.Controller
 
             GetInputs(true);
 
-            foreach (var state in states)
-            {
-                state.ResetState();
-            }
+            foreach (var state in states)  state.ResetState();
 
             if (isPlayer) SetMainPlayer();
         }
@@ -119,9 +116,8 @@ namespace MalbersAnimations.Controller
             UpdateDirectionSpeed = true;
 
             UseAdditivePos = true;
-            //UseAdditiveRot = true;
             Inertia = Vector3.zero;
-            gravityStackAceleration = 0;
+            GravityStoredAceleration = 0;
             UseGravity = true;
             UseOrientToGround = true;
             UseCustomAlign = false;
@@ -130,28 +126,11 @@ namespace MalbersAnimations.Controller
             InertiaPositionSpeed = Vector3.zero;
             activeMode = null;
 
-
-            //Get the transform of the main camera
-
-          
-
-
             Attack_Triggers = GetComponentsInChildren<MAttackTrigger>(true).ToList();        //Save all Attack Triggers.
 
-
             foreach (var state in states) state.StartState();
-          
 
-            State StartState;
-
-            if (OverrideStartState != null)
-            {
-                StartState = statesD[OverrideStartState];
-            }
-            else
-            {
-                StartState = states[states.Count - 1];             //Activate the last State on the Queue on Start
-            }
+            State StartState = OverrideStartState != null ? statesD[OverrideStartState] : states[states.Count - 1]; //Use override state or take the last one on the List
 
             activeState = StartState;                           //Set the var as Active state whitout calling the code               //Set the Last State as the Active State since is the first time
             StartState.Activate();
@@ -189,7 +168,7 @@ namespace MalbersAnimations.Controller
         }
 
         /// <summary>Enable Optional Animator Parameters on the Animator Controller;</summary>
-        protected void OptionalAnimatorParameters()
+        protected virtual void OptionalAnimatorParameters()
         {
             hasUpDown = MalbersTools.FindAnimatorParameter(Anim, AnimatorControllerParameterType.Float, hash_UpDown);
             hasDeltaAngle = MalbersTools.FindAnimatorParameter(Anim, AnimatorControllerParameterType.Float, hash_DeltaAngle);
@@ -205,8 +184,7 @@ namespace MalbersAnimations.Controller
             }
         }
 
-        // Called at the start of FixedUpdate to record the current state of the base layer of the animator.
-        void CacheAnimatorState()
+        protected virtual void CacheAnimatorState()
         {
             m_PreviousCurrentState = m_CurrentState;
             m_PreviousNextState = m_NextState;
@@ -238,7 +216,7 @@ namespace MalbersAnimations.Controller
         }
 
         /// <summary>Link all Parameters to the animator</summary>
-        public virtual void UpdateAnimatorParameters()
+        protected virtual void UpdateAnimatorParameters()
         {
             Anim.SetFloat(hash_Vertical, MovementAxisSmoothed.z);
             Anim.SetFloat(hash_Horizontal, MovementAxisSmoothed.x);
@@ -390,10 +368,13 @@ namespace MalbersAnimations.Controller
 
             if (MovementDetected)
             {
+                float ModeRotation = 1;
+                if (IsPlayingMode && !ActiveMode.AllowRotation) ModeRotation = 0; //If the mode does not allow rotation set the multiplier to zero
+
                 if (MoveWithDirection)
                 {
                     Quaternion targetRotation = Quaternion.Slerp(Quaternion.identity, Quaternion.Euler(0, DeltaAngle, 0),
-                        time * (SpeedRotation + 1) / 4 * (!IsPlayingMode ? (TurnMultiplier + 1) : 0));
+                        time * (SpeedRotation + 1) / 4 *  ( (TurnMultiplier + 1) * ModeRotation ));
 
                     AdditiveRotation *= targetRotation;
                 }
@@ -403,48 +384,23 @@ namespace MalbersAnimations.Controller
 
                     float TurnInput = Mathf.Clamp(Smooth_Horizontal, -1, 1) * (MovementAxis.z >= 0 ? 1 : -1);  //Add +Rotation when going Forward and -Rotation when going backwards
 
-                    AdditiveRotation *= Quaternion.Euler(0, Turn * TurnInput * time, 0);
+                    AdditiveRotation *= Quaternion.Euler(0, Turn * TurnInput * time * ModeRotation, 0);
 
-                    if (!IsPlayingMode) //Do not use  GLOBAL ROTATION while is on any Mode (Attack,Action, Damage, Death)
-                    {
-                        var TargetGlobal = Quaternion.Euler(0, TurnInput * (TurnMultiplier+1), 0);
-                        var AdditiveGlobal = Quaternion.Slerp(Quaternion.identity, TargetGlobal, time * (SpeedRotation + 1));
-                        AdditiveRotation *= AdditiveGlobal;
-                    }
+                    var TargetGlobal = Quaternion.Euler(0, TurnInput * (TurnMultiplier + 1), 0);
+                    var AdditiveGlobal = Quaternion.Slerp(Quaternion.identity, TargetGlobal, time * (SpeedRotation + 1) * ModeRotation);
+                    AdditiveRotation *= AdditiveGlobal;
                 }
-            }
-        }
-
-        /// <summary>The full Speed we want to without lerping, for the Additional Speed</summary>
-        public Vector3 TargetSpeed
-        {
-            get
-            {
-                Vector3 forward = DirectionalSpeed;
-                var SpeedModPos = CurrentSpeedModifier.position;
-
-
-                forward = forward * SmoothZY * (UseAdditivePos ? 1 : 0);
-
-                if (VerticalSmooth < 0)
-                {
-                    forward *= -1;  //Decrease half when going backwards
-                    SpeedModPos = CurrentSpeedSet.Speeds[0].position;
-                }
-                if (forward.magnitude > 1) forward.Normalize();
-
-                return forward * SpeedModPos * ScaleFactor * DeltaTime;
             }
         }
 
         /// <summary> Add more Speed to the current Move animations</summary> ???????????????????????????????????????
         protected virtual void AdditionalSpeed(float time)
         {
-            if (CurrentSpeedModifier.position < 0)
-            {
-                InertiaPositionSpeed = Vector3.zero;
-                return;      //Means there's no additional speed
-            }
+            //if (CurrentSpeedModifier.position <= 0)
+            //{
+            //    InertiaPositionSpeed = Vector3.zero;
+            //    return;      //Means there's no additional speed
+            //}
 
 
             InertiaPositionSpeed = (CurrentSpeedModifier.lerpPosition > 0) 
@@ -456,7 +412,7 @@ namespace MalbersAnimations.Controller
            // Debug.DrawRay(transform.position, InertiaPositionSpeed.normalized*5, Color.yellow);
         }
 
-        private void PlatformMovement()
+        protected void PlatformMovement()
         {
             if (platform == null) return;
 
@@ -483,7 +439,7 @@ namespace MalbersAnimations.Controller
         }
 
         /// <summary>Raycasting stuff to align and calculate the ground from the animal ****IMPORTANT***</summary>
-        public virtual void AlingRayCasting()
+        internal virtual void AlingRayCasting()
         {
             Height = (height - RayCastRadius) * ScaleFactor;            //multiply the Height by the scale
             //MainRay = FrontRay = false;
@@ -543,11 +499,7 @@ namespace MalbersAnimations.Controller
             }
 
 
-            if (ground_Changes_Gravity)
-            {
-                GravityDirection  = -hit_Hip.normal;
-            }
-
+            if (ground_Changes_Gravity) GravityDirection  = -hit_Hip.normal;
 
             CalculateSurfaceNormal();
 
@@ -555,7 +507,7 @@ namespace MalbersAnimations.Controller
             // else if (!Has_Pivot_Chest) FrontRay = MainRay;    //In case there's no frontRay
         }
 
-        private void CalculateSurfaceNormal()
+        internal virtual void CalculateSurfaceNormal()
         {
             if (Has_Pivot_Hip)
             {
@@ -591,7 +543,7 @@ namespace MalbersAnimations.Controller
 
         /// <summary>Align the Animal to Terrain</summary>
         /// <param name="align">True: Aling to UP, False Align to Terrain</param>
-        public virtual void AlignRotation(bool align, float time, float smoothness)
+        internal virtual void AlignRotation(bool align, float time, float smoothness)
         {
             if (align)
             {
@@ -605,7 +557,7 @@ namespace MalbersAnimations.Controller
 
         /// <summary>Align the Animal to a Custom </summary>
         /// <param name="align">True: Aling to UP, False Align to Terrain</param>
-        public virtual void AlignRotation(Vector3 alignNormal, float time, float smoothness)
+        internal virtual void AlignRotation(Vector3 alignNormal, float time, float smoothness)
         {
             Quaternion AlignRot = Quaternion.FromToRotation(_transform.up, alignNormal) * _transform.rotation;  //Calculate the orientation to Terrain 
             Quaternion Inverse_Rot = Quaternion.Inverse(_transform.rotation);
@@ -619,12 +571,12 @@ namespace MalbersAnimations.Controller
         }
 
         /// <summary>Snap to Ground with Smoothing</summary>
-        public virtual void AlignPosition(float time)
+        internal void AlignPosition(float time)
         {
             AlignPosition(hit_Hip.distance, time,  AlignPosLerp * 2);
         }
 
-        public virtual void AlignPosition(float distance, float time, float Smoothness)
+        internal void AlignPosition(float distance, float time, float Smoothness)
         {
             float difference = Height - distance;
 
@@ -634,10 +586,10 @@ namespace MalbersAnimations.Controller
                // _transform.position += align;
                 AdditivePosition += align;
             }
-        } 
+        }
 
         /// <summary>Snap to Ground with no Smoothing</summary>
-        public virtual void AlignPosition()
+        internal virtual void AlignPosition()
         {
             float difference = Height - hit_Hip.distance;
 
@@ -656,19 +608,18 @@ namespace MalbersAnimations.Controller
 
             if (Stance == 5) maxspeedH = maxspeedV; //if the animal is strafing
 
-            VerticalSmooth = LerpVertical > 0 ? Mathf.Lerp(VerticalSmooth, MovementAxis.z * maxspeedV, LerpVertical) : MovementAxis.z * maxspeedV;  //smoothly transitions bettwen Speeds
-            Smooth_Horizontal = LerpTurn > 0 ? Mathf.Lerp(Smooth_Horizontal, MovementAxis.x * maxspeedH, LerpTurn) : MovementAxis.x * maxspeedH;    //smoothly transitions bettwen Directions
-            Smooth_UpDown = LerpVertical > 0 ? Mathf.Lerp(Smooth_UpDown, MovementAxis.y, LerpVertical) : MovementAxis.y;                            //smoothly transitions bettwen Directions
+            VerticalSmooth = LerpVertical > 0 ? Mathf.MoveTowards(VerticalSmooth, MovementAxis.z * maxspeedV, LerpVertical) : MovementAxis.z * maxspeedV;  //smoothly transitions bettwen Speeds
+            Smooth_Horizontal = LerpTurn > 0 ? Mathf.MoveTowards(Smooth_Horizontal, MovementAxis.x * maxspeedH, LerpTurn) : MovementAxis.x * maxspeedH;    //smoothly transitions bettwen Directions
+            Smooth_UpDown = LerpVertical > 0 ? Mathf.MoveTowards(Smooth_UpDown, MovementAxis.y, LerpVertical) : MovementAxis.y;                            //smoothly transitions bettwen Directions
 
             if (Mathf.Abs(VerticalSmooth) < 0.001f) VerticalSmooth = 0;     //Clean Lower Values
             if (Mathf.Abs(Smooth_Horizontal) < 0.001f) Smooth_Horizontal = 0;
             if (Mathf.Abs(Smooth_UpDown) < 0.001f) Smooth_UpDown = 0;
 
-            SpeedMultiplier = (LerpAnimator > 0) ? Mathf.Lerp(SpeedMultiplier, CurrentSpeedModifier.animator.Value, LerpAnimator) : CurrentSpeedModifier.animator.Value;               //Changue the velocity of the animator
+            SpeedMultiplier = (LerpAnimator > 0) ? Mathf.MoveTowards(SpeedMultiplier, CurrentSpeedModifier.animator.Value, LerpAnimator) : CurrentSpeedModifier.animator.Value;               //Changue the velocity of the animator
         }
 
-
-        private void TryActivateState()
+        protected void TryActivateState()
         {
          //  if (m_IsAnimatorTransitioning) return;
             if (ActiveState.IsPersistent) return; //If the State cannot be interrupted the ingored trying activating any other States
@@ -705,7 +656,6 @@ namespace MalbersAnimations.Controller
             }
         }
 
-
         /// <summary>Calculates the Pitch direction to Appy to the Rotator Transform</summary>
        
         private void CalculatePitchDirectionVector()
@@ -731,9 +681,7 @@ namespace MalbersAnimations.Controller
            // if (debug) Debug.DrawRay(transform.position, PitchDirection, Color.yellow);
         }
 
-
-
-        private void OnAnimatorMove()
+        void OnAnimatorMove()
         {
             if (ActiveState == null) return;
 
@@ -752,26 +700,30 @@ namespace MalbersAnimations.Controller
 
             DeltaPos = _transform.position - LastPos;                    //DeltaPosition from the last frame
 
-            ResetValues();
+            ResetAdditiveValues();
 
 
-            if (DeltaTime > 0) Inertia = DeltaPos / DeltaTime;
+            if (DeltaTime > 0 && DeltaPos != Vector3.zero)
+            {
+                Inertia = DeltaPos / DeltaTime;
 
+                HorizontalSpeed = Vector3.ProjectOnPlane(Inertia, -GravityDirection).magnitude / ScaleFactor;
+            }
             MainRay = FrontRay = false;
 
+            ActiveState.OnStateMove(DeltaTime);                                                     //UPDATE THE STATE BEHAVIOUR
+
             MovementSystem(DeltaTime);
+
             CalculatePitchDirectionVector();
+
             AdditionalSpeed(DeltaTime);
             AdditionalTurn(DeltaTime);
 
-
             if (!m_IsAnimatorTransitioning)
             {
-                if (ActiveState.MainTagHash == AnimStateTag)
-                {
-                    ActiveState.TryExitState(DeltaTime);     //if is not in transition and is in the Main Tag try to Exit to lower States
-                }
-               
+                if (ActiveState.MainTagHash == AnimStateTag) ActiveState.TryExitState(DeltaTime);     //if is not in transition and is in the Main Tag try to Exit to lower States
+
                 TryActivateState();
             }
 
@@ -784,14 +736,9 @@ namespace MalbersAnimations.Controller
             }
 
             GravityLogic();
-
-            ActiveState.OnStateMove(DeltaTime);                                                     //UPDATE THE STATE BEHAVIOUR
-
-
-            if (InputMode != null)  InputMode.TryActivate();
+         
+            if (InputMode != null)  InputMode.TryActivate(); //FOR MODES 
            
-
-
             if (Grounded)
             {
                 AlingRayCasting();
@@ -816,20 +763,17 @@ namespace MalbersAnimations.Controller
                 Bank = Mathf.Lerp(Bank, 0, DeltaTime * (AlignPosLerp / 2));
             }
 
-
-
-
             LastPos = _transform.position;
-            RB.velocity = Vector3.zero;
-            RB.angularVelocity = Vector3.zero;
+           
 
             if (!DisablePositionRotation)
             {
-                if (AnimatePhysics)
+                if (AnimatePhysics && RB)
                 {
+                    RB.velocity = Vector3.zero;
+                    RB.angularVelocity = Vector3.zero;
                     if (DeltaTime > 0)
                         RB.velocity = AdditivePosition / DeltaTime;
-                    //  RB.MoveRotation(RB.rotation *= AdditiveRotation);
                 }
                 else
                 {
@@ -848,15 +792,15 @@ namespace MalbersAnimations.Controller
         {
             if (UseGravity)
             {
-                GravityStoredVelocity = GravityDirection * GravityForce * DeltaTime * gravityStackAceleration;
+                GravityStoredVelocity = GravityDirection * GravityForce * DeltaTime * GravityStoredAceleration;
 
                 AdditivePosition += GravityStoredVelocity;                                  //Add Gravity if is in use
-                gravityStackAceleration += GravityForce * DeltaTime * GravityMultiplier;
+                GravityStoredAceleration += GravityForce * DeltaTime * GravityMultiplier;
             }
         }
 
 
-        /// <summary> Smooth Value between Vertical and Forward</summary>
+        /// <summary> Smooth Value between Vertical and Forward Used for Flryn</summary>
         public float SmoothZY
         {
             get
@@ -864,7 +808,8 @@ namespace MalbersAnimations.Controller
                 if (!UpdateDirectionSpeed) return 1;
 
                 var SmoothZY = Mathf.Clamp(  Mathf.Max(Mathf.Abs(Smooth_UpDown), Mathf.Abs(VerticalSmooth)),0,1);
-                //if (VerticalSmooth < 0) SmoothZY *= -1;
+               // if (VerticalSmooth < 0.01) SmoothZY *= -1;
+
                 return SmoothZY;
             }
         }
@@ -890,6 +835,17 @@ namespace MalbersAnimations.Controller
             var PitchRot = new Vector3(PitchAngle, 0, Bank);
 
             Rotator.localEulerAngles = PitchRot;
-        } 
+        }
+
+
+        /// <summary> Resets Additive Rotation and Additive Position to their default</summary>
+        void ResetAdditiveValues()
+        {
+            AdditivePosition = RootMotion ? Anim.deltaPosition : Vector3.zero;
+            AdditiveRotation = RootMotion ? Anim.deltaRotation : Quaternion.identity;
+
+            SurfaceNormal = UpVector;
+            // TerrainSlope = 0;
+        }
     }
 }

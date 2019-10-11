@@ -52,10 +52,8 @@ namespace MalbersAnimations.Controller
             IgnoreLowerStates = true;                   //Make sure while you are on Jump State above the list cannot check for Trying to activate State below him
             animal.currentSpeedModifier.animator = 1;
 
-
-
             activeJump = new JumpProfile();
-            //IsPersistent = true;
+            IsPersistent = true; //IMPORTANT!!!!! DO NOT ELIMINATE!!!!!
 
             foreach (var jump in jumpProfiles)                          //Save/Search the Current Jump Profile by the Lowest Speed available
             {
@@ -84,20 +82,18 @@ namespace MalbersAnimations.Controller
         {
             OneCastingFall_Ray = false;                                 //Reset Values IMPROTANT
             JumpPressedMultiplier = 1;
-            //IsPersistent = true;
+            IsPersistent = true;
            
-
-            var speedMultiplier = Vector3.ProjectOnPlane(animal.DeltaPos, animal.UpVector);
-
             JumpSpeed = new MSpeed(animal.CurrentSpeedModifier) //Inherit the Vertical and the Lerps
             {
                 name = "JumpNoRootSpeed",
-                position = (speedMultiplier / animal.DeltaTime).magnitude * activeJump.ForwardMultiplier / animal.ScaleFactor,
+                position = animal.HorizontalSpeed * activeJump.ForwardMultiplier,
                 animator = 1,
                 rotation = !animal.UseCameraInput ? AirRotation : 1,
             };
 
-            if (animal.RootMotion) JumpSpeed.position = 0;
+
+            if (animal.RootMotion) JumpSpeed.position = 0; //Reset it if the Animal is using RootMotion
 
             animal.SetCustomSpeed(JumpSpeed);       //Set the Current Speed to the Jump Speed Modifier
         }
@@ -141,15 +137,11 @@ namespace MalbersAnimations.Controller
 
         public override void TryExitState(float DeltaTime)
         {
-           if (CurrentAnimTag == MainTagHash) //Means that is on the Jump Air Animation
+            if (animal.StateTime >= activeJump.fallingTime && !OneCastingFall_Ray)
             {
-                if (animal.StateTime >= activeJump.fallingTime && !OneCastingFall_Ray)
-                {
-                    Check_for_Falling();
-                   
-                }
-                Can_Jump_on_Cliff(animal.StateTime);
+                Check_for_Falling();
             }
+            Can_Jump_on_Cliff(animal.StateTime);
         }
 
 
@@ -184,40 +176,44 @@ namespace MalbersAnimations.Controller
             OneCastingFall_Ray = true;
             IsPersistent = false;
 
-            var scaleFactor = animal.ScaleFactor;
+            float RayLength = animal.ScaleFactor * activeJump.JumpLandDistance; //Ray Distance with the Scale Factor
+
+            var MainPivot = animal.Main_Pivot_Point;
+            var Direction = animal.GravityDirection;
+
+            if (debug) Debug.Log("Doing: <b>"+activeJump.name+"</b>");
 
             if (activeJump.JumpLandDistance > 0) //greater than 0 it can complete the Jump on an even Ground 
             {
-                if (Physics.Raycast(animal.Main_Pivot_Point, animal.GravityDirection, out JumpRay, scaleFactor * activeJump.fallRay, animal.GroundLayer, QueryTriggerInteraction.Ignore))
+                if (debug)
+                    Debug.DrawRay(MainPivot, Direction * RayLength, Color.red, 0.25f);
+
+                if (Physics.Raycast(MainPivot, Direction, out JumpRay, RayLength, animal.GroundLayer, QueryTriggerInteraction.Ignore))
                 {
                     if (debug)
                     {
-                        Debug.Log("Min Distance to complete " + activeJump.name +" " + JumpRay.distance);
-                       // Debug.Log("Current Jump Distance " + activeJump.name +" " + activeJump.JumpLandDistance * scaleFactor);
+                        Debug.Log("Min Distance to complete " + activeJump.name + " " + JumpRay.distance);
                         MalbersTools.DebugTriangle(JumpRay.point, 0.1f, Color.yellow);
-                        Debug.DrawRay(animal.Main_Pivot_Point, animal.GravityDirection * animal.Pivot_Multiplier * activeJump.fallRay, Color.red);
                     }
 
-                    if ((JumpRay.distance  < activeJump.JumpLandDistance * scaleFactor) /* && Angle < animal.maxAngleSlope*/)
+                    var TerrainSlope = Vector3.Angle(JumpRay.normal, animal.UpVector);
+                    var DeepSlope = TerrainSlope > animal.maxAngleSlope;
+
+                    if (DeepSlope)     //if wefound something but there's a deep slope
                     {
-                        var TerrainSlope = Vector3.Angle(JumpRay.normal, animal.UpVector);
-                        var DeepSlope =  TerrainSlope  > animal.maxAngleSlope;
-
-                        if (DeepSlope)     //if wefound something but there's a deep slope
-                        {
-                            if (debug) Debug.Log("Jump State: Try to Land but the Sloope is too Deep. Exiting Jump State " + TerrainSlope);
-                            IgnoreLowerStates = false;
-                            return;
-                        }
-
-                        IgnoreLowerStates = true;                           //Means that it can complete the Jump
-                        if (debug) Debug.Log("Can make the Jump to Jump End");
-                        return;
+                        if (debug) Debug.Log("Jump State: Try to Land but the Sloope is too Deep. Exiting Jump State " + TerrainSlope);
+                        IgnoreLowerStates = false;
                     }
+
+                    IgnoreLowerStates = true;                           //Means that it can complete the Jump
+                    if (debug) Debug.Log("Can finish the Jump. Going to Jump End");
+
+                }
+                else
+                {
+                    if (debug) Debug.Log(activeJump.name + ": Go to Fall.. No ground was found");
                 }
             }
-
-           // Debug.Log("JUMP: Go to the Next Fall State");
         }
 
         public override void ResetState()
@@ -265,9 +261,11 @@ namespace MalbersAnimations.Controller
                 modify = (modifier)(-1),
             };
 
+            ExitFrame = false;
+
             jumpProfiles = new List<JumpProfile>()
             { new JumpProfile()
-            { name = "Jump", stepHeight = 0.1f, fallingTime = 0.7f, fallRay = 2, /* ForwardMultiplier = 1,*/  HeightMultiplier =  1, JumpLandDistance = 1.7f}
+            { name = "Jump", /*stepHeight = 0.1f,*/ fallingTime = 0.7f, /* fallRay = 2, ForwardMultiplier = 1,*/  HeightMultiplier =  1, JumpLandDistance = 1.7f}
             };
         }
 #endif
@@ -290,13 +288,13 @@ namespace MalbersAnimations.Controller
         [Tooltip("Maximum Vertical Speed to Activate this Jump")]
         public float VerticalSpeed;
         /// <summary>Ray Length to check if the ground is at the same level all the time</summary>
-      //  [Header("Checking Fall")]
-        [Tooltip("Ray Length to check if the ground is at the same level all the time")]
-        public float fallRay;
+      ////  [Header("Checking Fall")]
+      //  [Tooltip("Ray Length to check if the ground is at the same level all the time")]
+      //  public float fallRay;
 
-        /// <summary>Terrain difference to be sure the animal will fall</summary>
-        [Tooltip("Terrain difference to be sure the animal will fall ")]
-        public float stepHeight;
+        ///// <summary>Terrain difference to be sure the animal will fall</summary>
+        //[Tooltip("Terrain difference to be sure the animal will fall ")]
+        //public float stepHeight;
 
         /// <summary>Min Distance to Complete the Land when the Jump is on the Highest Point, this needs to be calculate manually</summary>
         [Tooltip("Min Distance to Complete the Land when the Jump is on the Highest Point")]

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using ToonyColorsPro.Utilities;
+using ToonyColorsPro.Legacy;
 
 internal class TCP2_MaterialInspector_SurfacePBS_SG : ShaderGUI
 {

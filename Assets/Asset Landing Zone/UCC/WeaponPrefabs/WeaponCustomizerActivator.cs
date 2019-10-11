@@ -43,7 +43,7 @@ public class WeaponCustomizerActivator : MonoBehaviour
 		if(m_Configurator != null)
 		{
 			m_Configurator.SetActiveConfig(m_Weapon,this);
-			m_Weapon.name = m_Configurator.m_BaseName + " " + m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_ProfileName;
+			m_Weapon.name = m_Configurator.m_WeaponProfiles[m_ProfileConfig].m_ProfileName;
 
 			m_Item = GetComponent<Opsive.UltimateCharacterController.Items.Item>();
 			if(m_Item != null)

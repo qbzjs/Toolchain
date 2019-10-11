@@ -139,7 +139,7 @@ namespace PixelCrushers
             }
         }
 
-        private void CancelCurrentAnimation()
+        public void CancelCurrentAnimation()
         {
             if (m_coroutine == null || m_target == null) return;
             currentTrigger = string.Empty;

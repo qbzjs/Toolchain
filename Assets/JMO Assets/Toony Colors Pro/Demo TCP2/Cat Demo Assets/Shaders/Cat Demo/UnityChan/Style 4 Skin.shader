@@ -24,12 +24,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4 Skin"
 		[TCP2Gradient] _Ramp			("Toon Ramp (RGB)", 2D) = "gray" {}
 	[TCP2Separator]
 
-	[TCP2HeaderHelp(NORMAL MAPPING, Normal Bump Map)]
-		//BUMP
-		_BumpMap ("Normal map (RGB)", 2D) = "bump" {}
-		_BumpScale ("Scale", Float) = 1.0
-	[TCP2Separator]
-
 
 		//Avoid compile error if the properties are ending with a drawer
 		[HideInInspector] __dummy__ ("unused", Float) = 0
@@ -51,15 +45,12 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4 Skin"
 		fixed4 _Color;
 		sampler2D _MainTex;
 		sampler2D _STexture;
-		sampler2D _BumpMap;
-		half _BumpScale;
 
 		#define UV_MAINTEX uv_MainTex
 
 		struct Input
 		{
 			half2 uv_MainTex;
-			half2 uv_BumpMap;
 		};
 
 		//================================================================
@@ -152,10 +143,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 4 Skin"
 			o.ShadowColorTex = shadowTex.rgb;
 			o.Albedo = mainTex.rgb * _Color.rgb;
 			o.Alpha = mainTex.a * _Color.a;
-
-			//Normal map
-			half4 normalMap = tex2D(_BumpMap, IN.uv_BumpMap.xy);
-			o.Normal = UnpackScaleNormal(normalMap, _BumpScale);
 		}
 
 		ENDCG

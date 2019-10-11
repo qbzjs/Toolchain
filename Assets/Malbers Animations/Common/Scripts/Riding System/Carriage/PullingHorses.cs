@@ -56,21 +56,17 @@ namespace MalbersAnimations.HAP
         {
             var time = Time.fixedDeltaTime;
 
-            if (time > 0)
+            if (time > 0 && MainAnimal.ActiveStateID != StateEnum.Idle)
+            {
                 RB.velocity = MainAnimal.AdditivePosition / time;
-
-            MainAnimal.transform.localPosition = RHorseInitialPos; 
-            SecondAnimal.transform.localPosition = LHorseInitialPos; 
+                var RotationPoint = transform.TransformPoint(RotationOffset);
+                transform.RotateAround(RotationPoint, MainAnimal.UpVector, MainAnimal.MovementAxisSmoothed.x * time * MainAnimal.CurrentSpeedModifier.rotation);          //Rotate around Speed
+            }
+            MainAnimal.transform.localPosition = RHorseInitialPos;
+            SecondAnimal.transform.localPosition = LHorseInitialPos;
 
             SecondAnimal.MovementAxisSmoothed = MainAnimal.MovementAxisSmoothed;
 
-            var RotationPoint = transform.TransformPoint(RotationOffset);
-
-            //var deltaAngle = MainAnimal.CurrentSpeedModifier.rotation * time * MainAnimal.MovementAxisSmoothed.x;
-            //transform.rotation *= Quaternion.Euler(0, deltaAngle, 0);
-            //transform.position += transform.DeltaPositionFromRotate(RotationPoint, Vector3.up, deltaAngle);
-
-            transform.RotateAround(RotationPoint, MainAnimal.UpVector, MainAnimal.MovementAxisSmoothed.x * time * MainAnimal.CurrentSpeedModifier.rotation);          //Rotate around Speed
         }
 
 

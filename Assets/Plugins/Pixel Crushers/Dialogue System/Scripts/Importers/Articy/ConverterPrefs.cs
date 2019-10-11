@@ -49,7 +49,7 @@ namespace PixelCrushers.DialogueSystem.Articy
 
         public enum ConvertDropdownsModes { Ints, Strings }
 
-        public enum ConvertSlotsModes { DisplayName, ID }
+        public enum ConvertSlotsModes { DisplayName, ID, TechnicalName }
 
         public enum RecursionModes { Off, On }
 

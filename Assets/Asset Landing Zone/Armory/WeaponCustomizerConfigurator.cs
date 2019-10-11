@@ -152,7 +152,6 @@ public class WeaponCustomizerConfigurator : MonoBehaviour
 		
 	}
 	
-	[SerializeField]public string m_BaseName;
 	[SerializeField]public WeaponProfile [] m_WeaponProfiles;
 	
     // Start is called before the first frame update

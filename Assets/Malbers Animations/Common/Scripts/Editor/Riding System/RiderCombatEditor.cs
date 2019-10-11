@@ -15,7 +15,7 @@ namespace MalbersAnimations.HAP
         private SerializedProperty
             /*InputWeapon, InputAttack1, InputAttack2, InputAim, Reload, HBack, HLeft,  HRight,HitMask,*/ CombatAbilities,
             HolderLeft, HolderRight, HolderBack, debug, LeftHandEquipPoint, RightHandEquipPoint,
-            OnEquipWeapon, OnUnequipWeapon, OnCombatMode, OnWeaponAction, OnAttack, OnAimSide, OnAiming, OnTarget, CombatLayerPath, CombatLayerName,
+            OnEquipWeapon, OnUnequipWeapon, OnCombatMode, OnWeaponAction, OnAttack, OnAimSide, OnAiming,/* OnTarget,*/ CombatLayerPath, CombatLayerName,
          StrafeOnTarget, toggleAim, CloneAbilities,/* AimDot,  MainCamera,   Target , */
            activeHolderSide, UseInventory, UseHolders, AlreadyInstantiated, Active, Editor_Tabs1, Editor_Tabs2, ForceNormalUpdate, m_WeaponAim,
             m_WeaponType, m_WeaponHold, m_WeaponHolder, m_WeaponAction, ExitCombatOnDismount;
@@ -58,7 +58,7 @@ namespace MalbersAnimations.HAP
             OnAiming = serializedObject.FindProperty("OnAiming");
             toggleAim = serializedObject.FindProperty("toggleAim");
 
-            OnTarget = serializedObject.FindProperty("OnTarget");
+            //OnTarget = serializedObject.FindProperty("OnTarget");
             CombatLayerPath = serializedObject.FindProperty("CombatLayerPath");
             CombatLayerName = serializedObject.FindProperty("CombatLayerName");
             //Target = serializedObject.FindProperty("Target");
@@ -431,7 +431,7 @@ namespace MalbersAnimations.HAP
 
                     EditorGUILayout.PropertyField(OnAiming);
                     EditorGUILayout.PropertyField(OnAimSide);
-                    EditorGUILayout.PropertyField(OnTarget);
+                  //  EditorGUILayout.PropertyField(OnTarget);
                 }
 
             }

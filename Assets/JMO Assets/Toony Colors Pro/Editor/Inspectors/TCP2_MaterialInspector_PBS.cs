@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using ToonyColorsPro.Utilities;
 
 internal class TCP2_MaterialInspector_PBS : ShaderGUI
 {
@@ -422,9 +423,9 @@ internal class TCP2_MaterialInspector_PBS : ShaderGUI
 					var onIndex = GetOutlineNormalsIndex();
 					var newIndex = onIndex;
 					EditorGUI.indentLevel++;
-					if (TCP2_Utils.ScreenWidthRetina < 390f)
+					if (Utils.ScreenWidthRetina < 390f)
 					{
-						newIndex = TCP2_Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
+						newIndex = Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
 						{
 							new GUIContent("R", "Use regular vertex normals"),
 							new GUIContent("VC", "Use vertex colors as normals (with smoothed mesh)"),
@@ -432,9 +433,9 @@ internal class TCP2_MaterialInspector_PBS : ShaderGUI
 							new GUIContent("UV2", "Use second texture coordinates as normals (with smoothed mesh)")
 						});
 					}
-					else if (TCP2_Utils.ScreenWidthRetina < 560f)
+					else if (Utils.ScreenWidthRetina < 560f)
 					{
-						newIndex = TCP2_Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
+						newIndex = Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
 						{
 							new GUIContent("Regular", "Use regular vertex normals"),
 							new GUIContent("VColors", "Use vertex colors as normals (with smoothed mesh)"),
@@ -444,7 +445,7 @@ internal class TCP2_MaterialInspector_PBS : ShaderGUI
 					}
 					else
 					{
-						newIndex = TCP2_Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
+						newIndex = Utils.ShaderKeywordRadioGeneric("Outline Normals", newIndex, new[]
 						{
 							new GUIContent("Regular", "Use regular vertex normals"),
 							new GUIContent("Vertex Colors", "Use vertex colors as normals (with smoothed mesh)"),

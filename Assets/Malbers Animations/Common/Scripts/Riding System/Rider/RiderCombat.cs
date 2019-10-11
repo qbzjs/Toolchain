@@ -6,7 +6,7 @@ using MalbersAnimations.Utilities;
 namespace MalbersAnimations.HAP
 {
     /// <summary> Rider Combat Mode</summary>
-    [RequireComponent(typeof(MRider),typeof(Aim))]
+    [RequireComponent(typeof(MRider)/*,typeof(Aim)*/)]
     public partial class RiderCombat: MonoBehaviour , IAnimatorListener
     {
         ///This was left blank intentionally

@@ -30,12 +30,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 		[Space]
 	[TCP2Separator]
 
-	[TCP2HeaderHelp(NORMAL MAPPING, Normal Bump Map)]
-		//BUMP
-		_BumpMap ("Normal map (RGB)", 2D) = "bump" {}
-		_BumpScale ("Scale", Float) = 1.0
-	[TCP2Separator]
-
 	[TCP2HeaderHelp(RIM, Rim)]
 		//RIM LIGHT
 		_RimColor ("Rim Color", Color) = (0.8,0.8,0.8,0.6)
@@ -172,7 +166,7 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 
 	#ifdef TCP2_OUTLINE_CONST_SIZE
 			//Camera-independent outline size
-			float dist = distance(mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 0)).xyz, v.vertex.xyz);
+			float dist = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld, v.vertex));
 			#define SIZE	dist
 	#else
 			#define SIZE	1.0
@@ -222,8 +216,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 		sampler2D _MainTex;
 		sampler2D _STexture;
 		fixed _SketchSpeed;
-		sampler2D _BumpMap;
-		half _BumpScale;
 		fixed4 _RimColor;
 		fixed _RimMin;
 		fixed _RimMax;
@@ -235,7 +227,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 		struct Input
 		{
 			half2 uv_MainTex;
-			half2 uv_BumpMap;
 			float3 viewDir;
 			half4 sketchUv;
 		};
@@ -374,7 +365,9 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 			float4 texcoord : TEXCOORD0;
 			float4 texcoord1 : TEXCOORD1;
 			float4 texcoord2 : TEXCOORD2;
+		#if defined(LIGHTMAP_ON) && defined(DIRLIGHTMAP_COMBINED)
 			float4 tangent : TANGENT;
+		#endif
 	#if UNITY_VERSION >= 550
 			UNITY_VERTEX_INPUT_INSTANCE_ID
 	#endif
@@ -415,10 +408,6 @@ Shader "Toony Colors Pro 2/Examples/Cat Demo/UnityChan/Style 5 Skin"
 			_Random.y = -round(_Time.z * _SketchSpeed) / _SketchSpeed;
 			screenUV.xy += frac(_Random.xy);
 			o.ScreenUVs = screenUV;
-
-			//Normal map
-			half4 normalMap = tex2D(_BumpMap, IN.uv_BumpMap.xy);
-			o.Normal = UnpackScaleNormal(normalMap, _BumpScale);
 
 			//Rim
 			float3 viewDir = normalize(IN.viewDir);

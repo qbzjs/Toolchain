@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MalbersAnimations.Controller
 {
     /// <summary>Simple Script to make damage anything with a stat</summary>
-    public class MAttackTrigger : MonoBehaviour
+    public class MAttackTrigger : MonoBehaviour, IMHitLayer
     {
         /// <summary>ID of the Trigger. This is called on the Animator to wakes up the Trigger</summary>
         [Tooltip("ID of the Trigger. This is called on the Animator to wakes up the Trigger")]
@@ -43,7 +43,20 @@ namespace MalbersAnimations.Controller
         ///// <summary>YourSelf that can be Damaged </summary>
         //private IMDamage  self;
         private IMHitLayer HitMaskOwner;
-        private LayerMask HitMask;
+
+        [SerializeField] private LayerMask hitLayer = ~0;
+        [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Collide;
+        public LayerMask HitLayer
+        {
+            get { return hitLayer; }
+            set { hitLayer = value; }
+        }
+
+        public QueryTriggerInteraction TriggerInteraction
+        {
+            get { return triggerInteraction; }
+            set { triggerInteraction = value; }
+        }
 
         protected Stats SelfStats;
         Transform CurrentAnimal;
@@ -60,11 +73,11 @@ namespace MalbersAnimations.Controller
                 HitMaskOwner = Owner.GetComponentInChildren<IMHitLayer>();
 
                 if (HitMaskOwner != null)
-                    HitMask = HitMaskOwner.HitLayer;
-                else
-                    HitMask = ~0;
+                {
+                    HitLayer = HitMaskOwner.HitLayer;
+                    TriggerInteraction = HitMaskOwner.TriggerInteraction;
+                }
 
-               // self = Owner.GetComponentInParent<IMDamage>();
                 SelfStats = Owner.GetComponentInParent<Stats>();
             }
         }
@@ -86,10 +99,7 @@ namespace MalbersAnimations.Controller
             Trigger.enabled = true;
             AlreadyHitted = new List<Transform>();
         }
-
-        //void ResetAttackTrigger()
-        //{
-        //}
+ 
 
         void OnDisable()
         {
@@ -101,8 +111,8 @@ namespace MalbersAnimations.Controller
         void OnTriggerEnter(Collider other)
         {
             var Root = other.transform.root;
-            if (other.isTrigger) return;                                                    //just collapse when is a collider what we are hitting
-            if (!MalbersTools.Layer_in_LayerMask(other.gameObject.layer, HitMask)) return;  //Just hit what is on the HitMask Layer
+            if (other.isTrigger && TriggerInteraction == QueryTriggerInteraction.Ignore) return;                                                    //just collapse when is a collider what we are hitting
+            if (!MalbersTools.Layer_in_LayerMask(other.gameObject.layer, HitLayer)) return;  //Just hit what is on the HitMask Layer
 
             if (Root == Owner.transform) return;                                            //Don't hit yourself;
 
@@ -128,8 +138,9 @@ namespace MalbersAnimations.Controller
 
                 Vector3 direction = (Owner.position - TargetPos).normalized;                //Calculate the direction of the attack
 
-                var  interactable = Root.GetComponentInChildren<IInteractable>();           //Get the Animal on the Other collider
-               if (interactable != null) interactable.Interact();
+                var  interactable = other.transform.GetComponent<IInteractable>();           //Get the Animal on the Other collider
+
+                if (interactable != null) interactable.Interact();
 
                 enemy = Root.GetComponentInChildren<IMDamage>();                             //Get the Animal on the Other collider
 
@@ -173,9 +184,12 @@ namespace MalbersAnimations.Controller
 
         public virtual void SetOwner(Transform owner) { Owner = owner; }
 
+
 #if UNITY_EDITOR
         void Reset()
         {
+            SetOwner(transform.root);
+
             EnemyStatEnter = new StatModifier()
             {
                 ID = MalbersTools.GetInstance<StatID>("Health"),
@@ -183,14 +197,10 @@ namespace MalbersAnimations.Controller
                 Value = new Scriptables.FloatReference() { UseConstant = true, ConstantValue = 10 },
             };
 
-            Trigger = GetComponentInChildren<Collider>();
-            if (!Trigger)
-            {
-                Trigger = GetComponentInChildren<Collider>(); ;
-                Trigger.isTrigger = true;
-            }
+            Trigger = GetComponent<Collider>();
+            if (!Trigger)  Trigger = gameObject.AddComponent<BoxCollider>();
+            Trigger.isTrigger = true;
             Owner = transform.root; //Set which is the owner of this AttackTrigger
-
             this.enabled = false;
         }
 

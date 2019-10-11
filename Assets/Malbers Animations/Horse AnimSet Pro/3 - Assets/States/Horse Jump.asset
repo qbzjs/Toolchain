@@ -37,7 +37,7 @@ MonoBehaviour:
   TagModifiers:
   - AnimationTag: JumpStart
     modifier:
-      modify: 95
+      modify: 219
       RootMotion: 1
       Sprint: 1
       Gravity: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
       CustomRotation: 0
       FreeMovement: 0
       AdditivePosition: 0
-      Persistent: 0
+      Persistent: 1
       IgnoreLowerStates: 1
       LockMovement: 0
       LockInput: 0
@@ -77,8 +77,6 @@ MonoBehaviour:
   jumpProfiles:
   - name: Jump Forward
     VerticalSpeed: 0.1
-    fallRay: 2.5
-    stepHeight: 0.1
     JumpLandDistance: 2.19
     fallingTime: 0.6
     CliffTime:
@@ -89,8 +87,6 @@ MonoBehaviour:
     ForwardMultiplier: 1
   - name: Jump Canter
     VerticalSpeed: 2.9
-    fallRay: 3.5
-    stepHeight: 0.1
     JumpLandDistance: 2.41
     fallingTime: 0.57
     CliffTime:
@@ -101,8 +97,6 @@ MonoBehaviour:
     ForwardMultiplier: 1
   - name: Jump Gallop
     VerticalSpeed: 3.9
-    fallRay: 3
-    stepHeight: 0.1
     JumpLandDistance: 2.42
     fallingTime: 0.51
     CliffTime:
@@ -113,8 +107,6 @@ MonoBehaviour:
     ForwardMultiplier: 1
   - name: Jump Sprint
     VerticalSpeed: 4.9
-    fallRay: 3
-    stepHeight: 0.1
     JumpLandDistance: 2.515
     fallingTime: 0.53
     CliffTime:

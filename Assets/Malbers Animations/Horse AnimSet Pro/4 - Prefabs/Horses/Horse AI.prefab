@@ -2703,6 +2703,8 @@ MonoBehaviour:
     Variable: {fileID: 0}
   maxAngleSlope: 40
   Rotator: {fileID: 0}
+  Anim: {fileID: 95871160250197928}
+  RB: {fileID: 54520134031015918}
   modes:
   - active: 1
     AnimationTag: Attack1
@@ -2747,6 +2749,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Front Legs
       Index:
@@ -2869,6 +2872,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Front Right
       Index:
@@ -3069,6 +3073,7 @@ MonoBehaviour:
       m_TypeName: MalbersAnimations.Events.IntEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     ResetToDefault: 0
+    AllowRotation: 0
     Abilities:
     - Name: Eat
       Index:

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CS Rider AimRight
   m_EditorClassIdentifier: 
   PivotPos: {x: 1, y: 0.65, z: 0}
-  CamPos: {x: 0, y: 0, z: -3}
+  CamPos: {x: 0, y: 0, z: -2.5}
   CamFOV: 30
   transition: 1

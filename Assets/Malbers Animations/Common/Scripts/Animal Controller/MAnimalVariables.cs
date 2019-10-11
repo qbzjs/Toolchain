@@ -18,11 +18,17 @@ namespace MalbersAnimations.Controller
         #endregion
 
         [SerializeField] private LayerMask hitLayer = ~0;
-
+        [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Collide;
         public LayerMask HitLayer
         {
             get { return hitLayer; }
             set { hitLayer = value; }
+        }
+
+        public QueryTriggerInteraction TriggerInteraction
+        {
+            get { return triggerInteraction; }
+            set { triggerInteraction = value; }
         }
 
         #region States
@@ -67,7 +73,7 @@ namespace MalbersAnimations.Controller
 
         /// <summary> Store on the Animal a Queued State</summary>
         public State StateQueued { get; private set; }
-        public void QueueState(State state)
+        internal void QueueState(State state)
         {
             StateQueued = state;
             LastState = state;
@@ -183,10 +189,10 @@ namespace MalbersAnimations.Controller
 
 
         /// <summary>The Animal uses the Camera Forward Diretion to Move</summary>
-        public BoolReference useCameraInput;
+        public BoolReference useCameraInput =  new BoolReference();
 
         /// <summary>Use the Camera Up Vector to Move while flying or Swiming UnderWater</summary>
-        public BoolReference useCameraUp;
+        public BoolReference useCameraUp = new BoolReference();
 
         /// <summary>The Animal uses the Camera Forward Diretion to Move</summary>
         public bool UseCameraInput
@@ -317,6 +323,9 @@ namespace MalbersAnimations.Controller
         }
 
 
+        /// <summary>Speed of the Animal used on the RIgid Body</summary>
+        public float HorizontalSpeed { get; private set; }
+
         /// <summary>Calculation of the Average Surface Normal</summary>
         public Vector3 SurfaceNormal { get; set; }
 
@@ -340,8 +349,8 @@ namespace MalbersAnimations.Controller
 
         #region References
         /// <summary>Returns the Animator Component of the Animal </summary>
-        public Animator Anim { get; private set; }
-        public Rigidbody RB { get; private set; }                     //Reference for the RigidBody
+        public Animator Anim;
+        public Rigidbody RB;                   //Reference for the RigidBody
 
         /// <summary>Catched Transform</summary>
         private Transform _transform;
@@ -375,14 +384,14 @@ namespace MalbersAnimations.Controller
 
 
         /// <summary>Is Playing a mode or is still exiting a Mode</summary>
-        public bool IsPlayingMode { get; set; }
+        public bool IsPlayingMode { get; internal set; }
 
         /// <summary>Is the Animal on any Zone</summary>
-        public bool IsOnZone { get; set; }
+        public bool IsOnZone { get; internal set; }
 
 
         /// <summary>Checks if there's any Input with the Input Active</summary>
-        public Mode InputMode { get; set; }
+        public Mode InputMode { get; internal set; }
 
         /// <summary>Set/Get the Active Mode</summary>
         public Mode ActiveMode
@@ -390,11 +399,11 @@ namespace MalbersAnimations.Controller
             get { return activeMode; }
             set
             {
-                if (value != activeMode)            //Means is a new Mode entering
-                {
-                    if (activeMode != null)
-                        activeMode.ExitMode();      //if the Last Mode was still Active then Exit 
-                } 
+                //if (value != null && value != activeMode)            //Means is a new Mode entering
+                //{
+                //    if (activeMode != null)
+                //        activeMode.ExitMode();      //if the Last Mode was still Active then Exit 
+                //} 
 
                 activeMode = value;
 
@@ -482,6 +491,28 @@ namespace MalbersAnimations.Controller
             }
         }
 
+        /// <summary>The full Speed we want to without lerping, for the Additional Speed</summary>
+        public Vector3 TargetSpeed
+        {
+            get
+            {
+                Vector3 forward = DirectionalSpeed;
+                var SpeedModPos = CurrentSpeedModifier.position;
+
+                forward = forward * SmoothZY * (UseAdditivePos ? 1 : 0);
+
+                if (VerticalSmooth < 0)
+                {
+                    forward *= 0.5f;  //Decrease half when going backwards
+                    SpeedModPos = CurrentSpeedSet.Speeds[0].position;
+                }
+
+                if (forward.magnitude > 1) forward.Normalize();
+
+                return forward * SpeedModPos * ScaleFactor * DeltaTime;
+            }
+        }
+
         /// <summary>Check if there's no Pivot Active </summary>
         public bool NoPivot { get { return !Has_Pivot_Chest && !Has_Pivot_Hip; } }
 
@@ -563,8 +594,8 @@ namespace MalbersAnimations.Controller
         /// <summary> Gravity acceleration multiplier </summary>
         public FloatReference GravityMultiplier = new FloatReference(1f);
 
-        protected float gravityStackAceleration;
-        public Vector3 GravityStoredVelocity { get; set; }
+        public float GravityStoredAceleration { get; protected set; }
+        public Vector3 GravityStoredVelocity { get; protected set; }
 
         /// <summary> Direction of the Gravity </summary>
         public Vector3 GravityDirection
@@ -613,6 +644,7 @@ namespace MalbersAnimations.Controller
             get { return grounded; }
         }
 
+        /// <summary>Does the Active State uses Additive position?</summary>
         public bool UseAdditivePos { get; internal set; }
         //  public bool UseAdditiveRot { get;internal set; }
         /// <summary>Does the Active State uses Sprint?</summary>
@@ -659,7 +691,7 @@ namespace MalbersAnimations.Controller
             set
             {
                 useGravity = value;
-                gravityStackAceleration = 0;
+                GravityStoredAceleration = 0;
                 GravityStoredVelocity = Vector3.zero;
             }
         }
@@ -798,29 +830,29 @@ namespace MalbersAnimations.Controller
 
         #region Animator Parameters
 
-        public string m_Vertical = "Vertical";
-        public string m_Horizontal = "Horizontal";
-        public string m_UpDown = "UpDown";
-      
-        public string m_IDFloat = "IDFloat";
-        public string m_IDInt = "IDInt";
-        public string m_Grounded = "Grounded";
-        public string m_Movement = "Movement";
+        [SerializeField] private string m_Vertical = "Vertical";
+        [SerializeField] private string m_Horizontal = "Horizontal";
+        [SerializeField] private string m_UpDown = "UpDown";
+
+        [SerializeField] private string m_IDFloat = "IDFloat";
+        [SerializeField] private string m_IDInt = "IDInt";
+        [SerializeField] private string m_Grounded = "Grounded";
+        [SerializeField] private string m_Movement = "Movement";
 
 
-        public string m_State = "State";
-        public string m_LastState = "LastState";
-        public string m_Mode = "Mode";
-        public string m_Status = "Status";
+        [SerializeField] private string m_State = "State";
+        [SerializeField] private string m_LastState = "LastState";
+        [SerializeField] private string m_Mode = "Mode";
+        [SerializeField] private string m_Status = "Status";
 
-        public string m_Stance = "Stance";
-        public string m_Slope = "Slope";
-        public string m_Type = "Type";
-        public string m_SpeedMultiplier = "SpeedMultiplier";
-        public string m_StateTime = "StateTime";
+        [SerializeField] private string m_Stance = "Stance";
+        [SerializeField] private string m_Slope = "Slope";
+        [SerializeField] private string m_Type = "Type";
+        [SerializeField] private string m_SpeedMultiplier = "SpeedMultiplier";
+        [SerializeField] private string m_StateTime = "StateTime";
 
-        //public string m_Randomizer = "Randomizer";
-        public string m_DeltaAngle = "DeltaAngle";
+        //[SerializeField] private string m_Randomizer = "Randomizer";
+        [SerializeField] private string m_DeltaAngle = "DeltaAngle";
 
         internal int hash_Vertical;
         internal int hash_Horizontal;

@@ -95,6 +95,7 @@ namespace PixelCrushers.DialogueSystem
         protected bool haveSavedOriginalColor { get { return m_haveSavedOriginalColor; } set { m_haveSavedOriginalColor = value; } }
         protected Color originalColor { get; set; }
         private string m_accumulatedText = string.Empty;
+        public string accumulatedText { get { return m_accumulatedText; } set { m_accumulatedText = value; } }
         private Animator m_animator = null;
         private Animator animator { get { if (m_animator == null && portraitImage != null) m_animator = portraitImage.GetComponent<Animator>(); return m_animator; } }
         private bool m_isDefaultNPCPanel = false;
@@ -169,9 +170,9 @@ namespace PixelCrushers.DialogueSystem
             OpenOnStartConversation(UITools.CreateSprite(portraitTexture), portraitName, dialogueActor);
         }
 
-        public void OnConversationStart(Transform actor)
+        public virtual void OnConversationStart(Transform actor)
         {
-            m_accumulatedText = string.Empty;
+            ClearText();
         }
 
         /// <summary>
@@ -224,7 +225,7 @@ namespace PixelCrushers.DialogueSystem
         public override void Close()
         {
             if (isOpen) base.Close();
-            m_accumulatedText = string.Empty;
+            ClearText();
             hasFocus = false;
         }
 
@@ -280,13 +281,19 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void Unfocus()
         {
-            var isPlayingFocusAnimation = (m_focusWhenOpenCoroutine != null);
-            if (isPlayingFocusAnimation)
+            if (m_focusWhenOpenCoroutine != null)
             {
                 StopCoroutine(m_focusWhenOpenCoroutine);
                 m_focusWhenOpenCoroutine = null;
             }
-            if (!(hasFocus || isPlayingFocusAnimation)) return;
+            if (!string.IsNullOrEmpty(focusAnimationTrigger) && animatorMonitor.currentTrigger == focusAnimationTrigger)
+            {
+                animatorMonitor.CancelCurrentAnimation();
+            }
+            else
+            {
+                if (!hasFocus) return;
+            }
             if (panelState == PanelState.Opening) panelState = PanelState.Open;
             hasFocus = false;
             animatorMonitor.SetTrigger(unfocusAnimationTrigger, null, false);
@@ -307,7 +314,7 @@ namespace PixelCrushers.DialogueSystem
         protected virtual void SetUIElementsActive(bool value)
         {
             Tools.SetGameObjectActive(panel, value);
-            Tools.SetGameObjectActive(portraitImage, value);
+            Tools.SetGameObjectActive(portraitImage, value && portraitImage != null && portraitImage.sprite != null);
             portraitName.SetActive(value);
             subtitleText.SetActive(value);
             Tools.SetGameObjectActive(continueButton, false); // Let ConversationView determine if continueButton should be shown.
@@ -405,7 +412,7 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
-        protected IEnumerator StartTypingWhenFocused(UITextField subtitleText, string text, int fromIndex)
+        protected virtual IEnumerator StartTypingWhenFocused(UITextField subtitleText, string text, int fromIndex)
         {
             subtitleText.text = string.Empty;
             float timeout = Time.realtimeSinceStartup + 5f;

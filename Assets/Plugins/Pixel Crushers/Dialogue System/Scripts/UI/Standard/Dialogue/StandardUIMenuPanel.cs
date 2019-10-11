@@ -229,7 +229,7 @@ namespace PixelCrushers.DialogueSystem
         protected virtual void SetUIElementsActive(bool value)
         {
             Tools.SetGameObjectActive(panel, value);
-            Tools.SetGameObjectActive(pcImage, value);
+            Tools.SetGameObjectActive(pcImage, value && pcImage != null && pcImage.sprite != null);
             pcName.SetActive(value);
             Tools.SetGameObjectActive(timerSlider, false); // Let StartTimer activate if needed.
             if (value == false) ClearResponseButtons();

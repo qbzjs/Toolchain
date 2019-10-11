@@ -1,0 +1,210 @@
+fileFormatVersion: 2
+guid: 120b7a7c203e8d14daa94c7beb1d7483
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface105_pCylinder2Mat
+    second: {fileID: 2100000, guid: f9ba8a1fc984fe748a09ef795cd416d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface43_pCylinder2Mat
+    second: {fileID: 2100000, guid: 15b875fc538aece4b93bd7d6330d05c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface44_pCylinder2Mat
+    second: {fileID: 2100000, guid: 8c148a17123cf2340a38b4de758849c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface45_pCylinder2Mat
+    second: {fileID: 2100000, guid: 9e257ab77215ea148a5742d9421c562f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface46_pCylinder2Mat
+    second: {fileID: 2100000, guid: f720aa64d61ac394abf054e7c19ddef4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface47_pCylinder2Mat
+    second: {fileID: 2100000, guid: e556e4e03a61332488fb53640377f6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface48_pCylinder2Mat
+    second: {fileID: 2100000, guid: acaad716c9308114395781718e70a758, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface49_pCylinder2Mat
+    second: {fileID: 2100000, guid: d44b188f6f79a6b4a8b00076d17a7b98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface50_pCylinder2Mat
+    second: {fileID: 2100000, guid: 4fc153711b1064649bd9ffcafbe50e39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface51_pCylinder2Mat
+    second: {fileID: 2100000, guid: 33e46d837500a794ca1ccbad16737c87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface52_pCylinder2Mat
+    second: {fileID: 2100000, guid: 3249b946853f3bd43bd481baccc1bed9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface53_pCylinder2Mat
+    second: {fileID: 2100000, guid: dc67723987a1c7b42a0cae1c029ef5d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface54_pCylinder2Mat
+    second: {fileID: 2100000, guid: 25f4481be9ae3be41805f57cdb079d91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface55_pCylinder2Mat
+    second: {fileID: 2100000, guid: 5d4ef24608edb9e40874713b5582bdf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface56_pCylinder2Mat
+    second: {fileID: 2100000, guid: 07ee5800de78e2349b979a90e4acf3de, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface57_pCylinder2Mat
+    second: {fileID: 2100000, guid: 6cd8fd2c87d37be4da54f12256ba9043, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface58_pCylinder2Mat
+    second: {fileID: 2100000, guid: 2abb35934751a2549810c5d47f9c3ab5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface59_pCylinder2Mat
+    second: {fileID: 2100000, guid: 5a194d03a9d86ca4f94a226d9a89f810, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface60_pCylinder2Mat
+    second: {fileID: 2100000, guid: f5cc4da2b6ebc8a4482ae08d612953a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface61_pCylinder2Mat
+    second: {fileID: 2100000, guid: c3360466e98d1274d8688d31937ae041, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface62_pCylinder2Mat
+    second: {fileID: 2100000, guid: 126c79eb420845647bb77488143a23ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SP_polySurface10_SP_polySurface64_pCylinder2Mat
+    second: {fileID: 2100000, guid: d020f392cf921be4dbde4f4e1ca525af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCylinder2Mat
+    second: {fileID: 2100000, guid: 6852185933bb58349a2f9b323c016956, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

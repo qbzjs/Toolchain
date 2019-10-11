@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 4a8673bfc1e9ebd4cadd15d6e7a3d5c5
 ModelImporter:
-  serializedVersion: 23
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: CG
     100002: Head
@@ -2440,7 +2440,6 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
@@ -2458,16 +2457,11 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 2
     tangentImportMode: 2
     normalCalculationMode: 0
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
-    blendShapeNormalImportMode: 2
-    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
@@ -2900,11 +2894,26 @@ ModelImporter:
       position: {x: 0.000000102517966, y: 0.7657227, z: 0.05283624}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1.05805, y: 1.05805, z: 1.05805}
+    - name: Pistol 01
+      parentName: Rider(Clone)
+      position: {x: 0.18123712, y: 1.0857214, z: -0.054058935}
+      rotation: {x: -0.70122135, y: 0.0000006715316, z: -0.00000034275283, w: 0.7129437}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pistol 02
+      parentName: Rider(Clone)
+      position: {x: -0.18123926, y: 1.0857197, z: -0.054061998}
+      rotation: {x: -0.70122135, y: 0.00000067153155, z: -0.0000003427528, w: 0.7129437}
+      scale: {x: 1, y: 1, z: 1}
     - name: R_CG
       parentName: Rider(Clone)
       position: {x: -0, y: 0.9447948, z: 0}
       rotation: {x: -0.5000004, y: 0.4999997, z: 0.49999964, w: 0.5000003}
       scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: R_Footsteps
+      parentName: R_CG
+      position: {x: -0, y: 0, z: -0.9446087}
+      rotation: {x: 0, y: -0, z: -0.7071063, w: 0.70710725}
+      scale: {x: 1, y: 1, z: 1}
     - name: R_Pelvis
       parentName: R_CG
       position: {x: -0.000000007577438, y: -0.0000000037252907, z: 0.0423761}
@@ -2930,6 +2939,11 @@ ModelImporter:
       position: {x: -0.13642415, y: 0.17111915, z: -0.0025288009}
       rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
       scale: {x: 1.0000006, y: 1, z: 1.0000004}
+    - name: R_L Toe0Nub
+      parentName: R_L Toe0
+      position: {x: -0.087090984, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1, z: -1}
     - name: R_R Thigh
       parentName: R_Pelvis
       position: {x: -0.00000015258789, y: -0.00000009943071, z: -0.101477474}
@@ -2950,21 +2964,16 @@ ModelImporter:
       position: {x: -0.13642415, y: 0.17111918, z: 0.00252882}
       rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
       scale: {x: 1.0000005, y: 0.9999998, z: 1.0000004}
+    - name: R_R Toe0Nub
+      parentName: R_R Toe0
+      position: {x: -0.087090984, y: 0, z: -0.000000019073486}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: R_Spine
       parentName: R_Pelvis
       position: {x: -0.09807083, y: -0.00009458117, z: 0.00000013613578}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 0.9999996, y: 1, z: 0.9999996}
-    - name: Pistol 01
-      parentName: R_Spine
-      position: {x: -0.018, y: -0.028, z: 0.19}
-      rotation: {x: -0.1336671, y: -0.65940136, z: -0.43387768, w: 0.5992272}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Pistol 02
-      parentName: R_Spine
-      position: {x: -0.017, y: -0.034, z: -0.187}
-      rotation: {x: -0.5291452, y: -0.55107254, z: -0.19004083, w: 0.6166108}
-      scale: {x: 1, y: 1, z: 1}
     - name: R_Spine1
       parentName: R_Spine
       position: {x: -0.118836895, y: -0.00009462677, z: -2.6245714e-10}
@@ -3010,6 +3019,11 @@ ModelImporter:
       position: {x: -0.042000275, y: 0, z: 0.000000076293944}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000007, y: 1.0000006, z: 1.0000001}
+    - name: R_L Finger0Nub
+      parentName: R_L Finger02
+      position: {x: -0.03233986, y: 0.000000076293944, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: R_L Finger1
       parentName: R_L Hand
       position: {x: -0.12030155, y: -0.022769393, z: -0.044355925}
@@ -3025,6 +3039,11 @@ ModelImporter:
       position: {x: -0.03383301, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000004, y: 1.0000013, z: 1.0000017}
+    - name: R_L Finger1Nub
+      parentName: R_L Finger12
+      position: {x: -0.031524427, y: 0, z: -0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: R_L Finger2
       parentName: R_L Hand
       position: {x: -0.12588462, y: -0.026654892, z: -0.016810399}
@@ -3040,6 +3059,11 @@ ModelImporter:
       position: {x: -0.035693243, y: 0, z: -0.000000009536743}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000006, y: 1.0000012, z: 1.0000013}
+    - name: R_L Finger2Nub
+      parentName: R_L Finger22
+      position: {x: -0.03565338, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     - name: R_L Finger3
       parentName: R_L Hand
       position: {x: -0.11832454, y: -0.022634353, z: 0.009235229}
@@ -3055,6 +3079,11 @@ ModelImporter:
       position: {x: -0.033306733, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000006, y: 1.000001, z: 1.0000014}
+    - name: R_L Finger3Nub
+      parentName: R_L Finger32
+      position: {x: -0.032856293, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
     - name: R_L Finger4
       parentName: R_L Hand
       position: {x: -0.11125301, y: -0.013609848, z: 0.029666556}
@@ -3070,6 +3099,11 @@ ModelImporter:
       position: {x: -0.02932846, y: 0.000000076293944, z: -0.000000038146972}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 0.9999999, y: 1.0000005, z: 1.0000006}
+    - name: R_L Finger4Nub
+      parentName: R_L Finger42
+      position: {x: -0.030016175, y: -0.000000076293944, z: 0.000000019073486}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
     - name: R_Neck
       parentName: R_Spine2
       position: {x: -0.26992416, y: -0.02092268, z: -1.4130137e-10}
@@ -3080,6 +3114,11 @@ ModelImporter:
       position: {x: -0.063959196, y: 0, z: 1.9895197e-15}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000002, y: 1.0000005, z: 1}
+    - name: R_HeadNub
+      parentName: R_Head
+      position: {x: -0.2424855, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 0.99999994}
     - name: R_R Clavicle
       parentName: R_Spine2
       position: {x: -0.23668991, y: -0.055460863, z: -0.03502246}
@@ -3098,7 +3137,7 @@ ModelImporter:
     - name: R_R Hand
       parentName: R_R Forearm
       position: {x: -0.24994479, y: 0, z: 0}
-      rotation: {x: 0.7069316, y: 0.015739646, z: -0.015739825, w: 0.7069316}
+      rotation: {x: 0.70693165, y: 0.015739648, z: -0.015739826, w: 0.70693165}
       scale: {x: 1.0000008, y: 1.000001, z: 1.0000001}
     - name: R_R Finger0
       parentName: R_R Hand
@@ -3115,6 +3154,11 @@ ModelImporter:
       position: {x: -0.042000275, y: -0.000000038146972, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000011, y: 1.0000014, z: 1.0000012}
+    - name: R_R Finger0Nub
+      parentName: R_R Finger02
+      position: {x: -0.03233978, y: 0.000000038146972, z: -0.000000076293944}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1.0000001, z: -1.0000001}
     - name: R_R Finger1
       parentName: R_R Hand
       position: {x: -0.12030143, y: -0.02276947, z: 0.044355936}
@@ -3130,6 +3174,11 @@ ModelImporter:
       position: {x: -0.033833083, y: 0.000000076293944, z: -0.000000019073486}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+    - name: R_R Finger1Nub
+      parentName: R_R Finger12
+      position: {x: -0.031524353, y: 0, z: -0.000000009536743}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1, z: -1}
     - name: R_R Finger2
       parentName: R_R Hand
       position: {x: -0.12588462, y: -0.026654892, z: 0.016810378}
@@ -3145,6 +3194,11 @@ ModelImporter:
       position: {x: -0.03569336, y: 0, z: -0.000000009536743}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000006, y: 1.0000002, z: 1.0000001}
+    - name: R_R Finger2Nub
+      parentName: R_R Finger22
+      position: {x: -0.035653457, y: -0.000000076293944, z: 0.000000019073486}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -0.99999994, y: -1, z: -1}
     - name: R_R Finger3
       parentName: R_R Hand
       position: {x: -0.11832454, y: -0.022634353, z: -0.009235248}
@@ -3160,6 +3214,11 @@ ModelImporter:
       position: {x: -0.033306807, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1.0000008, y: 1.0000012, z: 1.0000002}
+    - name: R_R Finger3Nub
+      parentName: R_R Finger32
+      position: {x: -0.032856215, y: 0, z: -0.000000028610229}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1, z: -0.99999994}
     - name: R_R Finger4
       parentName: R_R Hand
       position: {x: -0.111252934, y: -0.013609924, z: -0.029666556}
@@ -3175,6 +3234,11 @@ ModelImporter:
       position: {x: -0.029328384, y: 0.000000076293944, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 0.9999993, y: 0.9999997, z: 1.0000001}
+    - name: R_R Finger4Nub
+      parentName: R_R Finger42
+      position: {x: -0.030016249, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: -1, y: -1.0000001, z: -1.0000001}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -3183,6 +3247,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1

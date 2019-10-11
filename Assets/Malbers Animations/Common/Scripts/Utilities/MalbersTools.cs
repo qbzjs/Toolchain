@@ -38,7 +38,6 @@ namespace MalbersAnimations.Utilities
             return layerMask == (layerMask | (1 << collider.gameObject.layer));
         }
 
-#if UNITY_EDITOR
         public static void DrawTriggers(Transform transform,Collider Trigger, Color DebugColor)
         {
             Gizmos.color = DebugColor;
@@ -80,7 +79,6 @@ namespace MalbersAnimations.Utilities
             }
         }
 
-#endif
 
         /// <summary>
         /// Removes the Right and Foward influence from a vector

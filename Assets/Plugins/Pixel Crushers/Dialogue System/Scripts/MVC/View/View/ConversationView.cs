@@ -509,7 +509,30 @@ namespace PixelCrushers.DialogueSystem
         /// </returns>
         public float GetDefaultSubtitleDuration(string text)
         {
+            return GetDefaultSubtitleDurationInSeconds(text, settings);
+            //if (overrideGetDefaultSubtitleDuration != null) return overrideGetDefaultSubtitleDuration(text);
+            //int numCharacters = string.IsNullOrEmpty(text) ? 0 : Tools.StripRichTextCodes(text).Length;
+            //float numRPGMakerPauses = 0;
+            //if (text.Contains("\\"))
+            //{
+            //    var numFullPauses = (text.Length - text.Replace("\\.", string.Empty).Length) / 2;
+            //    var numQuarterPauses = (text.Length - text.Replace("\\,", string.Empty).Length) / 2;
+            //    numRPGMakerPauses = (1.0f * numFullPauses) + (0.25f * numQuarterPauses);
+            //}
+            //return Mathf.Max(settings.GetMinSubtitleSeconds(), numRPGMakerPauses + (numCharacters / Mathf.Max(1, settings.GetSubtitleCharsPerSecond())));
+        }
+
+        /// <summary>
+        /// A duration based on the text length and the Dialogue Manager's 
+        /// Subtitle Settings > Min Subtitle Seconds and Subtitle Chars Per Second.
+        /// Also factors in time for RPGMaker-style pause codes.
+        /// </summary>
+        /// <param name="text">Text.</param>
+        /// <param name="displaySettings">If null, uses Dialogue Manager's Display Settings.</param>
+        public static float GetDefaultSubtitleDurationInSeconds(string text, DisplaySettings displaySettings = null)
+        {
             if (overrideGetDefaultSubtitleDuration != null) return overrideGetDefaultSubtitleDuration(text);
+            var settings = displaySettings ?? DialogueManager.displaySettings;
             int numCharacters = string.IsNullOrEmpty(text) ? 0 : Tools.StripRichTextCodes(text).Length;
             float numRPGMakerPauses = 0;
             if (text.Contains("\\"))

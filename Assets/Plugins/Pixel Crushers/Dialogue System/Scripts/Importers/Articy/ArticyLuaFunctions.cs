@@ -27,8 +27,9 @@ namespace PixelCrushers.DialogueSystem.Articy
 
         private void OnConversationLine(Subtitle subtitle)
         {
-            var self = "\"Actor[\\\"" + DialogueLua.StringToTableIndex(subtitle.speakerInfo.nameInDatabase) + "\\\"]\"";
-            Lua.Run("speaker = " + self + "; self = " + self, DialogueDebug.logInfo);
+            var speaker = "\"Actor[\\\"" + DialogueLua.StringToTableIndex(subtitle.speakerInfo.nameInDatabase) + "\\\"]\"";
+            var self = "\"Dialog[" + subtitle.dialogueEntry.id + "]\""; // Note that Dialog[#] only has SimStatus to conserve memory. getProp() uses special case to get entry fields.
+            Lua.Run("speaker = " + speaker + "; self = " + self, DialogueDebug.logInfo);
         }
 
         public static string getObj(string objectName)
@@ -37,17 +38,33 @@ namespace PixelCrushers.DialogueSystem.Articy
             var actor = db.actors.Find(x => string.Equals(objectName, x.Name) || string.Equals(objectName, x.LookupValue("Technical Name")) || string.Equals(objectName, x.LookupValue("Articy Id")));
             if (actor != null) return "Actor[\"" + DialogueLua.StringToTableIndex(actor.Name) + "\"]";
             var item = db.items.Find(x => string.Equals(objectName, x.Name) || string.Equals(objectName, x.LookupValue("Technical Name")) || string.Equals(objectName, x.LookupValue("Articy Id")));
-            if (item!= null) return "Item[\"" + DialogueLua.StringToTableIndex(item.Name) + "\"]";
+            if (item != null) return "Item[\"" + DialogueLua.StringToTableIndex(item.Name) + "\"]";
             var location = db.locations.Find(x => string.Equals(objectName, x.Name) || string.Equals(objectName, x.LookupValue("Technical Name")) || string.Equals(objectName, x.LookupValue("Articy Id")));
-            if (location!= null) return "Location[\"" + DialogueLua.StringToTableIndex(location.Name) + "\"]";
+            if (location != null) return "Location[\"" + DialogueLua.StringToTableIndex(location.Name) + "\"]";
             var conversation = db.conversations.Find(x => string.Equals(objectName, x.Title) || string.Equals(objectName, x.LookupValue("Technical Name")) || string.Equals(objectName, x.LookupValue("Articy Id")));
             if (conversation != null) return "Conversation[\"" + conversation.id + "\"]";
+            if (objectName.StartsWith("Dialog[")) return objectName;
             return null;
         }
 
         public static object getProp(string objectIdentifier, string propertyName)
         {
-            var result = Lua.Run("return " + objectIdentifier + "." + DialogueLua.StringToTableIndex(propertyName), DialogueDebug.logInfo);
+            if (string.IsNullOrEmpty(objectIdentifier) || string.IsNullOrEmpty(propertyName)) return string.Empty;
+            if (objectIdentifier.StartsWith("Dialog[") && DialogueManager.isConversationActive)
+            {
+                // Handle Dialog[#] specially:
+                var entryID = Tools.StringToInt(objectIdentifier.Substring(7, objectIdentifier.Length - 8));
+                var conversationID = DialogueManager.currentConversationState.subtitle.dialogueEntry.conversationID;
+                if (string.Equals("SimStatus", propertyName)) return DialogueLua.GetSimStatus(conversationID, entryID);
+                var entry = DialogueManager.masterDatabase.GetDialogueEntry(conversationID, entryID);
+                if (entry == null) return string.Empty;
+                var field = Field.Lookup(entry.fields, propertyName);
+                if (field == null) return string.Empty;
+                if (field.type == FieldType.Number) return Tools.StringToFloat(field.value);
+                else if (field.type == FieldType.Boolean) return Tools.StringToBool(field.value);
+                else return field.value;
+            }
+            var result = Lua.Run("return " + objectIdentifier + "." + DialogueLua.StringToTableIndex(GetShortPropertyName(propertyName)), DialogueDebug.logInfo);
             if (result.isBool)
             {
                 return result.asBool;
@@ -81,7 +98,22 @@ namespace PixelCrushers.DialogueSystem.Articy
             {
                 rightSide = value.ToString();
             }
-            Lua.Run(objectIdentifier + "." + propertyName + " = " + rightSide, DialogueDebug.logInfo);
+            Lua.Run(objectIdentifier + "." + GetShortPropertyName(propertyName) + " = " + rightSide, DialogueDebug.logInfo);
+        }
+
+        private static string GetShortPropertyName(string propertyName)
+        {
+            // In articy, custom feature properties include the feature name.
+            // In DS, they don't. Remove the feature name if present.
+            if (propertyName.Contains("."))
+            {
+                var lastIndex = propertyName.LastIndexOf('.');
+                return propertyName.Substring(lastIndex + 1);
+            }
+            else
+            {
+                return propertyName;
+            }
         }
     }
 }

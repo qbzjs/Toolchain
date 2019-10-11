@@ -183,7 +183,7 @@ namespace MalbersAnimations.Controller
 
             if (FreeMove)
             {
-               Debug.Log("FreeMovement");
+               //Debug.Log("FreeMovement");
                 FreeMovement();
             }
             else if (AgentActive)                                               //if we are on a NAV MESH onGround

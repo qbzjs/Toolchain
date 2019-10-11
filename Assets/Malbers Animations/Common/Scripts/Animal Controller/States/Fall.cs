@@ -6,20 +6,20 @@ namespace MalbersAnimations.Controller
 {
     public class Fall : State
     {
-        public enum FallBlending { None, Normalized, Distance, Direction}
+        public enum FallBlending { None, Normalized, Distance, Direction }
 
         /// <summary>Air Resistance while falling</summary>
         [Header("Fall Parameters")]
         public BoolReference AirControl = new BoolReference(true);
         public FloatReference AirRotation = new FloatReference(10);
-     //   public FloatReference AirRotationLerp = new FloatReference(5);
+        //   public FloatReference AirRotationLerp = new FloatReference(5);
         [Space]
         //public float fallRayDownMultiplier;
         public FloatReference FallRayForwad = new FloatReference(0f);
 
         /// <summary>Multiplier to check if is falling in front of him</summary>
         [Tooltip("Multiplier for the Fall Ray Length")]
-        public FloatReference fallRayMultiplier = new FloatReference( 1f);
+        public FloatReference fallRayMultiplier = new FloatReference(1f);
 
 
         /// <summary>Used to Set fallBlend to zero before reaching the ground</summary>
@@ -27,7 +27,7 @@ namespace MalbersAnimations.Controller
         public FloatReference LowerBlendDistance;
 
 
-      //  public bool KeepInertia = false;
+        //  public bool KeepInertia = false;
 
 
         protected Vector3 fall_Point;
@@ -59,15 +59,15 @@ namespace MalbersAnimations.Controller
 
             float Multiplier = animal.Pivot_Multiplier * fallRayMultiplier;
 
-             return TryFallSphereCastNonAlloc(fall_Pivot, Multiplier);
-           //  return  TryFallSphereCast(fall_Pivot, Multiplier);
+            return TryFallSphereCastNonAlloc(fall_Pivot, Multiplier);
+            //  return  TryFallSphereCast(fall_Pivot, Multiplier);
         }
 
-       
+
         private bool TryFallSphereCastNonAlloc(Vector3 fall_Pivot, float Multiplier)
         {
-           fallHits =  Physics.SphereCastNonAlloc(fall_Pivot, animal.RayCastRadius * animal.ScaleFactor, animal.GravityDirection, FallHits, Multiplier, animal.GroundLayer, QueryTriggerInteraction.Ignore);
-           
+            fallHits = Physics.SphereCastNonAlloc(fall_Pivot, animal.RayCastRadius * animal.ScaleFactor, animal.GravityDirection, FallHits, Multiplier, animal.GroundLayer, QueryTriggerInteraction.Ignore);
+
             if (fallHits > 0)
             {
                 FallRayCast = FallHits[0];
@@ -125,12 +125,8 @@ namespace MalbersAnimations.Controller
         public override void Activate()
         {
             ResetValues();
+            animal.SetFloatID(1f);
 
-          //  if (BlendFall == FallBlending.Normalized)
-                animal.SetFloatID(1f);
-
-            //if (BlendFall == FallBlending.Distance)
-            //    animal.SetFloatID(-100f);
             FallBlend = 1;
             base.Activate();
         }
@@ -147,13 +143,10 @@ namespace MalbersAnimations.Controller
 
                 IgnoreLowerStates = false;
 
-                var speedMultiplier = Vector3.ProjectOnPlane(animal.Inertia, -animal.GravityDirection);
-
-
                 FallSpeed = new MSpeed(animal.CurrentSpeedModifier)
                 {
                     name = "FallSpeed",
-                    position = (speedMultiplier).magnitude / animal.ScaleFactor,
+                    position = animal.HorizontalSpeed,
                     animator = 1,
                     rotation = AirRotation.Value 
                 };
@@ -165,11 +158,9 @@ namespace MalbersAnimations.Controller
 
         public override void OnStateMove(float deltaTime)
         {
-            if (CurrentAnimTag == MainTagHash)
+           if (CurrentAnimTag == MainTagHash)
             {
                 animal.AdditivePosition += UpImpulse;
-
-               // BlendFallDistance();
             }
         }
 
@@ -242,17 +233,17 @@ namespace MalbersAnimations.Controller
             FallSpeed = new MSpeed();
             FallBlend = 1;
             FallRayCast = new RaycastHit();
+            UpImpulse = Vector3.zero;
         }
 
 #if UNITY_EDITOR
 
-        //public override void DebugState()
-        //{
-        //    Gizmos.color = Color.magenta;
-        //    Gizmos.DrawSphere(FallPoint, 0.01f);
-        //    Gizmos.color = Color.red;
-        //    Gizmos.DrawSphere(animal.Main_Pivot_Point, 0.01f);
-        //}
+        public override void DebugState()
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(FallPoint,animal.RayCastRadius);
+            Gizmos.DrawWireSphere(animal.Main_Pivot_Point, animal.RayCastRadius);
+        }
 
         /// <summary>This is Executed when the Asset is created for the first time </summary>
         public override void Reset()

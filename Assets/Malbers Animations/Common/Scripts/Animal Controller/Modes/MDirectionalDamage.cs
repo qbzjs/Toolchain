@@ -10,7 +10,7 @@ namespace MalbersAnimations.Controller
         public bool TwoSided = false;
         public override void OnModeEnter(Mode mode)
         {
-            MAnimal animal = mode.animal;
+            MAnimal animal = mode.Animal;
 
             Vector3 HitDirection = animal.HitDirection;
 

@@ -772,20 +772,20 @@ MonoBehaviour:
   m_AnimatorItemID: 0
   m_AnimatorMovementSetID: 0
   m_DominantItem: 1
-  m_AllowCameraZoom: 1
+  m_AllowCameraZoom: 0
   m_DropPrefab: {fileID: 0}
   m_EquipEvent:
     m_WaitForAnimationEvent: 1
     m_Duration: 0.3
   m_EquipCompleteEvent:
     m_WaitForAnimationEvent: 0
-    m_Duration: 0
+    m_Duration: 0.15
   m_EquipAnimatorAudioStateSet:
     m_AnimatorAudioStateSelectorData:
-      m_ObjectType: Opsive.UltimateCharacterController.Items.AnimatorAudioStates.Sequence
-      m_ValueHashes: 6dc4e8ab
-      m_ValuePositions: 00000000
-      m_Values: 000080bf
+      m_ObjectType: Opsive.UltimateCharacterController.Items.AnimatorAudioStates.Random
+      m_ValueHashes: 
+      m_ValuePositions: 
+      m_Values: 
       m_UnityObjects: []
       m_Version: 2.1.8
     m_States:
@@ -801,19 +801,20 @@ MonoBehaviour:
       m_ItemSubstateIndex: 0
       m_AudioClipSet:
         m_Delay: 0
-        m_AudioClips: []
+        m_AudioClips:
+        - {fileID: 8300000, guid: 49d25372d8b2d834c85b2ca4e392f7f3, type: 3}
   m_UnequipEvent:
     m_WaitForAnimationEvent: 1
-    m_Duration: 0.3
+    m_Duration: 0.1
   m_UnequipCompleteEvent:
     m_WaitForAnimationEvent: 0
-    m_Duration: 0
+    m_Duration: 0.1
   m_UnequipAnimatorAudioStateSet:
     m_AnimatorAudioStateSelectorData:
-      m_ObjectType: Opsive.UltimateCharacterController.Items.AnimatorAudioStates.Sequence
-      m_ValueHashes: 6dc4e8ab
-      m_ValuePositions: 00000000
-      m_Values: 000080bf
+      m_ObjectType: Opsive.UltimateCharacterController.Items.AnimatorAudioStates.Random
+      m_ValueHashes: 
+      m_ValuePositions: 
+      m_Values: 
       m_UnityObjects: []
       m_Version: 2.1.8
     m_States:
@@ -829,7 +830,8 @@ MonoBehaviour:
       m_ItemSubstateIndex: 0
       m_AudioClipSet:
         m_Delay: 0
-        m_AudioClips: []
+        m_AudioClips:
+        - {fileID: 8300000, guid: 67adc643ac1cbda49a68d1e37d49f309, type: 3}
   m_UIMonitorID: 0
   m_Icon: {fileID: 21300014, guid: 5fb67c614ba76ca45a811c8e1f7be476, type: 3}
   m_ShowCrosshairsOnAim: 1
@@ -947,6 +949,22 @@ MonoBehaviour:
       m_AudioClipSet:
         m_Delay: 0
         m_AudioClips: []
+    - m_States:
+      - m_Name: Default
+        m_Preset: {fileID: 0}
+        m_BlockList: []
+        m_Default: 1
+      m_Enabled: 1
+      m_AllowDuringMovement: 1
+      m_RequireGrounded: 0
+      m_StateName: 
+      m_ItemSubstateIndex: 3
+      m_AudioClipSet:
+        m_Delay: 0
+        m_AudioClips:
+        - {fileID: 8300000, guid: e01eb51db3fd966498eed474de852d3a, type: 3}
+        - {fileID: 8300000, guid: 3a87b6104e3e0e2438d2750034807556, type: 3}
+        - {fileID: 8300000, guid: d8dbc8a2525570f42adb5ce38a21fe74, type: 3}
   m_RequireInAirMeleeAbilityInAir: 1
   m_RequireCounterAttackAbility: 0
   m_ConsumableItemType: {fileID: 0}
@@ -956,16 +974,16 @@ MonoBehaviour:
   m_SingleHit: 0
   m_MultiHitFrameCount: 3
   m_CanHitDelay: 0.2
-  m_AllowAttackCombos: 0
+  m_AllowAttackCombos: 1
   m_ImpactLayers:
     serializedVersion: 2
     m_Bits: 3758096345
-  m_DamageAmount: 30
+  m_DamageAmount: 40
   m_ImpactForce: 2
   m_ImpactForceFrames: 15
   m_ImpactStateName: 
   m_ImpactStateDisableTimer: 10
-  m_SurfaceImpact: {fileID: 0}
+  m_SurfaceImpact: {fileID: 11400000, guid: c5ab4290ae28ad645a9e5b3483fc05cb, type: 2}
   m_ApplyRecoil: 1
   m_RecoilAnimatorAudioStateSet:
     m_AnimatorAudioStateSelectorData:
@@ -985,7 +1003,20 @@ MonoBehaviour:
       m_AllowDuringMovement: 1
       m_RequireGrounded: 0
       m_StateName: 
-      m_ItemSubstateIndex: 0
+      m_ItemSubstateIndex: 2
+      m_AudioClipSet:
+        m_Delay: 0
+        m_AudioClips: []
+    - m_States:
+      - m_Name: Default
+        m_Preset: {fileID: 0}
+        m_BlockList: []
+        m_Default: 1
+      m_Enabled: 1
+      m_AllowDuringMovement: 1
+      m_RequireGrounded: 0
+      m_StateName: 
+      m_ItemSubstateIndex: 3
       m_AudioClipSet:
         m_Delay: 0
         m_AudioClips: []
@@ -1042,8 +1073,8 @@ MonoBehaviour:
   m_Weapon: {fileID: 7181621225414080512}
   m_ProfileConfig: 0
   m_CoreConfig: 0
-  m_ForeConfig: 4
-  m_RearConfig: 5
+  m_ForeConfig: 0
+  m_RearConfig: 0
   m_AmmoConfig: 0
   m_ActiveMag: 0
   m_AccessoryConfig: 0
@@ -2403,7 +2434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf325443b720c3944b75efe31f6b380f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BaseName: Hilt Platform
   m_WeaponProfiles:
   - m_ProfileName: One-Handed Sword
     m_ProfileRoot: {fileID: 8874724598427694807}
@@ -2659,9 +2689,9 @@ MonoBehaviour:
     m_AccessoryRack: {fileID: 0}
     m_SlotID: 0
     m_AnimatorMovementSetID: 0
-    m_DominantItem: 0
+    m_DominantItem: 1
     m_UIMonitorID: 0
-    m_ShowCrosshairsOnAim: 0
+    m_ShowCrosshairsOnAim: 1
 --- !u!114 &6842761689738325597
 MonoBehaviour:
   m_ObjectHideFlags: 0

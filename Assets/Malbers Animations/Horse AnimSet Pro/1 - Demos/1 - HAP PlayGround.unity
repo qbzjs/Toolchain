@@ -1637,6 +1637,16 @@ Prefab:
       value: MalbersAnimations.Events.FloatEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
+    - target: {fileID: 114122789239862530, guid: d3aa6de16e8fb9a4ca8d48506859e701,
+        type: 2}
+      propertyPath: Editor_Tabs1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122789239862530, guid: d3aa6de16e8fb9a4ca8d48506859e701,
+        type: 2}
+      propertyPath: Editor_Tabs2
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3aa6de16e8fb9a4ca8d48506859e701, type: 2}
   m_IsPrefabParent: 0
@@ -2437,6 +2447,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 114211238776853438, guid: 6865107d925eac74eb4e4f6fa0aea5bb,
+        type: 2}
+      propertyPath: Editor_Tabs2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850517935790238, guid: 6865107d925eac74eb4e4f6fa0aea5bb,
+        type: 2}
+      propertyPath: Editor_Tabs1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850517935790238, guid: 6865107d925eac74eb4e4f6fa0aea5bb,
+        type: 2}
+      propertyPath: speedSets.Array.data[0].Speeds.Array.data[0].position.ConstantValue
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6865107d925eac74eb4e4f6fa0aea5bb, type: 2}
   m_IsPrefabParent: 0
@@ -3055,7 +3080,7 @@ Prefab:
     - target: {fileID: 114865539638813372, guid: 3a5ebcf3b3517dd4b864745a6b501c2a,
         type: 2}
       propertyPath: Parent.ConstantValue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114865539638813372, guid: 3a5ebcf3b3517dd4b864745a6b501c2a,
         type: 2}
@@ -4024,6 +4049,16 @@ Prefab:
     - target: {fileID: 4517593550071020, guid: 6865107d925eac74eb4e4f6fa0aea5bb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 115.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211238776853438, guid: 6865107d925eac74eb4e4f6fa0aea5bb,
+        type: 2}
+      propertyPath: Editor_Tabs2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114850517935790238, guid: 6865107d925eac74eb4e4f6fa0aea5bb,
+        type: 2}
+      propertyPath: Editor_Tabs1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6865107d925eac74eb4e4f6fa0aea5bb, type: 2}

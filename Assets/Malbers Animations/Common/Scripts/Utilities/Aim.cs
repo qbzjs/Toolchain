@@ -158,7 +158,8 @@ namespace MalbersAnimations.Utilities
         #endregion
         #endregion
 
-        void Start()
+      
+        void Awake()
         {
             MainCamera = MalbersTools.FindMainCamera();
             MainCameraT = MainCamera.transform;

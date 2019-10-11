@@ -874,7 +874,7 @@ namespace PixelCrushers.DialogueSystem.Aurora
             DialogueEntry firstDialogueEntry = template.CreateDialogueEntry(FirstDialogueEntryID, conversationID, "START");
             firstDialogueEntry.ActorID = CurrentActorID;
             firstDialogueEntry.ConversantID = CurrentConversantID;
-            firstDialogueEntry.currentSequence = "None()";
+            firstDialogueEntry.currentSequence = "Continue()";
             conversation.dialogueEntries.Add(firstDialogueEntry);
 
             // Convert EntryList into dialogue entries:

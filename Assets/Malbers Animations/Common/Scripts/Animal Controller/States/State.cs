@@ -16,9 +16,9 @@ namespace MalbersAnimations.Controller
 
 
         /// <summary>True if this state is the Active State</summary>
-        public bool ActiveState { get; set; }
+        public bool ActiveState { get; internal set; }
         /// <summary>Priority of the State.  Higher value more priority</summary>
-        public int Priority { get; set; }
+        public int Priority { get; internal set; }
 
         /// <summary>Reference for the Animal that Holds this State</summary>
         protected MAnimal animal;
@@ -55,7 +55,7 @@ namespace MalbersAnimations.Controller
        
         [SerializeField] public List<TagModifier> TagModifiers = new List<TagModifier>();
 
-        public bool debug = true;
+        public bool debug = false;
       
         #region Common Properties
         /// <summary>Returns the Active Animation State tag Hash on the Base Layer</summary>
@@ -96,9 +96,7 @@ namespace MalbersAnimations.Controller
             var Foundit = TagModifiers.Find(tag => tag.TagHash == MainTag);
 
             return Foundit != null;
-
         }
-
 
         /// <summary>Set all the values for all the States on Awake</summary>
         public void SetAnimal(MAnimal mAnimal)
@@ -170,6 +168,9 @@ namespace MalbersAnimations.Controller
             {
                 animal.LastState.EnterExitEvent.OnExit.Invoke();
             }
+            
+
+            //HasEnterState = false;
             animal.LastState.ExitState();
         }
 
@@ -200,12 +201,7 @@ namespace MalbersAnimations.Controller
             if (EnterExitEvent != null) EnterExitEvent.OnEnter.Invoke();
         }
 
-        public virtual bool IsSleepFrom(int StateID)
-        {
-            var hasit = SleepFrom.Find(id => id.ID == StateID);
-
-            return hasit != null;
-        }
+     // bool HasEnterState;
 
         /// <summary>When a Tag Changes apply this modifications</summary>
         public bool AnimationTagEnter(int animatorTagHash)
@@ -215,7 +211,7 @@ namespace MalbersAnimations.Controller
             if (MainTagHash == animatorTagHash)
             {
                 General.Modify(animal);
-                animal.SetIntID(0);
+                //animal.SetIntID(0);
                 IsPending = false;
             }
 
@@ -227,8 +223,9 @@ namespace MalbersAnimations.Controller
                 IsPending = false;
             }
 
-            if (ActiveState)
+            if (ActiveState/* && !HasEnterState*/)
             {
+                //HasEnterState = true;
                 AnimationStateEnter();
             }
 
@@ -237,8 +234,6 @@ namespace MalbersAnimations.Controller
 
         /// <summary>This try to enable the State Logic</summary>
         public virtual bool TryActivate() { return false; }
-
-
 
         public void ReceiveMessages(string message, object value)
         {
@@ -260,7 +255,6 @@ namespace MalbersAnimations.Controller
             StatebyInput();
         }
 
-
         public virtual void ExitState()
         {
             InputValue = false;
@@ -269,22 +263,17 @@ namespace MalbersAnimations.Controller
             IsPending = false;
             OnQueue = false;
             ActiveState = false; //This will not be any longer the Active State
+          //  HasEnterState = false;
         }
 
         /// <summary> Reset a State values to its first Awakening </summary>
-        public virtual void ResetState()
-        {
-            ExitState();
-        }
+        public virtual void ResetState() { ExitState(); }
 
 
         /// <summary> Reset a State from the animal is using it with a StateID to its first Awakening </summary>
         public virtual void ResetState(StateID id)
         {
-            if (animal != null)
-            {
-                animal.State_Reset(id);
-            }
+            if (animal != null) animal.State_Reset(id);
         } 
 
         /// <summary>Allow the State to be Replaced by lower States</summary>
@@ -292,7 +281,6 @@ namespace MalbersAnimations.Controller
         {
             IgnoreLowerStates = false;
             IsPersistent = false;
-            //WakeUpStates();
         }
         #endregion
 
@@ -307,15 +295,12 @@ namespace MalbersAnimations.Controller
             }
         }
 
-
         #region Empty Methods
         /// <summary>Reset the State When is added to the List of states</summary>
         public virtual void Reset() { }
 
         /// <summary>Set all the values for all the States on Start</summary>
         public virtual void StartState() { }
-
-     
 
         /// <summary>When Entering a new animation State do this</summary>
         public virtual void AnimationStateEnter() { }
@@ -330,7 +315,6 @@ namespace MalbersAnimations.Controller
         public virtual void StatebyInput() { }
 
         public virtual void OnStateMove(float deltatime) { }
-
         public virtual void DebugState() { }
 
         #endregion

@@ -4,7 +4,7 @@ namespace MalbersAnimations.Controller
 {
     public class AttackTriggerBehaviour : StateMachineBehaviour
     {
-        [Header("MANIMAL")]
+        //[Header("MANIMAL")]
         public int AttackTrigger = 1;                           //ID of the Attack Trigger to Enable/Disable during the Attack Animation
 
         [Tooltip("Range on the Animation that the Attack Trigger will be Active")]

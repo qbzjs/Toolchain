@@ -120,6 +120,18 @@ namespace PixelCrushers.DialogueSystem
                     AddConversationDialogueEntry(chatMapperEntry);
                 }
                 SplitPipesIntoEntries(putEndSequenceOnLastSplit);
+
+                // Set priority of links to the destination entry's priority:
+                foreach (var entry in dialogueEntries)
+                {
+                    foreach (var link in entry.outgoingLinks)
+                    {
+                        if (link.destinationConversationID != id) continue;
+                        var dest = GetDialogueEntry(link.destinationDialogueID);
+                        if (dest == null) continue;
+                        link.priority = dest.conditionPriority;
+                    }
+                }
             }
         }
 

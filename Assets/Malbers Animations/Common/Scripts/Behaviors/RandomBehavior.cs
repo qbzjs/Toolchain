@@ -12,10 +12,13 @@ namespace MalbersAnimations
 
         override public void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
         {
-            int newParam = Random.Range(1, Range + 1);
-
             MAnimal animal = animator.GetComponent<MAnimal>();
-            animal.SetIntID(newParam);
+
+            if (animal && !animal.IsPlayingMode)
+            {
+                int newParam = Random.Range(1, Range + 1);
+                animal.SetIntID(newParam);
+            }
         }
     }
 }

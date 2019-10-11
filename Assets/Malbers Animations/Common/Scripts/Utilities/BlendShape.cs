@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using MalbersAnimations.Events;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace MalbersAnimations.Utilities
 {
@@ -219,5 +221,35 @@ namespace MalbersAnimations.Utilities
                 }
             }
         }
+
+#if UNITY_EDITOR
+        [ContextMenu("Create Event Listeners")]
+        void CreateListeners()
+        {
+
+            MEventListener listener = GetComponent<MEventListener>();
+
+            if (listener == null) listener = gameObject.AddComponent<MEventListener>();
+            if (listener.Events == null) listener.Events = new List<MEventItemListener>();
+
+            MEvent BlendS = MalbersTools.GetInstance<MEvent>("Blend Shapes");
+
+
+            if (listener.Events.Find(item => item.Event == BlendS) == null)
+            {
+                var item = new MEventItemListener()
+                {
+                    Event = BlendS,
+                    useVoid = false, useString = true, useInt = true,
+                };
+
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseInt, _PinShape);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(item.ResponseString, _PinShape);
+                listener.Events.Add(item);
+
+                Debug.Log("<B>Blend Shapes</B> Added to the Event Listeners");
+            }
+        }
+#endif
     }
 }
